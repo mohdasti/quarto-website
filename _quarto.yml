@@ -30,6 +30,5 @@ format:
 resources: 
   - "CV/CV_MDastgheib.pdf"
 
-
 execute:
   freeze: auto
