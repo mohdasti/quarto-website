@@ -20,12 +20,16 @@ website:
 
 format:
   html:
-    theme: 
-      - trestles
-      - styles.scss
+    theme:
+      light: trestles
+    css: styles.scss
     toc: true
     code-fold: true
     
 resources: 
   - "CV/CV_MDastgheib.pdf"
+
 output-dir: _site
+
+execute:
+  freeze: auto

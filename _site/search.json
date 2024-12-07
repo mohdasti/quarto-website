@@ -1,5 +1,19 @@
 [
   {
+    "objectID": "cv.html",
+    "href": "cv.html",
+    "title": "CV",
+    "section": "",
+    "text": "University of California, Riverside | 2021 – 2026 (Expected)\nPh.D. in Psychology and Cognitive Neuroscience | GPA: 3.93\nThesis: “Effects of LC Integrity on Auditory and Visual Perception in Older Adults”\nAdvisors: Dr. Aaron Seitz and Dr. Ilana Bennett\nQueen’s University | 2017 – 2020\nM.Sc. in Psychology | GPA: 3.83\nThesis: “The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans”\nDownload Full CV (PDF)"
+  },
+  {
+    "objectID": "cv.html#education",
+    "href": "cv.html#education",
+    "title": "CV",
+    "section": "",
+    "text": "University of California, Riverside | 2021 – 2026 (Expected)\nPh.D. in Psychology and Cognitive Neuroscience | GPA: 3.93\nThesis: “Effects of LC Integrity on Auditory and Visual Perception in Older Adults”\nAdvisors: Dr. Aaron Seitz and Dr. Ilana Bennett\nQueen’s University | 2017 – 2020\nM.Sc. in Psychology | GPA: 3.83\nThesis: “The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans”\nDownload Full CV (PDF)"
+  },
+  {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Mohammad Dastgheib",
@@ -12,13 +26,6 @@
     "title": "Mohammad Dastgheib",
     "section": "",
     "text": "I am a PhD student in Psychology and Cognitive Neuroscience at UC Riverside, specializing in perceptual processing and human-computer interaction. My research focuses on designing psychophysical experiments using eye tracking and pupillometry.\n\n\n\n\n\n\nNote\n\n\n\nAvailable for Summer 2025 Internship (June 9 - August 30, 2025)"
-  },
-  {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
-    "section": "",
-    "text": "About this site\n\n\nCode\n1 + 1\n\n\n[1] 2"
   },
   {
     "objectID": "research/index.html",
@@ -70,17 +77,10 @@
     "text": "Journal Articles\n\nDastgheib, M., Kulanayagam, A., & Dringenberg, H. C. (2022). “Is the role of sleep in memory consolidation overrated?” Neuroscience & Biobehavioral Reviews"
   },
   {
-    "objectID": "cv.html",
-    "href": "cv.html",
-    "title": "CV",
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
     "section": "",
-    "text": "University of California, Riverside | 2021 – 2026 (Expected)\nPh.D. in Psychology and Cognitive Neuroscience | GPA: 3.93\nThesis: “Effects of LC Integrity on Auditory and Visual Perception in Older Adults”\nAdvisors: Dr. Aaron Seitz and Dr. Ilana Bennett\nQueen’s University | 2017 – 2020\nM.Sc. in Psychology | GPA: 3.83\nThesis: “The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans”\nDownload Full CV (PDF)"
-  },
-  {
-    "objectID": "cv.html#education",
-    "href": "cv.html#education",
-    "title": "CV",
-    "section": "",
-    "text": "University of California, Riverside | 2021 – 2026 (Expected)\nPh.D. in Psychology and Cognitive Neuroscience | GPA: 3.93\nThesis: “Effects of LC Integrity on Auditory and Visual Perception in Older Adults”\nAdvisors: Dr. Aaron Seitz and Dr. Ilana Bennett\nQueen’s University | 2017 – 2020\nM.Sc. in Psychology | GPA: 3.83\nThesis: “The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans”\nDownload Full CV (PDF)"
+    "text": "About this site\n\n\nCode\n1 + 1\n\n\n[1] 2"
   }
 ]
