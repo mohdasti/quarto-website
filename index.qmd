@@ -13,8 +13,6 @@ about:
     - icon: globe
       text: Website
       href: https://mdastgheib.com
-    - text: "{{<  google-scholar >}} Google Scholar"
-      href: https://scholar.google.com/citations?user=SNVpHcUAAAAJ&hl=en
 ---
 
 ## Vision Science Researcher
