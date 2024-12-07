@@ -1,8 +1,8 @@
 [build]
   publish = "_site"
   command = """
-    npm install -g quarto-cli
-    quarto render
+    wget -qO- https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.549/quarto-1.4.549-linux-amd64.tar.gz | tar -xzv -C .
+    ./quarto-1.4.549/bin/quarto render
     """
 
 [[plugins]]
