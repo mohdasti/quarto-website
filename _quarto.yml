@@ -1,5 +1,6 @@
 project:
   type: website
+  output-dir: _site
 
 website:
   title: "Mohammad Dastgheib"
@@ -29,7 +30,6 @@ format:
 resources: 
   - "CV/CV_MDastgheib.pdf"
 
-output-dir: _site
 
 execute:
   freeze: auto
