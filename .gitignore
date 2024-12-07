@@ -1,6 +1,18 @@
+# R specific
 .Rproj.user
 .Rhistory
 .RData
 .Ruserdata
 
+# Quarto
 /.quarto/
+_site/
+_freeze/
+*.html
+
+# System files
+.DS_Store
+.Thumbs.db
+
+# Node
+node_modules/
