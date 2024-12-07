@@ -3,7 +3,7 @@ publish = "_site"
 command = """
   wget -qO- https://github.com/quarto-dev/quarto-cli/releases/download/v1.4.549/quarto-1.4.549-linux-amd64.tar.gz | tar -xzv -C .
   export PATH="$PATH:$PWD/quarto-1.4.549/bin"
-  quarto render
+  quarto render --verbose
 """
 
 [[plugins]]
