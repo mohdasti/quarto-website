@@ -1,0 +1,19 @@
+---
+title: "CV"
+format:
+  html:
+    toc: true
+---
+
+## Education
+
+**University of California, Riverside** | 2021 -- 2026 (Expected)  
+Ph.D. in Psychology and Cognitive Neuroscience | GPA: 3.93  
+Thesis: "Effects of LC Integrity on Auditory and Visual Perception in Older Adults"  
+Advisors: Dr. Aaron Seitz and Dr. Ilana Bennett
+
+**Queen's University** | 2017 -- 2020  
+M.Sc. in Psychology | GPA: 3.83  
+Thesis: "The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans"
+
+[Download Full CV (PDF)](/CV/CV_MDastgheib.pdf){.btn .btn-primary}

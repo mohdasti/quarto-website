@@ -1,0 +1,26 @@
+---
+title: "Mohammad Dastgheib"
+image: images/profile.jpg
+about:
+  template: trestles
+  links:
+    - icon: envelope
+      text: Email
+      href: mailto:mdast003@ucr.edu
+    - icon: linkedin
+      text: LinkedIn
+      href: https://linkedin.com/in/mdastgheib
+    - icon: globe
+      text: Website
+      href: https://mdastgheib.com
+    - text: "{{< ai google-scholar >}} Google Scholar"
+      href: https://scholar.google.com/citations?user=SNVpHcUAAAAJ&hl=en
+---
+
+## Vision Science Researcher
+
+I am a PhD student in Psychology and Cognitive Neuroscience at UC Riverside, specializing in perceptual processing and human-computer interaction. My research focuses on designing psychophysical experiments using eye tracking and pupillometry.
+
+::: callout-note
+Available for Summer 2025 Internship (June 9 - August 30, 2025)
+:::

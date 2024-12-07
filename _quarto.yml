@@ -1,0 +1,31 @@
+project:
+  type: website
+
+website:
+  title: "Mohammad Dastgheib"
+  site-url: https://mdastgheib.com
+  page-navigation: true
+  navbar:
+    background: primary
+    search: true
+    left:
+      - href: index.qmd
+        text: Home
+      - href: research/index.qmd
+        text: Research
+      - href: publications/index.qmd
+        text: Publications
+      - href: cv.qmd
+        text: CV
+
+format:
+  html:
+    theme: 
+      - trestles
+      - styles.scss
+    toc: true
+    code-fold: true
+    
+resources: 
+  - "CV/CV_MDastgheib.pdf"
+output-dir: _site

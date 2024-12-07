@@ -1,0 +1,32 @@
+---
+title: "Research"
+---
+
+## Current Research
+
+My research in the Seitz Lab focuses on:
+
+- Investigating visual perception using pupillometry
+- Developing experimental paradigms with PsychToolbox
+- Applying signal detection theory and computational modeling
+- Coordinating research projects and supervising assistants
+
+## Technical Expertise
+
+:::{.grid}
+:::{.g-col-6}
+### Research Methods
+- Psychophysics
+- Eye Tracking (Pupillometry)
+- Adaptive Experimentation
+- Signal Detection Theory
+:::
+
+:::{.g-col-6}
+### Programming
+- MATLAB (PsychToolbox)
+- R (Statistical Modeling)
+- Python
+- Git & Cloud Platforms
+:::
+:::
