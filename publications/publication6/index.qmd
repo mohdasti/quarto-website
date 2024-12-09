@@ -1,0 +1,39 @@
+---
+title: "The Effect of Physical Effort on Perception and Visual Memory"
+author:
+  - Mohammad Dastgheib
+  - Kimia Yaghoubi
+  - Hadi Kobaissi
+  - Jacqueline Alba
+  - Ilana Bennett
+  - Aaron Seitz
+date: '2023'
+slug: effect-physical-effort-international-conference-learning-memory
+categories:
+  - Poster
+  - Perception
+  - Visual Memory
+  - Pupillometry
+status: International Conference on Learning and Memory
+description: Poster presentation at the International Conference on Learning and Memory.
+links:
+  - icon: file-richtext-fill
+    name: Poster
+    url: https://github.com/mohdasti/CV/blob/103d9892889218debe8c306356643ab003b2572b/docs/misc\%20docs/Program_booklet_Issuu_2023\%20(1).pdf
+  - icon: external-link-alt
+    name: International Conference on Learning and Memory
+    url: https://learnmem2023.org/ 
+---
+
+## Abstract
+
+This poster investigates the effect of physical effort on perception and visual memory using pupillometry.
+
+## Details
+
+- **Conference:** International Conference on Learning and Memory
+- **Date:** 2023
+- **Authors:** Dastgheib, M., Yaghoubi, K., Kobaissi, H., Alba, J., Bennett, I., Seitz, A.
+
+
+<iframe src="https://drive.google.com/file/d/1z6qPSOQdINDxzeinB8q9cCgERTRM5DIZ/preview" width="100%" height="800" frameborder="0" scrolling="yes"></iframe>

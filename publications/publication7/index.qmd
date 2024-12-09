@@ -1,0 +1,49 @@
+---
+title: "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation"
+author:
+  - Mohammad Dastgheib
+  - Liza Legro
+  - Matthew Stewart
+  - Hans C. Dringenberg
+date: '2019'
+slug: effects-self-guided-meditation-napping-memory-consolidation
+categories:
+  - Conference Talk
+  - Memory Consolidation
+  - Meditation
+  - Napping
+status: CSBBCS Conference
+description: Conference talk presented at the Canadian Society for Brain, Behaviour, & Cognitive Sciences meeting.
+links:
+  - icon: file-richtext-fill
+    name: Conference Program
+    url: https://www.csbbcs.org/fileadmin/csbbcs/storage/Final_Program_version_7_May_29th.pdf
+  - icon: external-link-alt
+    name: CSBBCS Meeting
+    url: https://www.csbbcs.org/
+---
+
+## Abstract
+
+This conference presentation explores the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms.
+
+## Details
+
+- **Conference:** Canadian Society for Brain, Behaviour, & Cognitive Sciences meeting
+- **Location:** Waterloo, ON
+- **Date:** 2019
+- **Authors:** Mohammad Dastgheib, Legro L., Stewart M., Hans C. Dringenberg
+
+## Keywords
+
+- Memory Consolidation
+- Self-Guided Meditation
+- Napping
+- Cognitive Neuroscience
+
+## Citation
+
+Dastgheib, M., Legro L., Stewart M., & Dringenberg, H. C. (2019). *The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation*. Presented at the Canadian Society for Brain, Behaviour, & Cognitive Sciences meeting, Waterloo, ON.
+
+
+<iframe src="https://drive.google.com/file/d/1o-Il4cK1Wp-22nSY-lUSzq7UEqwMlrmn/preview" width="100%" height="800" frameborder="0" scrolling="yes"></iframe>

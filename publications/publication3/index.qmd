@@ -1,0 +1,48 @@
+---
+title: "The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans"
+author:
+  - name: Mohammad Dastgheib
+    orcid: 0000-0001-7684-3731
+date: '2020'
+slug: self-guided-meditation-napping-memory-consolidation
+categories:
+  - Thesis
+  - Memory Consolidation
+  - Meditation
+  - Napping
+status: Master's Dissertation
+description: Master's thesis exploring the effects of self-guided meditation and napping on memory consolidation.
+links:
+  - icon: file-richtext-fill
+    name: Thesis
+    url: https://osf.io/preprints/thesiscommons/8t9uq
+  - icon: external-link-alt
+    name: Google Scholar
+    url: https://scholar.google.com/citations?view_op=view_citation&hl=en&user=SNVpHcUAAAAJ&citation_for_view=SNVpHcUAAAAJ:u-x6o8ySG0sC
+---
+
+## Abstract
+
+This Master's thesis investigates the effects of self-guided meditation and napping on memory consolidation in humans. The study examines whether these interventions can enhance memory performance and explores the underlying mechanisms.
+
+## Details
+
+- **University:** Queen's University
+- **Degree:** M.Sc. in Psychology
+- **Date:** 2020
+- **Advisor:** Hans C. Dringenberg
+
+## Keywords
+
+- Memory Consolidation
+- Self-Guided Meditation
+- Napping
+- Cognitive Neuroscience
+
+## Citation
+
+Dastgheib, M. (2020). *The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans*. Master's thesis, Queen's University.
+
+## Full Text
+
+[View Full Text](https://osf.io/preprints/thesiscommons/8t9uq/){ .btn .btn-primary }

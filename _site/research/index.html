@@ -59,9 +59,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="assets/listing-default.css">
 
 
-<link rel="stylesheet" href="styles.scss">
+<link rel="stylesheet" href="../assets/css/index.css">
+<meta name="twitter:title" content="Mohammad Dastgheib - Research">
+<meta name="twitter:description" content="">
+<meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
@@ -80,14 +86,18 @@ ul.task-list li input[type="checkbox"] {
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
-            <ul class="navbar-nav navbar-nav-scroll me-auto">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html" rel="" target="">
- <span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../about/index.html" rel="" target="">
+ <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="../research/index.html" rel="" target="" aria-current="page">
  <span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../skills/index.html" rel="" target="">
+ <span class="menu-text">Skills</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../publications/index.html" rel="" target="">
@@ -98,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">CV</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto">
+            <div class="quarto-navbar-tools">
 </div>
           </div> <!-- /navcollapse -->
       </div> <!-- /container-fluid -->
@@ -114,7 +124,12 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#current-research" id="toc-current-research" class="nav-link active" data-scroll-target="#current-research">Current Research</a></li>
-  <li><a href="#technical-expertise" id="toc-technical-expertise" class="nav-link" data-scroll-target="#technical-expertise">Technical Expertise</a></li>
+  <li><a href="#research-projects" id="toc-research-projects" class="nav-link" data-scroll-target="#research-projects">Research Projects</a>
+  <ul class="collapse">
+  <li><a href="#ongoing-projects" id="toc-ongoing-projects" class="nav-link" data-scroll-target="#ongoing-projects">Ongoing Projects</a></li>
+  <li><a href="#past-projects" id="toc-past-projects" class="nav-link" data-scroll-target="#past-projects">Past Projects</a></li>
+  </ul></li>
+  <li><a href="#collaborations" id="toc-collaborations" class="nav-link" data-scroll-target="#collaborations">Collaborations</a></li>
   </ul>
 </nav>
     </div>
@@ -148,33 +163,39 @@ ul.task-list li input[type="checkbox"] {
 <li>Coordinating research projects and supervising assistants</li>
 </ul>
 </section>
-<section id="technical-expertise" class="level2">
-<h2 class="anchored" data-anchor-id="technical-expertise">Technical Expertise</h2>
-<div class="grid">
-<section id="research-methods" class="level3 g-col-6">
-<h3 class="anchored" data-anchor-id="research-methods">Research Methods</h3>
+<section id="research-projects" class="level2">
+<h2 class="anchored" data-anchor-id="research-projects">Research Projects</h2>
+<section id="ongoing-projects" class="level3">
+<h3 class="anchored" data-anchor-id="ongoing-projects">Ongoing Projects</h3>
 <ul>
-<li>Psychophysics</li>
-<li>Eye Tracking (Pupillometry)</li>
-<li>Adaptive Experimentation</li>
-<li>Signal Detection Theory</li>
+<li><strong>The Effect of Physical Effort on Perception and Visual Memory:</strong> A Pupillometric Analysis
+<ul>
+<li>Investigating the impact of physical effort on visual perception and memory consolidation.</li>
+<li>Developing and implementing psychophysical experiments.</li>
+</ul></li>
 </ul>
 </section>
-<section id="programming" class="level3 g-col-6">
-<h3 class="anchored" data-anchor-id="programming">Programming</h3>
+<section id="past-projects" class="level3">
+<h3 class="anchored" data-anchor-id="past-projects">Past Projects</h3>
 <ul>
-<li>MATLAB (PsychToolbox)</li>
-<li>R (Statistical Modeling)</li>
-<li>Python</li>
-<li>Git &amp; Cloud Platforms</li>
+<li><strong>The Effects of Self-Guided Meditation and Napping on Memory Consolidation:</strong> A study examining the effects of self-guided meditation and napping on memory consolidation.
+<ul>
+<li>Conducted at Queen’s University as part of my M.Sc. thesis.</li>
+</ul></li>
 </ul>
 </section>
-</div>
+</section>
+<section id="collaborations" class="level2">
+<h2 class="anchored" data-anchor-id="collaborations">Collaborations</h2>
+<ul>
+<li>Collaborate with researchers in the Seitz Lab to design and implement experiments.</li>
+<li>Work with research assistants to collect and analyze data.</li>
+</ul>
 
 
 </section>
 
-</main> <!-- /main -->
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -409,6 +430,15 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 });
 </script>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">© 2023 Mohammad Dastgheib • Built with Quarto</div>   
+    <div class="nav-footer-center"><a href="mailto:mdast003@ucr.edu" title="Email"><i class="fas fa-envelope"></i></a> <a href="https://linkedin.com/in/mdastgheib" title="LinkedIn"><i class="fab fa-linkedin"></i></a> <a href="https://scholar.google.com/citations?user=SNVpHcUAAAAJ" title="Google Scholar"></a> <a href="https://github.com/mohdasti" title="GitHub"><i class="fab fa-github"></i></a></div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
 
 
 

@@ -5,30 +5,47 @@ project:
 website:
   title: "Mohammad Dastgheib"
   site-url: https://mdastgheib.com
+  description: "Vision science researcher specializing in perceptual processing and human-computer interaction"
   page-navigation: true
+  back-to-top-navigation: true
+  twitter-card:
+    card-style: summary_large_image
+    
   navbar:
-    background: primary
     search: true
-    left:
-      - href: index.qmd
-        text: Home
-      - href: research/index.qmd
-        text: Research
-      - href: publications/index.qmd
-        text: Publications
-      - href: cv.qmd
-        text: CV
+    right:
+      - text: About
+        href: about/index.qmd
+      - text: Research
+        href: research/index.qmd
+      - text: Skills
+        href: skills/index.qmd
+      - text: Publications
+        href: publications/index.qmd
+      - text: CV
+        href: cv.qmd
+        
+  page-footer:
+    left: "© 2023 Mohammad Dastgheib • Built with Quarto"
+    center: |
+      <a href="mailto:mdast003@ucr.edu" title="Email"><i class="fas fa-envelope"></i></a>
+      <a href="https://linkedin.com/in/mdastgheib" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+      <a href="https://scholar.google.com/citations?user=SNVpHcUAAAAJ" title="Google Scholar">{{< ai google-scholar >}}</a>
+      <a href="https://github.com/mohdasti" title="GitHub"><i class="fab fa-github"></i></a>
 
 format:
   html:
     theme:
-      light: trestles
-    css: styles.scss
+      light: [cosmo, assets/css/main.scss]
+    include-in-header: 
+      - text: |
+          <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+          <link rel="stylesheet" href="assets/listing-default.css">
+    css: assets/css/index.css
     toc: true
     code-fold: true
+    lightbox: true
     
-resources: 
-  - "CV/CV_MDastgheib.pdf"
-
 execute:
   freeze: auto

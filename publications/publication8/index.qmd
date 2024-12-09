@@ -1,0 +1,45 @@
+---
+title: "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation"
+author:
+  - Mohammad Dastgheib
+  - Liza Legro
+  - Matthew Stewart 
+  - Hans Dringenberg
+date: '2018'
+slug: effects-self-guided-meditation-napping-memory-consolidation-sona
+categories:
+  - Poster
+  - Memory Consolidation
+  - Meditation
+  - Napping
+status: SONA Conference
+description: Poster presentation at the Southern Ontario Neuroscience Association (SONA) conference.
+links:
+  - icon: file-richtext-fill
+    name: Poster
+  - icon: external-link-alt
+    name: SONA Conference
+    url: https://sonasfn.org/data/uploads/meetings/2018/sona_2018_guelph_program_with_abstracts.pdf
+---
+
+## Abstract
+
+This poster presents the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms.
+
+## Details
+
+- **Conference:** Southern Ontario Neuroscience Association (SONA) conference
+- **Location:** Guelph, ON
+- **Date:** 2018
+- **Authors:** Mohammad Dastgheib, Legro L., Stewart M., Hans C. Dringenberg
+
+## Keywords
+
+- Memory Consolidation
+- Self-Guided Meditation
+- Napping
+- Cognitive Neuroscience
+
+## Citation
+
+Dastgheib, M., Legro L., Stewart M., & Dringenberg, H. C. (2018). *The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation*. Presented at the Southern Ontario Neuroscience Association (SONA) conference, Guelph, ON.

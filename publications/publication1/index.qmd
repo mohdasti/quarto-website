@@ -1,0 +1,35 @@
+---
+title: "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis"
+author:
+  - Mohammad Dastgheib
+  - Andrew Sun
+  - Kimia Yaghoubi
+  - Xu Chen
+  - Megan Peters
+  - Weiwei Zhang
+  - Ilana Bennett
+  - Aaron Seitz
+date: '2025-03-01'  # Add a date, even if it's tentative
+slug: physical-effort-perception-memory
+categories:
+  - In Preparation
+  - Perception
+  - Visual Memory
+  - Pupillometry
+status: Manuscript in Preparation
+description: Manuscript in preparation
+links:
+  - icon: file-richtext-fill
+    name: Publication
+    url: # (Replace with actual URL once published)
+---
+
+## Abstract
+
+This study investigates the effect of physical effort on perception and visual memory using pupillometry. We designed and implemented psychophysical experiments to analyze the impact of physical exertion on visual perception and memory consolidation.
+
+## Details
+
+- **Journal:** Manuscript in preparation
+- **Authors:** Mohammad Dastgheib, et al.
+- **Date:** TBD

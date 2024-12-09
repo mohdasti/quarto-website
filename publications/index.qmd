@@ -1,17 +1,25 @@
 ---
 title: "Publications"
+description: |
+  This is home for my research publications, each linked with accompanying preprints, posters, and/or news pieces.
+listing:
+  contents: ["**/*"]
+  sort: "date desc"
+  type: default
+  categories: true
+  sort-ui: false
+  filter-ui: false
+  fields: [title, author, categories, date, status]
+  image-align: left
+
+format:
+  html:
+    page-layout: full
+title-block-banner: false
+
+header-includes: >
+  <link rel="stylesheet" href="../assets/listing-default.css">
+resources:
+  - ../assets/listing-default.css
 ---
 
-## Manuscripts in Preparation
-
--   Dastgheib, M., et al. (2024). "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis."
-
-## Conference Presentations
-
--   **Dastgheib, M.**, et al. (2024). "The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis" *Psychonomic Society Annual Meeting*
-
--   **Dastgheib, M.**, et al. (2023). "The Effect of Physical Effort on Perception and Visual Memory." *International Conference on Learning and Memory*
-
-## Journal Articles
-
--   **Dastgheib, M.**, Kulanayagam, A., & Dringenberg, H. C. (2022). "Is the role of sleep in memory consolidation overrated?" *Neuroscience & Biobehavioral Reviews*

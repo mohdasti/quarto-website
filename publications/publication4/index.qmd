@@ -1,0 +1,95 @@
+---
+title: "Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals"
+author:
+  - Shihab Sarwar
+  - Mohammad Ali Shafiee
+  - Mohammad Dastgheib
+  - Sarah Hajighadimi
+  - Hanieh Ghafarian
+  - Haleh Rokni
+date: '2019'
+slug: hypernatremia-diagnostic-approaches
+categories:
+  - Published Abstract
+  - Hypernatremia
+  - Diagnostic Approaches
+status: Canadian Journal of Anesthesia
+description: Published abstract on current diagnostic approaches to patients with hypernatremia at University Health Network Hospitals.
+links:
+  - icon: file-richtext-fill
+    name: Publication
+    url: https://doi.org/10.1007/s12630-019-01552-z
+  - icon: external-link-alt
+    name: Canadian Journal of Anesthesia
+    url: https://doi.org/10.1007/s12630-019-01552-z
+---
+
+## Abstract
+
+Background: Hypernatremia is a common electrolyte disorder where serum Na +
+Concentration is >145 mM, and is frequently identified as an issue in patients admitted
+under general internal medicine 1,2
+. The etiology can generally be classified as loss of free
+water or decreased intake, iatrogenic ingestion/infusion of hypertonic solution, or pseudohypernatremia
+3
+. It is a common practice to assume decreased intake of free water or
+extrarenal free water loss as the etiology, and to treat the hypernatremia with administration
+of hypotonic crystalloid solution without investigation of serum or urine osmolality,
+electrolytes, urea, or creatinine to delineate etiology 3,4
+. In particular, the two
+often neglected diagnoses are diabetes insipidus and osmotic-induced diuresis. Etiology of
+hypernatremia is occasionally elusive and refractory to administration of crystalloid solution.
+However, laboratory investigations ordered by clinicians to properly determine underlying
+etiology of hypernatremia in these cases are not routine and may vary significantly.
+Objectives: We hypothesized that appropriate ordering of serum and urine studies by
+clinicians to determine the etiology of hypernatremia is related to the severity of
+hypernatremia. In addition, we aim to determine the etiology of hypernatremia that trigger
+clinician ordering of serum/urine studies.
+Methods: Patients admitted under general internal medicine at hospitals affiliated with the
+University Health Network (Toronto Western Hospital and Toronto General Hospital)
+between the dates of 2015 and 2019 with a serum sodium concentration of 150 mmol/L or
+greater were selected and assessed for completion of serum electrolytes, serum osmolality,
+urine electrolytes (Na, K, Cl), urine osmolality, urine creatinine, and urine urea. Discharge
+summaries were analysed to determine etiology and treatment of hypernatremia as well as
+treatments initiated. The research proposal was approved by Coordinated Approval
+Process for Clinical Research (CAPCR) at the University Health Network.
+Results: Based on our preliminary results, we were able to identify 606 cases of admitted
+general internal medicine patients with hypernatremia meeting our criteria. In our
+preliminary analysis of 47 cases, we were able to identify 18 cases (38.3%) with serum
+osmolality, 19 cases (40.4%) with urine osmolality, 23 cases (48.9%) with urine electrolytes,
+1 case (2.1%) with urine urea, and 1 case (2.1%) with urine creatinine. There were 11
+cases (23.4%) with all of serum osmolality, urine osmolality, and urine electrolytes. In
+general, the severity of hypernatremia correlated poorly with the number additional
+investigations ordered beyond serum electrolytes (ie. serum osmolality and urine studies; r 2
+= 0.0204).
+Conclusion: In this study of patients with hypernatremia we found that a significant portion
+of admitted patients were not evaluated for urine studies, especially urea or creatinine.
+Unexpectedly, the severity of hypernatremia correlated poorly with the number of studies
+ordered to determine etiology, suggesting that the severity of hypernatremia may play a
+minor role in clinician ordering habits in hypernatremia. The current study signifies the
+importance of proper ordering and understanding of pathophysiology of hypernatremia and
+could contribute to filling the knowledge gap in appropriate ordering in hypernatremia, which
+may reduce the morbidity and mortality rate of hypernatremic patients.
+
+## Details
+
+- **Journal:** Canadian Journal of Anesthesia/Journal canadien d'anesthésie
+- **Volume:** 67
+- **Issue:** Supplement 1
+- **Pages:** 40-41
+- **Publisher:** Springer Nature
+- **Date:** 2020
+
+## Keywords
+
+- Hypernatremia
+- Diagnostic Approaches
+- University Health Network Hospitals
+
+## Citation
+
+Sarwar, S., Shafiee, M. A., Dastgheib, M., Hajighadimi, S., Ghafarian, H., & Rokni, H. (2020). *Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals*. Canadian Journal of Anesthesia/Journal canadien d'anesthésie, 67(Supplement 1), 40-41. https://doi.org/10.1007/s12630-019-01552-z
+
+## Full Text
+
+[View Full Text](https://link.springer.com/article/10.1007/s12630-019-01552-z){ .btn .btn-primary }

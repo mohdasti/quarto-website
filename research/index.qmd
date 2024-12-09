@@ -11,22 +11,17 @@ My research in the Seitz Lab focuses on:
 - Applying signal detection theory and computational modeling
 - Coordinating research projects and supervising assistants
 
-## Technical Expertise
+## Research Projects
 
-:::{.grid}
-:::{.g-col-6}
-### Research Methods
-- Psychophysics
-- Eye Tracking (Pupillometry)
-- Adaptive Experimentation
-- Signal Detection Theory
-:::
+### Ongoing Projects
+- **The Effect of Physical Effort on Perception and Visual Memory:** A Pupillometric Analysis
+  - Investigating the impact of physical effort on visual perception and memory consolidation.
+  - Developing and implementing psychophysical experiments.
 
-:::{.g-col-6}
-### Programming
-- MATLAB (PsychToolbox)
-- R (Statistical Modeling)
-- Python
-- Git & Cloud Platforms
-:::
-:::
+### Past Projects
+- **The Effects of Self-Guided Meditation and Napping on Memory Consolidation:** A study examining the effects of self-guided meditation and napping on memory consolidation.
+  - Conducted at Queen's University as part of my M.Sc. thesis.
+
+## Collaborations
+- Collaborate with researchers in the Seitz Lab to design and implement experiments.
+- Work with research assistants to collect and analyze data.

@@ -1,0 +1,37 @@
+---
+title: "Technical Skills"
+---
+
+## Technical Expertise
+
+### Research Methods
+- Psychophysics
+- Eye Tracking (Pupillometry)
+- Adaptive Experimentation
+- Signal Detection Theory
+
+### Data Analysis
+- Statistical Modeling
+- Large Dataset Analysis
+- Optimization Techniques
+
+### Programming
+- MATLAB (PsychToolbox, Analysis)
+- R (Statistical Modeling)
+- Python
+
+### Development
+- Git
+- Google Cloud Platform
+- Real-time Signal Processing
+
+## Tools and Software
+- PsychToolbox
+- Eye Tracking Software
+- Statistical Software (R, Python)
+- Cloud Platforms (Google Cloud)
+
+## Other Skills
+- Literature Review
+- Inter-rater Reliability Metrics
+- Surgical Tool Detection and Tracking

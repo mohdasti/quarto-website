@@ -1,0 +1,54 @@
+/*-- scss:defaults --*/
+// Custom colors
+$background: #f1faee;
+$primary-dark: #1d3557;
+$primary-medium: #457b9d;
+$accent-blue: #a8dadc;
+$accent-red: #e63946;
+
+// Theme colors
+$body-bg: $background;
+$body-color: $primary-dark;
+$link-color: $primary-medium;
+$navbar-bg: $background;
+$navbar-fg: $primary-dark;
+$navbar-hl: $accent-red;
+
+/*-- scss:rules --*/
+.navbar {
+  border-bottom: 1px solid $accent-blue;
+}
+
+.title {
+  color: $primary-dark;
+}
+
+.subtitle {
+  color: $primary-medium;
+}
+
+.about-link i {
+  color: $primary-medium;
+  
+  &:hover {
+    color: $accent-red;
+  }
+}
+
+.callout-note {
+  border-left-color: $accent-blue;
+}
+
+/*-- scss:rules --*/
+.navbar {
+  background-color: #f1faee;
+  border-bottom: 1px solid #a8dadc;
+}
+
+.navbar-brand, .nav-link {
+  color: #1d3557 !important;
+  
+  &:hover {
+    color: #e63946 !important;
+  }
+}

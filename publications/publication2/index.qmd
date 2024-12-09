@@ -1,0 +1,48 @@
+---
+title: "Is the role of sleep in memory consolidation overrated?"
+author:
+  - name: Mohammad Dastgheib
+    orcid: 0000-0001-7684-3731
+  - name: Asvini Kulanayagam
+  - name: Hans C. Dringenberg
+date: '2022'
+slug: sleep-memory-consolidation
+categories:
+  - Review Paper
+  - Memory Consolidation
+  - Sleep
+  - Quiet Wakefulness
+status: Neuroscience & Biobehavioral Reviews
+description: This article examines the role of sleep in memory consolidation, challenging the conventional view on its importance.
+links:
+  - icon: file-richtext-fill
+    name: Publication
+    url: https://doi.org/10.1016/j.neubiorev.2022.05.008
+  - icon: external-link-alt
+    name: ScienceDirect
+    url: https://www.sciencedirect.com/science/article/abs/pii/S0149763422002883
+---
+
+## Abstract
+
+Substantial empirical evidence suggests that sleep benefits the consolidation and reorganization of learned information. Consequently, the concept of “sleep-dependent memory consolidation” is now widely accepted by the scientific community, in addition to influencing public perceptions regarding the functions of sleep. There are, however, numerous studies that have presented findings inconsistent with the sleep-memory hypothesis. Here, we challenge the notion of “sleep-dependency” by summarizing evidence for effective memory consolidation independent of sleep. Plasticity mechanisms thought to mediate or facilitate consolidation during sleep (e.g., neuronal replay, reactivation, slow oscillations, neurochemical milieu) also operate during non-sleep states, particularly quiet wakefulness, thus allowing for the stabilization of new memories. We propose that it is not sleep per se, but the engagement of plasticity mechanisms, active during both sleep and (at least some) waking states, that constitutes the critical factor determining memory formation. Thus, rather than playing a "critical" role, sleep falls along a continuum of behavioral states that vary in their effectiveness to support memory consolidation at the neural and behavioral level.
+
+## Details
+
+- **Journal:** Neuroscience & Biobehavioral Reviews
+- **DOI:** [10.1016/j.neubiorev.2022.05.008][doi]
+- **Authors:** Mohammad Dastgheib, Asvini Kulanayagam, Hans C. Dringenberg
+- **Date:** July 29, 2022
+
+## Keywords
+
+- Memory Consolidation
+- Sleep
+- Wakefulness
+- Neurophysiology
+
+## References
+
+For a comprehensive list of references, please refer to the full publication.
+
+[doi]: https://doi.org/10.1016/j.neubiorev.2022.05.008

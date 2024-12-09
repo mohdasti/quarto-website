@@ -1,0 +1,35 @@
+---
+title: "The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis"
+author:
+  - Mohammad Dastgheib
+  - Ilana Bennett
+  - Aaron Seitz
+date: '2024'
+slug: differential-effect-physical-effort-psychonomic-society
+categories:
+  - Poster
+  - Perception
+  - Visual Memory
+  - Psychometric Function Analysis
+status: Psychonomic Society Annual Meeting
+description: Poster presentation at the 65th Psychonomic Society Annual Meeting.
+links:
+  - icon: file-richtext-fill
+    name: Poster
+    url:  https://github.com/mohdasti/CV/blob/103d9892889218debe8c306356643ab003b2572b/docs/misc\%20docs/2024_abstracts_of_the_psycho.pdf
+  - icon: external-link-alt
+    name: Psychonomic Society Annual Meeting
+    url: https://www.psychonomic.org/event/annual-meeting
+---
+
+## Abstract
+
+This poster presents the differential effect of physical effort within perceptual and visual memory domains, using insights from psychometric function analysis.
+
+## Details
+
+- **Conference:** Psychonomic Society Annual Meeting
+- **Date:** 2024
+- **Authors:** Dastgheib, M., Bennett, I., Seitz, A.
+
+<iframe src="https://drive.google.com/file/d/19MKW0MzODdfZVed1ZzIr-1tI2WmdBgaK/preview" width="100%" height="800" frameborder="0" scrolling="yes"></iframe>

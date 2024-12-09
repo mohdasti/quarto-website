@@ -1,23 +1,65 @@
 ---
 title: "Mohammad Dastgheib"
+pagetitle: "Mohammad Dastgheib"
+subtitle: "PhD Student in Cognitive Neuroscience at UC Riverside"
 image: images/profile.jpg
+image-alt: "Profile photo of Mohammad Dastgheib"
+
 about:
-  template: trestles
+  template: solana
+  image-width: 24em
+  id: hero-heading
   links:
-    - icon: envelope
-      text: Email
+    - text: '<i class="fas fa-envelope" style="color: #e63946;"></i>'
+      aria-label: "Email"
       href: mailto:mdast003@ucr.edu
-    - icon: linkedin
-      text: LinkedIn
+    - text: '<i class="fab fa-linkedin" style="color: #e63946;"></i>'
+      aria-label: "LinkedIn"
       href: https://linkedin.com/in/mdastgheib
-    - icon: globe
-      text: Website
-      href: https://mdastgheib.com
+    - text: '<i class="fab fa-x" style="color: #e63946;"></i>'
+      aria-label: "X (Twitter)"
+      href: https://x.com/MoDastgheib
+    - text: '<i class="fab fa-github" style="color: #e63946;"></i>'
+      aria-label: "GitHub"
+      href: https://github.com/mohdasti
+    - text: '<i class="ai ai-orcid" style="color: #e63946;"></i>'
+      aria-label: "ORCID" 
+      href: https://orcid.org/0000-0001-7684-3731
+    - text: '<i class="ai ai-google-scholar" style="color: #e63946;"></i>'
+      aria-label: "Google Scholar"
+      href: https://scholar.google.com/citations?user=SNVpHcUAAAAJ
+    - text: '<img src="images/neurotree.jpg" width="20" height="20" style="vertical-align: middle; margin-right: 5px;">'
+      aria-label: "Neurotree"
+      href: https://neurotree.org/neurotree/tree.php?pid=860425
+page-layout: full
+style: |
+  .page-columns {
+    background-color: #f1faee;
+  }
+  #title-block-header {
+    color: #1d3557;
+  }
+  .about-entity {
+    color: #1d3557;
+  }
+  .about-link:hover i {
+    color: #e63946 !important;
+  }
+  .callout-note {
+    background-color: #a8dadc20;
+    border-left-color: #a8dadc;
+  }
 ---
 
-## Vision Science Researcher
+::: {#hero-heading}
 
-I am a PhD student in Psychology and Cognitive Neuroscience at UC Riverside, specializing in perceptual processing and human-computer interaction. My research focuses on designing psychophysical experiments using eye tracking and pupillometry.
+I am a vision science researcher specializing in perceptual processing and human-computer interaction. My research focuses on designing psychophysical experiments using eye tracking and pupillometry, with expertise in computational modeling and behavioral data analysis.
+
+<!--
+[Learn more about my research &rarr;](/research){.about-links .subtitle}
+-->
+
+:::
 
 ::: callout-note
 Available for Summer 2025 Internship (June 9 - August 30, 2025)

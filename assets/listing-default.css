@@ -1,0 +1,43 @@
+/* listing-default.css */
+.listing {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.listing-item {
+  margin: 20px;
+  width: calc(33.33% - 20px);
+}
+
+.listing-item .title {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.listing-item .author {
+  font-size: 1em;
+  color: #666;
+}
+
+.listing-item .date {
+  font-size: 0.9em;
+  color: #999;
+}
+
+.listing-item .categories {
+  font-size: 0.9em;
+  color: #999;
+}
+
+.listing-item .description {
+  font-size: 1em;
+}
+
+.listing-item .links {
+  margin-top: 10px;
+}
+
+.listing-item .links a {
+  margin-right: 10px;
+}

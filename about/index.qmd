@@ -1,0 +1,13 @@
+---
+title: "About Me"
+---
+
+Vision science researcher specializing in perceptual processing and human-computer interaction, with expertise in designing psychophysical experiments using eye tracking and pupillometry. Experienced in developing computational models for analyzing behavioral and physiological data, with strong programming skills in R, and experience with MATLAB (PsychToolbox), and Python. Demonstrated expertise in signal detection theory, psychometric function analysis, and real-time data processing for experimental applications.
+
+## Education
+
+**University of California, Riverside** | 2021 -- 2026 (Expected)  
+Ph.D. in Psychology and Cognitive Neuroscience
+
+**Queen's University** | 2017 -- 2020  
+M.Sc. in Psychology
