@@ -6,8 +6,70 @@ Vision science researcher specializing in perceptual processing and human-comput
 
 ## Education
 
-**University of California, Riverside** | 2021 -- 2026 (Expected)  
-Ph.D. in Psychology and Cognitive Neuroscience
+::::: grid
+::: g-col-3
+![](/images/ucr.png){fig-align="center" width="150"}
+:::
 
-**Queen's University** | 2017 -- 2020  
-M.Sc. in Psychology
+::: g-col-9
+### PhD in Psychology and Cognitive Neuroscience
+
+#### University of California, Riverside
+
+2021 -- 2026 (Expected)
+:::
+:::::
+
+------------------------------------------------------------------------
+
+::::: grid
+::: g-col-3
+![](/images/queensu.png){fig-align="center" width="150"}
+:::
+
+::: g-col-9
+### M.Sc. in Psychology
+
+#### Queen's University
+
+2017 -- 2020
+:::
+:::::
+
+------------------------------------------------------------------------
+
+::::: grid
+::: g-col-3
+![](/images/yorku.png){fig-align="center" width="104"}
+:::
+
+::: g-col-9
+### Hon. B.Sc. in Biological Sciences & Psychology
+
+#### York University
+
+2013 -- 2017
+:::
+:::::
+
+------------------------------------------------------------------------
+
+## Experience
+
+::::: grid
+::: g-col-3
+![](/images/sst.jpeg){width="100"}
+:::
+
+::: g-col-9
+### Research Assistant I
+
+#### Surgical Safety Technologies (SST)
+
+Toronto, ON
+
+2021
+:::
+:::::
+
+------------------------------------------------------------------------

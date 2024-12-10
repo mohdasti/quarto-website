@@ -4,28 +4,14 @@
     "href": "skills/index.html",
     "title": "Technical Skills",
     "section": "",
-    "text": "Psychophysics\nEye Tracking (Pupillometry)\nAdaptive Experimentation\nSignal Detection Theory\n\n\n\n\n\nStatistical Modeling\nLarge Dataset Analysis\nOptimization Techniques\n\n\n\n\n\nMATLAB (PsychToolbox, Analysis)\nR (Statistical Modeling)\nPython\n\n\n\n\n\nGit\nGoogle Cloud Platform\nReal-time Signal Processing"
+    "text": "Psychophysics\n Eye Tracking (Pupillometry)\nAdaptive Experimentation\nSignal Detection Theory\nPsychometric Function Analysis\n\n\n\n\n\nStatistical Modeling\n Large Dataset Analysis\n Optimization Techniques\nMultiple Regression Analysis\nSignal Processing\n\n\n\n\n\n MATLAB (PsychToolbox, Analysis)\n R (Statistical Modeling)\n Python\n LaTeX\n Git\n\n\n\n\n\n Google Cloud Platform\n Real-time Signal Processing\n PsychToolbox\n Eye Tracking Software\n Cloud Computing\n\n\n\n\n\n Literature Review\n Research Project Management\n Inter-rater Reliability Analysis\n Computer Vision Applications\n Experimental Design"
   },
   {
     "objectID": "skills/index.html#technical-expertise",
     "href": "skills/index.html#technical-expertise",
     "title": "Technical Skills",
     "section": "",
-    "text": "Psychophysics\nEye Tracking (Pupillometry)\nAdaptive Experimentation\nSignal Detection Theory\n\n\n\n\n\nStatistical Modeling\nLarge Dataset Analysis\nOptimization Techniques\n\n\n\n\n\nMATLAB (PsychToolbox, Analysis)\nR (Statistical Modeling)\nPython\n\n\n\n\n\nGit\nGoogle Cloud Platform\nReal-time Signal Processing"
-  },
-  {
-    "objectID": "skills/index.html#tools-and-software",
-    "href": "skills/index.html#tools-and-software",
-    "title": "Technical Skills",
-    "section": "Tools and Software",
-    "text": "Tools and Software\n\nPsychToolbox\nEye Tracking Software\nStatistical Software (R, Python)\nCloud Platforms (Google Cloud)"
-  },
-  {
-    "objectID": "skills/index.html#other-skills",
-    "href": "skills/index.html#other-skills",
-    "title": "Technical Skills",
-    "section": "Other Skills",
-    "text": "Other Skills\n\nLiterature Review\nInter-rater Reliability Metrics\nSurgical Tool Detection and Tracking"
+    "text": "Psychophysics\n Eye Tracking (Pupillometry)\nAdaptive Experimentation\nSignal Detection Theory\nPsychometric Function Analysis\n\n\n\n\n\nStatistical Modeling\n Large Dataset Analysis\n Optimization Techniques\nMultiple Regression Analysis\nSignal Processing\n\n\n\n\n\n MATLAB (PsychToolbox, Analysis)\n R (Statistical Modeling)\n Python\n LaTeX\n Git\n\n\n\n\n\n Google Cloud Platform\n Real-time Signal Processing\n PsychToolbox\n Eye Tracking Software\n Cloud Computing\n\n\n\n\n\n Literature Review\n Research Project Management\n Inter-rater Reliability Analysis\n Computer Vision Applications\n Experimental Design"
   },
   {
     "objectID": "index.html",
@@ -179,28 +165,35 @@
     "href": "research/index.html",
     "title": "Research",
     "section": "",
-    "text": "My research in the Seitz Lab focuses on:\n\nInvestigating visual perception using pupillometry\nDeveloping experimental paradigms with PsychToolbox\nApplying signal detection theory and computational modeling\nCoordinating research projects and supervising assistants"
+    "text": "My research in the Seitz Lab investigates how variations in the Locus Coeruleus (LC) influence perception and memory in older adults. This work aims to identify potential biomarkers and interventions for neurodegenerative disorders like Alzheimer’s Disease and Parkinson’s Disease."
   },
   {
-    "objectID": "research/index.html#current-research",
-    "href": "research/index.html#current-research",
+    "objectID": "research/index.html#research-overview",
+    "href": "research/index.html#research-overview",
     "title": "Research",
     "section": "",
-    "text": "My research in the Seitz Lab focuses on:\n\nInvestigating visual perception using pupillometry\nDeveloping experimental paradigms with PsychToolbox\nApplying signal detection theory and computational modeling\nCoordinating research projects and supervising assistants"
+    "text": "My research in the Seitz Lab investigates how variations in the Locus Coeruleus (LC) influence perception and memory in older adults. This work aims to identify potential biomarkers and interventions for neurodegenerative disorders like Alzheimer’s Disease and Parkinson’s Disease."
   },
   {
-    "objectID": "research/index.html#research-projects",
-    "href": "research/index.html#research-projects",
+    "objectID": "research/index.html#current-projects",
+    "href": "research/index.html#current-projects",
     "title": "Research",
-    "section": "Research Projects",
-    "text": "Research Projects\n\nOngoing Projects\n\nThe Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis\n\nInvestigating the impact of physical effort on visual perception and memory consolidation.\nDeveloping and implementing psychophysical experiments.\n\n\n\n\nPast Projects\n\nThe Effects of Self-Guided Meditation and Napping on Memory Consolidation: A study examining the effects of self-guided meditation and napping on memory consolidation.\n\nConducted at Queen’s University as part of my M.Sc. thesis."
+    "section": "Current Projects",
+    "text": "Current Projects\n\nLC Integrity and Cognitive Function in Aging\nThe primary research program employs advanced MRI techniques and psychophysical assessments to characterize how LC integrity moderates behavior, focusing on: - Auditory and visual perception - Visual memory consolidation - Metacognitive efficiency - Age-related cognitive differences\n\n\nOngoing Studies\n\nBehavioral Analysis of Older Adults\n\nAnalyzing psychometric functions and pupillometry\nCorrelating with neuroimaging metrics\n\nMetacognitive Efficiency Analysis\n\nComparing younger and older adults\nFocusing on auditory and visual perceptual tasks"
   },
   {
-    "objectID": "research/index.html#collaborations",
-    "href": "research/index.html#collaborations",
+    "objectID": "research/index.html#published-research",
+    "href": "research/index.html#published-research",
     "title": "Research",
-    "section": "Collaborations",
-    "text": "Collaborations\n\nCollaborate with researchers in the Seitz Lab to design and implement experiments.\nWork with research assistants to collect and analyze data."
+    "section": "Published Research",
+    "text": "Published Research\n\nPhysical Effort and Perception\n\nThe Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis\n\nManuscript in preparation\nInvestigating impact on younger adults\nAnalyzing pupillometric data\n\n\n\n\nConference Presentations\n\nThe Differential Effect of Physical Effort within Perceptual and Visual Memory Domains (Psychonomics 2024)\n\nAnalysis of Psychometric Functions\nPresented at Psychonomic Society Conference, NYC\n\nValidation of Manipulation Methods (ICLM 2023)\n\nStudy with younger adults\nPresented at Learning & Memory Conference, Huntington Beach\n\n\n\n\nPrevious Research\n\nThe Effects of Self-Guided Meditation and Napping on Memory Consolidation\n\nM.Sc. thesis research at Queen’s University\nInvestigation of memory consolidation mechanisms\n\nCritical Examination of the Role of Sleep on Memory Consolidation\n\nReview paper published on Neuroscience & Biobehavioral Reviews"
+  },
+  {
+    "objectID": "research/index.html#lab-collaboration",
+    "href": "research/index.html#lab-collaboration",
+    "title": "Research",
+    "section": "Lab Collaboration",
+    "text": "Lab Collaboration\n\nDesign and implementation of psychophysical experiments using pupillometry\nDevelopment of experimental paradigms in PsychToolbox for precise stimulus presentation\nApplication of signal detection theory and computational modeling for perceptual data analysis\nProject coordination and supervision of research assistants\nImplementation of real-time data processing and analysis pipelines\nLiterature reviews and documentation of experimental procedures"
   },
   {
     "objectID": "publications/publication6/index.html",
@@ -333,7 +326,14 @@
     "href": "about/index.html#education",
     "title": "About Me",
     "section": "Education",
-    "text": "Education\nUniversity of California, Riverside | 2021 – 2026 (Expected)\nPh.D. in Psychology and Cognitive Neuroscience\nQueen’s University | 2017 – 2020\nM.Sc. in Psychology"
+    "text": "Education\n\n\n\n\n\n\n\n\n\nPhD in Psychology and Cognitive Neuroscience\n\nUniversity of California, Riverside\n2021 – 2026 (Expected)\n\n\n\n\n\n\n\n\n\n\n\n\n\nM.Sc. in Psychology\n\nQueen’s University\n2017 – 2020\n\n\n\n\n\n\n\n\n\n\n\n\n\nHon. B.Sc. in Biological Sciences & Psychology\n\nYork University\n2013 – 2017"
+  },
+  {
+    "objectID": "about/index.html#experience",
+    "href": "about/index.html#experience",
+    "title": "About Me",
+    "section": "Experience",
+    "text": "Experience\n\n\n\n\n\nResearch Assistant I\n\nSurgical Safety Technologies (SST)\nToronto, ON\n2021"
   },
   {
     "objectID": "cv.html",

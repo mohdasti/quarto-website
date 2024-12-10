@@ -1,37 +1,79 @@
 ---
 title: "Technical Skills"
+format:
+  html:
+    css: assets/css/skills.css
 ---
 
 ## Technical Expertise
 
-### Research Methods
+### <i class="fas fa-microscope"></i> Research Methods
+- Psychophysics
+- <i class="fas fa-eye"></i> Eye Tracking (Pupillometry)
+- Adaptive Experimentation
+- Signal Detection Theory
+- Psychometric Function Analysis
+
+### <i class="fas fa-chart-line"></i> Data Analysis
+- Statistical Modeling
+- <i class="fas fa-database"></i> Large Dataset Analysis
+- <i class="fas fa-chart-bar"></i> Optimization Techniques
+- Multiple Regression Analysis
+- Signal Processing
+
+### <i class="fas fa-code"></i> Programming & Computing
+- <i class="fas fa-square-root-alt"></i> MATLAB (PsychToolbox, Analysis)
+- <i class="fab fa-r-project"></i> R (Statistical Modeling)
+- <i class="fab fa-python"></i> Python
+- <i class="fas fa-terminal"></i> LaTeX
+- <i class="fab fa-git-alt"></i> Git
+
+### <i class="fas fa-tools"></i> Development & Tools
+- <i class="fab fa-google"></i> Google Cloud Platform
+- <i class="fas fa-microchip"></i> Real-time Signal Processing
+- <i class="fas fa-brain"></i> PsychToolbox
+- <i class="fas fa-eye"></i> Eye Tracking Software
+- <i class="fas fa-cloud"></i> Cloud Computing
+
+### <i class="fas fa-graduation-cap"></i> Research Skills
+- <i class="fas fa-book"></i> Literature Review
+- <i class="fas fa-users"></i> Research Project Management
+- <i class="fas fa-check-double"></i> Inter-rater Reliability Analysis
+- <i class="fas fa-camera"></i> Computer Vision Applications
+- <i class="fas fa-tasks"></i> Experimental Design
+<!--
+## Technical Expertise
+
+### <i class="fas fa-microscope"></i> Research Methods
 - Psychophysics
 - Eye Tracking (Pupillometry)
 - Adaptive Experimentation
 - Signal Detection Theory
 
-### Data Analysis
+### <i class="fas fa-chart-line"></i> Data Analysis
 - Statistical Modeling
-- Large Dataset Analysis
-- Optimization Techniques
+- <i class="fas fa-database"></i> Large Dataset Analysis
+- <i class="fas fa-chart-bar"></i> Optimization Techniques
 
-### Programming
-- MATLAB (PsychToolbox, Analysis)
-- R (Statistical Modeling)
-- Python
+### <i class="fas fa-code"></i> Programming
+- <i class="fas fa-square-root-alt"></i> MATLAB (PsychToolbox, Analysis)
+- <i class="fab fa-r-project"></i> R (Statistical Modeling)
+- <i class="fab fa-python"></i> Python
 
-### Development
-- Git
-- Google Cloud Platform
-- Real-time Signal Processing
+### <i class="fas fa-tools"></i> Development
+- <i class="fab fa-git-alt"></i> Git
+- <i class="fab fa-google"></i> Google Cloud Platform
+- <i class="fas fa-microchip"></i> Real-time Signal Processing
 
-## Tools and Software
-- PsychToolbox
-- Eye Tracking Software
-- Statistical Software (R, Python)
-- Cloud Platforms (Google Cloud)
+## <i class="fas fa-laptop-code"></i> Tools and Software
+- <i class="fas fa-brain"></i> PsychToolbox
+- <i class="fas fa-eye"></i> Eye Tracking Software
+- <i class="fas fa-calculator"></i> Statistical Software (R, Python)
+- <i class="fas fa-cloud"></i> Cloud Platforms (Google Cloud)
 
-## Other Skills
-- Literature Review
-- Inter-rater Reliability Metrics
-- Surgical Tool Detection and Tracking
+## <i class="fas fa-plus-circle"></i> Other Skills
+- <i class="fas fa-book"></i> Literature Review
+- <i class="fas fa-check-double"></i> Inter-rater Reliability Metrics
+- <i class="fas fa-camera"></i> Surgical Tool Detection and Tracking
+
+-->

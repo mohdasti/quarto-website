@@ -1,0 +1,65 @@
+/* Core styling for icons */
+.fas, .fab {
+  color: #e63946;
+  margin-right: 0.5em;
+}
+
+h3 .fas, h3 .fab {
+  font-size: 1.2em;
+}
+
+/* Section styling */
+h2 {
+  color: #1d3557;
+  border-bottom: 2px solid #a8dadc;
+  padding-bottom: 0.5rem;
+  margin-top: 2rem;
+}
+
+h3 {
+  color: #457b9d;
+  margin-top: 1.5rem;
+}
+
+/* List styling */
+ul {
+  list-style-type: none;
+  padding-left: 1.2rem;
+}
+
+li {
+  margin-bottom: 0.8rem;
+  transition: transform 0.2s ease;
+}
+
+li:hover {
+  transform: translateX(5px);
+}
+
+/* Grid layout */
+.grid {
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
+  gap: 2rem;
+}
+
+/* Tags styling */
+.tag {
+  background-color: #f1faee;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  font-size: 0.9em;
+  color: #1d3557;
+  margin-right: 0.5rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .grid {
+    gap: 1rem;
+  }
+  
+  li {
+    margin-bottom: 0.6rem;
+  }
+}

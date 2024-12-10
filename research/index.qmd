@@ -2,26 +2,58 @@
 title: "Research"
 ---
 
-## Current Research
+## Research Overview
 
-My research in the Seitz Lab focuses on:
+My research in the Seitz Lab investigates how variations in the Locus Coeruleus (LC) influence perception and memory in older adults. This work aims to identify potential biomarkers and interventions for neurodegenerative disorders like Alzheimer's Disease and Parkinson's Disease.
 
-- Investigating visual perception using pupillometry
-- Developing experimental paradigms with PsychToolbox
-- Applying signal detection theory and computational modeling
-- Coordinating research projects and supervising assistants
+## Current Projects
 
-## Research Projects
+### LC Integrity and Cognitive Function in Aging
+The primary research program employs advanced MRI techniques and psychophysical assessments to characterize how LC integrity moderates behavior, focusing on:
+- Auditory and visual perception
+- Visual memory consolidation
+- Metacognitive efficiency
+- Age-related cognitive differences
 
-### Ongoing Projects
-- **The Effect of Physical Effort on Perception and Visual Memory:** A Pupillometric Analysis
-  - Investigating the impact of physical effort on visual perception and memory consolidation.
-  - Developing and implementing psychophysical experiments.
+### Ongoing Studies
+1. **Behavioral Analysis of Older Adults**
+   - Analyzing psychometric functions and pupillometry
+   - Correlating with neuroimaging metrics
+   
+2. **Metacognitive Efficiency Analysis**
+   - Comparing younger and older adults
+   - Focusing on auditory and visual perceptual tasks
 
-### Past Projects
-- **The Effects of Self-Guided Meditation and Napping on Memory Consolidation:** A study examining the effects of self-guided meditation and napping on memory consolidation.
-  - Conducted at Queen's University as part of my M.Sc. thesis.
+## Published Research
 
-## Collaborations
-- Collaborate with researchers in the Seitz Lab to design and implement experiments.
-- Work with research assistants to collect and analyze data.
+### Physical Effort and Perception
+- [The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis](https://mdastgheib.com/publications/publication1/)
+  - Manuscript in preparation
+  - Investigating impact on younger adults
+  - Analyzing pupillometric data
+
+### Conference Presentations
+- [The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains](https://mdastgheib.com/publications/publication5/) (Psychonomics 2024)
+  - Analysis of Psychometric Functions
+  - Presented at Psychonomic Society Conference, NYC
+
+- [Validation of Manipulation Methods](https://mdastgheib.com/publications/publication6/) (ICLM 2023)
+  - Study with younger adults
+  - Presented at Learning & Memory Conference, Huntington Beach
+
+### Previous Research
+- [The Effects of Self-Guided Meditation and Napping on Memory Consolidation](https://mdastgheib.com/publications/publication3/)
+  - M.Sc. thesis research at Queen's University
+  - Investigation of memory consolidation mechanisms
+
+- [Critical Examination of the Role of Sleep on Memory Consolidation](https://mdastgheib.com/publications/publication2/)
+  - Review paper published on Neuroscience & Biobehavioral Reviews
+
+
+## Lab Collaboration
+- Design and implementation of psychophysical experiments using pupillometry
+- Development of experimental paradigms in PsychToolbox for precise stimulus presentation
+- Application of signal detection theory and computational modeling for perceptual data analysis
+- Project coordination and supervision of research assistants
+- Implementation of real-time data processing and analysis pipelines
+- Literature reviews and documentation of experimental procedures

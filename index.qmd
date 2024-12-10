@@ -10,25 +10,25 @@ about:
   image-width: 24em
   id: hero-heading
   links:
-    - text: '<i class="fas fa-envelope" style="color: #e63946;"></i>'
+    - text: '<i class="fas fa-envelope" style="color: #e63946; font-size: 24px;"></i>'
       aria-label: "Email"
       href: mailto:mdast003@ucr.edu
-    - text: '<i class="fab fa-linkedin" style="color: #e63946;"></i>'
+    - text: '<i class="fab fa-linkedin" style="color: #e63946; font-size: 24px;"></i>'
       aria-label: "LinkedIn"
       href: https://linkedin.com/in/mdastgheib
-    - text: '<i class="fab fa-x" style="color: #e63946;"></i>'
+    - text: '<i class="fab fa-x" style="color: #e63946; font-size: 24px;"></i>'
       aria-label: "X (Twitter)"
       href: https://x.com/MoDastgheib
-    - text: '<i class="fab fa-github" style="color: #e63946;"></i>'
+    - text: '<i class="fab fa-github" style="color: #e63946; font-size: 24px;"></i>'
       aria-label: "GitHub"
       href: https://github.com/mohdasti
-    - text: '<i class="ai ai-orcid" style="color: #e63946;"></i>'
+    - text: '<i class="ai ai-orcid" style="color: #e63946; font-size: 24px;"></i>'
       aria-label: "ORCID" 
       href: https://orcid.org/0000-0001-7684-3731
-    - text: '<i class="ai ai-google-scholar" style="color: #e63946;"></i>'
+    - text: '<i class="ai ai-google-scholar" style="color: #e63946; font-size: 24px;"></i>'
       aria-label: "Google Scholar"
       href: https://scholar.google.com/citations?user=SNVpHcUAAAAJ
-    - text: '<img src="images/neurotree.jpg" width="20" height="20" style="vertical-align: middle; margin-right: 5px;">'
+    - text: '<img src="images/neurotree.jpg" width="24" height="24" style="vertical-align: middle;">'
       aria-label: "Neurotree"
       href: https://neurotree.org/neurotree/tree.php?pid=860425
 page-layout: full
