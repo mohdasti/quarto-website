@@ -26,7 +26,7 @@ website:
         href: cv.qmd
         
   page-footer:
-    left: "© 2023 Mohammad Dastgheib • Built with Quarto"
+    left: "© 2024 Mohammad Dastgheib • Built with Quarto"
     center: |
       <a href="mailto:mdast003@ucr.edu" title="Email"><i class="fas fa-envelope"></i></a>
       <a href="https://linkedin.com/in/mdastgheib" title="LinkedIn"><i class="fab fa-linkedin"></i></a>

@@ -1,0 +1,84 @@
+/* First, remove SCSS nesting since you're using a .css file, not .scss */
+.publications-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.publications-title {
+    margin: 1rem 0;
+    color: #333;
+    font-size: 2.5rem;
+}
+
+.publications-description {
+    margin-bottom: 2rem;
+    color: #666;
+    font-size: 1.1rem;
+}
+
+/* Combine duplicate listing-entry rules */
+.listing-entry {
+    padding: 2rem 0;
+    margin: 0 0 2rem 0;
+    border-bottom: 1px solid #e5e5e5;
+}
+
+.listing-entry:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+/* Add stronger selectors to override Quarto defaults */
+.quarto-listing .listing-separator,
+div.listing-separator {
+    display: none !important;
+    pointer-events: none !important;
+}
+
+/* Fix title and metadata spacing */
+.listing-title {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    font-size: 1.3rem;
+}
+
+.listing-description {
+    margin-top: 1rem;
+    color: #666;
+}
+
+/* Categories sidebar styling */
+.quarto-listing-category {
+    padding: 1rem;
+}
+
+.quarto-listing-category h3 {
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.quarto-listing-category .category-count {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.quarto-listing-category a {
+    color: #2c3e50;
+    text-decoration: none;
+}
+
+.quarto-listing-category a:hover {
+    color: #3498db;
+}
+
+.quarto-listing .listing-separator,
+a[href^="publication"] {
+    display: none !important;
+    visibility: hidden !important;
+    height: 0 !important;
+    width: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+}
