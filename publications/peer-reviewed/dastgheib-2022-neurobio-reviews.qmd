@@ -1,0 +1,45 @@
+---
+title: "Is the role of sleep in memory consolidation overrated?"
+author: "Dastgheib, M., Kulanayagam, A., & Dringenberg, H. C."
+date: "2022-08-01"
+description: |
+  *Neuroscience & Biobehavioral Reviews*, Volume 140.
+---
+
+::: {.columns}
+
+::: {.column width="20%"}
+![](../../images/nbr-cover.png){fig-alt="Cover of the journal Neuroscience & Biobehavioral Reviews"}
+:::
+
+::: {.column width="70%"}
+
+::: {.callout-note collapse="false"}
+## Abstract
+
+Substantial empirical evidence suggests that sleep benefits the consolidation and reorganization of learned information. Consequently, the concept of “sleep-dependent memory consolidation” is now widely accepted by the scientific community, in addition to influencing public perceptions regarding the functions of sleep. There are, however, numerous studies that have presented findings inconsistent with the sleep-memory hypothesis. Here, we challenge the notion of “sleep-dependency” by summarizing evidence for effective memory consolidation independent of sleep. Plasticity mechanisms thought to mediate or facilitate consolidation during sleep (e.g., neuronal replay, reactivation, slow oscillations, neurochemical milieu) also operate during non-sleep states, particularly quiet wakefulness, thus allowing for the stabilization of new memories. We propose that it is not sleep per se, but the engagement of plasticity mechanisms, active during both sleep and (at least some) waking states, that constitutes the critical factor determining memory formation. Thus, rather than playing a "critical" role, sleep falls along a continuum of behavioral states that vary in their effectiveness to support memory consolidation at the neural and behavioral level.
+:::
+
+<a href="https://doi.org/10.1016/j.neubiorev.2022.104799" class="btn btn-primary" role="button" target="_blank">View Publication (DOI)</a>
+<a href="/pdfs/Dastgheib_2022_Review.pdf" class="btn btn-secondary" role="button" target="_blank">Download PDF</a>
+
+::: {.callout-tip}
+## Media Coverage
+
+**Curiosity Daily Podcast (Discovery)** Episode: *Daydream Brain, Power of a Laugh, Caffeine & Soccer* Original release: Jan 25, 2024 · Re-release: Dec 19, 2024  
+
+<iframe src="https://embed.acast.com/$/64f1f67000d9130011234429/daydream-brain-power-of-a-laugh-caffeine-soccer?"
+frameBorder="0" width="100%" height="110px" allow="autoplay"></iframe>
+
+[Listen on Acast](https://shows.acast.com/curiosity/episodes/daydream-brain-power-of-a-laugh-caffeine-soccer)
+
+* **The Boston Globe**: [Five facts about sleep everyone should know](https://www.bostonglobe.com/2024/09/23/magazine/five-facts-about-sleep-everyone-should-know/?s_campaign=sharetool_copypaste_view)
+* **The Harvard Gazette**: [Researchers one step closer to understanding daydreams](https://news.harvard.edu/gazette/story/2023/12/researchers-one-step-closer-to-understanding-daydreams/?utm_medium=Feed&utm_source=Syndication)
+
+:::
+
+
+
+:::
+
+:::

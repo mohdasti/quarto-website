@@ -1,59 +1,31 @@
 ---
-title: "Research"
+title: "Research Interests"
 ---
 
-## Research Overview
+## 🔬 Research Statement
 
-My research in the Seitz Lab investigates how variations in the Locus Coeruleus (LC) influence perception and memory in older adults. This work aims to identify potential biomarkers and interventions for neurodegenerative disorders like Alzheimer's Disease and Parkinson's Disease.
+My doctoral research investigates the intricate relationship between physiological arousal, cognitive effort, and the integrity of the human brain's neuromodulatory systems. I am fundamentally interested in understanding *why* cognitive performance, particularly in aging, becomes vulnerable under demanding real-world conditions.
 
-## Current Projects
+My work aims to move beyond simple behavioral metrics by integrating psychophysics, pupillometry, and computational modeling to deconstruct the subcomponents of decision-making. By precisely measuring the impact of physical and cognitive load, I seek to build predictive models of performance that can inform the design of safer, more adaptive, and more inclusive technologies for a range of user populations.
 
-### LC Integrity and Cognitive Function in Aging
-The primary research program employs advanced MRI techniques and psychophysical assessments to characterize how LC integrity moderates behavior, focusing on:
-- Auditory and visual perception
-- Visual memory consolidation
-- Metacognitive efficiency
-- Age-related cognitive differences
+---
 
-### Ongoing Studies
-1. **Behavioral Analysis of Older Adults**
-   - Analyzing psychometric functions and pupillometry
-   - Correlating with neuroimaging metrics
-   
-2. **Metacognitive Efficiency Analysis**
-   - Comparing younger and older adults
-   - Focusing on auditory and visual perceptual tasks
+##  Core Research Areas
 
-## Published Research
+My research program is built on three interconnected pillars:
 
-### Physical Effort and Perception
-- [The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis](https://mdastgheib.com/publications/publication1/)
-  - Manuscript in preparation
-  - Investigating impact on younger adults
-  - Analyzing pupillometric data
+* **Aging & Cognitive Neuroscience:** Characterizing how age-related changes in the Locus Coeruleus (LC) and its associated neural circuits impact cognitive functions, with a focus on identifying potential biomarkers for neurodegenerative disorders.
+* **Dual-Task Interference & Performance:** Quantifying how concurrent physical and cognitive stressors interact to impair performance across multiple domains, including perception, memory, and metacognition.
+* **Personalized Cognitive Modeling:** Moving beyond group averages to model how individual differences in factors like Cognitive Reserve predict a person's unique resilience to cognitive overload.
 
-### Conference Presentations
-- [The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains](https://mdastgheib.com/publications/publication5/) (Psychonomics 2024)
-  - Analysis of Psychometric Functions
-  - Presented at Psychonomic Society Conference, NYC
+---
 
-- [Validation of Manipulation Methods](https://mdastgheib.com/publications/publication6/) (ICLM 2023)
-  - Study with younger adults
-  - Presented at Learning & Memory Conference, Huntington Beach
+## 🛠️ Methodological Expertise
 
-### Previous Research
-- [The Effects of Self-Guided Meditation and Napping on Memory Consolidation](https://mdastgheib.com/publications/publication3/)
-  - M.Sc. thesis research at Queen's University
-  - Investigation of memory consolidation mechanisms
+To address these questions, I specialize in a multi-modal approach to data collection and analysis:
 
-- [Critical Examination of the Role of Sleep on Memory Consolidation](https://mdastgheib.com/publications/publication2/)
-  - Review paper published on Neuroscience & Biobehavioral Reviews
-
-
-## Lab Collaboration
-- Design and implementation of psychophysical experiments using pupillometry
-- Development of experimental paradigms in PsychToolbox for precise stimulus presentation
-- Application of signal detection theory and computational modeling for perceptual data analysis
-- Project coordination and supervision of research assistants
-- Implementation of real-time data processing and analysis pipelines
-- Literature reviews and documentation of experimental procedures
+* **Psychophysics:** Designing and implementing precise behavioral experiments to measure perceptual and memory thresholds (PsychToolbox).
+* **Pupillometry:** Using pupil dilation as a real-time, non-invasive biomarker of cognitive load and physiological arousal (MATLAB, R, Python).
+* **Computational Modeling:** Applying models like the Drift-Diffusion Model (DDM) to deconstruct decision-making processes.
+* **Advanced Statistical Analysis:** Employing linear mixed-effects models and Bayesian methods for complex, repeated-measures data (R).
+* **Neuroimaging:** Analyzing Diffusion MRI data to investigate white matter integrity and its relationship to behavior (FSL, QSIPrep).

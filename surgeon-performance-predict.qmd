@@ -1,0 +1,89 @@
+---
+title: "The Surgeon's 'Cognitive Black Box'"
+subtitle: "A Real-Time Analytics Platform for Predicting and Mitigating Surgical Fatigue"
+image: ../images/surgical_console_enhanced.png # Suggestion: Create a new hero image for this
+description: "A proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon's cognitive state, inspired by my work at Surgical Safety Technologies."
+---
+
+### **🚀 The Vision: From Post-Op Review to Proactive Support**
+
+> "During my time as an AI Annotator at **Surgical Safety Technologies (SST)**, I had a firsthand view of how their groundbreaking 'OR Black Box' captures the complex dynamics of the operating room to improve patient outcomes. This experience solidified my understanding of the immense value in data-driven clinical insights. It also highlighted the next critical frontier: moving beyond analyzing *what* happened to understanding the surgeon's cognitive state—the *why* behind their actions."
+
+This project is the direct result of that insight. It's a proof-of-concept for a **"Cognitive Black Box"**—a system designed to predict a surgeon's cognitive state in real-time. By fusing my PhD research on the cognitive neuroscience of effort with my industry experience, this case study demonstrates a tangible solution for moving from post-operative review to proactive, intraoperative support, enhancing both patient safety and surgeon well-being.
+
+![A mockup of a surgical console screen displaying a time-series plot of the surgeon's pupil dilation and grip force variability, indicating their cognitive state during a procedure.](../images/surgical_console_enhanced.png){fig-align="center" width="90%"}
+
+---
+
+### **🧠 The Scientific Framework: My Research in Action**
+
+[cite_start]This project is an application of my PhD research, which provides the theoretical engine to model the underlying mechanisms of performance degradation under pressure[cite: 1, 317].
+
+::: {.panel-tabset}
+
+#### **Resource Competition Theory**
+
+[cite_start]This framework explains *what* happens when a surgeon performs a physically demanding action (like sustained retraction, mirroring my 40% MVC research) while making a high-stakes cognitive judgment[cite: 78, 244]. These tasks compete for the same finite pool of mental resources. My model is designed to detect when this competition leads to performance-impairing cognitive overload.
+
+#### **Neural Gain Theory (NGT)**
+
+NGT provides the physiological *why*. [cite_start]The brain's arousal system (specifically the LC-NE system) acts like a "volume knob," adjusting neural gain to enhance important signals and suppress noise[cite: 107, 108]. [cite_start]My research shows that under the high combined effort typical of surgery, this system can become dysregulated, a phenomenon I can model and predict using pupillometry as a direct, non-invasive biomarker of this process[cite: 298, 301].
+
+![The Neural Gain modulation curve from my grant proposal, showing how arousal affects neural activity.](../images/neural_gain_curve.png){fig-align="center" width="70%"}
+*Caption: The inverted-U relationship between arousal and performance, central to NGT. [cite_start]My system is designed to identify when a surgeon moves past the optimal point and into a state of impaired performance due to excessive cognitive load[cite: 111, 120].*
+
+:::
+
+---
+
+### **⚙️ The Machine Learning Pipeline: From Raw Data to Actionable Insight**
+
+I designed an end-to-end pipeline to simulate and process multimodal data, engineer theoretically-grounded features, and train a predictive model.
+
+::: {.panel-tabset}
+
+#### **1. Data Simulation**
+
+To build this proof-of-concept, I simulated a realistic, second-by-second data stream from a multi-hour laparoscopic procedure. The dataset includes:
+- **Physiological Data:** `pupil_diameter_mm`, `heart_rate_variability_rmssd`
+- **Motor Control Data:** `grip_force_newtons`
+- **Contextual Data:** `surgical_phase` (e.g., "Dissection", "Suturing"), `physical_effort_level` ("Low", "High")
+- **Target Variable:** `cognitive_state_ground_truth` ("Optimal", "High Load", "Fatigued", "Attentional Lapse")
+
+#### **2. Feature Engineering**
+
+This is where my domain expertise becomes critical. I created novel, theory-driven features:
+- [cite_start]**`tonic_pupil_level`:** A rolling average of pupil diameter, reflecting baseline arousal and overall cognitive load[cite: 114].
+- [cite_start]**`phasic_pupil_response`:** An event-related dilation metric, reflecting the brain's adaptive gain response to critical surgical events[cite: 114].
+- **`grip_force_variability`:** A novel metric I developed for this project. It calculates the rolling standard deviation of instrument grip force, based on my hypothesis that increased variability serves as a proxy for **attentional lapses**.
+
+#### **3. Modeling & Explainability (XAI)**
+
+I trained an **XGBoost Classifier**—an industry-standard, high-performance model—to predict the surgeon's cognitive state. To ensure the model is interpretable and trustworthy for clinical stakeholders, I used **SHAP (SHapley Additive exPlanations)** to identify the key predictive features.
+
+[Placeholder for your Feature Importance Plot from the XGBoost model]
+
+:::
+
+---
+
+### **✨ The Result: A Real-Time Analytics Dashboard**
+
+The final output is a proof-of-concept dashboard built in **R Shiny**. It simulates a live view of the surgeon's cognitive state and provides clear, interpretable alerts.
+
+[Placeholder for a full screenshot of your Shiny App Dashboard]
+
+**Key Features of the Dashboard:**
+
+- **Live Cognitive State Prediction:** Displays the model's primary output (e.g., Optimal, High Load, Attentional Lapse) with a corresponding confidence score.
+- **Multi-Modal Data Visualization:** Shows synchronized, live-updating streams of physiological (pupil) and motor (grip force) data.
+- **Explainable Alerts:** The most innovative feature is the **"Why" panel**. When an alert is triggered, the dashboard uses the XAI model to explain *which* data signals are driving the prediction, building trust and providing actionable context.
+
+[Placeholder for a GIF showing an alert being triggered and the 'Why' panel updating]
+
+---
+
+### **📚 Artifacts & Next Steps**
+
+- **GitHub Repository:** [View the full source code for the simulation, modeling pipeline, and Shiny app.](https://github.com/mohdasti/cognitive-black-box) *(Suggestion: create a new repo for this project)*
+- **Grant Proposal:** [Read the full, peer-reviewed research proposal that provides the theoretical foundation for this work.](../supporting_docs/Qualification_Exam.pdf)

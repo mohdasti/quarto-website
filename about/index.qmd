@@ -1,30 +1,52 @@
 ---
 title: "About Me"
+image: /images/profile.jpg
+about:
+  template: trestles
+  image-shape: round
+  links:
+    - icon: linkedin
+      text: LinkedIn
+      href: https://www.linkedin.com/in/mdastgheib/
+    - icon: github
+      text: Github
+      href: https://github.com/mohdasti
+    - icon: file-earmark-pdf
+      text: CV
+      href: /CV/CV_MDastgheib.pdf
+    - icon: ai-google-scholar
+      text: Google Scholar
+      href: https://scholar.google.com/citations?user=SNVpHcUAAAAJ
 ---
 
-Vision science researcher specializing in perceptual processing and human-computer interaction, with expertise in designing psychophysical experiments using eye tracking and pupillometry. Experienced in developing computational models for analyzing behavioral and physiological data, with strong programming skills in R, and experience with MATLAB (PsychToolbox), and Python. Demonstrated expertise in signal detection theory, psychometric function analysis, and real-time data processing for experimental applications.
+I am a cognitive neuroscientist and human factors researcher driven by a fundamental question: **Why do we make the decisions we do, especially under pressure?** My work sits at the intersection of psychology and technology, where I use a multi-modal approach to deconstruct the hidden cognitive processes behind human behavior.
+
+My core research focuses on how factors like aging, physical stress, and physiological arousal impact our ability to perceive, learn, and remember. To get at the "why" behind performance, I go beyond simple behavioral metrics, specializing in methodologies like **pupillometry** to get a real-time, objective measure of cognitive load and **computational modeling** to isolate the subcomponents of decision-making.
+
+My goal is to translate these deep scientific insights into practical applications. I am passionate about using this knowledge to help design safer, more intuitive, and more inclusive technologies.
+
+---
 
 ## Education
 
 ::::: grid
 ::: g-col-3
-![](/images/ucr.png){fig-align="center" width="150"}
+![](/images/ucr.png){fig-align="center" width="200"}
 :::
 
 ::: g-col-9
 ### PhD in Psychology and Cognitive Neuroscience
-
-#### University of California, Riverside
+*University of California, Riverside* 
 
 2021 -- 2026 (Expected)
 :::
 :::::
 
-------------------------------------------------------------------------
+---
 
 ::::: grid
 ::: g-col-3
-![](/images/queensu.png){fig-align="center" width="150"}
+![](/images/queensu.png){fig-align="center" width="200"}
 :::
 
 ::: g-col-9
@@ -36,7 +58,7 @@ Vision science researcher specializing in perceptual processing and human-comput
 :::
 :::::
 
-------------------------------------------------------------------------
+---
 
 ::::: grid
 ::: g-col-3
@@ -52,9 +74,7 @@ Vision science researcher specializing in perceptual processing and human-comput
 :::
 :::::
 
-------------------------------------------------------------------------
-
-## Experience
+## Industry Experience
 
 ::::: grid
 ::: g-col-3
@@ -63,13 +83,6 @@ Vision science researcher specializing in perceptual processing and human-comput
 
 ::: g-col-9
 ### Research Assistant I
-
-#### Surgical Safety Technologies (SST)
-
-Toronto, ON
-
-2021
+*Surgical Safety Technologies (SST)* | Toronto, ON | 2021
 :::
 :::::
-
-------------------------------------------------------------------------

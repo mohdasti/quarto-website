@@ -1,0 +1,108 @@
+---
+title: "Case Study: Optimizing Learning with Cognitive States"
+format: html
+toc: true
+toc-depth: 4
+image: ../images/procedural-memory-plot.png
+description: "An end-to-end mixed-methods study comparing the effects of napping and meditation on declarative and procedural memory consolidation."
+---
+
+### 🧠 Optimizing Learning: A Deep Dive into the Cognitive States that Boost Memory
+
+---
+
+#### **📊 Executive Summary / TL;DR**
+
+* **The Problem:** Companies build tools to help users learn and be productive but lack clarity on how different mental states (like napping or meditating) influence the brain’s ability to retain factual versus physical memories. This uncertainty can result in inefficiencies, diminished user performance, and wasted investments in training programs or wellness initiatives.
+* **My Action:** I designed and executed an end-to-end research study involving 60+ participants, employing a **mixed-methods approach** with behavioral tasks (word-pair recall, a physical maze game), physiological EEG recordings, and self-report questionnaires.
+* **The Result:** I discovered that mindfulness meditation significantly improved factual memory retention. The most surprising discovery was that while naps are restorative, deep sleep can temporarily **impair** physical skills due to **sleep inertia**—a critical insight for products or services targeting immediate post-rest performance.
+
+---
+
+#### **🎯 The Business Problem / The Challenge**
+
+Product teams in e-learning, corporate training, and wellness often design experiences without clear evidence on how users' cognitive states impact their ability to learn. Is a power nap or meditation more effective for mastering a new software skill or physical task? This study addressed these questions by exploring how rest, naps, and meditation specifically influence:
+
+* **Declarative Memory:** Crucial for retaining facts and information.
+* **Procedural Memory:** Essential for acquiring new physical skills.
+
+---
+
+#### **🧑‍🔬 My Role & Responsibilities**
+
+* **Lead Researcher:** Oversaw the entire research process from ideation to completion.
+* **Project Manager:** Scoped the study, managed timelines, coordinated 60+ participants over multiple sessions, and ensured seamless execution.
+* **Mentor & Team Lead:** Guided and trained a team of three student researchers (including one undergraduate capstone project) on experimental protocols, data collection techniques, and research ethics.
+* **Research Designer:** Developed the research protocols, memory task stimuli, and selected EEG hardware and analytical tools.
+* **Data Scientist:** Performed all data preprocessing, cleaning, and advanced statistical analyses utilizing R and Bayesian methodologies.
+* **Communicator:** Presented findings clearly to interdisciplinary stakeholders and authored a peer-reviewed perspective piece, translating complex results into actionable recommendations for the broader scientific community.
+
+---
+
+#### **🔬 The Approach: A 3-Phase Process**
+
+**Phase 1: Research Design & User Recruitment**
+
+* **What I did:** Structured a three-condition experiment (Nap, Meditation, Active Wakefulness) conducted over multiple days.
+* **Why I did it:** Enabled clear comparisons among cognitive states, minimizing confounding variables like anxiety through the multi-day design.
+* **What I did:** Established precise participant screening criteria (e.g., must be habitual meditators/nappers).
+* **Why I did it:** Ensured genuine representation of targeted cognitive states, enhancing the validity and applicability of the results.
+
+**Phase 2: Mixed-Methods Data Collection**
+
+* **Behavioral Data:** I chose word-pair and marble-maze tasks. These tasks distinctly measured factual recall (declarative) and motor skill acquisition (procedural), aligning with the study’s dual-memory focus.
+
+![The marble maze apparatus used to measure procedural motor skill learning.](../images/maze-apparatus.png){fig-align="center" width="80%"}
+
+* **Physiological Data:** I collected multi-channel EEG recordings. This objective physiological data captured precise cognitive states, surpassing the reliability of self-report alone.
+* **Self-Report Data:** I administered validated scales (ESS, FMI). This added subjective insights into the participant experience, complementing the objective EEG data.
+
+**Phase 3: Analysis & Synthesis**
+
+* Processed and visually scored hours of multi-channel EEG data, **epoch by epoch**, to objectively classify sleep stages and identify 'meditative states.'
+* Utilized **Bayesian statistical modeling** in R, which is optimal for reliable interpretation, particularly with smaller, nuanced datasets.
+* Employed a **G-Mean calculation** for declarative memory analysis to handle class imbalance in the test data, ensuring unbiased accuracy of results.
+
+---
+
+#### **💡 Key Insight #1: For learning facts, quiet focus beats a nap.**
+
+* **What I Found:** Mindfulness meditators showed a **significant advantage** in memory retention over participants in an active-waking state (watching a video). Furthermore, their performance **trended higher** than those who took a short nap, suggesting that for factual learning, quiet wakefulness is a powerful and reliable tool for memory consolidation.
+* **The "So What?":** Quiet, focused wakefulness is optimal for factual learning, suggesting intentional meditation breaks could greatly enhance retention of new information.
+* **Potential Application:** Companies like Duolingo, Coursera, or even corporate onboarding programs could integrate structured, guided meditation intervals into training modules to boost user learning and long-term retention of educational content.
+
+![Performance on the declarative memory task was highest in the Meditation (MED) group.](../images/declarative-memory-plot.png){fig-align="center" width="90%"}
+
+---
+
+#### **💡 Key Insight #2: Deep naps can temporarily hurt physical skills.**
+
+* **What I Found:** Participants experiencing only light sleep improved their motor skills, while those entering deep Slow-Wave Sleep (SWS) experienced post-nap performance impairments, attributed to **sleep inertia**.
+* **The "So What?":** The depth of a nap critically influences post-rest performance on physical tasks. For users needing immediate peak performance, an unintended deep nap could be counterproductive.
+* **Potential Application:** Smartwatch companies (like Apple or Google/Fitbit) developing smart alarm features could optimize wake-up times to avoid interrupting SWS. This feature would be critical for roles requiring immediate alertness and precision post-rest, such as shift workers, healthcare professionals, pilots, or drivers in logistics.
+
+![Performance on the maze task improved with more light sleep (pink line) but worsened with more deep sleep (blue line), highlighting the impact of sleep inertia.](../images/procedural-memory-plot.png){fig-align="center" width="90%"}
+
+---
+
+#### **🚧 Challenges & Learnings**
+
+* **Challenge 1: Validating a Novel Task.** The marble maze was a new method for assessing procedural memory.
+    * **What I Learned:** This taught me the importance of assessing the criterion validity of new research instruments. In a future iteration, I would correlate its results with a well-established motor skills task to build a stronger case for its reliability.
+
+* **Challenge 2: Unbalanced Demographics.** The exploratory analysis revealed that gender might influence performance on different memory types, but the sample was not balanced for this comparison.
+    * **What I Learned:** This experience underscored the value of user segmentation. Going forward, I would proactively balance demographic cells in my recruiting plans, adopting a more iterative, UX-oriented approach to confidently analyze how different user groups might behave.
+
+---
+
+
+#### **📚 Publications & Impact**
+
+The insights from this research were not only compelling but also sparked a broader conversation in the scientific community. The work led directly to a peer-reviewed publication in a leading journal, demonstrating its scientific rigor and relevance:
+
+- **Peer-Reviewed Publication:**
+  - Dastgheib, M., Kulanayagam, A., & Dringenberg, H. C. (2022). Is the role of sleep in memory consolidation overrated? *Neuroscience & Biobehavioral Reviews, 140*, 104799. [https://doi.org/10.1016/j.neubiorev.2022.104799](https://doi.org/10.1016/j.neubiorev.2022.104799)
+
+- **Original Thesis & Presentation:**
+  - [Read the full Master's Thesis (External Link)](https://osf.io/preprints/thesiscommons/8t9uq_v1)
+  - [View the Presentation Slides (External Link)](https://drive.google.com/file/d/1iR2BZU2sNRJOUx7pCOKmEKVmyuiUOFdS/view?usp=drive_link)

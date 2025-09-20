@@ -2,275 +2,44 @@
   {
     "objectID": "skills/index.html",
     "href": "skills/index.html",
-    "title": "Technical Skills",
+    "title": "Technical Skills & Methodologies",
     "section": "",
-    "text": "Psychophysics\n Eye Tracking (Pupillometry)\nAdaptive Experimentation\nSignal Detection Theory\nPsychometric Function Analysis\n\n\n\n\n\nStatistical Modeling\n Large Dataset Analysis\n Optimization Techniques\nMultiple Regression Analysis\nSignal Processing\n\n\n\n\n\n MATLAB (PsychToolbox, Analysis)\n R (Statistical Modeling)\n Python\n LaTeX\n Git\n\n\n\n\n\n Google Cloud Platform\n Real-time Signal Processing\n PsychToolbox\n Eye Tracking Software\n Cloud Computing\n\n\n\n\n\n Literature Review\n Research Project Management\n Inter-rater Reliability Analysis\n Computer Vision Applications\n Experimental Design"
+    "text": "I specialize in a multi-modal approach to understanding human behavior, combining rigorous experimental design with advanced data analysis and physiological measurement. Below is a summary of my core competencies.\n\n\n🔬 Research & Experimental Design\n\nUser Research: End-to-end research planning, psychophysics, usability testing, survey design, A/B testing, user interviews.\nInteraction Design Principles: Applying cognitive science principles to inform the design of intuitive and effective user interfaces.\nHuman Factors: Assessing user performance and cognitive load in dual-task and high-stress environments.\nExperiment Programming: Designing and implementing precise behavioral and perceptual tasks using PsychToolbox (MATLAB).\n\n\n\n\n💻 Programming & Data Science\n\nLanguages: R (Expert), MATLAB (Expert), SQL (Proficient), Python (Familiar), Bash (Familiar).\nStatistical Modeling: Linear Mixed-Effects Models (LMMs), Bayesian Analysis, Psychometric Function Fitting, Drift-Diffusion Modeling (DDM).\nData Analysis & Visualization (R): Tidyverse (dplyr, ggplot2), R Markdown.\nDevelopment & Version Control: Git, GitHub, Google Cloud Platform (GCP).\n\n\n\n\n🧠 Physiological & Neuroimaging Methods\n\nPupillometry: Real-time analysis of pupil dilation as a biomarker for cognitive load and arousal.\nElectroencephalography (EEG): Collection, preprocessing, and analysis of EEG data, including sleep scoring.\nNeuroimaging Analysis: Analyzing Diffusion MRI (dMRI) data using toolkits such as FSL, QSIPrep, and SPM12.\n\n\n\n\n🛠️ Project Management & Writing\n\nProject Management: Notion, Slack, Quire.\nScientific & Technical Writing: Quarto, LaTeX, Markdown (Obsidian), MS Office.\nLanguages: Persian (Native), English (Proficient), French (Basic).\n\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "skills/index.html#technical-expertise",
-    "href": "skills/index.html#technical-expertise",
-    "title": "Technical Skills",
+    "objectID": "portfolio/index.html",
+    "href": "portfolio/index.html",
+    "title": "Portfolio",
     "section": "",
-    "text": "Psychophysics\n Eye Tracking (Pupillometry)\nAdaptive Experimentation\nSignal Detection Theory\nPsychometric Function Analysis\n\n\n\n\n\nStatistical Modeling\n Large Dataset Analysis\n Optimization Techniques\nMultiple Regression Analysis\nSignal Processing\n\n\n\n\n\n MATLAB (PsychToolbox, Analysis)\n R (Statistical Modeling)\n Python\n LaTeX\n Git\n\n\n\n\n\n Google Cloud Platform\n Real-time Signal Processing\n PsychToolbox\n Eye Tracking Software\n Cloud Computing\n\n\n\n\n\n Literature Review\n Research Project Management\n Inter-rater Reliability Analysis\n Computer Vision Applications\n Experimental Design"
+    "text": "Welcome to my portfolio. Each case study below provides a detailed walkthrough of a significant research project. You’ll find a mix of results-driven studies and “research roadmap” plans that showcase my ability to both architect and execute complex human-centered research.\n\n\n\n\n\n\n\n\n\n\nCase Study: A Psychophysiological Approach to Modeling Dual-Task Interference\n\n\nA research roadmap case study on modeling dual-task interference using pupillometry to enhance performance in high-stakes environments.\n\n\n\n\n\n\n\n\n\n\n\n\nCase Study: Optimizing Learning with Cognitive States\n\n\nAn end-to-end mixed-methods study comparing the effects of napping and meditation on declarative and procedural memory consolidation.\n\n\n\n\n\nNo matching items\n\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Mohammad Dastgheib",
+    "objectID": "about/index.html",
+    "href": "about/index.html",
+    "title": "About Me",
     "section": "",
-    "text": "I am a vision science researcher specializing in perceptual processing and human-computer interaction. My research focuses on designing psychophysical experiments using eye tracking and pupillometry, with expertise in computational modeling and behavioral data analysis.\n\n\n    \n    \n  \n\n\n\n\n\n\n\n\nNote\n\n\n\nAvailable for Summer 2025 Internship (June 9 - August 30, 2025)\n\n\n\n\n\n\n Back to top"
+    "text": "I am a cognitive neuroscientist and human factors researcher driven by a fundamental question: Why do we make the decisions we do, especially under pressure? My work sits at the intersection of psychology and technology, where I use a multi-modal approach to deconstruct the hidden cognitive processes behind human behavior.\nMy core research focuses on how factors like aging, physical stress, and physiological arousal impact our ability to perceive, learn, and remember. To get at the “why” behind performance, I go beyond simple behavioral metrics, specializing in methodologies like pupillometry to get a real-time, objective measure of cognitive load and computational modeling to isolate the subcomponents of decision-making.\nMy goal is to translate these deep scientific insights into practical applications. I am passionate about using this knowledge to help design safer, more intuitive, and more inclusive technologies."
   },
   {
-    "objectID": "publications/publication4/index.html",
-    "href": "publications/publication4/index.html",
-    "title": "Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals",
+    "objectID": "about/index.html#education",
+    "href": "about/index.html#education",
+    "title": "About Me",
+    "section": "Education",
+    "text": "Education\n\n\n\n\n\n\n\n\n\nPhD in Psychology and Cognitive Neuroscience\nUniversity of California, Riverside\n2021 – 2026 (Expected)\n\n\n\n\n\n\n\n\n\n\n\n\nM.Sc. in Psychology\n\nQueen’s University\n2017 – 2020\n\n\n\n\n\n\n\n\n\n\n\n\n\nHon. B.Sc. in Biological Sciences & Psychology\n\nYork University\n2013 – 2017"
+  },
+  {
+    "objectID": "about/index.html#industry-experience",
+    "href": "about/index.html#industry-experience",
+    "title": "About Me",
+    "section": "Industry Experience",
+    "text": "Industry Experience\n\n\n\n\n\nResearch Assistant I\nSurgical Safety Technologies (SST) | Toronto, ON | 2021"
+  },
+  {
+    "objectID": "projects/memory-and-meditation.html",
+    "href": "projects/memory-and-meditation.html",
+    "title": "Case Study: Optimizing Learning with Cognitive States",
     "section": "",
-    "text": "Background: Hypernatremia is a common electrolyte disorder where serum Na + Concentration is &gt;145 mM, and is frequently identified as an issue in patients admitted under general internal medicine 1,2 . The etiology can generally be classified as loss of free water or decreased intake, iatrogenic ingestion/infusion of hypertonic solution, or pseudohypernatremia 3 . It is a common practice to assume decreased intake of free water or extrarenal free water loss as the etiology, and to treat the hypernatremia with administration of hypotonic crystalloid solution without investigation of serum or urine osmolality, electrolytes, urea, or creatinine to delineate etiology 3,4 . In particular, the two often neglected diagnoses are diabetes insipidus and osmotic-induced diuresis. Etiology of hypernatremia is occasionally elusive and refractory to administration of crystalloid solution. However, laboratory investigations ordered by clinicians to properly determine underlying etiology of hypernatremia in these cases are not routine and may vary significantly. Objectives: We hypothesized that appropriate ordering of serum and urine studies by clinicians to determine the etiology of hypernatremia is related to the severity of hypernatremia. In addition, we aim to determine the etiology of hypernatremia that trigger clinician ordering of serum/urine studies. Methods: Patients admitted under general internal medicine at hospitals affiliated with the University Health Network (Toronto Western Hospital and Toronto General Hospital) between the dates of 2015 and 2019 with a serum sodium concentration of 150 mmol/L or greater were selected and assessed for completion of serum electrolytes, serum osmolality, urine electrolytes (Na, K, Cl), urine osmolality, urine creatinine, and urine urea. Discharge summaries were analysed to determine etiology and treatment of hypernatremia as well as treatments initiated. The research proposal was approved by Coordinated Approval Process for Clinical Research (CAPCR) at the University Health Network. Results: Based on our preliminary results, we were able to identify 606 cases of admitted general internal medicine patients with hypernatremia meeting our criteria. In our preliminary analysis of 47 cases, we were able to identify 18 cases (38.3%) with serum osmolality, 19 cases (40.4%) with urine osmolality, 23 cases (48.9%) with urine electrolytes, 1 case (2.1%) with urine urea, and 1 case (2.1%) with urine creatinine. There were 11 cases (23.4%) with all of serum osmolality, urine osmolality, and urine electrolytes. In general, the severity of hypernatremia correlated poorly with the number additional investigations ordered beyond serum electrolytes (ie. serum osmolality and urine studies; r 2 = 0.0204). Conclusion: In this study of patients with hypernatremia we found that a significant portion of admitted patients were not evaluated for urine studies, especially urea or creatinine. Unexpectedly, the severity of hypernatremia correlated poorly with the number of studies ordered to determine etiology, suggesting that the severity of hypernatremia may play a minor role in clinician ordering habits in hypernatremia. The current study signifies the importance of proper ordering and understanding of pathophysiology of hypernatremia and could contribute to filling the knowledge gap in appropriate ordering in hypernatremia, which may reduce the morbidity and mortality rate of hypernatremic patients."
-  },
-  {
-    "objectID": "publications/publication4/index.html#abstract",
-    "href": "publications/publication4/index.html#abstract",
-    "title": "Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals",
-    "section": "",
-    "text": "Background: Hypernatremia is a common electrolyte disorder where serum Na + Concentration is &gt;145 mM, and is frequently identified as an issue in patients admitted under general internal medicine 1,2 . The etiology can generally be classified as loss of free water or decreased intake, iatrogenic ingestion/infusion of hypertonic solution, or pseudohypernatremia 3 . It is a common practice to assume decreased intake of free water or extrarenal free water loss as the etiology, and to treat the hypernatremia with administration of hypotonic crystalloid solution without investigation of serum or urine osmolality, electrolytes, urea, or creatinine to delineate etiology 3,4 . In particular, the two often neglected diagnoses are diabetes insipidus and osmotic-induced diuresis. Etiology of hypernatremia is occasionally elusive and refractory to administration of crystalloid solution. However, laboratory investigations ordered by clinicians to properly determine underlying etiology of hypernatremia in these cases are not routine and may vary significantly. Objectives: We hypothesized that appropriate ordering of serum and urine studies by clinicians to determine the etiology of hypernatremia is related to the severity of hypernatremia. In addition, we aim to determine the etiology of hypernatremia that trigger clinician ordering of serum/urine studies. Methods: Patients admitted under general internal medicine at hospitals affiliated with the University Health Network (Toronto Western Hospital and Toronto General Hospital) between the dates of 2015 and 2019 with a serum sodium concentration of 150 mmol/L or greater were selected and assessed for completion of serum electrolytes, serum osmolality, urine electrolytes (Na, K, Cl), urine osmolality, urine creatinine, and urine urea. Discharge summaries were analysed to determine etiology and treatment of hypernatremia as well as treatments initiated. The research proposal was approved by Coordinated Approval Process for Clinical Research (CAPCR) at the University Health Network. Results: Based on our preliminary results, we were able to identify 606 cases of admitted general internal medicine patients with hypernatremia meeting our criteria. In our preliminary analysis of 47 cases, we were able to identify 18 cases (38.3%) with serum osmolality, 19 cases (40.4%) with urine osmolality, 23 cases (48.9%) with urine electrolytes, 1 case (2.1%) with urine urea, and 1 case (2.1%) with urine creatinine. There were 11 cases (23.4%) with all of serum osmolality, urine osmolality, and urine electrolytes. In general, the severity of hypernatremia correlated poorly with the number additional investigations ordered beyond serum electrolytes (ie. serum osmolality and urine studies; r 2 = 0.0204). Conclusion: In this study of patients with hypernatremia we found that a significant portion of admitted patients were not evaluated for urine studies, especially urea or creatinine. Unexpectedly, the severity of hypernatremia correlated poorly with the number of studies ordered to determine etiology, suggesting that the severity of hypernatremia may play a minor role in clinician ordering habits in hypernatremia. The current study signifies the importance of proper ordering and understanding of pathophysiology of hypernatremia and could contribute to filling the knowledge gap in appropriate ordering in hypernatremia, which may reduce the morbidity and mortality rate of hypernatremic patients."
-  },
-  {
-    "objectID": "publications/publication4/index.html#details",
-    "href": "publications/publication4/index.html#details",
-    "title": "Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals",
-    "section": "Details",
-    "text": "Details\n\nJournal: Canadian Journal of Anesthesia/Journal canadien d’anesthésie\nVolume: 67\nIssue: Supplement 1\nPages: 40-41\nPublisher: Springer Nature\nDate: 2020"
-  },
-  {
-    "objectID": "publications/publication4/index.html#keywords",
-    "href": "publications/publication4/index.html#keywords",
-    "title": "Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals",
-    "section": "Keywords",
-    "text": "Keywords\n\nHypernatremia\nDiagnostic Approaches\nUniversity Health Network Hospitals"
-  },
-  {
-    "objectID": "publications/publication4/index.html#citation",
-    "href": "publications/publication4/index.html#citation",
-    "title": "Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals",
-    "section": "Citation",
-    "text": "Citation\nSarwar, S., Shafiee, M. A., Dastgheib, M., Hajighadimi, S., Ghafarian, H., & Rokni, H. (2020). Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals. Canadian Journal of Anesthesia/Journal canadien d’anesthésie, 67(Supplement 1), 40-41. https://doi.org/10.1007/s12630-019-01552-z"
-  },
-  {
-    "objectID": "publications/publication4/index.html#full-text",
-    "href": "publications/publication4/index.html#full-text",
-    "title": "Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals",
-    "section": "Full Text",
-    "text": "Full Text\nView Full Text"
-  },
-  {
-    "objectID": "publications/publication2/index.html",
-    "href": "publications/publication2/index.html",
-    "title": "Is the role of sleep in memory consolidation overrated?",
-    "section": "",
-    "text": "Substantial empirical evidence suggests that sleep benefits the consolidation and reorganization of learned information. Consequently, the concept of “sleep-dependent memory consolidation” is now widely accepted by the scientific community, in addition to influencing public perceptions regarding the functions of sleep. There are, however, numerous studies that have presented findings inconsistent with the sleep-memory hypothesis. Here, we challenge the notion of “sleep-dependency” by summarizing evidence for effective memory consolidation independent of sleep. Plasticity mechanisms thought to mediate or facilitate consolidation during sleep (e.g., neuronal replay, reactivation, slow oscillations, neurochemical milieu) also operate during non-sleep states, particularly quiet wakefulness, thus allowing for the stabilization of new memories. We propose that it is not sleep per se, but the engagement of plasticity mechanisms, active during both sleep and (at least some) waking states, that constitutes the critical factor determining memory formation. Thus, rather than playing a “critical” role, sleep falls along a continuum of behavioral states that vary in their effectiveness to support memory consolidation at the neural and behavioral level."
-  },
-  {
-    "objectID": "publications/publication2/index.html#abstract",
-    "href": "publications/publication2/index.html#abstract",
-    "title": "Is the role of sleep in memory consolidation overrated?",
-    "section": "",
-    "text": "Substantial empirical evidence suggests that sleep benefits the consolidation and reorganization of learned information. Consequently, the concept of “sleep-dependent memory consolidation” is now widely accepted by the scientific community, in addition to influencing public perceptions regarding the functions of sleep. There are, however, numerous studies that have presented findings inconsistent with the sleep-memory hypothesis. Here, we challenge the notion of “sleep-dependency” by summarizing evidence for effective memory consolidation independent of sleep. Plasticity mechanisms thought to mediate or facilitate consolidation during sleep (e.g., neuronal replay, reactivation, slow oscillations, neurochemical milieu) also operate during non-sleep states, particularly quiet wakefulness, thus allowing for the stabilization of new memories. We propose that it is not sleep per se, but the engagement of plasticity mechanisms, active during both sleep and (at least some) waking states, that constitutes the critical factor determining memory formation. Thus, rather than playing a “critical” role, sleep falls along a continuum of behavioral states that vary in their effectiveness to support memory consolidation at the neural and behavioral level."
-  },
-  {
-    "objectID": "publications/publication2/index.html#details",
-    "href": "publications/publication2/index.html#details",
-    "title": "Is the role of sleep in memory consolidation overrated?",
-    "section": "Details",
-    "text": "Details\n\nJournal: Neuroscience & Biobehavioral Reviews\nDOI: 10.1016/j.neubiorev.2022.05.008\nAuthors: Mohammad Dastgheib, Asvini Kulanayagam, Hans C. Dringenberg\nDate: July 29, 2022"
-  },
-  {
-    "objectID": "publications/publication2/index.html#keywords",
-    "href": "publications/publication2/index.html#keywords",
-    "title": "Is the role of sleep in memory consolidation overrated?",
-    "section": "Keywords",
-    "text": "Keywords\n\nMemory Consolidation\nSleep\nWakefulness\nNeurophysiology"
-  },
-  {
-    "objectID": "publications/publication2/index.html#references",
-    "href": "publications/publication2/index.html#references",
-    "title": "Is the role of sleep in memory consolidation overrated?",
-    "section": "References",
-    "text": "References\nFor a comprehensive list of references, please refer to the full publication."
-  },
-  {
-    "objectID": "publications/index.html",
-    "href": "publications/index.html",
-    "title": "Publications",
-    "section": "",
-    "text": "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis\n\n\n\n\n\n\n\nIn Preparation\n\n\nPerception\n\n\nVisual Memory\n\n\nPupillometry\n\n\n \n\n\n\n\nMar 1, 2025\n\n\nMohammad Dastgheib, Andrew Sun, Kimia Yaghoubi, Xu Chen, Megan Peters, Weiwei Zhang, Ilana Bennett, Aaron Seitz\n\n\nManuscript in Preparation\n\n\n\n\n\n\n\n\nThe Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis\n\n\n\n\n\n\n\nPoster\n\n\nPerception\n\n\nVisual Memory\n\n\nPsychometric Function Analysis\n\n\n \n\n\n\n\nDec 31, 2023\n\n\nMohammad Dastgheib, Ilana Bennett, Aaron Seitz\n\n\nPsychonomic Society Annual Meeting\n\n\n\n\n\n\n\n\nThe Effect of Physical Effort on Perception and Visual Memory\n\n\n\n\n\n\n\nPoster\n\n\nPerception\n\n\nVisual Memory\n\n\nPupillometry\n\n\n \n\n\n\n\nDec 31, 2022\n\n\nMohammad Dastgheib, Kimia Yaghoubi, Hadi Kobaissi, Jacqueline Alba, Ilana Bennett, Aaron Seitz\n\n\nInternational Conference on Learning and Memory\n\n\n\n\n\n\n\n\nIs the role of sleep in memory consolidation overrated?\n\n\n\n\n\n\n\nReview Paper\n\n\nMemory Consolidation\n\n\nSleep\n\n\nQuiet Wakefulness\n\n\n \n\n\n\n\nDec 31, 2021\n\n\nMohammad Dastgheib, Asvini Kulanayagam, Hans C. Dringenberg\n\n\nNeuroscience & Biobehavioral Reviews\n\n\n\n\n\n\n\n\nThe Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans\n\n\n\n\n\n\n\nThesis\n\n\nMemory Consolidation\n\n\nMeditation\n\n\nNapping\n\n\n \n\n\n\n\nDec 31, 2019\n\n\nMohammad Dastgheib\n\n\nMaster’s Dissertation\n\n\n\n\n\n\n\n\nCurrent Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals\n\n\n\n\n\n\n\nPublished Abstract\n\n\nHypernatremia\n\n\nDiagnostic Approaches\n\n\n \n\n\n\n\nDec 31, 2018\n\n\nShihab Sarwar, Mohammad Ali Shafiee, Mohammad Dastgheib, Sarah Hajighadimi, Hanieh Ghafarian, Haleh Rokni\n\n\nCanadian Journal of Anesthesia\n\n\n\n\n\n\n\n\nThe Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation\n\n\n\n\n\n\n\nConference Talk\n\n\nMemory Consolidation\n\n\nMeditation\n\n\nNapping\n\n\n \n\n\n\n\nDec 31, 2018\n\n\nMohammad Dastgheib, Liza Legro, Matthew Stewart, Hans C. Dringenberg\n\n\nCSBBCS Conference\n\n\n\n\n\n\n\n\nThe Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation\n\n\n\n\n\n\n\nPoster\n\n\nMemory Consolidation\n\n\nMeditation\n\n\nNapping\n\n\n \n\n\n\n\nDec 31, 2017\n\n\nMohammad Dastgheib, Liza Legro, Matthew Stewart, Hans Dringenberg\n\n\nSONA Conference\n\n\n\n\n\n\nNo matching items\n\n Back to top"
-  },
-  {
-    "objectID": "publications/publication8/index.html",
-    "href": "publications/publication8/index.html",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "",
-    "text": "This poster presents the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
-  },
-  {
-    "objectID": "publications/publication8/index.html#abstract",
-    "href": "publications/publication8/index.html#abstract",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "",
-    "text": "This poster presents the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
-  },
-  {
-    "objectID": "publications/publication8/index.html#details",
-    "href": "publications/publication8/index.html#details",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "Details",
-    "text": "Details\n\nConference: Southern Ontario Neuroscience Association (SONA) conference\nLocation: Guelph, ON\nDate: 2018\nAuthors: Mohammad Dastgheib, Legro L., Stewart M., Hans C. Dringenberg"
-  },
-  {
-    "objectID": "publications/publication8/index.html#keywords",
-    "href": "publications/publication8/index.html#keywords",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "Keywords",
-    "text": "Keywords\n\nMemory Consolidation\nSelf-Guided Meditation\nNapping\nCognitive Neuroscience"
-  },
-  {
-    "objectID": "publications/publication8/index.html#citation",
-    "href": "publications/publication8/index.html#citation",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "Citation",
-    "text": "Citation\nDastgheib, M., Legro L., Stewart M., & Dringenberg, H. C. (2018). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Presented at the Southern Ontario Neuroscience Association (SONA) conference, Guelph, ON."
-  },
-  {
-    "objectID": "publications/publication1/index.html",
-    "href": "publications/publication1/index.html",
-    "title": "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis",
-    "section": "",
-    "text": "This study investigates the effect of physical effort on perception and visual memory using pupillometry. We designed and implemented psychophysical experiments to analyze the impact of physical exertion on visual perception and memory consolidation."
-  },
-  {
-    "objectID": "publications/publication1/index.html#abstract",
-    "href": "publications/publication1/index.html#abstract",
-    "title": "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis",
-    "section": "",
-    "text": "This study investigates the effect of physical effort on perception and visual memory using pupillometry. We designed and implemented psychophysical experiments to analyze the impact of physical exertion on visual perception and memory consolidation."
-  },
-  {
-    "objectID": "publications/publication1/index.html#details",
-    "href": "publications/publication1/index.html#details",
-    "title": "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis",
-    "section": "Details",
-    "text": "Details\n\nJournal: Manuscript in preparation\nAuthors: Mohammad Dastgheib, et al.\nDate: TBD"
-  },
-  {
-    "objectID": "research/index.html",
-    "href": "research/index.html",
-    "title": "Research",
-    "section": "",
-    "text": "My research in the Seitz Lab investigates how variations in the Locus Coeruleus (LC) influence perception and memory in older adults. This work aims to identify potential biomarkers and interventions for neurodegenerative disorders like Alzheimer’s Disease and Parkinson’s Disease."
-  },
-  {
-    "objectID": "research/index.html#research-overview",
-    "href": "research/index.html#research-overview",
-    "title": "Research",
-    "section": "",
-    "text": "My research in the Seitz Lab investigates how variations in the Locus Coeruleus (LC) influence perception and memory in older adults. This work aims to identify potential biomarkers and interventions for neurodegenerative disorders like Alzheimer’s Disease and Parkinson’s Disease."
-  },
-  {
-    "objectID": "research/index.html#current-projects",
-    "href": "research/index.html#current-projects",
-    "title": "Research",
-    "section": "Current Projects",
-    "text": "Current Projects\n\nLC Integrity and Cognitive Function in Aging\nThe primary research program employs advanced MRI techniques and psychophysical assessments to characterize how LC integrity moderates behavior, focusing on: - Auditory and visual perception - Visual memory consolidation - Metacognitive efficiency - Age-related cognitive differences\n\n\nOngoing Studies\n\nBehavioral Analysis of Older Adults\n\nAnalyzing psychometric functions and pupillometry\nCorrelating with neuroimaging metrics\n\nMetacognitive Efficiency Analysis\n\nComparing younger and older adults\nFocusing on auditory and visual perceptual tasks"
-  },
-  {
-    "objectID": "research/index.html#published-research",
-    "href": "research/index.html#published-research",
-    "title": "Research",
-    "section": "Published Research",
-    "text": "Published Research\n\nPhysical Effort and Perception\n\nThe Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis\n\nManuscript in preparation\nInvestigating impact on younger adults\nAnalyzing pupillometric data\n\n\n\n\nConference Presentations\n\nThe Differential Effect of Physical Effort within Perceptual and Visual Memory Domains (Psychonomics 2024)\n\nAnalysis of Psychometric Functions\nPresented at Psychonomic Society Conference, NYC\n\nValidation of Manipulation Methods (ICLM 2023)\n\nStudy with younger adults\nPresented at Learning & Memory Conference, Huntington Beach\n\n\n\n\nPrevious Research\n\nThe Effects of Self-Guided Meditation and Napping on Memory Consolidation\n\nM.Sc. thesis research at Queen’s University\nInvestigation of memory consolidation mechanisms\n\nCritical Examination of the Role of Sleep on Memory Consolidation\n\nReview paper published on Neuroscience & Biobehavioral Reviews"
-  },
-  {
-    "objectID": "research/index.html#lab-collaboration",
-    "href": "research/index.html#lab-collaboration",
-    "title": "Research",
-    "section": "Lab Collaboration",
-    "text": "Lab Collaboration\n\nDesign and implementation of psychophysical experiments using pupillometry\nDevelopment of experimental paradigms in PsychToolbox for precise stimulus presentation\nApplication of signal detection theory and computational modeling for perceptual data analysis\nProject coordination and supervision of research assistants\nImplementation of real-time data processing and analysis pipelines\nLiterature reviews and documentation of experimental procedures"
-  },
-  {
-    "objectID": "publications/publication6/index.html",
-    "href": "publications/publication6/index.html",
-    "title": "The Effect of Physical Effort on Perception and Visual Memory",
-    "section": "",
-    "text": "This poster investigates the effect of physical effort on perception and visual memory using pupillometry."
-  },
-  {
-    "objectID": "publications/publication6/index.html#abstract",
-    "href": "publications/publication6/index.html#abstract",
-    "title": "The Effect of Physical Effort on Perception and Visual Memory",
-    "section": "",
-    "text": "This poster investigates the effect of physical effort on perception and visual memory using pupillometry."
-  },
-  {
-    "objectID": "publications/publication6/index.html#details",
-    "href": "publications/publication6/index.html#details",
-    "title": "The Effect of Physical Effort on Perception and Visual Memory",
-    "section": "Details",
-    "text": "Details\n\nConference: International Conference on Learning and Memory\nDate: 2023\nAuthors: Dastgheib, M., Yaghoubi, K., Kobaissi, H., Alba, J., Bennett, I., Seitz, A."
-  },
-  {
-    "objectID": "publications/publication7/index.html",
-    "href": "publications/publication7/index.html",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "",
-    "text": "This conference presentation explores the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
-  },
-  {
-    "objectID": "publications/publication7/index.html#abstract",
-    "href": "publications/publication7/index.html#abstract",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "",
-    "text": "This conference presentation explores the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
-  },
-  {
-    "objectID": "publications/publication7/index.html#details",
-    "href": "publications/publication7/index.html#details",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "Details",
-    "text": "Details\n\nConference: Canadian Society for Brain, Behaviour, & Cognitive Sciences meeting\nLocation: Waterloo, ON\nDate: 2019\nAuthors: Mohammad Dastgheib, Legro L., Stewart M., Hans C. Dringenberg"
-  },
-  {
-    "objectID": "publications/publication7/index.html#keywords",
-    "href": "publications/publication7/index.html#keywords",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "Keywords",
-    "text": "Keywords\n\nMemory Consolidation\nSelf-Guided Meditation\nNapping\nCognitive Neuroscience"
-  },
-  {
-    "objectID": "publications/publication7/index.html#citation",
-    "href": "publications/publication7/index.html#citation",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "Citation",
-    "text": "Citation\nDastgheib, M., Legro L., Stewart M., & Dringenberg, H. C. (2019). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Presented at the Canadian Society for Brain, Behaviour, & Cognitive Sciences meeting, Waterloo, ON."
-  },
-  {
-    "objectID": "publications/publication5/index.html",
-    "href": "publications/publication5/index.html",
-    "title": "The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis",
-    "section": "",
-    "text": "This poster presents the differential effect of physical effort within perceptual and visual memory domains, using insights from psychometric function analysis."
-  },
-  {
-    "objectID": "publications/publication5/index.html#abstract",
-    "href": "publications/publication5/index.html#abstract",
-    "title": "The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis",
-    "section": "",
-    "text": "This poster presents the differential effect of physical effort within perceptual and visual memory domains, using insights from psychometric function analysis."
-  },
-  {
-    "objectID": "publications/publication5/index.html#details",
-    "href": "publications/publication5/index.html#details",
-    "title": "The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis",
-    "section": "Details",
-    "text": "Details\n\nConference: Psychonomic Society Annual Meeting\nDate: 2024\nAuthors: Dastgheib, M., Bennett, I., Seitz, A."
+    "text": "🧠 Optimizing Learning: A Deep Dive into the Cognitive States that Boost Memory\n\n\n📊 Executive Summary / TL;DR\n\nThe Problem: Companies build tools to help users learn and be productive but lack clarity on how different mental states (like napping or meditating) influence the brain’s ability to retain factual versus physical memories. This uncertainty can result in inefficiencies, diminished user performance, and wasted investments in training programs or wellness initiatives.\nMy Action: I designed and executed an end-to-end research study involving 60+ participants, employing a mixed-methods approach with behavioral tasks (word-pair recall, a physical maze game), physiological EEG recordings, and self-report questionnaires.\nThe Result: I discovered that mindfulness meditation significantly improved factual memory retention. The most surprising discovery was that while naps are restorative, deep sleep can temporarily impair physical skills due to sleep inertia—a critical insight for products or services targeting immediate post-rest performance.\n\n\n\n\n🎯 The Business Problem / The Challenge\nProduct teams in e-learning, corporate training, and wellness often design experiences without clear evidence on how users’ cognitive states impact their ability to learn. Is a power nap or meditation more effective for mastering a new software skill or physical task? This study addressed these questions by exploring how rest, naps, and meditation specifically influence:\n\nDeclarative Memory: Crucial for retaining facts and information.\nProcedural Memory: Essential for acquiring new physical skills.\n\n\n\n\n🧑‍🔬 My Role & Responsibilities\n\nLead Researcher: Oversaw the entire research process from ideation to completion.\nProject Manager: Scoped the study, managed timelines, coordinated 60+ participants over multiple sessions, and ensured seamless execution.\nMentor & Team Lead: Guided and trained a team of three student researchers (including one undergraduate capstone project) on experimental protocols, data collection techniques, and research ethics.\nResearch Designer: Developed the research protocols, memory task stimuli, and selected EEG hardware and analytical tools.\nData Scientist: Performed all data preprocessing, cleaning, and advanced statistical analyses utilizing R and Bayesian methodologies.\nCommunicator: Presented findings clearly to interdisciplinary stakeholders and authored a peer-reviewed perspective piece, translating complex results into actionable recommendations for the broader scientific community.\n\n\n\n\n🔬 The Approach: A 3-Phase Process\nPhase 1: Research Design & User Recruitment\n\nWhat I did: Structured a three-condition experiment (Nap, Meditation, Active Wakefulness) conducted over multiple days.\nWhy I did it: Enabled clear comparisons among cognitive states, minimizing confounding variables like anxiety through the multi-day design.\nWhat I did: Established precise participant screening criteria (e.g., must be habitual meditators/nappers).\nWhy I did it: Ensured genuine representation of targeted cognitive states, enhancing the validity and applicability of the results.\n\nPhase 2: Mixed-Methods Data Collection\n\nBehavioral Data: I chose word-pair and marble-maze tasks. These tasks distinctly measured factual recall (declarative) and motor skill acquisition (procedural), aligning with the study’s dual-memory focus.\n\n\n\n\n\n\n\n\nThe marble maze apparatus used to measure procedural motor skill learning.\n\n\n\nPhysiological Data: I collected multi-channel EEG recordings. This objective physiological data captured precise cognitive states, surpassing the reliability of self-report alone.\nSelf-Report Data: I administered validated scales (ESS, FMI). This added subjective insights into the participant experience, complementing the objective EEG data.\n\nPhase 3: Analysis & Synthesis\n\nProcessed and visually scored hours of multi-channel EEG data, epoch by epoch, to objectively classify sleep stages and identify ‘meditative states.’\nUtilized Bayesian statistical modeling in R, which is optimal for reliable interpretation, particularly with smaller, nuanced datasets.\nEmployed a G-Mean calculation for declarative memory analysis to handle class imbalance in the test data, ensuring unbiased accuracy of results.\n\n\n\n\n💡 Key Insight #1: For learning facts, quiet focus beats a nap.\n\nWhat I Found: Mindfulness meditators showed a significant advantage in memory retention over participants in an active-waking state (watching a video). Furthermore, their performance trended higher than those who took a short nap, suggesting that for factual learning, quiet wakefulness is a powerful and reliable tool for memory consolidation.\nThe “So What?”: Quiet, focused wakefulness is optimal for factual learning, suggesting intentional meditation breaks could greatly enhance retention of new information.\nPotential Application: Companies like Duolingo, Coursera, or even corporate onboarding programs could integrate structured, guided meditation intervals into training modules to boost user learning and long-term retention of educational content.\n\n\n\n\n\n\n\n\nPerformance on the declarative memory task was highest in the Meditation (MED) group.\n\n\n\n\n\n💡 Key Insight #2: Deep naps can temporarily hurt physical skills.\n\nWhat I Found: Participants experiencing only light sleep improved their motor skills, while those entering deep Slow-Wave Sleep (SWS) experienced post-nap performance impairments, attributed to sleep inertia.\nThe “So What?”: The depth of a nap critically influences post-rest performance on physical tasks. For users needing immediate peak performance, an unintended deep nap could be counterproductive.\nPotential Application: Smartwatch companies (like Apple or Google/Fitbit) developing smart alarm features could optimize wake-up times to avoid interrupting SWS. This feature would be critical for roles requiring immediate alertness and precision post-rest, such as shift workers, healthcare professionals, pilots, or drivers in logistics.\n\n\n\n\n\n\n\n\nPerformance on the maze task improved with more light sleep (pink line) but worsened with more deep sleep (blue line), highlighting the impact of sleep inertia.\n\n\n\n\n\n🚧 Challenges & Learnings\n\nChallenge 1: Validating a Novel Task. The marble maze was a new method for assessing procedural memory.\n\nWhat I Learned: This taught me the importance of assessing the criterion validity of new research instruments. In a future iteration, I would correlate its results with a well-established motor skills task to build a stronger case for its reliability.\n\nChallenge 2: Unbalanced Demographics. The exploratory analysis revealed that gender might influence performance on different memory types, but the sample was not balanced for this comparison.\n\nWhat I Learned: This experience underscored the value of user segmentation. Going forward, I would proactively balance demographic cells in my recruiting plans, adopting a more iterative, UX-oriented approach to confidently analyze how different user groups might behave.\n\n\n\n\n\n📚 Publications & Impact\nThe insights from this research were not only compelling but also sparked a broader conversation in the scientific community. The work led directly to a peer-reviewed publication in a leading journal, demonstrating its scientific rigor and relevance:\n\nPeer-Reviewed Publication:\n\nDastgheib, M., Kulanayagam, A., & Dringenberg, H. C. (2022). Is the role of sleep in memory consolidation overrated? Neuroscience & Biobehavioral Reviews, 140, 104799. https://doi.org/10.1016/j.neubiorev.2022.104799\n\nOriginal Thesis & Presentation:\n\nRead the full Master’s Thesis (External Link)\nView the Presentation Slides (External Link)\n\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "publications/publication3/index.html",
@@ -315,25 +84,277 @@
     "text": "Full Text\nView Full Text"
   },
   {
-    "objectID": "about/index.html",
-    "href": "about/index.html",
-    "title": "About Me",
+    "objectID": "publications/peer-reviewed/dastgheib-2022-neurobio-reviews.html",
+    "href": "publications/peer-reviewed/dastgheib-2022-neurobio-reviews.html",
+    "title": "Is the role of sleep in memory consolidation overrated?",
     "section": "",
-    "text": "Vision science researcher specializing in perceptual processing and human-computer interaction, with expertise in designing psychophysical experiments using eye tracking and pupillometry. Experienced in developing computational models for analyzing behavioral and physiological data, with strong programming skills in R, and experience with MATLAB (PsychToolbox), and Python. Demonstrated expertise in signal detection theory, psychometric function analysis, and real-time data processing for experimental applications."
+    "text": "Abstract\n\n\n\n\n\nSubstantial empirical evidence suggests that sleep benefits the consolidation and reorganization of learned information. Consequently, the concept of “sleep-dependent memory consolidation” is now widely accepted by the scientific community, in addition to influencing public perceptions regarding the functions of sleep. There are, however, numerous studies that have presented findings inconsistent with the sleep-memory hypothesis. Here, we challenge the notion of “sleep-dependency” by summarizing evidence for effective memory consolidation independent of sleep. Plasticity mechanisms thought to mediate or facilitate consolidation during sleep (e.g., neuronal replay, reactivation, slow oscillations, neurochemical milieu) also operate during non-sleep states, particularly quiet wakefulness, thus allowing for the stabilization of new memories. We propose that it is not sleep per se, but the engagement of plasticity mechanisms, active during both sleep and (at least some) waking states, that constitutes the critical factor determining memory formation. Thus, rather than playing a “critical” role, sleep falls along a continuum of behavioral states that vary in their effectiveness to support memory consolidation at the neural and behavioral level.\n\n\n\nView Publication (DOI) Download PDF\n\n\n\n\n\n\nMedia Coverage\n\n\n\nCuriosity Daily Podcast (Discovery) Episode: Daydream Brain, Power of a Laugh, Caffeine & Soccer Original release: Jan 25, 2024 · Re-release: Dec 19, 2024\n\n\nListen on Acast\n\nThe Boston Globe: Five facts about sleep everyone should know\nThe Harvard Gazette: Researchers one step closer to understanding daydreams\n\n\n\n\n\n\n\n\n Back to top"
   },
   {
-    "objectID": "about/index.html#education",
-    "href": "about/index.html#education",
-    "title": "About Me",
-    "section": "Education",
-    "text": "Education\n\n\n\n\n\n\n\n\n\nPhD in Psychology and Cognitive Neuroscience\n\nUniversity of California, Riverside\n2021 – 2026 (Expected)\n\n\n\n\n\n\n\n\n\n\n\n\n\nM.Sc. in Psychology\n\nQueen’s University\n2017 – 2020\n\n\n\n\n\n\n\n\n\n\n\n\n\nHon. B.Sc. in Biological Sciences & Psychology\n\nYork University\n2013 – 2017"
+    "objectID": "publications/publication7/index.html",
+    "href": "publications/publication7/index.html",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "",
+    "text": "This conference presentation explores the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
   },
   {
-    "objectID": "about/index.html#experience",
-    "href": "about/index.html#experience",
-    "title": "About Me",
-    "section": "Experience",
-    "text": "Experience\n\n\n\n\n\nResearch Assistant I\n\nSurgical Safety Technologies (SST)\nToronto, ON\n2021"
+    "objectID": "publications/publication7/index.html#abstract",
+    "href": "publications/publication7/index.html#abstract",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "",
+    "text": "This conference presentation explores the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
+  },
+  {
+    "objectID": "publications/publication7/index.html#details",
+    "href": "publications/publication7/index.html#details",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "Details",
+    "text": "Details\n\nConference: Canadian Society for Brain, Behaviour, & Cognitive Sciences meeting\nLocation: Waterloo, ON\nDate: 2019\nAuthors: Mohammad Dastgheib, Legro L., Stewart M., Hans C. Dringenberg"
+  },
+  {
+    "objectID": "publications/publication7/index.html#keywords",
+    "href": "publications/publication7/index.html#keywords",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "Keywords",
+    "text": "Keywords\n\nMemory Consolidation\nSelf-Guided Meditation\nNapping\nCognitive Neuroscience"
+  },
+  {
+    "objectID": "publications/publication7/index.html#citation",
+    "href": "publications/publication7/index.html#citation",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "Citation",
+    "text": "Citation\nDastgheib, M., Legro L., Stewart M., & Dringenberg, H. C. (2019). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Presented at the Canadian Society for Brain, Behaviour, & Cognitive Sciences meeting, Waterloo, ON."
+  },
+  {
+    "objectID": "publications/publication6/index.html",
+    "href": "publications/publication6/index.html",
+    "title": "The Effect of Physical Effort on Perception and Visual Memory",
+    "section": "",
+    "text": "This poster investigates the effect of physical effort on perception and visual memory using pupillometry."
+  },
+  {
+    "objectID": "publications/publication6/index.html#abstract",
+    "href": "publications/publication6/index.html#abstract",
+    "title": "The Effect of Physical Effort on Perception and Visual Memory",
+    "section": "",
+    "text": "This poster investigates the effect of physical effort on perception and visual memory using pupillometry."
+  },
+  {
+    "objectID": "publications/publication6/index.html#details",
+    "href": "publications/publication6/index.html#details",
+    "title": "The Effect of Physical Effort on Perception and Visual Memory",
+    "section": "Details",
+    "text": "Details\n\nConference: International Conference on Learning and Memory\nDate: 2023\nAuthors: Dastgheib, M., Yaghoubi, K., Kobaissi, H., Alba, J., Bennett, I., Seitz, A."
+  },
+  {
+    "objectID": "research/index.html",
+    "href": "research/index.html",
+    "title": "Research Interests",
+    "section": "",
+    "text": "My doctoral research investigates the intricate relationship between physiological arousal, cognitive effort, and the integrity of the human brain’s neuromodulatory systems. I am fundamentally interested in understanding why cognitive performance, particularly in aging, becomes vulnerable under demanding real-world conditions.\nMy work aims to move beyond simple behavioral metrics by integrating psychophysics, pupillometry, and computational modeling to deconstruct the subcomponents of decision-making. By precisely measuring the impact of physical and cognitive load, I seek to build predictive models of performance that can inform the design of safer, more adaptive, and more inclusive technologies for a range of user populations."
+  },
+  {
+    "objectID": "research/index.html#research-statement",
+    "href": "research/index.html#research-statement",
+    "title": "Research Interests",
+    "section": "",
+    "text": "My doctoral research investigates the intricate relationship between physiological arousal, cognitive effort, and the integrity of the human brain’s neuromodulatory systems. I am fundamentally interested in understanding why cognitive performance, particularly in aging, becomes vulnerable under demanding real-world conditions.\nMy work aims to move beyond simple behavioral metrics by integrating psychophysics, pupillometry, and computational modeling to deconstruct the subcomponents of decision-making. By precisely measuring the impact of physical and cognitive load, I seek to build predictive models of performance that can inform the design of safer, more adaptive, and more inclusive technologies for a range of user populations."
+  },
+  {
+    "objectID": "research/index.html#core-research-areas",
+    "href": "research/index.html#core-research-areas",
+    "title": "Research Interests",
+    "section": "Core Research Areas",
+    "text": "Core Research Areas\nMy research program is built on three interconnected pillars:\n\nAging & Cognitive Neuroscience: Characterizing how age-related changes in the Locus Coeruleus (LC) and its associated neural circuits impact cognitive functions, with a focus on identifying potential biomarkers for neurodegenerative disorders.\nDual-Task Interference & Performance: Quantifying how concurrent physical and cognitive stressors interact to impair performance across multiple domains, including perception, memory, and metacognition.\nPersonalized Cognitive Modeling: Moving beyond group averages to model how individual differences in factors like Cognitive Reserve predict a person’s unique resilience to cognitive overload."
+  },
+  {
+    "objectID": "research/index.html#methodological-expertise",
+    "href": "research/index.html#methodological-expertise",
+    "title": "Research Interests",
+    "section": "🛠️ Methodological Expertise",
+    "text": "🛠️ Methodological Expertise\nTo address these questions, I specialize in a multi-modal approach to data collection and analysis:\n\nPsychophysics: Designing and implementing precise behavioral experiments to measure perceptual and memory thresholds (PsychToolbox).\nPupillometry: Using pupil dilation as a real-time, non-invasive biomarker of cognitive load and physiological arousal (MATLAB, R, Python).\nComputational Modeling: Applying models like the Drift-Diffusion Model (DDM) to deconstruct decision-making processes.\nAdvanced Statistical Analysis: Employing linear mixed-effects models and Bayesian methods for complex, repeated-measures data (R).\nNeuroimaging: Analyzing Diffusion MRI data to investigate white matter integrity and its relationship to behavior (FSL, QSIPrep)."
+  },
+  {
+    "objectID": "publications/publication1/index.html",
+    "href": "publications/publication1/index.html",
+    "title": "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis",
+    "section": "",
+    "text": "This study investigates the effect of physical effort on perception and visual memory using pupillometry. We designed and implemented psychophysical experiments to analyze the impact of physical exertion on visual perception and memory consolidation."
+  },
+  {
+    "objectID": "publications/publication1/index.html#abstract",
+    "href": "publications/publication1/index.html#abstract",
+    "title": "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis",
+    "section": "",
+    "text": "This study investigates the effect of physical effort on perception and visual memory using pupillometry. We designed and implemented psychophysical experiments to analyze the impact of physical exertion on visual perception and memory consolidation."
+  },
+  {
+    "objectID": "publications/publication1/index.html#details",
+    "href": "publications/publication1/index.html#details",
+    "title": "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis",
+    "section": "Details",
+    "text": "Details\n\nJournal: Manuscript in preparation\nAuthors: Mohammad Dastgheib, et al.\nDate: TBD"
+  },
+  {
+    "objectID": "publications/publication8/index.html",
+    "href": "publications/publication8/index.html",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "",
+    "text": "This poster presents the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
+  },
+  {
+    "objectID": "publications/publication8/index.html#abstract",
+    "href": "publications/publication8/index.html#abstract",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "",
+    "text": "This poster presents the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
+  },
+  {
+    "objectID": "publications/publication8/index.html#details",
+    "href": "publications/publication8/index.html#details",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "Details",
+    "text": "Details\n\nConference: Southern Ontario Neuroscience Association (SONA) conference\nLocation: Guelph, ON\nDate: 2018\nAuthors: Mohammad Dastgheib, Legro L., Stewart M., Hans C. Dringenberg"
+  },
+  {
+    "objectID": "publications/publication8/index.html#keywords",
+    "href": "publications/publication8/index.html#keywords",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "Keywords",
+    "text": "Keywords\n\nMemory Consolidation\nSelf-Guided Meditation\nNapping\nCognitive Neuroscience"
+  },
+  {
+    "objectID": "publications/publication8/index.html#citation",
+    "href": "publications/publication8/index.html#citation",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "Citation",
+    "text": "Citation\nDastgheib, M., Legro L., Stewart M., & Dringenberg, H. C. (2018). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Presented at the Southern Ontario Neuroscience Association (SONA) conference, Guelph, ON."
+  },
+  {
+    "objectID": "publications/index.html",
+    "href": "publications/index.html",
+    "title": "Publications & Presentations",
+    "section": "",
+    "text": "This section includes articles that have undergone a formal peer-review process and have been published in academic journals.\n\n\n\n\n\n\nNeuroscience & Biobehavioral Reviews, Volume 140.\n\n\n\n\n\nAugust 2022\n\n\nDastgheib, M., Kulanayagam, A., & Dringenberg, H. C.\n\n\n\n\n\nNo matching items\n\n\n\n\nCuriosity Daily Podcast (Discovery) featured my review article\nIs the role of sleep in memory consolidation overrated? (Neuroscience & Biobehavioral Reviews, 2022).\n🎧 Listen here\nThe Boston Globe: Five facts about sleep everyone should know\nThe Harvard Gazette: Researchers one step closer to understanding daydreams\n\n\n\n\n\nDastgheib, M., Sun, A., Yaghoubi, K., Chen, X., Peters, M., Zhang, W., Bennett, I., Seitz, A. (In Prep). The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis.\nDastgheib, M., Sun, A., Maniscalco, B., Peters, M., Seitz, A. (In Prep). Analysis of metacognitive efficiency in younger and older adults in auditory and visual perceptual task."
+  },
+  {
+    "objectID": "publications/index.html#peer-reviewed-articles",
+    "href": "publications/index.html#peer-reviewed-articles",
+    "title": "Publications & Presentations",
+    "section": "",
+    "text": "This section includes articles that have undergone a formal peer-review process and have been published in academic journals.\n\n\n\n\n\n\nNeuroscience & Biobehavioral Reviews, Volume 140.\n\n\n\n\n\nAugust 2022\n\n\nDastgheib, M., Kulanayagam, A., & Dringenberg, H. C.\n\n\n\n\n\nNo matching items\n\n\n\n\nCuriosity Daily Podcast (Discovery) featured my review article\nIs the role of sleep in memory consolidation overrated? (Neuroscience & Biobehavioral Reviews, 2022).\n🎧 Listen here\nThe Boston Globe: Five facts about sleep everyone should know\nThe Harvard Gazette: Researchers one step closer to understanding daydreams\n\n\n\n\n\nDastgheib, M., Sun, A., Yaghoubi, K., Chen, X., Peters, M., Zhang, W., Bennett, I., Seitz, A. (In Prep). The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis.\nDastgheib, M., Sun, A., Maniscalco, B., Peters, M., Seitz, A. (In Prep). Analysis of metacognitive efficiency in younger and older adults in auditory and visual perceptual task."
+  },
+  {
+    "objectID": "publications/index.html#dissertations-theses",
+    "href": "publications/index.html#dissertations-theses",
+    "title": "Publications & Presentations",
+    "section": "🎓 Dissertations & Theses",
+    "text": "🎓 Dissertations & Theses\nMajor independent research projects completed as part of my graduate training.\n\nDoctoral Dissertation (In Progress): The Influence of Arousal and Cognitive Reserve on Dual-Task Interference in Aging. (University of California, Riverside)\nMaster’s Thesis: The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans. (Queen’s University) — View on OSF Preprints"
+  },
+  {
+    "objectID": "publications/index.html#conference-presentations-published-abstracts",
+    "href": "publications/index.html#conference-presentations-published-abstracts",
+    "title": "Publications & Presentations",
+    "section": "🎤 Conference Presentations & Published Abstracts",
+    "text": "🎤 Conference Presentations & Published Abstracts\nA selection of posters and talks presented at scientific conferences, with my name in bold.\n\nInternational Presentations\n\nSun, A., Dastgheib, M., Maniscalco, B., Peters, M., Zhang, W., Seitz, A. (2025, June). Selective Modulation of Auditory Perception and Metacognition by Hand Grip-Based Arousal in Older Adults. Talk at the Metacognition, Aging and Perception Symposium (MAPS), Rovereto, Italy.\nGhaffari, A., Langley, J., Dastgheib, M., Chen, X., Bennett, I., Hu, X. (2025, May). Functional MRI Connectome Fingerprinting in Older Adults. Talk at the IEEE International Symposium on Biomedical Imaging (ISBI), Houston, TX.\nDastgheib, M., Bennett, I., Seitz, A. (2024, November). The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis. Poster presented at the 65th Annual Meeting of the Psychonomic Society, New York City, NY.\nDastgheib, M., Yaghoubi, K., Kobaissi, H., Alba, J., Bennett, I., Seitz, A. (2023, August). The Effect of Physical Effort on Perception and Visual Memory. Poster presented at the International Conference on Learning and Memory, Huntington Beach, CA.\nDastgheib, M., Legro L., Stewart M., Dringenberg H. (2019, June). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Poster presented at the Canadian Society for Brain, Behaviour, & Cognitive Sciences (CSBBCS) meeting, Waterloo, ON.\n\n\n\nPublished Abstracts\n\nSarwar, S., Shafiee, M., Dastgheib, M., Hajighadimi, S., Ghafarian, H., Rokni, H. (2020). Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals. Canadian Journal of Anesthesia, 67(S1), 1-162. DOI Link\n\n\n\nIntramural Presentations\n\nSarwar, S., Shafiee, M., Dastgheib, M., et al. (2019). Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals. Critical Care Canada Forum (CCCF), Toronto, ON.\nDastgheib, M., Legro L., Stewart M., Dringenberg H. (2018). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Southern Ontario Neuroscience Association (SONA) conference, Guelph, ON.\nDastgheib, M. (2017). Are Older Adults’ Attitudes about Aging Influenced by a Psychoeducational Program? Psychology Undergraduate Thesis Poster Day, York University, Toronto, ON."
+  },
+  {
+    "objectID": "publications/publication5/index.html",
+    "href": "publications/publication5/index.html",
+    "title": "The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis",
+    "section": "",
+    "text": "This poster presents the differential effect of physical effort within perceptual and visual memory domains, using insights from psychometric function analysis."
+  },
+  {
+    "objectID": "publications/publication5/index.html#abstract",
+    "href": "publications/publication5/index.html#abstract",
+    "title": "The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis",
+    "section": "",
+    "text": "This poster presents the differential effect of physical effort within perceptual and visual memory domains, using insights from psychometric function analysis."
+  },
+  {
+    "objectID": "publications/publication5/index.html#details",
+    "href": "publications/publication5/index.html#details",
+    "title": "The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis",
+    "section": "Details",
+    "text": "Details\n\nConference: Psychonomic Society Annual Meeting\nDate: 2024\nAuthors: Dastgheib, M., Bennett, I., Seitz, A."
+  },
+  {
+    "objectID": "publications/publication4/index.html",
+    "href": "publications/publication4/index.html",
+    "title": "Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals",
+    "section": "",
+    "text": "Background: Hypernatremia is a common electrolyte disorder where serum Na + Concentration is &gt;145 mM, and is frequently identified as an issue in patients admitted under general internal medicine 1,2 . The etiology can generally be classified as loss of free water or decreased intake, iatrogenic ingestion/infusion of hypertonic solution, or pseudohypernatremia 3 . It is a common practice to assume decreased intake of free water or extrarenal free water loss as the etiology, and to treat the hypernatremia with administration of hypotonic crystalloid solution without investigation of serum or urine osmolality, electrolytes, urea, or creatinine to delineate etiology 3,4 . In particular, the two often neglected diagnoses are diabetes insipidus and osmotic-induced diuresis. Etiology of hypernatremia is occasionally elusive and refractory to administration of crystalloid solution. However, laboratory investigations ordered by clinicians to properly determine underlying etiology of hypernatremia in these cases are not routine and may vary significantly. Objectives: We hypothesized that appropriate ordering of serum and urine studies by clinicians to determine the etiology of hypernatremia is related to the severity of hypernatremia. In addition, we aim to determine the etiology of hypernatremia that trigger clinician ordering of serum/urine studies. Methods: Patients admitted under general internal medicine at hospitals affiliated with the University Health Network (Toronto Western Hospital and Toronto General Hospital) between the dates of 2015 and 2019 with a serum sodium concentration of 150 mmol/L or greater were selected and assessed for completion of serum electrolytes, serum osmolality, urine electrolytes (Na, K, Cl), urine osmolality, urine creatinine, and urine urea. Discharge summaries were analysed to determine etiology and treatment of hypernatremia as well as treatments initiated. The research proposal was approved by Coordinated Approval Process for Clinical Research (CAPCR) at the University Health Network. Results: Based on our preliminary results, we were able to identify 606 cases of admitted general internal medicine patients with hypernatremia meeting our criteria. In our preliminary analysis of 47 cases, we were able to identify 18 cases (38.3%) with serum osmolality, 19 cases (40.4%) with urine osmolality, 23 cases (48.9%) with urine electrolytes, 1 case (2.1%) with urine urea, and 1 case (2.1%) with urine creatinine. There were 11 cases (23.4%) with all of serum osmolality, urine osmolality, and urine electrolytes. In general, the severity of hypernatremia correlated poorly with the number additional investigations ordered beyond serum electrolytes (ie. serum osmolality and urine studies; r 2 = 0.0204). Conclusion: In this study of patients with hypernatremia we found that a significant portion of admitted patients were not evaluated for urine studies, especially urea or creatinine. Unexpectedly, the severity of hypernatremia correlated poorly with the number of studies ordered to determine etiology, suggesting that the severity of hypernatremia may play a minor role in clinician ordering habits in hypernatremia. The current study signifies the importance of proper ordering and understanding of pathophysiology of hypernatremia and could contribute to filling the knowledge gap in appropriate ordering in hypernatremia, which may reduce the morbidity and mortality rate of hypernatremic patients."
+  },
+  {
+    "objectID": "publications/publication4/index.html#abstract",
+    "href": "publications/publication4/index.html#abstract",
+    "title": "Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals",
+    "section": "",
+    "text": "Background: Hypernatremia is a common electrolyte disorder where serum Na + Concentration is &gt;145 mM, and is frequently identified as an issue in patients admitted under general internal medicine 1,2 . The etiology can generally be classified as loss of free water or decreased intake, iatrogenic ingestion/infusion of hypertonic solution, or pseudohypernatremia 3 . It is a common practice to assume decreased intake of free water or extrarenal free water loss as the etiology, and to treat the hypernatremia with administration of hypotonic crystalloid solution without investigation of serum or urine osmolality, electrolytes, urea, or creatinine to delineate etiology 3,4 . In particular, the two often neglected diagnoses are diabetes insipidus and osmotic-induced diuresis. Etiology of hypernatremia is occasionally elusive and refractory to administration of crystalloid solution. However, laboratory investigations ordered by clinicians to properly determine underlying etiology of hypernatremia in these cases are not routine and may vary significantly. Objectives: We hypothesized that appropriate ordering of serum and urine studies by clinicians to determine the etiology of hypernatremia is related to the severity of hypernatremia. In addition, we aim to determine the etiology of hypernatremia that trigger clinician ordering of serum/urine studies. Methods: Patients admitted under general internal medicine at hospitals affiliated with the University Health Network (Toronto Western Hospital and Toronto General Hospital) between the dates of 2015 and 2019 with a serum sodium concentration of 150 mmol/L or greater were selected and assessed for completion of serum electrolytes, serum osmolality, urine electrolytes (Na, K, Cl), urine osmolality, urine creatinine, and urine urea. Discharge summaries were analysed to determine etiology and treatment of hypernatremia as well as treatments initiated. The research proposal was approved by Coordinated Approval Process for Clinical Research (CAPCR) at the University Health Network. Results: Based on our preliminary results, we were able to identify 606 cases of admitted general internal medicine patients with hypernatremia meeting our criteria. In our preliminary analysis of 47 cases, we were able to identify 18 cases (38.3%) with serum osmolality, 19 cases (40.4%) with urine osmolality, 23 cases (48.9%) with urine electrolytes, 1 case (2.1%) with urine urea, and 1 case (2.1%) with urine creatinine. There were 11 cases (23.4%) with all of serum osmolality, urine osmolality, and urine electrolytes. In general, the severity of hypernatremia correlated poorly with the number additional investigations ordered beyond serum electrolytes (ie. serum osmolality and urine studies; r 2 = 0.0204). Conclusion: In this study of patients with hypernatremia we found that a significant portion of admitted patients were not evaluated for urine studies, especially urea or creatinine. Unexpectedly, the severity of hypernatremia correlated poorly with the number of studies ordered to determine etiology, suggesting that the severity of hypernatremia may play a minor role in clinician ordering habits in hypernatremia. The current study signifies the importance of proper ordering and understanding of pathophysiology of hypernatremia and could contribute to filling the knowledge gap in appropriate ordering in hypernatremia, which may reduce the morbidity and mortality rate of hypernatremic patients."
+  },
+  {
+    "objectID": "publications/publication4/index.html#details",
+    "href": "publications/publication4/index.html#details",
+    "title": "Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals",
+    "section": "Details",
+    "text": "Details\n\nJournal: Canadian Journal of Anesthesia/Journal canadien d’anesthésie\nVolume: 67\nIssue: Supplement 1\nPages: 40-41\nPublisher: Springer Nature\nDate: 2020"
+  },
+  {
+    "objectID": "publications/publication4/index.html#keywords",
+    "href": "publications/publication4/index.html#keywords",
+    "title": "Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals",
+    "section": "Keywords",
+    "text": "Keywords\n\nHypernatremia\nDiagnostic Approaches\nUniversity Health Network Hospitals"
+  },
+  {
+    "objectID": "publications/publication4/index.html#citation",
+    "href": "publications/publication4/index.html#citation",
+    "title": "Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals",
+    "section": "Citation",
+    "text": "Citation\nSarwar, S., Shafiee, M. A., Dastgheib, M., Hajighadimi, S., Ghafarian, H., & Rokni, H. (2020). Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals. Canadian Journal of Anesthesia/Journal canadien d’anesthésie, 67(Supplement 1), 40-41. https://doi.org/10.1007/s12630-019-01552-z"
+  },
+  {
+    "objectID": "publications/publication4/index.html#full-text",
+    "href": "publications/publication4/index.html#full-text",
+    "title": "Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals",
+    "section": "Full Text",
+    "text": "Full Text\nView Full Text"
+  },
+  {
+    "objectID": "projects/dual-task-case-study.html",
+    "href": "projects/dual-task-case-study.html",
+    "title": "Case Study: A Psychophysiological Approach to Modeling Dual-Task Interference",
+    "section": "",
+    "text": "“Imagine an airline pilot mid-flight, gripping the yoke while processing a cascade of system alerts. Or an older surgeon holding robotic instruments while navigating fragile anatomy. In both cases, sustained physical load collides with high cognitive demands—and performance can slip.”\n\nIn high-stakes environments, understanding the precise point where a user becomes overwhelmed is critical for safety and efficiency. This case study outlines the research roadmap I designed to objectively measure and predict cognitive overload, moving beyond guesswork to create data-driven solutions for safer, more adaptive systems.\nThe framework combines controlled physical stressors (isometric handgrip), a battery of cognitive tasks, and real-time physiological biomarkers (pupillometry) to deconstruct how performance degrades under real-world pressure."
+  },
+  {
+    "objectID": "projects/dual-task-case-study.html#aerospace-defense",
+    "href": "projects/dual-task-case-study.html#aerospace-defense",
+    "title": "Case Study: A Psychophysiological Approach to Modeling Dual-Task Interference",
+    "section": "✈️ Aerospace & Defense",
+    "text": "✈️ Aerospace & Defense\nProblem: Pilots and drone operators must simultaneously manage fine motor control and process complex data streams, where cognitive overload can be catastrophic.\n\nLockheed Martin: Integrate continuous pupillometry into F-35 simulators to compute a live Cognitive Load Index, pinpointing maneuvers that trigger overload and allowing for targeted training to build resilience.\n\n\n\n\n\n\n\n\nA mockup of a pilot’s heads-up display showing a real-time ‘Cognitive Load’ gauge, derived from pupillometry data.\n\n\n\nGeneral Atomics: Use grip-force calibration and cognitive load testing to redesign Predator drone controls, creating ergonomic interfaces that minimize cognitive interference and free up operator capacity for strategic decision-making.\n\n\n\n\n\n\n\n\nA UI/UX wireframe of a drone operator’s console, designed with annotations highlighting ergonomic improvements."
+  },
+  {
+    "objectID": "projects/dual-task-case-study.html#high-stakes-medicine",
+    "href": "projects/dual-task-case-study.html#high-stakes-medicine",
+    "title": "Case Study: A Psychophysiological Approach to Modeling Dual-Task Interference",
+    "section": "🏥 High-Stakes Medicine",
+    "text": "🏥 High-Stakes Medicine\nProblem: Surgeons using robotics platforms like the da Vinci system endure prolonged physical strain that can impair the complex decision-making required for patient safety.\n\nIntuitive Surgical: Embed a Dual-Task Performance Dashboard into the surgical console, showing a real-time, pupil-based arousal graph alongside surgical metrics to give surgeons objective feedback on their cognitive state.\n\n\n\n\n\n\n\n\nA mockup of a surgical console screen displaying a time-series plot of the surgeon’s pupil dilation, indicating cognitive load during a procedure.\n\n\n\nCAE Healthcare: Enhance simulators to score both task precision and cognitive load, identifying fatigue “hotspots” where performance degrades. This allows for more effective training and debriefing.\n\n\n\n\n\n\n\n\nA sample chart showing that as cognitive load (pupil dilation, red dashed line) spikes during high-load events, task accuracy (blue line) decreases."
+  },
+  {
+    "objectID": "projects/dual-task-case-study.html#industry-4.0-human-robot-collaboration",
+    "href": "projects/dual-task-case-study.html#industry-4.0-human-robot-collaboration",
+    "title": "Case Study: A Psychophysiological Approach to Modeling Dual-Task Interference",
+    "section": "🏭 Industry 4.0 & Human-Robot Collaboration",
+    "text": "🏭 Industry 4.0 & Human-Robot Collaboration\nProblem: As factory workers collaborate more closely with robots, their safety depends on maintaining situational awareness while performing manual tasks.\n\nSiemens / Rockwell Automation: Develop “smart tools” that sense a worker’s grip force and use in-helmet eye-tracking to detect cognitive overload. When overload is detected, a nearby collaborative robot could automatically slow down, creating a safer, adaptive manufacturing environment.\n\n\n\n\n\n\n\n\nA concept illustration showing a worker’s smart tool with embedded sensors providing a real-time data feedback loop to a nearby collaborative robot."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Mohammad Dastgheib",
+    "section": "",
+    "text": "I am a cognitive neuroscientist and human factors researcher who uses psychophysics, pupillometry, and computational modeling to understand how the human brain makes decisions under pressure.\nView my featured case study →\n\n    \n    \n  \n\n\n\n\n\n\n\n\nCurrently Seeking Internships\n\n\n\nI am available for Fall-Winter 2025 internship roles in UX Research, Human Factors, or as a Research Scientist.\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "cv.html",
@@ -348,5 +369,12 @@
     "title": "CV",
     "section": "",
     "text": "Download Full CV (PDF)"
+  },
+  {
+    "objectID": "surgeon-performance-predict.html",
+    "href": "surgeon-performance-predict.html",
+    "title": "The Surgeon’s ‘Cognitive Black Box’",
+    "section": "",
+    "text": "🚀 The Vision: From Post-Op Review to Proactive Support\n\n“During my time as an AI Annotator at Surgical Safety Technologies (SST), I had a firsthand view of how their groundbreaking ‘OR Black Box’ captures the complex dynamics of the operating room to improve patient outcomes. This experience solidified my understanding of the immense value in data-driven clinical insights. It also highlighted the next critical frontier: moving beyond analyzing what happened to understanding the surgeon’s cognitive state—the why behind their actions.”\n\nThis project is the direct result of that insight. It’s a proof-of-concept for a “Cognitive Black Box”—a system designed to predict a surgeon’s cognitive state in real-time. By fusing my PhD research on the cognitive neuroscience of effort with my industry experience, this case study demonstrates a tangible solution for moving from post-operative review to proactive, intraoperative support, enhancing both patient safety and surgeon well-being.\n\n\n\n\n\n\n\nA mockup of a surgical console screen displaying a time-series plot of the surgeon’s pupil dilation and grip force variability, indicating their cognitive state during a procedure.\n\n\n\n\n\n🧠 The Scientific Framework: My Research in Action\n[cite_start]This project is an application of my PhD research, which provides the theoretical engine to model the underlying mechanisms of performance degradation under pressure[cite: 1, 317].\n\nResource Competition TheoryNeural Gain Theory (NGT)\n\n\n[cite_start]This framework explains what happens when a surgeon performs a physically demanding action (like sustained retraction, mirroring my 40% MVC research) while making a high-stakes cognitive judgment[cite: 78, 244]. These tasks compete for the same finite pool of mental resources. My model is designed to detect when this competition leads to performance-impairing cognitive overload.\n\n\nNGT provides the physiological why. [cite_start]The brain’s arousal system (specifically the LC-NE system) acts like a “volume knob,” adjusting neural gain to enhance important signals and suppress noise[cite: 107, 108]. [cite_start]My research shows that under the high combined effort typical of surgery, this system can become dysregulated, a phenomenon I can model and predict using pupillometry as a direct, non-invasive biomarker of this process[cite: 298, 301].\n Caption: The inverted-U relationship between arousal and performance, central to NGT. [cite_start]My system is designed to identify when a surgeon moves past the optimal point and into a state of impaired performance due to excessive cognitive load[cite: 111, 120].\n\n\n\n\n\n\n⚙️ The Machine Learning Pipeline: From Raw Data to Actionable Insight\nI designed an end-to-end pipeline to simulate and process multimodal data, engineer theoretically-grounded features, and train a predictive model.\n\n1. Data Simulation2. Feature Engineering3. Modeling & Explainability (XAI)\n\n\nTo build this proof-of-concept, I simulated a realistic, second-by-second data stream from a multi-hour laparoscopic procedure. The dataset includes: - Physiological Data: pupil_diameter_mm, heart_rate_variability_rmssd - Motor Control Data: grip_force_newtons - Contextual Data: surgical_phase (e.g., “Dissection”, “Suturing”), physical_effort_level (“Low”, “High”) - Target Variable: cognitive_state_ground_truth (“Optimal”, “High Load”, “Fatigued”, “Attentional Lapse”)\n\n\nThis is where my domain expertise becomes critical. I created novel, theory-driven features: - [cite_start]tonic_pupil_level: A rolling average of pupil diameter, reflecting baseline arousal and overall cognitive load[cite: 114]. - [cite_start]phasic_pupil_response: An event-related dilation metric, reflecting the brain’s adaptive gain response to critical surgical events[cite: 114]. - grip_force_variability: A novel metric I developed for this project. It calculates the rolling standard deviation of instrument grip force, based on my hypothesis that increased variability serves as a proxy for attentional lapses.\n\n\nI trained an XGBoost Classifier—an industry-standard, high-performance model—to predict the surgeon’s cognitive state. To ensure the model is interpretable and trustworthy for clinical stakeholders, I used SHAP (SHapley Additive exPlanations) to identify the key predictive features.\n[Placeholder for your Feature Importance Plot from the XGBoost model]\n\n\n\n\n\n\n✨ The Result: A Real-Time Analytics Dashboard\nThe final output is a proof-of-concept dashboard built in R Shiny. It simulates a live view of the surgeon’s cognitive state and provides clear, interpretable alerts.\n[Placeholder for a full screenshot of your Shiny App Dashboard]\nKey Features of the Dashboard:\n\nLive Cognitive State Prediction: Displays the model’s primary output (e.g., Optimal, High Load, Attentional Lapse) with a corresponding confidence score.\nMulti-Modal Data Visualization: Shows synchronized, live-updating streams of physiological (pupil) and motor (grip force) data.\nExplainable Alerts: The most innovative feature is the “Why” panel. When an alert is triggered, the dashboard uses the XAI model to explain which data signals are driving the prediction, building trust and providing actionable context.\n\n[Placeholder for a GIF showing an alert being triggered and the ‘Why’ panel updating]\n\n\n\n📚 Artifacts & Next Steps\n\nGitHub Repository: View the full source code for the simulation, modeling pipeline, and Shiny app. (Suggestion: create a new repo for this project)\nGrant Proposal: Read the full, peer-reviewed research proposal that provides the theoretical foundation for this work.\n\n\n\n\n\n Back to top"
   }
 ]

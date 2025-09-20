@@ -1,0 +1,19 @@
+---
+title: "Portfolio"
+description: |
+  A curated collection of case studies demonstrating my end-to-end research process, from strategic planning and methodological design to data analysis and industry application.
+listing:
+  - id: case-studies
+    contents: 
+      - "../projects/*.qmd"  # Corrected relative path
+    type: grid
+    sort: "date desc"
+    fields: [image, title, description]
+    image-height: "200px"
+page-layout: full
+---
+
+Welcome to my portfolio. Each case study below provides a detailed walkthrough of a significant research project. You'll find a mix of results-driven studies and "research roadmap" plans that showcase my ability to both architect and execute complex human-centered research.
+
+:::{#case-studies}
+:::
