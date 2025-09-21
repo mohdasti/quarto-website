@@ -40,13 +40,13 @@ page-layout: full
 
 I am a cognitive neuroscientist and human factors researcher who uses psychophysics, pupillometry, and computational modeling to understand how the human brain makes decisions under pressure.
 
-[**View my featured case study &rarr;**](/projects/dual-task-case-study.qmd){.btn .btn-primary .btn-lg style="background-color: #e63946; border-color: #e63946;"}
+[**View my featured case study &rarr;**](/projects/surgeon-performance-predict.qmd){.btn .btn-primary .btn-lg style="background-color: #e63946; border-color: #e63946;"}
 
 :::
 
 
 ::: {.callout-note}
 ### Currently Seeking Internships
-I am available for Fall-Winter 2025 internship roles in UX Research, Human Factors, or as a Research Scientist.
+I am available for Winter 2025 and Summer 2026 internship roles in UX Research, Human Factors, or as a Research Scientist.
 :::
 

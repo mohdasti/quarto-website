@@ -1,0 +1,323 @@
+---
+title: "The Surgeon's 'Cognitive Black Box'"
+subtitle: "A Real-Time Analytics Platform for Predicting and Mitigating Surgical Fatigue"
+image: https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/surgical_console_enhanced.png
+description: "A proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon's cognitive state, inspired by my work at Surgical Safety Technologies."
+editor: 
+  markdown: 
+    wrap: 72
+---
+
+### **🚀 The Vision: From Post-Op Review to Proactive Support**
+
+> "During my time as an AI Annotator at [**Surgical Safety Technologies
+> (SST)**](https://www.surgicalsafety.com/), I had a firsthand view of how their groundbreaking 'OR Black
+> Box' captures the complex dynamics of the operating room to improve
+> patient outcomes. This experience solidified my understanding of the
+> immense value in data-driven clinical insights. It also highlighted
+> the next critical frontier: moving beyond analyzing *what* happened to
+> understanding the surgeon's cognitive state—the *why* behind their
+> actions."
+
+This project is my answer to that challenge. I developed a
+proof-of-concept for a **"Cognitive Black Box"**—an end-to-end analytics platform that
+predicts a surgeon's cognitive state in real-time. By fusing my PhD
+research on the cognitive neuroscience of effort with my industry
+experience, this case study demonstrates a tangible solution for moving
+from post-operative review to proactive, intraoperative support,
+enhancing both patient safety and surgeon well-being.
+
+![A mockup of a surgical console screen displaying a time-series plot of
+the surgeon's pupil dilation and grip force variability, indicating
+their cognitive state during a
+procedure.](https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/surgical_console_enhanced.png){fig-align="center"
+width="90%"}
+
+------------------------------------------------------------------------
+
+### **🧠 The Scientific Framework: My Research in Action**
+
+This project is an application of my PhD research, which provides the
+theoretical engine to model the underlying mechanisms of performance
+degradation under pressure.
+
+::: panel-tabset
+
+#### **Adaptive Gain Theory (AGT)**
+
+AGT provides the physiological *why*. The brain's arousal system
+(specifically the LC-NE system) acts like a "volume knob," adjusting
+neural gain to enhance important signals and suppress noise. My research
+shows that under the high combined effort typical of surgery, this
+system can become dysregulated, a phenomenon I can model and predict
+using pupillometry as a direct, non-invasive biomarker of this process.
+
+![The classic inverted-U relationship between arousal and performance,
+showing optimal performance at moderate arousal
+levels.](https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/ArousalPerformance.png){fig-align="center"
+width="70%"} *Caption: The inverted-U relationship between arousal and
+performance, central to Adaptive Gain Theory. My system is designed to
+identify when a surgeon moves past the optimal point and into a state of
+impaired performance due to excessive cognitive load.*
+
+#### **Resource Competition Theory**
+
+This framework explains *what* happens when a surgeon performs a
+physically demanding action (like sustained retraction, mirroring my 40%
+MVC research) while making a high-stakes cognitive judgment. These tasks
+compete for the same finite pool of mental resources. My model is
+designed to detect when this competition leads to performance-impairing
+cognitive overload.
+
+#### **Key Concepts & Terminology**
+
+A brief glossary of the core concepts from my research that power this project.
+
+* **Pupillometry:** The measurement of pupil diameter. I use it as a precise, non-invasive biomarker of cognitive effort and arousal, as it is tightly linked to activity in the brain's Locus Coeruleus-Norepinephrine (LC-NE) system.
+
+* **Tonic vs. Phasic Arousal:** These are two distinct modes of the arousal system that I model with my features:
+    * **Tonic Arousal (`tonic_pupil_level_30s`):** Refers to the slow-moving, baseline level of alertness over a longer period (tens of seconds). It reflects the surgeon's overall engagement and processing load.
+    * **Phasic Arousal (`phasic_pupil_change_5s`):** Refers to the rapid, transient bursts of arousal in response to a specific event (e.g., making a critical suture). It reflects the momentary deployment of focused mental effort.
+
+* **Grip Force Variability (`grip_force_variability_15s`):** A novel feature I engineered for this project. It's based on the hypothesis that maintaining a steady isometric muscle contraction requires constant attentional control. Therefore, an increase in the variability (i.e., noise) of the grip force signal can serve as a proxy for a lapse in sustained attention.
+
+* **XGBoost (Extreme Gradient Boosting):** The machine learning algorithm I chose for the classification task. It is a high-performance, industry-standard model known for its accuracy and its ability to handle complex, non-linear relationships in data.
+
+* **Feature Engineering:** The process of transforming raw sensor data into meaningful variables that machine learning algorithms can use effectively. My domain expertise in cognitive neuroscience guided the creation of theory-driven features rather than generic statistical measures.
+
+* **Cross-Validation & Hyperparameter Tuning:** Rigorous methods to ensure model reliability. Cross-validation tests the model on unseen data subsets, while hyperparameter tuning optimizes the model's configuration for best performance.
+
+:::
+
+------------------------------------------------------------------------
+
+### **⚙️ The Machine Learning Pipeline: From Raw Data to Actionable Insight**
+
+I designed an end-to-end pipeline to simulate and process multimodal
+data, engineer theoretically-grounded features, and train a predictive
+model.
+
+::: panel-tabset
+#### **1. Data Simulation**
+
+To build this proof-of-concept, I simulated a realistic,
+second-by-second data stream from a 3-hour surgical procedure. The
+dataset includes:
+
+- **Physiological Data:** `pupil_diameter_mm` -
+continuous pupillometry measurements
+- **Motor Control Data:**
+`grip_force_newtons` - surgical instrument grip pressure
+- **Behavioral
+Data:** `instrument_tremor_hz`- high-frequency tremor measurements\
+- **Target Variable:** `cognitive_state` ("Optimal", "High Load",
+"Fatigued", "Attentional Lapse")
+
+The simulation creates 32,400 observations (3 surgeons × 10,800 seconds)
+with realistic temporal dynamics and state transitions based on surgical
+workflow patterns.
+
+#### **2. Feature Engineering**
+
+This is where my domain expertise becomes critical. I created novel,
+theory-driven features:
+
+- **`tonic_pupil_level_30s`:** A 30-second
+rolling average of pupil diameter, reflecting baseline arousal and
+overall cognitive load.
+- **`phasic_pupil_change_5s`:** An event-related
+dilation metric capturing rapid pupil changes from a 5-second baseline,
+reflecting the brain's adaptive gain response to critical surgical
+events.
+- **`grip_force_variability_15s`:** A novel metric I developed
+for this project. It calculates the 15-second rolling standard deviation
+of instrument grip force, based on my hypothesis, grounded in dual-task literature, that increased
+variability in fine motor control serves as a proxy for **attentional lapses**.
+- **`tremor_trend_10s`:** A 10-second rolling mean of instrument tremor,
+capturing fine motor control degradation.
+- **`pupil_diameter_lag_5s`:**
+Temporal context feature providing the pupil state from 5 seconds prior.
+
+#### **3. Modeling & Explainability (XAI)**
+
+I trained an [**XGBoost Classifier**](https://xgboost.ai/) with hyperparameter tuning using
+3-fold cross-validation—an industry-standard, high-performance model—to
+predict the surgeon's cognitive state. The model achieves:
+
+- **Overall Accuracy:** 99.58%
+- **Cohen's Kappa:** 0.993
+- **Cross-Validation:**
+Robust performance across folds with grid search optimization
+
+To ensure the model is interpretable and trustworthy for clinical
+stakeholders, I implemented feature importance analysis and dynamic
+explanations that show which physiological signals are driving each
+prediction in real-time.
+
+![Feature importance from the trained XGBoost model showing the relative
+predictive power of each engineered
+feature.](https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/feature_importance.png){fig-align="center"
+width="80%"}
+:::
+
+------------------------------------------------------------------------
+
+### **✨ The Result: A Real-Time Analytics Dashboard**
+
+The final output is a proof-of-concept dashboard built in [**R Shiny**](https://shiny.posit.co/).
+It simulates a live view of the surgeon's cognitive state and provides
+clear, interpretable alerts with two main interfaces:
+
+::: panel-tabset
+#### **Live Surgical Dashboard**
+
+The primary interface provides real-time monitoring during surgery with
+an intuitive, clinical-focused design.
+
+![Live Surgical Dashboard showing real-time pupil diameter and grip
+force monitoring with cognitive state prediction and dynamic clinical
+interpretations.](https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/Live_Surgical_Dashboard.gif){fig-align="center"
+width="90%"}
+
+**Key Features:**
+
+-   **Real-time sensor plots:** Pupil diameter and grip force visualized
+    with human-readable time formatting
+-   **Cognitive state spectrum:** Dynamic dial showing current state on
+    a visual spectrum
+-   **Progress tracking:** Video-style progress bar with accurate time
+    remaining
+-   **Dynamic "Why" panel:** Data-driven clinical interpretations that
+    update based on live feature values
+-   **Speed controls:** Simulation can run at 1x, 10x, 50x, or 100x
+    speed for demos
+
+#### **ML Model Diagnostics**
+
+The technical interface provides transparency into the machine learning
+model's decision-making process.
+
+![ML Model Diagnostics panel showing prediction probabilities, live
+feature values, and feature importance
+visualization.](https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/ML_Model_Diagnostics.gif){fig-align="center"
+width="90%"}
+
+**Technical Features:**
+
+-   **Prediction probabilities:** Live confidence scores for all four
+    cognitive states
+-   **Feature values table:** Real-time display of all engineered
+    features driving predictions
+-   **Feature importance:** Static visualization showing which features
+    matter most to the model
+:::
+
+**Innovation Highlight: Data-Driven Explanations** The most innovative
+feature is the dynamic **"Why" panel** that doesn't just show generic
+text, but reports the actual feature values driving each prediction
+(e.g., "High Grip Force Variability (2.31 N)" or "Elevated Tonic Pupil
+Level (4.2 mm)"), building trust through transparency.
+
+------------------------------------------------------------------------
+
+### **🚀 Applications: Enhancing the da Vinci Surgical System**
+
+The true power of this research is its direct applicability to high-stakes environments. While the methodology is versatile, this case study focuses on a specific, high-impact application: **enhancing the capabilities of** [**Intuitive's da Vinci surgical systems**](https://www.intuitive.com/en-us/products-and-services/da-vinci).
+
+The da Vinci platform provides unparalleled robotic control and visualization but currently lacks objective, real-time monitoring of the surgeon's cognitive state. My "Cognitive Black Box" is designed to integrate seamlessly with the existing da Vinci ecosystem to fill this critical gap, transforming the surgeon's console into a cognitively-aware command center.
+
+#### **🏥 High-Stakes Medicine: The Cognitively-Aware Surgical Console**
+
+**Problem:** A surgeon's performance can be compromised by fatigue and high cognitive load long before they are consciously aware of it. The da Vinci system logs instrument data, but it cannot see the surgeon's mental state.
+
+**My Solution:** Integrate my real-time cognitive state analytics directly into the [**da Vinci surgeon console**](https://www.intuitive.com/en-us/products-and-services/da-vinci/systems).
+
+**1. Integration with the Surgeon Console Viewfinder:**
+
+- **Existing Feature:** The da Vinci surgeon console provides a high-definition, 3D view of the surgical site.
+- **My Enhancement:** I propose a minimalist **Heads-Up Display (HUD)** overlay at the edge of the viewfinder. This HUD would display a simple, color-coded **Cognitive State Indicator (CSI)**. It would remain a calm green during "Optimal" states, turn yellow during "High Load," and provide a subtle, non-distracting red pulse during a predicted "Attentional Lapse." This provides critical feedback without diverting the surgeon's focus.
+
+**2. Leveraging da Vinci's Built-in Data Streams:**
+
+- **Existing Feature:** Da Vinci systems can already record instrument and event data. My work at SST involved annotating this type of procedural video data.
+- **My Enhancement:** My system would tap into these existing data streams. The `grip_force_variability` feature I developed would be calculated directly from the force sensors in the master controllers (the surgeon's hand controls). The `phasic_pupil_response` would be timed to critical events logged by the system, such as instrument activation or error alerts. This isn't a new set of sensors; it's a smarter use of the data already being generated.
+
+**3. Enhancing Post-Operative Debriefing with "Simulated Eye View":**
+
+- **Existing Feature:** Intuitive provides products like the [**"Simulated Eye View"**](https://www.intuitive.com/en-us/products-and-services/simnow) for post-operative review and training.
+- **My Enhancement:** I propose augmenting these recordings with a synchronized timeline of the surgeon's predicted cognitive state. Trainees could see exactly *when* and *why* a period of high cognitive load occurred, correlating it with specific surgical steps. The "Why" panel from my dashboard would provide objective, data-driven talking points for the debriefing session, moving beyond subjective recall.
+
+------------------------------------------------------------------------
+
+### **📚 Project Artifacts & Technical Details**
+
+::: panel-tabset
+#### **Code & Repository**
+
+-   **GitHub Repository:** [View the complete source code, data
+    pipeline, and interactive
+    dashboard](https://github.com/mohdasti/surgical-cognitive-dashboard)
+-   **Tech Stack:** R, Shiny, XGBoost, tidyverse, ggplot2, DT
+-   **Development Approach:** Modular pipeline with separate scripts for
+    data simulation, feature engineering, and model training
+-   **Reproducibility:** All code includes seed setting and
+    comprehensive logging for transparent replication
+
+#### **Model Performance**
+
+**Training Results:**
+
+-   **Dataset:** 32,400 observations across 3 simulated surgeons
+-   **Features:** 5 engineered features from 3 raw sensor streams
+-   **Algorithm:** XGBoost with 3-fold cross-validation hyperparameter
+    tuning
+-   **Accuracy:** 99.58% overall accuracy with κ = 0.993
+
+**Per-Class Performance:**
+
+-   **Optimal State:** 100% sensitivity, 100% specificity
+-   **High Load:** 99.9% sensitivity, 100% specificity\
+-   **Fatigued:** 99.9% sensitivity, 99.4% specificity
+-   **Attentional Lapse:** 25% sensitivity, 100% specificity\*
+
+*Attentional lapses are rare events (0.4% prevalence), where high
+specificity is prioritized to avoid false alarms.*
+
+#### **Research Foundation**
+
+-   **Grant Proposal:** [Read the peer-reviewed research proposal
+    providing the theoretical
+    foundation](../supporting_docs/Qualification_Exam.pdf)
+-   **Industry Context:** Inspired by work as AI Annotator at Surgical
+    Safety Technologies (SST)
+-   **Academic Integration:** Direct application of PhD research on
+    cognitive neuroscience of effort and Adaptive Gain Theory
+:::
+
+------------------------------------------------------------------------
+
+### **🎯 Impact & Next Steps**
+
+**Immediate Applications:**
+
+- **Surgical Training:** Objective
+assessment of trainee cognitive load during skill development, reducing time-to-proficiency and identifying trainees who may require additional support
+- **Quality Improvement:** Data-driven insights into when and why surgical
+performance degrades, potentially reducing intraoperative errors by flagging high-risk cognitive states
+- **Research Platform:** Foundational system for
+studying cognitive load in high-stakes environments
+
+**Future Development:**
+
+- **Hardware Integration:** Connect with real
+pupillometry and force sensor systems
+- **Clinical Validation:** Partner
+with surgical training centers for real-world testing\
+- **Multi-Modal Expansion:** Incorporate additional physiological
+signals I have experience with, such as **Heart Rate Variability (HRV)**, EEG, and cortisol
+- **Team Monitoring:** Extend to monitor
+multiple team members simultaneously
+
+This proof-of-concept demonstrates the feasibility of real-time
+cognitive monitoring in surgical environments, bridging fundamental
+neuroscience research with practical clinical applications.

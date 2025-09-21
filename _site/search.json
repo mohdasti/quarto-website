@@ -11,7 +11,7 @@
     "href": "portfolio/index.html",
     "title": "Portfolio",
     "section": "",
-    "text": "Welcome to my portfolio. Each case study below provides a detailed walkthrough of a significant research project. You’ll find a mix of results-driven studies and “research roadmap” plans that showcase my ability to both architect and execute complex human-centered research.\n\n\n\n\n\n\n\n\n\n\nCase Study: A Psychophysiological Approach to Modeling Dual-Task Interference\n\n\nA research roadmap case study on modeling dual-task interference using pupillometry to enhance performance in high-stakes environments.\n\n\n\n\n\n\n\n\n\n\n\n\nCase Study: Optimizing Learning with Cognitive States\n\n\nAn end-to-end mixed-methods study comparing the effects of napping and meditation on declarative and procedural memory consolidation.\n\n\n\n\n\nNo matching items\n\n\n\n\n\n Back to top"
+    "text": "Welcome to my portfolio. Each case study below provides a detailed walkthrough of a significant research project. You’ll find a mix of results-driven studies and “research roadmap” plans that showcase my ability to both architect and execute complex human-centered research.\n\n\n\n\n\n\n\n\n\n\nCase Study: A Psychophysiological Approach to Modeling Dual-Task Interference\n\n\nA research roadmap case study on modeling dual-task interference using pupillometry to enhance performance in high-stakes environments.\n\n\n\n\n\n\n\n\n\n\n\n\nCase Study: Optimizing Learning with Cognitive States\n\n\nAn end-to-end mixed-methods study comparing the effects of napping and meditation on declarative and procedural memory consolidation.\n\n\n\n\n\n\n\n\n\n\n\n\nThe Surgeon’s ‘Cognitive Black Box’\n\n\nA proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon’s cognitive state, inspired by my work at Surgical…\n\n\n\n\n\nNo matching items\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "about/index.html",
@@ -35,249 +35,11 @@
     "text": "Industry Experience\n\n\n\n\n\nResearch Assistant I\nSurgical Safety Technologies (SST) | Toronto, ON | 2021"
   },
   {
-    "objectID": "projects/memory-and-meditation.html",
-    "href": "projects/memory-and-meditation.html",
-    "title": "Case Study: Optimizing Learning with Cognitive States",
+    "objectID": "projects/surgeon-performance-predict.html",
+    "href": "projects/surgeon-performance-predict.html",
+    "title": "The Surgeon’s ‘Cognitive Black Box’",
     "section": "",
-    "text": "🧠 Optimizing Learning: A Deep Dive into the Cognitive States that Boost Memory\n\n\n📊 Executive Summary / TL;DR\n\nThe Problem: Companies build tools to help users learn and be productive but lack clarity on how different mental states (like napping or meditating) influence the brain’s ability to retain factual versus physical memories. This uncertainty can result in inefficiencies, diminished user performance, and wasted investments in training programs or wellness initiatives.\nMy Action: I designed and executed an end-to-end research study involving 60+ participants, employing a mixed-methods approach with behavioral tasks (word-pair recall, a physical maze game), physiological EEG recordings, and self-report questionnaires.\nThe Result: I discovered that mindfulness meditation significantly improved factual memory retention. The most surprising discovery was that while naps are restorative, deep sleep can temporarily impair physical skills due to sleep inertia—a critical insight for products or services targeting immediate post-rest performance.\n\n\n\n\n🎯 The Business Problem / The Challenge\nProduct teams in e-learning, corporate training, and wellness often design experiences without clear evidence on how users’ cognitive states impact their ability to learn. Is a power nap or meditation more effective for mastering a new software skill or physical task? This study addressed these questions by exploring how rest, naps, and meditation specifically influence:\n\nDeclarative Memory: Crucial for retaining facts and information.\nProcedural Memory: Essential for acquiring new physical skills.\n\n\n\n\n🧑‍🔬 My Role & Responsibilities\n\nLead Researcher: Oversaw the entire research process from ideation to completion.\nProject Manager: Scoped the study, managed timelines, coordinated 60+ participants over multiple sessions, and ensured seamless execution.\nMentor & Team Lead: Guided and trained a team of three student researchers (including one undergraduate capstone project) on experimental protocols, data collection techniques, and research ethics.\nResearch Designer: Developed the research protocols, memory task stimuli, and selected EEG hardware and analytical tools.\nData Scientist: Performed all data preprocessing, cleaning, and advanced statistical analyses utilizing R and Bayesian methodologies.\nCommunicator: Presented findings clearly to interdisciplinary stakeholders and authored a peer-reviewed perspective piece, translating complex results into actionable recommendations for the broader scientific community.\n\n\n\n\n🔬 The Approach: A 3-Phase Process\nPhase 1: Research Design & User Recruitment\n\nWhat I did: Structured a three-condition experiment (Nap, Meditation, Active Wakefulness) conducted over multiple days.\nWhy I did it: Enabled clear comparisons among cognitive states, minimizing confounding variables like anxiety through the multi-day design.\nWhat I did: Established precise participant screening criteria (e.g., must be habitual meditators/nappers).\nWhy I did it: Ensured genuine representation of targeted cognitive states, enhancing the validity and applicability of the results.\n\nPhase 2: Mixed-Methods Data Collection\n\nBehavioral Data: I chose word-pair and marble-maze tasks. These tasks distinctly measured factual recall (declarative) and motor skill acquisition (procedural), aligning with the study’s dual-memory focus.\n\n\n\n\n\n\n\n\nThe marble maze apparatus used to measure procedural motor skill learning.\n\n\n\nPhysiological Data: I collected multi-channel EEG recordings. This objective physiological data captured precise cognitive states, surpassing the reliability of self-report alone.\nSelf-Report Data: I administered validated scales (ESS, FMI). This added subjective insights into the participant experience, complementing the objective EEG data.\n\nPhase 3: Analysis & Synthesis\n\nProcessed and visually scored hours of multi-channel EEG data, epoch by epoch, to objectively classify sleep stages and identify ‘meditative states.’\nUtilized Bayesian statistical modeling in R, which is optimal for reliable interpretation, particularly with smaller, nuanced datasets.\nEmployed a G-Mean calculation for declarative memory analysis to handle class imbalance in the test data, ensuring unbiased accuracy of results.\n\n\n\n\n💡 Key Insight #1: For learning facts, quiet focus beats a nap.\n\nWhat I Found: Mindfulness meditators showed a significant advantage in memory retention over participants in an active-waking state (watching a video). Furthermore, their performance trended higher than those who took a short nap, suggesting that for factual learning, quiet wakefulness is a powerful and reliable tool for memory consolidation.\nThe “So What?”: Quiet, focused wakefulness is optimal for factual learning, suggesting intentional meditation breaks could greatly enhance retention of new information.\nPotential Application: Companies like Duolingo, Coursera, or even corporate onboarding programs could integrate structured, guided meditation intervals into training modules to boost user learning and long-term retention of educational content.\n\n\n\n\n\n\n\n\nPerformance on the declarative memory task was highest in the Meditation (MED) group.\n\n\n\n\n\n💡 Key Insight #2: Deep naps can temporarily hurt physical skills.\n\nWhat I Found: Participants experiencing only light sleep improved their motor skills, while those entering deep Slow-Wave Sleep (SWS) experienced post-nap performance impairments, attributed to sleep inertia.\nThe “So What?”: The depth of a nap critically influences post-rest performance on physical tasks. For users needing immediate peak performance, an unintended deep nap could be counterproductive.\nPotential Application: Smartwatch companies (like Apple or Google/Fitbit) developing smart alarm features could optimize wake-up times to avoid interrupting SWS. This feature would be critical for roles requiring immediate alertness and precision post-rest, such as shift workers, healthcare professionals, pilots, or drivers in logistics.\n\n\n\n\n\n\n\n\nPerformance on the maze task improved with more light sleep (pink line) but worsened with more deep sleep (blue line), highlighting the impact of sleep inertia.\n\n\n\n\n\n🚧 Challenges & Learnings\n\nChallenge 1: Validating a Novel Task. The marble maze was a new method for assessing procedural memory.\n\nWhat I Learned: This taught me the importance of assessing the criterion validity of new research instruments. In a future iteration, I would correlate its results with a well-established motor skills task to build a stronger case for its reliability.\n\nChallenge 2: Unbalanced Demographics. The exploratory analysis revealed that gender might influence performance on different memory types, but the sample was not balanced for this comparison.\n\nWhat I Learned: This experience underscored the value of user segmentation. Going forward, I would proactively balance demographic cells in my recruiting plans, adopting a more iterative, UX-oriented approach to confidently analyze how different user groups might behave.\n\n\n\n\n\n📚 Publications & Impact\nThe insights from this research were not only compelling but also sparked a broader conversation in the scientific community. The work led directly to a peer-reviewed publication in a leading journal, demonstrating its scientific rigor and relevance:\n\nPeer-Reviewed Publication:\n\nDastgheib, M., Kulanayagam, A., & Dringenberg, H. C. (2022). Is the role of sleep in memory consolidation overrated? Neuroscience & Biobehavioral Reviews, 140, 104799. https://doi.org/10.1016/j.neubiorev.2022.104799\n\nOriginal Thesis & Presentation:\n\nRead the full Master’s Thesis (External Link)\nView the Presentation Slides (External Link)\n\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "publications/publication3/index.html",
-    "href": "publications/publication3/index.html",
-    "title": "The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans",
-    "section": "",
-    "text": "This Master’s thesis investigates the effects of self-guided meditation and napping on memory consolidation in humans. The study examines whether these interventions can enhance memory performance and explores the underlying mechanisms."
-  },
-  {
-    "objectID": "publications/publication3/index.html#abstract",
-    "href": "publications/publication3/index.html#abstract",
-    "title": "The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans",
-    "section": "",
-    "text": "This Master’s thesis investigates the effects of self-guided meditation and napping on memory consolidation in humans. The study examines whether these interventions can enhance memory performance and explores the underlying mechanisms."
-  },
-  {
-    "objectID": "publications/publication3/index.html#details",
-    "href": "publications/publication3/index.html#details",
-    "title": "The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans",
-    "section": "Details",
-    "text": "Details\n\nUniversity: Queen’s University\nDegree: M.Sc. in Psychology\nDate: 2020\nAdvisor: Hans C. Dringenberg"
-  },
-  {
-    "objectID": "publications/publication3/index.html#keywords",
-    "href": "publications/publication3/index.html#keywords",
-    "title": "The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans",
-    "section": "Keywords",
-    "text": "Keywords\n\nMemory Consolidation\nSelf-Guided Meditation\nNapping\nCognitive Neuroscience"
-  },
-  {
-    "objectID": "publications/publication3/index.html#citation",
-    "href": "publications/publication3/index.html#citation",
-    "title": "The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans",
-    "section": "Citation",
-    "text": "Citation\nDastgheib, M. (2020). The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans. Master’s thesis, Queen’s University."
-  },
-  {
-    "objectID": "publications/publication3/index.html#full-text",
-    "href": "publications/publication3/index.html#full-text",
-    "title": "The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans",
-    "section": "Full Text",
-    "text": "Full Text\nView Full Text"
-  },
-  {
-    "objectID": "publications/peer-reviewed/dastgheib-2022-neurobio-reviews.html",
-    "href": "publications/peer-reviewed/dastgheib-2022-neurobio-reviews.html",
-    "title": "Is the role of sleep in memory consolidation overrated?",
-    "section": "",
-    "text": "Abstract\n\n\n\n\n\nSubstantial empirical evidence suggests that sleep benefits the consolidation and reorganization of learned information. Consequently, the concept of “sleep-dependent memory consolidation” is now widely accepted by the scientific community, in addition to influencing public perceptions regarding the functions of sleep. There are, however, numerous studies that have presented findings inconsistent with the sleep-memory hypothesis. Here, we challenge the notion of “sleep-dependency” by summarizing evidence for effective memory consolidation independent of sleep. Plasticity mechanisms thought to mediate or facilitate consolidation during sleep (e.g., neuronal replay, reactivation, slow oscillations, neurochemical milieu) also operate during non-sleep states, particularly quiet wakefulness, thus allowing for the stabilization of new memories. We propose that it is not sleep per se, but the engagement of plasticity mechanisms, active during both sleep and (at least some) waking states, that constitutes the critical factor determining memory formation. Thus, rather than playing a “critical” role, sleep falls along a continuum of behavioral states that vary in their effectiveness to support memory consolidation at the neural and behavioral level.\n\n\n\nView Publication (DOI) Download PDF\n\n\n\n\n\n\nMedia Coverage\n\n\n\nCuriosity Daily Podcast (Discovery) Episode: Daydream Brain, Power of a Laugh, Caffeine & Soccer Original release: Jan 25, 2024 · Re-release: Dec 19, 2024\n\n\nListen on Acast\n\nThe Boston Globe: Five facts about sleep everyone should know\nThe Harvard Gazette: Researchers one step closer to understanding daydreams\n\n\n\n\n\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "publications/publication7/index.html",
-    "href": "publications/publication7/index.html",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "",
-    "text": "This conference presentation explores the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
-  },
-  {
-    "objectID": "publications/publication7/index.html#abstract",
-    "href": "publications/publication7/index.html#abstract",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "",
-    "text": "This conference presentation explores the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
-  },
-  {
-    "objectID": "publications/publication7/index.html#details",
-    "href": "publications/publication7/index.html#details",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "Details",
-    "text": "Details\n\nConference: Canadian Society for Brain, Behaviour, & Cognitive Sciences meeting\nLocation: Waterloo, ON\nDate: 2019\nAuthors: Mohammad Dastgheib, Legro L., Stewart M., Hans C. Dringenberg"
-  },
-  {
-    "objectID": "publications/publication7/index.html#keywords",
-    "href": "publications/publication7/index.html#keywords",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "Keywords",
-    "text": "Keywords\n\nMemory Consolidation\nSelf-Guided Meditation\nNapping\nCognitive Neuroscience"
-  },
-  {
-    "objectID": "publications/publication7/index.html#citation",
-    "href": "publications/publication7/index.html#citation",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "Citation",
-    "text": "Citation\nDastgheib, M., Legro L., Stewart M., & Dringenberg, H. C. (2019). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Presented at the Canadian Society for Brain, Behaviour, & Cognitive Sciences meeting, Waterloo, ON."
-  },
-  {
-    "objectID": "publications/publication6/index.html",
-    "href": "publications/publication6/index.html",
-    "title": "The Effect of Physical Effort on Perception and Visual Memory",
-    "section": "",
-    "text": "This poster investigates the effect of physical effort on perception and visual memory using pupillometry."
-  },
-  {
-    "objectID": "publications/publication6/index.html#abstract",
-    "href": "publications/publication6/index.html#abstract",
-    "title": "The Effect of Physical Effort on Perception and Visual Memory",
-    "section": "",
-    "text": "This poster investigates the effect of physical effort on perception and visual memory using pupillometry."
-  },
-  {
-    "objectID": "publications/publication6/index.html#details",
-    "href": "publications/publication6/index.html#details",
-    "title": "The Effect of Physical Effort on Perception and Visual Memory",
-    "section": "Details",
-    "text": "Details\n\nConference: International Conference on Learning and Memory\nDate: 2023\nAuthors: Dastgheib, M., Yaghoubi, K., Kobaissi, H., Alba, J., Bennett, I., Seitz, A."
-  },
-  {
-    "objectID": "research/index.html",
-    "href": "research/index.html",
-    "title": "Research Interests",
-    "section": "",
-    "text": "My doctoral research investigates the intricate relationship between physiological arousal, cognitive effort, and the integrity of the human brain’s neuromodulatory systems. I am fundamentally interested in understanding why cognitive performance, particularly in aging, becomes vulnerable under demanding real-world conditions.\nMy work aims to move beyond simple behavioral metrics by integrating psychophysics, pupillometry, and computational modeling to deconstruct the subcomponents of decision-making. By precisely measuring the impact of physical and cognitive load, I seek to build predictive models of performance that can inform the design of safer, more adaptive, and more inclusive technologies for a range of user populations."
-  },
-  {
-    "objectID": "research/index.html#research-statement",
-    "href": "research/index.html#research-statement",
-    "title": "Research Interests",
-    "section": "",
-    "text": "My doctoral research investigates the intricate relationship between physiological arousal, cognitive effort, and the integrity of the human brain’s neuromodulatory systems. I am fundamentally interested in understanding why cognitive performance, particularly in aging, becomes vulnerable under demanding real-world conditions.\nMy work aims to move beyond simple behavioral metrics by integrating psychophysics, pupillometry, and computational modeling to deconstruct the subcomponents of decision-making. By precisely measuring the impact of physical and cognitive load, I seek to build predictive models of performance that can inform the design of safer, more adaptive, and more inclusive technologies for a range of user populations."
-  },
-  {
-    "objectID": "research/index.html#core-research-areas",
-    "href": "research/index.html#core-research-areas",
-    "title": "Research Interests",
-    "section": "Core Research Areas",
-    "text": "Core Research Areas\nMy research program is built on three interconnected pillars:\n\nAging & Cognitive Neuroscience: Characterizing how age-related changes in the Locus Coeruleus (LC) and its associated neural circuits impact cognitive functions, with a focus on identifying potential biomarkers for neurodegenerative disorders.\nDual-Task Interference & Performance: Quantifying how concurrent physical and cognitive stressors interact to impair performance across multiple domains, including perception, memory, and metacognition.\nPersonalized Cognitive Modeling: Moving beyond group averages to model how individual differences in factors like Cognitive Reserve predict a person’s unique resilience to cognitive overload."
-  },
-  {
-    "objectID": "research/index.html#methodological-expertise",
-    "href": "research/index.html#methodological-expertise",
-    "title": "Research Interests",
-    "section": "🛠️ Methodological Expertise",
-    "text": "🛠️ Methodological Expertise\nTo address these questions, I specialize in a multi-modal approach to data collection and analysis:\n\nPsychophysics: Designing and implementing precise behavioral experiments to measure perceptual and memory thresholds (PsychToolbox).\nPupillometry: Using pupil dilation as a real-time, non-invasive biomarker of cognitive load and physiological arousal (MATLAB, R, Python).\nComputational Modeling: Applying models like the Drift-Diffusion Model (DDM) to deconstruct decision-making processes.\nAdvanced Statistical Analysis: Employing linear mixed-effects models and Bayesian methods for complex, repeated-measures data (R).\nNeuroimaging: Analyzing Diffusion MRI data to investigate white matter integrity and its relationship to behavior (FSL, QSIPrep)."
-  },
-  {
-    "objectID": "publications/publication1/index.html",
-    "href": "publications/publication1/index.html",
-    "title": "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis",
-    "section": "",
-    "text": "This study investigates the effect of physical effort on perception and visual memory using pupillometry. We designed and implemented psychophysical experiments to analyze the impact of physical exertion on visual perception and memory consolidation."
-  },
-  {
-    "objectID": "publications/publication1/index.html#abstract",
-    "href": "publications/publication1/index.html#abstract",
-    "title": "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis",
-    "section": "",
-    "text": "This study investigates the effect of physical effort on perception and visual memory using pupillometry. We designed and implemented psychophysical experiments to analyze the impact of physical exertion on visual perception and memory consolidation."
-  },
-  {
-    "objectID": "publications/publication1/index.html#details",
-    "href": "publications/publication1/index.html#details",
-    "title": "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis",
-    "section": "Details",
-    "text": "Details\n\nJournal: Manuscript in preparation\nAuthors: Mohammad Dastgheib, et al.\nDate: TBD"
-  },
-  {
-    "objectID": "publications/publication8/index.html",
-    "href": "publications/publication8/index.html",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "",
-    "text": "This poster presents the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
-  },
-  {
-    "objectID": "publications/publication8/index.html#abstract",
-    "href": "publications/publication8/index.html#abstract",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "",
-    "text": "This poster presents the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
-  },
-  {
-    "objectID": "publications/publication8/index.html#details",
-    "href": "publications/publication8/index.html#details",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "Details",
-    "text": "Details\n\nConference: Southern Ontario Neuroscience Association (SONA) conference\nLocation: Guelph, ON\nDate: 2018\nAuthors: Mohammad Dastgheib, Legro L., Stewart M., Hans C. Dringenberg"
-  },
-  {
-    "objectID": "publications/publication8/index.html#keywords",
-    "href": "publications/publication8/index.html#keywords",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "Keywords",
-    "text": "Keywords\n\nMemory Consolidation\nSelf-Guided Meditation\nNapping\nCognitive Neuroscience"
-  },
-  {
-    "objectID": "publications/publication8/index.html#citation",
-    "href": "publications/publication8/index.html#citation",
-    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
-    "section": "Citation",
-    "text": "Citation\nDastgheib, M., Legro L., Stewart M., & Dringenberg, H. C. (2018). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Presented at the Southern Ontario Neuroscience Association (SONA) conference, Guelph, ON."
-  },
-  {
-    "objectID": "publications/index.html",
-    "href": "publications/index.html",
-    "title": "Publications & Presentations",
-    "section": "",
-    "text": "This section includes articles that have undergone a formal peer-review process and have been published in academic journals.\n\n\n\n\n\n\nNeuroscience & Biobehavioral Reviews, Volume 140.\n\n\n\n\n\nAugust 2022\n\n\nDastgheib, M., Kulanayagam, A., & Dringenberg, H. C.\n\n\n\n\n\nNo matching items\n\n\n\n\nCuriosity Daily Podcast (Discovery) featured my review article\nIs the role of sleep in memory consolidation overrated? (Neuroscience & Biobehavioral Reviews, 2022).\n🎧 Listen here\nThe Boston Globe: Five facts about sleep everyone should know\nThe Harvard Gazette: Researchers one step closer to understanding daydreams\n\n\n\n\n\nDastgheib, M., Sun, A., Yaghoubi, K., Chen, X., Peters, M., Zhang, W., Bennett, I., Seitz, A. (In Prep). The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis.\nDastgheib, M., Sun, A., Maniscalco, B., Peters, M., Seitz, A. (In Prep). Analysis of metacognitive efficiency in younger and older adults in auditory and visual perceptual task."
-  },
-  {
-    "objectID": "publications/index.html#peer-reviewed-articles",
-    "href": "publications/index.html#peer-reviewed-articles",
-    "title": "Publications & Presentations",
-    "section": "",
-    "text": "This section includes articles that have undergone a formal peer-review process and have been published in academic journals.\n\n\n\n\n\n\nNeuroscience & Biobehavioral Reviews, Volume 140.\n\n\n\n\n\nAugust 2022\n\n\nDastgheib, M., Kulanayagam, A., & Dringenberg, H. C.\n\n\n\n\n\nNo matching items\n\n\n\n\nCuriosity Daily Podcast (Discovery) featured my review article\nIs the role of sleep in memory consolidation overrated? (Neuroscience & Biobehavioral Reviews, 2022).\n🎧 Listen here\nThe Boston Globe: Five facts about sleep everyone should know\nThe Harvard Gazette: Researchers one step closer to understanding daydreams\n\n\n\n\n\nDastgheib, M., Sun, A., Yaghoubi, K., Chen, X., Peters, M., Zhang, W., Bennett, I., Seitz, A. (In Prep). The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis.\nDastgheib, M., Sun, A., Maniscalco, B., Peters, M., Seitz, A. (In Prep). Analysis of metacognitive efficiency in younger and older adults in auditory and visual perceptual task."
-  },
-  {
-    "objectID": "publications/index.html#dissertations-theses",
-    "href": "publications/index.html#dissertations-theses",
-    "title": "Publications & Presentations",
-    "section": "🎓 Dissertations & Theses",
-    "text": "🎓 Dissertations & Theses\nMajor independent research projects completed as part of my graduate training.\n\nDoctoral Dissertation (In Progress): The Influence of Arousal and Cognitive Reserve on Dual-Task Interference in Aging. (University of California, Riverside)\nMaster’s Thesis: The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans. (Queen’s University) — View on OSF Preprints"
-  },
-  {
-    "objectID": "publications/index.html#conference-presentations-published-abstracts",
-    "href": "publications/index.html#conference-presentations-published-abstracts",
-    "title": "Publications & Presentations",
-    "section": "🎤 Conference Presentations & Published Abstracts",
-    "text": "🎤 Conference Presentations & Published Abstracts\nA selection of posters and talks presented at scientific conferences, with my name in bold.\n\nInternational Presentations\n\nSun, A., Dastgheib, M., Maniscalco, B., Peters, M., Zhang, W., Seitz, A. (2025, June). Selective Modulation of Auditory Perception and Metacognition by Hand Grip-Based Arousal in Older Adults. Talk at the Metacognition, Aging and Perception Symposium (MAPS), Rovereto, Italy.\nGhaffari, A., Langley, J., Dastgheib, M., Chen, X., Bennett, I., Hu, X. (2025, May). Functional MRI Connectome Fingerprinting in Older Adults. Talk at the IEEE International Symposium on Biomedical Imaging (ISBI), Houston, TX.\nDastgheib, M., Bennett, I., Seitz, A. (2024, November). The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis. Poster presented at the 65th Annual Meeting of the Psychonomic Society, New York City, NY.\nDastgheib, M., Yaghoubi, K., Kobaissi, H., Alba, J., Bennett, I., Seitz, A. (2023, August). The Effect of Physical Effort on Perception and Visual Memory. Poster presented at the International Conference on Learning and Memory, Huntington Beach, CA.\nDastgheib, M., Legro L., Stewart M., Dringenberg H. (2019, June). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Poster presented at the Canadian Society for Brain, Behaviour, & Cognitive Sciences (CSBBCS) meeting, Waterloo, ON.\n\n\n\nPublished Abstracts\n\nSarwar, S., Shafiee, M., Dastgheib, M., Hajighadimi, S., Ghafarian, H., Rokni, H. (2020). Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals. Canadian Journal of Anesthesia, 67(S1), 1-162. DOI Link\n\n\n\nIntramural Presentations\n\nSarwar, S., Shafiee, M., Dastgheib, M., et al. (2019). Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals. Critical Care Canada Forum (CCCF), Toronto, ON.\nDastgheib, M., Legro L., Stewart M., Dringenberg H. (2018). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Southern Ontario Neuroscience Association (SONA) conference, Guelph, ON.\nDastgheib, M. (2017). Are Older Adults’ Attitudes about Aging Influenced by a Psychoeducational Program? Psychology Undergraduate Thesis Poster Day, York University, Toronto, ON."
-  },
-  {
-    "objectID": "publications/publication5/index.html",
-    "href": "publications/publication5/index.html",
-    "title": "The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis",
-    "section": "",
-    "text": "This poster presents the differential effect of physical effort within perceptual and visual memory domains, using insights from psychometric function analysis."
-  },
-  {
-    "objectID": "publications/publication5/index.html#abstract",
-    "href": "publications/publication5/index.html#abstract",
-    "title": "The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis",
-    "section": "",
-    "text": "This poster presents the differential effect of physical effort within perceptual and visual memory domains, using insights from psychometric function analysis."
-  },
-  {
-    "objectID": "publications/publication5/index.html#details",
-    "href": "publications/publication5/index.html#details",
-    "title": "The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis",
-    "section": "Details",
-    "text": "Details\n\nConference: Psychonomic Society Annual Meeting\nDate: 2024\nAuthors: Dastgheib, M., Bennett, I., Seitz, A."
+    "text": "🚀 The Vision: From Post-Op Review to Proactive Support\n\n“During my time as an AI Annotator at Surgical Safety Technologies (SST), I had a firsthand view of how their groundbreaking ‘OR Black Box’ captures the complex dynamics of the operating room to improve patient outcomes. This experience solidified my understanding of the immense value in data-driven clinical insights. It also highlighted the next critical frontier: moving beyond analyzing what happened to understanding the surgeon’s cognitive state—the why behind their actions.”\n\nThis project is the direct result of that insight. It’s a proof-of-concept for a “Cognitive Black Box”—a system designed to predict a surgeon’s cognitive state in real-time. By fusing my PhD research on the cognitive neuroscience of effort with my industry experience, this case study demonstrates a tangible solution for moving from post-operative review to proactive, intraoperative support, enhancing both patient safety and surgeon well-being.\n\n\n\n\n\n\n\nA mockup of a surgical console screen displaying a time-series plot of the surgeon’s pupil dilation and grip force variability, indicating their cognitive state during a procedure.\n\n\n\n\n\n🧠 The Scientific Framework: My Research in Action\nThis project is an application of my PhD research, which provides the theoretical engine to model the underlying mechanisms of performance degradation under pressure.\n\nResource Competition TheoryNeural Gain Theory (NGT)\n\n\nThis framework explains what happens when a surgeon performs a physically demanding action (like sustained retraction, mirroring my 40% MVC research) while making a high-stakes cognitive judgment. These tasks compete for the same finite pool of mental resources. My model is designed to detect when this competition leads to performance-impairing cognitive overload.\n\n\nNGT provides the physiological why. The brain’s arousal system (specifically the LC-NE system) acts like a “volume knob,” adjusting neural gain to enhance important signals and suppress noise. My research shows that under the high combined effort typical of surgery, this system can become dysregulated, a phenomenon I can model and predict using pupillometry as a direct, non-invasive biomarker of this process.\n Caption: The inverted-U relationship between arousal and performance, central to Neural Gain Theory. My system is designed to identify when a surgeon moves past the optimal point and into a state of impaired performance due to excessive cognitive load.\n\n\n\n\n\n\n⚙️ The Machine Learning Pipeline: From Raw Data to Actionable Insight\nI designed an end-to-end pipeline to simulate and process multimodal data, engineer theoretically-grounded features, and train a predictive model.\n\n1. Data Simulation2. Feature Engineering3. Modeling & Explainability (XAI)\n\n\nTo build this proof-of-concept, I simulated a realistic, second-by-second data stream from a 3-hour surgical procedure. The dataset includes: - Physiological Data: pupil_diameter_mm - continuous pupillometry measurements - Motor Control Data: grip_force_newtons - surgical instrument grip pressure - Behavioral Data: instrument_tremor_hz - high-frequency tremor measurements\n- Target Variable: cognitive_state (“Optimal”, “High Load”, “Fatigued”, “Attentional Lapse”)\nThe simulation creates 32,400 observations (3 surgeons × 10,800 seconds) with realistic temporal dynamics and state transitions based on surgical workflow patterns.\n\n\nThis is where my domain expertise becomes critical. I created novel, theory-driven features: - tonic_pupil_level_30s: A 30-second rolling average of pupil diameter, reflecting baseline arousal and overall cognitive load. - phasic_pupil_change_5s: An event-related dilation metric capturing rapid pupil changes from a 5-second baseline, reflecting the brain’s adaptive gain response to critical surgical events. - grip_force_variability_15s: A novel metric I developed for this project. It calculates the 15-second rolling standard deviation of instrument grip force, based on my hypothesis that increased variability serves as a proxy for attentional lapses. - tremor_trend_10s: A 10-second rolling mean of instrument tremor, capturing fine motor control degradation. - pupil_diameter_lag_5s: Temporal context feature providing the pupil state from 5 seconds prior.\n\n\nI trained an XGBoost Classifier with hyperparameter tuning using 3-fold cross-validation—an industry-standard, high-performance model—to predict the surgeon’s cognitive state. The model achieves: - Overall Accuracy: 99.58% - Cohen’s Kappa: 0.993 - Cross-Validation: Robust performance across folds with grid search optimization\nTo ensure the model is interpretable and trustworthy for clinical stakeholders, I implemented feature importance analysis and dynamic explanations that show which physiological signals are driving each prediction in real-time.\n\n\n\n\n\n\n\nFeature importance from the trained XGBoost model showing the relative predictive power of each engineered feature.\n\n\n\n\n\n\n\n\n✨ The Result: A Real-Time Analytics Dashboard\nThe final output is a proof-of-concept dashboard built in R Shiny. It simulates a live view of the surgeon’s cognitive state and provides clear, interpretable alerts with two main interfaces:\n\nLive Surgical DashboardML Model Diagnostics\n\n\nThe primary interface provides real-time monitoring during surgery with an intuitive, clinical-focused design.\n\n\n\n\n\n\n\nLive Surgical Dashboard showing real-time pupil diameter and grip force monitoring with cognitive state prediction and dynamic clinical interpretations.\n\n\nKey Features: - Real-time sensor plots: Pupil diameter and grip force visualized with human-readable time formatting - Cognitive state spectrum: Dynamic dial showing current state on a visual spectrum\n- Progress tracking: Video-style progress bar with accurate time remaining - Dynamic “Why” panel: Data-driven clinical interpretations that update based on live feature values - Speed controls: Simulation can run at 1x, 10x, 50x, or 100x speed for demos\n\n\nThe technical interface provides transparency into the machine learning model’s decision-making process.\n\n\n\n\n\n\n\nML Model Diagnostics panel showing prediction probabilities, live feature values, and feature importance visualization.\n\n\nTechnical Features: - Prediction probabilities: Live confidence scores for all four cognitive states - Feature values table: Real-time display of all engineered features driving predictions - Feature importance: Static visualization showing which features matter most to the model\n\n\n\nInnovation Highlight: Data-Driven Explanations The most innovative feature is the dynamic “Why” panel that doesn’t just show generic text, but reports the actual feature values driving each prediction (e.g., “High Grip Force Variability (2.31 N)” or “Elevated Tonic Pupil Level (4.2 mm)”), building trust through transparency.\n\n\n\n📚 Project Artifacts & Technical Details\n\nCode & RepositoryModel PerformanceResearch Foundation\n\n\n\nGitHub Repository: View the complete source code, data pipeline, and interactive dashboard\nTech Stack: R, Shiny, XGBoost, tidyverse, ggplot2, DT\nDevelopment Approach: Modular pipeline with separate scripts for data simulation, feature engineering, and model training\nReproducibility: All code includes seed setting and comprehensive logging for transparent replication\n\n\n\nTraining Results: - Dataset: 32,400 observations across 3 simulated surgeons - Features: 5 engineered features from 3 raw sensor streams - Algorithm: XGBoost with 3-fold cross-validation hyperparameter tuning - Accuracy: 99.58% overall accuracy with κ = 0.993\nPer-Class Performance: - Optimal State: 100% sensitivity, 100% specificity - High Load: 99.9% sensitivity, 100% specificity\n- Fatigued: 99.9% sensitivity, 99.4% specificity - Attentional Lapse: 25% sensitivity, 100% specificity*\n*Attentional lapses are rare events (0.4% prevalence), where high specificity is prioritized to avoid false alarms.\n\n\n\nGrant Proposal: Read the peer-reviewed research proposal providing the theoretical foundation\nIndustry Context: Inspired by work as AI Annotator at Surgical Safety Technologies (SST)\nAcademic Integration: Direct application of PhD research on cognitive neuroscience of effort and Neural Gain Theory\n\n\n\n\n\n\n\n🎯 Impact & Next Steps\nImmediate Applications: - Surgical Training: Objective assessment of trainee cognitive load during skill development - Quality Improvement: Data-driven insights into when and why surgical performance degrades - Research Platform: Foundational system for studying cognitive load in high-stakes environments\nFuture Development: - Hardware Integration: Connect with real pupillometry and force sensor systems - Clinical Validation: Partner with surgical training centers for real-world testing\n- Multi-Modal Expansion: Incorporate additional physiological signals (EEG, HRV, cortisol) - Team Monitoring: Extend to monitor multiple team members simultaneously\nThis proof-of-concept demonstrates the feasibility of real-time cognitive monitoring in surgical environments, bridging fundamental neuroscience research with practical clinical applications.\n\n\n\n\n Back to top"
   },
   {
     "objectID": "publications/publication4/index.html",
@@ -322,6 +84,251 @@
     "text": "Full Text\nView Full Text"
   },
   {
+    "objectID": "publications/publication5/index.html",
+    "href": "publications/publication5/index.html",
+    "title": "The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis",
+    "section": "",
+    "text": "This poster presents the differential effect of physical effort within perceptual and visual memory domains, using insights from psychometric function analysis."
+  },
+  {
+    "objectID": "publications/publication5/index.html#abstract",
+    "href": "publications/publication5/index.html#abstract",
+    "title": "The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis",
+    "section": "",
+    "text": "This poster presents the differential effect of physical effort within perceptual and visual memory domains, using insights from psychometric function analysis."
+  },
+  {
+    "objectID": "publications/publication5/index.html#details",
+    "href": "publications/publication5/index.html#details",
+    "title": "The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis",
+    "section": "Details",
+    "text": "Details\n\nConference: Psychonomic Society Annual Meeting\nDate: 2024\nAuthors: Dastgheib, M., Bennett, I., Seitz, A."
+  },
+  {
+    "objectID": "publications/index.html",
+    "href": "publications/index.html",
+    "title": "Publications & Presentations",
+    "section": "",
+    "text": "This section includes articles that have undergone a formal peer-review process and have been published in academic journals.\n\n\n\n\n\n\nNeuroscience & Biobehavioral Reviews, Volume 140.\n\n\n\n\n\nAugust 2022\n\n\nDastgheib, M., Kulanayagam, A., & Dringenberg, H. C.\n\n\n\n\n\nNo matching items\n\n\n\n\nCuriosity Daily Podcast (Discovery) featured my review article\nIs the role of sleep in memory consolidation overrated? (Neuroscience & Biobehavioral Reviews, 2022).\n🎧 Listen here\nThe Boston Globe: Five facts about sleep everyone should know\nThe Harvard Gazette: Researchers one step closer to understanding daydreams\n\n\n\n\n\nDastgheib, M., Sun, A., Yaghoubi, K., Chen, X., Peters, M., Zhang, W., Bennett, I., Seitz, A. (In Prep). The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis.\nDastgheib, M., Sun, A., Maniscalco, B., Peters, M., Seitz, A. (In Prep). Analysis of metacognitive efficiency in younger and older adults in auditory and visual perceptual task."
+  },
+  {
+    "objectID": "publications/index.html#peer-reviewed-articles",
+    "href": "publications/index.html#peer-reviewed-articles",
+    "title": "Publications & Presentations",
+    "section": "",
+    "text": "This section includes articles that have undergone a formal peer-review process and have been published in academic journals.\n\n\n\n\n\n\nNeuroscience & Biobehavioral Reviews, Volume 140.\n\n\n\n\n\nAugust 2022\n\n\nDastgheib, M., Kulanayagam, A., & Dringenberg, H. C.\n\n\n\n\n\nNo matching items\n\n\n\n\nCuriosity Daily Podcast (Discovery) featured my review article\nIs the role of sleep in memory consolidation overrated? (Neuroscience & Biobehavioral Reviews, 2022).\n🎧 Listen here\nThe Boston Globe: Five facts about sleep everyone should know\nThe Harvard Gazette: Researchers one step closer to understanding daydreams\n\n\n\n\n\nDastgheib, M., Sun, A., Yaghoubi, K., Chen, X., Peters, M., Zhang, W., Bennett, I., Seitz, A. (In Prep). The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis.\nDastgheib, M., Sun, A., Maniscalco, B., Peters, M., Seitz, A. (In Prep). Analysis of metacognitive efficiency in younger and older adults in auditory and visual perceptual task."
+  },
+  {
+    "objectID": "publications/index.html#dissertations-theses",
+    "href": "publications/index.html#dissertations-theses",
+    "title": "Publications & Presentations",
+    "section": "🎓 Dissertations & Theses",
+    "text": "🎓 Dissertations & Theses\nMajor independent research projects completed as part of my graduate training.\n\nDoctoral Dissertation (In Progress): The Influence of Arousal and Cognitive Reserve on Dual-Task Interference in Aging. (University of California, Riverside)\nMaster’s Thesis: The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans. (Queen’s University) — View on OSF Preprints"
+  },
+  {
+    "objectID": "publications/index.html#conference-presentations-published-abstracts",
+    "href": "publications/index.html#conference-presentations-published-abstracts",
+    "title": "Publications & Presentations",
+    "section": "🎤 Conference Presentations & Published Abstracts",
+    "text": "🎤 Conference Presentations & Published Abstracts\nA selection of posters and talks presented at scientific conferences, with my name in bold.\n\nInternational Presentations\n\nSun, A., Dastgheib, M., Maniscalco, B., Peters, M., Zhang, W., Seitz, A. (2025, June). Selective Modulation of Auditory Perception and Metacognition by Hand Grip-Based Arousal in Older Adults. Talk at the Metacognition, Aging and Perception Symposium (MAPS), Rovereto, Italy.\nGhaffari, A., Langley, J., Dastgheib, M., Chen, X., Bennett, I., Hu, X. (2025, May). Functional MRI Connectome Fingerprinting in Older Adults. Talk at the IEEE International Symposium on Biomedical Imaging (ISBI), Houston, TX.\nDastgheib, M., Bennett, I., Seitz, A. (2024, November). The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis. Poster presented at the 65th Annual Meeting of the Psychonomic Society, New York City, NY.\nDastgheib, M., Yaghoubi, K., Kobaissi, H., Alba, J., Bennett, I., Seitz, A. (2023, August). The Effect of Physical Effort on Perception and Visual Memory. Poster presented at the International Conference on Learning and Memory, Huntington Beach, CA.\nDastgheib, M., Legro L., Stewart M., Dringenberg H. (2019, June). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Poster presented at the Canadian Society for Brain, Behaviour, & Cognitive Sciences (CSBBCS) meeting, Waterloo, ON.\n\n\n\nPublished Abstracts\n\nSarwar, S., Shafiee, M., Dastgheib, M., Hajighadimi, S., Ghafarian, H., Rokni, H. (2020). Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals. Canadian Journal of Anesthesia, 67(S1), 1-162. DOI Link\n\n\n\nIntramural Presentations\n\nSarwar, S., Shafiee, M., Dastgheib, M., et al. (2019). Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals. Critical Care Canada Forum (CCCF), Toronto, ON.\nDastgheib, M., Legro L., Stewart M., Dringenberg H. (2018). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Southern Ontario Neuroscience Association (SONA) conference, Guelph, ON.\nDastgheib, M. (2017). Are Older Adults’ Attitudes about Aging Influenced by a Psychoeducational Program? Psychology Undergraduate Thesis Poster Day, York University, Toronto, ON."
+  },
+  {
+    "objectID": "publications/publication8/index.html",
+    "href": "publications/publication8/index.html",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "",
+    "text": "This poster presents the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
+  },
+  {
+    "objectID": "publications/publication8/index.html#abstract",
+    "href": "publications/publication8/index.html#abstract",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "",
+    "text": "This poster presents the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
+  },
+  {
+    "objectID": "publications/publication8/index.html#details",
+    "href": "publications/publication8/index.html#details",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "Details",
+    "text": "Details\n\nConference: Southern Ontario Neuroscience Association (SONA) conference\nLocation: Guelph, ON\nDate: 2018\nAuthors: Mohammad Dastgheib, Legro L., Stewart M., Hans C. Dringenberg"
+  },
+  {
+    "objectID": "publications/publication8/index.html#keywords",
+    "href": "publications/publication8/index.html#keywords",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "Keywords",
+    "text": "Keywords\n\nMemory Consolidation\nSelf-Guided Meditation\nNapping\nCognitive Neuroscience"
+  },
+  {
+    "objectID": "publications/publication8/index.html#citation",
+    "href": "publications/publication8/index.html#citation",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "Citation",
+    "text": "Citation\nDastgheib, M., Legro L., Stewart M., & Dringenberg, H. C. (2018). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Presented at the Southern Ontario Neuroscience Association (SONA) conference, Guelph, ON."
+  },
+  {
+    "objectID": "publications/publication1/index.html",
+    "href": "publications/publication1/index.html",
+    "title": "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis",
+    "section": "",
+    "text": "This study investigates the effect of physical effort on perception and visual memory using pupillometry. We designed and implemented psychophysical experiments to analyze the impact of physical exertion on visual perception and memory consolidation."
+  },
+  {
+    "objectID": "publications/publication1/index.html#abstract",
+    "href": "publications/publication1/index.html#abstract",
+    "title": "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis",
+    "section": "",
+    "text": "This study investigates the effect of physical effort on perception and visual memory using pupillometry. We designed and implemented psychophysical experiments to analyze the impact of physical exertion on visual perception and memory consolidation."
+  },
+  {
+    "objectID": "publications/publication1/index.html#details",
+    "href": "publications/publication1/index.html#details",
+    "title": "The Effect of Physical Effort on Perception and Visual Memory: A Pupillometric Analysis",
+    "section": "Details",
+    "text": "Details\n\nJournal: Manuscript in preparation\nAuthors: Mohammad Dastgheib, et al.\nDate: TBD"
+  },
+  {
+    "objectID": "research/index.html",
+    "href": "research/index.html",
+    "title": "Research Interests",
+    "section": "",
+    "text": "My doctoral research investigates the intricate relationship between physiological arousal, cognitive effort, and the integrity of the human brain’s neuromodulatory systems. I am fundamentally interested in understanding why cognitive performance, particularly in aging, becomes vulnerable under demanding real-world conditions.\nMy work aims to move beyond simple behavioral metrics by integrating psychophysics, pupillometry, and computational modeling to deconstruct the subcomponents of decision-making. By precisely measuring the impact of physical and cognitive load, I seek to build predictive models of performance that can inform the design of safer, more adaptive, and more inclusive technologies for a range of user populations."
+  },
+  {
+    "objectID": "research/index.html#research-statement",
+    "href": "research/index.html#research-statement",
+    "title": "Research Interests",
+    "section": "",
+    "text": "My doctoral research investigates the intricate relationship between physiological arousal, cognitive effort, and the integrity of the human brain’s neuromodulatory systems. I am fundamentally interested in understanding why cognitive performance, particularly in aging, becomes vulnerable under demanding real-world conditions.\nMy work aims to move beyond simple behavioral metrics by integrating psychophysics, pupillometry, and computational modeling to deconstruct the subcomponents of decision-making. By precisely measuring the impact of physical and cognitive load, I seek to build predictive models of performance that can inform the design of safer, more adaptive, and more inclusive technologies for a range of user populations."
+  },
+  {
+    "objectID": "research/index.html#core-research-areas",
+    "href": "research/index.html#core-research-areas",
+    "title": "Research Interests",
+    "section": "Core Research Areas",
+    "text": "Core Research Areas\nMy research program is built on three interconnected pillars:\n\nAging & Cognitive Neuroscience: Characterizing how age-related changes in the Locus Coeruleus (LC) and its associated neural circuits impact cognitive functions, with a focus on identifying potential biomarkers for neurodegenerative disorders.\nDual-Task Interference & Performance: Quantifying how concurrent physical and cognitive stressors interact to impair performance across multiple domains, including perception, memory, and metacognition.\nPersonalized Cognitive Modeling: Moving beyond group averages to model how individual differences in factors like Cognitive Reserve predict a person’s unique resilience to cognitive overload."
+  },
+  {
+    "objectID": "research/index.html#methodological-expertise",
+    "href": "research/index.html#methodological-expertise",
+    "title": "Research Interests",
+    "section": "🛠️ Methodological Expertise",
+    "text": "🛠️ Methodological Expertise\nTo address these questions, I specialize in a multi-modal approach to data collection and analysis:\n\nPsychophysics: Designing and implementing precise behavioral experiments to measure perceptual and memory thresholds (PsychToolbox).\nPupillometry: Using pupil dilation as a real-time, non-invasive biomarker of cognitive load and physiological arousal (MATLAB, R, Python).\nComputational Modeling: Applying models like the Drift-Diffusion Model (DDM) to deconstruct decision-making processes.\nAdvanced Statistical Analysis: Employing linear mixed-effects models and Bayesian methods for complex, repeated-measures data (R).\nNeuroimaging: Analyzing Diffusion MRI data to investigate white matter integrity and its relationship to behavior (FSL, QSIPrep)."
+  },
+  {
+    "objectID": "publications/publication6/index.html",
+    "href": "publications/publication6/index.html",
+    "title": "The Effect of Physical Effort on Perception and Visual Memory",
+    "section": "",
+    "text": "This poster investigates the effect of physical effort on perception and visual memory using pupillometry."
+  },
+  {
+    "objectID": "publications/publication6/index.html#abstract",
+    "href": "publications/publication6/index.html#abstract",
+    "title": "The Effect of Physical Effort on Perception and Visual Memory",
+    "section": "",
+    "text": "This poster investigates the effect of physical effort on perception and visual memory using pupillometry."
+  },
+  {
+    "objectID": "publications/publication6/index.html#details",
+    "href": "publications/publication6/index.html#details",
+    "title": "The Effect of Physical Effort on Perception and Visual Memory",
+    "section": "Details",
+    "text": "Details\n\nConference: International Conference on Learning and Memory\nDate: 2023\nAuthors: Dastgheib, M., Yaghoubi, K., Kobaissi, H., Alba, J., Bennett, I., Seitz, A."
+  },
+  {
+    "objectID": "publications/publication7/index.html",
+    "href": "publications/publication7/index.html",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "",
+    "text": "This conference presentation explores the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
+  },
+  {
+    "objectID": "publications/publication7/index.html#abstract",
+    "href": "publications/publication7/index.html#abstract",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "",
+    "text": "This conference presentation explores the effects of self-guided meditation and napping on both non-declarative and declarative memory consolidation. The study examines the impact of these interventions on memory performance and discusses the underlying mechanisms."
+  },
+  {
+    "objectID": "publications/publication7/index.html#details",
+    "href": "publications/publication7/index.html#details",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "Details",
+    "text": "Details\n\nConference: Canadian Society for Brain, Behaviour, & Cognitive Sciences meeting\nLocation: Waterloo, ON\nDate: 2019\nAuthors: Mohammad Dastgheib, Legro L., Stewart M., Hans C. Dringenberg"
+  },
+  {
+    "objectID": "publications/publication7/index.html#keywords",
+    "href": "publications/publication7/index.html#keywords",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "Keywords",
+    "text": "Keywords\n\nMemory Consolidation\nSelf-Guided Meditation\nNapping\nCognitive Neuroscience"
+  },
+  {
+    "objectID": "publications/publication7/index.html#citation",
+    "href": "publications/publication7/index.html#citation",
+    "title": "The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation",
+    "section": "Citation",
+    "text": "Citation\nDastgheib, M., Legro L., Stewart M., & Dringenberg, H. C. (2019). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Presented at the Canadian Society for Brain, Behaviour, & Cognitive Sciences meeting, Waterloo, ON."
+  },
+  {
+    "objectID": "publications/peer-reviewed/dastgheib-2022-neurobio-reviews.html",
+    "href": "publications/peer-reviewed/dastgheib-2022-neurobio-reviews.html",
+    "title": "Is the role of sleep in memory consolidation overrated?",
+    "section": "",
+    "text": "Abstract\n\n\n\n\n\nSubstantial empirical evidence suggests that sleep benefits the consolidation and reorganization of learned information. Consequently, the concept of “sleep-dependent memory consolidation” is now widely accepted by the scientific community, in addition to influencing public perceptions regarding the functions of sleep. There are, however, numerous studies that have presented findings inconsistent with the sleep-memory hypothesis. Here, we challenge the notion of “sleep-dependency” by summarizing evidence for effective memory consolidation independent of sleep. Plasticity mechanisms thought to mediate or facilitate consolidation during sleep (e.g., neuronal replay, reactivation, slow oscillations, neurochemical milieu) also operate during non-sleep states, particularly quiet wakefulness, thus allowing for the stabilization of new memories. We propose that it is not sleep per se, but the engagement of plasticity mechanisms, active during both sleep and (at least some) waking states, that constitutes the critical factor determining memory formation. Thus, rather than playing a “critical” role, sleep falls along a continuum of behavioral states that vary in their effectiveness to support memory consolidation at the neural and behavioral level.\n\n\n\nView Publication (DOI) Download PDF\n\n\n\n\n\n\nMedia Coverage\n\n\n\nCuriosity Daily Podcast (Discovery) Episode: Daydream Brain, Power of a Laugh, Caffeine & Soccer Original release: Jan 25, 2024 · Re-release: Dec 19, 2024\n\n\nListen on Acast\n\nThe Boston Globe: Five facts about sleep everyone should know\nThe Harvard Gazette: Researchers one step closer to understanding daydreams\n\n\n\n\n\n\n\n\n Back to top"
+  },
+  {
+    "objectID": "publications/publication3/index.html",
+    "href": "publications/publication3/index.html",
+    "title": "The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans",
+    "section": "",
+    "text": "This Master’s thesis investigates the effects of self-guided meditation and napping on memory consolidation in humans. The study examines whether these interventions can enhance memory performance and explores the underlying mechanisms."
+  },
+  {
+    "objectID": "publications/publication3/index.html#abstract",
+    "href": "publications/publication3/index.html#abstract",
+    "title": "The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans",
+    "section": "",
+    "text": "This Master’s thesis investigates the effects of self-guided meditation and napping on memory consolidation in humans. The study examines whether these interventions can enhance memory performance and explores the underlying mechanisms."
+  },
+  {
+    "objectID": "publications/publication3/index.html#details",
+    "href": "publications/publication3/index.html#details",
+    "title": "The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans",
+    "section": "Details",
+    "text": "Details\n\nUniversity: Queen’s University\nDegree: M.Sc. in Psychology\nDate: 2020\nAdvisor: Hans C. Dringenberg"
+  },
+  {
+    "objectID": "publications/publication3/index.html#keywords",
+    "href": "publications/publication3/index.html#keywords",
+    "title": "The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans",
+    "section": "Keywords",
+    "text": "Keywords\n\nMemory Consolidation\nSelf-Guided Meditation\nNapping\nCognitive Neuroscience"
+  },
+  {
+    "objectID": "publications/publication3/index.html#citation",
+    "href": "publications/publication3/index.html#citation",
+    "title": "The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans",
+    "section": "Citation",
+    "text": "Citation\nDastgheib, M. (2020). The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans. Master’s thesis, Queen’s University."
+  },
+  {
+    "objectID": "publications/publication3/index.html#full-text",
+    "href": "publications/publication3/index.html#full-text",
+    "title": "The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans",
+    "section": "Full Text",
+    "text": "Full Text\nView Full Text"
+  },
+  {
+    "objectID": "projects/memory-and-meditation.html",
+    "href": "projects/memory-and-meditation.html",
+    "title": "Case Study: Optimizing Learning with Cognitive States",
+    "section": "",
+    "text": "🧠 Optimizing Learning: A Deep Dive into the Cognitive States that Boost Memory\n\n\n📊 Executive Summary / TL;DR\n\nThe Problem: Companies build tools to help users learn and be productive but lack clarity on how different mental states (like napping or meditating) influence the brain’s ability to retain factual versus physical memories. This uncertainty can result in inefficiencies, diminished user performance, and wasted investments in training programs or wellness initiatives.\nMy Action: I designed and executed an end-to-end research study involving 60+ participants, employing a mixed-methods approach with behavioral tasks (word-pair recall, a physical maze game), physiological EEG recordings, and self-report questionnaires.\nThe Result: I discovered that mindfulness meditation significantly improved factual memory retention. The most surprising discovery was that while naps are restorative, deep sleep can temporarily impair physical skills due to sleep inertia—a critical insight for products or services targeting immediate post-rest performance.\n\n\n\n\n🎯 The Business Problem / The Challenge\nProduct teams in e-learning, corporate training, and wellness often design experiences without clear evidence on how users’ cognitive states impact their ability to learn. Is a power nap or meditation more effective for mastering a new software skill or physical task? This study addressed these questions by exploring how rest, naps, and meditation specifically influence:\n\nDeclarative Memory: Crucial for retaining facts and information.\nProcedural Memory: Essential for acquiring new physical skills.\n\n\n\n\n🧑‍🔬 My Role & Responsibilities\n\nLead Researcher: Oversaw the entire research process from ideation to completion.\nProject Manager: Scoped the study, managed timelines, coordinated 60+ participants over multiple sessions, and ensured seamless execution.\nMentor & Team Lead: Guided and trained a team of three student researchers (including one undergraduate capstone project) on experimental protocols, data collection techniques, and research ethics.\nResearch Designer: Developed the research protocols, memory task stimuli, and selected EEG hardware and analytical tools.\nData Scientist: Performed all data preprocessing, cleaning, and advanced statistical analyses utilizing R and Bayesian methodologies.\nCommunicator: Presented findings clearly to interdisciplinary stakeholders and authored a peer-reviewed perspective piece, translating complex results into actionable recommendations for the broader scientific community.\n\n\n\n\n🔬 The Approach: A 3-Phase Process\nPhase 1: Research Design & User Recruitment\n\nWhat I did: Structured a three-condition experiment (Nap, Meditation, Active Wakefulness) conducted over multiple days.\nWhy I did it: Enabled clear comparisons among cognitive states, minimizing confounding variables like anxiety through the multi-day design.\nWhat I did: Established precise participant screening criteria (e.g., must be habitual meditators/nappers).\nWhy I did it: Ensured genuine representation of targeted cognitive states, enhancing the validity and applicability of the results.\n\nPhase 2: Mixed-Methods Data Collection\n\nBehavioral Data: I chose word-pair and marble-maze tasks. These tasks distinctly measured factual recall (declarative) and motor skill acquisition (procedural), aligning with the study’s dual-memory focus.\n\n\n\n\n\n\n\n\nThe marble maze apparatus used to measure procedural motor skill learning.\n\n\n\nPhysiological Data: I collected multi-channel EEG recordings. This objective physiological data captured precise cognitive states, surpassing the reliability of self-report alone.\nSelf-Report Data: I administered validated scales (ESS, FMI). This added subjective insights into the participant experience, complementing the objective EEG data.\n\nPhase 3: Analysis & Synthesis\n\nProcessed and visually scored hours of multi-channel EEG data, epoch by epoch, to objectively classify sleep stages and identify ‘meditative states.’\nUtilized Bayesian statistical modeling in R, which is optimal for reliable interpretation, particularly with smaller, nuanced datasets.\nEmployed a G-Mean calculation for declarative memory analysis to handle class imbalance in the test data, ensuring unbiased accuracy of results.\n\n\n\n\n💡 Key Insight #1: For learning facts, quiet focus beats a nap.\n\nWhat I Found: Mindfulness meditators showed a significant advantage in memory retention over participants in an active-waking state (watching a video). Furthermore, their performance trended higher than those who took a short nap, suggesting that for factual learning, quiet wakefulness is a powerful and reliable tool for memory consolidation.\nThe “So What?”: Quiet, focused wakefulness is optimal for factual learning, suggesting intentional meditation breaks could greatly enhance retention of new information.\nPotential Application: Companies like Duolingo, Coursera, or even corporate onboarding programs could integrate structured, guided meditation intervals into training modules to boost user learning and long-term retention of educational content.\n\n\n\n\n\n\n\n\nPerformance on the declarative memory task was highest in the Meditation (MED) group.\n\n\n\n\n\n💡 Key Insight #2: Deep naps can temporarily hurt physical skills.\n\nWhat I Found: Participants experiencing only light sleep improved their motor skills, while those entering deep Slow-Wave Sleep (SWS) experienced post-nap performance impairments, attributed to sleep inertia.\nThe “So What?”: The depth of a nap critically influences post-rest performance on physical tasks. For users needing immediate peak performance, an unintended deep nap could be counterproductive.\nPotential Application: Smartwatch companies (like Apple or Google/Fitbit) developing smart alarm features could optimize wake-up times to avoid interrupting SWS. This feature would be critical for roles requiring immediate alertness and precision post-rest, such as shift workers, healthcare professionals, pilots, or drivers in logistics.\n\n\n\n\n\n\n\n\nPerformance on the maze task improved with more light sleep (pink line) but worsened with more deep sleep (blue line), highlighting the impact of sleep inertia.\n\n\n\n\n\n🚧 Challenges & Learnings\n\nChallenge 1: Validating a Novel Task. The marble maze was a new method for assessing procedural memory.\n\nWhat I Learned: This taught me the importance of assessing the criterion validity of new research instruments. In a future iteration, I would correlate its results with a well-established motor skills task to build a stronger case for its reliability.\n\nChallenge 2: Unbalanced Demographics. The exploratory analysis revealed that gender might influence performance on different memory types, but the sample was not balanced for this comparison.\n\nWhat I Learned: This experience underscored the value of user segmentation. Going forward, I would proactively balance demographic cells in my recruiting plans, adopting a more iterative, UX-oriented approach to confidently analyze how different user groups might behave.\n\n\n\n\n\n📚 Publications & Impact\nThe insights from this research were not only compelling but also sparked a broader conversation in the scientific community. The work led directly to a peer-reviewed publication in a leading journal, demonstrating its scientific rigor and relevance:\n\nPeer-Reviewed Publication:\n\nDastgheib, M., Kulanayagam, A., & Dringenberg, H. C. (2022). Is the role of sleep in memory consolidation overrated? Neuroscience & Biobehavioral Reviews, 140, 104799. https://doi.org/10.1016/j.neubiorev.2022.104799\n\nOriginal Thesis & Presentation:\n\nRead the full Master’s Thesis (External Link)\nView the Presentation Slides (External Link)\n\n\n\n\n\n\n\n Back to top"
+  },
+  {
     "objectID": "projects/dual-task-case-study.html",
     "href": "projects/dual-task-case-study.html",
     "title": "Case Study: A Psychophysiological Approach to Modeling Dual-Task Interference",
@@ -354,7 +361,7 @@
     "href": "index.html",
     "title": "Mohammad Dastgheib",
     "section": "",
-    "text": "I am a cognitive neuroscientist and human factors researcher who uses psychophysics, pupillometry, and computational modeling to understand how the human brain makes decisions under pressure.\nView my featured case study →\n\n    \n    \n  \n\n\n\n\n\n\n\n\nCurrently Seeking Internships\n\n\n\nI am available for Fall-Winter 2025 internship roles in UX Research, Human Factors, or as a Research Scientist.\n\n\n\n\n\n\n Back to top"
+    "text": "I am a cognitive neuroscientist and human factors researcher who uses psychophysics, pupillometry, and computational modeling to understand how the human brain makes decisions under pressure.\nView my featured case study →\n\n    \n    \n  \n\n\n\n\n\n\n\n\nCurrently Seeking Internships\n\n\n\nI am available for Winter 2025 and Summer 2026 internship roles in UX Research, Human Factors, or as a Research Scientist.\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "cv.html",
@@ -369,12 +376,5 @@
     "title": "CV",
     "section": "",
     "text": "Download Full CV (PDF)"
-  },
-  {
-    "objectID": "surgeon-performance-predict.html",
-    "href": "surgeon-performance-predict.html",
-    "title": "The Surgeon’s ‘Cognitive Black Box’",
-    "section": "",
-    "text": "🚀 The Vision: From Post-Op Review to Proactive Support\n\n“During my time as an AI Annotator at Surgical Safety Technologies (SST), I had a firsthand view of how their groundbreaking ‘OR Black Box’ captures the complex dynamics of the operating room to improve patient outcomes. This experience solidified my understanding of the immense value in data-driven clinical insights. It also highlighted the next critical frontier: moving beyond analyzing what happened to understanding the surgeon’s cognitive state—the why behind their actions.”\n\nThis project is the direct result of that insight. It’s a proof-of-concept for a “Cognitive Black Box”—a system designed to predict a surgeon’s cognitive state in real-time. By fusing my PhD research on the cognitive neuroscience of effort with my industry experience, this case study demonstrates a tangible solution for moving from post-operative review to proactive, intraoperative support, enhancing both patient safety and surgeon well-being.\n\n\n\n\n\n\n\nA mockup of a surgical console screen displaying a time-series plot of the surgeon’s pupil dilation and grip force variability, indicating their cognitive state during a procedure.\n\n\n\n\n\n🧠 The Scientific Framework: My Research in Action\n[cite_start]This project is an application of my PhD research, which provides the theoretical engine to model the underlying mechanisms of performance degradation under pressure[cite: 1, 317].\n\nResource Competition TheoryNeural Gain Theory (NGT)\n\n\n[cite_start]This framework explains what happens when a surgeon performs a physically demanding action (like sustained retraction, mirroring my 40% MVC research) while making a high-stakes cognitive judgment[cite: 78, 244]. These tasks compete for the same finite pool of mental resources. My model is designed to detect when this competition leads to performance-impairing cognitive overload.\n\n\nNGT provides the physiological why. [cite_start]The brain’s arousal system (specifically the LC-NE system) acts like a “volume knob,” adjusting neural gain to enhance important signals and suppress noise[cite: 107, 108]. [cite_start]My research shows that under the high combined effort typical of surgery, this system can become dysregulated, a phenomenon I can model and predict using pupillometry as a direct, non-invasive biomarker of this process[cite: 298, 301].\n Caption: The inverted-U relationship between arousal and performance, central to NGT. [cite_start]My system is designed to identify when a surgeon moves past the optimal point and into a state of impaired performance due to excessive cognitive load[cite: 111, 120].\n\n\n\n\n\n\n⚙️ The Machine Learning Pipeline: From Raw Data to Actionable Insight\nI designed an end-to-end pipeline to simulate and process multimodal data, engineer theoretically-grounded features, and train a predictive model.\n\n1. Data Simulation2. Feature Engineering3. Modeling & Explainability (XAI)\n\n\nTo build this proof-of-concept, I simulated a realistic, second-by-second data stream from a multi-hour laparoscopic procedure. The dataset includes: - Physiological Data: pupil_diameter_mm, heart_rate_variability_rmssd - Motor Control Data: grip_force_newtons - Contextual Data: surgical_phase (e.g., “Dissection”, “Suturing”), physical_effort_level (“Low”, “High”) - Target Variable: cognitive_state_ground_truth (“Optimal”, “High Load”, “Fatigued”, “Attentional Lapse”)\n\n\nThis is where my domain expertise becomes critical. I created novel, theory-driven features: - [cite_start]tonic_pupil_level: A rolling average of pupil diameter, reflecting baseline arousal and overall cognitive load[cite: 114]. - [cite_start]phasic_pupil_response: An event-related dilation metric, reflecting the brain’s adaptive gain response to critical surgical events[cite: 114]. - grip_force_variability: A novel metric I developed for this project. It calculates the rolling standard deviation of instrument grip force, based on my hypothesis that increased variability serves as a proxy for attentional lapses.\n\n\nI trained an XGBoost Classifier—an industry-standard, high-performance model—to predict the surgeon’s cognitive state. To ensure the model is interpretable and trustworthy for clinical stakeholders, I used SHAP (SHapley Additive exPlanations) to identify the key predictive features.\n[Placeholder for your Feature Importance Plot from the XGBoost model]\n\n\n\n\n\n\n✨ The Result: A Real-Time Analytics Dashboard\nThe final output is a proof-of-concept dashboard built in R Shiny. It simulates a live view of the surgeon’s cognitive state and provides clear, interpretable alerts.\n[Placeholder for a full screenshot of your Shiny App Dashboard]\nKey Features of the Dashboard:\n\nLive Cognitive State Prediction: Displays the model’s primary output (e.g., Optimal, High Load, Attentional Lapse) with a corresponding confidence score.\nMulti-Modal Data Visualization: Shows synchronized, live-updating streams of physiological (pupil) and motor (grip force) data.\nExplainable Alerts: The most innovative feature is the “Why” panel. When an alert is triggered, the dashboard uses the XAI model to explain which data signals are driving the prediction, building trust and providing actionable context.\n\n[Placeholder for a GIF showing an alert being triggered and the ‘Why’ panel updating]\n\n\n\n📚 Artifacts & Next Steps\n\nGitHub Repository: View the full source code for the simulation, modeling pipeline, and Shiny app. (Suggestion: create a new repo for this project)\nGrant Proposal: Read the full, peer-reviewed research proposal that provides the theoretical foundation for this work.\n\n\n\n\n\n Back to top"
   }
 ]
