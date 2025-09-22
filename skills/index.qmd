@@ -4,6 +4,8 @@ title: "Technical Skills & Methodologies"
 
 I specialize in a multi-modal approach to understanding human behavior, combining rigorous experimental design with advanced data analysis and physiological measurement. Below is a summary of my core competencies.
 
+💡 *See concrete applications of these skills in my [Portfolio](../portfolio/index.qmd) case studies.*
+
 ---
 
 ### 🔬 Research & Experimental Design
@@ -19,7 +21,8 @@ I specialize in a multi-modal approach to understanding human behavior, combinin
 
 * **Languages:** R (Expert), MATLAB (Expert), SQL (Proficient), Python (Familiar), Bash (Familiar).
 * **Statistical Modeling:** Linear Mixed-Effects Models (LMMs), Bayesian Analysis, Psychometric Function Fitting, Drift-Diffusion Modeling (DDM).
-* **Data Analysis & Visualization (R):** Tidyverse (dplyr, ggplot2), R Markdown.
+* **Machine Learning:** XGBoost, Feature Engineering, Cross-Validation, Hyperparameter Tuning, Predictive Modeling.
+* **Data Analysis & Visualization (R):** Tidyverse (dplyr, ggplot2), R Markdown, Shiny (Interactive Dashboards).
 * **Development & Version Control:** Git, GitHub, Google Cloud Platform (GCP).
 
 ---
@@ -29,6 +32,14 @@ I specialize in a multi-modal approach to understanding human behavior, combinin
 * **Pupillometry:** Real-time analysis of pupil dilation as a biomarker for cognitive load and arousal.
 * **Electroencephalography (EEG):** Collection, preprocessing, and analysis of EEG data, including sleep scoring.
 * **Neuroimaging Analysis:** Analyzing Diffusion MRI (dMRI) data using toolkits such as **FSL**, **QSIPrep**, and **SPM12**.
+
+---
+
+### 🏥 Applied Research & Industry Experience
+
+* **Biomedical Engineering:** Real-time analytics platforms, surgical performance monitoring, medical device data analysis.
+* **Applied Psychology:** Cognitive state prediction, performance optimization in high-stakes environments.
+* **Mixed-Methods Research:** Combining behavioral, physiological, and self-report measures for comprehensive insights.
 
 ---
 

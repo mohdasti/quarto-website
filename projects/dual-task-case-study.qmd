@@ -6,6 +6,9 @@ format:
     toc-depth: 5
 image: ../images/Aerospace_HUD.png
 description: "A research roadmap case study on modeling dual-task interference using pupillometry to enhance performance in high-stakes environments."
+tags: ["Human Factors", "Cognitive Neuroscience", "Psychophysiology", "Pupillometry", "Experimental Design"]
+research_domains: ["Human Factors", "Cognitive Neuroscience"]
+methodologies: ["Psychophysiology", "Pupillometry", "Experimental Design"]
 ---
 
 # 🌟 Overview: The High Cost of Cognitive Overload

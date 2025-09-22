@@ -3,6 +3,9 @@ title: "The Surgeon's 'Cognitive Black Box'"
 subtitle: "A Real-Time Analytics Platform for Predicting and Mitigating Surgical Fatigue"
 image: https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/surgical_console_enhanced.png
 description: "A proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon's cognitive state, inspired by my work at Surgical Safety Technologies."
+tags: ["Human Factors", "Biomedical Engineering", "Cognitive Neuroscience", "Psychophysiology", "Machine Learning", "Pupillometry", "Experimental Design"]
+research_domains: ["Human Factors", "Biomedical Engineering", "Cognitive Neuroscience"]
+methodologies: ["Psychophysiology", "Machine Learning", "Pupillometry", "Experimental Design"]
 editor: 
   markdown: 
     wrap: 72

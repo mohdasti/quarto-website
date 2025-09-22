@@ -5,6 +5,9 @@ toc: true
 toc-depth: 4
 image: ../images/procedural-memory-plot.png
 description: "An end-to-end mixed-methods study comparing the effects of napping and meditation on declarative and procedural memory consolidation."
+tags: ["Cognitive Neuroscience", "Applied Psychology", "Mixed Methods", "EEG", "Experimental Design"]
+research_domains: ["Cognitive Neuroscience", "Applied Psychology"]
+methodologies: ["Mixed Methods", "EEG", "Experimental Design"]
 ---
 
 ### 🧠 Optimizing Learning: A Deep Dive into the Cognitive States that Boost Memory

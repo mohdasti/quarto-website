@@ -41,8 +41,8 @@ $navbar-hl: $accent-red;
 
 /*-- scss:rules --*/
 .navbar {
-  background-color: #f1faee;
-  border-bottom: 1px solid #a8dadc;
+  background-color: #f8f9fa !important;
+  border-bottom: 1px solid #dee2e6;
 }
 
 .navbar-brand, .nav-link {
@@ -51,4 +51,91 @@ $navbar-hl: $accent-red;
   &:hover {
     color: #e63946 !important;
   }
+}
+
+/* Portfolio Tags Styling */
+.portfolio-tags {
+  margin: 10px 0;
+}
+
+.tag-filter-container {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: rgba(168, 218, 220, 0.1);
+  border-radius: 8px;
+  border: 1px solid #a8dadc;
+}
+
+.tag-filter-title {
+  font-weight: 600;
+  color: #1d3557;
+  margin-bottom: 10px;
+}
+
+.tag-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  margin: 2px 4px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+/* Research Domain Tags - Blue theme */
+.tag-research-domain {
+  background-color: #457b9d;
+  color: white;
+  border-color: #457b9d;
+}
+
+.tag-research-domain:hover {
+  background-color: #1d3557;
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tag-research-domain.active {
+  background-color: #1d3557;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Methodology Tags - Red theme */
+.tag-methodology {
+  background-color: #e63946;
+  color: white;
+  border-color: #e63946;
+}
+
+.tag-methodology:hover {
+  background-color: #c12e38;
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tag-methodology.active {
+  background-color: #c12e38;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Card tags in the listing */
+.card-tags {
+  margin-top: 8px;
+}
+
+.card-tags .tag-badge {
+  font-size: 0.7rem;
+  padding: 3px 6px;
+}
+
+/* Hide filtered out items */
+.listing-item.filtered-out {
+  display: none !important;
 }
