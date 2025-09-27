@@ -1,20 +1,79 @@
-# R specific
-.Rproj.user
+# Quarto build outputs
+_site/
+_freeze/
+.quarto/
+
+# R and RStudio
+.Rproj.user/
 .Rhistory
 .RData
 .Ruserdata
+*.Rproj
 
-# Quarto
-/.quarto/
-_site/
-_freeze/
-*.html
-
-# System files
-.DS_Store
-.Thumbs.db
-
-# Node
+# Node.js
 node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
-quarto-1.4.549/share/create/extensions/format-html/template.ejs.qmd
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Package files
+*.tar.gz
+*.zip
+
+# Python (if any Python scripts are added)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Quarto specific
+.quarto/
+quarto.log
+
+# Netlify
+.netlify/
+
+# Local development
+.local/
