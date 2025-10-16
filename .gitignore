@@ -18,3 +18,7 @@ _freeze/
 node_modules/
 
 quarto-1.4.549/share/create/extensions/format-html/template.ejs.qmd
+
+# Ignore redundant nested directories
+quarto-website/
+quarto-website-1/
