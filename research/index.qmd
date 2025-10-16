@@ -12,10 +12,11 @@ My work aims to move beyond simple behavioral metrics by integrating psychophysi
 
 ##  Core Research Areas
 
-My research program is built on three interconnected pillars:
+My research program is built on four interconnected pillars:
 
 * **Aging & Cognitive Neuroscience:** Characterizing how age-related changes in the Locus Coeruleus (LC) and its associated neural circuits impact cognitive functions, with a focus on identifying potential biomarkers for neurodegenerative disorders.
 * **Dual-Task Interference & Performance:** Quantifying how concurrent physical and cognitive stressors interact to impair performance across multiple domains, including perception, memory, and metacognition.
+* **Applied Human Factors:** Translating cognitive science insights to real-world high-stakes environments (aerospace, healthcare, manufacturing) to enhance safety and performance through data-driven design.
 * **Personalized Cognitive Modeling:** Moving beyond group averages to model how individual differences in factors like Cognitive Reserve predict a person's unique resilience to cognitive overload.
 
 ---
@@ -26,6 +27,22 @@ To address these questions, I specialize in a multi-modal approach to data colle
 
 * **Psychophysics:** Designing and implementing precise behavioral experiments to measure perceptual and memory thresholds (PsychToolbox).
 * **Pupillometry:** Using pupil dilation as a real-time, non-invasive biomarker of cognitive load and physiological arousal (MATLAB, R, Python).
+* **Machine Learning:** Developing predictive models for cognitive state classification using ensemble methods (XGBoost), feature engineering, and cross-validation techniques.
 * **Computational Modeling:** Applying models like the Drift-Diffusion Model (DDM) to deconstruct decision-making processes.
 * **Advanced Statistical Analysis:** Employing linear mixed-effects models and Bayesian methods for complex, repeated-measures data (R).
 * **Neuroimaging:** Analyzing Diffusion MRI data to investigate white matter integrity and its relationship to behavior (FSL, QSIPrep).
+* **Real-Time Analytics:** Building interactive dashboards and monitoring systems for applied research contexts (R Shiny, web technologies).
+
+---
+
+## 🚀 Research in Action
+
+See concrete applications of these research approaches in my [**Portfolio**](../portfolio/index.qmd), featuring case studies that demonstrate the translation of cognitive science principles to real-world challenges in aerospace, healthcare, and education.
+
+---
+
+## 🎯 Current Research Focus
+
+**PhD Dissertation (2025):** *"A Psychophysiological Approach to Modeling Dual-Task Interference: Pupillometry, Cognitive Reserve, and Personalized Performance Prediction"*
+
+This research aims to develop a comprehensive framework for predicting when and why individuals experience cognitive overload in dual-task scenarios, with applications to aging, technology design, and occupational safety.
