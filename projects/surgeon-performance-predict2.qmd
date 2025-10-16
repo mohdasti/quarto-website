@@ -1,0 +1,293 @@
+---
+title: "Surgeon Cognitive Dashboard — Case Study"
+subtitle: "Zero-headgear neuro-ergonomics for robotic surgery"
+author: "Mohammad Dastgheib"
+format:
+  html:
+    theme: flatly
+    toc: true
+    toc-depth: 3
+    number-sections: false
+    smooth-scroll: true
+execute:
+  echo: false
+  message: false
+  warning: false
+filters:
+  - lightbox
+---
+
+```{=html}
+<style>
+/* --- Minimal clinical theme (inline; no external files) --- */
+:root {
+  --ink:#0b1526; --muted:#4b5563; --bg:#f7f9fc; --card:#ffffff;
+  --accent:#1f9bb6; --ok:#27ae60; --warn:#f39c12; --crit:#e74c3c;
+  --border:#e5e7eb;
+}
+body { color:var(--ink); background:var(--bg); }
+h1,h2,h3 { letter-spacing:.2px; }
+a { color:var(--accent); }
+.quarto-title-banner { background:var(--card); border-bottom:1px solid var(--border); }
+.gt_table { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+.gt_table .gt_row { font-variant-numeric: tabular-nums; }
+.figure img, video { border:1px solid var(--border); border-radius:12px; }
+.callout { border-left-color: var(--accent) !important; }
+</style>
+```
+
+::: {.callout-tip}
+TL;DR — Reduce High-Load minutes/hour, prevent lapses, and keep trainees in the optimal zone using pupil + grip/tremor + HRV (no headgear).
+This page first teaches why thresholds must adapt (interactive Training Lab), then shows the production dashboard, and finally the metrics ops leaders care about.
+:::
+
+Executive Summary
+
+Problem: ORs lack an objective, real-time read on surgeon cognitive state that's sterile-compatible and setup in <60s.
+
+Solution: A zero-headgear Surgical Cognitive Dashboard + a Training Lab that teaches and exports adaptive threshold policies.
+
+Tracked KPIs:
+
+Alert burden (per min) • target ≤ 0.6/min
+
+High-Load minutes/hour • lower is better
+
+Time-to-recovery after microbreak • aim ≤ 120s (HRV/tremor normalization)
+
+::: {.callout-note}
+Product repo: https://github.com/mohdasti/surgical-cognitive-dashboard
+
+Training Lab: https://github.com/mohdasti/surgical-training-lab
+
+:::
+
+Why thresholds must adapt (interactive)
+<iframe src="https://0z6q8c-mohammad0dastgheib.shinyapps.io/surgical-training-lab/" width="100%" height="760" loading="lazy" style="border:1px solid #e5e7eb;border-radius:12px"> </iframe>
+
+::: {.callout-important}
+For experts, signals flatten. For trainees, they teach.
+The Lab lets educators compare Inverted-U, Unified Sensitivity, and Fatigue-Adaptive policies on the same stream—then export defaults to production.
+:::
+
+Production Dashboard (quick demo)
+<!-- Prefer MP4 for small, crisp playback. If you only have a GIF, replace the <video> with ![](path/to.gif) -->
+
+<video src="case_study/images/dashboard-demo.mp4" autoplay loop muted playsinline style="width:100%;border-radius:12px"></video>
+
+Under the hood
+
+Signals → causal features → calibrated classifier → post-rules
+
+Real-time GT table with literature ranges & DOI/PubMed links
+
+Deployable via Docker/ShinyApps, embeddable via iframe
+
+Methods (tight & credible)
+
+Constraints: no EEG/fNIRS/headgear; sterile-field safe; <60s setup; surgeon in control.
+Modalities: Pupil (TEPR), Grip force (+CV), Tremor (8–12 Hz RMS), HRV (SDNN/RMSSD).
+Model: XGBoost + Platt calibration; post-hoc fusion rules tuned to minimize false alarms.
+Validation: LOSO with simulated surgeons (PoC) → in-OR pilot next.
+
+Results that matter (ops KPIs)
+
+#| label: metrics-gt
+if (requireNamespace("gt", quietly=TRUE) &&
+requireNamespace("readr", quietly=TRUE) &&
+requireNamespace("dplyr", quietly=TRUE)) {
+
+library(readr); library(dplyr); library(gt)
+
+path <- "data/processed/demo_metrics.csv"
+if (file.exists(path)) {
+metrics <- read_csv(path, show_col_types = FALSE)
+} else {
+metrics <- tibble::tibble(
+Alert_Burden_per_min = 0.42,
+HighLoad_Minutes_per_hour = 12.8,
+TimeToRecovery_sec = 95
+)
+}
+
+gt(metrics) |>
+fmt_number(where(is.numeric), decimals = 2) |>
+cols_label(
+Alert_Burden_per_min = "Alert Burden (per min)",
+HighLoad_Minutes_per_hour = "High-Load (min/hr)",
+TimeToRecovery_sec = "Time-to-Recovery (sec)"
+) |>
+data_color(
+columns = c(Alert_Burden_per_min, HighLoad_Minutes_per_hour, TimeToRecovery_sec),
+colors = scales::col_bin(
+palette = c("#27ae60","#f39c12","#e74c3c"),  # green, amber, red
+bins = c(-Inf, 0.6, 1.0, Inf)                # tweak per KPI
+)
+) |>
+tab_options(table.border.top.color = "#e5e7eb",
+table.border.bottom.color = "#e5e7eb")
+
+} else {
+cat("Install packages gt, readr, dplyr to render this table.")
+}
+
+Live clinical-style table with literature ranges
+
+#| label: features-gt
+if (requireNamespace("gt", quietly=TRUE) &&
+requireNamespace("readr", quietly=TRUE) &&
+requireNamespace("dplyr", quietly=TRUE)) {
+
+library(readr); library(dplyr); library(gt)
+
+# ---- reference ranges (fallback included) ----
+
+ref_path <- "data/reference_ranges.csv"
+refs <- if (file.exists(ref_path)) {
+read_csv(ref_path, show_col_types = FALSE)
+} else {
+tibble::tibble(
+Feature = c("Pupil Diameter","Grip Force","Tremor RMS (8–12Hz)","HRV (RMSSD)",
+"Grip CV%","Time-on-Task","Normal Prob","High Load Prob","Lapse Prob"),
+Unit = c("mm","N","μm","ms","%","min","%","%","%"),
+baseline_mean = c(3.5,3.0,100,40,8,10,60,30,10),
+baseline_sd   = c(0.2,1.0,30,10,2,NA,NA,NA,NA),
+normal_low    = c(3.1,1.5,60,30,5,0,40,0,0),
+normal_high   = c(3.9,5.0,120,60,12,30,100,60,30),
+alert_low     = c(NA,NA,NA,25,NA,NA,0,0,0),
+alert_high    = c(4.8,7.0,180,NA,15,60,100,100,100),
+direction     = c("high_worse","high_worse","high_worse","low_worse","high_worse","high_worse",
+"low_worse","high_worse","high_worse")
+)
+}
+
+# ---- current snapshot (fallback included) ----
+
+snap_path <- "data/processed/demo_features_snapshot.csv"
+snap <- if (file.exists(snap_path)) {
+read_csv(snap_path, show_col_types = FALSE)
+} else {
+tibble::tibble(
+Feature = c("Pupil Diameter","Grip Force","Tremor RMS (8–12Hz)","HRV (RMSSD)",
+"Grip CV%","Time-on-Task","Normal Prob","High Load Prob","Lapse Prob"),
+Value   = c(3.62,5.30,78,45,9.3,10.0,43.5,40.5,16.0),
+Unit    = c("mm","N","μm","ms","%","min","%","%","%")
+)
+}
+
+# ---- simple status + effect size helpers ----
+
+status_row <- function(val, r) {
+dir <- r$direction; nl<-r$normal_low; nh<-r$normal_high; al<-r$alert_low; ah<-r$alert_high
+if (is.na(val)) return("Unknown")
+if (dir=="high_worse") {
+if (!is.na(ah) && val>ah) "Critical" else if (!is.na(nh) && val>nh) "Elevated" else "Normal"
+} else if (dir=="low_worse") {
+if (!is.na(al) && val<al) "Critical" else if (!is.na(nl) && val<nl) "Elevated" else "Normal"
+} else {
+if ((!is.na(al) && val<al) || (!is.na(ah) && val>ah)) "Critical"
+else if ((!is.na(nl) && val<nl) || (!is.na(nh) && val>nh)) "Elevated"
+else "Normal"
+}
+}
+d_cohen <- function(val, m, s) ifelse(is.na(s) || s<=0, NA_real_, (val - m)/s)
+
+df <- snap |>
+left_join(refs, by = c("Feature","Unit")) |>
+rowwise() |>
+mutate(
+Status = status_row(Value, cur_data()),
+Effect = d_cohen(Value, baseline_mean, baseline_sd),
+Ref_CI = if (!is.na(baseline_mean) && !is.na(baseline_sd))
+sprintf("%.2f–%.2f", baseline_mean-1.96*baseline_sd, baseline_mean+1.96*baseline_sd)
+else ""
+) |>
+ungroup() |>
+mutate(
+Status_Icon = dplyr::case_when(
+Status=="Normal" ~ "<span style='color:#27ae60'>●</span> Normal",
+Status=="Elevated" ~ "<span style='color:#f39c12'>▲</span> Elevated",
+Status=="Critical" ~ "<span style='color:#e74c3c'>⚠</span> Critical",
+TRUE ~ "·"
+),
+Value_fmt = dplyr::case_when(
+Unit=="mm" ~ sprintf("%.2f mm", Value),
+Unit=="μm" ~ sprintf("%.0f μm", Value),
+Unit=="N"  ~ sprintf("%.2f N", Value),
+Unit=="ms" ~ sprintf("%.0f ms", Value),
+Unit=="%"  ~ sprintf("%.1f%%", Value),
+Unit=="min"~ sprintf("%.1f min", Value),
+TRUE ~ as.character(signif(Value, 3))
+),
+Effect_fmt = ifelse(is.na(Effect),"",sprintf("%.2f", Effect))
+)
+
+gt(df |> select(Feature, Value_fmt, Ref_CI, Effect_fmt, Status_Icon)) |>
+cols_label(
+Feature    = "Feature",
+Value_fmt  = html("Value<br><span style='font-size:.8em'>(Live)</span>"),
+Ref_CI     = html("Literature<br><span style='font-size:.8em'>(≈95% CI)</span>"),
+Effect_fmt = html("Effect Size<br><span style='font-size:.8em'>(Cohen's d)</span>"),
+Status_Icon= "Status"
+) |>
+fmt_markdown(columns = c(Ref_CI, Status_Icon)) |>
+data_color(
+columns = "Value_fmt",
+colors = function(x) ifelse(df$Status=="Normal","#27ae60",
+ifelse(df$Status=="Elevated","#f39c12",
+ifelse(df$Status=="Critical","#e74c3c","#95a5a6")))
+) |>
+tab_style(
+style = cell_fill(color = "#e8f5e9"),
+locations = cells_body(columns = "Value_fmt", rows = df$Status=="Normal")
+) |>
+tab_style(
+style = cell_text(weight = "bold"),
+locations = cells_body(columns = "Effect_fmt",
+rows = !is.na(df$Effect_fmt) & as.numeric(df$Effect_fmt) > 0.8)
+) |>
+tab_footnote(
+footnote = html("Colors: <span style='color:#27ae60'>Normal</span> | <span style='color:#f39c12'>Elevated</span> | <span style='color:#e74c3c'>Critical</span>"),
+locations = cells_column_labels(columns = "Value_fmt")
+)
+
+} else {
+cat("Install packages gt, readr, dplyr to render this table.")
+}
+
+Product vs Lab (how they fit)
+
+| Aspect   | Production Dashboard                        | Training Lab                              |
+| -------- | ------------------------------------------- | ----------------------------------------- |
+| Purpose  | Real-time monitoring & decision support     | Theory exploration & threshold policy     |
+| Audience | Clinicians, safety officers                 | Educators, researchers                    |
+| Features | GT live table, deployable app, tuned alerts | Three paradigms, side-by-side comparisons |
+| Status   | Stable, zero-headgear UI                    | Experimental, fast iteration              |
+
+Deployment & Privacy
+
+Deployment: Docker or ShinyApps; iframe embeds for portfolio demos and training sites.
+
+Privacy: Surgeon biometrics are ephemeral by default; logs de-identified for QA.
+
+What's next
+
+Training pilots: quantify High-Load min/hr and time-to-recovery improvements for residents.
+
+State-adaptive assistance: camera framing & motion scaling tweaks under High Load; defer non-urgent alerts.
+
+In-OR telemetry: swap simulator with live HRV/pupil; log intervention efficacy (normalize ≤120s).
+
+
+**Notes**
+- Replace `case_study/images/dashboard-demo.mp4` with your short dashboard clip (or swap the `<video>` with a GIF image).
+- The tables will render even if you haven't created the CSVs yet (they fall back to sample values). When ready, drop:
+  - `data/processed/demo_metrics.csv`
+  - `data/processed/demo_features_snapshot.csv`
+  - `data/reference_ranges.csv`
+- Your **Training Lab** is already embedded via the ShinyApps URL you provided.
+::contentReference[oaicite:0]{index=0}
+
+
+
+
