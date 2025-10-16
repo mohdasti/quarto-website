@@ -1,5 +1,47 @@
 {
+  "name": "mohammad-dastgheib-website",
+  "version": "1.0.0",
+  "description": "Personal academic website for Mohammad Dastgheib - PhD Candidate in Cognitive Neuroscience",
+  "main": "index.qmd",
+  "scripts": {
+    "dev": "quarto preview --watch",
+    "build": "quarto render",
+    "clean": "quarto render --clean",
+    "serve": "quarto preview",
+    "check": "quarto check"
+  },
+  "keywords": [
+    "quarto",
+    "academic-website",
+    "research",
+    "cognitive-neuroscience",
+    "human-factors",
+    "psychology"
+  ],
+  "author": {
+    "name": "Mohammad Dastgheib",
+    "email": "mdast003@ucr.edu",
+    "url": "https://mdastgheib.com"
+  },
+  "license": "MIT",
+  "homepage": "https://mdastgheib.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mohdasti/quarto-website.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mohdasti/quarto-website/issues"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
   "dependencies": {
     "@quarto/netlify-plugin-quarto": "^0.0.5"
-  }
+  },
+  "devDependencies": {},
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not dead"
+  ]
 }
