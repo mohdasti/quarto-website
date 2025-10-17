@@ -9,12 +9,11 @@ format:
     toc-depth: 3
     number-sections: false
     smooth-scroll: true
+    lightbox: auto
 execute:
   echo: false
   message: false
   warning: false
-filters:
-  - lightbox
 ---
 
 ```{=html}
@@ -22,272 +21,755 @@ filters:
 /* --- Minimal clinical theme (inline; no external files) --- */
 :root {
   --ink:#0b1526; --muted:#4b5563; --bg:#f7f9fc; --card:#ffffff;
-  --accent:#1f9bb6; --ok:#27ae60; --warn:#f39c12; --crit:#e74c3c;
-  --border:#e5e7eb;
+  --accent:#1f9bb6; --ok:#27ae60; --warn:#f39c12; --crit:#e74c3c; --border:#e5e7eb;
 }
 body { color:var(--ink); background:var(--bg); }
 h1,h2,h3 { letter-spacing:.2px; }
 a { color:var(--accent); }
 .quarto-title-banner { background:var(--card); border-bottom:1px solid var(--border); }
+.figure img, video { border:1px solid var(--border); border-radius:12px; }
 .gt_table { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
 .gt_table .gt_row { font-variant-numeric: tabular-nums; }
-.figure img, video { border:1px solid var(--border); border-radius:12px; }
 .callout { border-left-color: var(--accent) !important; }
 </style>
 ```
 
-::: {.callout-tip}
-TL;DR — Reduce High-Load minutes/hour, prevent lapses, and keep trainees in the optimal zone using pupil + grip/tremor + HRV (no headgear).
-This page first teaches why thresholds must adapt (interactive Training Lab), then shows the production dashboard, and finally the metrics ops leaders care about.
+::: callout-tip
+**TL;DR —** Reduce **High-Load minutes/hour**, prevent **lapses**, and keep trainees in the **optimal zone** using **pupil + grip/tremor + HRV** (no headgear). This page first **teaches why thresholds must adapt** (interactive Training Lab), then shows the **production dashboard**, and finally the **metrics ops leaders care about**.
 :::
 
-Executive Summary
+## Why I built this
 
-Problem: ORs lack an objective, real-time read on surgeon cognitive state that's sterile-compatible and setup in <60s.
+```{=html}
 
-Solution: A zero-headgear Surgical Cognitive Dashboard + a Training Lab that teaches and exports adaptive threshold policies.
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
-Tracked KPIs:
+<!-- Enable Bootstrap 5 tooltips (hover-activated, with guards) -->
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  if (!window.bootstrap || !bootstrap.Tooltip) return; // guard
+  // Add a custom class to all tooltips by default (wider, readable)
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+    if (!el.dataset.bsCustomClass) el.dataset.bsCustomClass = 'tt-wide';
+    el.setAttribute('tabindex', '0'); // keyboard focus
+    new bootstrap.Tooltip(el, {container: 'body', trigger: 'hover focus', html: true});
+  });
+});
+</script>
 
-Alert burden (per min) • target ≤ 0.6/min
+<style>
+/* Wider, cleaner tooltips */
+.tt-wide .tooltip-inner{
+  max-width: 340px;           /* default ~200px can feel cramped */
+  text-align: left;
+  line-height: 1.25;
+  padding: .45rem .55rem;
+}
+/* Slightly bigger hit area for the ⓘ pill */
+.help-icon{display:inline-flex;align-items:center;justify-content:center;
+  width:1.05em;height:1.05em;border-radius:999px;border:1px solid #e5e7eb;
+  color:#1f9bb6;font-size:.8em;margin-left:.25rem;cursor:help;vertical-align:baseline}
+.help-icon:hover{background:#e6f6fb;border-color:#b7e1f0}
+.help-icon i{font-size:1em}
+</style>
 
-High-Load minutes/hour • lower is better
+<!-- ===== Enriched SST + PhD section with hover help ===== -->
 
-Time-to-recovery after microbreak • aim ≤ 120s (HRV/tremor normalization)
+<p>
+<strong><a href="https://www.surgicalsafety.com/" target="_blank" rel="noopener">Surgical Safety Technologies (SST)</a></strong>
+(Research Assistant / AI Annotator).
+</p>
+
+<ul>
+  <li>
+    Assisted on <em>instance segmentation</em>
+    <span class="help-icon"
+          data-bs-toggle="tooltip"
+          title="Pixel-wise masks for each instrument (vs. boxes only), which enables occlusion-aware tracking and per-tool metrics. Useful downstream for contact detection &amp; dwell time.">
+      <i class="bi bi-info-circle"></i>
+    </span>
+    for tool detection/tracking
+  </li>
+
+  <li>
+    Computed <em>inter-rater reliability</em> (κ/ICC)
+    <span class="help-icon"
+          data-bs-toggle="tooltip"
+          title="<b>κ (kappa):</b> categorical agreement adjusted for chance<br><b>ICC:</b> continuous/interval agreement across raters<br>Heuristics: κ ≥ 0.60 / ICC ≥ 0.75 = acceptable for ops; re-train below">
+      <i class="bi bi-info-circle"></i>
+    </span>
+    for analyst labels
+  </li>
+
+  <li>
+    Reviewed ML-for-safety literature
+    <span class="help-icon"
+          data-bs-toggle="tooltip"
+          title="Streams: adverse-event detection, tool usage analytics, OR black-box &amp; safety auditing; emphasis on deployability and annotation quality.">
+      <i class="bi bi-info-circle"></i>
+    </span>
+    to support analyst operations
+  </li>
+</ul>
+
+<p style="margin:.25rem 0 0">
+  → <strong>Lesson:</strong> <em>labels drift</em>
+  <span class="help-icon" role="button" aria-label="What is label drift?"
+        data-bs-toggle="tooltip"
+        title="Definitions &amp; mental models shift over time and across raters (ontology changes, UI nudges). Mitigations: κ/ICC gates, versioned rubrics, targeted re-labeling.">
+    <i class="bi bi-info-circle" aria-hidden="true"></i>
+  </span>,
+  <em>interfaces &amp; alarm hygiene decide adoption</em>
+  <span class="help-icon" role="button" aria-label="Why does alarm hygiene matter?"
+        data-bs-toggle="tooltip"
+        title="Target ≤ <b>0.6 alerts/min</b> (median)<br>Context-aware suppression during critical actions<br>Explainable triggers: e.g., <b>HRV↓ + TEPR↑</b><br>Snooze/decay to prevent repeats; short, actionable text">
+    <i class="bi bi-info-circle" aria-hidden="true"></i>
+  </span>.
+</p>
+
+<hr style="border:none;border-top:1px solid #e5e7eb;margin:1rem 0" />
+
+<p>
+<strong><a href="https://mdastgheib.com/research/" target="_blank" rel="noopener">UC Riverside</a></strong>
+(PhD project and dissertation).
+</p>
+
+<ul>
+  <li>
+    Test concurrent physical (<b>5% vs 40% MVC</b>
+    <span class="help-icon"
+          data-bs-toggle="tooltip"
+          title="MVC = Maximum Voluntary Contraction. 5% ≈ light isometric grip; 40% ≈ high effort.">
+      <i class="bi bi-info-circle"></i>
+    </span>)
+    × cognitive effort with <em>pupillometry</em>
+    <span class="help-icon"
+          data-bs-toggle="tooltip"
+          title="<b>Tonic</b> (baseline diameter) ≈ arousal state<br><b>TEPR</b> (task-evoked) ≈ phasic LC-NE response<br>Used alongside HRV to disambiguate stress vs. lapse">
+      <i class="bi bi-info-circle"></i>
+    </span>
+  </li>
+
+  <li>
+    Domains: working/long-term memory + auditory/visual discrimination
+    <span class="help-icon"
+          data-bs-toggle="tooltip"
+          title="Cross-domain design tests generality of arousal effects beyond a single task family.">
+      <i class="bi bi-info-circle"></i>
+    </span>
+  </li>
+
+  <li>
+    Theories: <em>Resource Competition</em>
+    <span class="help-icon"
+          data-bs-toggle="tooltip"
+          title="Shared resources → physical effort can tax/exacerbate cognitive load, producing performance trade-offs.">
+      <i class="bi bi-info-circle"></i>
+    </span>
+    + <em>Neural Gain (adaptive gain)</em>
+    <span class="help-icon"
+          data-bs-toggle="tooltip"
+          title="LC–NE modulates neural gain; mid-level arousal optimizes performance (inverted-U), extremes hurt it.">
+      <i class="bi bi-info-circle"></i>
+    </span>
+  </li>
+</ul>
+
+<p style="margin:.25rem 0 0">
+  → <strong>Mechanism:</strong> <em>pupil-indexed LC–NE</em>
+  <span class="help-icon"
+        data-bs-toggle="tooltip"
+        title="Pupil diameter tracks LC–NE activity (tonic &amp; phasic). In the dashboard, TEPR↑ + HRV↓ = High-Load confirmation; low TEPR + blink anomalies → Lapse confirmation. This supports thresholds that adapt with time-on-task and recover after microbreaks.">
+    <i class="bi bi-info-circle"></i>
+  </span>
+  links arousal to performance.
+</p>
+
+<hr style="border:none;border-top:1px solid #e5e7eb;margin:1rem 0" />
+
+<p><strong>Why this dashboard:</strong> combine deployable UX from SST with mechanistic LC–NE insight to deliver a
+  <b>training-first, zero-headgear</b> cognitive monitor for robotic trainees.</p>
+```
+
+------------------------------------------------------------------------
+
+## Executive Summary
+
+Surgery is a cognitive sport. When arousal is balanced, performance peaks; when it's too low or too high, errors creep in. The OR is tightly constrained—so we avoid new body-worn hardware and lengthy calibration, and instead fuse existing robot telemetry with unobtrusive biosignals to deliver real-time coaching.
+
+I built two tightly coupled tools:
+
+- **Training Lab**: makes load/fatigue *felt* and lets instructors choose a threshold policy to match their pedagogy.
+- **Production Dashboard**: runs those policies in real time using **pupil + grip/tremor + HRV**, tuned to prevent alarm fatigue and respect sterile-field constraints.
+
+Accuracy is necessary, not sufficient. We optimize for operational outcomes—fewer high-load minutes, faster recovery, quicker proficiency—alongside standard model metrics.
 
 ::: {.callout-note}
-Product repo: https://github.com/mohdasti/surgical-cognitive-dashboard
-
-Training Lab: https://github.com/mohdasti/surgical-training-lab
-
+**Deployment KPIs:** Alert burden ≤ **0.6/min**, High-Load **min/hr ↓**, Time-to-Recovery **sec ↓**, Acknowledgement rate **↑**.
 :::
 
-Why thresholds must adapt (interactive)
-<iframe src="https://0z6q8c-mohammad0dastgheib.shinyapps.io/surgical-training-lab/" width="100%" height="760" loading="lazy" style="border:1px solid #e5e7eb;border-radius:12px"> </iframe>
 
-::: {.callout-important}
-For experts, signals flatten. For trainees, they teach.
-The Lab lets educators compare Inverted-U, Unified Sensitivity, and Fatigue-Adaptive policies on the same stream—then export defaults to production.
+```{=html}
+<style>
+.repo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:.6rem 0}
+.repo-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px 14px 12px;
+  box-shadow:0 1px 1px rgba(16,24,40,.02);transition:transform .16s ease,box-shadow .16s ease}
+.repo-card:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(16,24,40,.06);border-color:#cfe8f3}
+.repo-card:focus-within{outline:2px solid #b7e1f0;outline-offset:2px}
+.repo-head{display:flex;align-items:center;gap:8px}
+.repo-head .stack{display:flex;align-items:center;gap:8px}
+.repo-head i{font-size:1.05rem;color:#1f9bb6}
+.repo-title{font-weight:600}
+.repo-desc{color:#4b5563;margin:.35rem 0 .5rem;font-size:.95rem}
+.repo-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.repo-badges{display:flex;gap:6px;flex-wrap:wrap}
+.repo-badges img{height:18px;border-radius:6px;border:1px solid #edf0f3}
+.repo-actions{display:flex;gap:8px}
+.repo-actions a.btn{display:inline-flex;align-items:center;gap:.45rem;font-size:.85rem;padding:.30rem .62rem;border-radius:8px;
+  border:1px solid #d7dee6;background:#f8fafc;color:#0b1526;text-decoration:none}
+.repo-actions a.btn.primary{background:#e6f6fb;border-color:#b7e1f0}
+.repo-actions a.btn i{font-size:1rem}
+</style>
+
+<div class="repo-grid">
+
+  <div class="repo-card" role="group" aria-label="Surgical Cognitive Dashboard repository">
+    <div class="repo-head">
+      <div class="stack">
+        <i class="bi bi-activity" aria-hidden="true"></i>
+        <div class="repo-title">Surgical Cognitive Dashboard</div>
+      </div>
+      <i class="bi bi-github" aria-hidden="true" title="GitHub repository"></i>
+    </div>
+    <div class="repo-desc">Zero-headgear, real-time neuro-ergonomics for robotic surgery.</div>
+    <div class="repo-bar">
+      <div class="repo-badges">
+        <img alt="GitHub stars" loading="lazy"
+             src="https://img.shields.io/github/stars/mohdasti/surgical-cognitive-dashboard?style=flat-square&label=Stars">
+        <img alt="Last commit" loading="lazy"
+             src="https://img.shields.io/github/last-commit/mohdasti/surgical-cognitive-dashboard?style=flat-square">
+      </div>
+      <div class="repo-actions">
+        <a class="btn primary" href="https://github.com/mohdasti/surgical-cognitive-dashboard"
+           target="_blank" rel="noopener" aria-label="Open Surgical Cognitive Dashboard repository on GitHub">
+          <i class="bi bi-github" aria-hidden="true"></i>Open repo
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="repo-card" role="group" aria-label="Surgical Training Lab repository">
+    <div class="repo-head">
+      <div class="stack">
+        <i class="bi bi-mortarboard" aria-hidden="true"></i>
+        <div class="repo-title">Surgical Training Lab</div>
+      </div>
+      <i class="bi bi-github" aria-hidden="true" title="GitHub repository"></i>
+    </div>
+    <div class="repo-desc">Interactive policy sandbox: Inverted-U · SDT · Fatigue-adaptive.</div>
+    <div class="repo-bar">
+      <div class="repo-badges">
+        <img alt="GitHub stars" loading="lazy"
+             src="https://img.shields.io/github/stars/mohdasti/surgical-training-lab?style=flat-square&label=Stars">
+        <img alt="Last commit" loading="lazy"
+             src="https://img.shields.io/github/last-commit/mohdasti/surgical-training-lab?style=flat-square">
+      </div>
+      <div class="repo-actions">
+        <a class="btn" href="https://0z6q8c-mohammad0dastgheib.shinyapps.io/surgical-training-lab/"
+           target="_blank" rel="noopener" aria-label="Open live demo of Surgical Training Lab">
+          <i class="bi bi-display" aria-hidden="true"></i>Live demo
+        </a>
+        <a class="btn primary" href="https://github.com/mohdasti/surgical-training-lab"
+           target="_blank" rel="noopener" aria-label="Open Surgical Training Lab repository on GitHub">
+          <i class="bi bi-github" aria-hidden="true"></i>Open repo
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+```
+
+------------------------------------------------------------------------
+
+## Threshold Policies — how they work
+
+*One problem, three lenses.* Each policy below answers: **what changes**, **when to use it**, and **how it maps to the production dashboard defaults**.
+
+::: panel-tabset
+### Adaptive Gain (Inverted-U) <span class="help-icon" data-bs-toggle="tooltip" title="Target the mid-arousal zone; too low/high hurts performance (LC–NE adaptive gain)."><i class="bi bi-info-circle"></i></span>
+
+```{r}
+#| echo: false
+# Tiny demo: an inverted-U curve (intuition only)
+if (requireNamespace("ggplot2", quietly = TRUE)) {
+  library(ggplot2)
+  x <- seq(0, 10, length.out = 200)
+  perf <- x * exp(-0.4 * x)
+  ggplot(data.frame(arousal = x, performance = perf),
+         aes(arousal, performance)) +
+    geom_line() +
+    labs(title = "Inverted-U intuition", y = "Performance (arb.)") +
+    theme_minimal()
+}
+```
+
+-   **Maps to Dashboard.** Wider `optimal_band` → fewer alerts but slower coaching; narrower band → tighter coaching with risk of nuisance alarms. Defaults exported from the Training Lab.
+
+-   **References.** Yerkes–Dodson (1908); Aston-Jones & Cohen (2005, adaptive gain).
+
+------------------------------------------------------------------------
+
+### Dual-Criterion (SDT) <span class="help-icon" data-bs-toggle="tooltip" title="One knob moves both decision boundaries (High-Load & Lapse) together; tunes decision bias (criteria), not d′."><i class="bi bi-info-circle"></i></span>
+
+```{r}
+#| echo: false
+if (requireNamespace("ggplot2", quietly = TRUE)) {
+  library(ggplot2)
+
+  # ---- Parameters (mirror Training Lab semantics) ----
+  sensitivity   <- 0.60     # 0..1  (liberal ↔ conservative)
+  coupling      <- 0.70     # 0..1  (how tightly HL & Lapse move together)
+  base_hl       <-  1.20    # baseline HL criterion (evidence axis units)
+  base_lapse    <- -1.20    # baseline Lapse criterion (opposite side)
+  move_range    <-  0.80    # total range each criterion can travel
+
+  # Criteria move in opposite directions as sensitivity increases
+  crit_hl    <- base_hl   - sensitivity * move_range
+  crit_lapse <- base_lapse + sensitivity * move_range * coupling
+
+  # Toy evidence distributions (illustrative SDT picture)
+  set.seed(1)
+  n    <- 1200
+  x_n  <- rnorm(n, 0, 1)      # "normal/optimal" evidence
+  x_hl <- rnorm(n, 2, 1)      # "high-load" evidence
+  df   <- rbind(
+    data.frame(x = x_n,  class = "Optimal/Normal"),
+    data.frame(x = x_hl, class = "High-Load")
+  )
+
+  ggplot(df, aes(x, fill = class)) +
+    geom_histogram(aes(y=..density..), bins = 60, alpha = 0.45, position = "identity") +
+    geom_density(alpha = .4) +
+    geom_vline(xintercept = crit_hl,   linetype = 2) +
+    geom_vline(xintercept = crit_lapse,linetype = 3) +
+    annotate("text", x = crit_hl + .15,   y = .35, label = "HL criterion →", size = 4) +
+    annotate("text", x = crit_lapse - .15,y = .30, label = "← Lapse criterion", size = 4) +
+    scale_fill_manual(values = c("Optimal/Normal" = "#0072B5FF", "High-Load" = "#BC3C29FF")) +
+    labs(title = "Dual-Criterion (SDT): both thresholds move with one knob",
+         subtitle = sprintf("sensitivity=%.2f, coupling=%.2f", sensitivity, coupling),
+         x = "Evidence", y = "Density") +
+    theme_minimal()
+}
+
+```
+
+-   **Maps to Dashboard.** Sets the `high_load_prob` slider + post-hoc fusion guardrails (e.g., require **TEPR rise** or **HRV drop** to confirm).
+
+-   **References.** Macmillan & Creelman (Signal Detection Theory); NASA-TLX background (Hart & Staveland).
+
+------------------------------------------------------------------------
+
+### Time-on-Task (Fatigue) <span class="help-icon" data-bs-toggle="tooltip" title="Hold steady until onset, then relax with half-life; microbreak gives a brief reset with exponential decay."><i class="bi bi-info-circle"></i></span>
+
+```{r}
+#| echo: false
+if (requireNamespace("ggplot2", quietly = TRUE)) {
+  library(ggplot2)
+
+  # --- Parameters (use the same names you present in the text) ---
+  c_start              <- 0.70   # starting decision threshold
+  c_floor              <- 0.50   # most relaxed threshold allowed
+  onset_min            <- 30     # fatigue onset time (min)
+  fatigue_half_life_min<- 21     # how fast threshold relaxes (half-life, min)
+  microbreak_min       <- 60     # minute of the microbreak (set NA for none)
+  microbreak_reset     <- 0.12   # how strongly the break recenters the threshold
+  microbreak_decay_min <- 2      # how quickly that reset fades (min)
+
+  # --- Helper (exponential relaxation + smooth microbreak recovery) ---
+  fatigue_threshold <- function(t) {
+    tau  <- fatigue_half_life_min / log(2)   # convert half-life to time constant
+    # baseline: hold at c_start until onset, then exponential toward c_floor
+    base <- ifelse(t < onset_min,
+                   c_start,
+                   c_floor + (c_start - c_floor) * exp(-(t - onset_min) / tau))
+
+    # optional microbreak bump with exponential decay
+    boost <- if (!is.na(microbreak_min)) {
+      microbreak_reset * exp(-pmax(0, t - microbreak_min) / microbreak_decay_min)
+    } else 0
+
+    # clamp to [c_floor, c_start]
+    pmin(c_start, pmax(c_floor, base + boost))
+  }
+
+  # --- Data + key reference points ---
+  t  <- seq(0, 90, by = 0.25)
+  y  <- fatigue_threshold(t)
+
+  # Half-life time and level (exactly halfway from start to floor after onset)
+  t_half <- onset_min + fatigue_half_life_min
+  y_half <- (c_start + c_floor) / 2
+
+  df <- data.frame(mins = t, threshold = y)
+
+  # --- Plot (annotated) ---
+  ggplot(df, aes(mins, threshold)) +
+    # shaded pre-onset region
+    annotate("rect", xmin = -Inf, xmax = onset_min, ymin = -Inf, ymax = Inf,
+             alpha = 0.05, fill = "grey60") +
+    # reference lines
+    geom_hline(yintercept = c_start, linetype = "solid", linewidth = 0.3) +
+    geom_hline(yintercept = c_floor, linetype = "dotted", linewidth = 0.3) +
+    geom_vline(xintercept = onset_min, linetype = 2, linewidth = 0.3) +
+    { if (!is.na(microbreak_min)) geom_vline(xintercept = microbreak_min, linetype = 2, linewidth = 0.3) } +
+    # main curve
+    geom_line(linewidth = 0.8) +
+    # half-life marker
+    geom_point(aes(x = t_half, y = y_half), size = 2) +
+    geom_segment(aes(x = t_half, xend = t_half, y = c_start, yend = y_half),
+                 arrow = arrow(length = unit(0.15, "cm")), linewidth = 0.3) +
+    # labels
+    annotate("text", x = onset_min - 2, y = c_start + 0.006, hjust = 1,
+             label = "Onset", size = 4) +
+    { if (!is.na(microbreak_min))
+        annotate("text", x = microbreak_min + 2, y = c_start - 0.01, hjust = 0,
+                 label = "Microbreak", size = 4) } +
+    annotate("text", x = t_half + 2, y = y_half + 0.005, hjust = 0,
+             label = "Half-life → halfway to floor", size = 4) +
+    annotate("text", x = max(t) - 5, y = c_floor + 0.004, hjust = 1,
+             label = "Floor", size = 4) +
+    annotate("text", x = 5, y = c_start + 0.004, hjust = 0,
+             label = "Start", size = 4) +
+    labs(
+      title = "Time-on-Task (Fatigue): flat → relax → reset",
+      subtitle = sprintf("Onset=%d min · Half-life=%d min · Microbreak=%s",
+                         onset_min, fatigue_half_life_min,
+                         ifelse(is.na(microbreak_min), "none", paste0(microbreak_min, " min"))),
+      x = "Time on task (min)",
+      y = "High-Load decision threshold"
+    ) +
+    theme_minimal() +
+    theme(legend.position = "none")
+}
+
+```
+
+```{r}
+#| echo: false
+#| results: asis
+# Auto-updating description for the fatigue-adaptive curve
+halfway_time <- onset_min + fatigue_half_life_min
+fmt <- function(x, d=2) formatC(x, format="f", digits=d)
+
+cat(
+  "::: {.callout-note}\n",
+  "**How to read this curve**\n\n",
+  "- **Pre-onset (t < ", onset_min, " min):** threshold stays at **", fmt(c_start), "** (no fatigue yet).\n",
+  "- **Post-onset:** threshold relaxes **exponentially** toward the **floor** **", fmt(c_floor),
+    "** → more tolerant of High-Load detections as vigilance degrades.\n",
+  if (!is.na(microbreak_min))
+    paste0("- **Microbreak (t = ", microbreak_min, " min):** brief **reset boost** that decays over ~",
+           microbreak_decay_min, " min.\n")
+  else "",
+  "- **Half-life marker:** at **t = onset + half-life = ", onset_min, " + ", fatigue_half_life_min,
+    " = ", halfway_time, " min**, the threshold is **halfway** between **", fmt(c_start),
+    "** and **", fmt(c_floor), "**.\n",
+  "- Visual cues: **solid line** = start level (", fmt(c_start),
+    "); **dotted line** = floor (", fmt(c_floor),
+    "); **vertical dashed lines** = onset",
+    if (!is.na(microbreak_min)) " and microbreak" else "", ".\n",
+  ":::",
+  sep = ""
+)
+
+```
+
+-   **Maps to Dashboard.** Drives the **time-on-task** feature and the **microbreak button**; after breaks, we expect **HRV/tremor** to normalize within \~120 s (we log this for efficacy).
+
+-   **References.** Warm, Parasuraman & Matthews (2008, vigilance & workload).
 :::
 
-Production Dashboard (quick demo)
-<!-- Prefer MP4 for small, crisp playback. If you only have a GIF, replace the <video> with ![](path/to.gif) -->
+------------------------------------------------------------------------
 
-<video src="case_study/images/dashboard-demo.mp4" autoplay loop muted playsinline style="width:100%;border-radius:12px"></video>
+## Why thresholds must adapt
 
-Under the hood
+:::: {.callout-tip collapse="false"}
+## 🔬 Interactive Training Lab Demo
 
-Signals → causal features → calibrated classifier → post-rules
+Click below to launch the interactive training lab in a new window. The lab lets you compare three adaptive threshold policies (Adaptive Gain, Dual-Criterion, and Time-on-Task) on the same data stream.
 
-Real-time GT table with literature ranges & DOI/PubMed links
+::: {style="text-align:center;margin:20px 0;"}
+<a href="https://0z6q8c-mohammad0dastgheib.shinyapps.io/surgical-training-lab/" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 24px;background:var(--accent);color:white;text-decoration:none;border-radius:8px;font-weight:600;box-shadow:0 2px 4px rgba(0,0,0,0.1);"> Launch Training Lab → </a>
+:::
 
-Deployable via Docker/ShinyApps, embeddable via iframe
+*Opens in a new tab. The app may take a few seconds to load.*
+::::
 
-Methods (tight & credible)
+> Switch between policies on the same stream. Notice how the same physiologic trace produces different coaching behavior. That is the point: **policy is a choice**, and it should be teachable.
 
-Constraints: no EEG/fNIRS/headgear; sterile-field safe; <60s setup; surgeon in control.
-Modalities: Pupil (TEPR), Grip force (+CV), Tremor (8–12 Hz RMS), HRV (SDNN/RMSSD).
-Model: XGBoost + Platt calibration; post-hoc fusion rules tuned to minimize false alarms.
-Validation: LOSO with simulated surgeons (PoC) → in-OR pilot next.
+------------------------------------------------------------------------
 
-Results that matter (ops KPIs)
+## Production Dashboard
 
+<!-- Prefer MP4 for small, crisp playback. If you only have a GIF, replace the <video> with an image. -->
+
+<video src="case_study/images/dashboard-demo.mp4" autoplay loop muted playsinline style="width:100%;border-radius:12px">
+
+</video>
+
+The dashboard is not "another plot." It's **decision support** that lives inside real constraints:
+
+-   **Zero headgear:** pupil + HRV + grip/tremor; nothing on the face or scalp.
+-   **\< 60 s setup:** no gels, no caps, no calibration theatrics.
+-   **Alarm hygiene:** ≤ 0.6 alerts/min, snoozable, and state-aware (non-critical cues defer during suturing).
+
+The UI borrows a clinical design language—calm background, a single accent, and status colors reserved for meaning only (green/amber/red). The rest is quiet on purpose.
+
+------------------------------------------------------------------------
+
+## Methods
+
+**Signals.** Pupil diameter (tonic + TEPR), grip force (mean + CV%), hand-tremor RMS in 8–12 Hz, and HRV (SDNN/RMSSD). These four survive the OR: they're non-intrusive, robust, and interpretable.
+
+**Features.** Strictly causal windows. Hippus power (0.05–0.3 Hz), TEPR amplitude, grip CV% and spike rate, tremor RMS & growth vs personal baseline, and HRV short-term variability. Time-on-task is explicit.
+
+**Model.** A calibrated gradient-boosting model produces **probabilities** for Optimal / High Load / Lapse. Post-hoc **fusion rules** enforce clinical common sense (e.g., HRV drop + TEPR spike to confirm High Load; blink anomaly + low TEPR to confirm Lapse). Thresholds are **policy-tunable** and **per-surgeon calibrated**.
+
+**Validation.** Leave-one-surgeon-out on simulated streams to prove the architecture, **not** to publish final accuracy. The next step is training-center telemetry.
+
+------------------------------------------------------------------------
+
+## Results that matter (ops KPIs)
+
+```{r}
 #| label: metrics-gt
 if (requireNamespace("gt", quietly=TRUE) &&
-requireNamespace("readr", quietly=TRUE) &&
-requireNamespace("dplyr", quietly=TRUE)) {
+    requireNamespace("readr", quietly=TRUE) &&
+    requireNamespace("dplyr", quietly=TRUE)) {
 
-library(readr); library(dplyr); library(gt)
+  library(readr); library(dplyr); library(gt)
 
-path <- "data/processed/demo_metrics.csv"
-if (file.exists(path)) {
-metrics <- read_csv(path, show_col_types = FALSE)
-} else {
-metrics <- tibble::tibble(
-Alert_Burden_per_min = 0.42,
-HighLoad_Minutes_per_hour = 12.8,
-TimeToRecovery_sec = 95
-)
-}
+  path <- "data/processed/demo_metrics.csv"
+  metrics <- if (file.exists(path)) read_csv(path, show_col_types = FALSE) else
+    tibble::tibble(Alert_Burden_per_min = 0.42,
+                   HighLoad_Minutes_per_hour = 12.8,
+                   TimeToRecovery_sec = 95)
 
-gt(metrics) |>
-fmt_number(where(is.numeric), decimals = 2) |>
-cols_label(
-Alert_Burden_per_min = "Alert Burden (per min)",
-HighLoad_Minutes_per_hour = "High-Load (min/hr)",
-TimeToRecovery_sec = "Time-to-Recovery (sec)"
-) |>
-data_color(
-columns = c(Alert_Burden_per_min, HighLoad_Minutes_per_hour, TimeToRecovery_sec),
-colors = scales::col_bin(
-palette = c("#27ae60","#f39c12","#e74c3c"),  # green, amber, red
-bins = c(-Inf, 0.6, 1.0, Inf)                # tweak per KPI
-)
-) |>
-tab_options(table.border.top.color = "#e5e7eb",
-table.border.bottom.color = "#e5e7eb")
+  gt(metrics) |>
+    fmt_number(where(is.numeric), decimals = 2) |>
+    cols_label(
+      Alert_Burden_per_min = "Alert Burden (per min)",
+      HighLoad_Minutes_per_hour = "High-Load (min/hr)",
+      TimeToRecovery_sec = "Time-to-Recovery (sec)"
+    ) |>
+    data_color(
+      columns = c(Alert_Burden_per_min, HighLoad_Minutes_per_hour, TimeToRecovery_sec),
+      colors = scales::col_bin(
+        palette = c("#27ae60","#f39c12","#e74c3c"),
+        bins = c(-Inf, 0.6, 1.0, Inf)
+      )
+    ) |>
+    tab_options(table.border.top.color = "#e5e7eb",
+                table.border.bottom.color = "#e5e7eb")
 
-} else {
-cat("Install packages gt, readr, dplyr to render this table.")
-}
+} else { cat("Install packages gt, readr, dplyr to render this table.") }
+```
 
-Live clinical-style table with literature ranges
+------------------------------------------------------------------------
 
+## Live clinical-style table with literature ranges
+
+```{r}
 #| label: features-gt
 if (requireNamespace("gt", quietly=TRUE) &&
-requireNamespace("readr", quietly=TRUE) &&
-requireNamespace("dplyr", quietly=TRUE)) {
+    requireNamespace("readr", quietly=TRUE) &&
+    requireNamespace("dplyr", quietly=TRUE)) {
 
-library(readr); library(dplyr); library(gt)
+  library(readr); library(dplyr); library(gt)
 
-# ---- reference ranges (fallback included) ----
+  # ---- reference ranges (fallback included) ----
+  ref_path <- "data/reference_ranges.csv"
+  refs <- if (file.exists(ref_path)) read_csv(ref_path, show_col_types = FALSE) else
+    tibble::tibble(
+      Feature = c("Pupil Diameter","Grip Force","Tremor RMS (8–12Hz)","HRV (RMSSD)",
+                  "Grip CV%","Time-on-Task","Normal Prob","High Load Prob","Lapse Prob"),
+      Unit = c("mm","N","μm","ms","%","min","%","%","%"),
+      baseline_mean = c(3.5,3.0,100,40,8,10,60,30,10),
+      baseline_sd   = c(0.2,1.0,30,10,2,NA,NA,NA,NA),
+      normal_low    = c(3.1,1.5,60,30,5,0,40,0,0),
+      normal_high   = c(3.9,5.0,120,60,12,30,100,60,30),
+      alert_low     = c(NA,NA,NA,25,NA,NA,0,0,0),
+      alert_high    = c(4.8,7.0,180,NA,15,60,100,100,100),
+      direction     = c("high_worse","high_worse","high_worse","low_worse","high_worse","high_worse",
+                        "low_worse","high_worse","high_worse")
+    )
 
-ref_path <- "data/reference_ranges.csv"
-refs <- if (file.exists(ref_path)) {
-read_csv(ref_path, show_col_types = FALSE)
-} else {
-tibble::tibble(
-Feature = c("Pupil Diameter","Grip Force","Tremor RMS (8–12Hz)","HRV (RMSSD)",
-"Grip CV%","Time-on-Task","Normal Prob","High Load Prob","Lapse Prob"),
-Unit = c("mm","N","μm","ms","%","min","%","%","%"),
-baseline_mean = c(3.5,3.0,100,40,8,10,60,30,10),
-baseline_sd   = c(0.2,1.0,30,10,2,NA,NA,NA,NA),
-normal_low    = c(3.1,1.5,60,30,5,0,40,0,0),
-normal_high   = c(3.9,5.0,120,60,12,30,100,60,30),
-alert_low     = c(NA,NA,NA,25,NA,NA,0,0,0),
-alert_high    = c(4.8,7.0,180,NA,15,60,100,100,100),
-direction     = c("high_worse","high_worse","high_worse","low_worse","high_worse","high_worse",
-"low_worse","high_worse","high_worse")
+  # ---- current snapshot (fallback included) ----
+  snap_path <- "data/processed/demo_features_snapshot.csv"
+  snap <- if (file.exists(snap_path)) read_csv(snap_path, show_col_types = FALSE) else
+    tibble::tibble(
+      Feature = c("Pupil Diameter","Grip Force","Tremor RMS (8–12Hz)","HRV (RMSSD)",
+                  "Grip CV%","Time-on-Task","Normal Prob","High Load Prob","Lapse Prob"),
+      Value   = c(3.62,5.30,78,45,9.3,10.0,43.5,40.5,16.0),
+      Unit    = c("mm","N","μm","ms","%","min","%","%","%")
+    )
+
+  # ---- helpers ----
+  status_row <- function(val, r) {
+    dir <- r$direction; nl<-r$normal_low; nh<-r$normal_high; al<-r$alert_low; ah<-r$alert_high
+    if (is.na(val)) return("Unknown")
+    if (dir=="high_worse") {
+      if (!is.na(ah) && val>ah) "Critical" else if (!is.na(nh) && val>nh) "Elevated" else "Normal"
+    } else if (dir=="low_worse") {
+      if (!is.na(al) && val<al) "Critical" else if (!is.na(nl) && val<nl) "Elevated" else "Normal"
+    } else {
+      if ((!is.na(al) && val<al) || (!is.na(ah) && val>ah)) "Critical"
+      else if ((!is.na(nl) && val<nl) || (!is.na(nh) && val>nh)) "Elevated"
+      else "Normal"
+    }
+  }
+  d_cohen <- function(val, m, s) ifelse(is.na(s) || s<=0, NA_real_, (val - m)/s)
+
+  df <- snap |>
+    left_join(refs, by = c("Feature","Unit")) |>
+    rowwise() |>
+    mutate(
+      Status = status_row(Value, cur_data()),
+      Effect = d_cohen(Value, baseline_mean, baseline_sd),
+      Ref_CI = if (!is.na(baseline_mean) && !is.na(baseline_sd))
+                 sprintf("%.2f–%.2f", baseline_mean-1.96*baseline_sd, baseline_mean+1.96*baseline_sd)
+               else ""
+    ) |>
+    ungroup() |>
+    mutate(
+      Status_Icon = dplyr::case_when(
+        Status=="Normal"   ~ "<span style='color:#27ae60'>●</span> Normal",
+        Status=="Elevated" ~ "<span style='color:#f39c12'>▲</span> Elevated",
+        Status=="Critical" ~ "<span style='color:#e74c3c'>⚠</span> Critical",
+        TRUE ~ "·"
+      ),
+      Value_fmt = dplyr::case_when(
+        Unit=="mm"  ~ sprintf("%.2f mm", Value),
+        Unit=="μm"  ~ sprintf("%.0f μm", Value),
+        Unit=="N"   ~ sprintf("%.2f N", Value),
+        Unit=="ms"  ~ sprintf("%.0f ms", Value),
+        Unit=="%"   ~ sprintf("%.1f%%", Value),
+        Unit=="min" ~ sprintf("%.1f min", Value),
+        TRUE        ~ as.character(signif(Value, 3))
+      ),
+      Effect_fmt = ifelse(is.na(Effect),"",sprintf("%.2f", Effect))
+    )
+
+  gt(df |> dplyr::select(Feature, Value_fmt, Ref_CI, Effect_fmt, Status_Icon)) |>
+    cols_label(
+      Feature    = "Feature",
+      Value_fmt  = html("Value<br><span style='font-size:.8em'>(Live)</span>"),
+      Ref_CI     = html("Literature<br><span style='font-size:.8em'>(≈95% CI)</span>"),
+      Effect_fmt = html("Effect Size<br><span style='font-size:.8em'>(Cohen's d)</span>"),
+      Status_Icon= "Status"
+    ) |>
+    fmt_markdown(columns = c(Ref_CI, Status_Icon)) |>
+    tab_style(
+      style = list(cell_fill(color = "#e8f5e9"), cell_text(color = "#0b1526")),
+      locations = cells_body(columns = "Value_fmt", rows = df$Status=="Normal")
+    ) |>
+    tab_style(
+      style = cell_text(color = "#0b1526"),
+      locations = cells_body(columns = "Value_fmt", rows = df$Status=="Elevated")
+    ) |>
+    tab_style(
+      style = cell_text(color = "#0b1526"),
+      locations = cells_body(columns = "Value_fmt", rows = df$Status=="Critical")
+    ) |>
+    tab_style(
+      style = cell_text(weight = "bold"),
+      locations = cells_body(columns = "Effect_fmt",
+                             rows = !is.na(df$Effect_fmt) & as.numeric(df$Effect_fmt) > 0.8)
+    ) |>
+    tab_footnote(
+      footnote = html("Colors: <span style='color:#27ae60'>Normal</span> | <span style='color:#f39c12'>Elevated</span> | <span style='color:#e74c3c'>Critical</span>"),
+      locations = cells_column_labels(columns = "Value_fmt")
+    )
+
+} else { cat("Install packages gt, readr, dplyr to render this table.") }
+```
+
+------------------------------------------------------------------------
+
+## Product vs. Lab — how they fit
+
+```{r}
+library(gt)
+library(dplyr)
+
+# Create the data
+comparison_data <- tibble(
+  Aspect = c("Purpose", "Audience", "Features", "Status"),
+  `Production Dashboard` = c(
+    "Real-time monitoring & decision support",
+    "Clinicians, safety officers",
+    "GT live table, deployable app, tuned alerts",
+    "Stable, zero-headgear UI"
+  ),
+  `Training Lab` = c(
+    "Theory exploration & threshold policy",
+    "Educators, researchers",
+    "Three paradigms, side-by-side comparisons",
+    "Experimental, fast iteration"
+  )
 )
-}
 
-# ---- current snapshot (fallback included) ----
+# Create the gt table
+comparison_data %>%
+  gt() %>%
+  tab_style(
+    style = cell_fill(color = "#f8f9fa"),
+    locations = cells_body(columns = Aspect)
+  ) %>%
+  tab_style(
+    style = cell_text(weight = "bold"),
+    locations = cells_body(columns = Aspect)
+  ) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "#e8f5e9"),
+      cell_text(align = "left")
+    ),
+    locations = cells_body(columns = `Production Dashboard`)
+  ) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "#fff8e1"),
+      cell_text(align = "left")
+    ),
+    locations = cells_body(columns = `Training Lab`)
+  ) %>%
+  tab_options(
+    table.width = pct(100),
+    table.font.size = px(14)
+  )
 
-snap_path <- "data/processed/demo_features_snapshot.csv"
-snap <- if (file.exists(snap_path)) {
-read_csv(snap_path, show_col_types = FALSE)
-} else {
-tibble::tibble(
-Feature = c("Pupil Diameter","Grip Force","Tremor RMS (8–12Hz)","HRV (RMSSD)",
-"Grip CV%","Time-on-Task","Normal Prob","High Load Prob","Lapse Prob"),
-Value   = c(3.62,5.30,78,45,9.3,10.0,43.5,40.5,16.0),
-Unit    = c("mm","N","μm","ms","%","min","%","%","%")
-)
-}
+```
 
-# ---- simple status + effect size helpers ----
+------------------------------------------------------------------------
 
-status_row <- function(val, r) {
-dir <- r$direction; nl<-r$normal_low; nh<-r$normal_high; al<-r$alert_low; ah<-r$alert_high
-if (is.na(val)) return("Unknown")
-if (dir=="high_worse") {
-if (!is.na(ah) && val>ah) "Critical" else if (!is.na(nh) && val>nh) "Elevated" else "Normal"
-} else if (dir=="low_worse") {
-if (!is.na(al) && val<al) "Critical" else if (!is.na(nl) && val<nl) "Elevated" else "Normal"
-} else {
-if ((!is.na(al) && val<al) || (!is.na(ah) && val>ah)) "Critical"
-else if ((!is.na(nl) && val<nl) || (!is.na(nh) && val>nh)) "Elevated"
-else "Normal"
-}
-}
-d_cohen <- function(val, m, s) ifelse(is.na(s) || s<=0, NA_real_, (val - m)/s)
+## From SST to the OR — what transferred
 
-df <- snap |>
-left_join(refs, by = c("Feature","Unit")) |>
-rowwise() |>
-mutate(
-Status = status_row(Value, cur_data()),
-Effect = d_cohen(Value, baseline_mean, baseline_sd),
-Ref_CI = if (!is.na(baseline_mean) && !is.na(baseline_sd))
-sprintf("%.2f–%.2f", baseline_mean-1.96*baseline_sd, baseline_mean+1.96*baseline_sd)
-else ""
-) |>
-ungroup() |>
-mutate(
-Status_Icon = dplyr::case_when(
-Status=="Normal" ~ "<span style='color:#27ae60'>●</span> Normal",
-Status=="Elevated" ~ "<span style='color:#f39c12'>▲</span> Elevated",
-Status=="Critical" ~ "<span style='color:#e74c3c'>⚠</span> Critical",
-TRUE ~ "·"
-),
-Value_fmt = dplyr::case_when(
-Unit=="mm" ~ sprintf("%.2f mm", Value),
-Unit=="μm" ~ sprintf("%.0f μm", Value),
-Unit=="N"  ~ sprintf("%.2f N", Value),
-Unit=="ms" ~ sprintf("%.0f ms", Value),
-Unit=="%"  ~ sprintf("%.1f%%", Value),
-Unit=="min"~ sprintf("%.1f min", Value),
-TRUE ~ as.character(signif(Value, 3))
-),
-Effect_fmt = ifelse(is.na(Effect),"",sprintf("%.2f", Effect))
-)
+-   **Alarm hygiene over cleverness.** A good model with bad alerting is a bad product.
+-   **Interpretability isn't optional.** Surgeons won't read a confusion matrix mid-case; they will understand "High Load confirmed by HRV drop + TEPR spike."
+-   **Friction is the enemy.** Every cable, cap, or password prompt kills adoption. This is why I stayed with **zero headgear** and **\< 60-second setup**.
 
-gt(df |> select(Feature, Value_fmt, Ref_CI, Effect_fmt, Status_Icon)) |>
-cols_label(
-Feature    = "Feature",
-Value_fmt  = html("Value<br><span style='font-size:.8em'>(Live)</span>"),
-Ref_CI     = html("Literature<br><span style='font-size:.8em'>(≈95% CI)</span>"),
-Effect_fmt = html("Effect Size<br><span style='font-size:.8em'>(Cohen's d)</span>"),
-Status_Icon= "Status"
-) |>
-fmt_markdown(columns = c(Ref_CI, Status_Icon)) |>
-data_color(
-columns = "Value_fmt",
-colors = function(x) ifelse(df$Status=="Normal","#27ae60",
-ifelse(df$Status=="Elevated","#f39c12",
-ifelse(df$Status=="Critical","#e74c3c","#95a5a6")))
-) |>
-tab_style(
-style = cell_fill(color = "#e8f5e9"),
-locations = cells_body(columns = "Value_fmt", rows = df$Status=="Normal")
-) |>
-tab_style(
-style = cell_text(weight = "bold"),
-locations = cells_body(columns = "Effect_fmt",
-rows = !is.na(df$Effect_fmt) & as.numeric(df$Effect_fmt) > 0.8)
-) |>
-tab_footnote(
-footnote = html("Colors: <span style='color:#27ae60'>Normal</span> | <span style='color:#f39c12'>Elevated</span> | <span style='color:#e74c3c'>Critical</span>"),
-locations = cells_column_labels(columns = "Value_fmt")
-)
+------------------------------------------------------------------------
 
-} else {
-cat("Install packages gt, readr, dplyr to render this table.")
-}
+## Deployment & Privacy
 
-Product vs Lab (how they fit)
+This ships as a Docker image or ShinyApps deployment and can be embedded in training portals with a single `<iframe>`. On the privacy front, **surgeon biometrics are ephemeral by default**; logs are de-identified for QA and research with explicit consent. Nothing about this removes the surgeon from the loop; it simply helps them and their instructors see what matters, when it matters.
 
-| Aspect   | Production Dashboard                        | Training Lab                              |
-| -------- | ------------------------------------------- | ----------------------------------------- |
-| Purpose  | Real-time monitoring & decision support     | Theory exploration & threshold policy     |
-| Audience | Clinicians, safety officers                 | Educators, researchers                    |
-| Features | GT live table, deployable app, tuned alerts | Three paradigms, side-by-side comparisons |
-| Status   | Stable, zero-headgear UI                    | Experimental, fast iteration              |
+------------------------------------------------------------------------
 
-Deployment & Privacy
+## What's next
 
-Deployment: Docker or ShinyApps; iframe embeds for portfolio demos and training sites.
-
-Privacy: Surgeon biometrics are ephemeral by default; logs de-identified for QA.
-
-What's next
-
-Training pilots: quantify High-Load min/hr and time-to-recovery improvements for residents.
-
-State-adaptive assistance: camera framing & motion scaling tweaks under High Load; defer non-urgent alerts.
-
-In-OR telemetry: swap simulator with live HRV/pupil; log intervention efficacy (normalize ≤120s).
-
-
-**Notes**
-- Replace `case_study/images/dashboard-demo.mp4` with your short dashboard clip (or swap the `<video>` with a GIF image).
-- The tables will render even if you haven't created the CSVs yet (they fall back to sample values). When ready, drop:
-  - `data/processed/demo_metrics.csv`
-  - `data/processed/demo_features_snapshot.csv`
-  - `data/reference_ranges.csv`
-- Your **Training Lab** is already embedded via the ShinyApps URL you provided.
-::contentReference[oaicite:0]{index=0}
-
-
-
-
+-   **Training pilots** in a robotic lab to quantify **High-Load min/hr** and **time-to-recovery** improvements for residents.
+-   **State-adaptive assistance:** small camera framing & motion-scaling tweaks during high load; defer non-urgent prompts.
+-   **Intervention efficacy logging:** for every alert or microbreak, track whether HRV/tremor normalize within \~120 s to auto-tune thresholds per surgeon.
