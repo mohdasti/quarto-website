@@ -301,20 +301,66 @@ Accuracy is necessary, not sufficient. We optimize for operational outcomes—fe
 
 ```{r}
 #| echo: false
-# Tiny demo: an inverted-U curve (intuition only)
 if (requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2)
-  x <- seq(0, 10, length.out = 200)
-  perf <- x * exp(-0.4 * x)
-  ggplot(data.frame(arousal = x, performance = perf),
-         aes(arousal, performance)) +
-    geom_line() +
-    labs(title = "Inverted-U intuition", y = "Performance (arb.)") +
+
+  # --- Parameters you'd also expose in the Training Lab ---
+  band_center <- 0.55   # where you want the trainee to operate (0..1)
+  band_width  <- 0.20   # width of the "optimal" zone (0..1)
+  sigma_perf  <- 0.22   # curve sharpness: smaller = sharper inverted-U
+
+  # --- Inverted-U as a Gaussian over normalized arousal (0..1) ---
+  arousal <- seq(0, 1, length.out = 400)
+  performance <- exp(-((arousal - band_center)^2) / (2 * sigma_perf^2))
+
+  lo <- max(0, band_center - band_width/2)
+  hi <- min(1, band_center + band_width/2)
+
+  df <- data.frame(arousal, performance)
+
+  ggplot(df, aes(arousal, performance)) +
+    # Optimal band shading
+    annotate("rect", xmin = lo, xmax = hi, ymin = -Inf, ymax = Inf,
+             alpha = 0.08, fill = "#1f9bb6") +
+    geom_line(linewidth = 0.9) +
+    geom_vline(xintercept = c(lo, hi), linetype = 2, linewidth = 0.4) +
+    annotate("text", x = lo - 0.02, y = 0.1, label = "Low arousal\n(lapse risk)",
+             hjust = 1, size = 3) +
+    annotate("text", x = hi + 0.02, y = 0.1, label = "High arousal\n(overload risk)",
+             hjust = 0, size = 3) +
+    annotate("label", x = band_center, y = 0.9, label = "Optimal band",
+             fill = "white", label.size = 0.2, size = 3.1) +
+    scale_x_continuous(labels = scales::percent_format(accuracy = 1)) +
+    labs(title = "Adaptive Gain (Inverted-U)",
+         subtitle = sprintf("Center = %.0f%%  ·  Width = %.0f%%  ·  σ = %.2f",
+                            100*band_center, 100*band_width, sigma_perf),
+         x = "Normalized arousal (fused index: TEPR↑, HRV↓ → higher)",
+         y = "Task performance (relative)") +
     theme_minimal()
 }
 ```
 
--   **Maps to Dashboard.** Wider `optimal_band` → fewer alerts but slower coaching; narrower band → tighter coaching with risk of nuisance alarms. Defaults exported from the Training Lab.
+```{=html}
+<p style="margin-top:0.5rem;font-size:0.95rem;">
+<strong>X-axis detail:</strong> Normalized arousal 
+<span class="help-icon" data-bs-toggle="tooltip" 
+      title="Fusion rule: A = sigmoid(w₁·z(TEPR) – w₂·z(RMSSD)), where z() standardizes to μ=0, σ=1. Example weights: w₁=0.6, w₂=0.4. TEPR↑ and HRV↓ both push arousal higher.">
+  <i class="bi bi-info-circle"></i>
+</span>
+= fused TEPR + HRV index ∈ [0,1].
+</p>
+```
+
+-   **Maps to Dashboard.** We fuse TEPR (↑) and HRV (↓) into a **normalized arousal index** ∈ [0,1]. Alerts fire when the index leaves the **optimal band** `[lo, hi]`.
+
+    -   Wider band → **fewer alerts**, gentler coaching.
+    -   Narrower band → **tighter coaching**, higher nuisance risk.
+    -   We add **hysteresis** (small margins) to prevent alert "chatter" at band edges.
+
+-   **Notes for accuracy.**
+
+    -   The inverted-U is **task- and person-dependent**: expertise, stakes, and fatigue shift the **peak** (band_center) and **width** (band_width). That's why you **calibrate per trainee**.
+    -   "Adaptive gain" is the **mechanism** (LC-NE modulating neural gain) that can yield this non-monotonic **performance curve**.
 
 -   **References.** Yerkes–Dodson (1908); Aston-Jones & Cohen (2005, adaptive gain).
 
@@ -322,51 +368,189 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
 
 ### Dual-Criterion (SDT) <span class="help-icon" data-bs-toggle="tooltip" title="One knob moves both decision boundaries (High-Load & Lapse) together; tunes decision bias (criteria), not d′."><i class="bi bi-info-circle"></i></span>
 
+```{=html}
+<p style="margin:.25rem 0 .35rem;font-size:0.95rem;">
+<strong>X-axis:</strong> a z-scored, signed <em>evidence index</em> from biosignals (e.g., TEPR↑, RMSSD↓).
+Higher → <em>High-Load</em>; lower → <em>Lapse</em>.
+</p>
+```
+
 ```{r}
 #| echo: false
 if (requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2)
 
-  # ---- Parameters (mirror Training Lab semantics) ----
-  sensitivity   <- 0.60     # 0..1  (liberal ↔ conservative)
-  coupling      <- 0.70     # 0..1  (how tightly HL & Lapse move together)
-  base_hl       <-  1.20    # baseline HL criterion (evidence axis units)
-  base_lapse    <- -1.20    # baseline Lapse criterion (opposite side)
-  move_range    <-  0.80    # total range each criterion can travel
+  # --- Controls (decision-bias knobs; NOT d′) -------------------------------
+  criterion_tightness <- 0.60  # 0..1: 0 = wide Normal window; 1 = tight (more alerts)
+  coupling            <- 0.70  # 0..1: symmetry of Lapse vs HL movement (1 = symmetric)
+  hys_margin          <- 0.15  # evidence units: enter/exit separation on each side
 
-  # Criteria move in opposite directions as sensitivity increases
-  crit_hl    <- base_hl   - sensitivity * move_range
-  crit_lapse <- base_lapse + sensitivity * move_range * coupling
+  base_hl    <-  1.60         # baseline HL criterion (right)
+  base_lapse <- -1.60         # baseline Lapse criterion (left)
+  move_range <-  1.00         # how far each side can move toward 0
 
-  # Toy evidence distributions (illustrative SDT picture)
+  # Criteria centers (without hysteresis)
+  crit_hl    <- base_hl   - criterion_tightness * move_range
+  crit_lapse <- base_lapse + criterion_tightness * move_range * coupling
+
+  # Hysteresis: enter at outer line, exit at inner line
+  hi_enter <- crit_hl
+  hi_exit  <- crit_hl - hys_margin
+  lo_enter <- crit_lapse
+  lo_exit  <- crit_lapse + hys_margin
+
+  # --- Illustrative SDT picture (not empirical data) ------------------------
   set.seed(1)
-  n    <- 1200
-  x_n  <- rnorm(n, 0, 1)      # "normal/optimal" evidence
-  x_hl <- rnorm(n, 2, 1)      # "high-load" evidence
-  df   <- rbind(
-    data.frame(x = x_n,  class = "Optimal/Normal"),
-    data.frame(x = x_hl, class = "High-Load")
+  n       <- 2000
+  x_norm  <- rnorm(n,  0, 1.0)
+  x_hl    <- rnorm(n, +2, 1.0)
+  x_lapse <- rnorm(n, -2, 1.0)
+  df <- rbind(
+    data.frame(x = x_lapse, class = "Lapse"),
+    data.frame(x = x_norm,  class = "Optimal/Normal"),
+    data.frame(x = x_hl,    class = "High-Load")
   )
 
-  ggplot(df, aes(x, fill = class)) +
-    geom_histogram(aes(y=..density..), bins = 60, alpha = 0.45, position = "identity") +
-    geom_density(alpha = .4) +
-    geom_vline(xintercept = crit_hl,   linetype = 2) +
-    geom_vline(xintercept = crit_lapse,linetype = 3) +
-    annotate("text", x = crit_hl + .15,   y = .35, label = "HL criterion →", size = 4) +
-    annotate("text", x = crit_lapse - .15,y = .30, label = "← Lapse criterion", size = 4) +
-    scale_fill_manual(values = c("Optimal/Normal" = "#0072B5FF", "High-Load" = "#BC3C29FF")) +
-    labs(title = "Dual-Criterion (SDT): both thresholds move with one knob",
-         subtitle = sprintf("sensitivity=%.2f, coupling=%.2f", sensitivity, coupling),
-         x = "Evidence", y = "Density") +
-    theme_minimal()
+  ggplot(df, aes(x, fill = class, color = class)) +
+    # Normal decision region (between ENTER lines)
+    annotate("rect", xmin = lo_enter, xmax = hi_enter, ymin = -Inf, ymax = Inf,
+             alpha = 0.06, fill = "#1f9bb6") +
+    # Hysteresis zones (thin bands between enter and exit)
+    annotate("rect", xmin = lo_enter, xmax = lo_exit, ymin = -Inf, ymax = Inf,
+             alpha = 0.06, fill = "#9ca3af") +
+    annotate("rect", xmin = hi_exit,  xmax = hi_enter, ymin = -Inf, ymax = Inf,
+             alpha = 0.06, fill = "#9ca3af") +
+    geom_density(alpha = 0.18, linewidth = 0.6) +
+    # Enter / Exit lines
+    geom_vline(xintercept = c(lo_enter, hi_enter), linetype = 2, linewidth = 0.55) +
+    geom_vline(xintercept = c(lo_exit,  hi_exit),  linetype = 3, linewidth = 0.55) +
+    annotate("label", x = (lo_enter + hi_enter)/2, y = 0.10, label = "Decision: Normal",
+             fill = "white", label.size = 0.2, size = 3.5) +
+    annotate("text", x = hi_enter + 0.08, y = 0.06, hjust = 0, label = "→ HL enter",  size = 3.3) +
+    annotate("text", x = hi_exit  + 0.08, y = 0.05, hjust = 0, label = "→ HL exit",   size = 3.3) +
+    annotate("text", x = lo_enter - 0.08, y = 0.06, hjust = 1, label = "Lapse enter ←", size = 3.3) +
+    annotate("text", x = lo_exit  - 0.08, y = 0.05, hjust = 1, label = "Lapse exit ←",  size = 3.3) +
+    scale_color_manual(values = c("Lapse"="#6b7280", "Optimal/Normal"="#0ea5b7", "High-Load"="#bc3c29")) +
+    scale_fill_manual(values  = c("Lapse"="#6b7280", "Optimal/Normal"="#0ea5b7", "High-Load"="#bc3c29")) +
+    coord_cartesian(xlim = c(-4, 4)) +
+    labs(title    = "Dual-Criterion (SDT) with Hysteresis",
+         subtitle = sprintf("tightness=%.2f · coupling=%.2f · hysteresis=%.2f  |  enter:[%.2f, %.2f]  exit:[%.2f, %.2f]",
+                            criterion_tightness, coupling, hys_margin,
+                            lo_enter, hi_enter, lo_exit, hi_exit),
+         x = "Evidence (signed index: Lapse ←   0   → High-Load)",
+         y = "Density") +
+    guides(color = "none", fill = "none") +
+    theme_minimal() +
+    theme(legend.position = "none")
 }
-
 ```
 
--   **Maps to Dashboard.** Sets the `high_load_prob` slider + post-hoc fusion guardrails (e.g., require **TEPR rise** or **HRV drop** to confirm).
+**How the two figures relate:** The first figure defines the boundaries (enter/exit on each side). The second applies the **same boundaries—nudged slightly if needed so at least one crossing is visible (see subtitle)**—to a noisy signal, showing how hysteresis prevents flip-flops near a boundary.
 
--   **References.** Macmillan & Creelman (Signal Detection Theory); NASA-TLX background (Hart & Staveland).
+```{r}
+#| echo: false
+#| fig-width: 10.5
+#| fig-height: 4.2
+if (requireNamespace("ggplot2", quietly = TRUE)) {
+  library(ggplot2); library(grid)
+
+  # --- signal ---------------------------------------------------------------
+  set.seed(42)
+  T  <- 400
+  e  <- numeric(T)
+  for (t in 2:T) e[t] <- 0.92*e[t-1] + rnorm(1, 0.02, 0.12)
+
+  # --- start with EXACT thresholds from Plot 1 ------------------------------
+  hi_enter2 <- hi_enter; hi_exit2 <- hi_exit
+  lo_enter2 <- lo_enter; lo_exit2 <- lo_exit
+
+  # Check if we see at least one crossing; if not, nudge minimally for demo
+  need_nudge <- !(any(e > hi_enter2) || any(e < lo_enter2))
+  if (need_nudge) {
+    maxE <- max(e); minE <- min(e)
+    if (!any(e > hi_enter2) && maxE > (hi_enter2 - 0.02)) {
+      hi_enter2 <- max(hi_enter2 - 0.02, maxE - 0.03)
+      hi_exit2  <- hi_enter2 - max(0.05, abs(hi_enter - hi_exit))
+    }
+    if (!any(e < lo_enter2) && minE < (lo_enter2 + 0.02)) {
+      lo_enter2 <- min(lo_enter2 + 0.02, minE + 0.03)
+      lo_exit2  <- lo_enter2 + max(0.05, abs(lo_exit - lo_enter))
+    }
+  }
+
+  # --- classify: naive vs hysteresis ---------------------------------------
+  state_naive <- ifelse(e > hi_enter2, "HL",
+                        ifelse(e < lo_enter2, "Lapse", "Normal"))
+
+  state_hys <- character(T); state <- "Normal"
+  for (t in 1:T) {
+    x <- e[t]
+    if (state == "Normal") {
+      if (x > hi_enter2) state <- "HL"
+      else if (x < lo_enter2) state <- "Lapse"
+    } else if (state == "HL") {
+      if (x < hi_exit2) state <- "Normal"
+    } else if (state == "Lapse") {
+      if (x > lo_exit2) state <- "Normal"
+    }
+    state_hys[t] <- state
+  }
+
+  # long data (two rows: top = naive, bottom = hysteresis, slight visual offset)
+  df_long <- rbind(
+    data.frame(t = 1:T, evidence = e, state = state_naive,
+               method = "Naive (top)",          y = e),
+    data.frame(t = 1:T, evidence = e, state = state_hys,
+               method = "Hysteresis (bottom)",  y = e - 0.06)
+  )
+
+  # thresholds legend: just Enter / Exit
+  hlines <- data.frame(
+    y = c(hi_enter2, hi_exit2, lo_enter2, lo_exit2),
+    type = factor(c("Enter","Exit","Enter","Exit"), levels = c("Enter","Exit"))
+  )
+
+  ggplot(df_long, aes(t, y)) +
+    geom_line(aes(y = evidence), linewidth = 0.45, color = "grey35", alpha = 0.7) +
+    geom_hline(data = hlines, aes(yintercept = y, linetype = type),
+               linewidth = 0.45, color = "black", alpha = 0.75) +
+    geom_point(aes(color = state, shape = method), size = 0.9, alpha = 0.95) +
+    scale_color_manual(values = c("HL"="#bc3c29","Lapse"="#6b7280","Normal"="#0ea5b7")) +
+    scale_shape_manual(values = c("Naive (top)" = 16, "Hysteresis (bottom)" = 17)) +
+    scale_linetype_manual(values = c("Enter"=2, "Exit"=3)) +
+    labs(title = "Hysteresis reduces edge-chatter",
+         subtitle = if (need_nudge) "Shapes = method; dashed = enter, dotted = exit • Note: thresholds nudged slightly for visibility"
+                    else "Shapes = method; dashed = enter, dotted = exit thresholds",
+         x = "Time", y = "Evidence",
+         color = "State", shape = "Method", linetype = "Threshold") +
+    theme_minimal() +
+    theme(
+      legend.position   = "bottom",
+      legend.box        = "horizontal",
+      legend.key.size   = grid::unit(6, "pt"),
+      legend.spacing.x  = grid::unit(4, "pt"),
+      legend.spacing.y  = grid::unit(2, "pt"),
+      legend.box.spacing= grid::unit(2, "pt"),
+      legend.title      = element_text(size = 9),
+      legend.text       = element_text(size = 8),
+      plot.subtitle     = element_text(size = 10)
+    ) +
+    guides(
+      color    = guide_legend(nrow = 1, byrow = TRUE, order = 1),
+      shape    = guide_legend(nrow = 1, byrow = TRUE, order = 2),
+      linetype = guide_legend(nrow = 1, byrow = TRUE, order = 3)
+    )
+}
+```
+
+- **What this shows.** A three-state SDT layout (Lapse / Normal / High-Load) with **two decision criteria** and **hysteresis** (separate enter/exit thresholds).
+  - **`criterion_tightness`** narrows or widens the Normal window by moving **both** criteria toward or away from 0.
+  - **`coupling`** controls symmetry: values **< 1** move the Lapse boundary **less** than the High-Load boundary; values **> 1** move it **more**.
+- **Why "Dual-Criterion," not "Sensitivity."** In SDT, **sensitivity** is **d′** (distribution separation). This policy **adjusts decision criteria (bias)**, not d′.
+- **Hysteresis.** Enter/exit thresholds (and/or consecutive-sample confirmation) require **persistent evidence** to change state—reducing nuisance alerts.
+- **Not a DDM.** This is SDT with persistence, not a drift–diffusion integrator; it approximates temporal integration efficiently for real-time use.
+- **Maps to Dashboard.** The control sets the **HL** and **Lapse** thresholds together. Alerts still require **evidence + physiology** (e.g., HL requires **TEPR↑ or HRV↓**; Lapse prefers **low TEPR + blink anomalies**).
+- **References.** Macmillan & Creelman (Signal Detection Theory); NASA-TLX background (Hart & Staveland).
 
 ------------------------------------------------------------------------
 
@@ -545,33 +729,33 @@ The UI borrows a clinical design language—calm background, a single accent, an
 ```{r}
 #| label: metrics-gt
 if (requireNamespace("gt", quietly=TRUE) &&
-    requireNamespace("readr", quietly=TRUE) &&
-    requireNamespace("dplyr", quietly=TRUE)) {
+requireNamespace("readr", quietly=TRUE) &&
+requireNamespace("dplyr", quietly=TRUE)) {
 
-  library(readr); library(dplyr); library(gt)
+library(readr); library(dplyr); library(gt)
 
-  path <- "data/processed/demo_metrics.csv"
+path <- "data/processed/demo_metrics.csv"
   metrics <- if (file.exists(path)) read_csv(path, show_col_types = FALSE) else
     tibble::tibble(Alert_Burden_per_min = 0.42,
-                   HighLoad_Minutes_per_hour = 12.8,
+HighLoad_Minutes_per_hour = 12.8,
                    TimeToRecovery_sec = 95)
 
-  gt(metrics) |>
-    fmt_number(where(is.numeric), decimals = 2) |>
-    cols_label(
-      Alert_Burden_per_min = "Alert Burden (per min)",
-      HighLoad_Minutes_per_hour = "High-Load (min/hr)",
-      TimeToRecovery_sec = "Time-to-Recovery (sec)"
-    ) |>
-    data_color(
-      columns = c(Alert_Burden_per_min, HighLoad_Minutes_per_hour, TimeToRecovery_sec),
-      colors = scales::col_bin(
+gt(metrics) |>
+fmt_number(where(is.numeric), decimals = 2) |>
+cols_label(
+Alert_Burden_per_min = "Alert Burden (per min)",
+HighLoad_Minutes_per_hour = "High-Load (min/hr)",
+TimeToRecovery_sec = "Time-to-Recovery (sec)"
+) |>
+data_color(
+columns = c(Alert_Burden_per_min, HighLoad_Minutes_per_hour, TimeToRecovery_sec),
+colors = scales::col_bin(
         palette = c("#27ae60","#f39c12","#e74c3c"),
         bins = c(-Inf, 0.6, 1.0, Inf)
-      )
-    ) |>
-    tab_options(table.border.top.color = "#e5e7eb",
-                table.border.bottom.color = "#e5e7eb")
+)
+) |>
+tab_options(table.border.top.color = "#e5e7eb",
+table.border.bottom.color = "#e5e7eb")
 
 } else { cat("Install packages gt, readr, dplyr to render this table.") }
 ```
@@ -583,73 +767,73 @@ if (requireNamespace("gt", quietly=TRUE) &&
 ```{r}
 #| label: features-gt
 if (requireNamespace("gt", quietly=TRUE) &&
-    requireNamespace("readr", quietly=TRUE) &&
-    requireNamespace("dplyr", quietly=TRUE)) {
+requireNamespace("readr", quietly=TRUE) &&
+requireNamespace("dplyr", quietly=TRUE)) {
 
-  library(readr); library(dplyr); library(gt)
+library(readr); library(dplyr); library(gt)
 
-  # ---- reference ranges (fallback included) ----
-  ref_path <- "data/reference_ranges.csv"
+# ---- reference ranges (fallback included) ----
+ref_path <- "data/reference_ranges.csv"
   refs <- if (file.exists(ref_path)) read_csv(ref_path, show_col_types = FALSE) else
-    tibble::tibble(
-      Feature = c("Pupil Diameter","Grip Force","Tremor RMS (8–12Hz)","HRV (RMSSD)",
-                  "Grip CV%","Time-on-Task","Normal Prob","High Load Prob","Lapse Prob"),
-      Unit = c("mm","N","μm","ms","%","min","%","%","%"),
-      baseline_mean = c(3.5,3.0,100,40,8,10,60,30,10),
-      baseline_sd   = c(0.2,1.0,30,10,2,NA,NA,NA,NA),
-      normal_low    = c(3.1,1.5,60,30,5,0,40,0,0),
-      normal_high   = c(3.9,5.0,120,60,12,30,100,60,30),
-      alert_low     = c(NA,NA,NA,25,NA,NA,0,0,0),
-      alert_high    = c(4.8,7.0,180,NA,15,60,100,100,100),
-      direction     = c("high_worse","high_worse","high_worse","low_worse","high_worse","high_worse",
-                        "low_worse","high_worse","high_worse")
-    )
+tibble::tibble(
+Feature = c("Pupil Diameter","Grip Force","Tremor RMS (8–12Hz)","HRV (RMSSD)",
+"Grip CV%","Time-on-Task","Normal Prob","High Load Prob","Lapse Prob"),
+Unit = c("mm","N","μm","ms","%","min","%","%","%"),
+baseline_mean = c(3.5,3.0,100,40,8,10,60,30,10),
+baseline_sd   = c(0.2,1.0,30,10,2,NA,NA,NA,NA),
+normal_low    = c(3.1,1.5,60,30,5,0,40,0,0),
+normal_high   = c(3.9,5.0,120,60,12,30,100,60,30),
+alert_low     = c(NA,NA,NA,25,NA,NA,0,0,0),
+alert_high    = c(4.8,7.0,180,NA,15,60,100,100,100),
+direction     = c("high_worse","high_worse","high_worse","low_worse","high_worse","high_worse",
+"low_worse","high_worse","high_worse")
+)
 
-  # ---- current snapshot (fallback included) ----
-  snap_path <- "data/processed/demo_features_snapshot.csv"
+# ---- current snapshot (fallback included) ----
+snap_path <- "data/processed/demo_features_snapshot.csv"
   snap <- if (file.exists(snap_path)) read_csv(snap_path, show_col_types = FALSE) else
-    tibble::tibble(
-      Feature = c("Pupil Diameter","Grip Force","Tremor RMS (8–12Hz)","HRV (RMSSD)",
-                  "Grip CV%","Time-on-Task","Normal Prob","High Load Prob","Lapse Prob"),
-      Value   = c(3.62,5.30,78,45,9.3,10.0,43.5,40.5,16.0),
-      Unit    = c("mm","N","μm","ms","%","min","%","%","%")
-    )
+tibble::tibble(
+Feature = c("Pupil Diameter","Grip Force","Tremor RMS (8–12Hz)","HRV (RMSSD)",
+"Grip CV%","Time-on-Task","Normal Prob","High Load Prob","Lapse Prob"),
+Value   = c(3.62,5.30,78,45,9.3,10.0,43.5,40.5,16.0),
+Unit    = c("mm","N","μm","ms","%","min","%","%","%")
+)
 
   # ---- helpers ----
-  status_row <- function(val, r) {
-    dir <- r$direction; nl<-r$normal_low; nh<-r$normal_high; al<-r$alert_low; ah<-r$alert_high
-    if (is.na(val)) return("Unknown")
-    if (dir=="high_worse") {
-      if (!is.na(ah) && val>ah) "Critical" else if (!is.na(nh) && val>nh) "Elevated" else "Normal"
-    } else if (dir=="low_worse") {
-      if (!is.na(al) && val<al) "Critical" else if (!is.na(nl) && val<nl) "Elevated" else "Normal"
-    } else {
-      if ((!is.na(al) && val<al) || (!is.na(ah) && val>ah)) "Critical"
-      else if ((!is.na(nl) && val<nl) || (!is.na(nh) && val>nh)) "Elevated"
-      else "Normal"
-    }
-  }
-  d_cohen <- function(val, m, s) ifelse(is.na(s) || s<=0, NA_real_, (val - m)/s)
+status_row <- function(val, r) {
+dir <- r$direction; nl<-r$normal_low; nh<-r$normal_high; al<-r$alert_low; ah<-r$alert_high
+if (is.na(val)) return("Unknown")
+if (dir=="high_worse") {
+if (!is.na(ah) && val>ah) "Critical" else if (!is.na(nh) && val>nh) "Elevated" else "Normal"
+} else if (dir=="low_worse") {
+if (!is.na(al) && val<al) "Critical" else if (!is.na(nl) && val<nl) "Elevated" else "Normal"
+} else {
+if ((!is.na(al) && val<al) || (!is.na(ah) && val>ah)) "Critical"
+else if ((!is.na(nl) && val<nl) || (!is.na(nh) && val>nh)) "Elevated"
+else "Normal"
+}
+}
+d_cohen <- function(val, m, s) ifelse(is.na(s) || s<=0, NA_real_, (val - m)/s)
 
-  df <- snap |>
-    left_join(refs, by = c("Feature","Unit")) |>
-    rowwise() |>
-    mutate(
-      Status = status_row(Value, cur_data()),
-      Effect = d_cohen(Value, baseline_mean, baseline_sd),
-      Ref_CI = if (!is.na(baseline_mean) && !is.na(baseline_sd))
-                 sprintf("%.2f–%.2f", baseline_mean-1.96*baseline_sd, baseline_mean+1.96*baseline_sd)
-               else ""
-    ) |>
-    ungroup() |>
-    mutate(
-      Status_Icon = dplyr::case_when(
+df <- snap |>
+left_join(refs, by = c("Feature","Unit")) |>
+rowwise() |>
+mutate(
+Status = status_row(Value, cur_data()),
+Effect = d_cohen(Value, baseline_mean, baseline_sd),
+Ref_CI = if (!is.na(baseline_mean) && !is.na(baseline_sd))
+sprintf("%.2f–%.2f", baseline_mean-1.96*baseline_sd, baseline_mean+1.96*baseline_sd)
+else ""
+) |>
+ungroup() |>
+mutate(
+Status_Icon = dplyr::case_when(
         Status=="Normal"   ~ "<span style='color:#27ae60'>●</span> Normal",
-        Status=="Elevated" ~ "<span style='color:#f39c12'>▲</span> Elevated",
-        Status=="Critical" ~ "<span style='color:#e74c3c'>⚠</span> Critical",
-        TRUE ~ "·"
-      ),
-      Value_fmt = dplyr::case_when(
+Status=="Elevated" ~ "<span style='color:#f39c12'>▲</span> Elevated",
+Status=="Critical" ~ "<span style='color:#e74c3c'>⚠</span> Critical",
+TRUE ~ "·"
+),
+Value_fmt = dplyr::case_when(
         Unit=="mm"  ~ sprintf("%.2f mm", Value),
         Unit=="μm"  ~ sprintf("%.0f μm", Value),
         Unit=="N"   ~ sprintf("%.2f N", Value),
@@ -657,23 +841,23 @@ if (requireNamespace("gt", quietly=TRUE) &&
         Unit=="%"   ~ sprintf("%.1f%%", Value),
         Unit=="min" ~ sprintf("%.1f min", Value),
         TRUE        ~ as.character(signif(Value, 3))
-      ),
-      Effect_fmt = ifelse(is.na(Effect),"",sprintf("%.2f", Effect))
-    )
+),
+Effect_fmt = ifelse(is.na(Effect),"",sprintf("%.2f", Effect))
+)
 
   gt(df |> dplyr::select(Feature, Value_fmt, Ref_CI, Effect_fmt, Status_Icon)) |>
-    cols_label(
-      Feature    = "Feature",
-      Value_fmt  = html("Value<br><span style='font-size:.8em'>(Live)</span>"),
-      Ref_CI     = html("Literature<br><span style='font-size:.8em'>(≈95% CI)</span>"),
-      Effect_fmt = html("Effect Size<br><span style='font-size:.8em'>(Cohen's d)</span>"),
-      Status_Icon= "Status"
-    ) |>
-    fmt_markdown(columns = c(Ref_CI, Status_Icon)) |>
-    tab_style(
+cols_label(
+Feature    = "Feature",
+Value_fmt  = html("Value<br><span style='font-size:.8em'>(Live)</span>"),
+Ref_CI     = html("Literature<br><span style='font-size:.8em'>(≈95% CI)</span>"),
+Effect_fmt = html("Effect Size<br><span style='font-size:.8em'>(Cohen's d)</span>"),
+Status_Icon= "Status"
+) |>
+fmt_markdown(columns = c(Ref_CI, Status_Icon)) |>
+tab_style(
       style = list(cell_fill(color = "#e8f5e9"), cell_text(color = "#0b1526")),
-      locations = cells_body(columns = "Value_fmt", rows = df$Status=="Normal")
-    ) |>
+locations = cells_body(columns = "Value_fmt", rows = df$Status=="Normal")
+) |>
     tab_style(
       style = cell_text(color = "#0b1526"),
       locations = cells_body(columns = "Value_fmt", rows = df$Status=="Elevated")
@@ -682,15 +866,15 @@ if (requireNamespace("gt", quietly=TRUE) &&
       style = cell_text(color = "#0b1526"),
       locations = cells_body(columns = "Value_fmt", rows = df$Status=="Critical")
     ) |>
-    tab_style(
-      style = cell_text(weight = "bold"),
-      locations = cells_body(columns = "Effect_fmt",
-                             rows = !is.na(df$Effect_fmt) & as.numeric(df$Effect_fmt) > 0.8)
-    ) |>
-    tab_footnote(
-      footnote = html("Colors: <span style='color:#27ae60'>Normal</span> | <span style='color:#f39c12'>Elevated</span> | <span style='color:#e74c3c'>Critical</span>"),
-      locations = cells_column_labels(columns = "Value_fmt")
-    )
+tab_style(
+style = cell_text(weight = "bold"),
+locations = cells_body(columns = "Effect_fmt",
+rows = !is.na(df$Effect_fmt) & as.numeric(df$Effect_fmt) > 0.8)
+) |>
+tab_footnote(
+footnote = html("Colors: <span style='color:#27ae60'>Normal</span> | <span style='color:#f39c12'>Elevated</span> | <span style='color:#e74c3c'>Critical</span>"),
+locations = cells_column_labels(columns = "Value_fmt")
+)
 
 } else { cat("Install packages gt, readr, dplyr to render this table.") }
 ```
