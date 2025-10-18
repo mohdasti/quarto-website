@@ -554,65 +554,67 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
 
 ------------------------------------------------------------------------
 
-### Time-on-Task (Fatigue) <span class="help-icon" data-bs-toggle="tooltip" title="Hold steady until onset, then relax with half-life; microbreak gives a brief reset with exponential decay."><i class="bi bi-info-circle"></i></span>
+### Time-on-Task (Fatigue) <span class="help-icon" data-bs-toggle="tooltip" title="Hold steady until onset, then relax with half-life; a microbreak gives a brief reset with exponential decay."><i class="bi bi-info-circle"></i></span>
 
 ```{r}
 #| echo: false
 if (requireNamespace("ggplot2", quietly = TRUE)) {
-  library(ggplot2)
+  library(ggplot2); library(grid)
 
-  # --- Parameters (use the same names you present in the text) ---
-  c_start              <- 0.70   # starting decision threshold
-  c_floor              <- 0.50   # most relaxed threshold allowed
-  onset_min            <- 30     # fatigue onset time (min)
-  fatigue_half_life_min<- 21     # how fast threshold relaxes (half-life, min)
-  microbreak_min       <- 60     # minute of the microbreak (set NA for none)
-  microbreak_reset     <- 0.12   # how strongly the break recenters the threshold
-  microbreak_decay_min <- 2      # how quickly that reset fades (min)
+  # --- Parameters (match UI/control names) -----------------------------------
+  c_start               <- 0.70   # starting decision threshold
+  c_floor               <- 0.50   # most relaxed threshold allowed
+  onset_min             <- 30     # fatigue onset time (min)
+  fatigue_half_life_min <- 21     # half-life (min): time to move halfway from start to floor AFTER onset
+  microbreak_min        <- 60     # minute of the microbreak (set NA for none)
+  microbreak_reset      <- 0.12   # reset magnitude (toward c_start)
+  microbreak_decay_min  <- 2      # decay time constant (min) of the reset
 
-  # --- Helper (exponential relaxation + smooth microbreak recovery) ---
+  # --- Helper: exponential relaxation + microbreak recovery ------------------
   fatigue_threshold <- function(t) {
-    tau  <- fatigue_half_life_min / log(2)   # convert half-life to time constant
-    # baseline: hold at c_start until onset, then exponential toward c_floor
+    tau  <- fatigue_half_life_min / log(2)   # map half-life to time constant
+    # baseline: hold at c_start until onset, then relax exponentially to c_floor
     base <- ifelse(t < onset_min,
                    c_start,
                    c_floor + (c_start - c_floor) * exp(-(t - onset_min) / tau))
 
-    # optional microbreak bump with exponential decay
+    # apply microbreak boost ONLY after the break, then decay smoothly
     boost <- if (!is.na(microbreak_min)) {
-      microbreak_reset * exp(-pmax(0, t - microbreak_min) / microbreak_decay_min)
+      ifelse(t >= microbreak_min,
+             microbreak_reset * exp(-(t - microbreak_min) / microbreak_decay_min),
+             0)
     } else 0
 
     # clamp to [c_floor, c_start]
     pmin(c_start, pmax(c_floor, base + boost))
   }
 
-  # --- Data + key reference points ---
+  # --- Data + key reference points ------------------------------------------
   t  <- seq(0, 90, by = 0.25)
   y  <- fatigue_threshold(t)
 
-  # Half-life time and level (exactly halfway from start to floor after onset)
+  # Half-life time and level (exactly halfway from start to floor AFTER onset)
   t_half <- onset_min + fatigue_half_life_min
   y_half <- (c_start + c_floor) / 2
 
   df <- data.frame(mins = t, threshold = y)
 
-  # --- Plot (annotated) ---
+  # --- Plot (annotated) ------------------------------------------------------
   ggplot(df, aes(mins, threshold)) +
     # shaded pre-onset region
     annotate("rect", xmin = -Inf, xmax = onset_min, ymin = -Inf, ymax = Inf,
              alpha = 0.05, fill = "grey60") +
     # reference lines
-    geom_hline(yintercept = c_start, linetype = "solid", linewidth = 0.3) +
+    geom_hline(yintercept = c_start, linetype = "solid",  linewidth = 0.3) +
     geom_hline(yintercept = c_floor, linetype = "dotted", linewidth = 0.3) +
-    geom_vline(xintercept = onset_min, linetype = 2, linewidth = 0.3) +
+    geom_vline(xintercept = onset_min,      linetype = 2, linewidth = 0.3) +
     { if (!is.na(microbreak_min)) geom_vline(xintercept = microbreak_min, linetype = 2, linewidth = 0.3) } +
     # main curve
     geom_line(linewidth = 0.8) +
     # half-life marker
     geom_point(aes(x = t_half, y = y_half), size = 2) +
     geom_segment(aes(x = t_half, xend = t_half, y = c_start, yend = y_half),
-                 arrow = arrow(length = unit(0.15, "cm")), linewidth = 0.3) +
+                 arrow = arrow(length = grid::unit(0.15, "cm")), linewidth = 0.3) +
     # labels
     annotate("text", x = onset_min - 2, y = c_start + 0.006, hjust = 1,
              label = "Onset", size = 4) +
@@ -636,7 +638,6 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
     theme_minimal() +
     theme(legend.position = "none")
 }
-
 ```
 
 ```{r}
@@ -649,9 +650,9 @@ fmt <- function(x, d=2) formatC(x, format="f", digits=d)
 cat(
   "::: {.callout-note}\n",
   "**How to read this curve**\n\n",
-  "- **Pre-onset (t < ", onset_min, " min):** threshold stays at **", fmt(c_start), "** (no fatigue yet).\n",
-  "- **Post-onset:** threshold relaxes **exponentially** toward the **floor** **", fmt(c_floor),
-    "** → more tolerant of High-Load detections as vigilance degrades.\n",
+  "- **Pre-onset (t < ", onset_min, " min):** the **decision threshold** stays at **", fmt(c_start), "** (no fatigue modeled yet).\n",
+  "- **Post-onset:** the threshold relaxes **exponentially** toward the **floor** **", fmt(c_floor),
+    "** — i.e., the system becomes more tolerant of High-Load detections as vigilance degrades.\n",
   if (!is.na(microbreak_min))
     paste0("- **Microbreak (t = ", microbreak_min, " min):** brief **reset boost** that decays over ~",
            microbreak_decay_min, " min.\n")
@@ -659,15 +660,19 @@ cat(
   "- **Half-life marker:** at **t = onset + half-life = ", onset_min, " + ", fatigue_half_life_min,
     " = ", halfway_time, " min**, the threshold is **halfway** between **", fmt(c_start),
     "** and **", fmt(c_floor), "**.\n",
-  "- Visual cues: **solid line** = start level (", fmt(c_start),
+  "- Visual cues: **solid line** = start (", fmt(c_start),
     "); **dotted line** = floor (", fmt(c_floor),
     "); **vertical dashed lines** = onset",
     if (!is.na(microbreak_min)) " and microbreak" else "", ".\n",
   ":::",
   sep = ""
 )
-
 ```
+
+- This policy adjusts the **criterion** (decision threshold) over time; it does **not** assume the evidence itself drifts.
+- The **half-life** parameter is interpretable: after *onset + half-life*, the threshold sits exactly halfway between **start** and **floor**.
+- Microbreak behavior models the short-lived recovery documented in vigilance/OR ergonomics; tune `microbreak_reset` (size) and `microbreak_decay_min` (return speed) per task/surgeon.
+- Calibrate per individual; not all tasks show strictly monotonic fatigue.
 
 -   **Maps to Dashboard.** Drives the **time-on-task** feature and the **microbreak button**; after breaks, we expect **HRV/tremor** to normalize within \~120 s (we log this for efficacy).
 
