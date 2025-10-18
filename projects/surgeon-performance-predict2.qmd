@@ -199,15 +199,14 @@ Surgery is a cognitive sport. When arousal is balanced, performance peaks; when 
 
 I built two tightly coupled tools:
 
-- **Training Lab**: makes load/fatigue *felt* and lets instructors choose a threshold policy to match their pedagogy.
-- **Production Dashboard**: runs those policies in real time using **pupil + grip/tremor + HRV**, tuned to prevent alarm fatigue and respect sterile-field constraints.
+-   **Training Lab**: makes load/fatigue *felt* and lets instructors choose a threshold policy to match their pedagogy.
+-   **Production Dashboard**: runs those policies in real time using **pupil + grip/tremor + HRV**, tuned to prevent alarm fatigue and respect sterile-field constraints.
 
 Accuracy is necessary, not sufficient. We optimize for operational outcomes—fewer high-load minutes, faster recovery, quicker proficiency—alongside standard model metrics.
 
-::: {.callout-note}
+::: callout-note
 **Deployment KPIs:** Alert burden ≤ **0.6/min**, High-Load **min/hr ↓**, Time-to-Recovery **sec ↓**, Acknowledgement rate **↑**.
 :::
-
 
 ```{=html}
 <style>
@@ -297,7 +296,7 @@ Accuracy is necessary, not sufficient. We optimize for operational outcomes—fe
 *One problem, three lenses.* Each policy below answers: **what changes**, **when to use it**, and **how it maps to the production dashboard defaults**.
 
 ::: panel-tabset
-### Adaptive Gain (Inverted-U) <span class="help-icon" data-bs-toggle="tooltip" title="Target the mid-arousal zone; too low/high hurts performance (LC–NE adaptive gain)."><i class="bi bi-info-circle"></i></span>
+### Adaptive Gain (Inverted-U) [<i class="bi bi-info-circle"></i>]{.help-icon data-bs-toggle="tooltip" title="Target the mid-arousal zone; too low/high hurts performance (LC–NE adaptive gain)."}
 
 ```{r}
 #| echo: false
@@ -351,7 +350,7 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
 </p>
 ```
 
--   **Maps to Dashboard.** We fuse TEPR (↑) and HRV (↓) into a **normalized arousal index** ∈ [0,1]. Alerts fire when the index leaves the **optimal band** `[lo, hi]`.
+-   **Maps to Dashboard.** We fuse TEPR (↑) and HRV (↓) into a **normalized arousal index** ∈ \[0,1\]. Alerts fire when the index leaves the **optimal band** `[lo, hi]`.
 
     -   Wider band → **fewer alerts**, gentler coaching.
     -   Narrower band → **tighter coaching**, higher nuisance risk.
@@ -366,14 +365,7 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
 
 ------------------------------------------------------------------------
 
-### Dual-Criterion (SDT) <span class="help-icon" data-bs-toggle="tooltip" title="One knob moves both decision boundaries (High-Load & Lapse) together; tunes decision bias (criteria), not d′."><i class="bi bi-info-circle"></i></span>
-
-```{=html}
-<p style="margin:.25rem 0 .35rem;font-size:0.95rem;">
-<strong>X-axis:</strong> a z-scored, signed <em>evidence index</em> from biosignals (e.g., TEPR↑, RMSSD↓).
-Higher → <em>High-Load</em>; lower → <em>Lapse</em>.
-</p>
-```
+### Dual-Criterion (SDT) [<i class="bi bi-info-circle"></i>]{.help-icon data-bs-toggle="tooltip" title="One knob moves both decision boundaries (High-Load & Lapse) together; tunes decision bias (criteria), not d′."}
 
 ```{r}
 #| echo: false
@@ -445,7 +437,19 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
 }
 ```
 
-**How the two figures relate:** The first figure defines the boundaries (enter/exit on each side). The second applies the **same boundaries—nudged slightly if needed so at least one crossing is visible (see subtitle)**—to a noisy signal, showing how hysteresis prevents flip-flops near a boundary.
+```{=html}
+<p style="margin:.25rem 0 .35rem;font-size:0.95rem;">
+<strong>X-axis:</strong> a z-scored, signed <em>evidence index</em> from biosignals (e.g., TEPR↑, RMSSD↓).
+Higher → <em>High-Load</em>; lower → <em>Lapse</em>.
+</p>
+```
+
+-   **What this shows.** A three-state SDT layout (Lapse / Normal / High-Load) with **two decision criteria** and **hysteresis** (separate enter/exit thresholds).
+    -   **`criterion_tightness`** narrows or widens the Normal window by moving **both** criteria toward or away from 0.
+    -   **`coupling`** controls symmetry: values **\< 1** move the Lapse boundary **less** than the High-Load boundary; values **\> 1** move it **more**.
+-   **Why "Dual-Criterion," not "Sensitivity."** In SDT, **sensitivity** is **d′** (distribution separation). This policy **adjusts decision criteria (bias)**, not d′.
+
+**How the two figures relate:** The first figure defines the boundaries (enter/exit on each side). The second applies the **same boundaries—nudged slightly if needed so at least one crossing is visible**—to a noisy signal, showing how hysteresis prevents flip-flops near a boundary.
 
 ```{r}
 #| echo: false
@@ -543,63 +547,91 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
 }
 ```
 
-- **What this shows.** A three-state SDT layout (Lapse / Normal / High-Load) with **two decision criteria** and **hysteresis** (separate enter/exit thresholds).
-  - **`criterion_tightness`** narrows or widens the Normal window by moving **both** criteria toward or away from 0.
-  - **`coupling`** controls symmetry: values **< 1** move the Lapse boundary **less** than the High-Load boundary; values **> 1** move it **more**.
-- **Why "Dual-Criterion," not "Sensitivity."** In SDT, **sensitivity** is **d′** (distribution separation). This policy **adjusts decision criteria (bias)**, not d′.
-- **Hysteresis.** Enter/exit thresholds (and/or consecutive-sample confirmation) require **persistent evidence** to change state—reducing nuisance alerts.
-- **Not a DDM.** This is SDT with persistence, not a drift–diffusion integrator; it approximates temporal integration efficiently for real-time use.
-- **Maps to Dashboard.** The control sets the **HL** and **Lapse** thresholds together. Alerts still require **evidence + physiology** (e.g., HL requires **TEPR↑ or HRV↓**; Lapse prefers **low TEPR + blink anomalies**).
-- **References.** Macmillan & Creelman (Signal Detection Theory); NASA-TLX background (Hart & Staveland).
+-   **Hysteresis.** Enter/exit thresholds (and/or consecutive-sample confirmation) require **persistent evidence** to change state—reducing nuisance alerts.
+-   **Maps to Dashboard.** The control sets the **HL** and **Lapse** thresholds together. Alerts still require **evidence + physiology** (e.g., HL requires **TEPR↑ or HRV↓**; Lapse prefers **low TEPR + blink anomalies**).
+-   **References.** Macmillan & Creelman (Signal Detection Theory); NASA-TLX background (Hart & Staveland).
 
 ------------------------------------------------------------------------
 
-### Time-on-Task (Fatigue) <span class="help-icon" data-bs-toggle="tooltip" title="Hold steady until onset, then relax with half-life; a microbreak gives a brief reset with exponential decay."><i class="bi bi-info-circle"></i></span>
+### Time-on-Task Policy (Fatigue-Adaptive) [<i class="bi bi-info-circle"></i>]{.help-icon data-bs-toggle="tooltip" title="Steady until onset; then the decision threshold relaxes with a half-life. A microbreak briefly tightens the threshold and decays back."}
 
 ```{r}
 #| echo: false
+# ⚙️ This is a controller on the *decision threshold*, not a claim about an internal neural mechanism.
+#    It’s meant to be auditable and tunable per surgeon/task.
+
 if (requireNamespace("ggplot2", quietly = TRUE)) {
   library(ggplot2); library(grid)
 
-  # --- Parameters (match UI/control names) -----------------------------------
-  c_start               <- 0.70   # starting decision threshold
-  c_floor               <- 0.50   # most relaxed threshold allowed
-  onset_min             <- 30     # fatigue onset time (min)
-  fatigue_half_life_min <- 21     # half-life (min): time to move halfway from start to floor AFTER onset
-  microbreak_min        <- 60     # minute of the microbreak (set NA for none)
-  microbreak_reset      <- 0.12   # reset magnitude (toward c_start)
-  microbreak_decay_min  <- 2      # decay time constant (min) of the reset
+  # ----------------------- Controls (match UI / Lab names) -----------------------
+  c_start                <- 0.70  # starting decision threshold (fresh)
+  c_floor                <- 0.50  # most relaxed threshold allowed
+  onset_min              <- 30    # fatigue onset time (min)
+  fatigue_half_life_min  <- 21    # half-life (min): time to move halfway from start→floor AFTER onset
 
-  # --- Helper: exponential relaxation + microbreak recovery ------------------
+  # Microbreak: either a fixed size (demo) or physiology-proportional (preferred)
+  microbreak_min         <- 60    # minute of the microbreak (set NA for none)
+  microbreak_reset_fixed <- 0.08  # small fixed reset (if no physiology available)
+  microbreak_decay_min   <- 2     # reset decays back with this time constant (min)
+
+  # ----------------------- Optional physiology-proportional reset ----------------
+  # If you have short windows around the microbreak (e.g., 60 s pre, 120 s post),
+  # define these vectors before this chunk runs: RMSSD_pre, RMSSD_post, TEPR_pre, TEPR_post, Tremor_pre, Tremor_post
+  # Otherwise the code falls back to 'microbreak_reset_fixed'.
+  clamp01 <- function(x) pmax(0, pmin(1, x))
+  zscale  <- function(x) if (length(x) > 1 && sd(x) > 0) (x - mean(x)) / sd(x) else 0
+
+  derive_reset_from_phys <- function() {
+    if (exists("RMSSD_pre") && exists("RMSSD_post") &&
+        exists("TEPR_pre")  && exists("TEPR_post")  &&
+        exists("Tremor_pre")&& exists("Tremor_post")) {
+
+      d_hrv   <- mean(RMSSD_post) - mean(RMSSD_pre)       # ↑ is good recovery
+      d_tepr  <- mean(TEPR_post)  - mean(TEPR_pre)        # ↓ is good recovery
+      d_trem  <- mean(Tremor_post)- mean(Tremor_pre)      # ↓ is good recovery
+
+      # map deltas to [0,1] recovery indices (rough-and-ready normalization)
+      phi_h    <- clamp01(zscale(d_hrv))
+      phi_p    <- clamp01(zscale(-d_tepr))
+      phi_tr   <- clamp01(zscale(-d_trem))
+      phi      <- 0.5*phi_h + 0.3*phi_p + 0.2*phi_tr      # weights can be tuned/validated
+      alpha    <- 0.35                                     # maps recovery to fraction of remaining gap
+      return(list(ok = TRUE, phi = phi, alpha = alpha))
+    }
+    list(ok = FALSE, phi = 0, alpha = 0)
+  }
+
+  phys <- derive_reset_from_phys()
+
+  # ----------------------- Threshold policy function -----------------------------
   fatigue_threshold <- function(t) {
-    tau  <- fatigue_half_life_min / log(2)   # map half-life to time constant
     # baseline: hold at c_start until onset, then relax exponentially to c_floor
+    tau  <- fatigue_half_life_min / log(2)   # map half-life to time constant
     base <- ifelse(t < onset_min,
                    c_start,
                    c_floor + (c_start - c_floor) * exp(-(t - onset_min) / tau))
 
-    # apply microbreak boost ONLY after the break, then decay smoothly
-    boost <- if (!is.na(microbreak_min)) {
-      ifelse(t >= microbreak_min,
-             microbreak_reset * exp(-(t - microbreak_min) / microbreak_decay_min),
-             0)
-    } else 0
+    # microbreak reset: ONLY after the break; either physiology-proportional or fixed
+    if (!is.na(microbreak_min)) {
+      gap   <- c_start - base                 # how far below "fresh"
+      reset <- if (phys$ok) phys$alpha * phys$phi * gap else microbreak_reset_fixed
+      boost <- ifelse(t >= microbreak_min, reset * exp(-(t - microbreak_min) / microbreak_decay_min), 0)
+    } else {
+      boost <- 0
+    }
 
     # clamp to [c_floor, c_start]
     pmin(c_start, pmax(c_floor, base + boost))
   }
 
-  # --- Data + key reference points ------------------------------------------
-  t  <- seq(0, 90, by = 0.25)
-  y  <- fatigue_threshold(t)
-
-  # Half-life time and level (exactly halfway from start to floor AFTER onset)
+  # ----------------------- Build data and reference markers ---------------------
+  t      <- seq(0, 90, by = 0.25)
+  thr    <- fatigue_threshold(t)
   t_half <- onset_min + fatigue_half_life_min
   y_half <- (c_start + c_floor) / 2
+  df     <- data.frame(mins = t, threshold = thr)
 
-  df <- data.frame(mins = t, threshold = y)
-
-  # --- Plot (annotated) ------------------------------------------------------
+  # ----------------------- Plot --------------------------------------------------
   ggplot(df, aes(mins, threshold)) +
     # shaded pre-onset region
     annotate("rect", xmin = -Inf, xmax = onset_min, ymin = -Inf, ymax = Inf,
@@ -607,12 +639,12 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
     # reference lines
     geom_hline(yintercept = c_start, linetype = "solid",  linewidth = 0.3) +
     geom_hline(yintercept = c_floor, linetype = "dotted", linewidth = 0.3) +
-    geom_vline(xintercept = onset_min,      linetype = 2, linewidth = 0.3) +
+    geom_vline(xintercept = onset_min, linetype = 2, linewidth = 0.3) +
     { if (!is.na(microbreak_min)) geom_vline(xintercept = microbreak_min, linetype = 2, linewidth = 0.3) } +
     # main curve
-    geom_line(linewidth = 0.8) +
+    geom_line(linewidth = 0.85) +
     # half-life marker
-    geom_point(aes(x = t_half, y = y_half), size = 2) +
+    geom_point(aes(x = t_half, y = y_half), size = 2, color = "red") +
     geom_segment(aes(x = t_half, xend = t_half, y = c_start, yend = y_half),
                  arrow = arrow(length = grid::unit(0.15, "cm")), linewidth = 0.3) +
     # labels
@@ -621,17 +653,18 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
     { if (!is.na(microbreak_min))
         annotate("text", x = microbreak_min + 2, y = c_start - 0.01, hjust = 0,
                  label = "Microbreak", size = 4) } +
-    annotate("text", x = t_half + 2, y = y_half + 0.005, hjust = 0,
+    annotate("text", x = t_half - 21, y = y_half - 0.025, hjust = 0,
              label = "Half-life → halfway to floor", size = 4) +
-    annotate("text", x = max(t) - 5, y = c_floor + 0.004, hjust = 1,
+    annotate("text", x = max(t) - 5, y = c_floor + 0.005, hjust = 1,
              label = "Floor", size = 4) +
-    annotate("text", x = 5, y = c_start + 0.004, hjust = 0,
+    annotate("text", x = 5, y = c_start + 0.005, hjust = 0,
              label = "Start", size = 4) +
     labs(
-      title = "Time-on-Task (Fatigue): flat → relax → reset",
-      subtitle = sprintf("Onset=%d min · Half-life=%d min · Microbreak=%s",
+      title = "Time-on-Task (Fatigue-Adaptive): steady → relax → brief reset",
+      subtitle = sprintf("Onset = %d min · Half-life = %d min · Microbreak = %s · Reset = %s",
                          onset_min, fatigue_half_life_min,
-                         ifelse(is.na(microbreak_min), "none", paste0(microbreak_min, " min"))),
+                         ifelse(is.na(microbreak_min), "none", paste0(microbreak_min, " min")),
+                         ifelse(phys$ok, "proportional to bio recovery", sprintf("fixed (%.2f)", microbreak_reset_fixed))),
       x = "Time on task (min)",
       y = "High-Load decision threshold"
     ) +
@@ -643,40 +676,45 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
 ```{r}
 #| echo: false
 #| results: asis
-# Auto-updating description for the fatigue-adaptive curve
-halfway_time <- onset_min + fatigue_half_life_min
-fmt <- function(x, d=2) formatC(x, format="f", digits=d)
 
+# Auto-explainer for the plotted policy (keeps text in sync with the parameters above)
+
+
+
+fmt <- function(x, d=2) formatC(x, format="f", digits=d)
 cat(
-  "::: {.callout-note}\n",
-  "**How to read this curve**\n\n",
-  "- **Pre-onset (t < ", onset_min, " min):** the **decision threshold** stays at **", fmt(c_start), "** (no fatigue modeled yet).\n",
-  "- **Post-onset:** the threshold relaxes **exponentially** toward the **floor** **", fmt(c_floor),
-    "** — i.e., the system becomes more tolerant of High-Load detections as vigilance degrades.\n",
-  if (!is.na(microbreak_min))
-    paste0("- **Microbreak (t = ", microbreak_min, " min):** brief **reset boost** that decays over ~",
-           microbreak_decay_min, " min.\n")
-  else "",
-  "- **Half-life marker:** at **t = onset + half-life = ", onset_min, " + ", fatigue_half_life_min,
-    " = ", halfway_time, " min**, the threshold is **halfway** between **", fmt(c_start),
-    "** and **", fmt(c_floor), "**.\n",
-  "- Visual cues: **solid line** = start (", fmt(c_start),
-    "); **dotted line** = floor (", fmt(c_floor),
-    "); **vertical dashed lines** = onset",
-    if (!is.na(microbreak_min)) " and microbreak" else "", ".\n",
-  ":::",
-  sep = ""
+"::: {.callout-note}\n",
+"How to read this policy\n\n",
+"- Pre-onset (t < ", onset_min, " min): the decision threshold stays at ", fmt(c_start), ".\n",
+"- Post-onset: the threshold relaxes exponentially toward the floor ", fmt(c_floor), "—i.e., the system becomes more tolerant of High-Load detections as vigilance degrades.\n",
+if (!is.na(microbreak_min))
+paste0("- Microbreak (t = ", microbreak_min, " min): a small reset tightens the threshold, then decays over ~", microbreak_decay_min, " min. ",
+if (exists('phys') && phys$ok) "(Size is proportional to observed HRV/TEPR/tremor recovery.)\n" else "(Demo uses a fixed, modest reset.)\n")
+else "",
+"- Half-life: at t = onset + half-life = ", onset_min, " + ", fatigue_half_life_min, " = ", onset_min + fatigue_half_life_min, " min, the threshold sits halfway between ", fmt(c_start), " and ", fmt(c_floor), ".\n",
+"- Design intent: this is a controller on the criterion—transparent, auditable, and tunable per surgeon/task; it does not assume the evidence itself drifts.\n",
+":::",
+sep = ""
 )
 ```
 
-- This policy adjusts the **criterion** (decision threshold) over time; it does **not** assume the evidence itself drifts.
-- The **half-life** parameter is interpretable: after *onset + half-life*, the threshold sits exactly halfway between **start** and **floor**.
-- Microbreak behavior models the short-lived recovery documented in vigilance/OR ergonomics; tune `microbreak_reset` (size) and `microbreak_decay_min` (return speed) per task/surgeon.
-- Calibrate per individual; not all tasks show strictly monotonic fatigue.
+-   **Why a policy like this?** Vigilance typically declines with time-on-task while perceived workload rises; brief microbreaks improve comfort and focus without harming flow. Pupil/HRV often show fast, partial recovery over 1–3 minutes. A time-scheduled, small criterion reset captures these operational realities without heavy modeling.
 
--   **Maps to Dashboard.** Drives the **time-on-task** feature and the **microbreak button**; after breaks, we expect **HRV/tremor** to normalize within \~120 s (we log this for efficacy).
+-   **Good defaults (to be tuned)**: `onset_min` 20–30 min; `fatigue_half_life_min` 15–30 min; reset proportional to observed pre/post microbreak recovery, with decay 1–3 min.
 
--   **References.** Warm, Parasuraman & Matthews (2008, vigilance & workload).
+-   **References.**
+
+    -   Warm, Parasuraman & Matthews (2008). *Vigilance requires hard mental work and is stressful.* **Human Factors, 50(3), 433–441.** DOI: 10.1518/001872008X312152
+
+    -   Dorion & Darveau (2013). *Do micropauses prevent surgeon’s fatigue and loss of accuracy?* **Ann Surg, 257(2), 256–259.** DOI: 10.1097/SLA.0b013e31825efe87
+
+    -   Park et al. (2017). *Intraoperative “micro breaks” with exercises reduce surgeons’ musculoskeletal injuries.* **J Surg Res, 211, 24–31.** DOI: 10.1016/j.jss.2016.11.017
+
+    -   Hallbeck et al. (2017). *The impact of intraoperative microbreaks…* **Applied Ergonomics, 60, 334–341.** DOI: 10.1016/j.apergo.2016.12.006
+
+    -   Luger et al. (2023). *One-minute rest breaks mitigate healthcare worker stress.* **JMIR, 25, e44804.** DOI: 10.2196/44804
+
+    -   Unsworth & Robison (2018). *Tracking arousal with pupillometry.* **Cogn Affect Behav Neurosci, 18, 638–664.** DOI: 10.3758/s13415-018-0604-8
 :::
 
 ------------------------------------------------------------------------
