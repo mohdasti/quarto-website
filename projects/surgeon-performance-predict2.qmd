@@ -291,6 +291,111 @@ Accuracy is necessary, not sufficient. We optimize for operational outcomes—fe
 
 ------------------------------------------------------------------------
 
+## Production Dashboard — Instant Tour
+
+> Heavy live Shiny app? We kept the live link, but this page is **instant**.
+> Watch 4 short clips, then dive deeper via zoomable galleries. When ready:
+> <a class="btn btn-primary" href="https://mohdasti.shinyapps.io/surgical-cognitive-dashboard/" target="_blank" rel="noopener">Open Live App (slow)</a>
+
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+<style>
+.demo-cta {display:flex; gap:.6rem; flex-wrap:wrap; margin:.5rem 0 1rem}
+.demo-cta a.btn{display:inline-flex; align-items:center; gap:.4rem}
+.video-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; margin:10px 0 6px}
+.video-card{background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:12px; box-shadow:0 1px 1px rgba(16,24,40,.02)}
+.video-title{font-weight:600; margin:.25rem 0 .25rem}
+.video-cap{color:#4b5563; font-size:.92rem}
+.video-wrap{position:relative; border-radius:10px; overflow:hidden; border:1px solid #e5e7eb}
+.video-wrap video{width:100%; height:auto; display:block}
+.badges{display:flex; gap:6px; flex-wrap:wrap; margin-top:.35rem}
+.badge{background:#eef2f7; border:1px solid #e5e7eb; font-size:.78rem; padding:.1rem .45rem; border-radius:999px}
+.gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px}
+.gallery a{display:block; border:1px solid #e5e7eb; border-radius:10px; overflow:hidden}
+.gallery img{display:block; width:100%; height:auto}
+.small-note{color:#6b7280; font-size:.9rem}
+</style>
+
+<div class="video-grid">
+  <div class="video-card">
+    <div class="video-title">Live Monitor → Alerts</div>
+    <div class="video-wrap">
+      <video controls preload="metadata" poster="/assets/demo/monitor_poster.jpg">
+        <source src="/assets/demo/monitor_tour.webm" type="video/webm">
+        <source src="/assets/demo/monitor_tour.mp4"  type="video/mp4">
+      </video>
+    </div>
+    <div class="video-cap">Signals (pupil, grip/tremor, HRV) → fused evidence → state probabilities → hysteresis prevents edge-chatter.</div>
+    <div class="badges"><span class="badge">TEPR</span><span class="badge">RMSSD</span><span class="badge">Hysteresis</span></div>
+  </div>
+
+  <div class="video-card">
+    <div class="video-title">Feature Table (gt)</div>
+    <div class="video-wrap">
+      <video controls preload="metadata" poster="/assets/demo/gt_poster.jpg">
+        <source src="/assets/demo/gt_table_tour.webm" type="video/webm">
+        <source src="/assets/demo/gt_table_tour.mp4"  type="video/mp4">
+      </video>
+    </div>
+    <div class="video-cap">Color-coded clinical ranges, trend sparklines, and clickable citations (DOI/PubMed).</div>
+    <div class="badges"><span class="badge">gt</span><span class="badge">CIs</span><span class="badge">Citations</span></div>
+  </div>
+
+  <div class="video-card">
+    <div class="video-title">Threshold Sandbox</div>
+    <div class="video-wrap">
+      <video controls preload="metadata" poster="/assets/demo/sandbox_poster.jpg">
+        <source src="/assets/demo/sandbox_tour.webm" type="video/webm">
+        <source src="/assets/demo/sandbox_tour.mp4"  type="video/mp4">
+      </video>
+    </div>
+    <div class="video-cap">Switch among <em>Adaptive Gain</em>, <em>Dual-Criterion (SDT)</em>, and <em>Time-on-Task</em>; see probabilities/alerts change.</div>
+    <div class="badges"><span class="badge">Inverted-U</span><span class="badge">SDT + hysteresis</span><span class="badge">Fatigue</span></div>
+  </div>
+
+  <div class="video-card" id="ml-diagnostics">
+    <div class="video-title">ML Diagnostics (what matters)</div>
+    <div class="video-wrap">
+      <video controls preload="metadata" poster="/assets/demo/diag_poster.jpg">
+        <source src="/assets/demo/diagnostics_tour.webm" type="video/webm">
+        <source src="/assets/demo/diagnostics_tour.mp4"  type="video/mp4">
+      </video>
+    </div>
+    <div class="video-cap">Reliability (calibration), probability distributions vs thresholds, and decision stability.</div>
+    <div class="badges"><span class="badge">Calibration</span><span class="badge">Distributions</span><span class="badge">Stability</span></div>
+  </div>
+</div>
+
+<h3>Zoomable Screenshot Gallery — Live Monitor</h3>
+<div class="gallery" data-lightbox="auto">
+  <a href="/assets/demo/monitor_01.png" data-title="Real-time cards: state, lapse/high-load probabilities, performance">
+    <img src="/assets/demo/thumb_monitor_01.jpg" alt="Monitor cards">
+  </a>
+  <a href="/assets/demo/monitor_02.png" data-title="Biosignal streams (pupil, grip, tremor, HRV) with tooltips">
+    <img src="/assets/demo/thumb_monitor_02.jpg" alt="Biosignal streams">
+  </a>
+  <a href="/assets/demo/monitor_03.png" data-title="Stacked state probabilities with hysteresis guards">
+    <img src="/assets/demo/thumb_monitor_03.jpg" alt="State probabilities">
+  </a>
+</div>
+<p class="small-note">Tip: thumbnails are compressed JPEGs; the full images are crisp PNGs.</p>
+
+<h3>Zoomable Screenshot Gallery — ML Diagnostics</h3>
+<div class="gallery" data-lightbox="auto">
+  <a href="/assets/demo/calibration.png" data-title="Reliability curve: predicted vs observed. We annotate ECE and Brier.">
+    <img src="/assets/demo/thumb_calibration.jpg" alt="Calibration">
+  </a>
+  <a href="/assets/demo/prob_dists.png" data-title="Predicted probability distributions by class + thresholds">
+    <img src="/assets/demo/thumb_prob_dists.jpg" alt="Probability distributions">
+  </a>
+  <a href="/assets/demo/stability.png" data-title="Decision stability with hysteresis: fewer oscillations near boundaries">
+    <img src="/assets/demo/thumb_stability.jpg" alt="Stability">
+  </a>
+</div>
+```
+
+------------------------------------------------------------------------
+
 ## Threshold Policies — how they work
 
 *One problem, three lenses.* Each policy below answers: **what changes**, **when to use it**, and **how it maps to the production dashboard defaults**.
