@@ -721,19 +721,55 @@ sep = ""
 
 ## Why thresholds must adapt
 
-:::: {.callout-tip collapse="false"}
-## 🔬 Interactive Training Lab Demo
+```{=html}
+<style>
+.demo-card{background:linear-gradient(135deg, #e6f6fb 0%, #f0fafe 100%);
+  border:1px solid #b7e1f0;border-radius:12px;padding:20px;
+  box-shadow:0 2px 8px rgba(16,24,40,.04);margin:1rem 0;max-width:720px}
+.demo-card:hover{box-shadow:0 4px 16px rgba(16,24,40,.08);border-color:#9dd9ec}
+.demo-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.demo-head i{font-size:1.3rem;color:#1f9bb6}
+.demo-title{font-weight:600;font-size:1.05rem;color:#0b1526}
+.demo-desc{color:#4b5563;margin-bottom:14px;font-size:.95rem;line-height:1.4}
+.demo-features{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.demo-features .tag{display:inline-flex;align-items:center;gap:.3rem;
+  padding:.25rem .5rem;background:#fff;border:1px solid #d0e9f3;border-radius:6px;
+  font-size:.85rem;color:#0b1526}
+.demo-features .tag i{font-size:.95rem;color:#1f9bb6}
+.demo-action{text-align:center}
+.demo-action a{display:inline-flex;align-items:center;gap:.6rem;
+  padding:11px 26px;background:#1f9bb6;color:#fff;text-decoration:none;
+  border-radius:8px;font-weight:600;font-size:.95rem;
+  box-shadow:0 2px 6px rgba(31,155,182,.25);transition:all .2s ease}
+.demo-action a:hover{background:#1a8ca0;box-shadow:0 4px 12px rgba(31,155,182,.35);transform:translateY(-1px)}
+.demo-action a i{font-size:1.1rem}
+.demo-note{margin-top:10px;font-size:.85rem;color:#6b7280;font-style:italic}
+</style>
 
-Click below to launch the interactive training lab in a new window. The lab lets you compare three adaptive threshold policies (Adaptive Gain, Dual-Criterion, and Time-on-Task) on the same data stream.
+<div class="demo-card">
+  <div class="demo-head">
+    <i class="bi bi-mortarboard-fill"></i>
+    <div class="demo-title">Interactive Training Lab</div>
+  </div>
+  <div class="demo-desc">
+    Compare all three threshold policies on the same biosignal stream. Switch policies mid-run, adjust parameters, and export configurations for production use.
+  </div>
+  <div class="demo-features">
+    <span class="tag"><i class="bi bi-activity"></i>Adaptive Gain</span>
+    <span class="tag"><i class="bi bi-bullseye"></i>Dual-Criterion</span>
+    <span class="tag"><i class="bi bi-clock-history"></i>Time-on-Task</span>
+  </div>
+  <div class="demo-action">
+    <a href="https://0z6q8c-mohammad0dastgheib.shinyapps.io/surgical-training-lab/" 
+       target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-box-arrow-up-right"></i>Launch Training Lab
+    </a>
+  </div>
+  <div class="demo-note">Opens in new tab · May take a few seconds to load</div>
+</div>
+```
 
-::: {style="text-align:center;margin:20px 0;"}
-<a href="https://0z6q8c-mohammad0dastgheib.shinyapps.io/surgical-training-lab/" target="_blank" rel="noopener noreferrer" style="display:inline-block;padding:12px 24px;background:var(--accent);color:white;text-decoration:none;border-radius:8px;font-weight:600;box-shadow:0 2px 4px rgba(0,0,0,0.1);"> Launch Training Lab → </a>
-:::
-
-*Opens in a new tab. The app may take a few seconds to load.*
-::::
-
-> Switch between policies on the same stream. Notice how the same physiologic trace produces different coaching behavior. That is the point: **policy is a choice**, and it should be teachable.
+> Switch between policies on the same stream. Notice how the same physiologic trace produces different coaching behavior. **Policy is a choice**, and it should be teachable.
 
 ------------------------------------------------------------------------
 
