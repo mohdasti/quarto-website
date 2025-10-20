@@ -14,6 +14,9 @@ execute:
   echo: false
   message: false
   warning: false
+resources:
+  - projects/supporting_files/**
+
 ---
 
 ```{=html}
@@ -34,9 +37,31 @@ a { color:var(--accent); }
 </style>
 ```
 
-::: callout-tip
-**TL;DR —** Reduce **High-Load minutes/hour**, prevent **lapses**, and keep trainees in the **optimal zone** using **pupil + grip/tremor + HRV** (no headgear). This page first **teaches why thresholds must adapt** (interactive Training Lab), then shows the **production dashboard**, and finally the **metrics ops leaders care about**.
-:::
+```{=html}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>
+.tldr-card{background:#ffffff;border:1px solid #e5e7eb;border-left:4px solid #1f9bb6;border-radius:12px;padding:12px 14px;margin:8px 0 14px;box-shadow:0 1px 1px rgba(16,24,40,.02)}
+.tldr-title{font-weight:700;letter-spacing:.2px;margin-bottom:.25rem}
+.tldr-text{margin:.15rem 0 .5rem;color:#111827}
+.tldr-chips{display:flex;flex-wrap:wrap;gap:6px}
+.tldr-chips a{display:inline-flex;align-items:center;gap:.35rem;font-size:.86rem;padding:.18rem .5rem;border-radius:999px;border:1px solid #d7dee6;background:#f8fafc;text-decoration:none;color:#0b1526}
+.tldr-chips a:hover{background:#eef6fb;border-color:#b7e1f0}
+</style>
+
+<div class="tldr-card" role="note" aria-label="TL;DR">
+  <div class="tldr-title">TL;DR</div>
+  <div class="tldr-text">
+    Reduce <b>high-load min/hr</b>, prevent <b>lapses</b>, and keep trainees in the <b>optimal zone</b> with
+    <b>pupil + grip/tremor + HRV</b>—no headgear.
+  </div>
+  <div class="tldr-chips">
+    <a href="#training-lab"><i class="bi bi-sliders"></i> Why thresholds adapt</a>
+    <a href="#production-dashboard"><i class="bi bi-activity"></i> Production dashboard</a>
+    <a href="#results-that-matter-ops-kpis" title="Methods & Results that matter"><i class="bi bi-graph-up-arrow"></i> Ops metrics</a>
+  </div>
+</div>
+```
 
 ## Why I built this
 
@@ -274,10 +299,6 @@ Accuracy is necessary, not sufficient. We optimize for operational outcomes—fe
              src="https://img.shields.io/github/last-commit/mohdasti/surgical-training-lab?style=flat-square">
       </div>
       <div class="repo-actions">
-        <a class="btn" href="https://0z6q8c-mohammad0dastgheib.shinyapps.io/surgical-training-lab/"
-           target="_blank" rel="noopener" aria-label="Open live demo of Surgical Training Lab">
-          <i class="bi bi-display" aria-hidden="true"></i>Live demo
-        </a>
         <a class="btn primary" href="https://github.com/mohdasti/surgical-training-lab"
            target="_blank" rel="noopener" aria-label="Open Surgical Training Lab repository on GitHub">
           <i class="bi bi-github" aria-hidden="true"></i>Open repo
@@ -287,111 +308,7 @@ Accuracy is necessary, not sufficient. We optimize for operational outcomes—fe
   </div>
 
 </div>
-```
 
-------------------------------------------------------------------------
-
-## Production Dashboard — Instant Tour
-
-> Heavy live Shiny app? We kept the live link, but this page is **instant**.
-> Watch 4 short clips, then dive deeper via zoomable galleries. When ready:
-> <a class="btn btn-primary" href="https://mohdasti.shinyapps.io/surgical-cognitive-dashboard/" target="_blank" rel="noopener">Open Live App (slow)</a>
-
-```{=html}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
-<style>
-.demo-cta {display:flex; gap:.6rem; flex-wrap:wrap; margin:.5rem 0 1rem}
-.demo-cta a.btn{display:inline-flex; align-items:center; gap:.4rem}
-.video-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:14px; margin:10px 0 6px}
-.video-card{background:#fff; border:1px solid #e5e7eb; border-radius:12px; padding:12px; box-shadow:0 1px 1px rgba(16,24,40,.02)}
-.video-title{font-weight:600; margin:.25rem 0 .25rem}
-.video-cap{color:#4b5563; font-size:.92rem}
-.video-wrap{position:relative; border-radius:10px; overflow:hidden; border:1px solid #e5e7eb}
-.video-wrap video{width:100%; height:auto; display:block}
-.badges{display:flex; gap:6px; flex-wrap:wrap; margin-top:.35rem}
-.badge{background:#eef2f7; border:1px solid #e5e7eb; font-size:.78rem; padding:.1rem .45rem; border-radius:999px}
-.gallery{display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:10px}
-.gallery a{display:block; border:1px solid #e5e7eb; border-radius:10px; overflow:hidden}
-.gallery img{display:block; width:100%; height:auto}
-.small-note{color:#6b7280; font-size:.9rem}
-</style>
-
-<div class="video-grid">
-  <div class="video-card">
-    <div class="video-title">Live Monitor → Alerts</div>
-    <div class="video-wrap">
-      <video controls preload="metadata" poster="/assets/demo/monitor_poster.jpg">
-        <source src="/assets/demo/monitor_tour.webm" type="video/webm">
-        <source src="/assets/demo/monitor_tour.mp4"  type="video/mp4">
-      </video>
-    </div>
-    <div class="video-cap">Signals (pupil, grip/tremor, HRV) → fused evidence → state probabilities → hysteresis prevents edge-chatter.</div>
-    <div class="badges"><span class="badge">TEPR</span><span class="badge">RMSSD</span><span class="badge">Hysteresis</span></div>
-  </div>
-
-  <div class="video-card">
-    <div class="video-title">Feature Table (gt)</div>
-    <div class="video-wrap">
-      <video controls preload="metadata" poster="/assets/demo/gt_poster.jpg">
-        <source src="/assets/demo/gt_table_tour.webm" type="video/webm">
-        <source src="/assets/demo/gt_table_tour.mp4"  type="video/mp4">
-      </video>
-    </div>
-    <div class="video-cap">Color-coded clinical ranges, trend sparklines, and clickable citations (DOI/PubMed).</div>
-    <div class="badges"><span class="badge">gt</span><span class="badge">CIs</span><span class="badge">Citations</span></div>
-  </div>
-
-  <div class="video-card">
-    <div class="video-title">Threshold Sandbox</div>
-    <div class="video-wrap">
-      <video controls preload="metadata" poster="/assets/demo/sandbox_poster.jpg">
-        <source src="/assets/demo/sandbox_tour.webm" type="video/webm">
-        <source src="/assets/demo/sandbox_tour.mp4"  type="video/mp4">
-      </video>
-    </div>
-    <div class="video-cap">Switch among <em>Adaptive Gain</em>, <em>Dual-Criterion (SDT)</em>, and <em>Time-on-Task</em>; see probabilities/alerts change.</div>
-    <div class="badges"><span class="badge">Inverted-U</span><span class="badge">SDT + hysteresis</span><span class="badge">Fatigue</span></div>
-  </div>
-
-  <div class="video-card" id="ml-diagnostics">
-    <div class="video-title">ML Diagnostics (what matters)</div>
-    <div class="video-wrap">
-      <video controls preload="metadata" poster="/assets/demo/diag_poster.jpg">
-        <source src="/assets/demo/diagnostics_tour.webm" type="video/webm">
-        <source src="/assets/demo/diagnostics_tour.mp4"  type="video/mp4">
-      </video>
-    </div>
-    <div class="video-cap">Reliability (calibration), probability distributions vs thresholds, and decision stability.</div>
-    <div class="badges"><span class="badge">Calibration</span><span class="badge">Distributions</span><span class="badge">Stability</span></div>
-  </div>
-</div>
-
-<h3>Zoomable Screenshot Gallery — Live Monitor</h3>
-<div class="gallery" data-lightbox="auto">
-  <a href="/assets/demo/monitor_01.png" data-title="Real-time cards: state, lapse/high-load probabilities, performance">
-    <img src="/assets/demo/thumb_monitor_01.jpg" alt="Monitor cards">
-  </a>
-  <a href="/assets/demo/monitor_02.png" data-title="Biosignal streams (pupil, grip, tremor, HRV) with tooltips">
-    <img src="/assets/demo/thumb_monitor_02.jpg" alt="Biosignal streams">
-  </a>
-  <a href="/assets/demo/monitor_03.png" data-title="Stacked state probabilities with hysteresis guards">
-    <img src="/assets/demo/thumb_monitor_03.jpg" alt="State probabilities">
-  </a>
-</div>
-<p class="small-note">Tip: thumbnails are compressed JPEGs; the full images are crisp PNGs.</p>
-
-<h3>Zoomable Screenshot Gallery — ML Diagnostics</h3>
-<div class="gallery" data-lightbox="auto">
-  <a href="/assets/demo/calibration.png" data-title="Reliability curve: predicted vs observed. We annotate ECE and Brier.">
-    <img src="/assets/demo/thumb_calibration.jpg" alt="Calibration">
-  </a>
-  <a href="/assets/demo/prob_dists.png" data-title="Predicted probability distributions by class + thresholds">
-    <img src="/assets/demo/thumb_prob_dists.jpg" alt="Probability distributions">
-  </a>
-  <a href="/assets/demo/stability.png" data-title="Decision stability with hysteresis: fewer oscillations near boundaries">
-    <img src="/assets/demo/thumb_stability.jpg" alt="Stability">
-  </a>
-</div>
 ```
 
 ------------------------------------------------------------------------
@@ -833,8 +750,8 @@ sep = ""
   box-shadow:0 2px 8px rgba(16,24,40,.04);margin:1rem 0;max-width:720px}
 .demo-card:hover{box-shadow:0 4px 16px rgba(16,24,40,.08);border-color:#9dd9ec}
 .demo-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
-.demo-head i{font-size:1.3rem;color:#1f9bb6}
-.demo-title{font-weight:600;font-size:1.05rem;color:#0b1526}
+.demo-head img{height:40px;width:auto;border-radius:4px}
+.demo-title{font-weight:600;font-size:1.1rem;color:#0b1526}
 .demo-desc{color:#4b5563;margin-bottom:14px;font-size:.95rem;line-height:1.4}
 .demo-features{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .demo-features .tag{display:inline-flex;align-items:center;gap:.3rem;
@@ -853,7 +770,7 @@ sep = ""
 
 <div class="demo-card">
   <div class="demo-head">
-    <i class="bi bi-mortarboard-fill"></i>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Shiny_hex_logo.svg" alt="Shiny logo" loading="lazy">
     <div class="demo-title">Interactive Training Lab</div>
   </div>
   <div class="demo-desc">
@@ -872,272 +789,238 @@ sep = ""
   </div>
   <div class="demo-note">Opens in new tab · May take a few seconds to load</div>
 </div>
+
 ```
 
 > Switch between policies on the same stream. Notice how the same physiologic trace produces different coaching behavior. **Policy is a choice**, and it should be teachable.
 
 ------------------------------------------------------------------------
 
-## Production Dashboard
+## Production Dashboard 
 
-<!-- Prefer MP4 for small, crisp playback. If you only have a GIF, replace the <video> with an image. -->
 
-<video src="case_study/images/dashboard-demo.mp4" autoplay loop muted playsinline style="width:100%;border-radius:12px">
+```{=html}
+<style>
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.gallery a{display:block;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden}
+.gallery img{display:block;width:100%;height:auto}
+.small-note{color:#6b7280;font-size:.9rem}
+</style>
 
-</video>
+<h3>Live Monitor Overview</h3>
+<div class="gallery">
+  <a href="/assets/demo/whole-live-monitor.png" class="lightbox" data-gallery="dashboard" data-glightbox="title:Full live monitor dashboard view">
+    <img src="/assets/demo/whole-live-monitor.png" alt="Live monitor overview">
+  </a>
+</div>
 
-The dashboard is not "another plot." It's **decision support** that lives inside real constraints:
+<h3>Component Details — Zoomable Gallery</h3>
+<div class="gallery">
+  <a href="/assets/demo/cognitve-load-index.png" class="lightbox" data-gallery="components" data-glightbox="title:Cognitive load index with hysteresis thresholds">
+    <img src="/assets/demo/cognitve-load-index.png" alt="Cognitive load">
+  </a>
+  <a href="/assets/demo/motor-steadiness-index.png" class="lightbox" data-gallery="components" data-glightbox="title:Motor steadiness index (tremor + grip)">
+    <img src="/assets/demo/motor-steadiness-index.png" alt="Motor steadiness">
+  </a>
+  <a href="/assets/demo/alert-log.png" class="lightbox" data-gallery="components" data-glightbox="title:Alert timeline: enter vs exit markers">
+    <img src="/assets/demo/alert-log.png" alt="Alerts timeline">
+  </a>
+</div>
+<p class="small-note">Click any image to zoom and navigate with arrow keys.</p>
 
--   **Zero headgear:** pupil + HRV + grip/tremor; nothing on the face or scalp.
--   **\< 60 s setup:** no gels, no caps, no calibration theatrics.
--   **Alarm hygiene:** ≤ 0.6 alerts/min, snoozable, and state-aware (non-critical cues defer during suturing).
+<h3>ML Diagnostics Overview</h3>
+<div class="gallery">
+  <a href="/assets/demo/whole-ml-model-diagnostics.png" class="lightbox" data-gallery="ml-overview" data-glightbox="title:Full ML diagnostics dashboard view">
+    <img src="/assets/demo/whole-ml-model-diagnostics.png" alt="ML diagnostics overview">
+  </a>
+</div>
 
-The UI borrows a clinical design language—calm background, a single accent, and status colors reserved for meaning only (green/amber/red). The rest is quiet on purpose.
+<h3>ML Diagnostics Details — Zoomable Gallery</h3>
+<div class="gallery">
+  <a href="/assets/demo/ml-probability-calibration.png" class="lightbox" data-gallery="ml-details" data-glightbox="title:Calibration curve: predicted vs observed (ECE, Brier)">
+    <img src="/assets/demo/ml-probability-calibration.png" alt="Calibration">
+  </a>
+  <a href="/assets/demo/ml-threshold-sandbox.png" class="lightbox" data-gallery="ml-details" data-glightbox="title:Threshold sandbox: compare policies on same data">
+    <img src="/assets/demo/ml-threshold-sandbox.png" alt="Threshold sandbox">
+  </a>
+  <a href="/assets/demo/ml-feature-importance.png" class="lightbox" data-gallery="ml-details" data-glightbox="title:Feature importance (XGBoost SHAP values)">
+    <img src="/assets/demo/ml-feature-importance.png" alt="Feature importance">
+  </a>
+  <a href="/assets/demo/ml-cross-validation-results.png" class="lightbox" data-gallery="ml-details" data-glightbox="title:Cross-validation results (LOSO)">
+    <img src="/assets/demo/ml-cross-validation-results.png" alt="Cross-validation">
+  </a>
+  <a href="/assets/demo/ml-model-overview.png" class="lightbox" data-gallery="ml-details" data-glightbox="title:Model overview and architecture">
+    <img src="/assets/demo/ml-model-overview.png" alt="Model overview">
+  </a>
+  <a href="/assets/demo/ml-partial-dependence.png" class="lightbox" data-gallery="ml-details" data-glightbox="title:Partial dependence plots for key features">
+    <img src="/assets/demo/ml-partial-dependence.png" alt="Partial dependence">
+  </a>
+</div>
+
+```
 
 ------------------------------------------------------------------------
 
-## Methods
+## Methods (what runs under the hood)
 
-**Signals.** Pupil diameter (tonic + TEPR), grip force (mean + CV%), hand-tremor RMS in 8–12 Hz, and HRV (SDNN/RMSSD). These four survive the OR: they're non-intrusive, robust, and interpretable.
+**Data & provenance.**  
+We use (a) synthetic sessions produced by the same code paths as the live app (seeded; 10–30 min, 50–100 Hz raw) and (b) replayable demo logs exported from the dashboard. All analyses in this page use time-stamped streams (UTC, ms).
 
-**Features.** Strictly causal windows. Hippus power (0.05–0.3 Hz), TEPR amplitude, grip CV% and spike rate, tremor RMS & growth vs personal baseline, and HRV short-term variability. Time-on-task is explicit.
+**Signals & sampling.**  
+Pupil diameter (mm; eye tracker), HRV from PPG/ECG (ms), grip force (N), tool-tip tremor (μm, 8–12 Hz band), blinks (blinks/min), ambient noise (dB). Signals are synchronized to a common clock and resampled to 10 Hz for feature windows.
 
-**Model.** A calibrated gradient-boosting model produces **probabilities** for Optimal / High Load / Lapse. Post-hoc **fusion rules** enforce clinical common sense (e.g., HRV drop + TEPR spike to confirm High Load; blink anomaly + low TEPR to confirm Lapse). Thresholds are **policy-tunable** and **per-surgeon calibrated**.
+**Preprocessing.**  
+- Pupil: blink interpolation → robust z-scoring within session; TEPR = event-locked delta (2–5 s).  
+- HRV: RMSSD computed over rolling 60 s (also 30/120 s for sensitivity); artifact correction via outlier trimming (5×MAD).  
+- Grip/tremor: 2–10 s rolling mean/SD; tremor via band-pass and RMS.  
+- Blink rate: rolling 60 s count; winsorized (1st/99th pct).
 
-**Validation.** Leave-one-surgeon-out on simulated streams to prove the architecture, **not** to publish final accuracy. The next step is training-center telemetry.
+**Features (examples; all z-scored within session).**  
+- **Pupil:** tonic_30s_mean; tepr_5s_delta; pupil_cv_30s.  
+- **HRV:** rmssd_60s; rmssd_slope_60s; rmssd_ma_180s; **rmssd×tepr** interaction.  
+- **Grip/Tremor:** grip_mean_15s; grip_cv_15s; tremor_rms_10s; tremor_trend_60s.  
+- **Ocular:** blink_rate_60s; fixation_var_30s.  
+- **Context:** noise_db_30s.  
+
+**Modeling.**  
+XGBoost (multi:softprob, 3 classes: Normal / High-Load / Lapse). Class imbalance handled via class weights (rare Lapse upweighted) and PR-AUC monitoring. Lapse probability is **calibrated** with Platt scaling (logistic on validation folds). We report ECE and Brier.
+
+**Threshold policies (runtime).**  
+- **Adaptive Gain (Inverted-U):** keeps evidence within an optimal band.  
+- **Dual-Criterion (SDT) with hysteresis:** two criteria + enter/exit guards.  
+- **Time-on-Task (Fatigue):** hold → relax with half-life; microbreak gives a decaying reset.
+
+**Validation.**  
+Leave-One-Surgeon-Out (LOSO) where available; otherwise session-level 5× CV with subject leakage prevented. Hyperparameters chosen by Bayesian search, then frozen.
+
+**Reproducibility.**  
+Seeds fixed; all plots are generated by scripts under `scripts/90_make_gallery.R` so the case study visuals match the live app implementation.
+
 
 ------------------------------------------------------------------------
 
 ## Results that matter (ops KPIs)
 
-```{r}
-#| label: metrics-gt
-if (requireNamespace("gt", quietly=TRUE) &&
-requireNamespace("readr", quietly=TRUE) &&
-requireNamespace("dplyr", quietly=TRUE)) {
+**KPI definitions (computed per session):**
 
-library(readr); library(dplyr); library(gt)
+1) **High-Load minutes/hour**  
+   Sum of time with predicted state = High-Load ÷ total time × 60. Lower is better.
 
-path <- "data/processed/demo_metrics.csv"
-  metrics <- if (file.exists(path)) read_csv(path, show_col_types = FALSE) else
-    tibble::tibble(Alert_Burden_per_min = 0.42,
-HighLoad_Minutes_per_hour = 12.8,
-                   TimeToRecovery_sec = 95)
+2) **Lapse minutes/hour**  
+   Sum of time with predicted state = Lapse ÷ total time × 60. Lower is better.
 
-gt(metrics) |>
-fmt_number(where(is.numeric), decimals = 2) |>
-cols_label(
-Alert_Burden_per_min = "Alert Burden (per min)",
-HighLoad_Minutes_per_hour = "High-Load (min/hr)",
-TimeToRecovery_sec = "Time-to-Recovery (sec)"
-) |>
-data_color(
-columns = c(Alert_Burden_per_min, HighLoad_Minutes_per_hour, TimeToRecovery_sec),
-colors = scales::col_bin(
-        palette = c("#27ae60","#f39c12","#e74c3c"),
-        bins = c(-Inf, 0.6, 1.0, Inf)
-)
-) |>
-tab_options(table.border.top.color = "#e5e7eb",
-table.border.bottom.color = "#e5e7eb")
+3) **Time-in-Optimal zone (%)**  
+   100 × (Normal time ÷ total time). Higher is better.
 
-} else { cat("Install packages gt, readr, dplyr to render this table.") }
-```
+4) **Alert precision / nuisance rate**  
+   Precision = TP/(TP+FP) using physiology-guarded labels (e.g., HL requires TEPR↑ or HRV↓ within ±2 s).  
+   Nuisance = FP per hour. Lower is better.
+
+5) **Edge-chatter rate**  
+   Number of state flips that revert within 3 s ÷ hour. Lower is better. (Hysteresis target: ↓ ≥40%.)
+
+6) **Time-to-recovery after microbreak (s)**  
+   Median time from microbreak end to HRV (RMSSD) returning to 80% of pre-break baseline (and/or tremor −10%). Lower is better.
+
+7) **Calibration (ECE, Brier)**  
+   Expected calibration error (10 bins) and Brier score for class probabilities. Lower is better.
+
+8) **Stability index**  
+   1 − (unique state transitions ÷ possible transitions). Higher is better (smoother state).
+
+> We display per-session values and deltas when switching policies (e.g., SDT→ToT), so instructors can see which policy reduces High-Load minutes without spiking nuisance alerts.
 
 ------------------------------------------------------------------------
 
 ## Live clinical-style table with literature ranges
 
-```{r}
-#| label: features-gt
-if (requireNamespace("gt", quietly=TRUE) &&
-requireNamespace("readr", quietly=TRUE) &&
-requireNamespace("dplyr", quietly=TRUE)) {
 
-library(readr); library(dplyr); library(gt)
-
-# ---- reference ranges (fallback included) ----
-ref_path <- "data/reference_ranges.csv"
-  refs <- if (file.exists(ref_path)) read_csv(ref_path, show_col_types = FALSE) else
-tibble::tibble(
-Feature = c("Pupil Diameter","Grip Force","Tremor RMS (8–12Hz)","HRV (RMSSD)",
-"Grip CV%","Time-on-Task","Normal Prob","High Load Prob","Lapse Prob"),
-Unit = c("mm","N","μm","ms","%","min","%","%","%"),
-baseline_mean = c(3.5,3.0,100,40,8,10,60,30,10),
-baseline_sd   = c(0.2,1.0,30,10,2,NA,NA,NA,NA),
-normal_low    = c(3.1,1.5,60,30,5,0,40,0,0),
-normal_high   = c(3.9,5.0,120,60,12,30,100,60,30),
-alert_low     = c(NA,NA,NA,25,NA,NA,0,0,0),
-alert_high    = c(4.8,7.0,180,NA,15,60,100,100,100),
-direction     = c("high_worse","high_worse","high_worse","low_worse","high_worse","high_worse",
-"low_worse","high_worse","high_worse")
-)
-
-# ---- current snapshot (fallback included) ----
-snap_path <- "data/processed/demo_features_snapshot.csv"
-  snap <- if (file.exists(snap_path)) read_csv(snap_path, show_col_types = FALSE) else
-tibble::tibble(
-Feature = c("Pupil Diameter","Grip Force","Tremor RMS (8–12Hz)","HRV (RMSSD)",
-"Grip CV%","Time-on-Task","Normal Prob","High Load Prob","Lapse Prob"),
-Value   = c(3.62,5.30,78,45,9.3,10.0,43.5,40.5,16.0),
-Unit    = c("mm","N","μm","ms","%","min","%","%","%")
-)
-
-  # ---- helpers ----
-status_row <- function(val, r) {
-dir <- r$direction; nl<-r$normal_low; nh<-r$normal_high; al<-r$alert_low; ah<-r$alert_high
-if (is.na(val)) return("Unknown")
-if (dir=="high_worse") {
-if (!is.na(ah) && val>ah) "Critical" else if (!is.na(nh) && val>nh) "Elevated" else "Normal"
-} else if (dir=="low_worse") {
-if (!is.na(al) && val<al) "Critical" else if (!is.na(nl) && val<nl) "Elevated" else "Normal"
-} else {
-if ((!is.na(al) && val<al) || (!is.na(ah) && val>ah)) "Critical"
-else if ((!is.na(nl) && val<nl) || (!is.na(nh) && val>nh)) "Elevated"
-else "Normal"
-}
-}
-d_cohen <- function(val, m, s) ifelse(is.na(s) || s<=0, NA_real_, (val - m)/s)
-
-df <- snap |>
-left_join(refs, by = c("Feature","Unit")) |>
-rowwise() |>
-mutate(
-Status = status_row(Value, cur_data()),
-Effect = d_cohen(Value, baseline_mean, baseline_sd),
-Ref_CI = if (!is.na(baseline_mean) && !is.na(baseline_sd))
-sprintf("%.2f–%.2f", baseline_mean-1.96*baseline_sd, baseline_mean+1.96*baseline_sd)
-else ""
-) |>
-ungroup() |>
-mutate(
-Status_Icon = dplyr::case_when(
-        Status=="Normal"   ~ "<span style='color:#27ae60'>●</span> Normal",
-Status=="Elevated" ~ "<span style='color:#f39c12'>▲</span> Elevated",
-Status=="Critical" ~ "<span style='color:#e74c3c'>⚠</span> Critical",
-TRUE ~ "·"
-),
-Value_fmt = dplyr::case_when(
-        Unit=="mm"  ~ sprintf("%.2f mm", Value),
-        Unit=="μm"  ~ sprintf("%.0f μm", Value),
-        Unit=="N"   ~ sprintf("%.2f N", Value),
-        Unit=="ms"  ~ sprintf("%.0f ms", Value),
-        Unit=="%"   ~ sprintf("%.1f%%", Value),
-        Unit=="min" ~ sprintf("%.1f min", Value),
-        TRUE        ~ as.character(signif(Value, 3))
-),
-Effect_fmt = ifelse(is.na(Effect),"",sprintf("%.2f", Effect))
-)
-
-  gt(df |> dplyr::select(Feature, Value_fmt, Ref_CI, Effect_fmt, Status_Icon)) |>
-cols_label(
-Feature    = "Feature",
-Value_fmt  = html("Value<br><span style='font-size:.8em'>(Live)</span>"),
-Ref_CI     = html("Literature<br><span style='font-size:.8em'>(≈95% CI)</span>"),
-Effect_fmt = html("Effect Size<br><span style='font-size:.8em'>(Cohen's d)</span>"),
-Status_Icon= "Status"
-) |>
-fmt_markdown(columns = c(Ref_CI, Status_Icon)) |>
-tab_style(
-      style = list(cell_fill(color = "#e8f5e9"), cell_text(color = "#0b1526")),
-locations = cells_body(columns = "Value_fmt", rows = df$Status=="Normal")
-) |>
-    tab_style(
-      style = cell_text(color = "#0b1526"),
-      locations = cells_body(columns = "Value_fmt", rows = df$Status=="Elevated")
-    ) |>
-    tab_style(
-      style = cell_text(color = "#0b1526"),
-      locations = cells_body(columns = "Value_fmt", rows = df$Status=="Critical")
-    ) |>
-tab_style(
-style = cell_text(weight = "bold"),
-locations = cells_body(columns = "Effect_fmt",
-rows = !is.na(df$Effect_fmt) & as.numeric(df$Effect_fmt) > 0.8)
-) |>
-tab_footnote(
-footnote = html("Colors: <span style='color:#27ae60'>Normal</span> | <span style='color:#f39c12'>Elevated</span> | <span style='color:#e74c3c'>Critical</span>"),
-locations = cells_column_labels(columns = "Value_fmt")
-)
-
-} else { cat("Install packages gt, readr, dplyr to render this table.") }
+::: {.column-page}
+```{=html}
+<iframe src="supporting_files/features_gt_table.html"
+        width="100%" height="600px" style="border:none;"
+        data-external="1">
+</iframe>
 ```
+:::
 
 ------------------------------------------------------------------------
 
 ## Product vs. Lab — how they fit
 
 ```{r}
-library(gt)
-library(dplyr)
-
-# Create the data
-comparison_data <- tibble(
-  Aspect = c("Purpose", "Audience", "Features", "Status"),
+suppressPackageStartupMessages({
+  library(dplyr); library(gt); library(scales)
+})
+comparison_data <- tibble::tibble(
+  Aspect = c("Purpose","Audience","Features","Latency","Interactivity","Calibration","Status"),
   `Production Dashboard` = c(
     "Real-time monitoring & decision support",
     "Clinicians, safety officers",
-    "GT live table, deployable app, tuned alerts",
+    "Live gt table, tuned alerts, evidence fusion (pupil + HRV + grip/tremor)",
+    "< 1 s UI; heavier data load",
+    "Threshold policies runnable; microbreak logging",
+    "XGBoost + Platt scaling; reliability curve (ECE/Brier)",
     "Stable, zero-headgear UI"
   ),
   `Training Lab` = c(
-    "Theory exploration & threshold policy",
+    "Theory exploration & threshold policy tuning",
     "Educators, researchers",
-    "Three paradigms, side-by-side comparisons",
+    "Three paradigms (Adaptive Gain, SDT+hysteresis, Time-on-Task)",
+    "Instant",
+    "Side-by-side policy comparisons; sliders",
+    "Not model-based; exports policy defaults",
     "Experimental, fast iteration"
   )
 )
-
-# Create the gt table
-comparison_data %>%
-  gt() %>%
-  tab_style(
-    style = cell_fill(color = "#f8f9fa"),
-    locations = cells_body(columns = Aspect)
-  ) %>%
-  tab_style(
-    style = cell_text(weight = "bold"),
-    locations = cells_body(columns = Aspect)
-  ) %>%
-  tab_style(
-    style = list(
-      cell_fill(color = "#e8f5e9"),
-      cell_text(align = "left")
-    ),
-    locations = cells_body(columns = `Production Dashboard`)
-  ) %>%
-  tab_style(
-    style = list(
-      cell_fill(color = "#fff8e1"),
-      cell_text(align = "left")
-    ),
-    locations = cells_body(columns = `Training Lab`)
-  ) %>%
+comparison_data |>
+  gt() |>
+  tab_header(
+    title = md("**Product vs. Lab — how they fit**"),
+    subtitle = md("Operational app (left) vs. pedagogy sandbox (right)")
+  ) |>
+  cols_label(
+    Aspect = md("**Aspect**"),
+    `Production Dashboard` = md("**Production Dashboard**"),
+    `Training Lab` = md("**Training Lab**")
+  ) |>
   tab_options(
     table.width = pct(100),
-    table.font.size = px(14)
-  )
-
+    table.font.size = px(14),
+    data_row.padding = px(6)
+  ) |>
+  opt_row_striping() |>
+  cols_width(
+    Aspect ~ px(160),
+    everything() ~ pct(40)
+  ) |>
+  tab_style(style = list(cell_fill(color = "#f8f9fa"), cell_text(weight = "bold")),
+            locations = cells_body(columns = Aspect)) |>
+  tab_style(style = list(cell_fill(color = "#e8f5e9")),
+            locations = cells_body(columns = `Production Dashboard`)) |>
+  tab_style(style = list(cell_fill(color = "#fff8e1")),
+            locations = cells_body(columns = `Training Lab`)) |>
+  tab_source_note(md("**Note.** The Lab defines pedagogy & defaults; the Dashboard executes with calibrated probabilities and alert hygiene."))
 ```
 
 ------------------------------------------------------------------------
 
 ## From SST to the OR — what transferred
 
--   **Alarm hygiene over cleverness.** A good model with bad alerting is a bad product.
--   **Interpretability isn't optional.** Surgeons won't read a confusion matrix mid-case; they will understand "High Load confirmed by HRV drop + TEPR spike."
--   **Friction is the enemy.** Every cable, cap, or password prompt kills adoption. This is why I stayed with **zero headgear** and **\< 60-second setup**.
+- **Alert hygiene over cleverness.** A good model with bad alerting is a bad product. We optimize nuisance rate and edge-chatter, not just AUC.  
+- **Interpretability on contact.** "High-Load confirmed (TEPR↑ + RMSSD↓)" is actionable; a confusion matrix mid-case is not.  
+- **Friction kills adoption.** Every cable/cap/password taxes attention. That's why this stays **zero-headgear** with **<60-second setup**.
 
 ------------------------------------------------------------------------
 
 ## Deployment & Privacy
 
-This ships as a Docker image or ShinyApps deployment and can be embedded in training portals with a single `<iframe>`. On the privacy front, **surgeon biometrics are ephemeral by default**; logs are de-identified for QA and research with explicit consent. Nothing about this removes the surgeon from the loop; it simply helps them and their instructors see what matters, when it matters.
+Runs as a Docker image or on ShinyApps; can embed in training portals with a single `<iframe>`. By default, **surgeon biometrics are ephemeral**: we retain only de-identified aggregates (for QA/research) with explicit consent. The system is **assistive**, not autonomous—the clinician remains in the loop, with visible rationale for alerts.
 
 ------------------------------------------------------------------------
 
 ## What's next
 
--   **Training pilots** in a robotic lab to quantify **High-Load min/hr** and **time-to-recovery** improvements for residents.
--   **State-adaptive assistance:** small camera framing & motion-scaling tweaks during high load; defer non-urgent prompts.
--   **Intervention efficacy logging:** for every alert or microbreak, track whether HRV/tremor normalize within \~120 s to auto-tune thresholds per surgeon.
+- **Training pilots** in a robotic lab to quantify **High-Load min/hr** and **time-to-recovery** improvements for residents.  
+- **State-adaptive assistance:** small camera framing / motion-scaling tweaks under high load; defer non-urgent prompts until recovery.  
+- **Intervention efficacy logging:** for each alert/microbreak, track whether **HRV (RMSSD)** or **tremor** normalizes within ~120 s to **auto-tune thresholds per surgeon**.
