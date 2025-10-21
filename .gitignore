@@ -81,3 +81,5 @@ quarto.log
 
 # Local development
 .local/
+
+/.quarto/

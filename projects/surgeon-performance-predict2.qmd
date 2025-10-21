@@ -2,6 +2,12 @@
 title: "Surgeon Cognitive Dashboard — Case Study"
 subtitle: "Zero-headgear neuro-ergonomics for robotic surgery"
 author: "Mohammad Dastgheib"
+image: ../images/surgical-dashboard.jpg
+description: "A proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon's cognitive state, inspired by my work at Surgical Science & Technology."
+categories: ["Case Study"]
+tags: ["Human Factors", "Cognitive Neuroscience", "Biomedical Engineering", "Psychophysiology", "Pupillometry", "Machine Learning"]
+research_domains: ["Human Factors", "Cognitive Neuroscience", "Biomedical Engineering"]
+methodologies: ["Psychophysiology", "Pupillometry", "Machine Learning"]
 format:
   html:
     theme: flatly
@@ -52,13 +58,13 @@ a { color:var(--accent); }
 <div class="tldr-card" role="note" aria-label="TL;DR">
   <div class="tldr-title">TL;DR</div>
   <div class="tldr-text">
-    Reduce <b>high-load min/hr</b>, prevent <b>lapses</b>, and keep trainees in the <b>optimal zone</b> with
-    <b>pupil + grip/tremor + HRV</b>—no headgear.
+    Cut <b>high-load min/hr</b>, prevent <b>lapses</b>, and keep trainees in the <b>optimal zone</b> with <b>pupil + grip/tremor + HRV</b>—no headgear.<br><br>
+    <b>For training:</b> a sandbox that teaches <em>why thresholds adapt</em> → a dashboard that <em>coaches in real time</em> → metrics that <em>prove learning happened</em>.
   </div>
   <div class="tldr-chips">
-    <a href="#training-lab"><i class="bi bi-sliders"></i> Why thresholds adapt</a>
+    <a href="#why-thresholds-must-adapt"><i class="bi bi-sliders"></i> Why thresholds adapt</a>
     <a href="#production-dashboard"><i class="bi bi-activity"></i> Production dashboard</a>
-    <a href="#results-that-matter-ops-kpis" title="Methods & Results that matter"><i class="bi bi-graph-up-arrow"></i> Ops metrics</a>
+    <a href="#methods-results-that-matter-ops-kpis" title="Methods & Results that matter"><i class="bi bi-graph-up-arrow"></i> Ops metrics</a>
   </div>
 </div>
 ```
@@ -213,7 +219,7 @@ window.addEventListener('DOMContentLoaded', () => {
 <hr style="border:none;border-top:1px solid #e5e7eb;margin:1rem 0" />
 
 <p><strong>Why this dashboard:</strong> combine deployable UX from SST with mechanistic LC–NE insight to deliver a
-  <b>training-first, zero-headgear</b> cognitive monitor for robotic trainees.</p>
+  <b>training-first, no extra wearables</b> cognitive monitor for robotic trainees.</p>
 ```
 
 ------------------------------------------------------------------------
@@ -265,7 +271,7 @@ Accuracy is necessary, not sufficient. We optimize for operational outcomes—fe
       </div>
       <i class="bi bi-github" aria-hidden="true" title="GitHub repository"></i>
     </div>
-    <div class="repo-desc">Zero-headgear, real-time neuro-ergonomics for robotic surgery.</div>
+    <div class="repo-desc">No body-worn hardware, real-time neuro-ergonomics for robotic surgery.</div>
     <div class="repo-bar">
       <div class="repo-badges">
         <img alt="GitHub stars" loading="lazy"
@@ -310,6 +316,44 @@ Accuracy is necessary, not sufficient. We optimize for operational outcomes—fe
 </div>
 
 ```
+
+------------------------------------------------------------------------
+
+## Objectives — what this actually delivers
+
+- **Clinical ergonomics, not gadgetry.** Non-intrusive biosignals (pupil, HRV, grip/tremor) + robot telemetry → **actionable state estimates** (Normal / High-Load / Lapse).
+- **Training outcomes, not scoreboards.** Reduce **high-load minutes per hour**, shorten **time-to-recovery** after microbreaks, and accelerate **time-to-proficiency**.
+- **Pedagogy built-in.** Three threshold policies map to real teaching strategies: **Adaptive Gain** (arousal sweet-spot), **Dual-Criterion (SDT)** (false-alarm control + hysteresis), **Time-on-Task** (fatigue & microbreaks).
+- **Deployable now.** Sterile-field-friendly, <60-second setup; sensible defaults, guardrails against alarm spam, and readable explanations.
+
+------------------------------------------------------------------------
+
+## Who benefits — and why
+
+- **Residents.** See when trainees drift into low arousal or overload; get **just-enough nudge** (microbreaks, pacing, framing) without flooding them.
+- **Instructors.** A common language for **when** to step in: high-load confirmed by **TEPR↑ + HRV↓**, lapse suggested by **low TEPR + blink anomalies**.
+- **Program directors / ops.** Track **high-load min/hr**, **recovery latency**, and **alarm burden** across sessions to prove training impact and tune curricula.
+
+------------------------------------------------------------------------
+
+## Personalized coaching — how it adapts to the trainee
+
+**Idea.** Each trainee has a different "inverted-U" width and bias. We infer a **coaching profile** from early sessions:
+
+- **Wide band:** tolerates more challenge before overload → allow denser feedback; push complexity sooner.
+- **Narrow band:** tips into overload quickly → favor microbreaks, chunk tasks, reduce concurrent demands.
+
+**Heuristics (evidence-informed, lightweight):**
+
+- **Likely overload (right limb):** `z(TEPR) ≥ +0.8` AND `RMSSD ↓ ≥ 25–35%` over 60–120 s → **suggest microbreak** or **slow tool motions** for 60–120 s.
+- **Likely lapse (left side):** `z(TEPR) ≤ −0.5` OR **blink bursts** + stable HRV → **prompt re-centering** (brief cueing, checklist, or instructor query).
+- **Stable but trending:** slope(High-Load prob, 90 s) > 0 with rising grip CV → **anticipatory nudge** ("prepare break after this step").
+
+> **Not a diagnosis.** This is training feedback, not medical inference. Requires individual calibration and instructor judgment.
+
+If we want to surface the coaching logic UI-side, drop this explanatory microcopy under the Live Monitor:
+
+**Coaching logic (transparent):** Alerts fire on **evidence + physiology** with **hysteresis** to prevent chatter. HL requires **TEPR↑ or HRV↓**; Lapse prefers **low TEPR + blink anomalies**. Policies then **shape sensitivity** (SDT), **target the sweet-spot** (Adaptive Gain), or **relax with time** (Fatigue).
 
 ------------------------------------------------------------------------
 
@@ -380,7 +424,7 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
 
 -   **Notes for accuracy.**
 
-    -   The inverted-U is **task- and person-dependent**: expertise, stakes, and fatigue shift the **peak** (band_center) and **width** (band_width). That's why you **calibrate per trainee**.
+    -   The inverted-U is **task- and person-dependent**: expertise, stakes, and fatigue shift the **peak** (band_center) and **width** (band_width). That's why we **calibrate per trainee**.
     -   "Adaptive gain" is the **mechanism** (LC-NE modulating neural gain) that can yield this non-monotonic **performance curve**.
 
 -   **References.** Yerkes–Dodson (1908); Aston-Jones & Cohen (2005, adaptive gain).
@@ -597,7 +641,7 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
   microbreak_decay_min   <- 2     # reset decays back with this time constant (min)
 
   # ----------------------- Optional physiology-proportional reset ----------------
-  # If you have short windows around the microbreak (e.g., 60 s pre, 120 s post),
+  # If we have short windows around the microbreak (e.g., 60 s pre, 120 s post),
   # define these vectors before this chunk runs: RMSSD_pre, RMSSD_post, TEPR_pre, TEPR_post, Tremor_pre, Tremor_post
   # Otherwise the code falls back to 'microbreak_reset_fixed'.
   clamp01 <- function(x) pmax(0, pmin(1, x))
@@ -638,7 +682,7 @@ if (requireNamespace("ggplot2", quietly = TRUE)) {
       gap   <- c_start - base                 # how far below "fresh"
       reset <- if (phys$ok) phys$alpha * phys$phi * gap else microbreak_reset_fixed
       boost <- ifelse(t >= microbreak_min, reset * exp(-(t - microbreak_min) / microbreak_decay_min), 0)
-    } else {
+} else {
       boost <- 0
     }
 
@@ -730,7 +774,7 @@ sep = ""
 
     -   Dorion & Darveau (2013). *Do micropauses prevent surgeon’s fatigue and loss of accuracy?* **Ann Surg, 257(2), 256–259.** DOI: 10.1097/SLA.0b013e31825efe87
 
-    -   Park et al. (2017). *Intraoperative “micro breaks” with exercises reduce surgeons’ musculoskeletal injuries.* **J Surg Res, 211, 24–31.** DOI: 10.1016/j.jss.2016.11.017
+    -   Park et al. (2017). *Intraoperative "microbreaks" with exercises reduce surgeons' musculoskeletal injuries.* **J Surg Res, 211, 24–31.** DOI: 10.1016/j.jss.2016.11.017
 
     -   Hallbeck et al. (2017). *The impact of intraoperative microbreaks…* **Applied Ergonomics, 60, 334–341.** DOI: 10.1016/j.apergo.2016.12.006
 
@@ -899,36 +943,17 @@ Seeds fixed; all plots are generated by scripts under `scripts/90_make_gallery.R
 
 ------------------------------------------------------------------------
 
-## Results that matter (ops KPIs)
+## Methods & results that matter (ops KPIs)
 
-**KPI definitions (computed per session):**
+We track outcomes that training leaders can act on:
 
-1) **High-Load minutes/hour**  
-   Sum of time with predicted state = High-Load ÷ total time × 60. Lower is better.
+- **High-load minutes per hour (↓ is better).** Target ≥20–30% reduction after policy tuning.
+- **Recovery latency after alerts/microbreaks (↓).** Time for HRV/tremor to normalize; aim for <120 s median.
+- **Alarm burden & acceptance (↘ nuisance, ↗ adherence).** Alerts/hour, % acknowledged, % acted upon.
+- **Stability (↗).** Fewer state flips near thresholds with hysteresis vs naive criteria.
+- **Time-to-proficiency (↘).** Sessions to hit competency rubric milestones.
 
-2) **Lapse minutes/hour**  
-   Sum of time with predicted state = Lapse ÷ total time × 60. Lower is better.
-
-3) **Time-in-Optimal zone (%)**  
-   100 × (Normal time ÷ total time). Higher is better.
-
-4) **Alert precision / nuisance rate**  
-   Precision = TP/(TP+FP) using physiology-guarded labels (e.g., HL requires TEPR↑ or HRV↓ within ±2 s).  
-   Nuisance = FP per hour. Lower is better.
-
-5) **Edge-chatter rate**  
-   Number of state flips that revert within 3 s ÷ hour. Lower is better. (Hysteresis target: ↓ ≥40%.)
-
-6) **Time-to-recovery after microbreak (s)**  
-   Median time from microbreak end to HRV (RMSSD) returning to 80% of pre-break baseline (and/or tremor −10%). Lower is better.
-
-7) **Calibration (ECE, Brier)**  
-   Expected calibration error (10 bins) and Brier score for class probabilities. Lower is better.
-
-8) **Stability index**  
-   1 − (unique state transitions ÷ possible transitions). Higher is better (smoother state).
-
-> We display per-session values and deltas when switching policies (e.g., SDT→ToT), so instructors can see which policy reduces High-Load minutes without spiking nuisance alerts.
+*Analytics:* per-session trend lines + bootstrapped CIs; PR-AUC for Lapse, calibration error (ECE), and threshold-level lift curves for explainability.
 
 ------------------------------------------------------------------------
 
@@ -948,6 +973,8 @@ Seeds fixed; all plots are generated by scripts under `scripts/90_make_gallery.R
 
 ## Product vs. Lab — how they fit
 
+The **Lab** teaches the concepts and lets instructors tune policy; the **Dashboard** runs that policy live with guardrails and explains *why* an alert fired.
+
 ```{r}
 suppressPackageStartupMessages({
   library(dplyr); library(gt); library(scales)
@@ -961,7 +988,7 @@ comparison_data <- tibble::tibble(
     "< 1 s UI; heavier data load",
     "Threshold policies runnable; microbreak logging",
     "XGBoost + Platt scaling; reliability curve (ECE/Brier)",
-    "Stable, zero-headgear UI"
+    "Stable, no extra wearables UI"
   ),
   `Training Lab` = c(
     "Theory exploration & threshold policy tuning",
@@ -979,7 +1006,7 @@ comparison_data |>
     title = md("**Product vs. Lab — how they fit**"),
     subtitle = md("Operational app (left) vs. pedagogy sandbox (right)")
   ) |>
-  cols_label(
+cols_label(
     Aspect = md("**Aspect**"),
     `Production Dashboard` = md("**Production Dashboard**"),
     `Training Lab` = md("**Training Lab**")
@@ -1019,8 +1046,64 @@ Runs as a Docker image or on ShinyApps; can embed in training portals with a sin
 
 ------------------------------------------------------------------------
 
-## What's next
+## What's next — tailored pedagogy
 
-- **Training pilots** in a robotic lab to quantify **High-Load min/hr** and **time-to-recovery** improvements for residents.  
-- **State-adaptive assistance:** small camera framing / motion-scaling tweaks under high load; defer non-urgent prompts until recovery.  
-- **Intervention efficacy logging:** for each alert/microbreak, track whether **HRV (RMSSD)** or **tremor** normalizes within ~120 s to **auto-tune thresholds per surgeon**.
+- **Estimate the trainee's arousal band.** Use early sessions to fit a simple **sweet-spot width** (from TEPR/HRV vs performance), then personalize alert sensitivity.
+- **Phase-aware coaching.** Different thresholds for docking, dissection, suturing; tighten only where error costs are high.
+- **Post-hoc debriefs.** Auto-compile moments of **sustained overload** (≥30 s) with linked video, instructor notes, and the **coaching action** taken.
+- **Prospective classroom studies.** Randomize microbreak timing/pacing advice and measure effects on recovery latency and learning curves.
+
+```{=html}
+<style>
+.what-is-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border: 1px solid #cbd5e1;
+  border-left: 4px solid #1f9bb6;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.what-is-header {
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+.what-is-item {
+  margin: 8px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.what-is-label {
+  font-weight: 600;
+  color: #1e293b;
+  min-width: 80px;
+  font-size: 0.95rem;
+}
+.what-is-positive {
+  color: #059669;
+}
+.what-is-negative {
+  color: #dc2626;
+}
+.what-is-text {
+  color: #475569;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+</style>
+
+<div class="what-is-card">
+  <div class="what-is-header">What this is / What this isn't</div>
+  <div class="what-is-item">
+    <span class="what-is-label what-is-positive">✓ What this is.</span>
+    <span class="what-is-text">A deployable, no body-worn hardware <strong>training aid</strong> that fuses biosignals with robot telemetry to surface <strong>when</strong> coaching helps most.</span>
+  </div>
+  <div class="what-is-item">
+    <span class="what-is-label what-is-negative">✗ What this isn't.</span>
+    <span class="what-is-text">A medical device or punitive scoring system; it doesn't replace instructor judgment or certify clinical readiness.</span>
+  </div>
+</div>
+```

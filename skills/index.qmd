@@ -21,9 +21,9 @@ I specialize in a multi-modal approach to understanding human behavior, combinin
 
 * **Languages:** R (Expert), MATLAB (Expert), SQL (Proficient), Python (Familiar), Bash (Familiar).
 * **Statistical Modeling:** Linear Mixed-Effects Models (LMMs), Bayesian Analysis, Psychometric Function Fitting, Drift-Diffusion Modeling (DDM).
-* **Machine Learning:** XGBoost, Feature Engineering, Cross-Validation, Hyperparameter Tuning, Predictive Modeling.
-* **Data Analysis & Visualization (R):** Tidyverse (dplyr, ggplot2), R Markdown, Shiny (Interactive Dashboards).
-* **Development & Version Control:** Git, GitHub, Google Cloud Platform (GCP).
+* **Machine Learning:** XGBoost, Feature Engineering, Cross-Validation, Hyperparameter Tuning, Predictive Modeling, **Real-time ML Pipelines**, **Model Calibration** (Platt scaling), **Anomaly Detection** (Isolation Forest).
+* **Data Analysis & Visualization (R):** Tidyverse (dplyr, ggplot2), R Markdown, **Shiny (Interactive Dashboards)**, **gt Tables**, **Real-time Data Streaming**.
+* **Development & Version Control:** Git, GitHub, Google Cloud Platform (GCP), **Docker**, **CI/CD Workflows**, **Production Deployment** (ShinyApps.io).
 
 ---
 
@@ -32,6 +32,15 @@ I specialize in a multi-modal approach to understanding human behavior, combinin
 * **Pupillometry:** Real-time analysis of pupil dilation as a biomarker for cognitive load and arousal.
 * **Electroencephalography (EEG):** Collection, preprocessing, and analysis of EEG data, including sleep scoring.
 * **Neuroimaging Analysis:** Analyzing Diffusion MRI (dMRI) data using toolkits such as **FSL**, **QSIPrep**, and **SPM12**.
+
+---
+
+### ⚡ Real-time Systems & Production Applications
+
+* **Real-time Analytics:** Multi-modal cognitive state monitoring systems with <1s latency, live data streaming, and interactive dashboards.
+* **Production ML:** End-to-end ML pipelines with causal feature engineering, model calibration, and deployment-ready applications.
+* **Interactive Applications:** Shiny dashboards with real-time updates, threshold policy sandboxes, and explainable AI interfaces.
+* **System Architecture:** Docker containerization, CI/CD workflows, and scalable deployment strategies for research and clinical environments.
 
 ---
 

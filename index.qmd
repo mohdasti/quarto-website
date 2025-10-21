@@ -40,7 +40,7 @@ page-layout: full
 
 I am a cognitive neuroscientist and human factors researcher who uses psychophysics, pupillometry, and computational modeling to understand how the human brain makes decisions under pressure.
 
-[**View my featured case study &rarr;**](/projects/surgeon-performance-predict.qmd){.btn .btn-primary .btn-lg style="background-color: #e63946; border-color: #e63946;"}
+[**View my featured case study &rarr;**](/projects/surgeon-performance-predict2.qmd){.btn .btn-primary .btn-lg style="background-color: #e63946; border-color: #e63946;"}
 
 :::
 
