@@ -14,6 +14,7 @@ Visit the website at: **[mdastgheib.com](https://mdastgheib.com)**
 
 - **Interactive Portfolio**: Tag-based filtering for projects and case studies
 - **Research Showcase**: Publications, case studies, and methodology demonstrations
+- **Real-time Systems**: Production-ready ML applications with live dashboards
 - **Responsive Design**: Optimized for desktop, tablet, and mobile devices
 - **Academic Integration**: Google Scholar, ORCID, and Neurotree profiles
 - **Modern UI**: Clean, professional design with custom CSS styling
@@ -120,9 +121,10 @@ Contributions, issues, and feature requests are welcome! Feel free to check the 
 ## 📊 Site Statistics
 
 - **Pages**: 8+ pages including portfolio, publications, and case studies
-- **Projects**: Multiple research projects and case studies
+- **Projects**: Multiple research projects and case studies including real-time ML systems
 - **Publications**: Peer-reviewed research and conference presentations
-- **Technologies**: Quarto, HTML, CSS, JavaScript, Netlify
+- **Technologies**: Quarto, HTML, CSS, JavaScript, R/Shiny, Netlify
+- **Case Studies**: Interactive demonstrations of cognitive neuroscience applications
 
 ---
 
