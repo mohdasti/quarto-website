@@ -11,27 +11,31 @@ I specialize in a multi-modal approach to understanding human behavior, combinin
 ### 🔬 Research & Experimental Design
 
 * **User Research:** End-to-end research planning, psychophysics, usability testing, survey design, A/B testing, user interviews.
-* **Interaction Design Principles:** Applying cognitive science principles to inform the design of intuitive and effective user interfaces.
+* **Interaction Design Principles:** Applying cognitive science principles to inform the design of intuitive and effective user interfaces, including adaptive systems that respond to user state.
 * **Human Factors:** Assessing user performance and cognitive load in dual-task and high-stress environments.
-* **Experiment Programming:** Designing and implementing precise behavioral and perceptual tasks using **PsychToolbox (MATLAB)**.
+* **Experiment Programming:** Designing and implementing precise behavioral and perceptual tasks using **PsychToolbox (MATLAB)** and **web-based platforms (React/TypeScript)**.
+* **Pre-registration & Open Science:** Developing comprehensive pre-registered study designs with detailed hypotheses, exclusion criteria, and analysis plans. Implementing rigorous experimental protocols with Williams counterbalancing and equivalence testing.
+* **Fitts's Law & Human-Computer Interaction:** Implementing ISO 9241-9 compliant Fitts's Law paradigms for evaluating input modalities, with expertise in projected error calculation and throughput metrics.
 
 ---
 
 ### 💻 Programming & Data Science
 
-* **Languages:** R (Expert), MATLAB (Expert), SQL (Proficient), Python (Familiar), Bash (Familiar).
-* **Statistical Modeling:** Linear Mixed-Effects Models (LMMs), Bayesian Analysis, Psychometric Function Fitting, Drift-Diffusion Modeling (DDM).
+* **Languages:** R (Expert), MATLAB (Expert), **TypeScript/JavaScript (Proficient)**, SQL (Proficient), Python (Familiar), Bash (Familiar).
+* **Web Development:** **React 18**, **TypeScript**, **Vite**, modern frontend development, event-driven architectures, real-time data synchronization, **precise timing control** (performance.now() for psychophysics).
+* **Statistical Modeling:** Linear Mixed-Effects Models (LMMs), Bayesian Analysis, Psychometric Function Fitting, **Drift-Diffusion Modeling (DDM)** with integration of physiological measures (pupillometry).
 * **Machine Learning:** XGBoost, Feature Engineering, Cross-Validation, Hyperparameter Tuning, Predictive Modeling, **Real-time ML Pipelines**, **Model Calibration** (Platt scaling), **Anomaly Detection** (Isolation Forest).
 * **Data Analysis & Visualization (R):** Tidyverse (dplyr, ggplot2), R Markdown, **Shiny (Interactive Dashboards)**, **gt Tables**, **Real-time Data Streaming**.
-* **Development & Version Control:** Git, GitHub, Google Cloud Platform (GCP), **Docker**, **CI/CD Workflows**, **Production Deployment** (ShinyApps.io).
+* **Development & Version Control:** Git, GitHub, Google Cloud Platform (GCP), **Docker**, **CI/CD Workflows**, **Production Deployment** (ShinyApps.io, **Vercel**, Netlify).
 
 ---
 
 ### 🧠 Physiological & Neuroimaging Methods
 
-* **Pupillometry:** Real-time analysis of pupil dilation as a biomarker for cognitive load and arousal.
+* **Pupillometry:** Real-time analysis of pupil dilation as a biomarker for cognitive load and arousal. **Computational modeling** linking pupillometric dynamics with decision-making processes (DDM integration).
 * **Electroencephalography (EEG):** Collection, preprocessing, and analysis of EEG data, including sleep scoring.
 * **Neuroimaging Analysis:** Analyzing Diffusion MRI (dMRI) data using toolkits such as **FSL**, **QSIPrep**, and **SPM12**.
+* **Gaze Tracking & Eye Movement Analysis:** Implementing gaze-based input systems, physiologically-accurate gaze simulation, and analyzing eye movement patterns for cognitive load assessment.
 
 ---
 
@@ -40,7 +44,8 @@ I specialize in a multi-modal approach to understanding human behavior, combinin
 * **Real-time Analytics:** Multi-modal cognitive state monitoring systems with <1s latency, live data streaming, and interactive dashboards.
 * **Production ML:** End-to-end ML pipelines with causal feature engineering, model calibration, and deployment-ready applications.
 * **Interactive Applications:** Shiny dashboards with real-time updates, threshold policy sandboxes, and explainable AI interfaces.
-* **System Architecture:** Docker containerization, CI/CD workflows, and scalable deployment strategies for research and clinical environments.
+* **Extended Reality (XR) Platforms:** Building research-grade XR experimental platforms with adaptive modality systems, dual input methods (gaze and hand-tracking), real-time performance monitoring, and comprehensive data logging for cognitive load studies.
+* **System Architecture:** Docker containerization, CI/CD workflows, and scalable deployment strategies for research and clinical environments. Event-driven architectures with pub/sub systems for inter-component communication.
 
 ---
 
@@ -48,7 +53,8 @@ I specialize in a multi-modal approach to understanding human behavior, combinin
 
 * **Biomedical Engineering:** Real-time analytics platforms, surgical performance monitoring, medical device data analysis.
 * **Applied Psychology:** Cognitive state prediction, performance optimization in high-stakes environments.
-* **Mixed-Methods Research:** Combining behavioral, physiological, and self-report measures for comprehensive insights.
+* **Human-Computer Interaction:** Adaptive interface design, modality switching systems, cognitive load-aware UI interventions, and evaluation of input methods using psychophysical paradigms (Fitts's Law).
+* **Mixed-Methods Research:** Combining behavioral, physiological, and self-report measures (e.g., NASA-TLX) for comprehensive insights into cognitive performance and user experience.
 
 ---
 
