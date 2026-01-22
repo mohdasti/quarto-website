@@ -1,11 +1,11 @@
 ---
 title: "Portfolio"
 description: |
-  A curated collection of case studies demonstrating my end-to-end research process, from strategic planning and methodological design to data analysis and industry application.
+  A curated collection of case studies demonstrating my end-to-end research process—from strategic planning and methodological design to analysis, visualization, and industry-ready implications.
 listing:
   - id: case-studies
     contents: 
-      - "../projects/*.qmd"  # Corrected relative path
+      - "../projects/*.qmd"  # Keep this if your case studies live in /projects
     type: grid
     sort: "date desc"
     fields: [image, title, description]
@@ -22,6 +22,7 @@ Welcome to my portfolio. Each case study below provides a detailed walkthrough o
   <div style="margin-bottom: 8px;">
     <strong style="color: #457b9d;">Research Domains:</strong><br>
     <span class="tag-badge tag-research-domain" data-tag="Human Factors" data-type="research_domains">Human Factors</span>
+    <span class="tag-badge tag-research-domain" data-tag="HCI / XR" data-type="research_domains">HCI / XR</span>
     <span class="tag-badge tag-research-domain" data-tag="Cognitive Neuroscience" data-type="research_domains">Cognitive Neuroscience</span>
     <span class="tag-badge tag-research-domain" data-tag="Applied Psychology" data-type="research_domains">Applied Psychology</span>
     <span class="tag-badge tag-research-domain" data-tag="Biomedical Engineering" data-type="research_domains">Biomedical Engineering</span>
@@ -29,16 +30,20 @@ Welcome to my portfolio. Each case study below provides a detailed walkthrough o
   
   <div>
     <strong style="color: #e63946;">Methodologies:</strong><br>
+    <span class="tag-badge tag-methodology" data-tag="Experimental Design" data-type="methodologies">Experimental Design</span>
+    <span class="tag-badge tag-methodology" data-tag="HCI Benchmarking" data-type="methodologies">HCI Benchmarking</span>
+    <span class="tag-badge tag-methodology" data-tag="Mixed-Effects Modeling" data-type="methodologies">Mixed-Effects Modeling</span>
+    <span class="tag-badge tag-methodology" data-tag="Mixed Methods" data-type="methodologies">Mixed Methods</span>
     <span class="tag-badge tag-methodology" data-tag="Psychophysiology" data-type="methodologies">Psychophysiology</span>
     <span class="tag-badge tag-methodology" data-tag="Pupillometry" data-type="methodologies">Pupillometry</span>
-    <span class="tag-badge tag-methodology" data-tag="Experimental Design" data-type="methodologies">Experimental Design</span>
-    <span class="tag-badge tag-methodology" data-tag="Mixed Methods" data-type="methodologies">Mixed Methods</span>
     <span class="tag-badge tag-methodology" data-tag="EEG" data-type="methodologies">EEG</span>
     <span class="tag-badge tag-methodology" data-tag="Machine Learning" data-type="methodologies">Machine Learning</span>
   </div>
   
   <div style="margin-top: 10px;">
-    <button id="clear-filters" class="btn btn-sm" style="background-color: #a8dadc; color: #1d3557; border: none;">Clear All Filters</button>
+    <button id="clear-filters" class="btn btn-sm" style="background-color: #a8dadc; color: #1d3557; border: none;">
+      Clear All Filters
+    </button>
   </div>
 </div>
 ```
@@ -46,9 +51,11 @@ Welcome to my portfolio. Each case study below provides a detailed walkthrough o
 :::{#case-studies}
 :::
 
+```{=html}
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-  // Define the tags for each case study (matching the YAML metadata)
+
+  // Tags for each case study (you can extend this over time)
   const caseStudyTags = {
     'dual-task-case-study': {
       research_domains: ['Human Factors', 'Cognitive Neuroscience'],
@@ -61,6 +68,10 @@ document.addEventListener('DOMContentLoaded', function() {
     'surgeon-performance-predict': {
       research_domains: ['Human Factors', 'Biomedical Engineering', 'Cognitive Neuroscience'],
       methodologies: ['Psychophysiology', 'Machine Learning', 'Pupillometry', 'Experimental Design']
+    },
+    'xr-adaptive-modality': {
+      research_domains: ['HCI / XR', 'Human Factors'],
+      methodologies: ['Experimental Design', 'HCI Benchmarking', 'Mixed-Effects Modeling']
     }
   };
 
@@ -69,148 +80,125 @@ document.addEventListener('DOMContentLoaded', function() {
     methodologies: new Set()
   };
 
-  // Add tags to case study cards after the listing loads
+  // Wait for Quarto listing to render, then attach tags + filter logic
   setTimeout(function() {
     addTagsToCards();
     setupFiltering();
-  }, 1000); // Increased timeout to ensure listing loads
+  }, 800);
+
+  function getStudyKeyFromHref(hrefRaw) {
+    const href = (hrefRaw || '').toLowerCase();
+
+    if (href.includes('dual-task')) return 'dual-task-case-study';
+    if (href.includes('memory-and-meditation')) return 'memory-and-meditation';
+    if (href.includes('surgeon-performance')) return 'surgeon-performance-predict';
+
+    // XR case study: support multiple possible filenames
+    if (href.includes('xr-adaptive-modality') || href.includes('xr-adaptive') || href.includes('case_study_web')) {
+      return 'xr-adaptive-modality';
+    }
+
+    return null;
+  }
 
   function addTagsToCards() {
-    // Use the correct Quarto listing structure
+    // Quarto listing cards container
     const items = document.querySelectorAll('#listing-case-studies .g-col-1');
-    console.log('Found items:', items.length);
-    
-    items.forEach((item, index) => {
+
+    items.forEach((item) => {
       const link = item.querySelector('a[href]');
-      if (!link) {
-        console.log(`Item ${index}: No link found`);
-        return;
-      }
-      
+      if (!link) return;
+
       const href = link.getAttribute('href');
-      console.log(`Item ${index}: href = ${href}`);
-      let studyKey = null;
-      
-      // Determine which case study this is based on the href
-      if (href.includes('dual-task')) {
-        studyKey = 'dual-task-case-study';
-      } else if (href.includes('memory-and-meditation')) {
-        studyKey = 'memory-and-meditation';
-      } else if (href.includes('surgeon-performance')) {
-        studyKey = 'surgeon-performance-predict';
-      }
-      
-      console.log(`Item ${index}: studyKey = ${studyKey}`);
-      if (!studyKey || !caseStudyTags[studyKey]) {
-        console.log(`Item ${index}: No tags found for ${studyKey}`);
-        return;
-      }
-      
+      const studyKey = getStudyKeyFromHref(href);
+
+      if (!studyKey || !caseStudyTags[studyKey]) return;
+
       const tags = caseStudyTags[studyKey];
-      
-      // Add data attributes for filtering to the item container
+
+      // Add data attributes for filtering
       item.setAttribute('data-research-domains', JSON.stringify(tags.research_domains));
       item.setAttribute('data-methodologies', JSON.stringify(tags.methodologies));
-      
-      // Add tag display to the card
+
+      // Add tag chips to the card body (avoid duplicates)
       const cardBody = item.querySelector('.card-body');
-      if (cardBody) {
-        const tagsDiv = document.createElement('div');
-        tagsDiv.className = 'card-tags mt-auto';
-        
-        // Add research domain tags
-        tags.research_domains.forEach(tag => {
-          const span = document.createElement('span');
-          span.className = 'tag-badge tag-research-domain';
-          span.textContent = tag;
-          tagsDiv.appendChild(span);
-        });
-        
-        // Add methodology tags
-        tags.methodologies.forEach(tag => {
-          const span = document.createElement('span');
-          span.className = 'tag-badge tag-methodology';
-          span.textContent = tag;
-          tagsDiv.appendChild(span);
-        });
-        
-        cardBody.appendChild(tagsDiv);
-      }
+      if (!cardBody) return;
+
+      if (cardBody.querySelector('.card-tags')) return;
+
+      const tagsDiv = document.createElement('div');
+      tagsDiv.className = 'card-tags mt-auto';
+
+      tags.research_domains.forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'tag-badge tag-research-domain';
+        span.textContent = tag;
+        tagsDiv.appendChild(span);
+      });
+
+      tags.methodologies.forEach(tag => {
+        const span = document.createElement('span');
+        span.className = 'tag-badge tag-methodology';
+        span.textContent = tag;
+        tagsDiv.appendChild(span);
+      });
+
+      cardBody.appendChild(tagsDiv);
     });
   }
 
   function setupFiltering() {
-    // Add click handlers to filter tags
     document.querySelectorAll('.tag-badge[data-tag]').forEach(tag => {
       tag.addEventListener('click', function() {
         const tagName = this.getAttribute('data-tag');
         const tagType = this.getAttribute('data-type');
-        
+
         if (this.classList.contains('active')) {
-          // Remove filter
           this.classList.remove('active');
           activeFilters[tagType].delete(tagName);
         } else {
-          // Add filter
           this.classList.add('active');
           activeFilters[tagType].add(tagName);
         }
-        
+
         filterCaseStudies();
       });
     });
 
-    // Clear filters button
-    document.getElementById('clear-filters').addEventListener('click', function() {
-      activeFilters.research_domains.clear();
-      activeFilters.methodologies.clear();
-      document.querySelectorAll('.tag-badge.active').forEach(tag => {
-        tag.classList.remove('active');
+    const clearBtn = document.getElementById('clear-filters');
+    if (clearBtn) {
+      clearBtn.addEventListener('click', function() {
+        activeFilters.research_domains.clear();
+        activeFilters.methodologies.clear();
+        document.querySelectorAll('.tag-badge.active').forEach(tag => tag.classList.remove('active'));
+        filterCaseStudies();
       });
-      filterCaseStudies();
-    });
+    }
   }
 
   function filterCaseStudies() {
     const items = document.querySelectorAll('#listing-case-studies .g-col-1');
-    console.log('Filtering items:', items.length);
-    console.log('Active filters:', activeFilters);
-    
-    items.forEach((item, index) => {
+
+    items.forEach((item) => {
       let shouldShow = true;
-      
-      // Get the tags for this item from data attributes
+
       const itemDomains = JSON.parse(item.getAttribute('data-research-domains') || '[]');
       const itemMethods = JSON.parse(item.getAttribute('data-methodologies') || '[]');
-      
-      console.log(`Item ${index}: domains = ${itemDomains}, methods = ${itemMethods}`);
-      
-      // Check if item matches active filters
+
       if (activeFilters.research_domains.size > 0) {
-        const hasMatchingDomain = itemDomains.some(domain => 
-          activeFilters.research_domains.has(domain)
-        );
-        if (!hasMatchingDomain) shouldShow = false;
+        const hasDomain = itemDomains.some(domain => activeFilters.research_domains.has(domain));
+        if (!hasDomain) shouldShow = false;
       }
-      
+
       if (activeFilters.methodologies.size > 0) {
-        const hasMatchingMethod = itemMethods.some(method => 
-          activeFilters.methodologies.has(method)
-        );
-        if (!hasMatchingMethod) shouldShow = false;
+        const hasMethod = itemMethods.some(method => activeFilters.methodologies.has(method));
+        if (!hasMethod) shouldShow = false;
       }
-      
-      console.log(`Item ${index}: shouldShow = ${shouldShow}`);
-      
-      // Show/hide item
-      if (shouldShow) {
-        item.classList.remove('filtered-out');
-        item.style.display = '';
-      } else {
-        item.classList.add('filtered-out');
-        item.style.display = 'none';
-      }
+
+      item.style.display = shouldShow ? '' : 'none';
     });
   }
+
 });
 </script>
+```

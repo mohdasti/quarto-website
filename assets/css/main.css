@@ -15,6 +15,13 @@ $navbar-fg: $primary-dark;
 $navbar-hl: $accent-red;
 
 /*-- scss:rules --*/
+/* Ensure Quarto hidden elements are actually hidden */
+.hidden,
+[class*="hidden"],
+.quarto-markdown-envelope-contents {
+  display: none !important;
+}
+
 .navbar {
   border-bottom: 1px solid $accent-blue;
 }
