@@ -951,8 +951,13 @@ for (src in possible_sources) {
 }
 
 if (is.null(src_file)) {
-  # If file doesn't exist, skip this figure gracefully without showing warning
-  # (Image is optional - can be added later if needed)
+  # If file doesn't exist, skip this figure gracefully
+  cat("\n\n⚠ **Note:** Task layout image not found. Skipping figure.\n")
+  cat("Checked locations:\n")
+  for (src in possible_sources) {
+    cat("  -", src, ifelse(file.exists(src), "✓", "✗"), "\n")
+  }
+  cat("\n")
 } else {
   # Copy to output directory
   output_dir <- knitr::opts_knit$get("output.dir")
@@ -1074,7 +1079,23 @@ if (has_highcharter && !is.null(df_raw_interactive)) {
   hc_dashboard
 } else {
   # Fallback to static image
-  knitr::include_graphics("docs/assets/case_study/portfolio/results_dashboard.png", dpi = 200)
+  static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "results_dashboard.png")
+  if (file.exists(static_img)) {
+    output_dir <- knitr::opts_knit$get("output.dir")
+    if (is.null(output_dir)) {
+      output_dir <- file.path(getwd(), "_site", "projects")
+    }
+    images_dir <- file.path(output_dir, "images")
+    if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
+    dst_file <- file.path(images_dir, "results_dashboard.png")
+    if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
+      file.copy(static_img, dst_file, overwrite = TRUE)
+    }
+    old_wd <- getwd()
+    setwd(output_dir)
+    knitr::include_graphics("images/results_dashboard.png", dpi = 200)
+    setwd(old_wd)
+  }
 }
 ```
 
@@ -1109,8 +1130,13 @@ for (src in possible_csv_sources) {
 }
 
 if (is.null(results_file)) {
-  # Results CSV not found - create empty results to prevent errors
-  # (Table will be skipped automatically if empty)
+  cat("\n\n⚠ **Note:** Results CSV file not found. Skipping results table.\n")
+  cat("Checked locations:\n")
+  for (src in possible_csv_sources) {
+    cat("  -", src, ifelse(file.exists(src), "✓", "✗"), "\n")
+  }
+  cat("\n")
+  # Create empty results to prevent errors downstream
   results <- tibble(
     metric = character(0),
     Hand = character(0),
@@ -1340,7 +1366,24 @@ if (has_highcharter && exists("df_err_type_int") && !is.null(df_err_type_int) &&
   
   hc_err_type
 } else {
-  knitr::include_graphics("docs/assets/case_study/error_type_composition.png", dpi = 200)
+  # Fallback to static image
+  static_img <- file.path(getwd(), "docs", "assets", "case_study", "error_type_composition.png")
+  if (file.exists(static_img)) {
+    output_dir <- knitr::opts_knit$get("output.dir")
+    if (is.null(output_dir)) {
+      output_dir <- file.path(getwd(), "_site", "projects")
+    }
+    images_dir <- file.path(output_dir, "images")
+    if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
+    dst_file <- file.path(images_dir, "error_type_composition.png")
+    if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
+      file.copy(static_img, dst_file, overwrite = TRUE)
+    }
+    old_wd <- getwd()
+    setwd(output_dir)
+    knitr::include_graphics("images/error_type_composition.png", dpi = 200)
+    setwd(old_wd)
+  }
 }
 ```
 
@@ -1352,11 +1395,9 @@ if (has_highcharter && exists("df_err_type_int") && !is.null(df_err_type_int) &&
 ::: panel-tabset
 #### Static
 
-```{r endpoint-heatmap-static, eval=FALSE}
+```{r endpoint-heatmap-static, eval=has_highcharter && exists("df_endpoint_int") && !is.null(df_endpoint_int)}
 #| fig-cap: "Endpoint Density: Static condition (interactive - hover for exact density values, zoom/pan enabled). White dashed lines mark target center (0,0)."
-# Note: This plot requires data file - uncomment eval condition when data is available
-# eval=has_highcharter && exists("df_endpoint_int") && !is.null(df_endpoint_int)
-if (FALSE && has_highcharter && !is.null(df_endpoint_int) && !is.null(endpoint_axis_info)) {
+if (has_highcharter && !is.null(df_endpoint_int) && !is.null(endpoint_axis_info)) {
   # Prepare data for static condition only
   df_endpoint_static_data <- df_raw_interactive %>%
     filter(
@@ -1453,22 +1494,18 @@ if (FALSE && has_highcharter && !is.null(df_endpoint_int) && !is.null(endpoint_a
         title = list(text = "Density")
       )
   } else {
-    # No endpoint data available for static condition
-    cat("\n\n*Endpoint density heatmap requires data file.*\n\n")
+    knitr::include_graphics("docs/assets/case_study/portfolio/heatmap_endpoint_density.png", dpi = 200)
   }
 } else {
-  # No endpoint data available
-  cat("\n\n*Endpoint density heatmap requires data file.*\n\n")
+  knitr::include_graphics("../assets/case_study/portfolio/heatmap_endpoint_density.png", dpi = 200)
 }
 ```
 
 #### Adaptive
 
-```{r endpoint-heatmap-adaptive, eval=FALSE}
+```{r endpoint-heatmap-adaptive, eval=has_highcharter && exists("df_endpoint_int") && !is.null(df_endpoint_int)}
 #| fig-cap: "Endpoint Density: Adaptive condition (interactive - hover for exact density values, zoom/pan enabled)"
-# Note: This plot requires data file - uncomment eval condition when data is available
-# eval=has_highcharter && exists("df_endpoint_int") && !is.null(df_endpoint_int)
-if (FALSE && has_highcharter && !is.null(df_endpoint_int) && !is.null(endpoint_axis_info)) {
+if (has_highcharter && !is.null(df_endpoint_int) && !is.null(endpoint_axis_info)) {
   # Get raw data for adaptive condition
   df_endpoint_both <- df_raw_interactive %>%
     filter(
@@ -1585,16 +1622,64 @@ if (FALSE && has_highcharter && !is.null(df_endpoint_int) && !is.null(endpoint_a
       
       hc_endpoint_adaptive
     } else {
-      # No endpoint data available for adaptive condition
-      cat("\n\n*Endpoint density heatmap (Adaptive) requires data file.*\n\n")
+      # Fallback to static image
+      static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "heatmap_endpoint_density.png")
+      if (file.exists(static_img)) {
+        output_dir <- knitr::opts_knit$get("output.dir")
+        if (is.null(output_dir)) {
+          output_dir <- file.path(getwd(), "_site", "projects")
+        }
+        images_dir <- file.path(output_dir, "images")
+        if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
+        dst_file <- file.path(images_dir, "heatmap_endpoint_density.png")
+        if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
+          file.copy(static_img, dst_file, overwrite = TRUE)
+        }
+        old_wd <- getwd()
+        setwd(output_dir)
+        knitr::include_graphics("images/heatmap_endpoint_density.png", dpi = 200)
+        setwd(old_wd)
+      }
     }
   } else {
-    # No endpoint data available
-    cat("\n\n*Endpoint density heatmap (Adaptive) requires data file.*\n\n")
+    # Fallback to static image
+    static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "heatmap_endpoint_density.png")
+    if (file.exists(static_img)) {
+      output_dir <- knitr::opts_knit$get("output.dir")
+      if (is.null(output_dir)) {
+        output_dir <- file.path(getwd(), "_site", "projects")
+      }
+      images_dir <- file.path(output_dir, "images")
+      if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
+      dst_file <- file.path(images_dir, "heatmap_endpoint_density.png")
+      if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
+        file.copy(static_img, dst_file, overwrite = TRUE)
+      }
+      old_wd <- getwd()
+      setwd(output_dir)
+      knitr::include_graphics("images/heatmap_endpoint_density.png", dpi = 200)
+      setwd(old_wd)
+    }
   }
 } else {
-  # No endpoint data available
-  cat("\n\n*Endpoint density heatmap (Adaptive) requires data file.*\n\n")
+  # Fallback to static image
+  static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "heatmap_endpoint_density.png")
+  if (file.exists(static_img)) {
+    output_dir <- knitr::opts_knit$get("output.dir")
+    if (is.null(output_dir)) {
+      output_dir <- file.path(getwd(), "_site", "projects")
+    }
+    images_dir <- file.path(output_dir, "images")
+    if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
+    dst_file <- file.path(images_dir, "heatmap_endpoint_density.png")
+    if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
+      file.copy(static_img, dst_file, overwrite = TRUE)
+    }
+    old_wd <- getwd()
+    setwd(output_dir)
+    knitr::include_graphics("images/heatmap_endpoint_density.png", dpi = 200)
+    setwd(old_wd)
+  }
 }
 ```
 :::
@@ -1611,11 +1696,9 @@ over cells to see exact density values.
 ::: panel-tabset
 #### Hand
 
-```{r spatial-heatmap-hand, eval=FALSE}
+```{r spatial-heatmap-hand, eval=has_highcharter && exists("df_spatial_int") && !is.null(df_spatial_int)}
 #| fig-cap: "Spatial Error Rate: Hand modality (interactive - hover for exact error rates, zoom/pan enabled)"
-# Note: This plot requires data file - uncomment eval condition when data is available
-# eval=has_highcharter && exists("df_spatial_int") && !is.null(df_spatial_int)
-if (FALSE && has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int) > 0) {
+if (has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int) > 0) {
   df_hand_spatial <- df_spatial_int %>% filter(modality == "hand")
   
   if (nrow(df_hand_spatial) > 0) {
@@ -1656,22 +1739,52 @@ if (FALSE && has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int)
       ) %>%
       hc_legend(enabled = TRUE)
   } else {
-    # No hand spatial data available
-    cat("\n\n*Spatial error heatmap for Hand modality requires data file.*\n\n")
+    # Fallback to static image
+    static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "heatmap_spatial_errors.png")
+    if (file.exists(static_img)) {
+      output_dir <- knitr::opts_knit$get("output.dir")
+      if (is.null(output_dir)) {
+        output_dir <- file.path(getwd(), "_site", "projects")
+      }
+      images_dir <- file.path(output_dir, "images")
+      if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
+      dst_file <- file.path(images_dir, "heatmap_spatial_errors.png")
+      if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
+        file.copy(static_img, dst_file, overwrite = TRUE)
+      }
+      old_wd <- getwd()
+      setwd(output_dir)
+      knitr::include_graphics("images/heatmap_spatial_errors.png", dpi = 200)
+      setwd(old_wd)
+    }
   }
 } else {
-  # No spatial data available
-  cat("\n\n*Spatial error heatmap for Hand modality requires data file.*\n\n")
+  # Fallback to static image
+  static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "heatmap_spatial_errors.png")
+  if (file.exists(static_img)) {
+    output_dir <- knitr::opts_knit$get("output.dir")
+    if (is.null(output_dir)) {
+      output_dir <- file.path(getwd(), "_site", "projects")
+    }
+    images_dir <- file.path(output_dir, "images")
+    if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
+    dst_file <- file.path(images_dir, "heatmap_spatial_errors.png")
+    if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
+      file.copy(static_img, dst_file, overwrite = TRUE)
+    }
+    old_wd <- getwd()
+    setwd(output_dir)
+    knitr::include_graphics("images/heatmap_spatial_errors.png", dpi = 200)
+    setwd(old_wd)
+  }
 }
 ```
 
 #### Gaze
 
-```{r spatial-heatmap-gaze, eval=FALSE}
+```{r spatial-heatmap-gaze, eval=has_highcharter && exists("df_spatial_int") && !is.null(df_spatial_int)}
 #| fig-cap: "Spatial Error Rate: Gaze modality (interactive - hover for exact error rates, zoom/pan enabled)"
-# Note: This plot requires data file - uncomment eval condition when data is available
-# eval=has_highcharter && exists("df_spatial_int") && !is.null(df_spatial_int)
-if (FALSE && has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int) > 0) {
+if (has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int) > 0) {
   df_gaze_spatial <- df_spatial_int %>% filter(modality == "gaze")
   
   if (nrow(df_gaze_spatial) > 0) {
@@ -1712,12 +1825,44 @@ if (FALSE && has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int)
       ) %>%
       hc_legend(enabled = TRUE)
   } else {
-    # No gaze spatial data available
-    cat("\n\n*Spatial error heatmap for Gaze modality requires data file.*\n\n")
+    # Fallback to static image
+    static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "heatmap_spatial_errors.png")
+    if (file.exists(static_img)) {
+      output_dir <- knitr::opts_knit$get("output.dir")
+      if (is.null(output_dir)) {
+        output_dir <- file.path(getwd(), "_site", "projects")
+      }
+      images_dir <- file.path(output_dir, "images")
+      if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
+      dst_file <- file.path(images_dir, "heatmap_spatial_errors.png")
+      if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
+        file.copy(static_img, dst_file, overwrite = TRUE)
+      }
+      old_wd <- getwd()
+      setwd(output_dir)
+      knitr::include_graphics("images/heatmap_spatial_errors.png", dpi = 200)
+      setwd(old_wd)
+    }
   }
 } else {
-  # No spatial data available
-  cat("\n\n*Spatial error heatmap for Gaze modality requires data file.*\n\n")
+  # Fallback to static image
+  static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "heatmap_spatial_errors.png")
+  if (file.exists(static_img)) {
+    output_dir <- knitr::opts_knit$get("output.dir")
+    if (is.null(output_dir)) {
+      output_dir <- file.path(getwd(), "_site", "projects")
+    }
+    images_dir <- file.path(output_dir, "images")
+    if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
+    dst_file <- file.path(images_dir, "heatmap_spatial_errors.png")
+    if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
+      file.copy(static_img, dst_file, overwrite = TRUE)
+    }
+    old_wd <- getwd()
+    setwd(output_dir)
+    knitr::include_graphics("images/heatmap_spatial_errors.png", dpi = 200)
+    setwd(old_wd)
+  }
 }
 ```
 :::
