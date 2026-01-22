@@ -982,9 +982,17 @@ if (is.null(src_file)) {
 
 ## Key Results {#key-results-60-seconds}
 
-```{r results-dashboard-interactive, eval=has_highcharter && exists("df_raw_interactive") && !is.null(df_raw_interactive)}
+```{r results-dashboard-interactive}
 #| fig-cap: "Results Dashboard: Interactive comparison of key metrics by modality (hover for values, zoom/pan enabled)"
-if (has_highcharter && !is.null(df_raw_interactive)) {
+# Check if we have the required data for interactive plot
+has_interactive_data <- FALSE
+if (has_highcharter && exists("df_raw_interactive") && !is.null(df_raw_interactive)) {
+  if (exists("df_pid_cond_int") && !is.null(df_pid_cond_int) && nrow(df_pid_cond_int) > 0) {
+    has_interactive_data <- TRUE
+  }
+}
+
+if (has_interactive_data) {
   # Prepare portfolio data
   df_portfolio_int <- bind_rows(
     df_pid_cond_int %>%
@@ -1078,7 +1086,7 @@ if (has_highcharter && !is.null(df_raw_interactive)) {
   
   hc_dashboard
 } else {
-  # Fallback to static image
+  # Fallback to static image - always show this if interactive data is not available
   static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "results_dashboard.png")
   if (file.exists(static_img)) {
     output_dir <- knitr::opts_knit$get("output.dir")
@@ -1095,6 +1103,8 @@ if (has_highcharter && !is.null(df_raw_interactive)) {
     setwd(output_dir)
     knitr::include_graphics("images/results_dashboard.png", dpi = 200)
     setwd(old_wd)
+  } else {
+    cat("\n⚠ **Note:** Results dashboard image not found at:", static_img, "\n")
   }
 }
 ```
@@ -1291,9 +1301,17 @@ if (file.exists("docs/assets/case_study/error_types_by_modality.csv")) {
 }
 ```
 
-```{r error-type-fig-interactive, eval=has_highcharter && exists("df_err_type_int") && !is.null(df_err_type_int)}
+```{r error-type-fig-interactive}
 #| fig-cap: "Error Type Composition by Modality (interactive stacked bar - hover for percentages)"
-if (has_highcharter && exists("df_err_type_int") && !is.null(df_err_type_int) && nrow(df_err_type_int) > 0) {
+# Check if we have the required data for interactive plot
+has_err_type_data <- FALSE
+if (has_highcharter && exists("df_err_type_int") && !is.null(df_err_type_int)) {
+  if (nrow(df_err_type_int) > 0) {
+    has_err_type_data <- TRUE
+  }
+}
+
+if (has_err_type_data) {
   df_err_type_summary <- df_err_type_int %>%
     group_by(modality, err_category) %>%
     summarise(n = n(), .groups = "drop") %>%
@@ -1366,7 +1384,7 @@ if (has_highcharter && exists("df_err_type_int") && !is.null(df_err_type_int) &&
   
   hc_err_type
 } else {
-  # Fallback to static image
+  # Fallback to static image - always show this if interactive data is not available
   static_img <- file.path(getwd(), "docs", "assets", "case_study", "error_type_composition.png")
   if (file.exists(static_img)) {
     output_dir <- knitr::opts_knit$get("output.dir")
@@ -1383,6 +1401,8 @@ if (has_highcharter && exists("df_err_type_int") && !is.null(df_err_type_int) &&
     setwd(output_dir)
     knitr::include_graphics("images/error_type_composition.png", dpi = 200)
     setwd(old_wd)
+  } else {
+    cat("\n⚠ **Note:** Error type composition image not found at:", static_img, "\n")
   }
 }
 ```
