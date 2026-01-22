@@ -4,8 +4,6 @@ author: "Mohammad Dastgheib"
 date: last-modified
 description: "I built a remote XR interaction testbed and evaluated whether a context-aware adaptive system can reduce gaze failure modes (e.g., Midas Touch slips: accidental activations) and workload under time pressure."
 image: ../images/architecture.png
-execute:
-  dir: project
 format:
   html:
     theme: cosmo
@@ -804,11 +802,11 @@ The telemetry system logs comprehensive per-trial data including trial metadata,
 #| fig-cap: "System architecture: Remote XR interaction testbed with client-side task execution, client-side telemetry collection, and adaptive policy engine. All processing occurs in the browser; data is exported via CSV download or optional EmailJS submission."
 #| fig-alt: "System architecture diagram"
 # Copy image to a location that will be accessible from the rendered HTML
-# The HTML is rendered to _site/projects/case_study_web.html, so images should be in _site/projects/images/
+# The HTML is rendered to docs/projects/case_study_web.html, so images should be in docs/projects/images/
 output_dir <- knitr::opts_knit$get("output.dir")
 if (is.null(output_dir)) {
-  # Fallback: assume we're rendering to _site/projects/
-  output_dir <- file.path(getwd(), "_site", "projects")
+  # Fallback: assume we're rendering to docs/projects/
+  output_dir <- file.path(getwd(), "docs", "projects")
 }
 images_dir <- file.path(output_dir, "images")
 if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
@@ -816,8 +814,8 @@ if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
 # Try multiple possible source locations
 src_file <- NULL
 possible_sources <- c(
-  file.path(getwd(), "docs", "assets", "case_study", "portfolio", "architecture.png"),
-  file.path(getwd(), "docs", "case_study", "images", "architecture.png"),
+  file.path(getwd(), "assets", "case_study", "portfolio", "architecture.png"),
+  file.path(getwd(), "assets", "case_study", "architecture.png"),
   file.path(getwd(), "images", "architecture.png")
 )
 for (src in possible_sources) {
@@ -858,7 +856,7 @@ structure and key methodological details:
 # Copy image to a location that will be accessible from the rendered HTML
 output_dir <- knitr::opts_knit$get("output.dir")
 if (is.null(output_dir)) {
-  output_dir <- file.path(getwd(), "_site", "projects")
+  output_dir <- file.path(getwd(), "docs", "projects")
 }
 images_dir <- file.path(output_dir, "images")
 if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
@@ -866,9 +864,8 @@ if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
 # Try multiple possible source locations
 src_file <- NULL
 possible_sources <- c(
-  file.path(getwd(), "docs", "case_study", "images", "participant_journey_final.png"),
-  file.path(getwd(), "docs", "assets", "case_study", "participant_journey_final.png"),
-  file.path(getwd(), "docs", "assets", "case_study", "portfolio", "participant_journey_final.png")
+  file.path(getwd(), "assets", "case_study", "participant_journey_final.png"),
+  file.path(getwd(), "assets", "case_study", "portfolio", "participant_journey_final.png")
 )
 for (src in possible_sources) {
   if (file.exists(src)) {
@@ -933,15 +930,11 @@ setwd(old_wd)
 #| fig-alt: "Task layout diagram"
 # Copy image to local images/ directory relative to .qmd file
 # Then use path relative to .qmd file (not root.dir) so HTML references work correctly
-qmd_dir <- file.path(getwd(), "docs", "case_study")
-images_dir <- file.path(qmd_dir, "images")
-if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
 # Try multiple possible source locations
 src_file <- NULL
 possible_sources <- c(
-  file.path(getwd(), "docs", "case_study", "images", "Task_layout.png"),
-  file.path(getwd(), "docs", "assets", "case_study", "Task_layout.png"),
-  file.path(getwd(), "docs", "assets", "case_study", "portfolio", "Task_layout.png")
+  file.path(getwd(), "assets", "case_study", "Task_layout.png"),
+  file.path(getwd(), "assets", "case_study", "portfolio", "Task_layout.png")
 )
 for (src in possible_sources) {
   if (file.exists(src)) {
@@ -962,7 +955,7 @@ if (is.null(src_file)) {
   # Copy to output directory
   output_dir <- knitr::opts_knit$get("output.dir")
   if (is.null(output_dir)) {
-    output_dir <- file.path(getwd(), "_site", "projects")
+    output_dir <- file.path(getwd(), "docs", "projects")
   }
   images_dir <- file.path(output_dir, "images")
   if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
@@ -974,16 +967,16 @@ if (is.null(src_file)) {
   }
   # Use relative path from output directory
   old_wd <- getwd()
+  on.exit(setwd(old_wd), add = TRUE)
   setwd(output_dir)
   knitr::include_graphics("images/Task_layout.png", dpi = 200)
-  setwd(old_wd)
 }
 ```
 
 ## Key Results {#key-results-60-seconds}
 
 ```{r results-dashboard-interactive}
-#| fig-cap: "Results Dashboard: Interactive comparison of key metrics by modality (hover for values, zoom/pan enabled)"
+#| fig-cap: "Results Dashboard: Comparison of key metrics by modality"
 # Check if we have the required data for interactive plot
 has_interactive_data <- FALSE
 if (has_highcharter && exists("df_raw_interactive") && !is.null(df_raw_interactive)) {
@@ -992,6 +985,7 @@ if (has_highcharter && exists("df_raw_interactive") && !is.null(df_raw_interacti
   }
 }
 
+# Always show something - either interactive plot or fallback image
 if (has_interactive_data) {
   # Prepare portfolio data
   df_portfolio_int <- bind_rows(
@@ -1086,27 +1080,28 @@ if (has_interactive_data) {
   
   hc_dashboard
 } else {
-  # Fallback to static image - always show this if interactive data is not available
-  static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "results_dashboard.png")
-  if (file.exists(static_img)) {
-    output_dir <- knitr::opts_knit$get("output.dir")
-    if (is.null(output_dir)) {
-      output_dir <- file.path(getwd(), "_site", "projects")
+    # Fallback to static image - always show this if interactive data is not available
+    static_img <- file.path(getwd(), "assets", "case_study", "portfolio", "results_dashboard.png")
+    if (file.exists(static_img)) {
+      output_dir <- knitr::opts_knit$get("output.dir")
+      if (is.null(output_dir)) {
+        output_dir <- file.path(getwd(), "docs", "projects")
+      }
+      images_dir <- file.path(output_dir, "images")
+      if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
+      dst_file <- file.path(images_dir, "results_dashboard.png")
+      if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
+        file.copy(static_img, dst_file, overwrite = TRUE)
+      }
+      # Change to output directory so relative path works (same pattern as other images)
+      old_wd <- getwd()
+      on.exit(setwd(old_wd), add = TRUE)
+      setwd(output_dir)
+      knitr::include_graphics("images/results_dashboard.png", dpi = 200)
+    } else {
+      cat("\n⚠ **Note:** Results dashboard image not found at:", static_img, "\n")
     }
-    images_dir <- file.path(output_dir, "images")
-    if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
-    dst_file <- file.path(images_dir, "results_dashboard.png")
-    if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
-      file.copy(static_img, dst_file, overwrite = TRUE)
-    }
-    old_wd <- getwd()
-    setwd(output_dir)
-    knitr::include_graphics("images/results_dashboard.png", dpi = 200)
-    setwd(old_wd)
-  } else {
-    cat("\n⚠ **Note:** Results dashboard image not found at:", static_img, "\n")
   }
-}
 ```
 
 We measured subjective workload using the **NASA Task Load Index
@@ -1128,8 +1123,7 @@ similar.
 # Try multiple possible source locations for results CSV
 results_file <- NULL
 possible_csv_sources <- c(
-  file.path(getwd(), "docs", "assets", "case_study", "results_at_a_glance.csv"),
-  file.path(getwd(), "docs", "case_study", "results_at_a_glance.csv"),
+    file.path(getwd(), "assets", "case_study", "results_at_a_glance.csv"),
   file.path(getwd(), "outputs", "results_at_a_glance.csv")
 )
 for (src in possible_csv_sources) {
@@ -1219,8 +1213,8 @@ intent ambiguity (looking to see vs. looking to select). The Midas Touch
 problem is real and measurable.
 
 ```{r error-type-table}
-if (file.exists("docs/assets/case_study/error_types_by_modality.csv")) {
-  err_types <- read_csv("docs/assets/case_study/error_types_by_modality.csv", show_col_types = FALSE)
+if (file.exists("assets/case_study/error_types_by_modality.csv")) {
+  err_types <- read_csv("assets/case_study/error_types_by_modality.csv", show_col_types = FALSE)
   
   if (has_gt && nrow(err_types) > 0) {
     # Reshape data properly
@@ -1302,7 +1296,7 @@ if (file.exists("docs/assets/case_study/error_types_by_modality.csv")) {
 ```
 
 ```{r error-type-fig-interactive}
-#| fig-cap: "Error Type Composition by Modality (interactive stacked bar - hover for percentages)"
+#| fig-cap: "Error Type Composition by Modality"
 # Check if we have the required data for interactive plot
 has_err_type_data <- FALSE
 if (has_highcharter && exists("df_err_type_int") && !is.null(df_err_type_int)) {
@@ -1383,28 +1377,29 @@ if (has_err_type_data) {
   }
   
   hc_err_type
-} else {
-  # Fallback to static image - always show this if interactive data is not available
-  static_img <- file.path(getwd(), "docs", "assets", "case_study", "error_type_composition.png")
-  if (file.exists(static_img)) {
-    output_dir <- knitr::opts_knit$get("output.dir")
-    if (is.null(output_dir)) {
-      output_dir <- file.path(getwd(), "_site", "projects")
-    }
-    images_dir <- file.path(output_dir, "images")
-    if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
-    dst_file <- file.path(images_dir, "error_type_composition.png")
-    if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
-      file.copy(static_img, dst_file, overwrite = TRUE)
-    }
-    old_wd <- getwd()
-    setwd(output_dir)
-    knitr::include_graphics("images/error_type_composition.png", dpi = 200)
-    setwd(old_wd)
   } else {
-    cat("\n⚠ **Note:** Error type composition image not found at:", static_img, "\n")
+    # Fallback to static image - always show this if interactive data is not available
+    static_img <- file.path(getwd(), "assets", "case_study", "error_type_composition.png")
+    if (file.exists(static_img)) {
+      output_dir <- knitr::opts_knit$get("output.dir")
+      if (is.null(output_dir)) {
+        output_dir <- file.path(getwd(), "docs", "projects")
+      }
+      images_dir <- file.path(output_dir, "images")
+      if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
+      dst_file <- file.path(images_dir, "error_type_composition.png")
+      if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
+        file.copy(static_img, dst_file, overwrite = TRUE)
+      }
+      # Change to output directory so relative path works (same pattern as other images)
+      old_wd <- getwd()
+      on.exit(setwd(old_wd), add = TRUE)
+      setwd(output_dir)
+      knitr::include_graphics("images/error_type_composition.png", dpi = 200)
+    } else {
+      cat("\n⚠ **Note:** Error type composition image not found at:", static_img, "\n")
+    }
   }
-}
 ```
 
 ### Spatial Error Patterns
@@ -1415,8 +1410,8 @@ if (has_err_type_data) {
 ::: panel-tabset
 #### Static
 
-```{r endpoint-heatmap-static, eval=has_highcharter && exists("df_endpoint_int") && !is.null(df_endpoint_int)}
-#| fig-cap: "Endpoint Density: Static condition (interactive - hover for exact density values, zoom/pan enabled). White dashed lines mark target center (0,0)."
+```{r endpoint-heatmap-static}
+#| fig-cap: "Endpoint Density: Static condition. White dashed lines mark target center (0,0)."
 if (has_highcharter && !is.null(df_endpoint_int) && !is.null(endpoint_axis_info)) {
   # Prepare data for static condition only
   df_endpoint_static_data <- df_raw_interactive %>%
@@ -1514,17 +1509,51 @@ if (has_highcharter && !is.null(df_endpoint_int) && !is.null(endpoint_axis_info)
         title = list(text = "Density")
       )
   } else {
-    knitr::include_graphics("docs/assets/case_study/portfolio/heatmap_endpoint_density.png", dpi = 200)
+    # Fallback to static image
+    static_img <- file.path(getwd(), "assets", "case_study", "portfolio", "heatmap_endpoint_density.png")
+    if (file.exists(static_img)) {
+      output_dir <- knitr::opts_knit$get("output.dir")
+      if (is.null(output_dir)) {
+        output_dir <- file.path(getwd(), "docs", "projects")
+      }
+      images_dir <- file.path(output_dir, "images")
+      if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
+      dst_file <- file.path(images_dir, "heatmap_endpoint_density.png")
+      if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
+        file.copy(static_img, dst_file, overwrite = TRUE)
+      }
+      old_wd <- getwd()
+      on.exit(setwd(old_wd), add = TRUE)
+      setwd(output_dir)
+      knitr::include_graphics("images/heatmap_endpoint_density.png", dpi = 200)
+    }
   }
 } else {
-  knitr::include_graphics("../assets/case_study/portfolio/heatmap_endpoint_density.png", dpi = 200)
+  # Fallback to static image
+  static_img <- file.path(getwd(), "assets", "case_study", "portfolio", "heatmap_endpoint_density.png")
+  if (file.exists(static_img)) {
+    output_dir <- knitr::opts_knit$get("output.dir")
+    if (is.null(output_dir)) {
+      output_dir <- file.path(getwd(), "docs", "projects")
+    }
+    images_dir <- file.path(output_dir, "images")
+    if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
+    dst_file <- file.path(images_dir, "heatmap_endpoint_density.png")
+    if (!file.exists(dst_file) || file.mtime(static_img) > file.mtime(dst_file)) {
+      file.copy(static_img, dst_file, overwrite = TRUE)
+    }
+    old_wd <- getwd()
+    on.exit(setwd(old_wd), add = TRUE)
+    setwd(output_dir)
+    knitr::include_graphics("images/heatmap_endpoint_density.png", dpi = 200)
+  }
 }
 ```
 
 #### Adaptive
 
-```{r endpoint-heatmap-adaptive, eval=has_highcharter && exists("df_endpoint_int") && !is.null(df_endpoint_int)}
-#| fig-cap: "Endpoint Density: Adaptive condition (interactive - hover for exact density values, zoom/pan enabled)"
+```{r endpoint-heatmap-adaptive}
+#| fig-cap: "Endpoint Density: Adaptive condition"
 if (has_highcharter && !is.null(df_endpoint_int) && !is.null(endpoint_axis_info)) {
   # Get raw data for adaptive condition
   df_endpoint_both <- df_raw_interactive %>%
@@ -1643,11 +1672,11 @@ if (has_highcharter && !is.null(df_endpoint_int) && !is.null(endpoint_axis_info)
       hc_endpoint_adaptive
     } else {
       # Fallback to static image
-      static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "heatmap_endpoint_density.png")
+      static_img <- file.path(getwd(), "assets", "case_study", "portfolio", "heatmap_endpoint_density.png")
       if (file.exists(static_img)) {
         output_dir <- knitr::opts_knit$get("output.dir")
         if (is.null(output_dir)) {
-          output_dir <- file.path(getwd(), "_site", "projects")
+          output_dir <- file.path(getwd(), "docs", "projects")
         }
         images_dir <- file.path(output_dir, "images")
         if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
@@ -1663,11 +1692,11 @@ if (has_highcharter && !is.null(df_endpoint_int) && !is.null(endpoint_axis_info)
     }
   } else {
     # Fallback to static image
-    static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "heatmap_endpoint_density.png")
+    static_img <- file.path(getwd(), "assets", "case_study", "portfolio", "heatmap_endpoint_density.png")
     if (file.exists(static_img)) {
       output_dir <- knitr::opts_knit$get("output.dir")
       if (is.null(output_dir)) {
-        output_dir <- file.path(getwd(), "_site", "projects")
+        output_dir <- file.path(getwd(), "docs", "projects")
       }
       images_dir <- file.path(output_dir, "images")
       if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
@@ -1676,18 +1705,18 @@ if (has_highcharter && !is.null(df_endpoint_int) && !is.null(endpoint_axis_info)
         file.copy(static_img, dst_file, overwrite = TRUE)
       }
       old_wd <- getwd()
+      on.exit(setwd(old_wd), add = TRUE)
       setwd(output_dir)
       knitr::include_graphics("images/heatmap_endpoint_density.png", dpi = 200)
-      setwd(old_wd)
     }
   }
 } else {
   # Fallback to static image
-  static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "heatmap_endpoint_density.png")
+  static_img <- file.path(getwd(), "assets", "case_study", "portfolio", "heatmap_endpoint_density.png")
   if (file.exists(static_img)) {
     output_dir <- knitr::opts_knit$get("output.dir")
     if (is.null(output_dir)) {
-      output_dir <- file.path(getwd(), "_site", "projects")
+      output_dir <- file.path(getwd(), "docs", "projects")
     }
     images_dir <- file.path(output_dir, "images")
     if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
@@ -1696,9 +1725,9 @@ if (has_highcharter && !is.null(df_endpoint_int) && !is.null(endpoint_axis_info)
       file.copy(static_img, dst_file, overwrite = TRUE)
     }
     old_wd <- getwd()
+    on.exit(setwd(old_wd), add = TRUE)
     setwd(output_dir)
     knitr::include_graphics("images/heatmap_endpoint_density.png", dpi = 200)
-    setwd(old_wd)
   }
 }
 ```
@@ -1708,16 +1737,15 @@ if (has_highcharter && !is.null(df_endpoint_int) && !is.null(endpoint_axis_info)
 actually land relative to target center (0,0). The white dashed lines
 mark the target center. Bright yellow/orange indicates high density
 (many endpoints), dark purple indicates low density. Compare Adaptive vs
-Static to see if declutter affects endpoint clustering patterns. Hover
-over cells to see exact density values.
+Static to see if declutter affects endpoint clustering patterns.
 
 #### Spatial Error Rate Heatmap
 
 ::: panel-tabset
 #### Hand
 
-```{r spatial-heatmap-hand, eval=has_highcharter && exists("df_spatial_int") && !is.null(df_spatial_int)}
-#| fig-cap: "Spatial Error Rate: Hand modality (interactive - hover for exact error rates, zoom/pan enabled)"
+```{r spatial-heatmap-hand}
+#| fig-cap: "Spatial Error Rate: Hand modality"
 if (has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int) > 0) {
   df_hand_spatial <- df_spatial_int %>% filter(modality == "hand")
   
@@ -1760,11 +1788,11 @@ if (has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int) > 0) {
       hc_legend(enabled = TRUE)
   } else {
     # Fallback to static image
-    static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "heatmap_spatial_errors.png")
+    static_img <- file.path(getwd(), "assets", "case_study", "portfolio", "heatmap_spatial_errors.png")
     if (file.exists(static_img)) {
       output_dir <- knitr::opts_knit$get("output.dir")
       if (is.null(output_dir)) {
-        output_dir <- file.path(getwd(), "_site", "projects")
+        output_dir <- file.path(getwd(), "docs", "projects")
       }
       images_dir <- file.path(output_dir, "images")
       if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
@@ -1773,18 +1801,18 @@ if (has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int) > 0) {
         file.copy(static_img, dst_file, overwrite = TRUE)
       }
       old_wd <- getwd()
+      on.exit(setwd(old_wd), add = TRUE)
       setwd(output_dir)
       knitr::include_graphics("images/heatmap_spatial_errors.png", dpi = 200)
-      setwd(old_wd)
     }
   }
 } else {
   # Fallback to static image
-  static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "heatmap_spatial_errors.png")
+  static_img <- file.path(getwd(), "assets", "case_study", "portfolio", "heatmap_spatial_errors.png")
   if (file.exists(static_img)) {
     output_dir <- knitr::opts_knit$get("output.dir")
     if (is.null(output_dir)) {
-      output_dir <- file.path(getwd(), "_site", "projects")
+      output_dir <- file.path(getwd(), "docs", "projects")
     }
     images_dir <- file.path(output_dir, "images")
     if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
@@ -1793,17 +1821,17 @@ if (has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int) > 0) {
       file.copy(static_img, dst_file, overwrite = TRUE)
     }
     old_wd <- getwd()
+    on.exit(setwd(old_wd), add = TRUE)
     setwd(output_dir)
     knitr::include_graphics("images/heatmap_spatial_errors.png", dpi = 200)
-    setwd(old_wd)
   }
 }
 ```
 
 #### Gaze
 
-```{r spatial-heatmap-gaze, eval=has_highcharter && exists("df_spatial_int") && !is.null(df_spatial_int)}
-#| fig-cap: "Spatial Error Rate: Gaze modality (interactive - hover for exact error rates, zoom/pan enabled)"
+```{r spatial-heatmap-gaze}
+#| fig-cap: "Spatial Error Rate: Gaze modality"
 if (has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int) > 0) {
   df_gaze_spatial <- df_spatial_int %>% filter(modality == "gaze")
   
@@ -1846,11 +1874,11 @@ if (has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int) > 0) {
       hc_legend(enabled = TRUE)
   } else {
     # Fallback to static image
-    static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "heatmap_spatial_errors.png")
+    static_img <- file.path(getwd(), "assets", "case_study", "portfolio", "heatmap_spatial_errors.png")
     if (file.exists(static_img)) {
       output_dir <- knitr::opts_knit$get("output.dir")
       if (is.null(output_dir)) {
-        output_dir <- file.path(getwd(), "_site", "projects")
+        output_dir <- file.path(getwd(), "docs", "projects")
       }
       images_dir <- file.path(output_dir, "images")
       if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
@@ -1859,18 +1887,18 @@ if (has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int) > 0) {
         file.copy(static_img, dst_file, overwrite = TRUE)
       }
       old_wd <- getwd()
+      on.exit(setwd(old_wd), add = TRUE)
       setwd(output_dir)
       knitr::include_graphics("images/heatmap_spatial_errors.png", dpi = 200)
-      setwd(old_wd)
     }
   }
 } else {
   # Fallback to static image
-  static_img <- file.path(getwd(), "docs", "assets", "case_study", "portfolio", "heatmap_spatial_errors.png")
+  static_img <- file.path(getwd(), "assets", "case_study", "portfolio", "heatmap_spatial_errors.png")
   if (file.exists(static_img)) {
     output_dir <- knitr::opts_knit$get("output.dir")
     if (is.null(output_dir)) {
-      output_dir <- file.path(getwd(), "_site", "projects")
+      output_dir <- file.path(getwd(), "docs", "projects")
     }
     images_dir <- file.path(output_dir, "images")
     if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
@@ -1879,16 +1907,15 @@ if (has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int) > 0) {
       file.copy(static_img, dst_file, overwrite = TRUE)
     }
     old_wd <- getwd()
+    on.exit(setwd(old_wd), add = TRUE)
     setwd(output_dir)
     knitr::include_graphics("images/heatmap_spatial_errors.png", dpi = 200)
-    setwd(old_wd)
   }
 }
 ```
 :::
 
-**What to look for:** Warmer colors indicate higher error rates. Hover
-over cells to see exact percentages. Compare Hand vs Gaze to see if
+**What to look for:** Warmer colors indicate higher error rates. Compare Hand vs Gaze to see if
 certain screen regions show consistently higher errors—this could
 indicate UI layout issues or visual attention patterns.
 :::
@@ -2258,7 +2285,7 @@ selection tasks.
 # Copy image to a location that will be accessible from the rendered HTML
 output_dir <- knitr::opts_knit$get("output.dir")
 if (is.null(output_dir)) {
-  output_dir <- file.path(getwd(), "_site", "projects")
+  output_dir <- file.path(getwd(), "docs", "projects")
 }
 images_dir <- file.path(output_dir, "images")
 if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
@@ -2266,9 +2293,8 @@ if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
 # Try multiple possible source locations
 src_file <- NULL
 possible_sources <- c(
-  file.path(getwd(), "docs", "assets", "case_study", "portfolio", "psychophysics.png"),
-  file.path(getwd(), "docs", "case_study", "images", "psychophysics.png"),
-  file.path(getwd(), "docs", "case_study", "portfolio", "psychophysics.png")
+  file.path(getwd(), "assets", "case_study", "portfolio", "psychophysics.png"),
+  file.path(getwd(), "assets", "case_study", "psychophysics.png")
 )
 for (src in possible_sources) {
   if (file.exists(src)) {
@@ -2335,8 +2361,8 @@ state or user disengagement.
 **Before/after counts:**
 
 ```{r qc-summary}
-if (file.exists("docs/assets/case_study/qc_exclusions_summary.csv")) {
-  qc <- read_csv("docs/assets/case_study/qc_exclusions_summary.csv", show_col_types = FALSE)
+if (file.exists("assets/case_study/qc_exclusions_summary.csv")) {
+  qc <- read_csv("assets/case_study/qc_exclusions_summary.csv", show_col_types = FALSE)
   
   if (has_gt && nrow(qc) > 0) {
     qc %>%
@@ -2603,7 +2629,7 @@ if (has_gt) {
 # Copy trace plot to a location that will be accessible from the rendered HTML
 output_dir <- knitr::opts_knit$get("output.dir")
 if (is.null(output_dir)) {
-  output_dir <- file.path(getwd(), "_site", "projects")
+  output_dir <- file.path(getwd(), "docs", "projects")
 }
 images_dir <- file.path(output_dir, "images")
 if (!dir.exists(images_dir)) dir.create(images_dir, recursive = TRUE)
