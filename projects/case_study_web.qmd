@@ -532,9 +532,37 @@ if (!is.null(df_raw_interactive)) {
     pull(pid) %>%
     n_distinct()
 } else {
+  # Fallback: try to get participant counts from results_at_a_glance.csv
   n_hand <- NA
   n_gaze <- NA
   n_total <- NA
+  
+  results_paths <- c(
+    file.path(getwd(), "assets", "case_study", "results_at_a_glance.csv"),
+    file.path(getwd(), "outputs", "results_at_a_glance.csv")
+  )
+  
+  for (results_file in results_paths) {
+    if (file.exists(results_file)) {
+      tryCatch({
+        results <- read_csv(results_file, show_col_types = FALSE)
+        # NASA-TLX row contains participant counts (not trial counts)
+        if ("metric" %in% names(results) && "Hand_N" %in% names(results) && "Gaze_N" %in% names(results)) {
+          tlx_row <- results %>% filter(grepl("NASA-TLX|TLX", metric, ignore.case = TRUE))
+          if (nrow(tlx_row) > 0) {
+            n_hand <- as.numeric(tlx_row$Hand_N[1])
+            n_gaze <- as.numeric(tlx_row$Gaze_N[1])
+            if (!is.na(n_hand) && !is.na(n_gaze)) {
+              n_total <- max(n_hand, n_gaze, na.rm = TRUE)  # Use max since some participants may be in both
+            }
+            break
+          }
+        }
+      }, error = function(e) {
+        # Silently continue to next path
+      })
+    }
+  }
   # Initialize these to NULL if data doesn't load
   df_err_type_int <- NULL
   df_spatial_int <- NULL
