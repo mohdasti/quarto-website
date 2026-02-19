@@ -1,0 +1,5159 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Mohammad Dastgheib">
+<meta name="dcterms.date" content="2026-02-18">
+<meta name="description" content="I built a remote XR interaction testbed and evaluated whether a context-aware adaptive system can reduce gaze failure modes (e.g., Midas Touch slips: accidental activations) and workload under time pressure.">
+
+<title>XR Adaptive Modality: Case Study – Mohammad Dastgheib</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="assets/listing-default.css">
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script><script src="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.js"></script>
+  <script>document.addEventListener("DOMContentLoaded", function () {
+ var mathElements = document.getElementsByClassName("math");
+ var macros = [];
+ for (var i = 0; i < mathElements.length; i++) {
+  var texText = mathElements[i].firstChild;
+  if (mathElements[i].tagName == "SPAN") {
+   katex.render(texText.data, mathElements[i], {
+    displayMode: mathElements[i].classList.contains('display'),
+    throwOnError: false,
+    macros: macros,
+    fleqn: false
+   });
+}}});
+  </script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@latest/dist/katex.min.css">
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="../assets/css/main.css">
+<meta name="twitter:title" content="XR Adaptive Modality: Case Study – Mohammad Dastgheib">
+<meta name="twitter:description" content="I built a remote XR interaction testbed and evaluated whether a context-aware adaptive system can reduce gaze failure modes (e.g., Midas Touch slips: accidental activations) and workload under time pressure.">
+<meta name="twitter:image" content="https://mdastgheib.com/images/architecture.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="1536">
+<meta name="twitter:image-width" content="2752">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Mohammad Dastgheib</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../skills/index.html"> 
+<span class="menu-text">Skills</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../research/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../publications/index.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../cv.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#what-i-built" id="toc-what-i-built" class="nav-link active" data-scroll-target="#what-i-built">What I Built</a></li>
+  <li><a href="#design--methods" id="toc-design--methods" class="nav-link" data-scroll-target="#design--methods">Design &amp; Methods</a>
+  <ul class="collapse">
+  <li><a href="#experimental-procedure-participant-journey" id="toc-experimental-procedure-participant-journey" class="nav-link" data-scroll-target="#experimental-procedure-participant-journey">Experimental Procedure &amp; Participant Journey</a></li>
+  </ul></li>
+  <li><a href="#key-results-60-seconds" id="toc-key-results-60-seconds" class="nav-link" data-scroll-target="#key-results-60-seconds">Key Results</a></li>
+  <li><a href="#failure-modes-xr-specific" id="toc-failure-modes-xr-specific" class="nav-link" data-scroll-target="#failure-modes-xr-specific">Failure Modes (XR-specific)</a>
+  <ul class="collapse">
+  <li><a href="#error-type-breakdown" id="toc-error-type-breakdown" class="nav-link" data-scroll-target="#error-type-breakdown">Error Type Breakdown</a></li>
+  <li><a href="#spatial-error-patterns" id="toc-spatial-error-patterns" class="nav-link" data-scroll-target="#spatial-error-patterns">Spatial Error Patterns</a></li>
+  </ul></li>
+  <li><a href="#implications" id="toc-implications" class="nav-link" data-scroll-target="#implications">Implications for XR Product Teams</a>
+  <ul class="collapse">
+  <li><a href="#for-gaze-interaction-slip-prevention-is-the-higher-leverage-fix-in-this-dataset" id="toc-for-gaze-interaction-slip-prevention-is-the-higher-leverage-fix-in-this-dataset" class="nav-link" data-scroll-target="#for-gaze-interaction-slip-prevention-is-the-higher-leverage-fix-in-this-dataset">For Gaze Interaction: Slip prevention is the higher-leverage fix (in this dataset)</a></li>
+  <li><a href="#for-hand-interaction-instrumentation-caught-non-activation" id="toc-for-hand-interaction-instrumentation-caught-non-activation" class="nav-link" data-scroll-target="#for-hand-interaction-instrumentation-caught-non-activation">For Hand Interaction: Instrumentation Caught Non-Activation</a></li>
+  <li><a href="#for-adaptation-policy-thresholds-need-calibration-validation" id="toc-for-adaptation-policy-thresholds-need-calibration-validation" class="nav-link" data-scroll-target="#for-adaptation-policy-thresholds-need-calibration-validation">For Adaptation Policy: Thresholds need calibration + validation</a></li>
+  </ul></li>
+  <li><a href="#limitations--lessons" id="toc-limitations--lessons" class="nav-link" data-scroll-target="#limitations--lessons">Limitations &amp; Lessons</a></li>
+  <li><a href="#appendix" id="toc-appendix" class="nav-link" data-scroll-target="#appendix">Appendix</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">XR Adaptive Modality: Case Study</h1>
+</div>
+
+<div>
+  <div class="description">
+    I built a remote XR interaction testbed and evaluated whether a context-aware adaptive system can reduce gaze failure modes (e.g., Midas Touch slips: accidental activations) and workload under time pressure.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mohammad Dastgheib </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">February 18, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+/* Hover help: small "i" circle */
+.tip-i{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:16px; height:16px; margin-left:6px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,.25);
+  font-size:11px; font-weight:700; line-height:1;
+  color: rgba(0,0,0,.65);
+  background: rgba(255,255,255,.85);
+  cursor: help;
+}
+.tip-i:hover{ background:#f3f0ff; border-color:#d9d0ff; }
+
+/* Case Study Web Page Styling */
+/* Limit figure width for readability */
+figure img {
+  max-width: 750px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Clean caption styling */
+figure figcaption {
+  font-size: 0.9em;
+  color: #666;
+  margin-top: 0.5em;
+  text-align: center;
+}
+
+/* Spacing for sections */
+section {
+  margin-bottom: 2em;
+}
+
+/* Hero section styling */
+.hero {
+  background: #f8f9fa;
+  padding: 1.5em;
+  border-radius: 8px;
+  margin-bottom: 2em;
+}
+
+.hero ul {
+  margin-top: 0.5em;
+}
+
+/* Portfolio figure container */
+.portfolio-figure {
+  text-align: center;
+  margin: 1.5em 0;
+}
+
+/* Tabset styling */
+.quarto-layout-panel .tab-content {
+  padding: 1em 0;
+}
+
+/* Appendix collapse */
+details {
+  margin-top: 1em;
+  padding: 1em;
+  background: #f8f9fa;
+  border-radius: 4px;
+}
+
+details summary {
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 0.5em;
+}
+</style>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  if (window.bootstrap) {
+    const triggers = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+    triggers.forEach(function (el) {
+      new bootstrap.Tooltip(el, { html: true, placement: 'top', trigger: 'hover focus' });
+    });
+  }
+});
+</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  if (!window.bootstrap || !bootstrap.Tooltip) return;
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+    el.setAttribute('tabindex', '0');
+    if (!el.dataset.bsCustomClass) el.dataset.bsCustomClass = 'tt-wide';
+    new bootstrap.Tooltip(el, { container: 'body', trigger: 'hover focus', html: true });
+  });
+});
+</script>
+
+<style>
+/* Cards + chips (surgeon-style) */
+.tldr-card{background:#ffffff;border:1px solid #e5e7eb;border-left:4px solid #0ea5e9;border-radius:12px;padding:12px 14px;margin:8px 0 14px;box-shadow:0 1px 1px rgba(16,24,40,.02)}
+.tldr-title{font-weight:700;letter-spacing:.2px;margin-bottom:.25rem}
+.tldr-text{margin:.15rem 0 .6rem;color:#111827}
+.tldr-body{margin:.15rem 0 .6rem;color:#111827;line-height:1.5}
+.tldr-chips{display:flex;flex-wrap:wrap;gap:6px}
+.tldr-chips a{display:inline-flex;align-items:center;gap:.35rem;font-size:.86rem;padding:.18rem .5rem;border-radius:999px;border:1px solid #d7dee6;background:#f8fafc;text-decoration:none;color:#0b1526}
+.tldr-chips a:hover{background:#eef6fb;border-color:#b7e1f0}
+
+.build-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:.4rem 0 1rem}
+.build-card{background:#ffffff;border:1px solid #e5e7eb;border-radius:12px;padding:12px 14px;box-shadow:0 1px 1px rgba(16,24,40,.02)}
+.build-head{display:flex;align-items:center;gap:.55rem;margin-bottom:.35rem}
+.build-icon{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:#e6f6ff;border:1px solid #bfe9ff;color:#0369a1}
+.build-title{font-weight:700;margin:0}
+.build-sub{color:#4b5563;margin:.1rem 0 0;font-size:.92rem}
+.build-list{margin:.55rem 0 0;padding-left:1.05rem}
+.build-list li{margin:.2rem 0}
+.build-kicker{font-size:.75rem;font-weight:600;text-transform:uppercase;letter-spacing:.5px;color:#6b7280;margin-bottom:.4rem}
+.build-card h3{font-weight:700;font-size:1.05rem;margin:.2rem 0 .4rem;color:#111827}
+.muted{color:#6b7280;font-size:.92rem;line-height:1.5;margin:.3rem 0}
+
+.help-icon{display:inline-flex;align-items:center;justify-content:center;width:1.05em;height:1.05em;border-radius:999px;border:1px solid #e5e7eb;color:#0ea5e9;font-size:.8em;margin-left:.25rem;cursor:help;vertical-align:baseline}
+.help-icon:hover{background:#e6f6ff;border-color:#bfe9ff}
+.tt-wide .tooltip-inner{max-width:360px;text-align:left;line-height:1.25;padding:.45rem .55rem}
+.small-muted{color:#6b7280;font-size:.92rem}
+
+/* Option 1: Minimalist underline with animated expand */
+details.tech-details{
+  margin:1.5rem 0;
+  border:none;
+  background:transparent;
+}
+details.tech-details summary{
+  cursor:pointer;
+  font-weight:600;
+  color:#111827;
+  list-style:none;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 0;
+  user-select:none;
+  position:relative;
+  font-size:1.1rem;
+  transition:color .2s ease;
+}
+details.tech-details summary::-webkit-details-marker{display:none}
+details.tech-details summary::marker{display:none}
+details.tech-details summary::before{
+  content:"";
+  position:absolute;
+  bottom:0;
+  left:0;
+  width:0;
+  height:2px;
+  background:#6d28d9;
+  transition:width .3s ease;
+}
+details.tech-details summary:hover::before,
+details.tech-details[open] summary::before{
+  width:100%;
+}
+details.tech-details summary::after{
+  content:"▼";
+  color:#6b7280;
+  font-size:.75em;
+  transition:transform .3s ease, color .2s ease;
+  margin-left:4px;
+}
+details.tech-details[open] summary::after{
+  transform:rotate(180deg);
+  color:#6d28d9;
+}
+details.tech-details summary:hover{
+  color:#6d28d9;
+}
+details.tech-details > *:not(summary){
+  margin-top:1.5rem;
+  padding-top:1.5rem;
+  border-top:1px solid #e5e7eb;
+  animation:fadeIn .3s ease;
+}
+@keyframes fadeIn{
+  from{opacity:0;transform:translateY(-10px)}
+  to{opacity:1;transform:translateY(0)}
+}
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>
+/* --- Minimal portfolio theme (inline; matches surgeon style) --- */
+:root{
+  --ink:#0b1526; --muted:#4b5563; --bg:#f7f9fc; --card:#ffffff;
+  --accent:#6d28d9; --border:#e5e7eb; --soft:#f8fafc;
+}
+body{ color:var(--ink); background:var(--bg); }
+a{ color:var(--accent); }
+.quarto-title-banner{ background:var(--card); border-bottom:1px solid var(--border); }
+.figure img, video{ border:1px solid var(--border); border-radius:12px; }
+
+/* --- Hero / TL;DR card (same pattern as surgeon TLDR) --- */
+.tldr-card{
+  background:#ffffff;border:1px solid #e5e7eb;border-left:4px solid var(--accent);
+  border-radius:12px;padding:12px 14px;margin:10px 0 14px;
+  box-shadow:0 1px 1px rgba(16,24,40,.02)
+}
+.tldr-title{font-weight:750;letter-spacing:.2px;margin-bottom:.25rem}
+.tldr-text{margin:.15rem 0 .6rem;color:#111827}
+.tldr-kpis{display:flex;flex-wrap:wrap;gap:10px;margin:.35rem 0 .55rem}
+.kpi{background:var(--soft);border:1px solid #d7dee6;border-radius:12px;padding:8px 10px;min-width:170px}
+.kpi .lbl{font-size:.78rem;color:var(--muted);margin-bottom:2px}
+.kpi .val{font-weight:750;font-variant-numeric:tabular-nums}
+.tldr-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.tldr-chips a{
+  display:inline-flex;align-items:center;gap:.35rem;font-size:.86rem;
+  padding:.18rem .5rem;border-radius:999px;border:1px solid #d7dee6;
+  background:#f8fafc;text-decoration:none;color:#0b1526
+}
+.tldr-chips a:hover{background:#f3f0ff;border-color:#d9d0ff}
+.tldr-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+.tldr-actions a.btn{
+  display:inline-flex;align-items:center;gap:.45rem;font-size:.88rem;
+  padding:.32rem .68rem;border-radius:10px;border:1px solid #d7dee6;
+  background:#ffffff;color:#0b1526;text-decoration:none
+}
+.tldr-actions a.btn.primary{background:#f3e8ff;border-color:#e9d5ff}
+.tldr-actions a.btn.disabled{opacity:.55;cursor:not-allowed;pointer-events:none}
+
+/* --- Repo card (same pattern as surgeon repo-grid) --- */
+.repo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px;margin:.4rem 0 1rem}
+.repo-card{
+  background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px 14px 12px;
+  box-shadow:0 1px 1px rgba(16,24,40,.02);transition:transform .16s ease,box-shadow .16s ease
+}
+.repo-card:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(16,24,40,.06);border-color:#e9d5ff}
+.repo-card:focus-within{outline:2px solid #e9d5ff;outline-offset:2px}
+.repo-head{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.repo-head .stack{display:flex;align-items:center;gap:8px}
+.repo-head i{font-size:1.05rem;color:var(--accent)}
+.repo-title{font-weight:650}
+.repo-desc{color:#4b5563;margin:.35rem 0 .5rem;font-size:.95rem}
+.repo-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.repo-badges{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.repo-badges img{height:18px;border-radius:6px;border:1px solid #edf0f3;display:block}
+.repo-badges a{display:inline-flex;align-items:center;line-height:0}
+.repo-badges a img{display:block}
+.repo-actions{display:flex;gap:8px;flex-wrap:wrap}
+.repo-actions a.btn{
+  display:inline-flex;align-items:center;gap:.45rem;font-size:.85rem;padding:.30rem .62rem;border-radius:8px;
+  border:1px solid #d7dee6;background:#f8fafc;color:#0b1526;text-decoration:none
+}
+.repo-actions a.btn.primary{background:#f3e8ff;border-color:#e9d5ff}
+.repo-actions a.btn i{font-size:1rem}
+</style>
+
+<div class="tldr-card" role="note" aria-label="TL;DR">
+  <div class="tldr-title">TL;DR</div>
+  <div class="tldr-text">
+    I built a remote XR interaction testbed and evaluated whether a <b>context-aware adaptive system</b> can reduce gaze failure modes (e.g., <em>Midas Touch slips: accidental activations</em>) and workload under time pressure.
+  </div>
+
+  <!-- KPI placeholders (you can update values later; keep format) -->
+  <div class="tldr-kpis">
+    <div class="kpi">
+      <div class="lbl">Design</div>
+      <div class="val">2×2×2 within-subjects</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">Participants</div>
+      <div class="val">N=81 hand / N=81 gaze</div>
+    </div>
+    <div class="kpi">
+      <div class="lbl">Core metrics</div>
+      <div class="val">TP (throughput) · Error · MT (movement time) · TLX (workload)</div>
+    </div>
+  </div>
+
+  <div class="tldr-chips">
+    <a href="#design--methods"><i class="bi bi-diagram-3"></i> Methods</a>
+    <a href="#what-i-built"><i class="bi bi-boxes"></i> What I built</a>
+    <a href="#key-results-60-seconds"><i class="bi bi-graph-up-arrow"></i> Key results</a>
+    <a href="#failure-modes-xr-specific"><i class="bi bi-bullseye"></i> Failure modes</a>
+    <a href="#limitations--lessons"><i class="bi bi-exclamation-triangle"></i> Limitations</a>
+  </div>
+</div>
+
+<div class="repo-grid">
+  <div class="repo-card" role="group" aria-label="XR Adaptive Modality repository">
+    <div class="repo-head">
+      <div class="stack">
+        <i class="bi bi-vr" aria-hidden="true"></i>
+        <div class="repo-title">xr-adaptive-modality-2025</div>
+      </div>
+      <i class="bi bi-github" aria-hidden="true" title="GitHub repository"></i>
+    </div>
+
+    <div class="repo-desc">
+      React/TypeScript XR pointing testbed + policy-driven adaptation + analysis pipeline.
+    </div>
+
+    <div class="repo-bar">
+      <div class="repo-badges">
+        <a href="https://vercel.com" target="_blank" rel="noopener">
+          <img alt="Vercel" loading="lazy" src="https://vercelbadge.vercel.app/api/mohdasti/xr-adaptive-modality-2025">
+        </a>
+        <img alt="License" loading="lazy" src="https://img.shields.io/badge/license-GPLv3-blue.svg">
+        <a href="https://doi.org/10.5281/zenodo.18204915" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;line-height:0;">
+          <img alt="DOI" loading="lazy" src="https://zenodo.org/badge/DOI/10.5281/zenodo.18204915.svg" style="height:18px;border-radius:6px;border:1px solid #edf0f3;display:block;">
+        </a>
+        <img alt="React" loading="lazy" src="https://img.shields.io/badge/React-18-61DAFB?logo=react&amp;logoColor=white">
+        <img alt="TypeScript" loading="lazy" src="https://img.shields.io/badge/TypeScript-007ACC?logo=typescript&amp;logoColor=white">
+        <img alt="R" loading="lazy" src="https://img.shields.io/badge/R-4.4.0-276DC3?logo=r&amp;logoColor=white">
+        <img alt="Python" loading="lazy" src="https://img.shields.io/badge/Python-3-3776AB?logo=python&amp;logoColor=white">
+      </div>
+
+      <div class="repo-actions">
+        <a class="btn primary" href="https://github.com/mohdasti/xr-adaptive-modality-2025" target="_blank" rel="noopener">
+          <i class="bi bi-github" aria-hidden="true"></i> Open repo
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<section id="what-i-built" class="level2">
+<h2 class="anchored" data-anchor-id="what-i-built">What I Built</h2>
+<div class="tldr-card" role="note" aria-label="What I built">
+  <div class="tldr-title">What I shipped (end-to-end)</div>
+  <div class="tldr-body">
+    I built a remote XR interaction research platform—from task UI to analysis—so I could quantify speed–accuracy tradeoffs, surface XR-specific failure modes (e.g., Midas Touch slips), and evaluate adaptive UI policies with full replayable telemetry.
+  </div>
+  <div class="tldr-chips">
+    <a href="https://github.com/mohdasti/xr-adaptive-modality-2025" target="_blank" rel="noopener">GitHub repo</a>
+    <a href="#appendix">Appendix</a>
+  </div>
+</div>
+
+<div class="build-grid">
+  <div class="build-card">
+    <div class="build-kicker">Study application</div>
+    <h3 class="anchored">React + TypeScript experiment UI</h3>
+    <p class="muted">Responsive Fitts' Law task + HUD, two modalities, pressure manipulation, and block-level workload collection.</p>
+  </div>
+
+  <div class="build-card">
+    <div class="build-kicker">Gaze simulation</div>
+    <h3 class="anchored">Psychophysics-inspired gaze proxy</h3>
+    <p class="muted">Fixation-state Gaussian jitter, saccadic suppression, and confirmation behavior to reproduce gaze failure modes in remote testing.</p>
+  </div>
+
+  <div class="build-card">
+    <div class="build-kicker">Adaptive system</div>
+    <h3 class="anchored">Policy engine + replayable diagnostics</h3>
+    <p class="muted">Threshold triggers with hysteresis, policy state logging, and replay summaries to verify when adaptation did (or didn't) execute.</p>
+  </div>
+
+  <div class="build-card">
+    <div class="build-kicker">Analysis</div>
+    <h3 class="anchored">Reproducible reporting pipeline</h3>
+    <p class="muted">Mixed-effects models + LBA cognitive modeling + Quarto-based reproducible analysis. All figures and tables regenerate from raw logs with consistent QC and model specifications.</p>
+  </div>
+</div>
+<details>
+<summary>
+<strong>Implementation notes (optional)</strong> — for engineers
+</summary>
+<p><strong>Development approach:</strong> Despite not being a software/web developer by training, I delivered this full-stack research platform efficiently using <strong>Cursor AI</strong> for code generation and iteration, enabling rapid prototyping and deployment. The entire system—from React UI to analysis pipeline—was built and deployed to <strong>Vercel</strong> in a matter of weeks, demonstrating that modern AI-assisted development tools can bridge domain expertise gaps.</p>
+<p><strong>Tech stack:</strong></p>
+<ul>
+<li><strong>Frontend:</strong> React 18 + TypeScript, Vite build tool, React Router for multi-page flow</li>
+<li><strong>Deployment:</strong> Vercel (automatic CI/CD from GitHub, zero-config deployment)</li>
+<li><strong>Analysis:</strong> R (tidyverse, lme4, emmeans) + Quarto for reproducible reporting</li>
+<li><strong>Data export:</strong> CSV download + optional EmailJS submission (compressed with pako)</li>
+</ul>
+<p><strong>Architecture components:</strong></p>
+<ul>
+<li><strong>Task UI</strong> (<code>app/src/components/FittsTask.tsx</code>): Canvas-based ISO 9241-9 compliant Fitts’ Law implementation with circular target layout, real-time movement tracking, and hit/miss detection</li>
+<li><strong>Gaze proxy</strong> (<code>app/src/lib/modality.ts</code>): Psychophysics simulation with fixation-state Gaussian jitter, saccadic suppression (velocity-based freezing), and confirmation model (dwell/SPACE + tolerance ring)</li>
+<li><strong>Policy engine</strong> (<code>app/src/lib/policy.ts</code>): Rule-based adaptation with RT percentile thresholds, error burst detection, hysteresis (N-trial smoothing), and replayable state logs for debugging</li>
+<li><strong>Telemetry collector</strong> (<code>app/src/lib/telemetry/collector.ts</code>): Structured event logging (trial lifecycle, movement samples at 60Hz, display metadata, policy state changes) with automatic QC flagging (focus/blur, invalid RTs, display violations)</li>
+<li><strong>Multi-page flow:</strong> React Router with routes for consent → demographics → system check → calibration → task → debrief</li>
+</ul>
+<p><strong>System Overview:</strong></p>
+<ul>
+<li><strong>Stack:</strong> React 18 + TypeScript, deployed on Vercel</li>
+<li><strong>Experiment Engine:</strong> Block/condition assignment using Williams counterbalancing sequences</li>
+<li><strong>Deployment:</strong> Vercel with automated CI/CD</li>
+</ul>
+<p><strong>Telemetry Schema:</strong></p>
+<p>The telemetry system logs comprehensive per-trial data including trial metadata, performance metrics, Fitts’ parameters, endpoint data, movement samples (60Hz), display state, and policy state. Key fields include:</p>
+<ul>
+<li><strong>Trial Metadata:</strong> trial_id, session_id, participant_id, taskType</li>
+<li><strong>Performance Metrics:</strong> rt_ms, correct, movement_time_ms, submovement_count</li>
+<li><strong>Fitts’ Parameters:</strong> A (amplitude), W (width), ID (index of difficulty), target_width_px</li>
+<li><strong>Endpoint Data:</strong> endpoint_x/y, endpoint_error_px, target_center_x/y, path_length_px, peak_velocity_px_s, curvature_index</li>
+<li><strong>Movement Samples:</strong> 60Hz sampling with sd_along_px, sd_ortho_px for path analysis</li>
+<li><strong>Display State:</strong> screen_width, screen_height, device_pixel_ratio</li>
+<li><strong>Policy State:</strong> adaptation_triggered (boolean), width_scale_factor (applied scaling)</li>
+</ul>
+<p><strong>Key technical decisions:</strong></p>
+<ul>
+<li><strong>Client-side only:</strong> All processing happens in the browser (no backend), enabling fast deployment and privacy-preserving data collection</li>
+<li><strong>Event-driven architecture:</strong> Global event bus for inter-component communication (TaskPane ↔︎ HUDPane ↔︎ LoggerPane)</li>
+<li><strong>Policy replay system:</strong> Every policy decision is logged with full context, enabling post-hoc analysis of “why adaptation did/didn’t trigger”</li>
+<li><strong>Reproducible analysis:</strong> Quarto document (<code>Report.qmd</code>) regenerates all figures/tables from raw CSV logs with consistent QC exclusions</li>
+</ul>
+<p><strong>File structure highlights:</strong></p>
+<ul>
+<li><code>app/src/routes/</code> — Multi-page flow components (Intro, Demographics, SystemCheck, Calibration, Task, Debrief)</li>
+<li><code>app/src/components/</code> — Reusable UI components (FittsTask, TaskPane, HUDPane, TLXForm)</li>
+<li><code>app/src/lib/</code> — Core logic (policy engine, modality simulation, telemetry, CSV export)</li>
+<li><code>policy/</code> — JSON policy configuration files (default vs locked variants)</li>
+<li><code>analysis/</code> — R scripts for data processing, QC, and statistical modeling</li>
+<li><code>Report.qmd</code> — Main Quarto analysis document (regenerates all outputs)</li>
+</ul>
+<p><strong>Performance &amp; optimization:</strong></p>
+<ul>
+<li>60Hz movement sampling for smooth cursor tracking</li>
+<li>Compressed telemetry export (pako gzip) for EmailJS size limits</li>
+<li>Lazy loading and code splitting via Vite</li>
+<li>TypeScript strict mode for type safety and early error detection</li>
+</ul>
+</details>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/architecture.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="System architecture: Remote XR interaction testbed with client-side task execution, client-side telemetry collection, and adaptive policy engine. All processing occurs in the browser; data is exported via CSV download or optional EmailJS submission."><img src="images/architecture.png" class="img-fluid figure-img" style="width:100.0%" alt="System architecture diagram"></a></p>
+<figcaption>System architecture: Remote XR interaction testbed with client-side task execution, client-side telemetry collection, and adaptive policy engine. All processing occurs in the browser; data is exported via CSV download or optional EmailJS submission.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="design--methods" class="level2">
+<h2 class="anchored" data-anchor-id="design--methods">Design &amp; Methods</h2>
+<section id="experimental-procedure-participant-journey" class="level3">
+<h3 class="anchored" data-anchor-id="experimental-procedure-participant-journey">Experimental Procedure &amp; Participant Journey</h3>
+<p>This visualization outlines the complete participant journey from onboarding through data collection, showing the factorial design structure and key methodological details:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/participant_journey_final.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Participant Journey &amp; Design Structure: Complete experimental procedure from consent through debrief, showing factorial conditions (Modality × UI Mode × Pressure), calibration steps, and data collection flow"><img src="images/participant_journey_final.png" class="img-fluid figure-img" style="width:100.0%" alt="Participant Journey &amp; Design Structure diagram"></a></p>
+<figcaption>Participant Journey &amp; Design Structure: Complete experimental procedure from consent through debrief, showing factorial conditions (Modality × UI Mode × Pressure), calibration steps, and data collection flow</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Key Design Elements Shown:</strong></p>
+<ul>
+<li><strong>Screen Calibration</strong>: Credit card method for calculating pixels-per-millimeter (px/mm) and pixels-per-degree (PPD) at assumed 60cm viewing distance</li>
+<li><strong>Factorial Conditions</strong>: 2×2×2 within-subjects design (Modality: Hand/Gaze × UI Mode: Static/Adaptive (declutter for gaze; width inflation for hand) × Pressure: OFF/ON)</li>
+<li><strong>Fitts’ Law Task</strong>: ISO 9241-9 compliant target acquisition with repeated trials</li>
+<li><strong>NASA-TLX Assessment</strong>: 6-item workload questionnaire (0-100 scales) after each block</li>
+<li><strong>Data Logging</strong>: Comprehensive event tracking (<code>trial:start</code>, <code>trial:end</code>, <code>trial:error</code>)</li>
+</ul>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Tip
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Quick primer (so the results make sense)</strong></p>
+<p><strong>Why this task?</strong> We use a <strong>Fitts’ Law pointing task</strong> because it’s the standard HCI benchmark for target selection: it isolates the core loop (move → acquire → confirm) while systematically controlling difficulty via target <strong>distance (A)</strong> and <strong>width (W)</strong>.</p>
+<p><strong>How to read the metrics (direction matters):</strong></p>
+<ul>
+<li><strong>Throughput (TP, bits/s)</strong> = <em>speed–accuracy efficiency</em> (higher = better). It rewards being fast <strong>without</strong> getting sloppy.</li>
+<li><strong>Movement Time (MT, s)</strong> = time to complete a selection (lower = faster).</li>
+<li><strong>Error rate (%)</strong> = failed selections (lower = more reliable).</li>
+<li><strong>NASA-TLX (0–100)</strong> = perceived workload (lower = easier). We report the unweighted average of the 6 subscales.</li>
+</ul>
+<p><strong>XR failure-mode vocabulary:</strong></p>
+<ul>
+<li><strong>Slip</strong> = accidental activation (classic “Midas Touch” pattern).</li>
+<li><strong>Miss/timeout</strong> = failed selection due to precision or timing constraints.</li>
+</ul>
+<p><strong>Why Fitts’ Law + Throughput?</strong> We use a Fitts’ Law pointing task (ISO 9241-9 compliant) because it isolates the core interaction loop (“move → acquire → confirm”) while systematically controlling difficulty. Rather than looking at speed and errors separately, we report <strong>Throughput (TP)</strong> as the primary performance metric—it combines movement time and effective accuracy into a single efficiency score (higher = better). This helps avoid misleading conclusions like “faster, but much sloppier” or “more accurate, but only because users slowed down.”</p>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/Task_layout.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Task UI overview. The study uses a Fitts’ Law target-acquisition task: participants select red targets on a central canvas while a side HUD shows modality and block-level feedback (errors, progress)."><img src="images/Task_layout.png" class="img-fluid figure-img" style="width:100.0%" alt="Task layout diagram"></a></p>
+<figcaption>Task UI overview. The study uses a Fitts’ Law target-acquisition task: participants select red targets on a central canvas while a side HUD shows modality and block-level feedback (errors, progress).</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="key-results-60-seconds" class="level2">
+<h2 class="anchored" data-anchor-id="key-results-60-seconds">Key Results</h2>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/results_dashboard.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="Results Dashboard: Comparison of key metrics by modality"><img src="images/results_dashboard.png" class="img-fluid figure-img" width="672" alt="Results Dashboard: Comparison of key metrics by modality"></a></p>
+<figcaption>Results Dashboard: Comparison of key metrics by modality</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p>We measured subjective workload using the <strong>NASA Task Load Index (NASA-TLX) questionnaire</strong>, a standardized 6-item survey where participants rate their perceived workload on 0–100 scales across six dimensions (Mental Demand, Physical Demand, Temporal Demand, Performance, Effort, Frustration). We report the unweighted average (0–100). It’s widely used in HCI because it captures perceived effort and frustration that can increase even when average performance looks similar.</p>
+<p><strong>Three Takeaways:</strong></p>
+<ol type="1">
+<li><strong>Hand input outperformed gaze:</strong> Higher <strong>Throughput (TP; speed–accuracy efficiency)</strong> (5.15 vs 4.70 bits/s), lower error rate (1.7% vs 18.6%), lower <strong>NASA-TLX (workload)</strong> (40.4 vs 47.0)</li>
+<li><strong>Gaze errors are predominantly slips (accidental activations / Midas Touch) (99.2%),</strong> not timeouts—validating the Midas Touch problem in XR gaze interaction</li>
+<li><strong>Adaptive UI (declutter: removes non-essential visual elements) showed modest benefits</strong> in gaze: slightly lower error rate (18.2% vs 19.1%)</li>
+</ol>
+<div class="cell">
+<div class="cell-output-display">
+<div id="crepoznfyo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#crepoznfyo table {
+  font-family: 'system-ui, -apple-system', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#crepoznfyo thead, #crepoznfyo tbody, #crepoznfyo tfoot, #crepoznfyo tr, #crepoznfyo td, #crepoznfyo th {
+  border-style: none;
+}
+
+#crepoznfyo p {
+  margin: 0;
+  padding: 0;
+}
+
+#crepoznfyo .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #6D28D9;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#crepoznfyo .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#crepoznfyo .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#crepoznfyo .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#crepoznfyo .gt_heading {
+  background-color: #F8F9FA;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#crepoznfyo .gt_bottom_border {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#crepoznfyo .gt_col_headings {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #E5E7EB;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#crepoznfyo .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#crepoznfyo .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#crepoznfyo .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#crepoznfyo .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#crepoznfyo .gt_column_spanner {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #E5E7EB;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#crepoznfyo .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#crepoznfyo .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#crepoznfyo .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#crepoznfyo .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#crepoznfyo .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#crepoznfyo .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #F1F3F5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #F1F3F5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #F1F3F5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#crepoznfyo .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#crepoznfyo .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#crepoznfyo .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#crepoznfyo .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#crepoznfyo .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#crepoznfyo .gt_first_summary_row {
+  border-top-style: none;
+  border-top-color: #D3D3D3;
+}
+
+#crepoznfyo .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#crepoznfyo .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#crepoznfyo .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#crepoznfyo .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: none;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#crepoznfyo .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#crepoznfyo .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#crepoznfyo .gt_table_body {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#crepoznfyo .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#crepoznfyo .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#crepoznfyo .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#crepoznfyo .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#crepoznfyo .gt_left {
+  text-align: left;
+}
+
+#crepoznfyo .gt_center {
+  text-align: center;
+}
+
+#crepoznfyo .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#crepoznfyo .gt_font_normal {
+  font-weight: normal;
+}
+
+#crepoznfyo .gt_font_bold {
+  font-weight: bold;
+}
+
+#crepoznfyo .gt_font_italic {
+  font-style: italic;
+}
+
+#crepoznfyo .gt_super {
+  font-size: 65%;
+}
+
+#crepoznfyo .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#crepoznfyo .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#crepoznfyo .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#crepoznfyo .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#crepoznfyo .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#crepoznfyo .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#crepoznfyo .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#crepoznfyo .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#crepoznfyo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="gt_heading header">
+<th colspan="5" class="gt_heading gt_title gt_font_normal">Results at a Glance</th>
+</tr>
+<tr class="gt_heading even">
+<th colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Mean [95% CI] by Modality<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+</tr>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="metric" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Metric</th>
+<th colspan="2" id="Hand Modality" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="color: #6D28D9; font-weight: bold" scope="colgroup"><div class="gt_column_spanner">
+Hand Modality
+</div></th>
+<th colspan="2" id="Gaze Modality" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" style="color: #6D28D9; font-weight: bold" scope="colgroup"><div class="gt_column_spanner">
+Gaze Modality
+</div></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="Hand" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Hand</th>
+<th id="Hand_N" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">N</th>
+<th id="Gaze" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Gaze</th>
+<th id="Gaze_N" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">N</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="metric" style="background-color: #F8F9FA">Error Rate (%)</td>
+<td class="gt_row gt_center" headers="Hand" style="background-color: #F8F9FA">1.75 [1.23, 2.26]</td>
+<td class="gt_row gt_center" headers="Hand_N" style="background-color: #F8F9FA">297</td>
+<td class="gt_row gt_center" headers="Gaze" style="background-color: #F8F9FA">18.65 [17.26, 20.04]</td>
+<td class="gt_row gt_center" headers="Gaze_N" style="background-color: #F8F9FA">314</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="metric">Throughput (bits/s)</td>
+<td class="gt_row gt_center" headers="Hand">5.15 [5.06, 5.25]</td>
+<td class="gt_row gt_center" headers="Hand_N">297</td>
+<td class="gt_row gt_center" headers="Gaze">4.70 [4.56, 4.83]</td>
+<td class="gt_row gt_center" headers="Gaze_N">313</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="metric" style="background-color: #F8F9FA">Movement Time (s)</td>
+<td class="gt_row gt_center" headers="Hand" style="background-color: #F8F9FA">1.09 [1.07, 1.11]</td>
+<td class="gt_row gt_center" headers="Hand_N" style="background-color: #F8F9FA">297</td>
+<td class="gt_row gt_center" headers="Gaze" style="background-color: #F8F9FA">1.19 [1.16, 1.23]</td>
+<td class="gt_row gt_center" headers="Gaze_N" style="background-color: #F8F9FA">314</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="metric">NASA-TLX (0-100)</td>
+<td class="gt_row gt_center" headers="Hand">40.40 [37.03, 43.76]</td>
+<td class="gt_row gt_center" headers="Hand_N">81</td>
+<td class="gt_row gt_center" headers="Gaze">47.03 [43.87, 50.18]</td>
+<td class="gt_row gt_center" headers="Gaze_N">81</td>
+</tr>
+</tbody><tfoot>
+<tr class="gt_footnotes odd">
+<td colspan="5" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Error rate, throughput, movement time, and NASA-TLX workload scores. We measured subjective workload using the NASA Task Load Index (NASA-TLX) questionnaire, a standardized 6-item survey (0–100 scales). We report unweighted average scores. It's widely used in HCI because it captures perceived effort and frustration that can increase even when average performance looks similar.</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="failure-modes-xr-specific" class="level2">
+<h2 class="anchored" data-anchor-id="failure-modes-xr-specific">Failure Modes (XR-specific)</h2>
+<p><strong>What this section shows:</strong> XR-specific failure patterns—ways that gaze and hand interactions fail differently, with gaze showing the classic “Midas Touch” problem (accidental activations).</p>
+<section id="error-type-breakdown" class="level3">
+<h3 class="anchored" data-anchor-id="error-type-breakdown">Error Type Breakdown</h3>
+<p><strong>Gaze errors:</strong> 99.2% slips (accidental activations), 0.8% timeouts<br>
+<strong>Hand errors:</strong> 95.7% misses, 4.3% timeouts</p>
+<p>This validates a core UX failure mode: gaze interaction suffers from intent ambiguity (looking to see vs.&nbsp;looking to select). The Midas Touch problem is real and measurable.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="hrqudgedov" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hrqudgedov table {
+  font-family: 'system-ui, -apple-system', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#hrqudgedov thead, #hrqudgedov tbody, #hrqudgedov tfoot, #hrqudgedov tr, #hrqudgedov td, #hrqudgedov th {
+  border-style: none;
+}
+
+#hrqudgedov p {
+  margin: 0;
+  padding: 0;
+}
+
+#hrqudgedov .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #6D28D9;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#hrqudgedov .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#hrqudgedov .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#hrqudgedov .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#hrqudgedov .gt_heading {
+  background-color: #F8F9FA;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hrqudgedov .gt_bottom_border {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hrqudgedov .gt_col_headings {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #E5E7EB;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#hrqudgedov .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#hrqudgedov .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#hrqudgedov .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#hrqudgedov .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#hrqudgedov .gt_column_spanner {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #E5E7EB;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#hrqudgedov .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#hrqudgedov .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#hrqudgedov .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#hrqudgedov .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#hrqudgedov .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#hrqudgedov .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#hrqudgedov .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hrqudgedov .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#hrqudgedov .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#hrqudgedov .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#hrqudgedov .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hrqudgedov .gt_first_summary_row {
+  border-top-style: none;
+  border-top-color: #D3D3D3;
+}
+
+#hrqudgedov .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#hrqudgedov .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hrqudgedov .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hrqudgedov .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: none;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#hrqudgedov .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hrqudgedov .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#hrqudgedov .gt_table_body {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#hrqudgedov .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hrqudgedov .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hrqudgedov .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#hrqudgedov .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#hrqudgedov .gt_left {
+  text-align: left;
+}
+
+#hrqudgedov .gt_center {
+  text-align: center;
+}
+
+#hrqudgedov .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#hrqudgedov .gt_font_normal {
+  font-weight: normal;
+}
+
+#hrqudgedov .gt_font_bold {
+  font-weight: bold;
+}
+
+#hrqudgedov .gt_font_italic {
+  font-style: italic;
+}
+
+#hrqudgedov .gt_super {
+  font-size: 65%;
+}
+
+#hrqudgedov .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#hrqudgedov .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#hrqudgedov .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#hrqudgedov .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#hrqudgedov .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#hrqudgedov .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#hrqudgedov .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#hrqudgedov .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#hrqudgedov div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="gt_heading header">
+<th colspan="5" class="gt_heading gt_title gt_font_normal">Error Type Breakdown</th>
+</tr>
+<tr class="gt_heading even">
+<th colspan="5" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Distribution of error types by modality</th>
+</tr>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="err_category" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Error Type</th>
+<th colspan="2" id="Hand Modality" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Hand Modality
+</div></th>
+<th colspan="2" id="Gaze Modality" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Gaze Modality
+</div></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="Hand_N" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">N</th>
+<th id="Hand_Pct" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">%</th>
+<th id="Gaze_N" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">N</th>
+<th id="Gaze_Pct" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" scope="col">%</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="err_category" style="color: #4DBBD5; font-weight: bold">Miss</td>
+<td class="gt_row gt_center" headers="Hand_N" style="color: #4DBBD5; font-weight: bold">110</td>
+<td class="gt_row gt_center" headers="Hand_Pct" style="color: #4DBBD5; font-weight: bold">95.7%</td>
+<td class="gt_row gt_center" headers="Gaze_N" style="color: #4DBBD5; font-weight: bold">0</td>
+<td class="gt_row gt_center" headers="Gaze_Pct" style="color: #4DBBD5; font-weight: bold">0.0%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="err_category" style="color: #00A087; font-weight: bold">Timeout</td>
+<td class="gt_row gt_center" headers="Hand_N" style="color: #00A087; font-weight: bold">5</td>
+<td class="gt_row gt_center" headers="Hand_Pct" style="color: #00A087; font-weight: bold">4.3%</td>
+<td class="gt_row gt_center" headers="Gaze_N" style="color: #00A087; font-weight: bold">12</td>
+<td class="gt_row gt_center" headers="Gaze_Pct" style="color: #00A087; font-weight: bold">0.8%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="err_category" style="color: #E64B35; font-weight: bold">Slip</td>
+<td class="gt_row gt_center" headers="Hand_N" style="color: #E64B35; font-weight: bold">0</td>
+<td class="gt_row gt_center" headers="Hand_Pct" style="color: #E64B35; font-weight: bold">0.0%</td>
+<td class="gt_row gt_center" headers="Gaze_N" style="color: #E64B35; font-weight: bold">1455</td>
+<td class="gt_row gt_center" headers="Gaze_Pct" style="color: #E64B35; font-weight: bold">99.2%</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/error_type_composition.png" class="lightbox" data-gallery="quarto-lightbox-gallery-5" title="Error Type Composition by Modality"><img src="images/error_type_composition.png" class="img-fluid figure-img" width="1008" alt="Error Type Composition by Modality"></a></p>
+<figcaption>Error Type Composition by Modality</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="spatial-error-patterns" class="level3">
+<h3 class="anchored" data-anchor-id="spatial-error-patterns">Spatial Error Patterns</h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true">Endpoint Density Heatmap</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false">Spatial Error Rate Heatmap</a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Static</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Adaptive</a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/heatmap_endpoint_density.png" class="lightbox" data-gallery="quarto-lightbox-gallery-6" title="Endpoint Density: Static condition. White dashed lines mark target center (0,0)."><img src="images/heatmap_endpoint_density.png" class="img-fluid figure-img" width="720" alt="Endpoint Density: Static condition. White dashed lines mark target center (0,0)."></a></p>
+<figcaption>Endpoint Density: Static condition. White dashed lines mark target center (0,0).</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/heatmap_endpoint_density.png" class="lightbox" data-gallery="quarto-lightbox-gallery-7" title="Endpoint Density: Adaptive condition"><img src="images/heatmap_endpoint_density.png" class="img-fluid figure-img" width="720" alt="Endpoint Density: Adaptive condition"></a></p>
+<figcaption>Endpoint Density: Adaptive condition</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>What to look for:</strong> Density clusters show where selection endpoints actually land relative to target center (0,0). The white dashed lines mark the target center. Bright yellow/orange indicates high density (many endpoints), dark purple indicates low density. Compare Adaptive vs Static to see if declutter affects endpoint clustering patterns.</p>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Hand</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Gaze</a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/heatmap_spatial_errors.png" class="lightbox" data-gallery="quarto-lightbox-gallery-8" title="Spatial Error Rate: Hand modality"><img src="images/heatmap_spatial_errors.png" class="img-fluid figure-img" width="672" alt="Spatial Error Rate: Hand modality"></a></p>
+<figcaption>Spatial Error Rate: Hand modality</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/heatmap_spatial_errors.png" class="lightbox" data-gallery="quarto-lightbox-gallery-9" title="Spatial Error Rate: Gaze modality"><img src="images/heatmap_spatial_errors.png" class="img-fluid figure-img" width="672" alt="Spatial Error Rate: Gaze modality"></a></p>
+<figcaption>Spatial Error Rate: Gaze modality</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<p><strong>What to look for:</strong> Warmer colors indicate higher error rates. Compare Hand vs Gaze to see if certain screen regions show consistently higher errors—this could indicate UI layout issues or visual attention patterns.</p>
+</div>
+</div>
+</div>
+<details class="tech-details">
+<summary>
+<strong>Metric cheat sheet (optional)</strong>
+</summary>
+<p><strong>Fitts’ Law difficulty (standard form):</strong></p>
+<p><span class="math display">\mathrm{ID} = \log_2\left(\frac{A}{W} + 1\right)</span></p>
+<p><em>Units:</em> bits<br>
+<em>Variables:</em> <span class="math inline">A</span> = target distance (px), <span class="math inline">W</span> = target width (px)</p>
+<p><strong>Effective width (ISO 9241-9):</strong></p>
+<p><span class="math display">W_e = 4.133 \times \mathrm{SD}(\mathrm{endpoint\ error})</span></p>
+<p><em>Units:</em> px<br>
+<em>Note:</em> Endpoint error is measured along the task axis (projected error)</p>
+<p><strong>Effective difficulty:</strong></p>
+<p><span class="math display">\mathrm{ID}_e = \log_2\left(\frac{A}{W_e} + 1\right)</span></p>
+<p><em>Units:</em> bits<br>
+<em>Note:</em> Uses effective width instead of nominal width to account for actual user accuracy</p>
+<p><strong>Throughput (TP):</strong></p>
+<p><span class="math display">\mathrm{TP} = \frac{\mathrm{ID}_e}{\mathrm{MT}}</span></p>
+<p><em>Units:</em> bits/s<br>
+<em>Variables:</em> MT = movement time (s)<br>
+<em>Interpretation:</em> Higher TP = better speed–accuracy efficiency</p>
+</details>
+<p><strong>Task:</strong> Fitts’ law pointing with varying target distances (A) and widths (W).<br>
+<strong>Design:</strong> 2×2×2 within-subjects factorial (modality × UI mode × pressure)</p>
+<p><strong>Conditions:</strong> - Modality: Hand (mouse) vs.&nbsp;Gaze (simulated) - UI Mode: Static vs.&nbsp;Adaptive (declutter for gaze: removes non-essential visual elements; width inflation for hand: increases target width, but not activated in this dataset) - Pressure: Low (0) vs.&nbsp;High (1) cognitive load</p>
+<p><strong>Participants:</strong> N = 81 hand (mouse users), N = 81 gaze (mouse + trackpad users). Trackpad users excluded from hand modality due to device confound.</p>
+<p><strong>Trials:</strong> ~200 per participant, balanced across conditions using Williams sequences<span class="tip-i" data-bs-toggle="tooltip" data-bs-title="Williams sequences: counterbalancing method that ensures each condition appears equally often in each position across participants. Reduces order effects.">i</span>.</p>
+<p><strong>Metrics:</strong> Throughput (bits/s), Movement Time (s), Error Rate (%), NASA-TLX<span class="tip-i" data-bs-toggle="tooltip" data-bs-title="NASA Task Load Index: 6 subscales (Mental, Physical, Temporal, Performance, Effort, Frustration). We report unweighted average (0–100). Higher = more workload.">i</span> questionnaire scores (6 subscales, 0–100 each)</p>
+<p><strong>Analysis:</strong> Linear mixed-effects models<span class="tip-i" data-bs-toggle="tooltip" data-bs-title="Mixed-effects models: statistical models with both fixed effects (conditions) and random effects (participant-level variation). Handles repeated measures and individual differences.">i</span> (LMM) for continuous outcomes, generalized LMM<span class="tip-i" data-bs-toggle="tooltip" data-bs-title="GLMM: Generalized Linear Mixed Model. Used for binary outcomes (like error rates). Extends LMM to handle non-normal distributions.">i</span> (GLMM) for error rates, with random intercepts per participant. Type III ANOVA<span class="tip-i" data-bs-toggle="tooltip" data-bs-title="Type III ANOVA: uses sum-to-zero contrasts, appropriate for unbalanced designs. Tests main effects and interactions after accounting for other terms.">i</span> with sum-to-zero contrasts.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Adaptive System: What Was Evaluable vs Not
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Gaze adaptive UI (declutter) was evaluated:</strong> PolicyEngine activated declutter based on performance triggers (RT p75 thresholds, error bursts). Results show modest error reduction (18.2% vs 19.1%) but no significant throughput benefit.</p>
+<p><strong>Hand adaptive UI (width inflation) did not activate:</strong> PolicyEngine emitted 243 <code>inflate_width</code> actions (17 participants), but <code>width_scale_factor</code> <span class="tip-i" data-bs-toggle="tooltip" data-bs-title="width_scale_factor: multiplier applied to target width. 1.0 = no change, >1.0 = wider targets. Remained 1.0 throughout, indicating width inflation never activated.">i</span> remained 1.0 throughout. Root cause: UI integration issue—policy actions were emitted but not applied to rendered targets. See <a href="#appendix">Appendix</a> for full diagnostic analysis.</p>
+</div>
+</div>
+</section>
+</section>
+<section id="implications" class="level2">
+<h2 class="anchored" data-anchor-id="implications">Implications for XR Product Teams</h2>
+<section id="for-gaze-interaction-slip-prevention-is-the-higher-leverage-fix-in-this-dataset" class="level3">
+<h3 class="anchored" data-anchor-id="for-gaze-interaction-slip-prevention-is-the-higher-leverage-fix-in-this-dataset">For Gaze Interaction: Slip prevention is the higher-leverage fix (in this dataset)</h3>
+<p>The dominant gaze failure mode is slips (99.2%), not simple misses. Decluttering UI helps, but the bigger opportunity is <strong>intent disambiguation</strong>—confirmation mechanisms, stabilization, snapping, dwell tuning, and clear state feedback. Prioritize reducing the verification burden rather than just reducing visual chrome.</p>
+</section>
+<section id="for-hand-interaction-instrumentation-caught-non-activation" class="level3">
+<h3 class="anchored" data-anchor-id="for-hand-interaction-instrumentation-caught-non-activation">For Hand Interaction: Instrumentation Caught Non-Activation</h3>
+<p>Hand width inflation did not activate in this dataset; instrumentation and validated logging caught this early. The feature was instrumented but not exercised, so its benefit is unconfirmed.</p>
+</section>
+<section id="for-adaptation-policy-thresholds-need-calibration-validation" class="level3">
+<h3 class="anchored" data-anchor-id="for-adaptation-policy-thresholds-need-calibration-validation">For Adaptation Policy: Thresholds need calibration + validation</h3>
+<p>The concept is sound, but adaptation effects were small because triggers and mechanisms need tuning. <strong>Key insight:</strong> Not all “adaptive” changes are meaningful—decluttering UI can be helpful, but targeting the dominant failure mode (slips) is more impactful. Policy thresholds must be calibrated through iterative testing, not assumed.</p>
+</section>
+</section>
+<section id="limitations--lessons" class="level2">
+<h2 class="anchored" data-anchor-id="limitations--lessons">Limitations &amp; Lessons</h2>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Limitations
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Hand adaptive UI not exercised:</strong> Width inflation did not activate (width_scale_factor always 1.0), so hand UI-mode effects cannot be interpreted as adaptation effectiveness. Root cause: PolicyEngine emitted actions but UI integration did not apply them.</li>
+<li><strong>Unbalanced design:</strong> Hand N=75 (mouse only), Gaze N=81 (mouse + trackpad). Type III ANOVA handles this appropriately.</li>
+<li><strong>Gaze simulation:</strong> Gaze input uses physiologically-informed simulation, not eye tracking hardware.</li>
+</ul>
+</div>
+</div>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Lessons Learned
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<ul>
+<li><strong>Device standardization matters:</strong> Trackpad vs.&nbsp;mouse differences required exclusion of trackpad users from hand modality.</li>
+<li><strong>Policy integration critical:</strong> PolicyEngine logic executed correctly, but UI integration failed to apply width scaling actions.</li>
+<li><strong>Gaze errors are slips, not timeouts:</strong> 99.2% of gaze errors are slips (accidental activations), validating the Midas Touch problem. This suggests intent disambiguation (confirmation, stabilization) is more important than reducing UI chrome.</li>
+<li><strong>Adaptive UI benefits modest:</strong> Declutter showed small error reduction in gaze, but throughput effects were minimal. Targeting the dominant failure mode (slips) may be more impactful than general UI simplification.</li>
+</ul>
+</div>
+</div>
+</section>
+<section id="appendix" class="level2">
+<h2 class="anchored" data-anchor-id="appendix">Appendix</h2>
+<details class="tech-details">
+<summary>
+<strong>Technical Details &amp; Statistical Analysis</strong>
+</summary>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true">Statistical Models</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false">Gaze Proxy</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false">Data Quality &amp; QC</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-4-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-4" role="tab" aria-controls="tabset-4-4" aria-selected="false">LBA Cognitive Modeling</a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<section id="omnibus-models-222" class="level4">
+<h4 class="anchored" data-anchor-id="omnibus-models-222">Omnibus Models (2×2×2)</h4>
+<p><strong>Model Specifications:</strong></p>
+<ul>
+<li><strong>Throughput:</strong> <code>TP ~ modality × ui_mode × pressure + (1 | pid)</code><br>
+</li>
+<li><strong>Error Rate:</strong> <code>error ~ modality × ui_mode × pressure + (1 | pid)</code> (binomial GLMM)<br>
+</li>
+<li><strong>Movement Time:</strong> <code>log(RT) ~ modality × ui_mode × pressure + (1 | pid)</code><br>
+</li>
+<li><strong>NASA-TLX:</strong> <code>TLX ~ modality × ui_mode × pressure + (1 | pid)</code></li>
+</ul>
+<p>All models use Type III ANOVA with sum-to-zero contrasts. Random intercepts per participant.</p>
+<p><strong>Key Interpretation Rule:</strong> UI-mode effects reflect declutter in gaze; width inflation not exercised in hand, so any hand UI-mode effects are treated as noise/non-causal.</p>
+</section>
+<section id="gaze-only-follow-up" class="level4">
+<h4 class="anchored" data-anchor-id="gaze-only-follow-up">Gaze-Only Follow-up</h4>
+<p><strong>Gaze-only models</strong> (ui_mode × pressure, random intercept pid):</p>
+<ul>
+<li><strong>Throughput:</strong> <code>TP ~ ui_mode × pressure + (1 | pid)</code><br>
+</li>
+<li><strong>Error Rate:</strong> <code>error ~ ui_mode × pressure + (1 | pid)</code><br>
+</li>
+<li><strong>Movement Time:</strong> <code>log(RT) ~ ui_mode × pressure + (1 | pid)</code><br>
+</li>
+<li><strong>NASA-TLX:</strong> <code>TLX ~ ui_mode × pressure + (1 | pid)</code></li>
+</ul>
+<p><strong>Estimated Marginal Means (EMMs) with Holm-adjusted pairwise contrasts</strong> for ui_mode within each pressure level.</p>
+</section>
+<section id="hand-ui-mode-not-exercised" class="level4">
+<h4 class="anchored" data-anchor-id="hand-ui-mode-not-exercised">Hand: UI-Mode Not Exercised</h4>
+<p><strong>Manipulation Check:</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="kwnvdmqzpi" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#kwnvdmqzpi table {
+  font-family: 'system-ui, -apple-system', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#kwnvdmqzpi thead, #kwnvdmqzpi tbody, #kwnvdmqzpi tfoot, #kwnvdmqzpi tr, #kwnvdmqzpi td, #kwnvdmqzpi th {
+  border-style: none;
+}
+
+#kwnvdmqzpi p {
+  margin: 0;
+  padding: 0;
+}
+
+#kwnvdmqzpi .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #6D28D9;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#kwnvdmqzpi .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#kwnvdmqzpi .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#kwnvdmqzpi .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#kwnvdmqzpi .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kwnvdmqzpi .gt_bottom_border {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kwnvdmqzpi .gt_col_headings {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#kwnvdmqzpi .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#kwnvdmqzpi .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#kwnvdmqzpi .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#kwnvdmqzpi .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#kwnvdmqzpi .gt_column_spanner {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#kwnvdmqzpi .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#kwnvdmqzpi .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#kwnvdmqzpi .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#kwnvdmqzpi .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#kwnvdmqzpi .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#kwnvdmqzpi .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#kwnvdmqzpi .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kwnvdmqzpi .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#kwnvdmqzpi .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#kwnvdmqzpi .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#kwnvdmqzpi .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kwnvdmqzpi .gt_first_summary_row {
+  border-top-style: none;
+  border-top-color: #D3D3D3;
+}
+
+#kwnvdmqzpi .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#kwnvdmqzpi .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kwnvdmqzpi .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kwnvdmqzpi .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: none;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#kwnvdmqzpi .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kwnvdmqzpi .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#kwnvdmqzpi .gt_table_body {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#kwnvdmqzpi .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kwnvdmqzpi .gt_footnote {
+  margin: 0px;
+  font-size: 11px;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kwnvdmqzpi .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#kwnvdmqzpi .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#kwnvdmqzpi .gt_left {
+  text-align: left;
+}
+
+#kwnvdmqzpi .gt_center {
+  text-align: center;
+}
+
+#kwnvdmqzpi .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#kwnvdmqzpi .gt_font_normal {
+  font-weight: normal;
+}
+
+#kwnvdmqzpi .gt_font_bold {
+  font-weight: bold;
+}
+
+#kwnvdmqzpi .gt_font_italic {
+  font-style: italic;
+}
+
+#kwnvdmqzpi .gt_super {
+  font-size: 65%;
+}
+
+#kwnvdmqzpi .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#kwnvdmqzpi .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#kwnvdmqzpi .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#kwnvdmqzpi .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#kwnvdmqzpi .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#kwnvdmqzpi .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#kwnvdmqzpi .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#kwnvdmqzpi .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#kwnvdmqzpi div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="2" class="gt_heading gt_title gt_font_normal">Hand Width Inflation: Manipulation Check</th>
+</tr>
+<tr class="gt_heading even">
+<th colspan="2" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Diagnostic metrics showing width_scale_factor == 1.0 throughout (no activation)</th>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Metric" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Metric</th>
+<th id="Value" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Value</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Metric">Total trials (all conditions)</td>
+<td class="gt_row gt_right" headers="Value">17,359</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Metric">Total participants</td>
+<td class="gt_row gt_right" headers="Value">81</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Metric">Trials with width scaling (all conditions)</td>
+<td class="gt_row gt_right" headers="Value">0</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Metric">Percentage scaled (all conditions)</td>
+<td class="gt_row gt_right" headers="Value">0.0%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Metric">Hand/Adaptive/Pressure=1 trials</td>
+<td class="gt_row gt_right" headers="Value">2,214</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Metric">Trials with width scaling (Hand/Adaptive/P1)</td>
+<td class="gt_row gt_right" headers="Value">0</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Metric">Percentage scaled (Hand/Adaptive/P1)</td>
+<td class="gt_row gt_right" headers="Value">0.0%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Metric">Participants with ≥1 policy trigger</td>
+<td class="gt_row gt_right" headers="Value">81</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Metric">Participants with ≥5 consecutive triggers<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></td>
+<td class="gt_row gt_right" headers="Value"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span>&nbsp;3</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Metric">Percentage with ≥5 consecutive triggers</td>
+<td class="gt_row gt_right" headers="Value">3.7%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Metric">Median max consecutive triggers (per participant)</td>
+<td class="gt_row gt_right" headers="Value">2</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Metric">Mean max consecutive triggers (per participant)</td>
+<td class="gt_row gt_right" headers="Value">2.5</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Metric">Maximum consecutive triggers (any participant)</td>
+<td class="gt_row gt_right" headers="Value">5</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Metric">Pressure logging mismatch rate<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span></td>
+<td class="gt_row gt_right" headers="Value"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span>&nbsp;N/A</td>
+</tr>
+</tbody><tfoot>
+<tr class="gt_footnotes odd">
+<td colspan="2" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Number of trials in a row where policy conditions were met (needed ≥5 for hysteresis to activate width scaling)</td>
+</tr>
+<tr class="gt_footnotes even">
+<td colspan="2" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>2</sup></span> Percentage of Hand/Adaptive trials where logged pressure value doesn't match runtime pressure state (indicates a data logging bug)</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="policy-replay-diagnostics" class="level4">
+<h4 class="anchored" data-anchor-id="policy-replay-diagnostics">Policy Replay Diagnostics</h4>
+<p><strong>Data-backed conclusion:</strong> Width inflation never activated: 0 trials with <code>width_scale_factor != 1.0</code>. PolicyEngine emitted 243 <code>inflate_width</code> actions (17 participants), but UI integration did not apply them. Root cause: UI integration issue—policy actions were emitted but not applied to rendered targets.</p>
+<p><strong>Adaptation activation summary:</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="tmhipdgilu" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tmhipdgilu table {
+  font-family: 'system-ui, -apple-system', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#tmhipdgilu thead, #tmhipdgilu tbody, #tmhipdgilu tfoot, #tmhipdgilu tr, #tmhipdgilu td, #tmhipdgilu th {
+  border-style: none;
+}
+
+#tmhipdgilu p {
+  margin: 0;
+  padding: 0;
+}
+
+#tmhipdgilu .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #6D28D9;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tmhipdgilu .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#tmhipdgilu .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tmhipdgilu .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tmhipdgilu .gt_heading {
+  background-color: #F8F9FA;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tmhipdgilu .gt_bottom_border {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tmhipdgilu .gt_col_headings {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #E5E7EB;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tmhipdgilu .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tmhipdgilu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tmhipdgilu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tmhipdgilu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tmhipdgilu .gt_column_spanner {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #E5E7EB;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tmhipdgilu .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#tmhipdgilu .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#tmhipdgilu .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tmhipdgilu .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tmhipdgilu .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tmhipdgilu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #F1F3F5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #F1F3F5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #F1F3F5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tmhipdgilu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tmhipdgilu .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#tmhipdgilu .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#tmhipdgilu .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#tmhipdgilu .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tmhipdgilu .gt_first_summary_row {
+  border-top-style: none;
+  border-top-color: #D3D3D3;
+}
+
+#tmhipdgilu .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#tmhipdgilu .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tmhipdgilu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tmhipdgilu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: none;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tmhipdgilu .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tmhipdgilu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tmhipdgilu .gt_table_body {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tmhipdgilu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tmhipdgilu .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tmhipdgilu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tmhipdgilu .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tmhipdgilu .gt_left {
+  text-align: left;
+}
+
+#tmhipdgilu .gt_center {
+  text-align: center;
+}
+
+#tmhipdgilu .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tmhipdgilu .gt_font_normal {
+  font-weight: normal;
+}
+
+#tmhipdgilu .gt_font_bold {
+  font-weight: bold;
+}
+
+#tmhipdgilu .gt_font_italic {
+  font-style: italic;
+}
+
+#tmhipdgilu .gt_super {
+  font-size: 65%;
+}
+
+#tmhipdgilu .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#tmhipdgilu .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#tmhipdgilu .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#tmhipdgilu .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#tmhipdgilu .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#tmhipdgilu .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#tmhipdgilu .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#tmhipdgilu .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#tmhipdgilu div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+<col style="width: 11%">
+</colgroup>
+<thead>
+<tr class="gt_heading header">
+<th colspan="9" class="gt_heading gt_title gt_font_normal">Policy Replay Summary</th>
+</tr>
+<tr class="gt_heading even">
+<th colspan="9" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Hand width inflation: activation diagnostics</th>
+</tr>
+<tr class="gt_col_headings gt_spanner_row header">
+<th rowspan="2" id="Total-Participants" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Total Participants</th>
+<th colspan="2" id="Width Inflation Activation" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Width Inflation Activation
+</div></th>
+<th colspan="2" id="Bad Streak (≥5 consecutive)" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Bad Streak (≥5 consecutive)
+</div></th>
+<th colspan="2" id="Policy Events" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Policy Events
+</div></th>
+<th colspan="2" id="Most Common Trigger Reason" class="gt_center gt_columns_top_border gt_column_spanner_outer" data-quarto-table-cell-role="th" scope="colgroup"><div class="gt_column_spanner">
+Most Common Trigger Reason
+</div></th>
+</tr>
+<tr class="gt_col_headings even">
+<th id="Width-Inflation-Activated" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Width Inflation Activated</th>
+<th id="a%-Activated" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">% Activated</th>
+<th id="Bad-Streak-≥5" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Bad Streak ≥5</th>
+<th id="a%-Bad-Streak" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">% Bad Streak</th>
+<th id="Inflation-Events" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Inflation Events</th>
+<th id="Total-Policy-Events" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Total Policy Events</th>
+<th id="Top-Reason" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Top Reason</th>
+<th id="Reason-Count" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Reason Count</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Total Participants" style="background-color: #F8F9FA">85</td>
+<td class="gt_row gt_right" headers="Width Inflation Activated" style="background-color: #F8F9FA">17</td>
+<td class="gt_row gt_center" headers="% Activated" style="background-color: #F8F9FA">20.0%</td>
+<td class="gt_row gt_right" headers="Bad Streak ≥5" style="background-color: #F8F9FA">64</td>
+<td class="gt_row gt_center" headers="% Bad Streak" style="background-color: #F8F9FA">75.3%</td>
+<td class="gt_row gt_right" headers="Inflation Events" style="background-color: #F8F9FA">243</td>
+<td class="gt_row gt_right" headers="Total Policy Events" style="background-color: #F8F9FA">2,087</td>
+<td class="gt_row gt_left" headers="Top Reason" style="background-color: #F8F9FA">Reset</td>
+<td class="gt_row gt_right" headers="Reason Count" style="background-color: #F8F9FA">41</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<p>Gaze input uses a physiologically-informed simulation rather than eye tracking hardware. This approach allows controlled comparison of hand vs gaze interaction patterns while maintaining ecological validity for XR selection tasks.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="images/psychophysics.png" class="lightbox" data-gallery="quarto-lightbox-gallery-10" title="Psychophysics-inspired gaze proxy. Raw mouse input is transformed into a simulated gaze cursor using fixation-state Gaussian jitter (low angular velocity), saccadic suppression (freeze during high-velocity movement), and confirmation (dwell or SPACE) with a fixed tolerance ring (+10 px)."><img src="images/psychophysics.png" class="img-fluid figure-img" style="width:100.0%" alt="Psychophysics-inspired gaze proxy diagram"></a></p>
+<figcaption>Psychophysics-inspired gaze proxy. Raw mouse input is transformed into a simulated gaze cursor using fixation-state Gaussian jitter (low angular velocity), saccadic suppression (freeze during high-velocity movement), and confirmation (dwell or SPACE) with a fixed tolerance ring (+10 px).</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>Psychophysics model:</strong></p>
+<ul>
+<li><strong>Gaussian jitter</strong> (σ ≈ 1–2° visual angle): Simulates natural eye movement variability. Real eye tracking has inherent noise; Gaussian jitter captures this uncertainty in gaze position estimation.</li>
+<li><strong>Saccadic suppression</strong>: Temporary input masking during rapid eye movements (saccades). Prevents false selections during eye movements, mimicking how real eye trackers suppress input during saccades.</li>
+<li><strong>Latency injection</strong> (50–150ms delay): Approximates real-world eye tracking system delays. Commercial eye trackers have processing latency; injected delay makes simulation more realistic.</li>
+</ul>
+<p><strong>Calibration:</strong></p>
+<ul>
+<li><strong>Pixels-per-degree conversion</strong>: Based on screen dimensions and viewing distance assumptions. Converts screen pixels to visual angle degrees, enabling consistent difficulty across different display sizes.</li>
+</ul>
+<p><strong>Reliability guards (QC gates):</strong></p>
+<ul>
+<li><strong>Zoom level check</strong>: Must be 100% (prevents scaling artifacts that would distort target sizes)</li>
+<li><strong>Fullscreen mode</strong>: Required (ensures consistent viewport and eliminates browser chrome interference)</li>
+<li><strong>Tab visibility</strong>: Hidden duration &lt;500ms threshold (filters trials where user switched tabs)</li>
+<li><strong>Focus/blur events</strong>: Zero tolerance (ensures window had focus throughout trial)</li>
+<li><strong>RT bounds</strong>: 150–6000ms (filters non-physiological responses: too fast = accidental clicks, too slow = disengagement)</li>
+</ul>
+<p>These guards ensure data quality and prevent confounds from display state or user disengagement.</p>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<p><strong>Before/after counts:</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="bbkjttjsan" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bbkjttjsan table {
+  font-family: 'system-ui, -apple-system', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#bbkjttjsan thead, #bbkjttjsan tbody, #bbkjttjsan tfoot, #bbkjttjsan tr, #bbkjttjsan td, #bbkjttjsan th {
+  border-style: none;
+}
+
+#bbkjttjsan p {
+  margin: 0;
+  padding: 0;
+}
+
+#bbkjttjsan .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #6D28D9;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bbkjttjsan .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#bbkjttjsan .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bbkjttjsan .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bbkjttjsan .gt_heading {
+  background-color: #F8F9FA;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bbkjttjsan .gt_bottom_border {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bbkjttjsan .gt_col_headings {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #E5E7EB;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bbkjttjsan .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bbkjttjsan .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bbkjttjsan .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bbkjttjsan .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bbkjttjsan .gt_column_spanner {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #E5E7EB;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bbkjttjsan .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#bbkjttjsan .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#bbkjttjsan .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bbkjttjsan .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bbkjttjsan .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bbkjttjsan .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #F1F3F5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #F1F3F5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #F1F3F5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bbkjttjsan .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bbkjttjsan .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#bbkjttjsan .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#bbkjttjsan .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#bbkjttjsan .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bbkjttjsan .gt_first_summary_row {
+  border-top-style: none;
+  border-top-color: #D3D3D3;
+}
+
+#bbkjttjsan .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#bbkjttjsan .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bbkjttjsan .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bbkjttjsan .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: none;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bbkjttjsan .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bbkjttjsan .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bbkjttjsan .gt_table_body {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bbkjttjsan .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bbkjttjsan .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bbkjttjsan .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bbkjttjsan .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bbkjttjsan .gt_left {
+  text-align: left;
+}
+
+#bbkjttjsan .gt_center {
+  text-align: center;
+}
+
+#bbkjttjsan .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bbkjttjsan .gt_font_normal {
+  font-weight: normal;
+}
+
+#bbkjttjsan .gt_font_bold {
+  font-weight: bold;
+}
+
+#bbkjttjsan .gt_font_italic {
+  font-style: italic;
+}
+
+#bbkjttjsan .gt_super {
+  font-size: 65%;
+}
+
+#bbkjttjsan .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#bbkjttjsan .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#bbkjttjsan .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#bbkjttjsan .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#bbkjttjsan .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#bbkjttjsan .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#bbkjttjsan .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#bbkjttjsan .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#bbkjttjsan div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="3" class="gt_heading gt_title gt_font_normal">Quality Control Exclusions</th>
+</tr>
+<tr class="gt_heading even">
+<th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Trials removed by exclusion rule</th>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Rule" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Exclusion Rule</th>
+<th id="Trials_Removed" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Trials Removed</th>
+<th id="Pct_Removed" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">% Removed</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Rule" style="background-color: #F8F9FA">Practice trials</td>
+<td class="gt_row gt_right" headers="Trials_Removed" style="background-color: #F8F9FA; color: #DC2626; font-weight: bold">1,640</td>
+<td class="gt_row gt_right" headers="Pct_Removed" style="background-color: #F8F9FA; color: #DC2626; font-weight: bold">8.59%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Rule">Zoom != 100%</td>
+<td class="gt_row gt_right" headers="Trials_Removed">68</td>
+<td class="gt_row gt_right" headers="Pct_Removed">0.36%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Rule" style="background-color: #F8F9FA">Not fullscreen</td>
+<td class="gt_row gt_right" headers="Trials_Removed" style="background-color: #F8F9FA; color: #DC2626; font-weight: bold">1,819</td>
+<td class="gt_row gt_right" headers="Pct_Removed" style="background-color: #F8F9FA; color: #DC2626; font-weight: bold">9.53%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Rule">Tab hidden &gt; 500ms</td>
+<td class="gt_row gt_right" headers="Trials_Removed">0</td>
+<td class="gt_row gt_right" headers="Pct_Removed">0.00%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Rule" style="background-color: #F8F9FA">Focus/blur events</td>
+<td class="gt_row gt_right" headers="Trials_Removed" style="background-color: #F8F9FA">0</td>
+<td class="gt_row gt_right" headers="Pct_Removed" style="background-color: #F8F9FA">0.00%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Rule">RT &lt; 150ms</td>
+<td class="gt_row gt_right" headers="Trials_Removed">24</td>
+<td class="gt_row gt_right" headers="Pct_Removed">0.13%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Rule" style="background-color: #F8F9FA">RT &gt; 6000ms</td>
+<td class="gt_row gt_right" headers="Trials_Removed" style="background-color: #F8F9FA">63</td>
+<td class="gt_row gt_right" headers="Pct_Removed" style="background-color: #F8F9FA">0.33%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Rule">Incorrect trials (for performance metrics)</td>
+<td class="gt_row gt_right" headers="Trials_Removed">0</td>
+<td class="gt_row gt_right" headers="Pct_Removed">0.00%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Rule" style="background-color: #F8F9FA">Trackpad users (hand modality only)</td>
+<td class="gt_row gt_right" headers="Trials_Removed" style="background-color: #F8F9FA">708</td>
+<td class="gt_row gt_right" headers="Pct_Removed" style="background-color: #F8F9FA">3.71%</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</div>
+<div id="tabset-4-4" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-4-tab">
+<p><strong>What LBA adds:</strong></p>
+<p>Linear Ballistic Accumulator (LBA) modeling provides latent parameter interpretation: <strong>drift rate</strong> (information accumulation speed), <strong>threshold</strong> (decision boundary), and <strong>non-decision time</strong> (NDT, encoding + motor execution). This decomposes RT into cognitive components, revealing how modality and UI mode affect decision-making processes during the verification phase.</p>
+<p><strong>Model specification:</strong></p>
+<p>We fit a hierarchical Bayesian LBA model using PyMC, modeling the verification phase (time from first target entry to final selection). The model uses:</p>
+<ul>
+<li><strong>Non-decision time (t0)</strong>: Varies by modality and UI mode (captures physical actuation differences)</li>
+<li><strong>Drift rate (v)</strong>: Varies by Index of Difficulty (ID) - harder trials → lower drift rate</li>
+<li><strong>Threshold (b)</strong>: Varies by pressure condition (speed-accuracy tradeoff)</li>
+<li><strong>Start point variability (A)</strong>: Per-participant random effect</li>
+</ul>
+<p><strong>Data:</strong> 16,947 valid trials from 81 participants, filtered to verification phase RTs (200-5000 ms).</p>
+<p><strong>Sampling:</strong> 8 chains × 1,500 warmup + 1,000 draws per chain (total: 20,000 iterations) on a 64-core VM. Model converged successfully (R-hat &lt; 1.01, ESS &gt; 2,000 for all parameters).</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="occppvsrqw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#occppvsrqw table {
+  font-family: 'system-ui, -apple-system', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#occppvsrqw thead, #occppvsrqw tbody, #occppvsrqw tfoot, #occppvsrqw tr, #occppvsrqw td, #occppvsrqw th {
+  border-style: none;
+}
+
+#occppvsrqw p {
+  margin: 0;
+  padding: 0;
+}
+
+#occppvsrqw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #6D28D9;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#occppvsrqw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#occppvsrqw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#occppvsrqw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#occppvsrqw .gt_heading {
+  background-color: #F8F9FA;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#occppvsrqw .gt_bottom_border {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#occppvsrqw .gt_col_headings {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #E5E7EB;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#occppvsrqw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#occppvsrqw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#occppvsrqw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#occppvsrqw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#occppvsrqw .gt_column_spanner {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #E5E7EB;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#occppvsrqw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#occppvsrqw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#occppvsrqw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#occppvsrqw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#occppvsrqw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#occppvsrqw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #F1F3F5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #F1F3F5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #F1F3F5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#occppvsrqw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#occppvsrqw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#occppvsrqw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#occppvsrqw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#occppvsrqw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#occppvsrqw .gt_first_summary_row {
+  border-top-style: none;
+  border-top-color: #D3D3D3;
+}
+
+#occppvsrqw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#occppvsrqw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#occppvsrqw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#occppvsrqw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: none;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#occppvsrqw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#occppvsrqw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#occppvsrqw .gt_table_body {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#occppvsrqw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#occppvsrqw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#occppvsrqw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#occppvsrqw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#occppvsrqw .gt_left {
+  text-align: left;
+}
+
+#occppvsrqw .gt_center {
+  text-align: center;
+}
+
+#occppvsrqw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#occppvsrqw .gt_font_normal {
+  font-weight: normal;
+}
+
+#occppvsrqw .gt_font_bold {
+  font-weight: bold;
+}
+
+#occppvsrqw .gt_font_italic {
+  font-style: italic;
+}
+
+#occppvsrqw .gt_super {
+  font-size: 65%;
+}
+
+#occppvsrqw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#occppvsrqw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#occppvsrqw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#occppvsrqw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#occppvsrqw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#occppvsrqw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#occppvsrqw .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#occppvsrqw .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#occppvsrqw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="6" class="gt_heading gt_title gt_font_normal">LBA Parameter Estimates</th>
+</tr>
+<tr class="gt_heading even">
+<th colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Group-level means by modality and UI mode (verification phase)<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span></th>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Condition" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Condition</th>
+<th id="Non-Decision-Time-(t0)" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Non-Decision Time (t0)</th>
+<th id="Base-Drift-Rate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Base Drift Rate</th>
+<th id="ID-Slope" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">ID Slope</th>
+<th id="Threshold-Intercept" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Threshold Intercept</th>
+<th id="Pressure-Slope" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Pressure Slope</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Condition" style="background-color: #F8F9FA">Hand - Static</td>
+<td class="gt_row gt_right" headers="Non-Decision Time (t0)" style="background-color: #F8F9FA">-2.846</td>
+<td class="gt_row gt_right" headers="Base Drift Rate" style="background-color: #F8F9FA">5.035</td>
+<td class="gt_row gt_right" headers="ID Slope" style="background-color: #F8F9FA">-0.935</td>
+<td class="gt_row gt_right" headers="Threshold Intercept" style="background-color: #F8F9FA">4.686</td>
+<td class="gt_row gt_right" headers="Pressure Slope" style="background-color: #F8F9FA">0.058</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Condition">Hand - Adaptive</td>
+<td class="gt_row gt_right" headers="Non-Decision Time (t0)">-3.008</td>
+<td class="gt_row gt_right" headers="Base Drift Rate">5.035</td>
+<td class="gt_row gt_right" headers="ID Slope">-0.935</td>
+<td class="gt_row gt_right" headers="Threshold Intercept">4.686</td>
+<td class="gt_row gt_right" headers="Pressure Slope">0.058</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Condition" style="background-color: #F8F9FA">Gaze - Static</td>
+<td class="gt_row gt_right" headers="Non-Decision Time (t0)" style="background-color: #F8F9FA">-1.410</td>
+<td class="gt_row gt_right" headers="Base Drift Rate" style="background-color: #F8F9FA">5.035</td>
+<td class="gt_row gt_right" headers="ID Slope" style="background-color: #F8F9FA">-0.935</td>
+<td class="gt_row gt_right" headers="Threshold Intercept" style="background-color: #F8F9FA">4.686</td>
+<td class="gt_row gt_right" headers="Pressure Slope" style="background-color: #F8F9FA">0.058</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Condition">Gaze - Adaptive</td>
+<td class="gt_row gt_right" headers="Non-Decision Time (t0)">-0.971</td>
+<td class="gt_row gt_right" headers="Base Drift Rate">5.035</td>
+<td class="gt_row gt_right" headers="ID Slope">-0.935</td>
+<td class="gt_row gt_right" headers="Threshold Intercept">4.686</td>
+<td class="gt_row gt_right" headers="Pressure Slope">0.058</td>
+</tr>
+</tbody><tfoot>
+<tr class="gt_footnotes odd">
+<td colspan="6" class="gt_footnote"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;line-height:0;"><sup>1</sup></span> Parameters are in log-space (softplus transformed). t0: non-decision time; vc_base: base drift rate; vc_slope: effect of ID on drift (negative = harder trials reduce drift); gap_int: threshold intercept; gap_slope: effect of pressure on threshold (positive = higher pressure increases threshold).</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+<p><strong>Key findings:</strong></p>
+<ol type="1">
+<li><p><strong>Modality effect on non-decision time:</strong> Gaze has higher t0 than Hand (gaze: -1.41 to -0.97, hand: -3.01 to -2.85), indicating longer verification phase duration for gaze interaction—consistent with the need for intent disambiguation.</p></li>
+<li><p><strong>UI mode effect:</strong> Adaptive UI shows different t0 patterns, particularly in gaze (static: -1.41, adaptive: -0.97), suggesting adaptive declutter may affect verification timing.</p></li>
+<li><p><strong>Difficulty effect:</strong> Negative ID slope (-0.935) confirms harder trials reduce drift rate, as expected from Fitts’ Law.</p></li>
+<li><p><strong>Pressure effect:</strong> Positive pressure slope (0.058) indicates speed-accuracy tradeoff—higher pressure increases decision threshold.</p></li>
+</ol>
+<p><strong>Convergence diagnostics:</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="wfdbqovltq" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wfdbqovltq table {
+  font-family: 'system-ui, -apple-system', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#wfdbqovltq thead, #wfdbqovltq tbody, #wfdbqovltq tfoot, #wfdbqovltq tr, #wfdbqovltq td, #wfdbqovltq th {
+  border-style: none;
+}
+
+#wfdbqovltq p {
+  margin: 0;
+  padding: 0;
+}
+
+#wfdbqovltq .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #6D28D9;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#wfdbqovltq .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#wfdbqovltq .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#wfdbqovltq .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#wfdbqovltq .gt_heading {
+  background-color: #F8F9FA;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wfdbqovltq .gt_bottom_border {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wfdbqovltq .gt_col_headings {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #E5E7EB;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#wfdbqovltq .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#wfdbqovltq .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#wfdbqovltq .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#wfdbqovltq .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#wfdbqovltq .gt_column_spanner {
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #E5E7EB;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#wfdbqovltq .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#wfdbqovltq .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#wfdbqovltq .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#wfdbqovltq .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#wfdbqovltq .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#wfdbqovltq .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: none;
+  border-top-width: 1px;
+  border-top-color: #F1F3F5;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #F1F3F5;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #F1F3F5;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#wfdbqovltq .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wfdbqovltq .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#wfdbqovltq .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#wfdbqovltq .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#wfdbqovltq .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wfdbqovltq .gt_first_summary_row {
+  border-top-style: none;
+  border-top-color: #D3D3D3;
+}
+
+#wfdbqovltq .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#wfdbqovltq .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wfdbqovltq .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wfdbqovltq .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: none;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#wfdbqovltq .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: none;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wfdbqovltq .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#wfdbqovltq .gt_table_body {
+  border-top-style: none;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#wfdbqovltq .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wfdbqovltq .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wfdbqovltq .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#wfdbqovltq .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#wfdbqovltq .gt_left {
+  text-align: left;
+}
+
+#wfdbqovltq .gt_center {
+  text-align: center;
+}
+
+#wfdbqovltq .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#wfdbqovltq .gt_font_normal {
+  font-weight: normal;
+}
+
+#wfdbqovltq .gt_font_bold {
+  font-weight: bold;
+}
+
+#wfdbqovltq .gt_font_italic {
+  font-style: italic;
+}
+
+#wfdbqovltq .gt_super {
+  font-size: 65%;
+}
+
+#wfdbqovltq .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#wfdbqovltq .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#wfdbqovltq .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#wfdbqovltq .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#wfdbqovltq .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#wfdbqovltq .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#wfdbqovltq .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#wfdbqovltq .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#wfdbqovltq div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="6" class="gt_heading gt_title gt_font_normal">LBA Model Convergence Diagnostics</th>
+</tr>
+<tr class="gt_heading even">
+<th colspan="6" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">R-hat &lt; 1.01 indicates excellent convergence; ESS &gt; 400 indicates sufficient effective sample size</th>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Parameter" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Parameter</th>
+<th id="Mean" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">Mean</th>
+<th id="a95%-CI-Lower" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">95% CI Lower</th>
+<th id="a95%-CI-Upper" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">95% CI Upper</th>
+<th id="R-hat" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">R-hat</th>
+<th id="ESS-Bulk" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" style="font-weight: bold" scope="col">ESS Bulk</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Parameter" style="background-color: #F8F9FA">vc_slope_mu</td>
+<td class="gt_row gt_right" headers="Mean" style="background-color: #F8F9FA">-0.935</td>
+<td class="gt_row gt_right" headers="95% CI Lower" style="background-color: #F8F9FA">-0.954</td>
+<td class="gt_row gt_right" headers="95% CI Upper" style="background-color: #F8F9FA">-0.915</td>
+<td class="gt_row gt_right" headers="R-hat" style="background-color: #F8F9FA; color: #059669; font-weight: bold">1.000</td>
+<td class="gt_row gt_right" headers="ESS Bulk" style="background-color: #F8F9FA">14005</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Parameter">gap_slope_mu</td>
+<td class="gt_row gt_right" headers="Mean">0.058</td>
+<td class="gt_row gt_right" headers="95% CI Lower">0.031</td>
+<td class="gt_row gt_right" headers="95% CI Upper">0.085</td>
+<td class="gt_row gt_right" headers="R-hat" style="color: #059669; font-weight: bold">1.000</td>
+<td class="gt_row gt_right" headers="ESS Bulk">19185</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Parameter" style="background-color: #F8F9FA">ve_mu</td>
+<td class="gt_row gt_right" headers="Mean" style="background-color: #F8F9FA">-0.019</td>
+<td class="gt_row gt_right" headers="95% CI Lower" style="background-color: #F8F9FA">-3.721</td>
+<td class="gt_row gt_right" headers="95% CI Upper" style="background-color: #F8F9FA">3.707</td>
+<td class="gt_row gt_right" headers="R-hat" style="background-color: #F8F9FA; color: #059669; font-weight: bold">1.000</td>
+<td class="gt_row gt_right" headers="ESS Bulk" style="background-color: #F8F9FA">20289</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="Parameter">vc_base_mu</td>
+<td class="gt_row gt_right" headers="Mean">5.035</td>
+<td class="gt_row gt_right" headers="95% CI Lower">4.875</td>
+<td class="gt_row gt_right" headers="95% CI Upper">5.200</td>
+<td class="gt_row gt_right" headers="R-hat" style="color: #059669; font-weight: bold">1.000</td>
+<td class="gt_row gt_right" headers="ESS Bulk">2629</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Parameter" style="background-color: #F8F9FA">gap_int_mu</td>
+<td class="gt_row gt_right" headers="Mean" style="background-color: #F8F9FA">4.686</td>
+<td class="gt_row gt_right" headers="95% CI Lower" style="background-color: #F8F9FA">4.464</td>
+<td class="gt_row gt_right" headers="95% CI Upper" style="background-color: #F8F9FA">4.882</td>
+<td class="gt_row gt_right" headers="R-hat" style="background-color: #F8F9FA; color: #059669; font-weight: bold">1.000</td>
+<td class="gt_row gt_right" headers="ESS Bulk" style="background-color: #F8F9FA">2086</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><strong>Trace plots:</strong></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>⚠ Trace plot not found at: /Users/mohdasti/Documents/GitHub/quarto-website/outputs/LBA/lba_trace_plot.png 
+Current working directory: /Users/mohdasti/Documents/GitHub/quarto-website 
+Project root: /Users/mohdasti/Documents/GitHub/quarto-website </code></pre>
+</div>
+</div>
+<p><strong>Interpretation:</strong></p>
+<p>The LBA model successfully decomposed verification phase RTs into cognitive components. The modality differences in non-decision time align with the observed performance differences: gaze requires longer verification time due to intent ambiguity (Midas Touch problem), while hand input benefits from clearer motor intent. The adaptive UI effects on t0 suggest that decluttering may reduce verification burden, though the effects are modest.</p>
+<p><strong>Note:</strong> A detailed paper on the LBA analysis methodology, parameter interpretation, and theoretical implications is in preparation and will be cited here upon publication.</p>
+</div>
+</div>
+</div>
+</details>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/mdastgheib\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2025 Mohammad Dastgheib • Built with Quarto</p>
+</div>   
+    <div class="nav-footer-center">
+<p><a href="mailto:mdast003@ucr.edu" title="Email"><i class="fas fa-envelope"></i></a> <a href="https://linkedin.com/in/mdastgheib" title="LinkedIn"><i class="fab fa-linkedin"></i></a> <a href="https://scholar.google.com/citations?user=SNVpHcUAAAAJ" title="Google Scholar"><i class="ai ai-google-scholar"></i></a> <a href="https://github.com/mohdasti" title="GitHub"><i class="fab fa-github"></i></a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
