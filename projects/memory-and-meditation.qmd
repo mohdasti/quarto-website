@@ -1,5 +1,6 @@
 ---
 title: "Case Study: Optimizing Learning with Cognitive States"
+date: "2019-06-01"
 format: html
 toc: true
 toc-depth: 4

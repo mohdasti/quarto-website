@@ -1,7 +1,7 @@
 ---
 title: "XR Adaptive Modality: Case Study"
 author: "Mohammad Dastgheib"
-date: last-modified
+date: "2025-10-01"
 description: "I built a remote XR interaction testbed and evaluated whether a context-aware adaptive system can reduce gaze failure modes (e.g., Midas Touch slips: accidental activations) and workload under time pressure."
 image: ../images/architecture.png
 format:

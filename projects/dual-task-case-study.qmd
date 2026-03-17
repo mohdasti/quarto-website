@@ -1,5 +1,6 @@
 ---
 title: "Case Study: A Psychophysiological Approach to Modeling Dual-Task Interference"
+date: "2024-06-01"
 format:
   html:
     toc: true

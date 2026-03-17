@@ -8,12 +8,11 @@ listing:
       - "../projects/*.qmd"  # Keep this if your case studies live in /projects
     type: grid
     sort: "date desc"
-    fields: [image, title, description]
+    fields: [image, title, description, date]
+    date-format: "MMMM YYYY"
     image-height: "200px"
 page-layout: full
 ---
-
-Welcome to my portfolio. Each case study below provides a detailed walkthrough of a significant research project. You'll find a mix of results-driven studies and "research roadmap" plans that showcase my ability to both architect and execute complex human-centered research.
 
 ```{=html}
 <div class="tag-filter-container">
