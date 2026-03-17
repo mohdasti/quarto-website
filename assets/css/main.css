@@ -15,6 +15,26 @@ $navbar-fg: $primary-dark;
 $navbar-hl: $accent-red;
 
 /*-- scss:rules --*/
+/* Make listing cards show pointer cursor to hint they are clickable */
+.quarto-listing .list-group-item,
+.quarto-listing .quarto-listing-default .list-group-item {
+  cursor: pointer;
+}
+
+/* Constrain listing thumbnail images to a small fixed size */
+.quarto-post .thumbnail {
+  width: 80px !important;
+  min-width: 80px !important;
+  max-width: 80px !important;
+}
+
+.quarto-post .thumbnail img.thumbnail-image {
+  width: 80px !important;
+  height: 100px !important;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
 /* Ensure Quarto hidden elements are actually hidden */
 .hidden,
 [class*="hidden"],
