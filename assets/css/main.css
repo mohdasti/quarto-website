@@ -29,8 +29,8 @@ $navbar-hl: $accent-red;
 }
 
 .quarto-post .thumbnail img.thumbnail-image {
-  width: 80px !important;
-  height: 100px !important;
+  width: 160px !important;
+  height: 200px !important;
   object-fit: contain;
   border-radius: 4px;
 }

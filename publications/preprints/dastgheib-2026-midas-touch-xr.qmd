@@ -1,6 +1,6 @@
 ---
 title: "The Midas Touch in Gaze vs. Hand Pointing: Modality-Specific Failure Modes and Implications for XR Interfaces"
-author: "Dastgheib, M., & Pourmahdian, F."
+author: "**Dastgheib, M.**, & Pourmahdian, F."
 date: "2026-03-01"
 description: |
   *arXiv preprint*, cs.HC (2026).

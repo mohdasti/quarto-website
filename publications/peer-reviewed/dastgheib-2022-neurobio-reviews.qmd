@@ -1,6 +1,6 @@
 ---
 title: "Is the role of sleep in memory consolidation overrated?"
-author: "Dastgheib, M., Kulanayagam, A., & Dringenberg, H. C."
+author: "**Dastgheib, M.**, Kulanayagam, A., & Dringenberg, H. C."
 date: "2022-08-01"
 description: |
   *Neuroscience & Biobehavioral Reviews*, Volume 140.
