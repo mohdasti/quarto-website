@@ -8,6 +8,9 @@ project:
 website:
   title: "Mohammad Dastgheib"
   site-url: https://mdastgheib.com
+  google-analytics:
+    tracking-id: "G-5EPCPLZLYN"
+    anonymize-ip: true
   description: "Vision science researcher specializing in perceptual processing and human-computer interaction"
   page-navigation: true
   back-to-top-navigation: true
