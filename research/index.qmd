@@ -22,21 +22,6 @@ My research program is built on five interconnected pillars:
 
 ---
 
-## 🛠️ Methodological Expertise
-
-To address these questions, I specialize in a multi-modal approach to data collection and analysis:
-
-* **Psychophysics:** Designing and implementing precise behavioral experiments to measure perceptual and memory thresholds (PsychToolbox).
-* **Pupillometry:** Using pupil dilation as a real-time, non-invasive biomarker of cognitive load and physiological arousal (MATLAB, R, Python). Developing computational models that integrate pupillometry with decision-making frameworks (e.g., Drift-Diffusion Model) to understand the interplay between physiological responses and cognitive processes.
-* **Machine Learning:** Developing predictive models for cognitive state classification using ensemble methods (XGBoost), feature engineering, and cross-validation techniques.
-* **Computational Modeling:** Applying models like the Drift-Diffusion Model (DDM) to deconstruct decision-making processes, with ongoing work on linking DDM parameters to pupillometric dynamics to provide mechanistic insights into cognitive effort and arousal.
-* **Extended Reality (XR) Development:** Building research platforms for adaptive modality systems, implementing Fitts's Law paradigms with dual input methods (gaze and hand-pointing), and developing real-time adaptive UI interventions based on performance metrics and cognitive load estimates.
-* **Advanced Statistical Analysis:** Employing linear mixed-effects models and Bayesian methods for complex, repeated-measures data (R). Implementing pre-registered experimental designs with rigorous exclusion criteria and equivalence testing.
-* **Neuroimaging:** Analyzing Diffusion MRI data to investigate white matter integrity and its relationship to behavior (FSL, QSIPrep).
-* **Real-Time Analytics:** Building interactive dashboards and monitoring systems for applied research contexts (R Shiny, web technologies). Developing web-based experimental platforms with precise timing control, comprehensive data logging, and real-time performance monitoring.
-
----
-
 ## 🚀 Research in Action
 
 See concrete applications of these research approaches in my [**Portfolio**](../portfolio/index.qmd), featuring case studies that demonstrate the translation of cognitive science principles to real-world challenges in aerospace, healthcare, and education.
@@ -45,7 +30,7 @@ See concrete applications of these research approaches in my [**Portfolio**](../
 
 ## 🎯 Current Research Focus
 
-**PhD Dissertation (2025):** *"A Psychophysiological Approach to Modeling Dual-Task Interference: Pupillometry, Cognitive Reserve, and Personalized Performance Prediction"*
+**PhD Dissertation (2026):** *"A Psychophysiological Approach to Modeling Dual-Task Interference: Pupillometry, Cognitive Reserve, and Personalized Performance Prediction"*
 
 This research aims to develop a comprehensive framework for predicting when and why individuals experience cognitive overload in dual-task scenarios, with applications to aging, technology design, and occupational safety. Building on my dissertation prospectus, the program integrates:
 
