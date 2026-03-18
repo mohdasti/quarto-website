@@ -2687,7 +2687,7 @@ if (file.exists(src_file)) {
 
 The LBA model successfully decomposed verification phase RTs into cognitive components. The modality differences in non-decision time align with the observed performance differences: gaze requires longer verification time due to intent ambiguity (Midas Touch problem), while hand input benefits from clearer motor intent. The adaptive UI effects on t0 suggest that decluttering may reduce verification burden, though the effects are modest.
 
-**Note:** A detailed paper on the LBA analysis methodology, parameter interpretation, and theoretical implications is in preparation and will be cited here upon publication.
+**Note:** A detailed paper on the LBA analysis methodology, parameter interpretation, and theoretical implications is available as a preprint: Dastgheib, M., & Pourmahdian, F. (2026). *The Midas Touch in Gaze vs. Hand Pointing: Modality-Specific Failure Modes and Implications for XR Interfaces*. arXiv:2603.15991 [cs.HC]. <https://doi.org/10.48550/arXiv.2603.15991>
 :::
 
 </details>
