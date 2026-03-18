@@ -51,8 +51,7 @@ My goal is to translate these deep scientific insights into practical applicatio
 
 ::: g-col-9
 ### M.Sc. in Psychology
-
-#### Queen's University
+*Queen's University*
 
 2017 -- 2020
 :::
@@ -67,8 +66,7 @@ My goal is to translate these deep scientific insights into practical applicatio
 
 ::: g-col-9
 ### Hon. B.Sc. in Biological Sciences & Psychology
-
-#### York University
+*York University*
 
 2013 -- 2017
 :::
@@ -83,6 +81,8 @@ My goal is to translate these deep scientific insights into practical applicatio
 
 ::: g-col-9
 ### Research Assistant I
-*Surgical Safety Technologies (SST)* | Toronto, ON | 2021
+*Surgical Safety Technologies* 
+
+Toronto, ON -- 2021
 :::
 :::::
