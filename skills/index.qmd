@@ -23,7 +23,7 @@ I specialize in a multi-modal approach to understanding human behavior, combinin
 
 * **Languages:** R (Expert), MATLAB (Expert), **TypeScript/JavaScript (Proficient)**, SQL (Proficient), Python (Familiar), Bash (Familiar).
 * **Web Development:** **React 18**, **TypeScript**, **Vite**, modern frontend development, event-driven architectures, real-time data synchronization, **precise timing control** (performance.now() for psychophysics).
-* **Statistical Modeling:** Linear Mixed-Effects Models (LMMs), Bayesian Analysis, Psychometric Function Fitting, **Drift-Diffusion Modeling (DDM)** with integration of physiological measures (pupillometry).
+* **Statistical Modeling:** Linear Mixed-Effects Models (LMMs, via **lme4/emmeans**), Bayesian Analysis, Psychometric Function Fitting, **Drift-Diffusion Modeling (DDM)** with integration of physiological measures (pupillometry), **Linear Ballistic Accumulator (LBA)** modeling for cognitive decomposition of response time distributions (hierarchical Bayesian implementation via PyMC).
 * **Machine Learning:** XGBoost, Feature Engineering, Cross-Validation, Hyperparameter Tuning, Predictive Modeling, **Real-time ML Pipelines**, **Model Calibration** (Platt scaling), **Anomaly Detection** (Isolation Forest).
 * **Data Analysis & Visualization (R):** Tidyverse (dplyr, ggplot2), R Markdown, **Shiny (Interactive Dashboards)**, **gt Tables**, **Real-time Data Streaming**.
 * **Development & Version Control:** Git, GitHub, Google Cloud Platform (GCP), **Docker**, **CI/CD Workflows**, **Production Deployment** (ShinyApps.io, **Vercel**, Netlify).
@@ -44,7 +44,7 @@ I specialize in a multi-modal approach to understanding human behavior, combinin
 * **Real-time Analytics:** Multi-modal cognitive state monitoring systems with <1s latency, live data streaming, and interactive dashboards.
 * **Production ML:** End-to-end ML pipelines with causal feature engineering, model calibration, and deployment-ready applications.
 * **Interactive Applications:** Shiny dashboards with real-time updates, threshold policy sandboxes, and explainable AI interfaces.
-* **Extended Reality (XR) Platforms:** Building research-grade XR experimental platforms with adaptive modality systems, dual input methods (gaze and hand-tracking), real-time performance monitoring, and comprehensive data logging for cognitive load studies.
+* **Extended Reality (XR) Platforms:** Building research-grade XR experimental platforms with adaptive modality systems, dual input methods (gaze and hand-tracking), real-time performance monitoring, and comprehensive data logging for cognitive load studies. Includes **physiologically-accurate gaze simulation** (fixation-state Gaussian jitter, saccadic suppression, confirmation model) for remote testing without eye-tracking hardware.
 * **System Architecture:** Docker containerization, CI/CD workflows, and scalable deployment strategies for research and clinical environments. Event-driven architectures with pub/sub systems for inter-component communication.
 
 ---
