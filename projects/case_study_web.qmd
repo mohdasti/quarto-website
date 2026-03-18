@@ -701,6 +701,10 @@ a{ color:var(--accent); }
           <img alt="DOI" loading="lazy"
                src="https://zenodo.org/badge/DOI/10.5281/zenodo.18204915.svg" style="height:18px;border-radius:6px;border:1px solid #edf0f3;display:block;">
         </a>
+        <a href="https://arxiv.org/abs/2603.15991" target="_blank" rel="noopener">
+          <img alt="arXiv" loading="lazy"
+               src="https://img.shields.io/badge/arXiv-2603.15991-b31b1b.svg?logo=arxiv&logoColor=white">
+        </a>
         <img alt="React" loading="lazy"
              src="https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white">
         <img alt="TypeScript" loading="lazy"
@@ -2687,9 +2691,7 @@ if (file.exists(src_file)) {
 
 The LBA model successfully decomposed verification phase RTs into cognitive components. The modality differences in non-decision time align with the observed performance differences: gaze requires longer verification time due to intent ambiguity (Midas Touch problem), while hand input benefits from clearer motor intent. The adaptive UI effects on t0 suggest that decluttering may reduce verification burden, though the effects are modest.
 
-**Note:** A detailed paper on the LBA analysis methodology, parameter interpretation, and theoretical implications is available as a preprint: Dastgheib, M., & Pourmahdian, F. (2026). *The Midas Touch in Gaze vs. Hand Pointing: Modality-Specific Failure Modes and Implications for XR Interfaces*. arXiv:2603.15991 [cs.HC].
-
-[![arXiv](https://img.shields.io/badge/arXiv-2603.15991-b31b1b.svg)](https://arxiv.org/abs/2603.15991)
+**Note:** A detailed paper on the LBA analysis methodology, parameter interpretation, and theoretical implications is available as a preprint: Dastgheib, M., & Pourmahdian, F. (2026). *The Midas Touch in Gaze vs. Hand Pointing: Modality-Specific Failure Modes and Implications for XR Interfaces*. arXiv:2603.15991 [cs.HC]. <https://doi.org/10.48550/arXiv.2603.15991>
 :::
 
 </details>
