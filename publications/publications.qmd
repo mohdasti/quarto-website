@@ -1,10 +1,10 @@
 ---
 title: "Publications & Presentations"
 description: |
-  A comprehensive list of my scientific contributions, including peer-reviewed articles, dissertations, and conference presentations.
+  Peer-reviewed articles, preprints, dissertation, theses, and conference presentations.
 listing:
   - id: peer-reviewed
-    contents: 
+    contents:
       - "peer-reviewed/*.qmd"
     type: default
     sort: "date desc"
@@ -21,53 +21,75 @@ page-layout: full
 format:
   html:
     output-file: index.html
+    css:
+      - ../assets/css/research-skills.css
 ---
 
-## 📚 Peer-Reviewed Articles
+## Peer-Reviewed Articles
 
 :::{#peer-reviewed}
 :::
 
-
-## 📄 Preprints
-
+## Preprints
 
 :::{#preprints}
 :::
 
 ---
 
-#### Under Review
-* **Dastgheib, M.,** Sun, A., Yaghoubi, K., Chen, X., Peters, M., Zhang, W., Bennett, I., Seitz, A. *Effects of Concurrent Task Difficulty and Physical Effort on Memory and Perceptual Performance and Pupil Response in Younger Adults.*
+## Manuscripts in Progress
 
-#### In Preparation
-* **Dastgheib, M.,** Sun, A., Maniscalco, B., Peters, M., Seitz, A. (In Prep). *Analysis of metacognitive efficiency in younger and older adults in auditory and visual perceptual task.*
+::: {.status-block}
+[Under Review]{.status-label .review}
+
+::: {.pub-list}
+- Dastgheib, M., Sun, A., Yaghoubi, K., Chen, X., Peters, M., Zhang, W., Bennett, I., Seitz, A. *Effects of Concurrent Task Difficulty and Physical Effort on Memory and Perceptual Performance and Pupil Response in Younger Adults.*
+:::
+:::
+
+::: {.status-block}
+[In Preparation]{.status-label .prep}
+
+::: {.pub-list}
+- Dastgheib, M., Sun, A., Maniscalco, B., Peters, M., Seitz, A. *Analysis of metacognitive efficiency in younger and older adults in auditory and visual perceptual task.*
+:::
+:::
 
 ---
 
-## 🎓 Dissertations & Theses
-Major independent research projects completed as part of my graduate training.
+## Dissertations & Theses
 
-* **Doctoral Dissertation (In Progress):** *The Influence of Arousal and Cognitive Reserve on Dual-Task Interference in Aging.* (University of California, Riverside)
-* **Master's Thesis:** *The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans.* (Queen's University) — [View on OSF Preprints](https://osf.io/preprints/thesiscommons/8t9uq_v1)
-
+::: {.pub-list}
+- **Doctoral Dissertation (In Progress):** *The Influence of Arousal and Cognitive Reserve on Dual-Task Interference in Aging.* University of California, Riverside.
+- **Master's Thesis:** *The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans.* Queen's University. [View on OSF](https://osf.io/preprints/thesiscommons/8t9uq_v1)
+:::
 
 ---
 
-## 🎤 Conference Presentations & Published Abstracts
-A selection of posters and talks presented at scientific conferences, with my name in **bold**.
+## Conference Presentations & Published Abstracts
 
+::: {.conf-group}
 #### International Presentations
-* Sun, A., **Dastgheib, M.,** Maniscalco, B., Peters, M., Zhang, W., Seitz, A. (2025, June). *Selective Modulation of Auditory Perception and Metacognition by Hand Grip-Based Arousal in Older Adults.* Talk at the Metacognition, Aging and Perception Symposium (MAPS), Rovereto, Italy.
-* Ghaffari, A., Langley, J., **Dastgheib, M.,** Chen, X., Bennett, I., Hu, X. (2025, May). *Functional MRI Connectome Fingerprinting in Older Adults.* Talk at the IEEE International Symposium on Biomedical Imaging (ISBI), Houston, TX.
-* **Dastgheib, M.,** Bennett, I., Seitz, A. (2024, November). *The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis.* Poster presented at the 65th Annual Meeting of the Psychonomic Society, New York City, NY.
-* **Dastgheib, M.,** Yaghoubi, K., Kobaissi, H., Alba, J., Bennett, I., Seitz, A. (2023, August). *The Effect of Physical Effort on Perception and Visual Memory.* Poster presented at the International Conference on Learning and Memory, Huntington Beach, CA.
-* **Dastgheib, M.,** Legro L., Stewart M., Dringenberg H. (2019, June). *The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation.* Poster presented at the Canadian Society for Brain, Behaviour, & Cognitive Sciences (CSBBCS) meeting, Waterloo, ON.
+
+::: {.pub-list}
+- Sun, A., **Dastgheib, M.,** Maniscalco, B., Peters, M., Zhang, W., Seitz, A. (2025, June). *Selective Modulation of Auditory Perception and Metacognition by Hand Grip-Based Arousal in Older Adults.* Talk at the Metacognition, Aging and Perception Symposium (MAPS), Rovereto, Italy.
+- Ghaffari, A., Langley, J., **Dastgheib, M.,** Chen, X., Bennett, I., Hu, X. (2025, May). *Functional MRI Connectome Fingerprinting in Older Adults.* Talk at the IEEE International Symposium on Biomedical Imaging (ISBI), Houston, TX.
+- **Dastgheib, M.,** Bennett, I., Seitz, A. (2024, November). *The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis.* Poster at the 65th Annual Meeting of the Psychonomic Society, New York City, NY.
+- **Dastgheib, M.,** Yaghoubi, K., Kobaissi, H., Alba, J., Bennett, I., Seitz, A. (2023, August). *The Effect of Physical Effort on Perception and Visual Memory.* Poster at the International Conference on Learning and Memory, Huntington Beach, CA.
+- **Dastgheib, M.,** Legro L., Stewart M., Dringenberg H. (2019, June). *The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation.* Poster at the Canadian Society for Brain, Behaviour, & Cognitive Sciences (CSBBCS), Waterloo, ON.
+:::
 
 #### Published Abstracts
-* Sarwar, S., Shafiee, M., **Dastgheib, M.,** Hajighadimi, S., Ghafarian, H., Rokni, H. (2020). Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals. *Canadian Journal of Anesthesia, 67*(S1), 1-162. <a href="https://doi.org/10.1007/s12630-019-01552-z" target="_blank">DOI Link</a>
+
+::: {.pub-list}
+- Sarwar, S., Shafiee, M., **Dastgheib, M.,** Hajighadimi, S., Ghafarian, H., Rokni, H. (2020). Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals. *Canadian Journal of Anesthesia, 67*(S1), 1–162. [DOI](https://doi.org/10.1007/s12630-019-01552-z)
+:::
 
 #### Intramural Presentations
-* Sarwar, S., Shafiee, M., **Dastgheib, M.,** et al. (2019). *Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals.* Critical Care Canada Forum (CCCF), Toronto, ON.
-* **Dastgheib, M.,** Legro L., Stewart M., Dringenberg H. (2018). *The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation.* Southern Ontario Neuroscience Association (SONA) conference, Guelph, ON.
-* **Dastgheib, M.** (2017). *Are Older Adults' Attitudes about Aging Influenced by a Psychoeducational Program?* Psychology Undergraduate Thesis Poster Day, York University, Toronto, ON.
+
+::: {.pub-list}
+- Sarwar, S., Shafiee, M., **Dastgheib, M.,** et al. (2019). *Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals.* Critical Care Canada Forum (CCCF), Toronto, ON.
+- **Dastgheib, M.,** Legro L., Stewart M., Dringenberg H. (2018). *The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation.* Southern Ontario Neuroscience Association (SONA), Guelph, ON.
+- **Dastgheib, M.** (2017). *Are Older Adults' Attitudes about Aging Influenced by a Psychoeducational Program?* Psychology Undergraduate Thesis Poster Day, York University, Toronto, ON.
+:::
+:::

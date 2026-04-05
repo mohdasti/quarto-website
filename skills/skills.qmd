@@ -4,70 +4,142 @@ description: "Dissertation workflow: psychophysics, pupillometry QC, psychometri
 format:
   html:
     output-file: index.html
+    css:
+      - ../assets/css/research-skills.css
 ---
 
-This page is **how** the [**Research**](../research/research.qmd) program is implemented—**methods, workflow, and computation**—not a generic résumé. The **dissertation toolkit** fills the sections below; **XR / interaction** methods are **adjacent** at the end. [**Publications**](../publications/publications.qmd) · [**CV**](../cv.qmd)
+::: {.page-lead}
+This page describes how the [Research](../research/research.qmd) program is implemented—methods, workflow, and computation—not a generic résumé. The dissertation toolkit fills the sections below; XR and interaction methods are grouped at the end as adjacent work.
+:::
 
----
+::: {.link-row}
+[Publications](../publications/publications.qmd)
+[CV](../cv.qmd)
+:::
 
-## Core Research Methods
-
-- **Psychophysics:** **Auditory and visual same–different discrimination** (and related tasks) under load; linking **physical effort** to sensitivity, bias, and dynamics.
-- **Pupillometry:** **Preprocessing and quality control** (blinks, artifacts, valid samples); **window-specific validity**; **gap-aware** handling of missing samples.
-- **Interpretation:** Pupil measures inform **arousal** and **effort** hypotheses; **behavior** and formal models remain primary for inference (aligned with [**Research**](../research/research.qmd)).
-
----
-
-## Experimental Design and Data Collection
-
-- **Handgrip dual-task paradigm:** **Concurrent physical effort** (graded isometric grip) with cognitive/perceptual tasks, including **same–different discrimination** and memory components as required.
-- **Within-subject designs:** Factorial and repeated-measures layouts; **counterbalancing** of orders and conditions.
-- **Preregistration:** Where used, analyses follow registered hypotheses, exclusions, and plans.
-- **Lab tasks:** **MATLAB** and **PsychToolbox** for stimulus delivery and responses; calibration and exclusion rules documented in materials.
 
 ---
 
-## Modeling and Statistical Inference
+## Core research methods
 
-- **Psychometric function modeling:** Separate effects on perceptual **evidence** versus **criterion** under **physical effort** and load.
-- **Mixed-effects models:** **LMMs** / **GLMMs** in **R** (**lme4**, **emmeans**) for repeated measures and individual differences ([**dual-task roadmap**](../projects/dual-task-case-study.qmd)).
-- **Hierarchical Bayesian Wiener drift-diffusion model (DDM)—dissertation:** Trial-level decomposition (**drift rate**, **boundaries**, **non-decision time**); implemented with **brms** / **Stan** (**CmdStan**-class) workflows. Scope and caveats (**non-decision time** constrained by design; **pupil–parameter** links exploratory) are stated on [**Research**](../research/research.qmd).
-- **Scrutiny:** Sensitivity analyses, alternative specifications, model comparison, interval- or equivalence-style reasoning where relevant.
+::: {.skills-block}
+### Psychophysics
 
-**XR preprint only:** [**case study**](../projects/case_study_web.qmd) uses **hierarchical Bayesian LBA** in **PyMC** for **verification-phase** RTs after target entry—**not** the dissertation **Wiener DDM**, and **not** interchangeable with it.
+Design and analysis of auditory and visual same–different discrimination (and related tasks) under load; linking physical effort to sensitivity, bias, and dynamics.
 
----
+### Pupillometry
 
-## Programming and Research Computing
+Preprocessing and quality control (blinks, artifacts, valid samples); window-specific validity; gap-aware handling of missing samples.
 
-- **R:** **tidyverse**, **ggplot2**; mixed models; **brms** / **Stan** interfaces; **Quarto** for analyses and this site.
-- **MATLAB:** **PsychToolbox**.
-- **Git** / **GitHub:** Versioned scripts and reproducible layout.
+### Interpretation
 
----
-
-## Scientific Communication and Reproducibility
-
-- **Quarto** / **R Markdown** (legacy) for rebuildable reports.
-- **LaTeX** for manuscripts; exploratory vs. confirmatory reporting kept distinct where both apply.
-- **Traceability:** README notes, pinned dependencies where used, QC logs for **pupillometry** and behavioral pipelines.
+Pupil measures inform arousal and effort hypotheses; behavior and formal models remain primary for inference (aligned with [Research](../research/research.qmd)).
+:::
 
 ---
 
-## Additional / Adjacent Methods
+## Experimental design and data collection
 
-**Hand vs. gaze interaction (portfolio / preprint)**—[**arXiv:2603.15991**](https://arxiv.org/abs/2603.15991), [case study](../projects/case_study_web.qmd). **Adjacent** to the dissertation; adds **HCI / XR-relevant** breadth:
+::: {.skills-block}
+### Handgrip dual-task paradigm
 
-- **Web task:** **React** / **TypeScript**; **remote** sessions; **display calibration** and session checks across devices.
-- **Design:** **ISO 9241-9**-style multidirectional tapping; **Fitts** difficulty and **throughput**; **Williams** block counterbalancing; **NASA-TLX** workload.
-- **Gaze proxy:** **Physiologically informed gaze simulation** (latency, jitter, saccadic suppression) for **gaze** vs. **hand** comparison without lab eye-tracking.
-- **Policy-triggered adaptive UI:** **Declutter** (gaze) and **width inflation** (hand) implemented and logged. In the analyzed data, **only declutter executed** and was **evaluable** (modest **timeout** reduction; **slips** still dominated **gaze** errors). **Hand width inflation was not evaluable**—targets did not scale in the UI (**integration bug**); that policy is **not** validated here.
-- **LBA fits:** **Python** / **PyMC** for verification-phase RTs only—see **Modeling** note above.
+Concurrent physical effort (graded isometric grip) with cognitive and perceptual tasks, including same–different discrimination and memory components as required.
 
-**Other:** [Surgeon dashboard](../projects/surgeon-performance-predict2.qmd) (R Shiny, XGBoost); [EEG thesis](../projects/memory-and-meditation.qmd); imaging collaborations—[**Publications**](../publications/publications.qmd); SST—[**About**](../about/about.qmd).
+### Within-subject structure and preregistration
+
+Factorial and repeated-measures layouts; counterbalancing of orders and conditions. Where studies are preregistered, analyses follow registered hypotheses, exclusions, and plans.
+
+### Lab implementation
+
+MATLAB and PsychToolbox for stimulus delivery and responses; calibration and exclusion rules documented in materials.
+:::
+
+---
+
+## Modeling and statistical inference
+
+::: {.skills-block}
+### Psychometric function modeling
+
+Separate effects on perceptual evidence versus criterion under physical effort and load.
+
+### Mixed-effects models
+
+LMMs and GLMMs in R (lme4, emmeans) for repeated measures and individual differences, aligned with the [dual-task roadmap](../projects/dual-task-case-study.qmd).
+
+### Hierarchical Bayesian Wiener DDM (dissertation)
+
+Trial-level decomposition (drift rate, boundaries, non-decision time); implemented with brms and Stan (CmdStan-class) workflows. Scope and caveats—non-decision time constrained by design; pupil–parameter links exploratory—are stated on [Research](../research/research.qmd).
+
+### Model scrutiny
+
+Sensitivity analyses, alternative specifications, model comparison, and interval- or equivalence-style reasoning where relevant.
+:::
+
+::: {.xr-note}
+The [XR case study](../projects/case_study_web.qmd) uses hierarchical Bayesian LBA in PyMC for verification-phase RTs after target entry. That framework is separate from the dissertation Wiener DDM and is not interchangeable with it.
+:::
+
+---
+
+## Programming and research computing
+
+::: {.skills-block}
+### R
+
+tidyverse, ggplot2; mixed models; brms and Stan interfaces; Quarto for analyses and this site.
+
+### MATLAB
+
+PsychToolbox for experiment control.
+
+### Version control
+
+Git and GitHub for versioned scripts and reproducible layout.
+:::
+
+---
+
+## Scientific communication and reproducibility
+
+::: {.skills-block}
+### Reproducible reports
+
+Quarto and R Markdown (legacy) so tables and figures rebuild from code.
+
+### Writing and rigor
+
+LaTeX for manuscripts; exploratory versus confirmatory reporting kept distinct where both apply.
+
+### Traceability
+
+README notes, pinned dependencies where used, and QC logs for pupillometry and behavioral pipelines.
+:::
+
+---
+
+## Additional and adjacent methods
+
+::: {.panel-adjacent}
+### Hand versus gaze interaction (portfolio / preprint)
+
+[arXiv:2603.15991](https://arxiv.org/abs/2603.15991) · [case study](../projects/case_study_web.qmd). Adjacent to the dissertation; adds HCI- and XR-relevant breadth.
+
+- Web task: React and TypeScript; remote sessions; display calibration and session checks across devices.
+- Design: ISO 9241-9–style multidirectional tapping; Fitts difficulty and throughput; Williams block counterbalancing; NASA-TLX workload.
+- Gaze proxy: physiologically informed gaze simulation (latency, jitter, saccadic suppression) for gaze versus hand comparison without lab eye-tracking.
+- Policy-triggered adaptive UI: declutter (gaze) and width inflation (hand). In the analyzed data, only declutter executed and was evaluable (modest timeout reduction; slips still dominated gaze errors). Hand width inflation was not evaluable—targets did not scale in the UI (integration bug); that policy is not validated here.
+- LBA fits: Python and PyMC for verification-phase RTs only—see the note under Modeling above.
+
+Other secondary experience: [surgeon dashboard](../projects/surgeon-performance-predict2.qmd) (R Shiny, XGBoost); [EEG thesis](../projects/memory-and-meditation.qmd); imaging collaborations under [Publications](../publications/publications.qmd); SST role on [About](../about/about.qmd).
+:::
 
 ---
 
 ## Languages
 
-Persian (native), English (professional), French (basic).
+::: {.lang-chips}
+[Persian — Native]{.lang-chip}
+[English — Professional]{.lang-chip}
+[French — Basic]{.lang-chip}
+:::

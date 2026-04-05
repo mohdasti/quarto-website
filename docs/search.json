@@ -4,56 +4,56 @@
     "href": "skills/index.html",
     "title": "Skills",
     "section": "",
-    "text": "This page is how the Research program is implemented—methods, workflow, and computation—not a generic résumé. The dissertation toolkit fills the sections below; XR / interaction methods are adjacent at the end. Publications · CV"
+    "text": "This page describes how the Research program is implemented—methods, workflow, and computation—not a generic résumé. The dissertation toolkit fills the sections below; XR and interaction methods are grouped at the end as adjacent work."
   },
   {
     "objectID": "skills/index.html#core-research-methods",
     "href": "skills/index.html#core-research-methods",
     "title": "Skills",
-    "section": "Core Research Methods",
-    "text": "Core Research Methods\n\nPsychophysics: Auditory and visual same–different discrimination (and related tasks) under load; linking physical effort to sensitivity, bias, and dynamics.\nPupillometry: Preprocessing and quality control (blinks, artifacts, valid samples); window-specific validity; gap-aware handling of missing samples.\nInterpretation: Pupil measures inform arousal and effort hypotheses; behavior and formal models remain primary for inference (aligned with Research)."
+    "section": "Core research methods",
+    "text": "Core research methods\n\n\nPsychophysics\nDesign and analysis of auditory and visual same–different discrimination (and related tasks) under load; linking physical effort to sensitivity, bias, and dynamics.\n\n\nPupillometry\nPreprocessing and quality control (blinks, artifacts, valid samples); window-specific validity; gap-aware handling of missing samples.\n\n\nInterpretation\nPupil measures inform arousal and effort hypotheses; behavior and formal models remain primary for inference (aligned with Research)."
   },
   {
     "objectID": "skills/index.html#experimental-design-and-data-collection",
     "href": "skills/index.html#experimental-design-and-data-collection",
     "title": "Skills",
-    "section": "Experimental Design and Data Collection",
-    "text": "Experimental Design and Data Collection\n\nHandgrip dual-task paradigm: Concurrent physical effort (graded isometric grip) with cognitive/perceptual tasks, including same–different discrimination and memory components as required.\nWithin-subject designs: Factorial and repeated-measures layouts; counterbalancing of orders and conditions.\nPreregistration: Where used, analyses follow registered hypotheses, exclusions, and plans.\nLab tasks: MATLAB and PsychToolbox for stimulus delivery and responses; calibration and exclusion rules documented in materials."
+    "section": "Experimental design and data collection",
+    "text": "Experimental design and data collection\n\n\nHandgrip dual-task paradigm\nConcurrent physical effort (graded isometric grip) with cognitive and perceptual tasks, including same–different discrimination and memory components as required.\n\n\nWithin-subject structure and preregistration\nFactorial and repeated-measures layouts; counterbalancing of orders and conditions. Where studies are preregistered, analyses follow registered hypotheses, exclusions, and plans.\n\n\nLab implementation\nMATLAB and PsychToolbox for stimulus delivery and responses; calibration and exclusion rules documented in materials."
   },
   {
     "objectID": "skills/index.html#modeling-and-statistical-inference",
     "href": "skills/index.html#modeling-and-statistical-inference",
     "title": "Skills",
-    "section": "Modeling and Statistical Inference",
-    "text": "Modeling and Statistical Inference\n\nPsychometric function modeling: Separate effects on perceptual evidence versus criterion under physical effort and load.\nMixed-effects models: LMMs / GLMMs in R (lme4, emmeans) for repeated measures and individual differences (dual-task roadmap).\nHierarchical Bayesian Wiener drift-diffusion model (DDM)—dissertation: Trial-level decomposition (drift rate, boundaries, non-decision time); implemented with brms / Stan (CmdStan-class) workflows. Scope and caveats (non-decision time constrained by design; pupil–parameter links exploratory) are stated on Research.\nScrutiny: Sensitivity analyses, alternative specifications, model comparison, interval- or equivalence-style reasoning where relevant.\n\nXR preprint only: case study uses hierarchical Bayesian LBA in PyMC for verification-phase RTs after target entry—not the dissertation Wiener DDM, and not interchangeable with it."
+    "section": "Modeling and statistical inference",
+    "text": "Modeling and statistical inference\n\n\nPsychometric function modeling\nSeparate effects on perceptual evidence versus criterion under physical effort and load.\n\n\nMixed-effects models\nLMMs and GLMMs in R (lme4, emmeans) for repeated measures and individual differences, aligned with the dual-task roadmap.\n\n\nHierarchical Bayesian Wiener DDM (dissertation)\nTrial-level decomposition (drift rate, boundaries, non-decision time); implemented with brms and Stan (CmdStan-class) workflows. Scope and caveats—non-decision time constrained by design; pupil–parameter links exploratory—are stated on Research.\n\n\nModel scrutiny\nSensitivity analyses, alternative specifications, model comparison, and interval- or equivalence-style reasoning where relevant.\n\n\n\nThe XR case study uses hierarchical Bayesian LBA in PyMC for verification-phase RTs after target entry. That framework is separate from the dissertation Wiener DDM and is not interchangeable with it."
   },
   {
     "objectID": "skills/index.html#programming-and-research-computing",
     "href": "skills/index.html#programming-and-research-computing",
     "title": "Skills",
-    "section": "Programming and Research Computing",
-    "text": "Programming and Research Computing\n\nR: tidyverse, ggplot2; mixed models; brms / Stan interfaces; Quarto for analyses and this site.\nMATLAB: PsychToolbox.\nGit / GitHub: Versioned scripts and reproducible layout."
+    "section": "Programming and research computing",
+    "text": "Programming and research computing\n\n\nR\ntidyverse, ggplot2; mixed models; brms and Stan interfaces; Quarto for analyses and this site.\n\n\nMATLAB\nPsychToolbox for experiment control.\n\n\nVersion control\nGit and GitHub for versioned scripts and reproducible layout."
   },
   {
     "objectID": "skills/index.html#scientific-communication-and-reproducibility",
     "href": "skills/index.html#scientific-communication-and-reproducibility",
     "title": "Skills",
-    "section": "Scientific Communication and Reproducibility",
-    "text": "Scientific Communication and Reproducibility\n\nQuarto / R Markdown (legacy) for rebuildable reports.\nLaTeX for manuscripts; exploratory vs. confirmatory reporting kept distinct where both apply.\nTraceability: README notes, pinned dependencies where used, QC logs for pupillometry and behavioral pipelines."
+    "section": "Scientific communication and reproducibility",
+    "text": "Scientific communication and reproducibility\n\n\nReproducible reports\nQuarto and R Markdown (legacy) so tables and figures rebuild from code.\n\n\nWriting and rigor\nLaTeX for manuscripts; exploratory versus confirmatory reporting kept distinct where both apply.\n\n\nTraceability\nREADME notes, pinned dependencies where used, and QC logs for pupillometry and behavioral pipelines."
   },
   {
-    "objectID": "skills/index.html#additional-adjacent-methods",
-    "href": "skills/index.html#additional-adjacent-methods",
+    "objectID": "skills/index.html#additional-and-adjacent-methods",
+    "href": "skills/index.html#additional-and-adjacent-methods",
     "title": "Skills",
-    "section": "Additional / Adjacent Methods",
-    "text": "Additional / Adjacent Methods\nHand vs. gaze interaction (portfolio / preprint)—arXiv:2603.15991, case study. Adjacent to the dissertation; adds HCI / XR-relevant breadth:\n\nWeb task: React / TypeScript; remote sessions; display calibration and session checks across devices.\nDesign: ISO 9241-9-style multidirectional tapping; Fitts difficulty and throughput; Williams block counterbalancing; NASA-TLX workload.\nGaze proxy: Physiologically informed gaze simulation (latency, jitter, saccadic suppression) for gaze vs. hand comparison without lab eye-tracking.\nPolicy-triggered adaptive UI: Declutter (gaze) and width inflation (hand) implemented and logged. In the analyzed data, only declutter executed and was evaluable (modest timeout reduction; slips still dominated gaze errors). Hand width inflation was not evaluable—targets did not scale in the UI (integration bug); that policy is not validated here.\nLBA fits: Python / PyMC for verification-phase RTs only—see Modeling note above.\n\nOther: Surgeon dashboard (R Shiny, XGBoost); EEG thesis; imaging collaborations—Publications; SST—About."
+    "section": "Additional and adjacent methods",
+    "text": "Additional and adjacent methods\n\nHand versus gaze interaction (portfolio / preprint)\narXiv:2603.15991 · case study. Adjacent to the dissertation; adds HCI- and XR-relevant breadth.\n\nWeb task: React and TypeScript; remote sessions; display calibration and session checks across devices.\nDesign: ISO 9241-9–style multidirectional tapping; Fitts difficulty and throughput; Williams block counterbalancing; NASA-TLX workload.\nGaze proxy: physiologically informed gaze simulation (latency, jitter, saccadic suppression) for gaze versus hand comparison without lab eye-tracking.\nPolicy-triggered adaptive UI: declutter (gaze) and width inflation (hand). In the analyzed data, only declutter executed and was evaluable (modest timeout reduction; slips still dominated gaze errors). Hand width inflation was not evaluable—targets did not scale in the UI (integration bug); that policy is not validated here.\nLBA fits: Python and PyMC for verification-phase RTs only—see the note under Modeling above.\n\nOther secondary experience: surgeon dashboard (R Shiny, XGBoost); EEG thesis; imaging collaborations under Publications; SST role on About."
   },
   {
     "objectID": "skills/index.html#languages",
     "href": "skills/index.html#languages",
     "title": "Skills",
     "section": "Languages",
-    "text": "Languages\nPersian (native), English (professional), French (basic)."
+    "text": "Languages\n\nPersian — Native English — Professional French — Basic"
   },
   {
     "objectID": "DOCUMENTATION.html",
@@ -444,22 +444,29 @@
     "objectID": "publications/index.html#preprints",
     "href": "publications/index.html#preprints",
     "title": "Publications & Presentations",
-    "section": "📄 Preprints",
-    "text": "📄 Preprints\n\n\n\n\n\n\n\n\n\n\nThe Midas Touch in Gaze vs. Hand Pointing: Modality-Specific Failure Modes and Implications for XR Interfaces\n\n\narXiv preprint, cs.HC (2026). arXiv:2603.15991\n\n\n\n\n\nMarch 2026\n\n\nDastgheib, M., & Pourmahdian, F.\n\n\n\n\n\nNo matching items\n\n\n\nUnder Review\n\nDastgheib, M., Sun, A., Yaghoubi, K., Chen, X., Peters, M., Zhang, W., Bennett, I., Seitz, A. Effects of Concurrent Task Difficulty and Physical Effort on Memory and Perceptual Performance and Pupil Response in Younger Adults.\n\n\n\nIn Preparation\n\nDastgheib, M., Sun, A., Maniscalco, B., Peters, M., Seitz, A. (In Prep). Analysis of metacognitive efficiency in younger and older adults in auditory and visual perceptual task."
+    "section": "Preprints",
+    "text": "Preprints\n\n\n\n\n\n\n\n\n\n\nThe Midas Touch in Gaze vs. Hand Pointing: Modality-Specific Failure Modes and Implications for XR Interfaces\n\n\narXiv preprint, cs.HC (2026). arXiv:2603.15991\n\n\n\n\n\nMarch 2026\n\n\nDastgheib, M., & Pourmahdian, F.\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "publications/index.html#manuscripts-in-progress",
+    "href": "publications/index.html#manuscripts-in-progress",
+    "title": "Publications & Presentations",
+    "section": "Manuscripts in Progress",
+    "text": "Manuscripts in Progress\n\nUnder Review\n\n\nDastgheib, M., Sun, A., Yaghoubi, K., Chen, X., Peters, M., Zhang, W., Bennett, I., Seitz, A. Effects of Concurrent Task Difficulty and Physical Effort on Memory and Perceptual Performance and Pupil Response in Younger Adults.\n\n\n\n\nIn Preparation\n\n\nDastgheib, M., Sun, A., Maniscalco, B., Peters, M., Seitz, A. Analysis of metacognitive efficiency in younger and older adults in auditory and visual perceptual task."
   },
   {
     "objectID": "publications/index.html#dissertations-theses",
     "href": "publications/index.html#dissertations-theses",
     "title": "Publications & Presentations",
-    "section": "🎓 Dissertations & Theses",
-    "text": "🎓 Dissertations & Theses\nMajor independent research projects completed as part of my graduate training.\n\nDoctoral Dissertation (In Progress): The Influence of Arousal and Cognitive Reserve on Dual-Task Interference in Aging. (University of California, Riverside)\nMaster’s Thesis: The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans. (Queen’s University) — View on OSF Preprints"
+    "section": "Dissertations & Theses",
+    "text": "Dissertations & Theses\n\n\nDoctoral Dissertation (In Progress): The Influence of Arousal and Cognitive Reserve on Dual-Task Interference in Aging. University of California, Riverside.\nMaster’s Thesis: The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans. Queen’s University. View on OSF"
   },
   {
     "objectID": "publications/index.html#conference-presentations-published-abstracts",
     "href": "publications/index.html#conference-presentations-published-abstracts",
     "title": "Publications & Presentations",
-    "section": "🎤 Conference Presentations & Published Abstracts",
-    "text": "🎤 Conference Presentations & Published Abstracts\nA selection of posters and talks presented at scientific conferences, with my name in bold.\n\nInternational Presentations\n\nSun, A., Dastgheib, M., Maniscalco, B., Peters, M., Zhang, W., Seitz, A. (2025, June). Selective Modulation of Auditory Perception and Metacognition by Hand Grip-Based Arousal in Older Adults. Talk at the Metacognition, Aging and Perception Symposium (MAPS), Rovereto, Italy.\nGhaffari, A., Langley, J., Dastgheib, M., Chen, X., Bennett, I., Hu, X. (2025, May). Functional MRI Connectome Fingerprinting in Older Adults. Talk at the IEEE International Symposium on Biomedical Imaging (ISBI), Houston, TX.\nDastgheib, M., Bennett, I., Seitz, A. (2024, November). The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis. Poster presented at the 65th Annual Meeting of the Psychonomic Society, New York City, NY.\nDastgheib, M., Yaghoubi, K., Kobaissi, H., Alba, J., Bennett, I., Seitz, A. (2023, August). The Effect of Physical Effort on Perception and Visual Memory. Poster presented at the International Conference on Learning and Memory, Huntington Beach, CA.\nDastgheib, M., Legro L., Stewart M., Dringenberg H. (2019, June). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Poster presented at the Canadian Society for Brain, Behaviour, & Cognitive Sciences (CSBBCS) meeting, Waterloo, ON.\n\n\n\nPublished Abstracts\n\nSarwar, S., Shafiee, M., Dastgheib, M., Hajighadimi, S., Ghafarian, H., Rokni, H. (2020). Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals. Canadian Journal of Anesthesia, 67(S1), 1-162. DOI Link\n\n\n\nIntramural Presentations\n\nSarwar, S., Shafiee, M., Dastgheib, M., et al. (2019). Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals. Critical Care Canada Forum (CCCF), Toronto, ON.\nDastgheib, M., Legro L., Stewart M., Dringenberg H. (2018). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Southern Ontario Neuroscience Association (SONA) conference, Guelph, ON.\nDastgheib, M. (2017). Are Older Adults’ Attitudes about Aging Influenced by a Psychoeducational Program? Psychology Undergraduate Thesis Poster Day, York University, Toronto, ON."
+    "section": "Conference Presentations & Published Abstracts",
+    "text": "Conference Presentations & Published Abstracts\n\n\nInternational Presentations\n\n\nSun, A., Dastgheib, M., Maniscalco, B., Peters, M., Zhang, W., Seitz, A. (2025, June). Selective Modulation of Auditory Perception and Metacognition by Hand Grip-Based Arousal in Older Adults. Talk at the Metacognition, Aging and Perception Symposium (MAPS), Rovereto, Italy.\nGhaffari, A., Langley, J., Dastgheib, M., Chen, X., Bennett, I., Hu, X. (2025, May). Functional MRI Connectome Fingerprinting in Older Adults. Talk at the IEEE International Symposium on Biomedical Imaging (ISBI), Houston, TX.\nDastgheib, M., Bennett, I., Seitz, A. (2024, November). The Differential Effect of Physical Effort within Perceptual and Visual Memory Domains: Insights from Psychometric Function Analysis. Poster at the 65th Annual Meeting of the Psychonomic Society, New York City, NY.\nDastgheib, M., Yaghoubi, K., Kobaissi, H., Alba, J., Bennett, I., Seitz, A. (2023, August). The Effect of Physical Effort on Perception and Visual Memory. Poster at the International Conference on Learning and Memory, Huntington Beach, CA.\nDastgheib, M., Legro L., Stewart M., Dringenberg H. (2019, June). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Poster at the Canadian Society for Brain, Behaviour, & Cognitive Sciences (CSBBCS), Waterloo, ON.\n\n\n\n\nPublished Abstracts\n\n\nSarwar, S., Shafiee, M., Dastgheib, M., Hajighadimi, S., Ghafarian, H., Rokni, H. (2020). Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals. Canadian Journal of Anesthesia, 67(S1), 1–162. DOI\n\n\n\n\nIntramural Presentations\n\n\nSarwar, S., Shafiee, M., Dastgheib, M., et al. (2019). Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals. Critical Care Canada Forum (CCCF), Toronto, ON.\nDastgheib, M., Legro L., Stewart M., Dringenberg H. (2018). The Effects of Self-guided Meditation and Napping on Non-Declarative and Declarative Memory Consolidation. Southern Ontario Neuroscience Association (SONA), Guelph, ON.\nDastgheib, M. (2017). Are Older Adults’ Attitudes about Aging Influenced by a Psychoeducational Program? Psychology Undergraduate Thesis Poster Day, York University, Toronto, ON."
   },
   {
     "objectID": "publications/publication8/index.html",
@@ -522,42 +529,42 @@
     "href": "research/index.html",
     "title": "Research",
     "section": "",
-    "text": "Physical effort and arousal reshape perceptual decisions—especially under limited capacity, as in aging and older adults. The dissertation asks how those changes appear in behavior, in pupillometry, and in sequential sampling parameters that separate evidence quality from caution. The backbone is a handgrip dual-task paradigm (isometric force concurrent with cognitive and perceptual tasks), scaled from younger-adult validation to older-adult modeling. Dissertation chapters are not journal publications; titles and status are on Publications."
+    "text": "Physical effort and arousal reshape perceptual decisions—especially when capacity is limited, as in aging and among older adults. The dissertation asks how those changes appear in behavior, in pupillometry, and in sequential sampling parameters that separate evidence quality from caution. The backbone is a handgrip dual-task paradigm (isometric force concurrent with cognitive and perceptual tasks), scaled from younger-adult validation to older-adult modeling. Dissertation chapters are not journal articles; titles and status are listed on Publications."
   },
   {
     "objectID": "research/index.html#current-research-program",
     "href": "research/index.html#current-research-program",
     "title": "Research",
     "section": "Current Research Program",
-    "text": "Current Research Program\nThe dissertation is one integrated program in three stages.\n1. Younger-adult proof of concept. Under concurrent physical effort and cognitive/perceptual load, pupil-linked arousal often shifted more clearly than summary behavioral outcomes—supporting the arousal measurement strategy and validating the handgrip dual-task paradigm for later stages without over-reading weak or null behavioral contrasts.\n2. Older-adult psychometric chapter. Auditory and visual same–different discrimination with psychometric function modeling and pupillometry, under missingness, artifacts, and QC constraints typical of eye-tracking in aging. Where appropriate, analyses use continuous intensity and graded manipulations rather than coarse binning alone.\n3. Older-adult mechanistic chapter. A hierarchical Bayesian Wiener drift-diffusion model (DDM) decomposes choices and RTs. Physical effort costs align most clearly with drift rate (evidence accumulation). Boundary separation does not show comparably strong compensatory support. Non-decision time is constrained by design and is not treated as a free explanation of effort. Pupillometry linked to trial-level diffusion parameters is exploratory and inconclusive in the current specification.\nProgram overview: dual-task case study. Methods and computation: Skills."
+    "text": "Current Research Program\nThe dissertation is one integrated program in three stages.\n\n\nStage 1: Younger-adult proof of concept\nUnder concurrent physical effort and cognitive or perceptual load, pupil-linked arousal often shifted more clearly than summary behavioral outcomes. That pattern supports the arousal measurement strategy and validates the handgrip dual-task paradigm for later stages—without over-reading weak or null behavioral contrasts.\n\n\nStage 2: Older-adult psychometric chapter\nAuditory and visual same–different discrimination is analyzed with psychometric function modeling and pupillometry, under missingness, artifacts, and QC constraints typical of eye-tracking in aging. Where appropriate, analyses use continuous intensity and graded manipulations rather than coarse binning alone.\n\n\nStage 3: Older-adult mechanistic chapter\nA hierarchical Bayesian Wiener drift-diffusion model (DDM) decomposes choices and response times. Physical effort costs align most clearly with drift rate (evidence accumulation). Boundary separation does not show comparably strong compensatory support. Non-decision time is constrained by the task design and is not treated as a free explanation of effort. Links between pupillometry and trial-level diffusion parameters are exploratory and inconclusive in the current specification.\n\n\nProgram overview: dual-task case study. Methods and computation: Skills."
   },
   {
     "objectID": "research/index.html#adjacent-work-in-xr-hci",
     "href": "research/index.html#adjacent-work-in-xr-hci",
     "title": "Research",
-    "section": "Adjacent Work in XR / HCI",
-    "text": "Adjacent Work in XR / HCI\nOutside the dissertation, an arXiv preprint (case study) reports hand versus gaze pointing in a web-based, XR-relevant interaction task. Modality-specific failure modes match the intended contrast: gaze—slips / Midas Touch–type errors; hand—misses / spatial targeting. Throughput and Fitts-style analyses summarize speed–accuracy tradeoffs. Adaptive UI results are narrow: gaze declutter was the only policy that executed and was evaluable in this dataset (timeouts down modestly; slip-dominated gaze errors remained dominant). Hand target-width inflation was not evaluable (rendered targets did not update—UI integration bug). Linear ballistic accumulator (LBA) modeling there applies to verification-phase RTs only—see Skills for stack and scope; it does not replace the dissertation Wiener DDM. This line supports HCI / human factors / interaction breadth; the dissertation remains the primary identity."
+    "section": "Adjacent work in XR / HCI",
+    "text": "Adjacent work in XR / HCI\n\nOutside the dissertation, an arXiv preprint (case study) reports hand versus gaze pointing in a web-based, XR-relevant interaction task. Modality-specific failure modes match the intended contrast: gaze—slips and Midas Touch–type errors; hand—misses and spatial targeting failures. Throughput and Fitts-style analyses summarize speed–accuracy tradeoffs.\nAdaptive policies must be read narrowly: gaze declutter was the only policy that executed and was evaluable in this dataset (timeouts down modestly; slip-dominated gaze errors remained dominant). Hand target-width inflation was not evaluable because rendered targets did not update (UI integration bug). Linear ballistic accumulator (LBA) modeling there applies to verification-phase RTs only—see Skills for stack and scope; it does not replace the dissertation Wiener DDM. This line supports HCI, human factors, and interaction breadth; the dissertation remains the primary training identity."
   },
   {
     "objectID": "research/index.html#core-questions",
     "href": "research/index.html#core-questions",
     "title": "Research",
-    "section": "Core Questions",
-    "text": "Core Questions\n\nHow does concurrent physical effort change perceptual decision-making across the lifespan, and where do effects appear—in behavior, in pupillometry, or in latent parameters?\nHow does psychometric function modeling complement behavior and pupillometry when eye-tracking data are incomplete or noisy?\nCan a hierarchical Bayesian Wiener DDM separate drift-linked costs from caution, while treating non-decision time and pupil–parameter links with appropriate limits?\nHow do individual differences (e.g., cognitive reserve) interact with load beyond group averages?"
+    "section": "Core questions",
+    "text": "Core questions\n\nHow does concurrent physical effort change perceptual decision-making across the lifespan, and where do effects appear—in behavior, in pupillometry, or in latent parameters?\nHow does psychometric function modeling complement behavior and pupillometry when eye-tracking data are incomplete or noisy?\nCan a hierarchical Bayesian Wiener DDM separate drift-linked costs from caution, while treating non-decision time and pupil–parameter links with appropriate limits?\nHow do individual differences (for example cognitive reserve) interact with load beyond group averages?"
   },
   {
     "objectID": "research/index.html#approach",
     "href": "research/index.html#approach",
     "title": "Research",
     "section": "Approach",
-    "text": "Approach\nThe progression is behavioral performance → psychometric function modeling → hierarchical Bayesian Wiener DDM, with pupillometry at stages where it informs arousal and physical effort without substituting for behavior. The aim is interpretable accounts of dual-task performance under effort and arousal, not a single headline metric. Implementation: Skills."
+    "text": "Approach\nThe progression is behavioral performance → psychometric function modeling → hierarchical Bayesian Wiener DDM, with pupillometry at stages where it informs arousal and physical effort without substituting for behavior. The aim is interpretable accounts of dual-task performance under effort and arousal, not a single headline metric. Implementation details: Skills."
   },
   {
     "objectID": "research/index.html#why-this-work-matters",
     "href": "research/index.html#why-this-work-matters",
     "title": "Research",
-    "section": "Why This Work Matters",
-    "text": "Why This Work Matters\nThis work connects psychology, cognitive neuroscience, human factors, and interface-relevant inference about state under load—without claiming clinical translation, production deployment, or pupillometry as a diagnostic biomarker.\nOutputs: Publications · CV · Portfolio"
+    "section": "Why this work matters",
+    "text": "Why this work matters\nThis work connects psychology, cognitive neuroscience, human factors, and interface-relevant inference about state under load—without claiming clinical translation, production deployment, or pupillometry as a diagnostic biomarker.\n\nPublications CV Portfolio"
   },
   {
     "objectID": "index.html",
@@ -802,28 +809,28 @@
     "href": "about/index.html",
     "title": "About Me",
     "section": "",
-    "text": "I am a cognitive neuroscientist and human factors researcher driven by a fundamental question: Why do we make the decisions we do, especially under pressure? My work sits at the intersection of psychology and technology, where I use a multi-modal approach to deconstruct the hidden cognitive processes behind human behavior.\nMy core research focuses on how factors like aging, physical stress, and physiological arousal impact our ability to perceive, learn, and remember. To get at the “why” behind performance, I go beyond simple behavioral metrics, specializing in methodologies like pupillometry to get a real-time, objective measure of cognitive load and computational modeling to isolate the subcomponents of decision-making.\nMy goal is to translate these deep scientific insights into practical applications. I am passionate about using this knowledge to help design safer, more intuitive, and more inclusive technologies."
+    "text": "I am a cognitive neuroscientist and human factors researcher focused on a core question: why does performance degrade under pressure, and where in the decision process does it happen? My work sits at the intersection of experimental psychology and applied human factors, using multi-modal methods to study how physical effort, arousal, and aging shape perception and memory.\nThe central tool is a handgrip dual-task paradigm—concurrent isometric grip with auditory and visual discrimination tasks—combined with pupillometry and hierarchical Bayesian drift-diffusion modeling. The goal is not a single headline metric, but an interpretable decomposition of dual-task costs that can inform the design of adaptive systems, interfaces, and human factors evaluations."
   },
   {
     "objectID": "about/index.html#education",
     "href": "about/index.html#education",
     "title": "About Me",
     "section": "Education",
-    "text": "Education\n\n\n\n\n\n\n\n\n\nPhD in Psychology and Cognitive Neuroscience\nUniversity of California, Riverside\n2021 – 2026 (Expected)\n\n\n\n\n\n\n\n\n\n\n\n\nM.Sc. in Psychology\nQueen’s University\n2017 – 2020\n\n\n\n\n\n\n\n\n\n\n\n\nHon. B.Sc. in Biological Sciences & Psychology\nYork University\n2013 – 2017"
+    "text": "Education\n\n\n\n\n\nPhD in Psychology and Cognitive Neuroscience\nUniversity of California, Riverside\n2021 — 2026 (Expected)\n\n\n\n\n\n\n\nM.Sc. in Psychology\nQueen’s University\n2017 — 2020\n\n\n\n\n\n\n\nHon. B.Sc. in Biological Sciences & Psychology\nYork University\n2013 — 2017"
   },
   {
     "objectID": "about/index.html#industry-experience",
     "href": "about/index.html#industry-experience",
     "title": "About Me",
     "section": "Industry Experience",
-    "text": "Industry Experience\n\n\n\n\n\nResearch Assistant I\nSurgical Safety Technologies\nToronto, ON – 2021"
+    "text": "Industry Experience\n\n\n\n\n\nResearch Assistant I\nSurgical Safety Technologies\nToronto, ON — 2021"
   },
   {
     "objectID": "portfolio/index.html",
     "href": "portfolio/index.html",
     "title": "Portfolio",
     "section": "",
-    "text": "Filter by expertise:\n  \n  \n    Research Domains:\n    Human Factors\n    HCI / XR\n    Cognitive Neuroscience\n    Applied Psychology\n    Biomedical Engineering\n  \n  \n  \n    Methodologies:\n    Experimental Design\n    HCI Benchmarking\n    Mixed-Effects Modeling\n    Mixed Methods\n    Psychophysiology\n    Pupillometry\n    EEG\n    Machine Learning\n  \n  \n  \n    \n      Clear All Filters\n    \n  \n\n\n\n\n\n\n\n\n\n\n\nXR Adaptive Modality: Case Study\n\n\nI built a remote XR interaction testbed and evaluated whether a context-aware adaptive system can reduce gaze failure modes (e.g., Midas Touch slips: accidental activations)…\n\n\n\nOctober 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nSurgeon Cognitive Dashboard — Case Study\n\n\nA proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon’s cognitive state, inspired by my work at Surgical…\n\n\n\nOctober 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nCase Study: A Psychophysiological Approach to Modeling Dual-Task Interference\n\n\nA research roadmap case study on modeling dual-task interference using pupillometry to enhance performance in high-stakes environments.\n\n\n\nJune 2024\n\n\n\n\n\n\n\n\n\n\n\n\n\nCase Study: Optimizing Learning with Cognitive States\n\n\nAn end-to-end mixed-methods study comparing the effects of napping and meditation on declarative and procedural memory consolidation.\n\n\n\nJune 2019\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n Back to top"
+    "text": "Filter by expertise:\n  \n  \n    Research Domains:\n    Human Factors\n    HCI / XR\n    Cognitive Neuroscience\n    Applied Psychology\n    Biomedical Engineering\n  \n  \n  \n    Methodologies:\n    Experimental Design\n    HCI Benchmarking\n    Mixed-Effects Modeling\n    Mixed Methods\n    Psychophysiology\n    Pupillometry\n    EEG\n    Machine Learning\n  \n  \n  \n    \n      Clear All Filters\n    \n  \n\n\n\n\n\n\n\n\n\n\n\nXR Adaptive Modality: Case Study\n\n\nI built a remote XR interaction testbed and evaluated whether a context-aware adaptive system can reduce gaze failure modes (e.g., Midas Touch slips: accidental activations)…\n\n\n\nFebruary 2026\n\n\n\n\n\n\n\n\n\n\n\n\n\nSurgeon Cognitive Dashboard — Case Study\n\n\nA proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon’s cognitive state, inspired by my work at Surgical…\n\n\n\nOctober 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nCase Study: A Psychophysiological Approach to Modeling Dual-Task Interference\n\n\nA research roadmap case study on modeling dual-task interference using pupillometry to enhance performance in high-stakes environments.\n\n\n\nJune 2025\n\n\n\n\n\n\n\n\n\n\n\n\n\nCase Study: Optimizing Learning with Cognitive States\n\n\nAn end-to-end mixed-methods study comparing the effects of napping and meditation on declarative and procedural memory consolidation.\n\n\n\nJune 2019\n\n\n\n\n\n\nNo matching items\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "cv.html",

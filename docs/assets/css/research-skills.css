@@ -1,0 +1,488 @@
+/* ============================================================
+   Shared content styles — Research, Skills, Publications, About
+   Palette: #1d3557 navy | #457b9d blue | #a8dadc teal | #e63946 red
+   2026 design principles: typography-first, surfaces over boxes,
+   whitespace as separator, one accent color doing one job.
+   ============================================================ */
+
+/* ------ Content width & reading rhythm --------------------- */
+#quarto-document-content {
+  max-width: 52rem;
+  font-size: 1.05rem;
+  line-height: 1.78;
+}
+
+#quarto-document-content p {
+  color: #2d3e50;
+  margin-bottom: 0.9rem;
+}
+
+/* ------ Section headings ----------------------------------- */
+/* Proper readable h2 with a small uppercase type-label above it
+   generated via ::before. Works in the TOC and scans well. */
+#quarto-document-content h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  color: #1d3557;
+  margin-top: 3rem;
+  margin-bottom: 1.1rem;
+  padding-top: 1.4rem;
+  padding-bottom: 0;
+  border: none;
+  position: relative;
+}
+
+/* hairline above each h2 as visual separator */
+#quarto-document-content h2::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: rgba(29, 53, 87, 0.1);
+}
+
+#quarto-document-content h2::after { display: none; }
+
+/* first h2 on page shouldn't have top hairline */
+#quarto-document-content section:first-of-type > h2::before,
+#quarto-document-content > h2:first-of-type::before {
+  display: none;
+}
+
+/* ------ Opening lead band ----------------------------------- */
+.page-lead {
+  font-size: 1.1rem;
+  line-height: 1.78;
+  color: #1d3557;
+  padding: 1.35rem 1.5rem;
+  margin-bottom: 2.25rem;
+  border-left: 3px solid #a8dadc;
+  background: rgba(29, 53, 87, 0.03);
+  border-radius: 0 12px 12px 0;
+}
+
+.page-lead p:last-child { margin-bottom: 0; }
+
+/* ------ Dissertation stage cards --------------------------- */
+/* Wrap all three ::: {.chapter-block} blocks in {.chapter-stages} */
+.chapter-stages {
+  counter-reset: stage;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.5rem;
+}
+
+.chapter-block {
+  counter-increment: stage;
+  position: relative;
+  padding: 1.25rem 1.4rem;
+  background: rgba(29, 53, 87, 0.034);
+  border-radius: 12px;
+  border: none;
+  box-shadow: none;
+  overflow: visible;
+}
+
+/* numbered badge */
+.chapter-block h3 {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0;
+  font-size: 1.1rem;
+  color: #1d3557;
+  font-weight: 600;
+}
+
+.chapter-block h3::before {
+  content: counter(stage);
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  background: #1d3557;
+  color: #a8dadc;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: 1;
+}
+
+.chapter-block p:last-child { margin-bottom: 0; }
+
+/* ------ Skills category blocks ----------------------------- */
+/* Left-border marker only — whitespace carries the grouping */
+.skills-block {
+  margin: 0 0 2rem;
+  padding: 0 0 0 1.25rem;
+  border-left: 2px solid rgba(69, 123, 157, 0.3);
+  background: transparent;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.skills-block h3 {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1d3557;
+  margin-top: 1.4rem;
+  margin-bottom: 0.3rem;
+  padding-bottom: 0;
+  border: none;
+}
+
+.skills-block h3:first-child,
+.skills-block > section:first-of-type h3 {
+  margin-top: 0.1rem;
+}
+
+.skills-block p,
+.skills-block ul {
+  margin-top: 0.25rem;
+  color: #2d3e50;
+}
+
+/* ------ Adjacent / XR panel -------------------------------- */
+.panel-adjacent {
+  margin: 1.5rem 0;
+  padding: 1.25rem 1.4rem;
+  border-radius: 12px;
+  border: none;
+  background: rgba(168, 218, 220, 0.12);
+  border-left: 3px solid #a8dadc;
+}
+
+.panel-adjacent h2,
+.panel-adjacent h3 {
+  margin-top: 0;
+  color: #1d3557;
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1rem;
+}
+
+/* ------ XR scope note -------------------------------------- */
+.xr-note {
+  margin-top: 1.25rem;
+  padding: 0.9rem 1.1rem;
+  border-left: 2px solid rgba(230, 57, 70, 0.5);
+  background: transparent;
+  border-radius: 0;
+  font-size: 1rem;
+  color: #2d3e50;
+}
+
+/* ------ Research questions: minimal arrow bullets ---------- */
+.research-questions ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.research-questions li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 0.75rem;
+  line-height: 1.65;
+}
+
+.research-questions li::before {
+  content: '—';
+  position: absolute;
+  left: 0;
+  color: #457b9d;
+  font-weight: 500;
+}
+
+/* ------ Link-row: solid fill buttons ----------------------- */
+.link-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin: 2rem 0 0;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-size: 0;
+}
+
+.link-row p {
+  margin: 0;
+  display: contents;
+}
+
+.link-row a {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.2rem;
+  background: #1d3557;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none;
+  letter-spacing: 0.015em;
+  transition: background 0.15s ease, transform 0.12s ease;
+}
+
+.link-row a:hover {
+  background: #2d4e75;
+  color: #fff;
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.link-row .sep { display: none; }
+
+/* ------ Language chips ------------------------------------- */
+.lang-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+  font-size: 0;
+}
+
+.lang-chips p {
+  display: contents;
+}
+
+.lang-chip {
+  display: inline-block;
+  padding: 0.35rem 1rem;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 500;
+  background: rgba(29, 53, 87, 0.06);
+  color: #1d3557;
+  border: none;
+}
+
+/* ------ Publications page ---------------------------------- */
+
+/* Status labels for manuscript status */
+.status-block {
+  margin: 1.25rem 0;
+}
+
+.status-label {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #fff;
+  background: #457b9d;
+  border-radius: 4px;
+  padding: 0.2rem 0.65rem;
+  margin-bottom: 0.85rem;
+}
+
+.status-label.review  { background: #e6a817; }
+.status-label.prep    { background: #6b7280; }
+
+.pub-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.pub-list li {
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(29, 53, 87, 0.07);
+  line-height: 1.68;
+  color: #2d3e50;
+  font-size: 1rem;
+}
+
+.pub-list li:last-child { border-bottom: none; }
+
+/* Conference subsections */
+.conf-group h4 {
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #457b9d;
+  margin: 1.85rem 0 0.9rem;
+}
+
+/* ------ About / Education timeline ------------------------- */
+.edu-entry {
+  display: grid;
+  grid-template-columns: 5rem 1fr;
+  gap: 1.25rem;
+  align-items: start;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(29, 53, 87, 0.07);
+}
+
+.edu-entry:last-child { border-bottom: none; }
+
+.edu-logo {
+  padding-top: 0.2rem;
+}
+
+.edu-logo img {
+  max-width: 100%;
+  height: auto;
+  filter: grayscale(15%);
+}
+
+.edu-body h3 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: #1d3557;
+  margin: 0 0 0.2rem;
+}
+
+.edu-body .edu-org {
+  font-size: 0.97rem;
+  color: #457b9d;
+  font-style: italic;
+  margin-bottom: 0.15rem;
+}
+
+.edu-body .edu-years {
+  font-size: 0.88rem;
+  color: #6b7280;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ------ Horizontal rules: space only, no line -------------- */
+#quarto-document-content hr {
+  border: none;
+  border-top: 1px solid rgba(29, 53, 87, 0.08);
+  margin: 2.5rem 0;
+}
+
+/* ------ TOC sidebar ---------------------------------------- */
+nav[role="doc-toc"] {
+  font-size: 0.9rem;
+}
+
+nav[role="doc-toc"] a {
+  color: #6b7280;
+  text-decoration: none;
+  transition: color 0.15s;
+}
+
+nav[role="doc-toc"] a:hover {
+  color: #1d3557;
+}
+
+nav[role="doc-toc"] .active > a {
+  color: #1d3557;
+  font-weight: 600;
+}
+
+/* ------ Entrance animations -------------------------------- */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes fadeSlideUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .page-lead              { animation: fadeSlideUp 0.4s ease both; }
+  .chapter-block          { animation: fadeSlideUp 0.4s ease both; }
+  .chapter-block:nth-of-type(2) { animation-delay: 0.08s; }
+  .chapter-block:nth-of-type(3) { animation-delay: 0.16s; }
+}
+
+/* ============================================================
+   Dark mode
+   ============================================================ */
+
+[data-bs-theme="dark"] #quarto-document-content p {
+  color: var(--bs-body-color);
+}
+
+[data-bs-theme="dark"] #quarto-document-content h2 {
+  color: #a8dadc;
+}
+
+[data-bs-theme="dark"] .page-lead {
+  color: var(--bs-body-color);
+  background: rgba(255, 255, 255, 0.04);
+  border-left-color: rgba(168, 218, 220, 0.5);
+}
+
+[data-bs-theme="dark"] .chapter-block {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+[data-bs-theme="dark"] .chapter-block h3 {
+  color: var(--bs-body-color);
+}
+
+[data-bs-theme="dark"] .chapter-block h3::before {
+  background: #a8dadc;
+  color: #1d3557;
+}
+
+[data-bs-theme="dark"] .skills-block {
+  border-left-color: rgba(168, 218, 220, 0.35);
+}
+
+[data-bs-theme="dark"] .skills-block h3 {
+  color: var(--bs-body-color);
+}
+
+[data-bs-theme="dark"] .skills-block p,
+[data-bs-theme="dark"] .skills-block ul {
+  color: var(--bs-body-color);
+}
+
+[data-bs-theme="dark"] .panel-adjacent {
+  background: rgba(168, 218, 220, 0.07);
+  border-left-color: rgba(168, 218, 220, 0.5);
+}
+
+[data-bs-theme="dark"] .panel-adjacent h3 {
+  color: var(--bs-body-color);
+}
+
+[data-bs-theme="dark"] .xr-note {
+  color: var(--bs-body-color);
+  border-left-color: rgba(230, 57, 70, 0.5);
+}
+
+[data-bs-theme="dark"] .research-questions li::before {
+  color: #a8dadc;
+}
+
+[data-bs-theme="dark"] .link-row a {
+  background: rgba(168, 218, 220, 0.15);
+  color: #a8dadc;
+}
+
+[data-bs-theme="dark"] .link-row a:hover {
+  background: rgba(168, 218, 220, 0.25);
+  color: #fff;
+}
+
+[data-bs-theme="dark"] .lang-chip {
+  background: rgba(255, 255, 255, 0.07);
+  color: var(--bs-body-color);
+}
+
+[data-bs-theme="dark"] .status-label       { opacity: 0.85; }
+[data-bs-theme="dark"] .pub-list li        { border-color: rgba(255, 255, 255, 0.08); color: var(--bs-body-color); }
+[data-bs-theme="dark"] .conf-group h4      { color: #a8dadc; }
+[data-bs-theme="dark"] .edu-entry          { border-color: rgba(255, 255, 255, 0.08); }
+[data-bs-theme="dark"] .edu-body h3        { color: var(--bs-body-color); }
+[data-bs-theme="dark"] .edu-body .edu-org  { color: #a8dadc; }
+[data-bs-theme="dark"] .edu-body .edu-years{ color: rgba(255,255,255,0.5); }
+
+[data-bs-theme="dark"] nav[role="doc-toc"] a       { color: rgba(255,255,255,0.45); }
+[data-bs-theme="dark"] nav[role="doc-toc"] a:hover { color: rgba(255,255,255,0.85); }
+[data-bs-theme="dark"] nav[role="doc-toc"] .active > a { color: #a8dadc; }

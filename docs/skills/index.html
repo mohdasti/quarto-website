@@ -87,6 +87,7 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../assets/css/main.css">
+<link rel="stylesheet" href="../assets/css/research-skills.css">
 <meta name="twitter:title" content="Skills – Mohammad Dastgheib">
 <meta name="twitter:description" content="Dissertation workflow: psychophysics, pupillometry QC, psychometric function modeling, mixed models, hierarchical Bayesian Wiener DDM (brms/Stan/CmdStan), MATLAB/PsychToolbox, R, Quarto/LaTeX. Adjacent: web hand-vs-gaze task, PyMC LBA for verification RTs (XR preprint).">
 <meta name="twitter:card" content="summary_large_image">
@@ -312,12 +313,15 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#core-research-methods" id="toc-core-research-methods" class="nav-link active" data-scroll-target="#core-research-methods">Core Research Methods</a></li>
-  <li><a href="#experimental-design-and-data-collection" id="toc-experimental-design-and-data-collection" class="nav-link" data-scroll-target="#experimental-design-and-data-collection">Experimental Design and Data Collection</a></li>
-  <li><a href="#modeling-and-statistical-inference" id="toc-modeling-and-statistical-inference" class="nav-link" data-scroll-target="#modeling-and-statistical-inference">Modeling and Statistical Inference</a></li>
-  <li><a href="#programming-and-research-computing" id="toc-programming-and-research-computing" class="nav-link" data-scroll-target="#programming-and-research-computing">Programming and Research Computing</a></li>
-  <li><a href="#scientific-communication-and-reproducibility" id="toc-scientific-communication-and-reproducibility" class="nav-link" data-scroll-target="#scientific-communication-and-reproducibility">Scientific Communication and Reproducibility</a></li>
-  <li><a href="#additional-adjacent-methods" id="toc-additional-adjacent-methods" class="nav-link" data-scroll-target="#additional-adjacent-methods">Additional / Adjacent Methods</a></li>
+  <li><a href="#core-research-methods" id="toc-core-research-methods" class="nav-link active" data-scroll-target="#core-research-methods">Core research methods</a></li>
+  <li><a href="#experimental-design-and-data-collection" id="toc-experimental-design-and-data-collection" class="nav-link" data-scroll-target="#experimental-design-and-data-collection">Experimental design and data collection</a></li>
+  <li><a href="#modeling-and-statistical-inference" id="toc-modeling-and-statistical-inference" class="nav-link" data-scroll-target="#modeling-and-statistical-inference">Modeling and statistical inference</a></li>
+  <li><a href="#programming-and-research-computing" id="toc-programming-and-research-computing" class="nav-link" data-scroll-target="#programming-and-research-computing">Programming and research computing</a></li>
+  <li><a href="#scientific-communication-and-reproducibility" id="toc-scientific-communication-and-reproducibility" class="nav-link" data-scroll-target="#scientific-communication-and-reproducibility">Scientific communication and reproducibility</a></li>
+  <li><a href="#additional-and-adjacent-methods" id="toc-additional-and-adjacent-methods" class="nav-link" data-scroll-target="#additional-and-adjacent-methods">Additional and adjacent methods</a>
+  <ul class="collapse">
+  <li><a href="#hand-versus-gaze-interaction-portfolio-preprint" id="toc-hand-versus-gaze-interaction-portfolio-preprint" class="nav-link" data-scroll-target="#hand-versus-gaze-interaction-portfolio-preprint">Hand versus gaze interaction (portfolio / preprint)</a></li>
+  </ul></li>
   <li><a href="#languages" id="toc-languages" class="nav-link" data-scroll-target="#languages">Languages</a></li>
   </ul>
 </nav>
@@ -350,72 +354,131 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 </header>
 
 
-<p>This page is <strong>how</strong> the <a href="../research/index.html"><strong>Research</strong></a> program is implemented—<strong>methods, workflow, and computation</strong>—not a generic résumé. The <strong>dissertation toolkit</strong> fills the sections below; <strong>XR / interaction</strong> methods are <strong>adjacent</strong> at the end. <a href="../publications/index.html"><strong>Publications</strong></a> · <a href="../cv.html"><strong>CV</strong></a></p>
+<div class="page-lead">
+<p>This page describes how the <a href="../research/index.html">Research</a> program is implemented—methods, workflow, and computation—not a generic résumé. The dissertation toolkit fills the sections below; XR and interaction methods are grouped at the end as adjacent work.</p>
+</div>
+<div class="link-row">
+<p><a href="../publications/index.html">Publications</a> <a href="../cv.html">CV</a></p>
+</div>
 <hr>
 <section id="core-research-methods" class="level2">
-<h2 class="anchored" data-anchor-id="core-research-methods">Core Research Methods</h2>
-<ul>
-<li><strong>Psychophysics:</strong> <strong>Auditory and visual same–different discrimination</strong> (and related tasks) under load; linking <strong>physical effort</strong> to sensitivity, bias, and dynamics.</li>
-<li><strong>Pupillometry:</strong> <strong>Preprocessing and quality control</strong> (blinks, artifacts, valid samples); <strong>window-specific validity</strong>; <strong>gap-aware</strong> handling of missing samples.</li>
-<li><strong>Interpretation:</strong> Pupil measures inform <strong>arousal</strong> and <strong>effort</strong> hypotheses; <strong>behavior</strong> and formal models remain primary for inference (aligned with <a href="../research/index.html"><strong>Research</strong></a>).</li>
-</ul>
+<h2 class="anchored" data-anchor-id="core-research-methods">Core research methods</h2>
+<div class="skills-block">
+<section id="psychophysics" class="level3">
+<h3 class="anchored" data-anchor-id="psychophysics">Psychophysics</h3>
+<p>Design and analysis of auditory and visual same–different discrimination (and related tasks) under load; linking physical effort to sensitivity, bias, and dynamics.</p>
+</section>
+<section id="pupillometry" class="level3">
+<h3 class="anchored" data-anchor-id="pupillometry">Pupillometry</h3>
+<p>Preprocessing and quality control (blinks, artifacts, valid samples); window-specific validity; gap-aware handling of missing samples.</p>
+</section>
+<section id="interpretation" class="level3">
+<h3 class="anchored" data-anchor-id="interpretation">Interpretation</h3>
+<p>Pupil measures inform arousal and effort hypotheses; behavior and formal models remain primary for inference (aligned with <a href="../research/index.html">Research</a>).</p>
+</section>
+</div>
 <hr>
 </section>
 <section id="experimental-design-and-data-collection" class="level2">
-<h2 class="anchored" data-anchor-id="experimental-design-and-data-collection">Experimental Design and Data Collection</h2>
-<ul>
-<li><strong>Handgrip dual-task paradigm:</strong> <strong>Concurrent physical effort</strong> (graded isometric grip) with cognitive/perceptual tasks, including <strong>same–different discrimination</strong> and memory components as required.</li>
-<li><strong>Within-subject designs:</strong> Factorial and repeated-measures layouts; <strong>counterbalancing</strong> of orders and conditions.</li>
-<li><strong>Preregistration:</strong> Where used, analyses follow registered hypotheses, exclusions, and plans.</li>
-<li><strong>Lab tasks:</strong> <strong>MATLAB</strong> and <strong>PsychToolbox</strong> for stimulus delivery and responses; calibration and exclusion rules documented in materials.</li>
-</ul>
+<h2 class="anchored" data-anchor-id="experimental-design-and-data-collection">Experimental design and data collection</h2>
+<div class="skills-block">
+<section id="handgrip-dual-task-paradigm" class="level3">
+<h3 class="anchored" data-anchor-id="handgrip-dual-task-paradigm">Handgrip dual-task paradigm</h3>
+<p>Concurrent physical effort (graded isometric grip) with cognitive and perceptual tasks, including same–different discrimination and memory components as required.</p>
+</section>
+<section id="within-subject-structure-and-preregistration" class="level3">
+<h3 class="anchored" data-anchor-id="within-subject-structure-and-preregistration">Within-subject structure and preregistration</h3>
+<p>Factorial and repeated-measures layouts; counterbalancing of orders and conditions. Where studies are preregistered, analyses follow registered hypotheses, exclusions, and plans.</p>
+</section>
+<section id="lab-implementation" class="level3">
+<h3 class="anchored" data-anchor-id="lab-implementation">Lab implementation</h3>
+<p>MATLAB and PsychToolbox for stimulus delivery and responses; calibration and exclusion rules documented in materials.</p>
+</section>
+</div>
 <hr>
 </section>
 <section id="modeling-and-statistical-inference" class="level2">
-<h2 class="anchored" data-anchor-id="modeling-and-statistical-inference">Modeling and Statistical Inference</h2>
-<ul>
-<li><strong>Psychometric function modeling:</strong> Separate effects on perceptual <strong>evidence</strong> versus <strong>criterion</strong> under <strong>physical effort</strong> and load.</li>
-<li><strong>Mixed-effects models:</strong> <strong>LMMs</strong> / <strong>GLMMs</strong> in <strong>R</strong> (<strong>lme4</strong>, <strong>emmeans</strong>) for repeated measures and individual differences (<a href="../projects/dual-task-case-study.html"><strong>dual-task roadmap</strong></a>).</li>
-<li><strong>Hierarchical Bayesian Wiener drift-diffusion model (DDM)—dissertation:</strong> Trial-level decomposition (<strong>drift rate</strong>, <strong>boundaries</strong>, <strong>non-decision time</strong>); implemented with <strong>brms</strong> / <strong>Stan</strong> (<strong>CmdStan</strong>-class) workflows. Scope and caveats (<strong>non-decision time</strong> constrained by design; <strong>pupil–parameter</strong> links exploratory) are stated on <a href="../research/index.html"><strong>Research</strong></a>.</li>
-<li><strong>Scrutiny:</strong> Sensitivity analyses, alternative specifications, model comparison, interval- or equivalence-style reasoning where relevant.</li>
-</ul>
-<p><strong>XR preprint only:</strong> <a href="../projects/case_study_web.html"><strong>case study</strong></a> uses <strong>hierarchical Bayesian LBA</strong> in <strong>PyMC</strong> for <strong>verification-phase</strong> RTs after target entry—<strong>not</strong> the dissertation <strong>Wiener DDM</strong>, and <strong>not</strong> interchangeable with it.</p>
+<h2 class="anchored" data-anchor-id="modeling-and-statistical-inference">Modeling and statistical inference</h2>
+<div class="skills-block">
+<section id="psychometric-function-modeling" class="level3">
+<h3 class="anchored" data-anchor-id="psychometric-function-modeling">Psychometric function modeling</h3>
+<p>Separate effects on perceptual evidence versus criterion under physical effort and load.</p>
+</section>
+<section id="mixed-effects-models" class="level3">
+<h3 class="anchored" data-anchor-id="mixed-effects-models">Mixed-effects models</h3>
+<p>LMMs and GLMMs in R (lme4, emmeans) for repeated measures and individual differences, aligned with the <a href="../projects/dual-task-case-study.html">dual-task roadmap</a>.</p>
+</section>
+<section id="hierarchical-bayesian-wiener-ddm-dissertation" class="level3">
+<h3 class="anchored" data-anchor-id="hierarchical-bayesian-wiener-ddm-dissertation">Hierarchical Bayesian Wiener DDM (dissertation)</h3>
+<p>Trial-level decomposition (drift rate, boundaries, non-decision time); implemented with brms and Stan (CmdStan-class) workflows. Scope and caveats—non-decision time constrained by design; pupil–parameter links exploratory—are stated on <a href="../research/index.html">Research</a>.</p>
+</section>
+<section id="model-scrutiny" class="level3">
+<h3 class="anchored" data-anchor-id="model-scrutiny">Model scrutiny</h3>
+<p>Sensitivity analyses, alternative specifications, model comparison, and interval- or equivalence-style reasoning where relevant.</p>
+</section>
+</div>
+<div class="xr-note">
+<p>The <a href="../projects/case_study_web.html">XR case study</a> uses hierarchical Bayesian LBA in PyMC for verification-phase RTs after target entry. That framework is separate from the dissertation Wiener DDM and is not interchangeable with it.</p>
+</div>
 <hr>
 </section>
 <section id="programming-and-research-computing" class="level2">
-<h2 class="anchored" data-anchor-id="programming-and-research-computing">Programming and Research Computing</h2>
-<ul>
-<li><strong>R:</strong> <strong>tidyverse</strong>, <strong>ggplot2</strong>; mixed models; <strong>brms</strong> / <strong>Stan</strong> interfaces; <strong>Quarto</strong> for analyses and this site.</li>
-<li><strong>MATLAB:</strong> <strong>PsychToolbox</strong>.</li>
-<li><strong>Git</strong> / <strong>GitHub:</strong> Versioned scripts and reproducible layout.</li>
-</ul>
+<h2 class="anchored" data-anchor-id="programming-and-research-computing">Programming and research computing</h2>
+<div class="skills-block">
+<section id="r" class="level3">
+<h3 class="anchored" data-anchor-id="r">R</h3>
+<p>tidyverse, ggplot2; mixed models; brms and Stan interfaces; Quarto for analyses and this site.</p>
+</section>
+<section id="matlab" class="level3">
+<h3 class="anchored" data-anchor-id="matlab">MATLAB</h3>
+<p>PsychToolbox for experiment control.</p>
+</section>
+<section id="version-control" class="level3">
+<h3 class="anchored" data-anchor-id="version-control">Version control</h3>
+<p>Git and GitHub for versioned scripts and reproducible layout.</p>
+</section>
+</div>
 <hr>
 </section>
 <section id="scientific-communication-and-reproducibility" class="level2">
-<h2 class="anchored" data-anchor-id="scientific-communication-and-reproducibility">Scientific Communication and Reproducibility</h2>
-<ul>
-<li><strong>Quarto</strong> / <strong>R Markdown</strong> (legacy) for rebuildable reports.</li>
-<li><strong>LaTeX</strong> for manuscripts; exploratory vs.&nbsp;confirmatory reporting kept distinct where both apply.</li>
-<li><strong>Traceability:</strong> README notes, pinned dependencies where used, QC logs for <strong>pupillometry</strong> and behavioral pipelines.</li>
-</ul>
+<h2 class="anchored" data-anchor-id="scientific-communication-and-reproducibility">Scientific communication and reproducibility</h2>
+<div class="skills-block">
+<section id="reproducible-reports" class="level3">
+<h3 class="anchored" data-anchor-id="reproducible-reports">Reproducible reports</h3>
+<p>Quarto and R Markdown (legacy) so tables and figures rebuild from code.</p>
+</section>
+<section id="writing-and-rigor" class="level3">
+<h3 class="anchored" data-anchor-id="writing-and-rigor">Writing and rigor</h3>
+<p>LaTeX for manuscripts; exploratory versus confirmatory reporting kept distinct where both apply.</p>
+</section>
+<section id="traceability" class="level3">
+<h3 class="anchored" data-anchor-id="traceability">Traceability</h3>
+<p>README notes, pinned dependencies where used, and QC logs for pupillometry and behavioral pipelines.</p>
+</section>
+</div>
 <hr>
 </section>
-<section id="additional-adjacent-methods" class="level2">
-<h2 class="anchored" data-anchor-id="additional-adjacent-methods">Additional / Adjacent Methods</h2>
-<p><strong>Hand vs.&nbsp;gaze interaction (portfolio / preprint)</strong>—<a href="https://arxiv.org/abs/2603.15991"><strong>arXiv:2603.15991</strong></a>, <a href="../projects/case_study_web.html">case study</a>. <strong>Adjacent</strong> to the dissertation; adds <strong>HCI / XR-relevant</strong> breadth:</p>
+<section id="additional-and-adjacent-methods" class="level2">
+<h2 class="anchored" data-anchor-id="additional-and-adjacent-methods">Additional and adjacent methods</h2>
+<section id="hand-versus-gaze-interaction-portfolio-preprint" class="level3 panel-adjacent">
+<h3 class="anchored" data-anchor-id="hand-versus-gaze-interaction-portfolio-preprint">Hand versus gaze interaction (portfolio / preprint)</h3>
+<p><a href="https://arxiv.org/abs/2603.15991">arXiv:2603.15991</a> · <a href="../projects/case_study_web.html">case study</a>. Adjacent to the dissertation; adds HCI- and XR-relevant breadth.</p>
 <ul>
-<li><strong>Web task:</strong> <strong>React</strong> / <strong>TypeScript</strong>; <strong>remote</strong> sessions; <strong>display calibration</strong> and session checks across devices.</li>
-<li><strong>Design:</strong> <strong>ISO 9241-9</strong>-style multidirectional tapping; <strong>Fitts</strong> difficulty and <strong>throughput</strong>; <strong>Williams</strong> block counterbalancing; <strong>NASA-TLX</strong> workload.</li>
-<li><strong>Gaze proxy:</strong> <strong>Physiologically informed gaze simulation</strong> (latency, jitter, saccadic suppression) for <strong>gaze</strong> vs.&nbsp;<strong>hand</strong> comparison without lab eye-tracking.</li>
-<li><strong>Policy-triggered adaptive UI:</strong> <strong>Declutter</strong> (gaze) and <strong>width inflation</strong> (hand) implemented and logged. In the analyzed data, <strong>only declutter executed</strong> and was <strong>evaluable</strong> (modest <strong>timeout</strong> reduction; <strong>slips</strong> still dominated <strong>gaze</strong> errors). <strong>Hand width inflation was not evaluable</strong>—targets did not scale in the UI (<strong>integration bug</strong>); that policy is <strong>not</strong> validated here.</li>
-<li><strong>LBA fits:</strong> <strong>Python</strong> / <strong>PyMC</strong> for verification-phase RTs only—see <strong>Modeling</strong> note above.</li>
+<li>Web task: React and TypeScript; remote sessions; display calibration and session checks across devices.</li>
+<li>Design: ISO 9241-9–style multidirectional tapping; Fitts difficulty and throughput; Williams block counterbalancing; NASA-TLX workload.</li>
+<li>Gaze proxy: physiologically informed gaze simulation (latency, jitter, saccadic suppression) for gaze versus hand comparison without lab eye-tracking.</li>
+<li>Policy-triggered adaptive UI: declutter (gaze) and width inflation (hand). In the analyzed data, only declutter executed and was evaluable (modest timeout reduction; slips still dominated gaze errors). Hand width inflation was not evaluable—targets did not scale in the UI (integration bug); that policy is not validated here.</li>
+<li>LBA fits: Python and PyMC for verification-phase RTs only—see the note under Modeling above.</li>
 </ul>
-<p><strong>Other:</strong> <a href="../projects/surgeon-performance-predict2.html">Surgeon dashboard</a> (R Shiny, XGBoost); <a href="../projects/memory-and-meditation.html">EEG thesis</a>; imaging collaborations—<a href="../publications/index.html"><strong>Publications</strong></a>; SST—<a href="../about/index.html"><strong>About</strong></a>.</p>
+<p>Other secondary experience: <a href="../projects/surgeon-performance-predict2.html">surgeon dashboard</a> (R Shiny, XGBoost); <a href="../projects/memory-and-meditation.html">EEG thesis</a>; imaging collaborations under <a href="../publications/index.html">Publications</a>; SST role on <a href="../about/index.html">About</a>.</p>
+</section>
 <hr>
 </section>
 <section id="languages" class="level2">
 <h2 class="anchored" data-anchor-id="languages">Languages</h2>
-<p>Persian (native), English (professional), French (basic).</p>
+<div class="lang-chips">
+<p><span class="lang-chip">Persian — Native</span> <span class="lang-chip">English — Professional</span> <span class="lang-chip">French — Basic</span></p>
+</div>
 
 
 </section>
