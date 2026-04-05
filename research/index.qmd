@@ -1,41 +1,49 @@
 ---
-title: "Research Interests"
+title: "Research"
+description: "Doctoral research on physical effort, arousal, and perceptual decisions in aging: handgrip dual-task paradigm, pupillometry, psychometric function modeling, hierarchical Bayesian Wiener DDM. Adjacent arXiv preprint on hand vs. gaze XR-relevant pointing (not dissertation core)."
 ---
 
-## 🔬 Research Statement
-
-My doctoral research investigates the intricate relationship between physiological arousal, cognitive effort, and the integrity of the human brain's neuromodulatory systems. I am fundamentally interested in understanding *why* cognitive performance, particularly in aging, becomes vulnerable under demanding real-world conditions.
-
-My work aims to move beyond simple behavioral metrics by integrating psychophysics, pupillometry, and computational modeling to deconstruct the subcomponents of decision-making. By precisely measuring the impact of physical and cognitive load, I seek to build predictive models of performance that can inform the design of safer, more adaptive, and more inclusive technologies for a range of user populations.
+**Physical effort** and **arousal** reshape perceptual decisions—especially under limited capacity, as in **aging** and **older adults**. The dissertation asks how those changes appear in **behavior**, in **pupillometry**, and in **sequential sampling** parameters that separate evidence quality from caution. The backbone is a **handgrip dual-task paradigm** (isometric force concurrent with cognitive and perceptual tasks), scaled from younger-adult validation to **older-adult** modeling. **Dissertation chapters are not journal publications**; titles and status are on [**Publications**](../publications/index.qmd).
 
 ---
 
-##  Core Research Areas
+## Current Research Program
 
-My research program is built on five interconnected pillars:
+The dissertation is one integrated program in three stages.
 
-* **Aging & Cognitive Neuroscience:** Characterizing how age-related changes in the Locus Coeruleus (LC) and its associated neural circuits impact cognitive functions, with a focus on identifying potential biomarkers for neurodegenerative disorders.
-* **Dual-Task Interference & Performance:** Quantifying how concurrent physical and cognitive stressors interact to impair performance across multiple domains, including perception, memory, and metacognition.
-* **Applied Human Factors:** Translating cognitive science insights to real-world high-stakes environments (aerospace, healthcare, manufacturing) to enhance safety and performance through data-driven design.
-* **Adaptive Interfaces & Extended Reality (XR):** Designing and evaluating adaptive modality systems that dynamically adjust input methods (e.g., gaze vs. hand-pointing) based on cognitive load and performance metrics. This work yielded an open-source remote testing platform ([xr-adaptive-modality-2025](https://github.com/mohdasti/xr-adaptive-modality-2025)) and a published preprint establishing modality-specific failure modes in XR pointing ([arXiv:2603.15991](https://arxiv.org/abs/2603.15991)).
-* **Personalized Cognitive Modeling:** Moving beyond group averages to model how individual differences in factors like Cognitive Reserve predict a person's unique resilience to cognitive overload, including computational approaches that link physiological measures (pupillometry) with decision-making processes.
+**1. Younger-adult proof of concept.** Under **concurrent physical effort** and cognitive/perceptual load, **pupil-linked arousal** often shifted more clearly than summary **behavioral** outcomes—supporting the arousal measurement strategy and **validating the handgrip dual-task paradigm** for later stages without over-reading weak or null behavioral contrasts.
 
----
+**2. Older-adult psychometric chapter.** **Auditory and visual same–different discrimination** with **psychometric function modeling** and **pupillometry**, under missingness, artifacts, and QC constraints typical of eye-tracking in **aging**. Where appropriate, analyses use **continuous intensity** and graded manipulations rather than coarse binning alone.
 
-## 🚀 Research in Action
+**3. Older-adult mechanistic chapter.** A **hierarchical Bayesian Wiener drift-diffusion model (DDM)** decomposes choices and RTs. **Physical effort** costs align most clearly with **drift rate** (evidence accumulation). **Boundary separation** does not show comparably strong compensatory support. **Non-decision time** is **constrained by design** and is not treated as a free explanation of effort. **Pupillometry** linked to trial-level diffusion parameters is **exploratory** and **inconclusive** in the current specification.
 
-See concrete applications of these research approaches in my [**Portfolio**](../portfolio/index.qmd), featuring case studies that demonstrate the translation of cognitive science principles to real-world challenges in aerospace, healthcare, and education.
+Program overview: [**dual-task case study**](../projects/dual-task-case-study.qmd). Methods and computation: [**Skills**](../skills/index.qmd).
 
 ---
 
-## 🎯 Current Research Focus
+## Adjacent Work in XR / HCI
 
-**PhD Dissertation (2026):** *"A Psychophysiological Approach to Modeling Dual-Task Interference: Pupillometry, Cognitive Reserve, and Personalized Performance Prediction"*
+Outside the dissertation, an [**arXiv preprint**](https://arxiv.org/abs/2603.15991) ([**case study**](../projects/case_study_web.qmd)) reports **hand** versus **gaze** pointing in a **web-based**, **XR-relevant** interaction task. **Modality-specific failure modes** match the intended contrast: **gaze**—**slips** / Midas Touch–type errors; **hand**—**misses** / spatial targeting. **Throughput** and **Fitts**-style analyses summarize speed–accuracy tradeoffs. **Adaptive UI** results are narrow: **gaze declutter** was the only policy that **executed and was evaluable** in this dataset (**timeouts** down modestly; **slip-dominated** gaze errors remained dominant). **Hand target-width inflation was not evaluable** (rendered targets did not update—**UI integration bug**). **Linear ballistic accumulator (LBA)** modeling there applies to **verification-phase** RTs only—see [**Skills**](../skills/index.qmd) for stack and scope; it does **not** replace the dissertation **Wiener DDM**. This line supports **HCI / human factors / interaction** breadth; the dissertation remains the **primary** identity.
 
-This research aims to develop a comprehensive framework for predicting when and why individuals experience cognitive overload in dual-task scenarios, with applications to aging, technology design, and occupational safety. Building on my dissertation prospectus, the program integrates:
+---
 
-* **Pre-registered psychophysics and pupillometry experiments** to characterize how neuromodulatory state and Cognitive Reserve shape dual-task interference across the adult lifespan.
-* **Applied human factors case studies** (surgical performance monitoring, adaptive XR interfaces) that translate these mechanisms into real-world, safety-critical settings — including a published arXiv preprint on gaze vs. hand failure modes in XR ([arXiv:2603.15991](https://arxiv.org/abs/2603.15991)).
-* **Computational modeling and machine learning**, including Drift-Diffusion Models linked to pupil dynamics, hierarchical Bayesian LBA modeling of decision processes, and calibrated predictive models of cognitive state, to move toward individualized performance prediction and adaptive assistance policies.
+## Core Questions
 
-Together, these strands are designed to bridge basic cognitive neuroscience, physiological measurement, and deployable human-centered technologies.
+- How does **concurrent physical effort** change **perceptual decision-making** across the lifespan, and where do effects appear—in behavior, in **pupillometry**, or in latent parameters?
+- How does **psychometric function modeling** complement **behavior** and **pupillometry** when eye-tracking data are incomplete or noisy?
+- Can a **hierarchical Bayesian Wiener DDM** separate **drift**-linked costs from **caution**, while treating **non-decision time** and **pupil–parameter** links with appropriate limits?
+- How do **individual differences** (e.g., cognitive reserve) interact with load beyond group averages?
+
+---
+
+## Approach
+
+The progression is **behavioral performance** → **psychometric function modeling** → **hierarchical Bayesian Wiener DDM**, with **pupillometry** at stages where it informs **arousal** and **physical effort** without substituting for behavior. The aim is interpretable accounts of **dual-task** performance under **effort** and **arousal**, not a single headline metric. Implementation: [**Skills**](../skills/index.qmd).
+
+---
+
+## Why This Work Matters
+
+This work connects **psychology**, **cognitive neuroscience**, **human factors**, and **interface-relevant** inference about state under load—without claiming **clinical** translation, **production deployment**, or **pupillometry** as a diagnostic biomarker.
+
+**Outputs:** [**Publications**](../publications/index.qmd) · [**CV**](../cv.qmd) · [**Portfolio**](../portfolio/index.qmd)

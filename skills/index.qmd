@@ -1,65 +1,70 @@
 ---
-title: "Technical Skills & Methodologies"
+title: "Skills"
+description: "Dissertation workflow: psychophysics, pupillometry QC, psychometric function modeling, mixed models, hierarchical Bayesian Wiener DDM (brms/Stan/CmdStan), MATLAB/PsychToolbox, R, Quarto/LaTeX. Adjacent: web hand-vs-gaze task, PyMC LBA for verification RTs (XR preprint)."
 ---
 
-I specialize in a multi-modal approach to understanding human behavior, combining rigorous experimental design with advanced data analysis and physiological measurement. Below is a summary of my core competencies.
-
-💡 *See concrete applications of these skills in my [Portfolio](../portfolio/index.qmd) case studies.*
-
----
-
-### 🔬 Research & Experimental Design
-
-* **User Research:** End-to-end research planning, psychophysics, usability testing, survey design, A/B testing, user interviews.
-* **Interaction Design Principles:** Applying cognitive science principles to inform the design of intuitive and effective user interfaces, including adaptive systems that respond to user state.
-* **Human Factors:** Assessing user performance and cognitive load in dual-task and high-stress environments.
-* **Experiment Programming:** Designing and implementing precise behavioral and perceptual tasks using **PsychToolbox (MATLAB)** and **web-based platforms (React/TypeScript)**.
-* **Pre-registration & Open Science:** Developing comprehensive pre-registered study designs with detailed hypotheses, exclusion criteria, and analysis plans. Implementing rigorous experimental protocols with Williams counterbalancing and equivalence testing.
-* **Fitts's Law & Human-Computer Interaction:** Implementing ISO 9241-9 compliant Fitts's Law paradigms for evaluating input modalities, with expertise in projected error calculation and throughput metrics.
+This page is **how** the [**Research**](../research/index.qmd) program is implemented—**methods, workflow, and computation**—not a generic résumé. The **dissertation toolkit** fills the sections below; **XR / interaction** methods are **adjacent** at the end. [**Publications**](../publications/index.qmd) · [**CV**](../cv.qmd)
 
 ---
 
-### 💻 Programming & Data Science
+## Core Research Methods
 
-* **Languages:** R (Expert), MATLAB (Expert), **TypeScript/JavaScript (Proficient)**, SQL (Proficient), Python (Familiar), Bash (Familiar).
-* **Web Development:** **React 18**, **TypeScript**, **Vite**, modern frontend development, event-driven architectures, real-time data synchronization, **precise timing control** (performance.now() for psychophysics).
-* **Statistical Modeling:** Linear Mixed-Effects Models (LMMs, via **lme4/emmeans**), Bayesian Analysis, Psychometric Function Fitting, **Drift-Diffusion Modeling (DDM)** with integration of physiological measures (pupillometry), **Linear Ballistic Accumulator (LBA)** modeling for cognitive decomposition of response time distributions (hierarchical Bayesian implementation via PyMC).
-* **Machine Learning:** XGBoost, Feature Engineering, Cross-Validation, Hyperparameter Tuning, Predictive Modeling, **Real-time ML Pipelines**, **Model Calibration** (Platt scaling), **Anomaly Detection** (Isolation Forest).
-* **Data Analysis & Visualization (R):** Tidyverse (dplyr, ggplot2), R Markdown, **Shiny (Interactive Dashboards)**, **gt Tables**, **Real-time Data Streaming**.
-* **Development & Version Control:** Git, GitHub, Google Cloud Platform (GCP), **Docker**, **CI/CD Workflows**, **Production Deployment** (ShinyApps.io, **Vercel**, Netlify).
+- **Psychophysics:** **Auditory and visual same–different discrimination** (and related tasks) under load; linking **physical effort** to sensitivity, bias, and dynamics.
+- **Pupillometry:** **Preprocessing and quality control** (blinks, artifacts, valid samples); **window-specific validity**; **gap-aware** handling of missing samples.
+- **Interpretation:** Pupil measures inform **arousal** and **effort** hypotheses; **behavior** and formal models remain primary for inference (aligned with [**Research**](../research/index.qmd)).
 
 ---
 
-### 🧠 Physiological & Neuroimaging Methods
+## Experimental Design and Data Collection
 
-* **Pupillometry:** Real-time analysis of pupil dilation as a biomarker for cognitive load and arousal. **Computational modeling** linking pupillometric dynamics with decision-making processes (DDM integration).
-* **Electroencephalography (EEG):** Collection, preprocessing, and analysis of EEG data, including sleep scoring.
-* **Neuroimaging Analysis:** Analyzing Diffusion MRI (dMRI) data using toolkits such as **FSL**, **QSIPrep**, and **SPM12**.
-* **Gaze Tracking & Eye Movement Analysis:** Implementing gaze-based input systems, physiologically-accurate gaze simulation, and analyzing eye movement patterns for cognitive load assessment.
-
----
-
-### ⚡ Real-time Systems & Production Applications
-
-* **Real-time Analytics:** Multi-modal cognitive state monitoring systems with <1s latency, live data streaming, and interactive dashboards.
-* **Production ML:** End-to-end ML pipelines with causal feature engineering, model calibration, and deployment-ready applications.
-* **Interactive Applications:** Shiny dashboards with real-time updates, threshold policy sandboxes, and explainable AI interfaces.
-* **Extended Reality (XR) Platforms:** Building research-grade XR experimental platforms with adaptive modality systems, dual input methods (gaze and hand-tracking), real-time performance monitoring, and comprehensive data logging for cognitive load studies. Includes **physiologically-accurate gaze simulation** (fixation-state Gaussian jitter, saccadic suppression, confirmation model) for remote testing without eye-tracking hardware.
-* **System Architecture:** Docker containerization, CI/CD workflows, and scalable deployment strategies for research and clinical environments. Event-driven architectures with pub/sub systems for inter-component communication.
+- **Handgrip dual-task paradigm:** **Concurrent physical effort** (graded isometric grip) with cognitive/perceptual tasks, including **same–different discrimination** and memory components as required.
+- **Within-subject designs:** Factorial and repeated-measures layouts; **counterbalancing** of orders and conditions.
+- **Preregistration:** Where used, analyses follow registered hypotheses, exclusions, and plans.
+- **Lab tasks:** **MATLAB** and **PsychToolbox** for stimulus delivery and responses; calibration and exclusion rules documented in materials.
 
 ---
 
-### 🏥 Applied Research & Industry Experience
+## Modeling and Statistical Inference
 
-* **Biomedical Engineering:** Real-time analytics platforms, surgical performance monitoring, medical device data analysis.
-* **Applied Psychology:** Cognitive state prediction, performance optimization in high-stakes environments.
-* **Human-Computer Interaction:** Adaptive interface design, modality switching systems, cognitive load-aware UI interventions, and evaluation of input methods using psychophysical paradigms (Fitts's Law).
-* **Mixed-Methods Research:** Combining behavioral, physiological, and self-report measures (e.g., NASA-TLX) for comprehensive insights into cognitive performance and user experience.
+- **Psychometric function modeling:** Separate effects on perceptual **evidence** versus **criterion** under **physical effort** and load.
+- **Mixed-effects models:** **LMMs** / **GLMMs** in **R** (**lme4**, **emmeans**) for repeated measures and individual differences ([**dual-task roadmap**](../projects/dual-task-case-study.qmd)).
+- **Hierarchical Bayesian Wiener drift-diffusion model (DDM)—dissertation:** Trial-level decomposition (**drift rate**, **boundaries**, **non-decision time**); implemented with **brms** / **Stan** (**CmdStan**-class) workflows. Scope and caveats (**non-decision time** constrained by design; **pupil–parameter** links exploratory) are stated on [**Research**](../research/index.qmd).
+- **Scrutiny:** Sensitivity analyses, alternative specifications, model comparison, interval- or equivalence-style reasoning where relevant.
+
+**XR preprint only:** [**case study**](../projects/case_study_web.qmd) uses **hierarchical Bayesian LBA** in **PyMC** for **verification-phase** RTs after target entry—**not** the dissertation **Wiener DDM**, and **not** interchangeable with it.
 
 ---
 
-### 🛠️ Project Management & Writing
+## Programming and Research Computing
 
-* **Project Management:** Notion, Slack, Quire.
-* **Scientific & Technical Writing:** Quarto, LaTeX, Markdown (Obsidian), MS Office.
-* **Languages:** Persian (Native), English (Proficient), French (Basic).
+- **R:** **tidyverse**, **ggplot2**; mixed models; **brms** / **Stan** interfaces; **Quarto** for analyses and this site.
+- **MATLAB:** **PsychToolbox**.
+- **Git** / **GitHub:** Versioned scripts and reproducible layout.
+
+---
+
+## Scientific Communication and Reproducibility
+
+- **Quarto** / **R Markdown** (legacy) for rebuildable reports.
+- **LaTeX** for manuscripts; exploratory vs. confirmatory reporting kept distinct where both apply.
+- **Traceability:** README notes, pinned dependencies where used, QC logs for **pupillometry** and behavioral pipelines.
+
+---
+
+## Additional / Adjacent Methods
+
+**Hand vs. gaze interaction (portfolio / preprint)**—[**arXiv:2603.15991**](https://arxiv.org/abs/2603.15991), [case study](../projects/case_study_web.qmd). **Adjacent** to the dissertation; adds **HCI / XR-relevant** breadth:
+
+- **Web task:** **React** / **TypeScript**; **remote** sessions; **display calibration** and session checks across devices.
+- **Design:** **ISO 9241-9**-style multidirectional tapping; **Fitts** difficulty and **throughput**; **Williams** block counterbalancing; **NASA-TLX** workload.
+- **Gaze proxy:** **Physiologically informed gaze simulation** (latency, jitter, saccadic suppression) for **gaze** vs. **hand** comparison without lab eye-tracking.
+- **Policy-triggered adaptive UI:** **Declutter** (gaze) and **width inflation** (hand) implemented and logged. In the analyzed data, **only declutter executed** and was **evaluable** (modest **timeout** reduction; **slips** still dominated **gaze** errors). **Hand width inflation was not evaluable**—targets did not scale in the UI (**integration bug**); that policy is **not** validated here.
+- **LBA fits:** **Python** / **PyMC** for verification-phase RTs only—see **Modeling** note above.
+
+**Other:** [Surgeon dashboard](../projects/surgeon-performance-predict2.qmd) (R Shiny, XGBoost); [EEG thesis](../projects/memory-and-meditation.qmd); imaging collaborations—[**Publications**](../publications/index.qmd); SST—[**About**](../about/index.qmd).
+
+---
+
+## Languages
+
+Persian (native), English (professional), French (basic).
