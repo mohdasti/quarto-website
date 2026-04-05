@@ -1,0 +1,168 @@
+/*-- scss:defaults --*/
+// Custom colors
+$background: #f1faee;
+$primary-dark: #1d3557;
+$primary-medium: #457b9d;
+$accent-blue: #a8dadc;
+$accent-red: #e63946;
+
+// Theme colors
+$body-bg: $background;
+$body-color: $primary-dark;
+$link-color: $primary-medium;
+$navbar-bg: $background;
+$navbar-fg: $primary-dark;
+$navbar-hl: $accent-red;
+
+/*-- scss:rules --*/
+/* Make listing cards show pointer cursor to hint they are clickable */
+.quarto-listing .list-group-item,
+.quarto-listing .quarto-listing-default .list-group-item {
+  cursor: pointer;
+}
+
+/* Constrain listing thumbnail images to a small fixed size */
+.quarto-post .thumbnail {
+  width: 80px !important;
+  min-width: 80px !important;
+  max-width: 80px !important;
+}
+
+.quarto-post .thumbnail img.thumbnail-image {
+  width: 160px !important;
+  height: 200px !important;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+/* Ensure Quarto hidden elements are actually hidden */
+.hidden,
+[class*="hidden"],
+.quarto-markdown-envelope-contents {
+  display: none !important;
+}
+
+.navbar {
+  border-bottom: 1px solid $accent-blue;
+}
+
+.title {
+  color: $primary-dark;
+}
+
+.subtitle {
+  color: $primary-medium;
+}
+
+.about-link i {
+  color: $primary-medium;
+  
+  &:hover {
+    color: $accent-red;
+  }
+}
+
+.callout-note {
+  border-left-color: $accent-blue;
+}
+
+/*-- scss:rules --*/
+.navbar {
+  background-color: #f8f9fa !important;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.navbar-brand, .nav-link {
+  color: #1d3557 !important;
+  
+  &:hover {
+    color: #e63946 !important;
+  }
+}
+
+/* Portfolio Tags Styling */
+.portfolio-tags {
+  margin: 10px 0;
+}
+
+.tag-filter-container {
+  margin-bottom: 20px;
+  padding: 15px;
+  background-color: rgba(168, 218, 220, 0.1);
+  border-radius: 8px;
+  border: 1px solid #a8dadc;
+}
+
+.tag-filter-title {
+  font-weight: 600;
+  color: #1d3557;
+  margin-bottom: 10px;
+}
+
+.tag-badge {
+  display: inline-block;
+  padding: 4px 8px;
+  margin: 2px 4px;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+/* Research Domain Tags - Blue theme */
+.tag-research-domain {
+  background-color: #457b9d;
+  color: white;
+  border-color: #457b9d;
+}
+
+.tag-research-domain:hover {
+  background-color: #1d3557;
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tag-research-domain.active {
+  background-color: #1d3557;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Methodology Tags - Red theme */
+.tag-methodology {
+  background-color: #e63946;
+  color: white;
+  border-color: #e63946;
+}
+
+.tag-methodology:hover {
+  background-color: #c12e38;
+  color: white;
+  text-decoration: none;
+  transform: translateY(-1px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.tag-methodology.active {
+  background-color: #c12e38;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+}
+
+/* Card tags in the listing */
+.card-tags {
+  margin-top: 8px;
+}
+
+.card-tags .tag-badge {
+  font-size: 0.7rem;
+  padding: 3px 6px;
+}
+
+/* Hide filtered out items */
+.listing-item.filtered-out {
+  display: none !important;
+}

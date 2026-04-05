@@ -35,13 +35,13 @@ Visit the website at: **[mdastgheib.com](https://mdastgheib.com)**
 quarto-website/
 ├── _quarto.yml          # Quarto configuration
 ├── _publish.yml         # Publishing settings
-├── index.qmd            # Homepage
-├── about/               # About page
-├── portfolio/           # Portfolio showcase
-├── publications/        # Research publications
+├── home.qmd             # Homepage (outputs index.html)
+├── about/               # about/about.qmd
+├── portfolio/           # portfolio/portfolio.qmd
+├── publications/        # publications/publications.qmd; peer-reviewed/; preprints/; publication*/
 ├── projects/            # Case studies and projects
-├── research/            # Research overview
-├── skills/              # Skills and methodology
+├── research/            # research/research.qmd
+├── skills/              # skills/skills.qmd
 ├── assets/              # CSS and styling
 ├── images/              # Images and media
 └── CV/                  # CV and resume files

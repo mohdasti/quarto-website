@@ -2,7 +2,7 @@
   "name": "mohammad-dastgheib-website",
   "version": "1.0.0",
   "description": "Personal academic website for Mohammad Dastgheib - PhD Candidate in Cognitive Neuroscience",
-  "main": "index.qmd",
+  "main": "home.qmd",
   "scripts": {
     "dev": "quarto preview --watch",
     "build": "quarto render",

@@ -1,0 +1,1061 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="A proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon’s cognitive state, inspired by my work at Surgical Safety Technologies.">
+
+<title>The Surgeon’s ‘Cognitive Black Box’ – Mohammad Dastgheib</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-ccd81253fefb92e9cd3f9eb5b5d87b54.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-5EPCPLZLYN"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="assets/listing-default.css">
+
+
+<link rel="stylesheet" href="../../assets/css/main.css">
+<meta name="twitter:title" content="The Surgeon’s ‘Cognitive Black Box’ – Mohammad Dastgheib">
+<meta name="twitter:description" content="A proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon’s cognitive state, inspired by my work at Surgical Safety Technologies.">
+<meta name="twitter:image" content="https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/surgical_console_enhanced.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Mohammad Dastgheib</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../skills/index.html"> 
+<span class="menu-text">Skills</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../research/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../publications/index.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#the-vision-from-post-op-review-to-proactive-support" id="toc-the-vision-from-post-op-review-to-proactive-support" class="nav-link active" data-scroll-target="#the-vision-from-post-op-review-to-proactive-support"><strong>🚀 The Vision: From Post-Op Review to Proactive Support</strong></a></li>
+  <li><a href="#the-scientific-framework-my-research-in-action" id="toc-the-scientific-framework-my-research-in-action" class="nav-link" data-scroll-target="#the-scientific-framework-my-research-in-action"><strong>🧠 The Scientific Framework: My Research in Action</strong></a></li>
+  <li><a href="#the-machine-learning-pipeline-from-raw-data-to-actionable-insight" id="toc-the-machine-learning-pipeline-from-raw-data-to-actionable-insight" class="nav-link" data-scroll-target="#the-machine-learning-pipeline-from-raw-data-to-actionable-insight"><strong>⚙️ The Machine Learning Pipeline: From Raw Data to Actionable Insight</strong></a></li>
+  <li><a href="#the-result-a-real-time-analytics-dashboard" id="toc-the-result-a-real-time-analytics-dashboard" class="nav-link" data-scroll-target="#the-result-a-real-time-analytics-dashboard"><strong>✨ The Result: A Real-Time Analytics Dashboard</strong></a></li>
+  <li><a href="#applications-enhancing-the-da-vinci-surgical-system" id="toc-applications-enhancing-the-da-vinci-surgical-system" class="nav-link" data-scroll-target="#applications-enhancing-the-da-vinci-surgical-system"><strong>🚀 Applications: Enhancing the da Vinci Surgical System</strong></a></li>
+  <li><a href="#project-artifacts-technical-details" id="toc-project-artifacts-technical-details" class="nav-link" data-scroll-target="#project-artifacts-technical-details"><strong>📚 Project Artifacts &amp; Technical Details</strong></a></li>
+  <li><a href="#impact-next-steps" id="toc-impact-next-steps" class="nav-link" data-scroll-target="#impact-next-steps"><strong>🎯 Impact &amp; Next Steps</strong></a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">The Surgeon’s ‘Cognitive Black Box’</h1>
+<p class="subtitle lead">A Real-Time Analytics Platform for Predicting and Mitigating Surgical Fatigue</p>
+</div>
+
+<div>
+  <div class="description">
+    A proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon’s cognitive state, inspired by my work at Surgical Safety Technologies.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="the-vision-from-post-op-review-to-proactive-support" class="level3">
+<h3 class="anchored" data-anchor-id="the-vision-from-post-op-review-to-proactive-support"><strong>🚀 The Vision: From Post-Op Review to Proactive Support</strong></h3>
+<blockquote class="blockquote">
+<p>“During my time as an AI Annotator at <a href="https://www.surgicalsafety.com/"><strong>Surgical Safety Technologies (SST)</strong></a>, I had a firsthand view of how their groundbreaking ‘OR Black Box’ captures the complex dynamics of the operating room to improve patient outcomes. This experience solidified my understanding of the immense value in data-driven clinical insights. It also highlighted the next critical frontier: moving beyond analyzing <em>what</em> happened to understanding the surgeon’s cognitive state—the <em>why</em> behind their actions.”</p>
+</blockquote>
+<p>This project is my answer to that challenge. I developed a proof-of-concept for a <strong>“Cognitive Black Box”</strong>—an end-to-end analytics platform that predicts a surgeon’s cognitive state in real-time. By fusing my PhD research on the cognitive neuroscience of effort with my industry experience, this case study demonstrates a tangible solution for moving from post-operative review to proactive, intraoperative support, enhancing both patient safety and surgeon well-being.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/surgical_console_enhanced.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="A mockup of a surgical console screen displaying a time-series plot of the surgeon’s pupil dilation and grip force variability, indicating their cognitive state during a procedure."><img src="https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/surgical_console_enhanced.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="A mockup of a surgical console screen displaying a time-series plot of the surgeon’s pupil dilation and grip force variability, indicating their cognitive state during a procedure."></a></p>
+</figure>
+</div>
+<figcaption>A mockup of a surgical console screen displaying a time-series plot of the surgeon’s pupil dilation and grip force variability, indicating their cognitive state during a procedure.</figcaption>
+</figure>
+</div>
+<hr>
+</section>
+<section id="the-scientific-framework-my-research-in-action" class="level3">
+<h3 class="anchored" data-anchor-id="the-scientific-framework-my-research-in-action"><strong>🧠 The Scientific Framework: My Research in Action</strong></h3>
+<p>This project is an application of my PhD research, which provides the theoretical engine to model the underlying mechanisms of performance degradation under pressure.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true"><strong>Adaptive Gain Theory (AGT)</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false"><strong>Resource Competition Theory</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false"><strong>Key Concepts &amp; Terminology</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<p>AGT provides the physiological <em>why</em>. The brain’s arousal system (specifically the LC-NE system) acts like a “volume knob,” adjusting neural gain to enhance important signals and suppress noise. My research shows that under the high combined effort typical of surgery, this system can become dysregulated, a phenomenon I can model and predict using pupillometry as a direct, non-invasive biomarker of this process.</p>
+<p><img src="https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/ArousalPerformance.png" class="img-fluid quarto-figure quarto-figure-center" style="width:70.0%" alt="The classic inverted-U relationship between arousal and performance, showing optimal performance at moderate arousal levels."> <em>Caption: The inverted-U relationship between arousal and performance, central to Adaptive Gain Theory. My system is designed to identify when a surgeon moves past the optimal point and into a state of impaired performance due to excessive cognitive load.</em></p>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<p>This framework explains <em>what</em> happens when a surgeon performs a physically demanding action (like sustained retraction, mirroring my 40% MVC research) while making a high-stakes cognitive judgment. These tasks compete for the same finite pool of mental resources. My model is designed to detect when this competition leads to performance-impairing cognitive overload.</p>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<p>A brief glossary of the core concepts from my research that power this project.</p>
+<ul>
+<li><p><strong>Pupillometry:</strong> The measurement of pupil diameter. I use it as a precise, non-invasive biomarker of cognitive effort and arousal, as it is tightly linked to activity in the brain’s Locus Coeruleus-Norepinephrine (LC-NE) system.</p></li>
+<li><p><strong>Tonic vs.&nbsp;Phasic Arousal:</strong> These are two distinct modes of the arousal system that I model with my features:</p>
+<ul>
+<li><strong>Tonic Arousal (<code>tonic_pupil_level_30s</code>):</strong> Refers to the slow-moving, baseline level of alertness over a longer period (tens of seconds). It reflects the surgeon’s overall engagement and processing load.</li>
+<li><strong>Phasic Arousal (<code>phasic_pupil_change_5s</code>):</strong> Refers to the rapid, transient bursts of arousal in response to a specific event (e.g., making a critical suture). It reflects the momentary deployment of focused mental effort.</li>
+</ul></li>
+<li><p><strong>Grip Force Variability (<code>grip_force_variability_15s</code>):</strong> A novel feature I engineered for this project. It’s based on the hypothesis that maintaining a steady isometric muscle contraction requires constant attentional control. Therefore, an increase in the variability (i.e., noise) of the grip force signal can serve as a proxy for a lapse in sustained attention.</p></li>
+<li><p><strong>XGBoost (Extreme Gradient Boosting):</strong> The machine learning algorithm I chose for the classification task. It is a high-performance, industry-standard model known for its accuracy and its ability to handle complex, non-linear relationships in data.</p></li>
+<li><p><strong>Feature Engineering:</strong> The process of transforming raw sensor data into meaningful variables that machine learning algorithms can use effectively. My domain expertise in cognitive neuroscience guided the creation of theory-driven features rather than generic statistical measures.</p></li>
+<li><p><strong>Cross-Validation &amp; Hyperparameter Tuning:</strong> Rigorous methods to ensure model reliability. Cross-validation tests the model on unseen data subsets, while hyperparameter tuning optimizes the model’s configuration for best performance.</p></li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="the-machine-learning-pipeline-from-raw-data-to-actionable-insight" class="level3">
+<h3 class="anchored" data-anchor-id="the-machine-learning-pipeline-from-raw-data-to-actionable-insight"><strong>⚙️ The Machine Learning Pipeline: From Raw Data to Actionable Insight</strong></h3>
+<p>I designed an end-to-end pipeline to simulate and process multimodal data, engineer theoretically-grounded features, and train a predictive model.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true"><strong>1. Data Simulation</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false"><strong>2. Feature Engineering</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-3" role="tab" aria-controls="tabset-2-3" aria-selected="false"><strong>3. Modeling &amp; Explainability (XAI)</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
+<p>To build this proof-of-concept, I simulated a realistic, second-by-second data stream from a 3-hour surgical procedure. The dataset includes:</p>
+<ul>
+<li><strong>Physiological Data:</strong> <code>pupil_diameter_mm</code> - continuous pupillometry measurements</li>
+<li><strong>Motor Control Data:</strong> <code>grip_force_newtons</code> - surgical instrument grip pressure</li>
+<li><strong>Behavioral Data:</strong> <code>instrument_tremor_hz</code>- high-frequency tremor measurements<br>
+</li>
+<li><strong>Target Variable:</strong> <code>cognitive_state</code> (“Optimal”, “High Load”, “Fatigued”, “Attentional Lapse”)</li>
+</ul>
+<p>The simulation creates 32,400 observations (3 surgeons × 10,800 seconds) with realistic temporal dynamics and state transitions based on surgical workflow patterns.</p>
+</div>
+<div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
+<p>This is where my domain expertise becomes critical. I created novel, theory-driven features:</p>
+<ul>
+<li><strong><code>tonic_pupil_level_30s</code>:</strong> A 30-second rolling average of pupil diameter, reflecting baseline arousal and overall cognitive load.</li>
+<li><strong><code>phasic_pupil_change_5s</code>:</strong> An event-related dilation metric capturing rapid pupil changes from a 5-second baseline, reflecting the brain’s adaptive gain response to critical surgical events.</li>
+<li><strong><code>grip_force_variability_15s</code>:</strong> A novel metric I developed for this project. It calculates the 15-second rolling standard deviation of instrument grip force, based on my hypothesis, grounded in dual-task literature, that increased variability in fine motor control serves as a proxy for <strong>attentional lapses</strong>.</li>
+<li><strong><code>tremor_trend_10s</code>:</strong> A 10-second rolling mean of instrument tremor, capturing fine motor control degradation.</li>
+<li><strong><code>pupil_diameter_lag_5s</code>:</strong> Temporal context feature providing the pupil state from 5 seconds prior.</li>
+</ul>
+</div>
+<div id="tabset-2-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-3-tab">
+<p>I trained an <a href="https://xgboost.ai/"><strong>XGBoost Classifier</strong></a> with hyperparameter tuning using 3-fold cross-validation—an industry-standard, high-performance model—to predict the surgeon’s cognitive state. The model achieves:</p>
+<ul>
+<li><strong>Overall Accuracy:</strong> 99.58%</li>
+<li><strong>Cohen’s Kappa:</strong> 0.993</li>
+<li><strong>Cross-Validation:</strong> Robust performance across folds with grid search optimization</li>
+</ul>
+<p>To ensure the model is interpretable and trustworthy for clinical stakeholders, I implemented feature importance analysis and dynamic explanations that show which physiological signals are driving each prediction in real-time.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/feature_importance.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Feature importance from the trained XGBoost model showing the relative predictive power of each engineered feature."><img src="https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/feature_importance.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%" alt="Feature importance from the trained XGBoost model showing the relative predictive power of each engineered feature."></a></p>
+</figure>
+</div>
+<figcaption>Feature importance from the trained XGBoost model showing the relative predictive power of each engineered feature.</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="the-result-a-real-time-analytics-dashboard" class="level3">
+<h3 class="anchored" data-anchor-id="the-result-a-real-time-analytics-dashboard"><strong>✨ The Result: A Real-Time Analytics Dashboard</strong></h3>
+<p>The final output is a proof-of-concept dashboard built in <a href="https://shiny.posit.co/"><strong>R Shiny</strong></a>. It simulates a live view of the surgeon’s cognitive state and provides clear, interpretable alerts with two main interfaces:</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-3-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-1" role="tab" aria-controls="tabset-3-1" aria-selected="true"><strong>Live Surgical Dashboard</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-3-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-3-2" role="tab" aria-controls="tabset-3-2" aria-selected="false"><strong>ML Model Diagnostics</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-3-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-3-1-tab">
+<p>The primary interface provides real-time monitoring during surgery with an intuitive, clinical-focused design.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/Live_Surgical_Dashboard.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="Live Surgical Dashboard showing real-time pupil diameter and grip force monitoring with cognitive state prediction and dynamic clinical interpretations."><img src="https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/Live_Surgical_Dashboard.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="Live Surgical Dashboard showing real-time pupil diameter and grip force monitoring with cognitive state prediction and dynamic clinical interpretations."></a></p>
+</figure>
+</div>
+<figcaption>Live Surgical Dashboard showing real-time pupil diameter and grip force monitoring with cognitive state prediction and dynamic clinical interpretations.</figcaption>
+</figure>
+</div>
+<p><strong>Key Features:</strong></p>
+<ul>
+<li><strong>Real-time sensor plots:</strong> Pupil diameter and grip force visualized with human-readable time formatting</li>
+<li><strong>Cognitive state spectrum:</strong> Dynamic dial showing current state on a visual spectrum</li>
+<li><strong>Progress tracking:</strong> Video-style progress bar with accurate time remaining</li>
+<li><strong>Dynamic “Why” panel:</strong> Data-driven clinical interpretations that update based on live feature values</li>
+<li><strong>Speed controls:</strong> Simulation can run at 1x, 10x, 50x, or 100x speed for demos</li>
+</ul>
+</div>
+<div id="tabset-3-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-3-2-tab">
+<p>The technical interface provides transparency into the machine learning model’s decision-making process.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/ML_Model_Diagnostics.gif" class="lightbox" data-gallery="quarto-lightbox-gallery-4" title="ML Model Diagnostics panel showing prediction probabilities, live feature values, and feature importance visualization."><img src="https://github.com/mohdasti/surgical-cognitive-dashboard/raw/main/case_study/images/ML_Model_Diagnostics.gif" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:90.0%" alt="ML Model Diagnostics panel showing prediction probabilities, live feature values, and feature importance visualization."></a></p>
+</figure>
+</div>
+<figcaption>ML Model Diagnostics panel showing prediction probabilities, live feature values, and feature importance visualization.</figcaption>
+</figure>
+</div>
+<p><strong>Technical Features:</strong></p>
+<ul>
+<li><strong>Prediction probabilities:</strong> Live confidence scores for all four cognitive states</li>
+<li><strong>Feature values table:</strong> Real-time display of all engineered features driving predictions</li>
+<li><strong>Feature importance:</strong> Static visualization showing which features matter most to the model</li>
+</ul>
+</div>
+</div>
+</div>
+<p><strong>Innovation Highlight: Data-Driven Explanations</strong> The most innovative feature is the dynamic <strong>“Why” panel</strong> that doesn’t just show generic text, but reports the actual feature values driving each prediction (e.g., “High Grip Force Variability (2.31 N)” or “Elevated Tonic Pupil Level (4.2 mm)”), building trust through transparency.</p>
+<hr>
+</section>
+<section id="applications-enhancing-the-da-vinci-surgical-system" class="level3">
+<h3 class="anchored" data-anchor-id="applications-enhancing-the-da-vinci-surgical-system"><strong>🚀 Applications: Enhancing the da Vinci Surgical System</strong></h3>
+<p>The true power of this research is its direct applicability to high-stakes environments. While the methodology is versatile, this case study focuses on a specific, high-impact application: <strong>enhancing the capabilities of</strong> <a href="https://www.intuitive.com/en-us/products-and-services/da-vinci"><strong>Intuitive’s da Vinci surgical systems</strong></a>.</p>
+<p>The da Vinci platform provides unparalleled robotic control and visualization but currently lacks objective, real-time monitoring of the surgeon’s cognitive state. My “Cognitive Black Box” is designed to integrate seamlessly with the existing da Vinci ecosystem to fill this critical gap, transforming the surgeon’s console into a cognitively-aware command center.</p>
+<section id="high-stakes-medicine-the-cognitively-aware-surgical-console" class="level4">
+<h4 class="anchored" data-anchor-id="high-stakes-medicine-the-cognitively-aware-surgical-console"><strong>🏥 High-Stakes Medicine: The Cognitively-Aware Surgical Console</strong></h4>
+<p><strong>Problem:</strong> A surgeon’s performance can be compromised by fatigue and high cognitive load long before they are consciously aware of it. The da Vinci system logs instrument data, but it cannot see the surgeon’s mental state.</p>
+<p><strong>My Solution:</strong> Integrate my real-time cognitive state analytics directly into the <a href="https://www.intuitive.com/en-us/products-and-services/da-vinci/systems"><strong>da Vinci surgeon console</strong></a>.</p>
+<p><strong>1. Integration with the Surgeon Console Viewfinder:</strong></p>
+<ul>
+<li><strong>Existing Feature:</strong> The da Vinci surgeon console provides a high-definition, 3D view of the surgical site.</li>
+<li><strong>My Enhancement:</strong> I propose a minimalist <strong>Heads-Up Display (HUD)</strong> overlay at the edge of the viewfinder. This HUD would display a simple, color-coded <strong>Cognitive State Indicator (CSI)</strong>. It would remain a calm green during “Optimal” states, turn yellow during “High Load,” and provide a subtle, non-distracting red pulse during a predicted “Attentional Lapse.” This provides critical feedback without diverting the surgeon’s focus.</li>
+</ul>
+<p><strong>2. Leveraging da Vinci’s Built-in Data Streams:</strong></p>
+<ul>
+<li><strong>Existing Feature:</strong> Da Vinci systems can already record instrument and event data. My work at SST involved annotating this type of procedural video data.</li>
+<li><strong>My Enhancement:</strong> My system would tap into these existing data streams. The <code>grip_force_variability</code> feature I developed would be calculated directly from the force sensors in the master controllers (the surgeon’s hand controls). The <code>phasic_pupil_response</code> would be timed to critical events logged by the system, such as instrument activation or error alerts. This isn’t a new set of sensors; it’s a smarter use of the data already being generated.</li>
+</ul>
+<p><strong>3. Enhancing Post-Operative Debriefing with “Simulated Eye View”:</strong></p>
+<ul>
+<li><strong>Existing Feature:</strong> Intuitive provides products like the <a href="https://www.intuitive.com/en-us/products-and-services/simnow"><strong>“Simulated Eye View”</strong></a> for post-operative review and training.</li>
+<li><strong>My Enhancement:</strong> I propose augmenting these recordings with a synchronized timeline of the surgeon’s predicted cognitive state. Trainees could see exactly <em>when</em> and <em>why</em> a period of high cognitive load occurred, correlating it with specific surgical steps. The “Why” panel from my dashboard would provide objective, data-driven talking points for the debriefing session, moving beyond subjective recall.</li>
+</ul>
+<hr>
+</section>
+</section>
+<section id="project-artifacts-technical-details" class="level3">
+<h3 class="anchored" data-anchor-id="project-artifacts-technical-details"><strong>📚 Project Artifacts &amp; Technical Details</strong></h3>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-4-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-1" role="tab" aria-controls="tabset-4-1" aria-selected="true"><strong>Code &amp; Repository</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-2" role="tab" aria-controls="tabset-4-2" aria-selected="false"><strong>Model Performance</strong></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-4-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-4-3" role="tab" aria-controls="tabset-4-3" aria-selected="false"><strong>Research Foundation</strong></a></li></ul>
+<div class="tab-content">
+<div id="tabset-4-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-4-1-tab">
+<ul>
+<li><strong>GitHub Repository:</strong> <a href="https://github.com/mohdasti/surgical-cognitive-dashboard">View the complete source code, data pipeline, and interactive dashboard</a></li>
+<li><strong>Tech Stack:</strong> R, Shiny, XGBoost, tidyverse, ggplot2, DT</li>
+<li><strong>Development Approach:</strong> Modular pipeline with separate scripts for data simulation, feature engineering, and model training</li>
+<li><strong>Reproducibility:</strong> All code includes seed setting and comprehensive logging for transparent replication</li>
+</ul>
+</div>
+<div id="tabset-4-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-2-tab">
+<p><strong>Training Results:</strong></p>
+<ul>
+<li><strong>Dataset:</strong> 32,400 observations across 3 simulated surgeons</li>
+<li><strong>Features:</strong> 5 engineered features from 3 raw sensor streams</li>
+<li><strong>Algorithm:</strong> XGBoost with 3-fold cross-validation hyperparameter tuning</li>
+<li><strong>Accuracy:</strong> 99.58% overall accuracy with κ = 0.993</li>
+</ul>
+<p><strong>Per-Class Performance:</strong></p>
+<ul>
+<li><strong>Optimal State:</strong> 100% sensitivity, 100% specificity</li>
+<li><strong>High Load:</strong> 99.9% sensitivity, 100% specificity<br>
+</li>
+<li><strong>Fatigued:</strong> 99.9% sensitivity, 99.4% specificity</li>
+<li><strong>Attentional Lapse:</strong> 25% sensitivity, 100% specificity*</li>
+</ul>
+<p><em>Attentional lapses are rare events (0.4% prevalence), where high specificity is prioritized to avoid false alarms.</em></p>
+</div>
+<div id="tabset-4-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-4-3-tab">
+<ul>
+<li><strong>Grant Proposal:</strong> <a href="../supporting_docs/Qualification_Exam.pdf">Read the peer-reviewed research proposal providing the theoretical foundation</a></li>
+<li><strong>Industry Context:</strong> Inspired by work as AI Annotator at Surgical Safety Technologies (SST)</li>
+<li><strong>Academic Integration:</strong> Direct application of PhD research on cognitive neuroscience of effort and Adaptive Gain Theory</li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="impact-next-steps" class="level3">
+<h3 class="anchored" data-anchor-id="impact-next-steps"><strong>🎯 Impact &amp; Next Steps</strong></h3>
+<p><strong>Immediate Applications:</strong></p>
+<ul>
+<li><strong>Surgical Training:</strong> Objective assessment of trainee cognitive load during skill development, reducing time-to-proficiency and identifying trainees who may require additional support</li>
+<li><strong>Quality Improvement:</strong> Data-driven insights into when and why surgical performance degrades, potentially reducing intraoperative errors by flagging high-risk cognitive states</li>
+<li><strong>Research Platform:</strong> Foundational system for studying cognitive load in high-stakes environments</li>
+</ul>
+<p><strong>Future Development:</strong></p>
+<ul>
+<li><strong>Hardware Integration:</strong> Connect with real pupillometry and force sensor systems</li>
+<li><strong>Clinical Validation:</strong> Partner with surgical training centers for real-world testing<br>
+</li>
+<li><strong>Multi-Modal Expansion:</strong> Incorporate additional physiological signals I have experience with, such as <strong>Heart Rate Variability (HRV)</strong>, EEG, and cortisol</li>
+<li><strong>Team Monitoring:</strong> Extend to monitor multiple team members simultaneously</li>
+</ul>
+<p>This proof-of-concept demonstrates the feasibility of real-time cognitive monitoring in surgical environments, bridging fundamental neuroscience research with practical clinical applications.</p>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/mdastgheib\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Mohammad Dastgheib • Built with Quarto</p>
+</div>   
+    <div class="nav-footer-center">
+<p><a href="mailto:mdast003@ucr.edu" title="Email"><i class="fas fa-envelope"></i></a> <a href="https://linkedin.com/in/mdastgheib" title="LinkedIn"><i class="fab fa-linkedin"></i></a> <a href="https://scholar.google.com/citations?user=SNVpHcUAAAAJ" title="Google Scholar"><i class="ai ai-google-scholar"></i></a> <a href="https://github.com/mohdasti" title="GitHub"><i class="fab fa-github"></i></a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>

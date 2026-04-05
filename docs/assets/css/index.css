@@ -1,0 +1,87 @@
+/* title */
+.title {
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1.1em !important;
+  color: #1d3557;
+}
+
+/* subtitle styling */
+.subtitle {
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #457b9d;
+}
+
+/* main content layout */
+.entity-contents {
+  text-align: right !important;
+  padding: 0 2em 0 2em;
+  color: #1d3557;
+}
+
+/* bio content */
+.about-contents {
+  padding: 0 0 0 2em !important;
+  color: #1d3557;
+}
+
+/* social links container */
+.about-entity .about-links {
+  justify-content: flex-end !important;
+  column-gap: 0em !important;
+  font-size: 1.2em !important;
+}
+
+/* individual social links */
+.about-entity .about-link {
+  padding: 0.25em 0.25em !important;
+  border: none !important;
+  color: #457b9d;
+}
+
+.about-entity .about-link:hover {
+  color: #e63946;
+}
+
+/* profile image */
+.about-image {
+  margin-top: -2em;
+  padding: 0 2em 0em 0;
+}
+
+/* callout styling */
+.callout-note {
+  border-left-color: #a8dadc;
+  background-color: rgba(168, 218, 220, 0.1);
+}
+
+/* responsive design */
+@media screen and (max-width: 991.98px) {
+  .entity-contents {
+    order: 2 !important;
+    margin: -4em 0 0 0 !important;
+    padding: 0 !important;
+    text-align: center !important;
+  }
+  
+  .subtitle {
+    text-align: center !important;
+  }
+  
+  .about-entity .about-links {
+    justify-content: center !important;
+    font-size: 1em !important;
+  }
+  
+  .about-contents {
+    padding: 0 !important;
+  }
+  
+  .about-image {
+    order: 1 !important;
+    padding: 0 2em !important;
+  }
+}

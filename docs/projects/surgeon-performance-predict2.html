@@ -1,0 +1,1860 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Mohammad Dastgheib">
+<meta name="dcterms.date" content="2024-10-01">
+<meta name="description" content="A proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon’s cognitive state, inspired by my work at Surgical Science &amp; Technology.">
+
+<title>Surgeon Cognitive Dashboard — Case Study – Mohammad Dastgheib</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-6bdd2aebeb936dcddaa5f935a5de481c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-5EPCPLZLYN"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="assets/listing-default.css">
+
+
+<link rel="stylesheet" href="../assets/css/main.css">
+<meta name="twitter:title" content="Surgeon Cognitive Dashboard — Case Study – Mohammad Dastgheib">
+<meta name="twitter:description" content="A proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon’s cognitive state, inspired by my work at Surgical Science &amp; Technology.">
+<meta name="twitter:image" content="https://mdastgheib.com/images/surgical-dashboard.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Mohammad Dastgheib</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../about/index.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../skills/index.html"> 
+<span class="menu-text">Skills</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../research/index.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../publications/index.html"> 
+<span class="menu-text">Publications</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../cv.html"> 
+<span class="menu-text">CV</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#why-i-built-this" id="toc-why-i-built-this" class="nav-link active" data-scroll-target="#why-i-built-this">Why I built this</a></li>
+  <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link" data-scroll-target="#executive-summary">Executive Summary</a></li>
+  <li><a href="#objectives-what-this-actually-delivers" id="toc-objectives-what-this-actually-delivers" class="nav-link" data-scroll-target="#objectives-what-this-actually-delivers">Objectives — what this actually delivers</a></li>
+  <li><a href="#who-benefits-and-why" id="toc-who-benefits-and-why" class="nav-link" data-scroll-target="#who-benefits-and-why">Who benefits — and why</a></li>
+  <li><a href="#personalized-coaching-how-it-adapts-to-the-trainee" id="toc-personalized-coaching-how-it-adapts-to-the-trainee" class="nav-link" data-scroll-target="#personalized-coaching-how-it-adapts-to-the-trainee">Personalized coaching — how it adapts to the trainee</a></li>
+  <li><a href="#threshold-policies-how-they-work" id="toc-threshold-policies-how-they-work" class="nav-link" data-scroll-target="#threshold-policies-how-they-work">Threshold Policies — how they work</a></li>
+  <li><a href="#why-thresholds-must-adapt" id="toc-why-thresholds-must-adapt" class="nav-link" data-scroll-target="#why-thresholds-must-adapt">Why thresholds must adapt</a></li>
+  <li><a href="#production-dashboard" id="toc-production-dashboard" class="nav-link" data-scroll-target="#production-dashboard">Production Dashboard</a></li>
+  <li><a href="#methods-what-runs-under-the-hood" id="toc-methods-what-runs-under-the-hood" class="nav-link" data-scroll-target="#methods-what-runs-under-the-hood">Methods (what runs under the hood)</a></li>
+  <li><a href="#methods-results-that-matter-ops-kpis" id="toc-methods-results-that-matter-ops-kpis" class="nav-link" data-scroll-target="#methods-results-that-matter-ops-kpis">Methods &amp; results that matter (ops KPIs)</a></li>
+  <li><a href="#live-clinical-style-table-with-literature-ranges" id="toc-live-clinical-style-table-with-literature-ranges" class="nav-link" data-scroll-target="#live-clinical-style-table-with-literature-ranges">Live clinical-style table with literature ranges</a></li>
+  <li><a href="#product-vs.-lab-how-they-fit" id="toc-product-vs.-lab-how-they-fit" class="nav-link" data-scroll-target="#product-vs.-lab-how-they-fit">Product vs.&nbsp;Lab — how they fit</a></li>
+  <li><a href="#from-sst-to-the-or-what-transferred" id="toc-from-sst-to-the-or-what-transferred" class="nav-link" data-scroll-target="#from-sst-to-the-or-what-transferred">From SST to the OR — what transferred</a></li>
+  <li><a href="#deployment-privacy" id="toc-deployment-privacy" class="nav-link" data-scroll-target="#deployment-privacy">Deployment &amp; Privacy</a></li>
+  <li><a href="#whats-next-tailored-pedagogy" id="toc-whats-next-tailored-pedagogy" class="nav-link" data-scroll-target="#whats-next-tailored-pedagogy">What’s next — tailored pedagogy</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content page-columns page-full" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Surgeon Cognitive Dashboard — Case Study</h1>
+<p class="subtitle lead">Zero-headgear neuro-ergonomics for robotic surgery</p>
+  <div class="quarto-categories">
+    <div class="quarto-category">Case Study</div>
+  </div>
+  </div>
+
+<div>
+  <div class="description">
+    A proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon’s cognitive state, inspired by my work at Surgical Science &amp; Technology.
+  </div>
+</div>
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mohammad Dastgheib </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 1, 2024</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+/* --- Minimal clinical theme (inline; no external files) --- */
+:root {
+  --ink:#0b1526; --muted:#4b5563; --bg:#f7f9fc; --card:#ffffff;
+  --accent:#1f9bb6; --ok:#27ae60; --warn:#f39c12; --crit:#e74c3c; --border:#e5e7eb;
+}
+body { color:var(--ink); background:var(--bg); }
+h1,h2,h3 { letter-spacing:.2px; }
+a { color:var(--accent); }
+.quarto-title-banner { background:var(--card); border-bottom:1px solid var(--border); }
+.figure img, video { border:1px solid var(--border); border-radius:12px; }
+.gt_table { font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
+.gt_table .gt_row { font-variant-numeric: tabular-nums; }
+.callout { border-left-color: var(--accent) !important; }
+</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<style>
+.tldr-card{background:#ffffff;border:1px solid #e5e7eb;border-left:4px solid #1f9bb6;border-radius:12px;padding:12px 14px;margin:8px 0 14px;box-shadow:0 1px 1px rgba(16,24,40,.02)}
+.tldr-title{font-weight:700;letter-spacing:.2px;margin-bottom:.25rem}
+.tldr-text{margin:.15rem 0 .5rem;color:#111827}
+.tldr-chips{display:flex;flex-wrap:wrap;gap:6px}
+.tldr-chips a{display:inline-flex;align-items:center;gap:.35rem;font-size:.86rem;padding:.18rem .5rem;border-radius:999px;border:1px solid #d7dee6;background:#f8fafc;text-decoration:none;color:#0b1526}
+.tldr-chips a:hover{background:#eef6fb;border-color:#b7e1f0}
+</style>
+
+<div class="tldr-card" role="note" aria-label="TL;DR">
+  <div class="tldr-title">TL;DR</div>
+  <div class="tldr-text">
+    Cut <b>high-load min/hr</b>, prevent <b>lapses</b>, and keep trainees in the <b>optimal zone</b> with <b>pupil + grip/tremor + HRV</b>—no headgear.<br><br>
+    <b>For training:</b> a sandbox that teaches <em>why thresholds adapt</em> → a dashboard that <em>coaches in real time</em> → metrics that <em>prove learning happened</em>.
+  </div>
+  <div class="tldr-chips">
+    <a href="#why-thresholds-must-adapt"><i class="bi bi-sliders"></i> Why thresholds adapt</a>
+    <a href="#production-dashboard"><i class="bi bi-activity"></i> Production dashboard</a>
+    <a href="#methods-results-that-matter-ops-kpis" title="Methods &amp; Results that matter"><i class="bi bi-graph-up-arrow"></i> Ops metrics</a>
+  </div>
+</div>
+<section id="why-i-built-this" class="level2">
+<h2 class="anchored" data-anchor-id="why-i-built-this">Why I built this</h2>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+<!-- Enable Bootstrap 5 tooltips (hover-activated, with guards) -->
+<script>
+window.addEventListener('DOMContentLoaded', () => {
+  if (!window.bootstrap || !bootstrap.Tooltip) return; // guard
+  // Add a custom class to all tooltips by default (wider, readable)
+  document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
+    if (!el.dataset.bsCustomClass) el.dataset.bsCustomClass = 'tt-wide';
+    el.setAttribute('tabindex', '0'); // keyboard focus
+    new bootstrap.Tooltip(el, {container: 'body', trigger: 'hover focus', html: true});
+  });
+});
+</script>
+
+<style>
+/* Wider, cleaner tooltips */
+.tt-wide .tooltip-inner{
+  max-width: 340px;           /* default ~200px can feel cramped */
+  text-align: left;
+  line-height: 1.25;
+  padding: .45rem .55rem;
+}
+/* Slightly bigger hit area for the ⓘ pill */
+.help-icon{display:inline-flex;align-items:center;justify-content:center;
+  width:1.05em;height:1.05em;border-radius:999px;border:1px solid #e5e7eb;
+  color:#1f9bb6;font-size:.8em;margin-left:.25rem;cursor:help;vertical-align:baseline}
+.help-icon:hover{background:#e6f6fb;border-color:#b7e1f0}
+.help-icon i{font-size:1em}
+</style>
+
+<!-- ===== Enriched SST + PhD section with hover help ===== -->
+
+<p>
+<strong><a href="https://www.surgicalsafety.com/" target="_blank" rel="noopener">Surgical Safety Technologies (SST)</a></strong>
+(Research Assistant / AI Annotator).
+</p>
+
+<ul>
+  <li>
+    Assisted on <em>instance segmentation</em>
+    <span class="help-icon" data-bs-toggle="tooltip" title="Pixel-wise masks for each instrument (vs. boxes only), which enables occlusion-aware tracking and per-tool metrics. Useful downstream for contact detection &amp; dwell time.">
+      <i class="bi bi-info-circle"></i>
+    </span>
+    for tool detection/tracking
+  </li>
+
+  <li>
+    Computed <em>inter-rater reliability</em> (κ/ICC)
+    <span class="help-icon" data-bs-toggle="tooltip" title="<b>κ (kappa):</b> categorical agreement adjusted for chance<br><b>ICC:</b> continuous/interval agreement across raters<br>Heuristics: κ ≥ 0.60 / ICC ≥ 0.75 = acceptable for ops; re-train below">
+      <i class="bi bi-info-circle"></i>
+    </span>
+    for analyst labels
+  </li>
+
+  <li>
+    Reviewed ML-for-safety literature
+    <span class="help-icon" data-bs-toggle="tooltip" title="Streams: adverse-event detection, tool usage analytics, OR black-box &amp; safety auditing; emphasis on deployability and annotation quality.">
+      <i class="bi bi-info-circle"></i>
+    </span>
+    to support analyst operations
+  </li>
+</ul>
+
+<p style="margin:.25rem 0 0">
+  → <strong>Lesson:</strong> <em>labels drift</em>
+  <span class="help-icon" role="button" aria-label="What is label drift?" data-bs-toggle="tooltip" title="Definitions &amp; mental models shift over time and across raters (ontology changes, UI nudges). Mitigations: κ/ICC gates, versioned rubrics, targeted re-labeling.">
+    <i class="bi bi-info-circle" aria-hidden="true"></i>
+  </span>,
+  <em>interfaces &amp; alarm hygiene decide adoption</em>
+  <span class="help-icon" role="button" aria-label="Why does alarm hygiene matter?" data-bs-toggle="tooltip" title="Target ≤ <b>0.6 alerts/min</b> (median)<br>Context-aware suppression during critical actions<br>Explainable triggers: e.g., <b>HRV↓ + TEPR↑</b><br>Snooze/decay to prevent repeats; short, actionable text">
+    <i class="bi bi-info-circle" aria-hidden="true"></i>
+  </span>.
+</p>
+
+<hr style="border:none;border-top:1px solid #e5e7eb;margin:1rem 0">
+
+<p>
+<strong><a href="https://mdastgheib.com/research/" target="_blank" rel="noopener">UC Riverside</a></strong>
+(PhD project and dissertation).
+</p>
+
+<ul>
+  <li>
+    Test concurrent physical (<b>5% vs 40% MVC</b>
+    <span class="help-icon" data-bs-toggle="tooltip" title="MVC = Maximum Voluntary Contraction. 5% ≈ light isometric grip; 40% ≈ high effort.">
+      <i class="bi bi-info-circle"></i>
+    </span>)
+    × cognitive effort with <em>pupillometry</em>
+    <span class="help-icon" data-bs-toggle="tooltip" title="<b>Tonic</b> (baseline diameter) ≈ arousal state<br><b>TEPR</b> (task-evoked) ≈ phasic LC-NE response<br>Used alongside HRV to disambiguate stress vs. lapse">
+      <i class="bi bi-info-circle"></i>
+    </span>
+  </li>
+
+  <li>
+    Domains: working/long-term memory + auditory/visual discrimination
+    <span class="help-icon" data-bs-toggle="tooltip" title="Cross-domain design tests generality of arousal effects beyond a single task family.">
+      <i class="bi bi-info-circle"></i>
+    </span>
+  </li>
+
+  <li>
+    Theories: <em>Resource Competition</em>
+    <span class="help-icon" data-bs-toggle="tooltip" title="Shared resources → physical effort can tax/exacerbate cognitive load, producing performance trade-offs.">
+      <i class="bi bi-info-circle"></i>
+    </span>
+    + <em>Neural Gain (adaptive gain)</em>
+    <span class="help-icon" data-bs-toggle="tooltip" title="LC–NE modulates neural gain; mid-level arousal optimizes performance (inverted-U), extremes hurt it.">
+      <i class="bi bi-info-circle"></i>
+    </span>
+  </li>
+</ul>
+
+<p style="margin:.25rem 0 0">
+  → <strong>Mechanism:</strong> <em>pupil-indexed LC–NE</em>
+  <span class="help-icon" data-bs-toggle="tooltip" title="Pupil diameter tracks LC–NE activity (tonic &amp; phasic). In the dashboard, TEPR↑ + HRV↓ = High-Load confirmation; low TEPR + blink anomalies → Lapse confirmation. This supports thresholds that adapt with time-on-task and recover after microbreaks.">
+    <i class="bi bi-info-circle"></i>
+  </span>
+  links arousal to performance.
+</p>
+
+<hr style="border:none;border-top:1px solid #e5e7eb;margin:1rem 0">
+
+<p><strong>Why this dashboard:</strong> combine deployable UX from SST with mechanistic LC–NE insight to deliver a
+  <b>training-first, no extra wearables</b> cognitive monitor for robotic trainees.</p>
+<hr>
+</section>
+<section id="executive-summary" class="level2">
+<h2 class="anchored" data-anchor-id="executive-summary">Executive Summary</h2>
+<p>Surgery is a cognitive sport. When arousal is balanced, performance peaks; when it’s too low or too high, errors creep in. The OR is tightly constrained—so we avoid new body-worn hardware and lengthy calibration, and instead fuse existing robot telemetry with unobtrusive biosignals to deliver real-time coaching.</p>
+<p>I built two tightly coupled tools:</p>
+<ul>
+<li><strong>Training Lab</strong>: makes load/fatigue <em>felt</em> and lets instructors choose a threshold policy to match their pedagogy.</li>
+<li><strong>Production Dashboard</strong>: runs those policies in real time using <strong>pupil + grip/tremor + HRV</strong>, tuned to prevent alarm fatigue and respect sterile-field constraints.</li>
+</ul>
+<p>Accuracy is necessary, not sufficient. We optimize for operational outcomes—fewer high-load minutes, faster recovery, quicker proficiency—alongside standard model metrics.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Deployment KPIs:</strong> Alert burden ≤ <strong>0.6/min</strong>, High-Load <strong>min/hr ↓</strong>, Time-to-Recovery <strong>sec ↓</strong>, Acknowledgement rate <strong>↑</strong>.</p>
+</div>
+</div>
+<style>
+.repo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:.6rem 0}
+.repo-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px 14px 12px;
+  box-shadow:0 1px 1px rgba(16,24,40,.02);transition:transform .16s ease,box-shadow .16s ease}
+.repo-card:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(16,24,40,.06);border-color:#cfe8f3}
+.repo-card:focus-within{outline:2px solid #b7e1f0;outline-offset:2px}
+.repo-head{display:flex;align-items:center;gap:8px}
+.repo-head .stack{display:flex;align-items:center;gap:8px}
+.repo-head i{font-size:1.05rem;color:#1f9bb6}
+.repo-title{font-weight:600}
+.repo-desc{color:#4b5563;margin:.35rem 0 .5rem;font-size:.95rem}
+.repo-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
+.repo-badges{display:flex;gap:6px;flex-wrap:wrap}
+.repo-badges img{height:18px;border-radius:6px;border:1px solid #edf0f3}
+.repo-actions{display:flex;gap:8px}
+.repo-actions a.btn{display:inline-flex;align-items:center;gap:.45rem;font-size:.85rem;padding:.30rem .62rem;border-radius:8px;
+  border:1px solid #d7dee6;background:#f8fafc;color:#0b1526;text-decoration:none}
+.repo-actions a.btn.primary{background:#e6f6fb;border-color:#b7e1f0}
+.repo-actions a.btn i{font-size:1rem}
+</style>
+
+<div class="repo-grid">
+
+  <div class="repo-card" role="group" aria-label="Surgical Cognitive Dashboard repository">
+    <div class="repo-head">
+      <div class="stack">
+        <i class="bi bi-activity" aria-hidden="true"></i>
+        <div class="repo-title">Surgical Cognitive Dashboard</div>
+      </div>
+      <i class="bi bi-github" aria-hidden="true" title="GitHub repository"></i>
+    </div>
+    <div class="repo-desc">No body-worn hardware, real-time neuro-ergonomics for robotic surgery.</div>
+    <div class="repo-bar">
+      <div class="repo-badges">
+        <img alt="GitHub stars" loading="lazy" src="https://img.shields.io/github/stars/mohdasti/surgical-cognitive-dashboard?style=flat-square&amp;label=Stars">
+        <img alt="Last commit" loading="lazy" src="https://img.shields.io/github/last-commit/mohdasti/surgical-cognitive-dashboard?style=flat-square">
+      </div>
+      <div class="repo-actions">
+        <a class="btn primary" href="https://github.com/mohdasti/surgical-cognitive-dashboard" target="_blank" rel="noopener" aria-label="Open Surgical Cognitive Dashboard repository on GitHub">
+          <i class="bi bi-github" aria-hidden="true"></i>Open repo
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="repo-card" role="group" aria-label="Surgical Training Lab repository">
+    <div class="repo-head">
+      <div class="stack">
+        <i class="bi bi-mortarboard" aria-hidden="true"></i>
+        <div class="repo-title">Surgical Training Lab</div>
+      </div>
+      <i class="bi bi-github" aria-hidden="true" title="GitHub repository"></i>
+    </div>
+    <div class="repo-desc">Interactive policy sandbox: Inverted-U · SDT · Fatigue-adaptive.</div>
+    <div class="repo-bar">
+      <div class="repo-badges">
+        <img alt="GitHub stars" loading="lazy" src="https://img.shields.io/github/stars/mohdasti/surgical-training-lab?style=flat-square&amp;label=Stars">
+        <img alt="Last commit" loading="lazy" src="https://img.shields.io/github/last-commit/mohdasti/surgical-training-lab?style=flat-square">
+      </div>
+      <div class="repo-actions">
+        <a class="btn primary" href="https://github.com/mohdasti/surgical-training-lab" target="_blank" rel="noopener" aria-label="Open Surgical Training Lab repository on GitHub">
+          <i class="bi bi-github" aria-hidden="true"></i>Open repo
+        </a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<hr>
+</section>
+<section id="objectives-what-this-actually-delivers" class="level2">
+<h2 class="anchored" data-anchor-id="objectives-what-this-actually-delivers">Objectives — what this actually delivers</h2>
+<ul>
+<li><strong>Clinical ergonomics, not gadgetry.</strong> Non-intrusive biosignals (pupil, HRV, grip/tremor) + robot telemetry → <strong>actionable state estimates</strong> (Normal / High-Load / Lapse).</li>
+<li><strong>Training outcomes, not scoreboards.</strong> Reduce <strong>high-load minutes per hour</strong>, shorten <strong>time-to-recovery</strong> after microbreaks, and accelerate <strong>time-to-proficiency</strong>.</li>
+<li><strong>Pedagogy built-in.</strong> Three threshold policies map to real teaching strategies: <strong>Adaptive Gain</strong> (arousal sweet-spot), <strong>Dual-Criterion (SDT)</strong> (false-alarm control + hysteresis), <strong>Time-on-Task</strong> (fatigue &amp; microbreaks).</li>
+<li><strong>Deployable now.</strong> Sterile-field-friendly, &lt;60-second setup; sensible defaults, guardrails against alarm spam, and readable explanations.</li>
+</ul>
+<hr>
+</section>
+<section id="who-benefits-and-why" class="level2">
+<h2 class="anchored" data-anchor-id="who-benefits-and-why">Who benefits — and why</h2>
+<ul>
+<li><strong>Residents.</strong> See when trainees drift into low arousal or overload; get <strong>just-enough nudge</strong> (microbreaks, pacing, framing) without flooding them.</li>
+<li><strong>Instructors.</strong> A common language for <strong>when</strong> to step in: high-load confirmed by <strong>TEPR↑ + HRV↓</strong>, lapse suggested by <strong>low TEPR + blink anomalies</strong>.</li>
+<li><strong>Program directors / ops.</strong> Track <strong>high-load min/hr</strong>, <strong>recovery latency</strong>, and <strong>alarm burden</strong> across sessions to prove training impact and tune curricula.</li>
+</ul>
+<hr>
+</section>
+<section id="personalized-coaching-how-it-adapts-to-the-trainee" class="level2">
+<h2 class="anchored" data-anchor-id="personalized-coaching-how-it-adapts-to-the-trainee">Personalized coaching — how it adapts to the trainee</h2>
+<p><strong>Idea.</strong> Each trainee has a different “inverted-U” width and bias. We infer a <strong>coaching profile</strong> from early sessions:</p>
+<ul>
+<li><strong>Wide band:</strong> tolerates more challenge before overload → allow denser feedback; push complexity sooner.</li>
+<li><strong>Narrow band:</strong> tips into overload quickly → favor microbreaks, chunk tasks, reduce concurrent demands.</li>
+</ul>
+<p><strong>Heuristics (evidence-informed, lightweight):</strong></p>
+<ul>
+<li><strong>Likely overload (right limb):</strong> <code>z(TEPR) ≥ +0.8</code> AND <code>RMSSD ↓ ≥ 25–35%</code> over 60–120 s → <strong>suggest microbreak</strong> or <strong>slow tool motions</strong> for 60–120 s.</li>
+<li><strong>Likely lapse (left side):</strong> <code>z(TEPR) ≤ −0.5</code> OR <strong>blink bursts</strong> + stable HRV → <strong>prompt re-centering</strong> (brief cueing, checklist, or instructor query).</li>
+<li><strong>Stable but trending:</strong> slope(High-Load prob, 90 s) &gt; 0 with rising grip CV → <strong>anticipatory nudge</strong> (“prepare break after this step”).</li>
+</ul>
+<blockquote class="blockquote">
+<p><strong>Not a diagnosis.</strong> This is training feedback, not medical inference. Requires individual calibration and instructor judgment.</p>
+</blockquote>
+<p>If we want to surface the coaching logic UI-side, drop this explanatory microcopy under the Live Monitor:</p>
+<p><strong>Coaching logic (transparent):</strong> Alerts fire on <strong>evidence + physiology</strong> with <strong>hysteresis</strong> to prevent chatter. HL requires <strong>TEPR↑ or HRV↓</strong>; Lapse prefers <strong>low TEPR + blink anomalies</strong>. Policies then <strong>shape sensitivity</strong> (SDT), <strong>target the sweet-spot</strong> (Adaptive Gain), or <strong>relax with time</strong> (Fatigue).</p>
+<hr>
+</section>
+<section id="threshold-policies-how-they-work" class="level2">
+<h2 class="anchored" data-anchor-id="threshold-policies-how-they-work">Threshold Policies — how they work</h2>
+<p><em>One problem, three lenses.</em> Each policy below answers: <strong>what changes</strong>, <strong>when to use it</strong>, and <strong>how it maps to the production dashboard defaults</strong>.</p>
+<div class="tabset-margin-container"></div><div class="panel-tabset">
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Adaptive Gain (Inverted-U) <span class="help-icon" data-bs-toggle="tooltip" title="Target the mid-arousal zone; too low/high hurts performance (LC–NE adaptive gain)."><i class="bi bi-info-circle"></i></span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Dual-Criterion (SDT) <span class="help-icon" data-bs-toggle="tooltip" title="One knob moves both decision boundaries (High-Load &amp; Lapse) together; tunes decision bias (criteria), not d′."><i class="bi bi-info-circle"></i></span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Time-on-Task Policy (Fatigue-Adaptive) <span class="help-icon" data-bs-toggle="tooltip" title="Steady until onset; then the decision threshold relaxes with a half-life. A microbreak briefly tightens the threshold and decays back."><i class="bi bi-info-circle"></i></span></a></li></ul>
+<div class="tab-content">
+<div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="surgeon-performance-predict2_files/figure-html/unnamed-chunk-1-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="surgeon-performance-predict2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p style="margin-top:0.5rem;font-size:0.95rem;">
+<strong>X-axis detail:</strong> Normalized arousal 
+<span class="help-icon" data-bs-toggle="tooltip" title="Fusion rule: A = sigmoid(w₁·z(TEPR) – w₂·z(RMSSD)), where z() standardizes to μ=0, σ=1. Example weights: w₁=0.6, w₂=0.4. TEPR↑ and HRV↓ both push arousal higher.">
+  <i class="bi bi-info-circle"></i>
+</span>
+= fused TEPR + HRV index ∈ [0,1].
+</p>
+<ul>
+<li><p><strong>Maps to Dashboard.</strong> We fuse TEPR (↑) and HRV (↓) into a <strong>normalized arousal index</strong> ∈ [0,1]. Alerts fire when the index leaves the <strong>optimal band</strong> <code>[lo, hi]</code>.</p>
+<ul>
+<li>Wider band → <strong>fewer alerts</strong>, gentler coaching.</li>
+<li>Narrower band → <strong>tighter coaching</strong>, higher nuisance risk.</li>
+<li>We add <strong>hysteresis</strong> (small margins) to prevent alert “chatter” at band edges.</li>
+</ul></li>
+<li><p><strong>Notes for accuracy.</strong></p>
+<ul>
+<li>The inverted-U is <strong>task- and person-dependent</strong>: expertise, stakes, and fatigue shift the <strong>peak</strong> (band_center) and <strong>width</strong> (band_width). That’s why we <strong>calibrate per trainee</strong>.</li>
+<li>“Adaptive gain” is the <strong>mechanism</strong> (LC-NE modulating neural gain) that can yield this non-monotonic <strong>performance curve</strong>.</li>
+</ul></li>
+<li><p><strong>References.</strong> Yerkes–Dodson (1908); Aston-Jones &amp; Cohen (2005, adaptive gain).</p></li>
+</ul>
+<hr>
+</div>
+<div id="tabset-1-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-2-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="surgeon-performance-predict2_files/figure-html/unnamed-chunk-2-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2"><img src="surgeon-performance-predict2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<p style="margin:.25rem 0 .35rem;font-size:0.95rem;">
+<strong>X-axis:</strong> a z-scored, signed <em>evidence index</em> from biosignals (e.g., TEPR↑, RMSSD↓).
+Higher → <em>High-Load</em>; lower → <em>Lapse</em>.
+</p>
+<ul>
+<li><strong>What this shows.</strong> A three-state SDT layout (Lapse / Normal / High-Load) with <strong>two decision criteria</strong> and <strong>hysteresis</strong> (separate enter/exit thresholds).
+<ul>
+<li><strong><code>criterion_tightness</code></strong> narrows or widens the Normal window by moving <strong>both</strong> criteria toward or away from 0.</li>
+<li><strong><code>coupling</code></strong> controls symmetry: values <strong>&lt; 1</strong> move the Lapse boundary <strong>less</strong> than the High-Load boundary; values <strong>&gt; 1</strong> move it <strong>more</strong>.</li>
+</ul></li>
+<li><strong>Why “Dual-Criterion,” not “Sensitivity.”</strong> In SDT, <strong>sensitivity</strong> is <strong>d′</strong> (distribution separation). This policy <strong>adjusts decision criteria (bias)</strong>, not d′.</li>
+</ul>
+<p><strong>How the two figures relate:</strong> The first figure defines the boundaries (enter/exit on each side). The second applies the <strong>same boundaries—nudged slightly if needed so at least one crossing is visible</strong>—to a noisy signal, showing how hysteresis prevents flip-flops near a boundary.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="surgeon-performance-predict2_files/figure-html/unnamed-chunk-3-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3"><img src="surgeon-performance-predict2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="1008"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<ul>
+<li><strong>Hysteresis.</strong> Enter/exit thresholds (and/or consecutive-sample confirmation) require <strong>persistent evidence</strong> to change state—reducing nuisance alerts.</li>
+<li><strong>Maps to Dashboard.</strong> The control sets the <strong>HL</strong> and <strong>Lapse</strong> thresholds together. Alerts still require <strong>evidence + physiology</strong> (e.g., HL requires <strong>TEPR↑ or HRV↓</strong>; Lapse prefers <strong>low TEPR + blink anomalies</strong>).</li>
+<li><strong>References.</strong> Macmillan &amp; Creelman (Signal Detection Theory); NASA-TLX background (Hart &amp; Staveland).</li>
+</ul>
+<hr>
+</div>
+<div id="tabset-1-3" class="tab-pane" role="tabpanel" aria-labelledby="tabset-1-3-tab">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><a href="surgeon-performance-predict2_files/figure-html/unnamed-chunk-4-1.png" class="lightbox" data-gallery="quarto-lightbox-gallery-4"><img src="surgeon-performance-predict2_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></a></p>
+</figure>
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>How to read this policy</p>
+<ul>
+<li>Pre-onset (t &lt; 30 min): the decision threshold stays at 0.70.</li>
+<li>Post-onset: the threshold relaxes exponentially toward the floor 0.50—i.e., the system becomes more tolerant of High-Load detections as vigilance degrades.</li>
+<li>Microbreak (t = 60 min): a small reset tightens the threshold, then decays over ~2 min. (Demo uses a fixed, modest reset.)</li>
+<li>Half-life: at t = onset + half-life = 30 + 21 = 51 min, the threshold sits halfway between 0.70 and 0.50.</li>
+<li>Design intent: this is a controller on the criterion—transparent, auditable, and tunable per surgeon/task; it does not assume the evidence itself drifts.</li>
+</ul>
+</div>
+</div>
+<ul>
+<li><p><strong>Why a policy like this?</strong> Vigilance typically declines with time-on-task while perceived workload rises; brief microbreaks improve comfort and focus without harming flow. Pupil/HRV often show fast, partial recovery over 1–3 minutes. A time-scheduled, small criterion reset captures these operational realities without heavy modeling.</p></li>
+<li><p><strong>Good defaults (to be tuned)</strong>: <code>onset_min</code> 20–30 min; <code>fatigue_half_life_min</code> 15–30 min; reset proportional to observed pre/post microbreak recovery, with decay 1–3 min.</p></li>
+<li><p><strong>References.</strong></p>
+<ul>
+<li><p>Warm, Parasuraman &amp; Matthews (2008). <em>Vigilance requires hard mental work and is stressful.</em> <strong>Human Factors, 50(3), 433–441.</strong> DOI: 10.1518/001872008X312152</p></li>
+<li><p>Dorion &amp; Darveau (2013). <em>Do micropauses prevent surgeon’s fatigue and loss of accuracy?</em> <strong>Ann Surg, 257(2), 256–259.</strong> DOI: 10.1097/SLA.0b013e31825efe87</p></li>
+<li><p>Park et al.&nbsp;(2017). <em>Intraoperative “microbreaks” with exercises reduce surgeons’ musculoskeletal injuries.</em> <strong>J Surg Res, 211, 24–31.</strong> DOI: 10.1016/j.jss.2016.11.017</p></li>
+<li><p>Hallbeck et al.&nbsp;(2017). <em>The impact of intraoperative microbreaks…</em> <strong>Applied Ergonomics, 60, 334–341.</strong> DOI: 10.1016/j.apergo.2016.12.006</p></li>
+<li><p>Luger et al.&nbsp;(2023). <em>One-minute rest breaks mitigate healthcare worker stress.</em> <strong>JMIR, 25, e44804.</strong> DOI: 10.2196/44804</p></li>
+<li><p>Unsworth &amp; Robison (2018). <em>Tracking arousal with pupillometry.</em> <strong>Cogn Affect Behav Neurosci, 18, 638–664.</strong> DOI: 10.3758/s13415-018-0604-8</p></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="why-thresholds-must-adapt" class="level2">
+<h2 class="anchored" data-anchor-id="why-thresholds-must-adapt">Why thresholds must adapt</h2>
+<style>
+.demo-card{background:linear-gradient(135deg, #e6f6fb 0%, #f0fafe 100%);
+  border:1px solid #b7e1f0;border-radius:12px;padding:20px;
+  box-shadow:0 2px 8px rgba(16,24,40,.04);margin:1rem 0;max-width:720px}
+.demo-card:hover{box-shadow:0 4px 16px rgba(16,24,40,.08);border-color:#9dd9ec}
+.demo-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.demo-head img{height:40px;width:auto;border-radius:4px}
+.demo-title{font-weight:600;font-size:1.1rem;color:#0b1526}
+.demo-desc{color:#4b5563;margin-bottom:14px;font-size:.95rem;line-height:1.4}
+.demo-features{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.demo-features .tag{display:inline-flex;align-items:center;gap:.3rem;
+  padding:.25rem .5rem;background:#fff;border:1px solid #d0e9f3;border-radius:6px;
+  font-size:.85rem;color:#0b1526}
+.demo-features .tag i{font-size:.95rem;color:#1f9bb6}
+.demo-action{text-align:center}
+.demo-action a{display:inline-flex;align-items:center;gap:.6rem;
+  padding:11px 26px;background:#1f9bb6;color:#fff;text-decoration:none;
+  border-radius:8px;font-weight:600;font-size:.95rem;
+  box-shadow:0 2px 6px rgba(31,155,182,.25);transition:all .2s ease}
+.demo-action a:hover{background:#1a8ca0;box-shadow:0 4px 12px rgba(31,155,182,.35);transform:translateY(-1px)}
+.demo-action a i{font-size:1.1rem}
+.demo-note{margin-top:10px;font-size:.85rem;color:#6b7280;font-style:italic}
+</style>
+
+<div class="demo-card">
+  <div class="demo-head">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/b/bf/Shiny_hex_logo.svg" alt="Shiny logo" loading="lazy">
+    <div class="demo-title">Interactive Training Lab</div>
+  </div>
+  <div class="demo-desc">
+    Compare all three threshold policies on the same biosignal stream. Switch policies mid-run, adjust parameters, and export configurations for production use.
+  </div>
+  <div class="demo-features">
+    <span class="tag"><i class="bi bi-activity"></i>Adaptive Gain</span>
+    <span class="tag"><i class="bi bi-bullseye"></i>Dual-Criterion</span>
+    <span class="tag"><i class="bi bi-clock-history"></i>Time-on-Task</span>
+  </div>
+  <div class="demo-action">
+    <a href="https://0z6q8c-mohammad0dastgheib.shinyapps.io/surgical-training-lab/" target="_blank" rel="noopener noreferrer">
+      <i class="bi bi-box-arrow-up-right"></i>Launch Training Lab
+    </a>
+  </div>
+  <div class="demo-note">Opens in new tab · May take a few seconds to load</div>
+</div>
+
+<blockquote class="blockquote">
+<p>Switch between policies on the same stream. Notice how the same physiologic trace produces different coaching behavior. <strong>Policy is a choice</strong>, and it should be teachable.</p>
+</blockquote>
+<hr>
+</section>
+<section id="production-dashboard" class="level2">
+<h2 class="anchored" data-anchor-id="production-dashboard">Production Dashboard</h2>
+<style>
+.gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.gallery a{display:block;border:1px solid #e5e7eb;border-radius:10px;overflow:hidden}
+.gallery img{display:block;width:100%;height:auto}
+.small-note{color:#6b7280;font-size:.9rem}
+</style>
+
+<h3 class="anchored">Live Monitor Overview</h3>
+<div class="gallery">
+  <a href="../assets/demo/whole-live-monitor.png" class="lightbox" data-gallery="dashboard" data-glightbox="title:Full live monitor dashboard view">
+    <img src="../assets/demo/whole-live-monitor.png" alt="Live monitor overview">
+  </a>
+</div>
+
+<h3 class="anchored">Component Details — Zoomable Gallery</h3>
+<div class="gallery">
+  <a href="../assets/demo/cognitve-load-index.png" class="lightbox" data-gallery="components" data-glightbox="title:Cognitive load index with hysteresis thresholds">
+    <img src="../assets/demo/cognitve-load-index.png" alt="Cognitive load">
+  </a>
+  <a href="../assets/demo/motor-steadiness-index.png" class="lightbox" data-gallery="components" data-glightbox="title:Motor steadiness index (tremor + grip)">
+    <img src="../assets/demo/motor-steadiness-index.png" alt="Motor steadiness">
+  </a>
+  <a href="../assets/demo/alert-log.png" class="lightbox" data-gallery="components" data-glightbox="title:Alert timeline: enter vs exit markers">
+    <img src="../assets/demo/alert-log.png" alt="Alerts timeline">
+  </a>
+</div>
+<p class="small-note">Click any image to zoom and navigate with arrow keys.</p>
+
+<h3 class="anchored">ML Diagnostics Overview</h3>
+<div class="gallery">
+  <a href="../assets/demo/whole-ml-model-diagnostics.png" class="lightbox" data-gallery="ml-overview" data-glightbox="title:Full ML diagnostics dashboard view">
+    <img src="../assets/demo/whole-ml-model-diagnostics.png" alt="ML diagnostics overview">
+  </a>
+</div>
+
+<h3 class="anchored">ML Diagnostics Details — Zoomable Gallery</h3>
+<div class="gallery">
+  <a href="../assets/demo/ml-probability-calibration.png" class="lightbox" data-gallery="ml-details" data-glightbox="title:Calibration curve: predicted vs observed (ECE, Brier)">
+    <img src="../assets/demo/ml-probability-calibration.png" alt="Calibration">
+  </a>
+  <a href="../assets/demo/ml-threshold-sandbox.png" class="lightbox" data-gallery="ml-details" data-glightbox="title:Threshold sandbox: compare policies on same data">
+    <img src="../assets/demo/ml-threshold-sandbox.png" alt="Threshold sandbox">
+  </a>
+  <a href="../assets/demo/ml-feature-importance.png" class="lightbox" data-gallery="ml-details" data-glightbox="title:Feature importance (XGBoost SHAP values)">
+    <img src="../assets/demo/ml-feature-importance.png" alt="Feature importance">
+  </a>
+  <a href="../assets/demo/ml-cross-validation-results.png" class="lightbox" data-gallery="ml-details" data-glightbox="title:Cross-validation results (LOSO)">
+    <img src="../assets/demo/ml-cross-validation-results.png" alt="Cross-validation">
+  </a>
+  <a href="../assets/demo/ml-model-overview.png" class="lightbox" data-gallery="ml-details" data-glightbox="title:Model overview and architecture">
+    <img src="../assets/demo/ml-model-overview.png" alt="Model overview">
+  </a>
+  <a href="../assets/demo/ml-partial-dependence.png" class="lightbox" data-gallery="ml-details" data-glightbox="title:Partial dependence plots for key features">
+    <img src="../assets/demo/ml-partial-dependence.png" alt="Partial dependence">
+  </a>
+</div>
+
+<hr>
+</section>
+<section id="methods-what-runs-under-the-hood" class="level2">
+<h2 class="anchored" data-anchor-id="methods-what-runs-under-the-hood">Methods (what runs under the hood)</h2>
+<p><strong>Data &amp; provenance.</strong><br>
+We use (a) synthetic sessions produced by the same code paths as the live app (seeded; 10–30 min, 50–100 Hz raw) and (b) replayable demo logs exported from the dashboard. All analyses in this page use time-stamped streams (UTC, ms).</p>
+<p><strong>Signals &amp; sampling.</strong><br>
+Pupil diameter (mm; eye tracker), HRV from PPG/ECG (ms), grip force (N), tool-tip tremor (μm, 8–12 Hz band), blinks (blinks/min), ambient noise (dB). Signals are synchronized to a common clock and resampled to 10 Hz for feature windows.</p>
+<p><strong>Preprocessing.</strong><br>
+- Pupil: blink interpolation → robust z-scoring within session; TEPR = event-locked delta (2–5 s).<br>
+- HRV: RMSSD computed over rolling 60 s (also 30/120 s for sensitivity); artifact correction via outlier trimming (5×MAD).<br>
+- Grip/tremor: 2–10 s rolling mean/SD; tremor via band-pass and RMS.<br>
+- Blink rate: rolling 60 s count; winsorized (1st/99th pct).</p>
+<p><strong>Features (examples; all z-scored within session).</strong><br>
+- <strong>Pupil:</strong> tonic_30s_mean; tepr_5s_delta; pupil_cv_30s.<br>
+- <strong>HRV:</strong> rmssd_60s; rmssd_slope_60s; rmssd_ma_180s; <strong>rmssd×tepr</strong> interaction.<br>
+- <strong>Grip/Tremor:</strong> grip_mean_15s; grip_cv_15s; tremor_rms_10s; tremor_trend_60s.<br>
+- <strong>Ocular:</strong> blink_rate_60s; fixation_var_30s.<br>
+- <strong>Context:</strong> noise_db_30s.</p>
+<p><strong>Modeling.</strong><br>
+XGBoost (multi:softprob, 3 classes: Normal / High-Load / Lapse). Class imbalance handled via class weights (rare Lapse upweighted) and PR-AUC monitoring. Lapse probability is <strong>calibrated</strong> with Platt scaling (logistic on validation folds). We report ECE and Brier.</p>
+<p><strong>Threshold policies (runtime).</strong><br>
+- <strong>Adaptive Gain (Inverted-U):</strong> keeps evidence within an optimal band.<br>
+- <strong>Dual-Criterion (SDT) with hysteresis:</strong> two criteria + enter/exit guards.<br>
+- <strong>Time-on-Task (Fatigue):</strong> hold → relax with half-life; microbreak gives a decaying reset.</p>
+<p><strong>Validation.</strong><br>
+Leave-One-Surgeon-Out (LOSO) where available; otherwise session-level 5× CV with subject leakage prevented. Hyperparameters chosen by Bayesian search, then frozen.</p>
+<p><strong>Reproducibility.</strong><br>
+Seeds fixed; all plots are generated by scripts under <code>scripts/90_make_gallery.R</code> so the case study visuals match the live app implementation.</p>
+<hr>
+</section>
+<section id="methods-results-that-matter-ops-kpis" class="level2">
+<h2 class="anchored" data-anchor-id="methods-results-that-matter-ops-kpis">Methods &amp; results that matter (ops KPIs)</h2>
+<p>We track outcomes that training leaders can act on:</p>
+<ul>
+<li><strong>High-load minutes per hour (↓ is better).</strong> Target ≥20–30% reduction after policy tuning.</li>
+<li><strong>Recovery latency after alerts/microbreaks (↓).</strong> Time for HRV/tremor to normalize; aim for &lt;120 s median.</li>
+<li><strong>Alarm burden &amp; acceptance (↘ nuisance, ↗ adherence).</strong> Alerts/hour, % acknowledged, % acted upon.</li>
+<li><strong>Stability (↗).</strong> Fewer state flips near thresholds with hysteresis vs naive criteria.</li>
+<li><strong>Time-to-proficiency (↘).</strong> Sessions to hit competency rubric milestones.</li>
+</ul>
+<p><em>Analytics:</em> per-session trend lines + bootstrapped CIs; PR-AUC for Lapse, calibration error (ECE), and threshold-level lift curves for explainability.</p>
+<hr>
+</section>
+<section id="live-clinical-style-table-with-literature-ranges" class="level2 page-columns page-full">
+<h2 class="anchored" data-anchor-id="live-clinical-style-table-with-literature-ranges">Live clinical-style table with literature ranges</h2>
+<div class="column-page">
+<iframe src="supporting_files/features_gt_table.html" width="100%" height="600px" style="border:none;" data-external="1">
+</iframe>
+</div>
+<hr>
+</section>
+<section id="product-vs.-lab-how-they-fit" class="level2">
+<h2 class="anchored" data-anchor-id="product-vs.-lab-how-they-fit">Product vs.&nbsp;Lab — how they fit</h2>
+<p>The <strong>Lab</strong> teaches the concepts and lets instructors tune policy; the <strong>Dashboard</strong> runs that policy live with guardrails and explains <em>why</em> an alert fired.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="xrxbejlczr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#xrxbejlczr table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#xrxbejlczr thead, #xrxbejlczr tbody, #xrxbejlczr tfoot, #xrxbejlczr tr, #xrxbejlczr td, #xrxbejlczr th {
+  border-style: none;
+}
+
+#xrxbejlczr p {
+  margin: 0;
+  padding: 0;
+}
+
+#xrxbejlczr .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 14px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: 100%;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#xrxbejlczr .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#xrxbejlczr .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#xrxbejlczr .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#xrxbejlczr .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xrxbejlczr .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xrxbejlczr .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#xrxbejlczr .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#xrxbejlczr .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#xrxbejlczr .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#xrxbejlczr .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#xrxbejlczr .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#xrxbejlczr .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#xrxbejlczr .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#xrxbejlczr .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#xrxbejlczr .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#xrxbejlczr .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#xrxbejlczr .gt_row {
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#xrxbejlczr .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xrxbejlczr .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#xrxbejlczr .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#xrxbejlczr .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#xrxbejlczr .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xrxbejlczr .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#xrxbejlczr .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#xrxbejlczr .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xrxbejlczr .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xrxbejlczr .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#xrxbejlczr .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xrxbejlczr .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#xrxbejlczr .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#xrxbejlczr .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xrxbejlczr .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xrxbejlczr .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#xrxbejlczr .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#xrxbejlczr .gt_left {
+  text-align: left;
+}
+
+#xrxbejlczr .gt_center {
+  text-align: center;
+}
+
+#xrxbejlczr .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#xrxbejlczr .gt_font_normal {
+  font-weight: normal;
+}
+
+#xrxbejlczr .gt_font_bold {
+  font-weight: bold;
+}
+
+#xrxbejlczr .gt_font_italic {
+  font-style: italic;
+}
+
+#xrxbejlczr .gt_super {
+  font-size: 65%;
+}
+
+#xrxbejlczr .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#xrxbejlczr .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#xrxbejlczr .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#xrxbejlczr .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#xrxbejlczr .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#xrxbejlczr .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#xrxbejlczr .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#xrxbejlczr .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#xrxbejlczr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<colgroup>
+<col>
+<col style="width: 40%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="gt_heading header">
+<th colspan="3" class="gt_heading gt_title gt_font_normal"><strong>Product vs.&nbsp;Lab — how they fit</strong></th>
+</tr>
+<tr class="gt_heading even">
+<th colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Operational app (left) vs.&nbsp;pedagogy sandbox (right)</th>
+</tr>
+<tr class="gt_col_headings header">
+<th id="Aspect" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Aspect</strong></th>
+<th id="Production-Dashboard" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Production Dashboard</strong></th>
+<th id="Training-Lab" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col"><strong>Training Lab</strong></th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="Aspect" style="background-color: #F8F9FA; font-weight: bold">Purpose</td>
+<td class="gt_row gt_left" headers="Production Dashboard" style="background-color: #E8F5E9">Real-time monitoring &amp; decision support</td>
+<td class="gt_row gt_left" headers="Training Lab" style="background-color: #FFF8E1">Theory exploration &amp; threshold policy tuning</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Aspect" style="background-color: #F8F9FA; font-weight: bold">Audience</td>
+<td class="gt_row gt_left gt_striped" headers="Production Dashboard" style="background-color: #E8F5E9">Clinicians, safety officers</td>
+<td class="gt_row gt_left gt_striped" headers="Training Lab" style="background-color: #FFF8E1">Educators, researchers</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Aspect" style="background-color: #F8F9FA; font-weight: bold">Features</td>
+<td class="gt_row gt_left" headers="Production Dashboard" style="background-color: #E8F5E9">Live gt table, tuned alerts, evidence fusion (pupil + HRV + grip/tremor)</td>
+<td class="gt_row gt_left" headers="Training Lab" style="background-color: #FFF8E1">Three paradigms (Adaptive Gain, SDT+hysteresis, Time-on-Task)</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Aspect" style="background-color: #F8F9FA; font-weight: bold">Latency</td>
+<td class="gt_row gt_left gt_striped" headers="Production Dashboard" style="background-color: #E8F5E9">&lt; 1 s UI; heavier data load</td>
+<td class="gt_row gt_left gt_striped" headers="Training Lab" style="background-color: #FFF8E1">Instant</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Aspect" style="background-color: #F8F9FA; font-weight: bold">Interactivity</td>
+<td class="gt_row gt_left" headers="Production Dashboard" style="background-color: #E8F5E9">Threshold policies runnable; microbreak logging</td>
+<td class="gt_row gt_left" headers="Training Lab" style="background-color: #FFF8E1">Side-by-side policy comparisons; sliders</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left gt_striped" headers="Aspect" style="background-color: #F8F9FA; font-weight: bold">Calibration</td>
+<td class="gt_row gt_left gt_striped" headers="Production Dashboard" style="background-color: #E8F5E9">XGBoost + Platt scaling; reliability curve (ECE/Brier)</td>
+<td class="gt_row gt_left gt_striped" headers="Training Lab" style="background-color: #FFF8E1">Not model-based; exports policy defaults</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="Aspect" style="background-color: #F8F9FA; font-weight: bold">Status</td>
+<td class="gt_row gt_left" headers="Production Dashboard" style="background-color: #E8F5E9">Stable, no extra wearables UI</td>
+<td class="gt_row gt_left" headers="Training Lab" style="background-color: #FFF8E1">Experimental, fast iteration</td>
+</tr>
+</tbody><tfoot>
+<tr class="gt_sourcenotes odd">
+<td colspan="3" class="gt_sourcenote"><strong>Note.</strong> The Lab defines pedagogy &amp; defaults; the Dashboard executes with calibrated probabilities and alert hygiene.</td>
+</tr>
+</tfoot>
+
+</table>
+
+</div>
+</div>
+</div>
+<hr>
+</section>
+<section id="from-sst-to-the-or-what-transferred" class="level2">
+<h2 class="anchored" data-anchor-id="from-sst-to-the-or-what-transferred">From SST to the OR — what transferred</h2>
+<ul>
+<li><strong>Alert hygiene over cleverness.</strong> A good model with bad alerting is a bad product. We optimize nuisance rate and edge-chatter, not just AUC.<br>
+</li>
+<li><strong>Interpretability on contact.</strong> “High-Load confirmed (TEPR↑ + RMSSD↓)” is actionable; a confusion matrix mid-case is not.<br>
+</li>
+<li><strong>Friction kills adoption.</strong> Every cable/cap/password taxes attention. That’s why this stays <strong>zero-headgear</strong> with <strong>&lt;60-second setup</strong>.</li>
+</ul>
+<hr>
+</section>
+<section id="deployment-privacy" class="level2">
+<h2 class="anchored" data-anchor-id="deployment-privacy">Deployment &amp; Privacy</h2>
+<p>Runs as a Docker image or on ShinyApps; can embed in training portals with a single <code>&lt;iframe&gt;</code>. By default, <strong>surgeon biometrics are ephemeral</strong>: we retain only de-identified aggregates (for QA/research) with explicit consent. The system is <strong>assistive</strong>, not autonomous—the clinician remains in the loop, with visible rationale for alerts.</p>
+<hr>
+</section>
+<section id="whats-next-tailored-pedagogy" class="level2">
+<h2 class="anchored" data-anchor-id="whats-next-tailored-pedagogy">What’s next — tailored pedagogy</h2>
+<ul>
+<li><strong>Estimate the trainee’s arousal band.</strong> Use early sessions to fit a simple <strong>sweet-spot width</strong> (from TEPR/HRV vs performance), then personalize alert sensitivity.</li>
+<li><strong>Phase-aware coaching.</strong> Different thresholds for docking, dissection, suturing; tighten only where error costs are high.</li>
+<li><strong>Post-hoc debriefs.</strong> Auto-compile moments of <strong>sustained overload</strong> (≥30 s) with linked video, instructor notes, and the <strong>coaching action</strong> taken.</li>
+<li><strong>Prospective classroom studies.</strong> Randomize microbreak timing/pacing advice and measure effects on recovery latency and learning curves.</li>
+</ul>
+<style>
+.what-is-card {
+  background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+  border: 1px solid #cbd5e1;
+  border-left: 4px solid #1f9bb6;
+  border-radius: 12px;
+  padding: 16px 20px;
+  margin: 20px 0;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+.what-is-header {
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12px;
+  font-size: 1.1rem;
+}
+.what-is-item {
+  margin: 8px 0;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.what-is-label {
+  font-weight: 600;
+  color: #1e293b;
+  min-width: 80px;
+  font-size: 0.95rem;
+}
+.what-is-positive {
+  color: #059669;
+}
+.what-is-negative {
+  color: #dc2626;
+}
+.what-is-text {
+  color: #475569;
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+</style>
+
+<div class="what-is-card">
+  <div class="what-is-header">What this is / What this isn't</div>
+  <div class="what-is-item">
+    <span class="what-is-label what-is-positive">✓ What this is.</span>
+    <span class="what-is-text">A deployable, no body-worn hardware <strong>training aid</strong> that fuses biosignals with robot telemetry to surface <strong>when</strong> coaching helps most.</span>
+  </div>
+  <div class="what-is-item">
+    <span class="what-is-label what-is-negative">✗ What this isn't.</span>
+    <span class="what-is-text">A medical device or punitive scoring system; it doesn't replace instructor judgment or certify clinical readiness.</span>
+  </div>
+</div>
+
+
+</section>
+
+<a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/mdastgheib\.com");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>© 2026 Mohammad Dastgheib • Built with Quarto</p>
+</div>   
+    <div class="nav-footer-center">
+<p><a href="mailto:mdast003@ucr.edu" title="Email"><i class="fas fa-envelope"></i></a> <a href="https://linkedin.com/in/mdastgheib" title="LinkedIn"><i class="fab fa-linkedin"></i></a> <a href="https://scholar.google.com/citations?user=SNVpHcUAAAAJ" title="Google Scholar"><i class="ai ai-google-scholar"></i></a> <a href="https://github.com/mohdasti" title="GitHub"><i class="fab fa-github"></i></a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -1,0 +1,6 @@
+# This file ensures the assets/demo folder is tracked by Git
+# Add dashboard tour videos and images here:
+# - Video formats: .webm (preferred), .mp4 (fallback)
+# - Poster images: .jpg
+# - Gallery images: .png (full), .jpg (thumbnails with thumb_ prefix)
+

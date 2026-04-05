@@ -18,24 +18,25 @@ This document provides detailed technical information about the website structur
 quarto-website/
 ├── _quarto.yml              # Main Quarto configuration
 ├── _publish.yml             # Publishing and deployment settings
-├── index.qmd                # Homepage content
+├── home.qmd                 # Homepage (outputs docs/index.html)
 ├── cv.qmd                   # CV page
 ├── about/                   # About section
-│   └── index.qmd
+│   └── about.qmd
 ├── portfolio/               # Portfolio showcase
-│   └── index.qmd
+│   └── portfolio.qmd
 ├── publications/            # Research publications
-│   ├── index.qmd
+│   ├── publications.qmd     # Listing page (outputs index.html)
 │   ├── peer-reviewed/
-│   └── publication[1-8]/
+│   ├── preprints/
+│   └── publication[1-8]/    # e.g. article.qmd → index.html per folder
 ├── projects/                # Case studies and projects
 │   ├── dual-task-case-study.qmd
 │   ├── memory-and-meditation.qmd
 │   └── surgeon-performance-predict.qmd
 ├── research/                # Research overview
-│   └── index.qmd
+│   └── research.qmd
 ├── skills/                  # Skills and methodology
-│   └── index.qmd
+│   └── skills.qmd
 ├── assets/                  # Static assets
 │   ├── css/
 │   │   ├── main.css         # Main stylesheet
@@ -291,8 +292,8 @@ Deployment configuration for Netlify:
 ### Content Updates
 
 1. **Publications**: Add to `publications/`
-2. **About**: Update `about/index.qmd`
-3. **Skills**: Modify `skills/index.qmd`
+2. **About**: Update `about/about.qmd`
+3. **Skills**: Modify `skills/skills.qmd`
 4. **CV**: Update `cv.qmd` and PDF files
 
 ## 🐛 Troubleshooting

@@ -1,0 +1,52 @@
+---
+title: "Research"
+description: "Doctoral research on physical effort, arousal, and perceptual decisions in aging: handgrip dual-task paradigm, pupillometry, psychometric function modeling, hierarchical Bayesian Wiener DDM. Adjacent arXiv preprint on hand vs. gaze XR-relevant pointing (not dissertation core)."
+format:
+  html:
+    output-file: index.html
+---
+
+**Physical effort** and **arousal** reshape perceptual decisions—especially under limited capacity, as in **aging** and **older adults**. The dissertation asks how those changes appear in **behavior**, in **pupillometry**, and in **sequential sampling** parameters that separate evidence quality from caution. The backbone is a **handgrip dual-task paradigm** (isometric force concurrent with cognitive and perceptual tasks), scaled from younger-adult validation to **older-adult** modeling. **Dissertation chapters are not journal publications**; titles and status are on [**Publications**](../publications/publications.qmd).
+
+---
+
+## Current Research Program
+
+The dissertation is one integrated program in three stages.
+
+**1. Younger-adult proof of concept.** Under **concurrent physical effort** and cognitive/perceptual load, **pupil-linked arousal** often shifted more clearly than summary **behavioral** outcomes—supporting the arousal measurement strategy and **validating the handgrip dual-task paradigm** for later stages without over-reading weak or null behavioral contrasts.
+
+**2. Older-adult psychometric chapter.** **Auditory and visual same–different discrimination** with **psychometric function modeling** and **pupillometry**, under missingness, artifacts, and QC constraints typical of eye-tracking in **aging**. Where appropriate, analyses use **continuous intensity** and graded manipulations rather than coarse binning alone.
+
+**3. Older-adult mechanistic chapter.** A **hierarchical Bayesian Wiener drift-diffusion model (DDM)** decomposes choices and RTs. **Physical effort** costs align most clearly with **drift rate** (evidence accumulation). **Boundary separation** does not show comparably strong compensatory support. **Non-decision time** is **constrained by design** and is not treated as a free explanation of effort. **Pupillometry** linked to trial-level diffusion parameters is **exploratory** and **inconclusive** in the current specification.
+
+Program overview: [**dual-task case study**](../projects/dual-task-case-study.qmd). Methods and computation: [**Skills**](../skills/skills.qmd).
+
+---
+
+## Adjacent Work in XR / HCI
+
+Outside the dissertation, an [**arXiv preprint**](https://arxiv.org/abs/2603.15991) ([**case study**](../projects/case_study_web.qmd)) reports **hand** versus **gaze** pointing in a **web-based**, **XR-relevant** interaction task. **Modality-specific failure modes** match the intended contrast: **gaze**—**slips** / Midas Touch–type errors; **hand**—**misses** / spatial targeting. **Throughput** and **Fitts**-style analyses summarize speed–accuracy tradeoffs. **Adaptive UI** results are narrow: **gaze declutter** was the only policy that **executed and was evaluable** in this dataset (**timeouts** down modestly; **slip-dominated** gaze errors remained dominant). **Hand target-width inflation was not evaluable** (rendered targets did not update—**UI integration bug**). **Linear ballistic accumulator (LBA)** modeling there applies to **verification-phase** RTs only—see [**Skills**](../skills/skills.qmd) for stack and scope; it does **not** replace the dissertation **Wiener DDM**. This line supports **HCI / human factors / interaction** breadth; the dissertation remains the **primary** identity.
+
+---
+
+## Core Questions
+
+- How does **concurrent physical effort** change **perceptual decision-making** across the lifespan, and where do effects appear—in behavior, in **pupillometry**, or in latent parameters?
+- How does **psychometric function modeling** complement **behavior** and **pupillometry** when eye-tracking data are incomplete or noisy?
+- Can a **hierarchical Bayesian Wiener DDM** separate **drift**-linked costs from **caution**, while treating **non-decision time** and **pupil–parameter** links with appropriate limits?
+- How do **individual differences** (e.g., cognitive reserve) interact with load beyond group averages?
+
+---
+
+## Approach
+
+The progression is **behavioral performance** → **psychometric function modeling** → **hierarchical Bayesian Wiener DDM**, with **pupillometry** at stages where it informs **arousal** and **physical effort** without substituting for behavior. The aim is interpretable accounts of **dual-task** performance under **effort** and **arousal**, not a single headline metric. Implementation: [**Skills**](../skills/skills.qmd).
+
+---
+
+## Why This Work Matters
+
+This work connects **psychology**, **cognitive neuroscience**, **human factors**, and **interface-relevant** inference about state under load—without claiming **clinical** translation, **production deployment**, or **pupillometry** as a diagnostic biomarker.
+
+**Outputs:** [**Publications**](../publications/publications.qmd) · [**CV**](../cv.qmd) · [**Portfolio**](../portfolio/portfolio.qmd)
