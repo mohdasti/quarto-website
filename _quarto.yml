@@ -5,6 +5,10 @@ project:
   resources:
     - assets/**
     - outputs/**
+    - pdfs/**
+    - supporting_docs/**
+    - portfolio/portfolio.html
+    - _redirects
 
 website:
   title: "Mohammad Dastgheib"

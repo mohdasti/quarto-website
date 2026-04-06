@@ -63,7 +63,7 @@ Adaptive policies must be read narrowly: gaze declutter was the only policy that
 
 ## Approach
 
-The progression is behavioral performance → psychometric function modeling → hierarchical Bayesian Wiener DDM, with pupillometry at stages where it informs arousal and physical effort without substituting for behavior. The aim is interpretable accounts of dual-task performance under effort and arousal, not a single headline metric. Implementation details: [Skills](../skills/skills.qmd).
+The progression is behavioral performance → psychometric function modeling → hierarchical Bayesian Wiener DDM, with pupillometry at stages where it informs arousal and physical effort without substituting for behavior. The aim is models you can read and stress-test, not one summary score that hides where the costs live. Implementation details: [Skills](../skills/skills.qmd).
 
 ---
 

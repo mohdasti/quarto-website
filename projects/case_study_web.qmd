@@ -741,7 +741,7 @@ a{ color:var(--accent); }
 
 ```{=html}
 <div class="tldr-card" role="note" aria-label="What I built">
-  <div class="tldr-title">What I shipped (end-to-end)</div>
+  <div class="tldr-title">What I shipped</div>
   <div class="tldr-body">
     I built a remote XR interaction research platform—from task UI to analysis—so I could quantify speed–accuracy tradeoffs, surface XR-specific failure modes (e.g., Midas Touch slips), and evaluate adaptive UI policies with full replayable telemetry.
   </div>
@@ -2064,7 +2064,7 @@ but not exercised, so its benefit is unconfirmed.
 ### For Adaptation Policy: Thresholds need calibration + validation
 
 The concept is sound, but adaptation effects were small because triggers
-and mechanisms need tuning. **Key insight:** Not all "adaptive" changes
+and mechanisms need tuning. Not all "adaptive" changes
 are meaningful—decluttering UI can be helpful, but targeting the
 dominant failure mode (slips) is more impactful. Policy thresholds must
 be calibrated through iterative testing, not assumed.

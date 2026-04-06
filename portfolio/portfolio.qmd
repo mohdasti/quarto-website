@@ -1,7 +1,7 @@
 ---
 title: "Portfolio"
 description: |
-  A curated collection of case studies demonstrating my end-to-end research process—from strategic planning and methodological design to analysis, visualization, and industry-ready implications.
+  Four case studies covering XR interaction, real-time cognitive monitoring, psychophysical modeling, and memory. Each one walks from question to method to result.
 listing:
   - id: case-studies
     contents: "../projects/*.qmd"

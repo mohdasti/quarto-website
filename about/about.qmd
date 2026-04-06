@@ -25,9 +25,9 @@ format:
       - ../assets/css/research-skills.css
 ---
 
-I am a cognitive neuroscientist and human factors researcher focused on a core question: why does performance degrade under pressure, and where in the decision process does it happen? My work sits at the intersection of experimental psychology and applied human factors, using multi-modal methods to study how physical effort, arousal, and aging shape perception and memory.
+I study why performance degrades under pressure: whether the cost shows up in the quality of sensory evidence, in the threshold for acting on it, or elsewhere in the chain. My research uses psychophysics and computational modeling to pull apart dual-task costs in aging, where physical effort, arousal, and perception interact in ways that matter for applied human factors.
 
-The central tool is a handgrip dual-task paradigm—concurrent isometric grip with auditory and visual discrimination tasks—combined with pupillometry and hierarchical Bayesian drift-diffusion modeling. The goal is not a single headline metric, but an interpretable decomposition of dual-task costs that can inform the design of adaptive systems, interfaces, and human factors evaluations.
+The central tool is a handgrip dual-task paradigm—concurrent isometric grip with auditory and visual discrimination tasks—combined with pupillometry and hierarchical Bayesian drift-diffusion modeling. Rather than reporting a single performance score, I model where in the decision process costs appear. That matters if you want to design systems that respond to cognitive state, not just average accuracy.
 
 ```{=html}
 <div class="about-snapshot">
@@ -115,7 +115,7 @@ The central tool is a handgrip dual-task paradigm—concurrent isometric grip wi
 - Assisted on instance segmentation pipelines for surgical tool detection and tracking
 - Computed inter-rater reliability (κ and ICC) for ML annotation quality across analyst teams
 - Reviewed ML-for-surgical-safety literature to support internal research operations
-- **Key insight:** alert hygiene and interface design determine real-world adoption of ML systems
+- Learned that alert fatigue and interface friction—not raw model accuracy—are what sink adoption of ML tools in clinical settings
 :::
 :::
 
@@ -148,7 +148,7 @@ The central tool is a handgrip dual-task paradigm—concurrent isometric grip wi
 
 - Designed and deployed a real-time R Shiny dashboard for surgical trainee cognitive monitoring
 - Integrated XGBoost multiclass classifier with Platt scaling for cognitive state prediction
-- Built three pedagogically-grounded threshold policies (Adaptive Gain, SDT, Fatigue-Adaptive)
+- Built three instructional threshold policies for training contexts (Adaptive Gain, SDT, Fatigue-Adaptive)
 - Live demo at: <a href="https://0z6q8c-mohammad0dastgheib.shinyapps.io/surgical-training-lab/" target="_blank" rel="noopener noreferrer">shinyapps.io</a>
 :::
 :::

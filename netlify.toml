@@ -2,3 +2,9 @@
 # `quarto render` before push, or configure Netlify to run `quarto render`.
 [build]
   publish = "docs"
+
+# Portfolio page is rendered as portfolio/index.html, not portfolio.html
+[[redirects]]
+  from = "/portfolio/portfolio.html"
+  to = "/portfolio/"
+  status = 301

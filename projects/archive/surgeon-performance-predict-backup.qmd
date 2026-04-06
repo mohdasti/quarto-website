@@ -290,7 +290,7 @@ specificity is prioritized to avoid false alarms.*
 
 -   **Grant Proposal:** [Read the peer-reviewed research proposal
     providing the theoretical
-    foundation](../supporting_docs/Qualification_Exam.pdf)
+    foundation](../../supporting_docs/Qualification_Exam.pdf)
 -   **Industry Context:** Inspired by work as AI Annotator at Surgical
     Safety Technologies (SST)
 -   **Academic Integration:** Direct application of PhD research on

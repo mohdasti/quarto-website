@@ -5,7 +5,7 @@ format: html
 toc: true
 toc-depth: 4
 image: ../images/procedural-memory-plot.png
-description: "An end-to-end mixed-methods study comparing the effects of napping and meditation on declarative and procedural memory consolidation."
+description: "A mixed-methods study from recruitment through analysis, comparing napping and meditation for declarative and procedural memory consolidation."
 outcome: "EEG · Mixed methods · Memory consolidation study"
 categories: ["Cognitive Neuroscience", "EEG", "Mixed Methods"]
 tags: ["Cognitive Neuroscience", "Applied Psychology", "Mixed Methods", "EEG", "Experimental Design"]
@@ -29,7 +29,7 @@ methodologies: ["Mixed Methods", "EEG", "Experimental Design"]
 #### **📊 Executive Summary / TL;DR**
 
 * **The Problem:** Companies build tools to help users learn and be productive but lack clarity on how different mental states (like napping or meditating) influence the brain’s ability to retain factual versus physical memories. This uncertainty can result in inefficiencies, diminished user performance, and wasted investments in training programs or wellness initiatives.
-* **My Action:** I designed and executed an end-to-end research study involving 60+ participants, employing a **mixed-methods approach** with behavioral tasks (word-pair recall, a physical maze game), physiological EEG recordings, and self-report questionnaires.
+* **My Action:** I designed and ran a mixed-methods study with 60+ participants: behavioral tasks (word-pair recall, a physical maze game), EEG, and self-report questionnaires.
 * **The Result:** I discovered that mindfulness meditation significantly improved factual memory retention. The most surprising discovery was that while naps are restorative, deep sleep can temporarily **impair** physical skills due to **sleep inertia**—a critical insight for products or services targeting immediate post-rest performance.
 
 ---
