@@ -170,7 +170,7 @@ For new features, please provide:
 
 If you have questions about contributing:
 
-- **Email**: mdast003@ucr.edu
+- **Email**: m.dastgheib@gmail.com
 - **GitHub Issues**: Use the Issues section for public discussions
 - **LinkedIn**: [linkedin.com/in/mdastgheib](https://linkedin.com/in/mdastgheib)
 

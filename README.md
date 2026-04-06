@@ -109,7 +109,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Mohammad Dastgheib**
 - Website: [mdastgheib.com](https://mdastgheib.com)
-- Email: mdast003@ucr.edu
+- Email: m.dastgheib@gmail.com
 - LinkedIn: [linkedin.com/in/mdastgheib](https://linkedin.com/in/mdastgheib)
 - GitHub: [github.com/mohdasti](https://github.com/mohdasti)
 - Google Scholar: [scholar.google.com/citations?user=SNVpHcUAAAAJ](https://scholar.google.com/citations?user=SNVpHcUAAAAJ)

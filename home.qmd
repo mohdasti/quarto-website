@@ -48,7 +48,7 @@ format:
         </a>
       </div>
       <div class="hero-social">
-        <a href="mailto:mdast003@ucr.edu" title="Email" aria-label="Email">
+        <a href="mailto:m.dastgheib@gmail.com" title="Email" aria-label="Email">
           <i class="fas fa-envelope"></i>
         </a>
         <a href="https://linkedin.com/in/mdastgheib" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener">
@@ -190,7 +190,7 @@ format:
       Research Scientist positions — especially in AR/VR/XR and human performance contexts.
     </p>
     <div class="contact-buttons">
-      <a href="mailto:mdast003@ucr.edu" class="btn btn-primary btn-lg">
+      <a href="mailto:m.dastgheib@gmail.com" class="btn btn-primary btn-lg">
         <i class="fas fa-envelope" style="margin-right:0.5em;"></i>Email Me
       </a>
       <a href="https://linkedin.com/in/mdastgheib" class="btn btn-outline-secondary btn-lg" target="_blank" rel="noopener">

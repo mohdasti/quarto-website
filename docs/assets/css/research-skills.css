@@ -46,10 +46,46 @@
 
 #quarto-document-content h2::after { display: none; }
 
+/* YAML `description` under the page title: subtitle, not a tinted banner */
+#quarto-document-content .quarto-title-block .description {
+  font-size: 1.02rem;
+  line-height: 1.55;
+  font-weight: 400;
+  color: rgba(45, 62, 80, 0.82);
+  max-width: 42rem;
+  margin: 0.25rem 0 1.5rem;
+  padding: 0;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+}
+#quarto-document-content .quarto-title-block .title {
+  margin-bottom: 0.15rem;
+  letter-spacing: -0.02em;
+}
+
 /* first h2 on page shouldn't have top hairline */
 #quarto-document-content section:first-of-type > h2::before,
 #quarto-document-content > h2:first-of-type::before {
   display: none;
+}
+
+/* Card wrappers (.section-card): h2 is the in-card title — not a page section break.
+   Global h2 rules use large margin-top / padding-top + ::before hairline; those look like
+   empty space inside the card if left unscoped. */
+#quarto-document-content .section-card > section.level2 > h2,
+#quarto-document-content section.section-card.level2 > h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+#quarto-document-content .section-card > section.level2 > h2::before,
+#quarto-document-content section.section-card.level2 > h2::before {
+  display: none;
+}
+
+#quarto-document-content .section-card .skills-block {
+  margin-bottom: 0.75rem;
 }
 
 /* ------ Opening lead band ----------------------------------- */
@@ -408,6 +444,10 @@ nav[role="doc-toc"] .active > a {
 
 [data-bs-theme="dark"] #quarto-document-content h2 {
   color: #a8dadc;
+}
+
+[data-bs-theme="dark"] #quarto-document-content .quarto-title-block .description {
+  color: rgba(232, 234, 240, 0.82);
 }
 
 [data-bs-theme="dark"] .page-lead {
