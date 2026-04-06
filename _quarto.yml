@@ -11,12 +11,21 @@ website:
   google-analytics:
     tracking-id: "G-5EPCPLZLYN"
     anonymize-ip: true
-  description: "Vision science researcher specializing in perceptual processing and human-computer interaction"
+  description: "PhD Candidate in Cognitive Neuroscience at UC Riverside. Human Factors researcher using psychophysics, pupillometry, and Bayesian modeling to study performance under pressure. Seeking roles in Human Factors, UX Research, and Research Science."
+  favicon: "/images/profile.jpg"
+  open-graph:
+    title: "Mohammad Dastgheib — Human Factors & UX Researcher"
+    description: "PhD Candidate, UC Riverside. Psychophysics, pupillometry, Bayesian DDM, XR/HCI. Seeking Human Factors, Quant UXR, Research Scientist roles."
+    image: "https://mdastgheib.com/images/profile.jpg"
+    locale: en_US
   page-navigation: true
   back-to-top-navigation: true
   twitter-card:
     card-style: summary_large_image
-    
+    title: "Mohammad Dastgheib — Human Factors & UX Researcher"
+    description: "PhD Candidate at UC Riverside. Bayesian DDM, pupillometry, XR/HCI. Available Summer/Fall 2026."
+    image: "https://mdastgheib.com/images/profile.jpg"
+    creator: "@MoDastgheib"
   navbar:
     search: true
     right:
@@ -32,14 +41,32 @@ website:
         href: publications/publications.qmd
       - text: CV
         href: cv.qmd
+      - text: '<span class="nav-hire-btn">Hire Me</span>'
+        href: "mailto:m.dastgheib@gmail.com"
+        aria-label: "Contact Mohammad"
         
   page-footer:
-    left: "© 2026 Mohammad Dastgheib • Built with Quarto"
+    left: "© 2026 Mohammad Dastgheib &nbsp;·&nbsp; PhD Candidate, UC Riverside"
     center: |
-        <a href="mailto:mdast003@ucr.edu" title="Email"><i class="fas fa-envelope"></i></a>
-        <a href="https://linkedin.com/in/mdastgheib" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
-        <a href="https://scholar.google.com/citations?user=SNVpHcUAAAAJ" title="Google Scholar"><i class="ai ai-google-scholar"></i></a>
-        <a href="https://github.com/mohdasti" title="GitHub"><i class="fab fa-github"></i></a>
+      <a href="mailto:m.dastgheib@gmail.com" title="Email" aria-label="Email">
+        <i class="fas fa-envelope"></i>
+      </a>
+      <a href="https://linkedin.com/in/mdastgheib" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin"></i>
+      </a>
+      <a href="https://scholar.google.com/citations?user=SNVpHcUAAAAJ" title="Google Scholar" aria-label="Google Scholar" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar"></i>
+      </a>
+      <a href="https://github.com/mohdasti" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener">
+        <i class="fab fa-github"></i>
+      </a>
+      <a href="https://orcid.org/0000-0001-7684-3731" title="ORCID" aria-label="ORCID" target="_blank" rel="noopener">
+        <i class="ai ai-orcid"></i>
+      </a>
+      <a href="https://neurotree.org/neurotree/tree.php?pid=860425" title="Neurotree" aria-label="Neurotree" target="_blank" rel="noopener">
+        <img src="/images/neurotree.jpg" width="24" height="24" alt="Neurotree" style="vertical-align:middle;border-radius:3px;">
+      </a>
+    right: "Built with [Quarto](https://quarto.org)"
 
 
 format:
@@ -51,9 +78,29 @@ format:
       - assets/css/main.css
     include-in-header: 
       - text: |
+          <link rel="preconnect" href="https://fonts.googleapis.com">
+          <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Inter:wght@400;450;500;600&display=swap" rel="stylesheet">
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-          <link rel="stylesheet" href="assets/listing-default.css">
+          <link rel="stylesheet" href="/assets/listing-default.css">
+    include-after-body:
+      text: |
+        <div id="reading-progress-bar" aria-hidden="true"></div>
+        <script>
+        (function() {
+          var bar = document.getElementById('reading-progress-bar');
+          if (!bar) return;
+          function updateBar() {
+            var scrollTop = window.scrollY || document.documentElement.scrollTop;
+            var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+            bar.style.width = Math.min(pct, 100) + '%';
+          }
+          window.addEventListener('scroll', updateBar, { passive: true });
+          updateBar();
+        })();
+        </script>
     toc: true
     code-fold: true
     lightbox: true

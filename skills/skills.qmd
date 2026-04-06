@@ -8,6 +8,82 @@ format:
       - ../assets/css/research-skills.css
 ---
 
+```{=html}
+<div class="skills-scan-section">
+
+  <div class="skills-group">
+    <h4 class="skills-group-label">
+      <i class="fas fa-flask"></i> Research Methods
+    </h4>
+    <div class="skills-group-badges">
+      <span class="skill-badge">Psychophysics</span>
+      <span class="skill-badge">Pupillometry</span>
+      <span class="skill-badge">Eye Tracking</span>
+      <span class="skill-badge">EEG</span>
+      <span class="skill-badge">fMRI (Collaborations)</span>
+      <span class="skill-badge">Handgrip Dual-Task Paradigms</span>
+      <span class="skill-badge">Psychometric Function Modeling</span>
+      <span class="skill-badge">Within-Subject Design</span>
+      <span class="skill-badge">Preregistration</span>
+      <span class="skill-badge">NASA-TLX</span>
+    </div>
+  </div>
+
+  <div class="skills-group">
+    <h4 class="skills-group-label">
+      <i class="fas fa-chart-line"></i> Statistics & Modeling
+    </h4>
+    <div class="skills-group-badges">
+      <span class="skill-badge teal">Hierarchical Bayesian DDM</span>
+      <span class="skill-badge teal">Mixed-Effects Models (LMM / GLMM)</span>
+      <span class="skill-badge teal">Signal Detection Theory</span>
+      <span class="skill-badge teal">Bayesian LBA (PyMC)</span>
+      <span class="skill-badge teal">XGBoost / ML</span>
+      <span class="skill-badge teal">Platt Scaling / Calibration</span>
+      <span class="skill-badge teal">Sensitivity Analysis</span>
+    </div>
+  </div>
+
+  <div class="skills-group">
+    <h4 class="skills-group-label">
+      <i class="fas fa-code"></i> Programming
+    </h4>
+    <div class="skills-group-badges">
+      <span class="skill-badge">R (tidyverse, ggplot2, lme4, brms)</span>
+      <span class="skill-badge">Python (PyMC, pandas, scipy)</span>
+      <span class="skill-badge">MATLAB / PsychToolbox</span>
+      <span class="skill-badge">Stan / CmdStan</span>
+      <span class="skill-badge">React / TypeScript</span>
+      <span class="skill-badge">R Shiny</span>
+      <span class="skill-badge">Git / GitHub</span>
+      <span class="skill-badge">Quarto / R Markdown</span>
+      <span class="skill-badge">LaTeX</span>
+    </div>
+  </div>
+
+  <div class="skills-group">
+    <h4 class="skills-group-label">
+      <i class="fas fa-vr-cardboard"></i> XR / HCI
+    </h4>
+    <div class="skills-group-badges">
+      <span class="skill-badge teal">XR Interaction Design</span>
+      <span class="skill-badge teal">Gaze Interaction</span>
+      <span class="skill-badge teal">Hand Tracking</span>
+      <span class="skill-badge teal">Adaptive UI Policies</span>
+      <span class="skill-badge teal">Remote Study Design</span>
+      <span class="skill-badge teal">Fitts' Law / ISO 9241-9</span>
+      <span class="skill-badge teal">Midas Touch Problem</span>
+    </div>
+  </div>
+
+</div>
+<hr class="skills-divider">
+<p class="skills-detail-label">
+  <i class="fas fa-chevron-down"></i> 
+  Detailed methodology notes for technical reviewers below
+</p>
+```
+
 ::: {.page-lead}
 This page describes how the [Research](../research/research.qmd) program is implemented—methods, workflow, and computation—not a generic résumé. The dissertation toolkit fills the sections below; XR and interaction methods are grouped at the end as adjacent work.
 :::
@@ -19,6 +95,10 @@ This page describes how the [Research](../research/research.qmd) program is impl
 
 
 ---
+
+```{=html}
+<div class="section-card">
+```
 
 ## Core research methods
 
@@ -36,7 +116,15 @@ Preprocessing and quality control (blinks, artifacts, valid samples); window-spe
 Pupil measures inform arousal and effort hypotheses; behavior and formal models remain primary for inference (aligned with [Research](../research/research.qmd)).
 :::
 
+```{=html}
+</div>
+```
+
 ---
+
+```{=html}
+<div class="section-card">
+```
 
 ## Experimental design and data collection
 
@@ -54,7 +142,15 @@ Factorial and repeated-measures layouts; counterbalancing of orders and conditio
 MATLAB and PsychToolbox for stimulus delivery and responses; calibration and exclusion rules documented in materials.
 :::
 
+```{=html}
+</div>
+```
+
 ---
+
+```{=html}
+<div class="section-card">
+```
 
 ## Modeling and statistical inference
 
@@ -80,7 +176,15 @@ Sensitivity analyses, alternative specifications, model comparison, and interval
 The [XR case study](../projects/case_study_web.qmd) uses hierarchical Bayesian LBA in PyMC for verification-phase RTs after target entry. That framework is separate from the dissertation Wiener DDM and is not interchangeable with it.
 :::
 
+```{=html}
+</div>
+```
+
 ---
+
+```{=html}
+<div class="section-card">
+```
 
 ## Programming and research computing
 
@@ -98,7 +202,15 @@ PsychToolbox for experiment control.
 Git and GitHub for versioned scripts and reproducible layout.
 :::
 
+```{=html}
+</div>
+```
+
 ---
+
+```{=html}
+<div class="section-card">
+```
 
 ## Scientific communication and reproducibility
 
@@ -115,6 +227,10 @@ LaTeX for manuscripts; exploratory versus confirmatory reporting kept distinct w
 
 README notes, pinned dependencies where used, and QC logs for pupillometry and behavioral pipelines.
 :::
+
+```{=html}
+</div>
+```
 
 ---
 
@@ -136,6 +252,10 @@ Other secondary experience: [surgeon dashboard](../projects/surgeon-performance-
 
 ---
 
+```{=html}
+<div class="section-card">
+```
+
 ## Languages
 
 ::: {.lang-chips}
@@ -143,3 +263,7 @@ Other secondary experience: [surgeon dashboard](../projects/surgeon-performance-
 [English — Professional]{.lang-chip}
 [French — Basic]{.lang-chip}
 :::
+
+```{=html}
+</div>
+```

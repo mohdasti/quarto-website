@@ -1,16 +1,27 @@
 ---
 title: "Case Study: A Psychophysiological Approach to Modeling Dual-Task Interference"
-date: "2024-06-01"
+date: "2025-06-01"
 format:
   html:
     toc: true
     toc-depth: 5
 image: ../images/Aerospace_HUD.png
 description: "A research roadmap case study on modeling dual-task interference using pupillometry to enhance performance in high-stakes environments."
+outcome: "Bayesian DDM · Pupillometry QC · Psychometric modeling"
+categories: ["Human Factors", "Psychophysics", "Bayesian DDM", "Pupillometry"]
 tags: ["Human Factors", "Cognitive Neuroscience", "Psychophysiology", "Pupillometry", "Experimental Design"]
 research_domains: ["Human Factors", "Cognitive Neuroscience"]
 methodologies: ["Psychophysiology", "Pupillometry", "Experimental Design"]
 ---
+
+```{=html}
+<div class="project-snapshot-card">
+  <div class="ps-item"><span class="ps-label">Role</span><span class="ps-value">Dissertation Research — Concept through Analysis</span></div>
+  <div class="ps-item"><span class="ps-label">Methods</span><span class="ps-value">Handgrip Dual-Task, Pupillometry, Psychometric Function Modeling, Hierarchical Bayesian Wiener DDM</span></div>
+  <div class="ps-item"><span class="ps-label">Stack</span><span class="ps-value">MATLAB/PsychToolbox, R, brms, Stan/CmdStan</span></div>
+  <div class="ps-item"><span class="ps-label">Output</span><span class="ps-value">Dissertation chapter · Research roadmap case study</span></div>
+</div>
+```
 
 # 🌟 Overview: The High Cost of Cognitive Overload
 

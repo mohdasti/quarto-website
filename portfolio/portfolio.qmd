@@ -4,11 +4,11 @@ description: |
   A curated collection of case studies demonstrating my end-to-end research process—from strategic planning and methodological design to analysis, visualization, and industry-ready implications.
 listing:
   - id: case-studies
-    contents: 
-      - "../projects/*.qmd"  # Keep this if your case studies live in /projects
+    contents: "../projects/*.qmd"
     type: grid
     sort: "date desc"
-    fields: [image, title, description, date]
+    categories: true
+    fields: [title, description, date, categories, image]
     date-format: "MMMM YYYY"
     image-height: "200px"
 page-layout: full

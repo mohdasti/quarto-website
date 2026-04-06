@@ -1,55 +1,205 @@
 ---
-title: "Mohammad Dastgheib"
-pagetitle: "Mohammad Dastgheib"
-subtitle: "PhD Candidate in Cognitive Neuroscience at UC Riverside"
-image: images/profile.jpg
-image-alt: "Profile photo of Mohammad Dastgheib"
-about:
-  template: solana
-  image-width: 24em
-  id: hero-heading
-  links:
-    - text: '<i class="fas fa-envelope" style="color: #e63946; font-size: 24px;"></i>'
-      aria-label: "Email"
-      href: mailto:mdast003@ucr.edu
-    - text: '<i class="fab fa-linkedin" style="color: #e63946; font-size: 24px;"></i>'
-      aria-label: "LinkedIn"
-      href: https://linkedin.com/in/mdastgheib
-    - text: '<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 128 128" style="vertical-align: middle;"><path fill="#e63946" d="M75.916 54.2L122.542 0h-11.05L71.008 47.06L38.672 0H1.376l48.898 71.164L1.376 128h11.05L55.18 78.303L89.328 128h37.296L75.913 54.2ZM60.782 71.79l-4.955-7.086l-39.42-56.386h16.972L65.19 53.824l4.954 7.086l41.353 59.15h-16.97L60.782 71.793Z"/></svg>'
-      aria-label: "X (Twitter)"
-      href: https://x.com/MoDastgheib
-    - text: "{{< iconify fa6-brands:bluesky size=24px style='color: #e63946;' title='Bluesky' >}}"
-      aria-label: "Bluesky"
-      href: https://bsky.app/profile/mdastgheib.bsky.social
-    - text: '<i class="fab fa-github" style="color: #e63946; font-size: 24px;"></i>'
-      aria-label: "GitHub"
-      href: https://github.com/mohdasti
-    - text: '<i class="ai ai-orcid" style="color: #e63946; font-size: 24px;"></i>'
-      aria-label: "ORCID"
-      href: https://orcid.org/0000-0001-7684-3731
-    - text: '<i class="ai ai-google-scholar" style="color: #e63946; font-size: 24px;"></i>'
-      aria-label: "Google Scholar"
-      href: https://scholar.google.com/citations?user=SNVpHcUAAAAJ
-    - text: '<img src="images/neurotree.jpg" width="24" height="24" style="vertical-align: middle;">'
-      aria-label: "Neurotree"
-      href: https://neurotree.org/neurotree/tree.php?pid=860425
+pagetitle: "Mohammad Dastgheib — Human Factors & UX Researcher"
 page-layout: full
+toc: false
 format:
   html:
     output-file: index.html
+    include-in-header:
+      text: |
+        <meta name="description" content="PhD Candidate in Cognitive Neuroscience at UC Riverside. Specializing in psychophysics, pupillometry, Bayesian modeling, and XR interaction research. Seeking Human Factors, UX Research, and Research Scientist roles.">
+        <meta property="og:title" content="Mohammad Dastgheib — Human Factors & UX Researcher">
+        <meta property="og:description" content="PhD Candidate at UC Riverside. Bayesian DDM, pupillometry, XR/HCI. Available Summer/Fall 2026.">
+        <meta property="og:image" content="https://mdastgheib.com/images/profile.jpg">
+        <meta property="og:url" content="https://mdastgheib.com">
+        <meta name="twitter:card" content="summary_large_image">
+        <meta name="twitter:title" content="Mohammad Dastgheib — Human Factors & UX Researcher">
+        <meta name="twitter:image" content="https://mdastgheib.com/images/profile.jpg">
 ---
 
-::: {#hero-heading}
+```{=html}
+<!-- ==========================================
+     HERO SECTION
+     ========================================== -->
+<section class="hero-section">
+  <div class="hero-inner">
 
-I am a cognitive neuroscientist and human factors researcher who uses psychophysics, pupillometry, and computational modeling to understand how the human brain makes decisions under pressure.
+    <!-- Left: Text Content -->
+    <div class="hero-content">
+      <div class="availability-pill">
+        Open to Full-Time Roles — Summer / Fall 2026
+      </div>
+      <h1 class="hero-name">Mohammad Dastgheib</h1>
+      <p class="hero-title">
+        Cognitive Neuroscientist &amp; Human Factors Researcher
+      </p>
+      <p class="hero-bio">
+        I use psychophysics, pupillometry, and Bayesian modeling to understand 
+        how humans make decisions under pressure — and build systems that adapt 
+        to them. Targeting roles in Human Factors, Quant UXR, and Research 
+        Scientist positions in AR/VR/XR.
+      </p>
+      <div class="hero-ctas">
+        <a href="/portfolio/portfolio.html" class="btn btn-primary btn-lg">
+          View Portfolio
+        </a>
+        <a href="/CV/CV_MDastgheib.pdf" class="btn btn-outline-secondary btn-lg" target="_blank">
+          <i class="fas fa-download" style="margin-right:0.4em;"></i>Download CV
+        </a>
+      </div>
+      <div class="hero-social">
+        <a href="mailto:mdast003@ucr.edu" title="Email" aria-label="Email">
+          <i class="fas fa-envelope"></i>
+        </a>
+        <a href="https://linkedin.com/in/mdastgheib" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener">
+          <i class="fab fa-linkedin"></i>
+        </a>
+        <a href="https://scholar.google.com/citations?user=SNVpHcUAAAAJ" title="Google Scholar" aria-label="Google Scholar" target="_blank" rel="noopener">
+          <i class="ai ai-google-scholar"></i>
+        </a>
+        <a href="https://github.com/mohdasti" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener">
+          <i class="fab fa-github"></i>
+        </a>
+        <a href="https://orcid.org/0000-0001-7684-3731" title="ORCID" aria-label="ORCID" target="_blank" rel="noopener">
+          <i class="ai ai-orcid"></i>
+        </a>
+        <a href="https://neurotree.org/neurotree/tree.php?pid=860425" title="Neurotree" aria-label="Neurotree" target="_blank" rel="noopener">
+          <img src="images/neurotree.jpg" width="24" height="24" alt="Neurotree" style="vertical-align:middle;border-radius:3px;">
+        </a>
+      </div>
+    </div>
 
-[**View my featured case study &rarr;**](/projects/surgeon-performance-predict2.qmd){.btn .btn-primary .btn-lg style="background-color: #e63946; border-color: #e63946;"}
+    <!-- Right: Profile Photo -->
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring">
+        <img src="images/profile.jpg" 
+             alt="Profile photo of Mohammad Dastgheib" 
+             class="hero-photo" 
+             width="320" height="320" />
+      </div>
+    </div>
 
-:::
+  </div>
+</section>
 
+<!-- ==========================================
+     STATS BAR
+     ========================================== -->
+<section class="stats-bar">
+  <div class="stats-inner">
+    <div class="stat-callout">
+      <span class="stat-number">4</span>
+      <span class="stat-label">Portfolio Case Studies</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-callout">
+      <span class="stat-number">5+</span>
+      <span class="stat-label">Publications &amp; Preprints</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-callout">
+      <span class="stat-number">PhD</span>
+      <span class="stat-label">Cognitive Neuroscience, UC Riverside</span>
+    </div>
+    <div class="stat-divider"></div>
+    <div class="stat-callout">
+      <span class="stat-number">arXiv</span>
+      <span class="stat-label">XR / HCI Preprint Published</span>
+    </div>
+  </div>
+</section>
 
-::: {.callout-note}
-### Currently Seeking Internships
-I am available for Summer 2026 internship roles in UX Research, Human Factors, or as a Research Scientist.
-:::
+<!-- ==========================================
+     FEATURED WORK
+     ========================================== -->
+<section class="featured-section">
+  <div class="featured-inner">
+    <h2 class="section-heading">Featured Work</h2>
+    <p class="section-subheading">
+      Two lines of applied research — directly relevant to industry roles in AR/VR and Human Factors.
+    </p>
+    <div class="featured-grid">
 
+      <!-- Card 1: XR Work -->
+      <article class="project-card featured-card">
+        <div class="card-role-tag">
+          <i class="fas fa-vr-cardboard"></i> Featured for AR/VR Roles
+        </div>
+        <h3 class="card-title">Hand vs. Gaze Interaction in XR</h3>
+        <p class="card-outcome">→ Remote XR testbed · Adaptive UI · arXiv preprint · Bayesian LBA</p>
+        <p class="card-desc">
+          Built a fully remote, web-based XR-relevant interaction testbed in React/TypeScript.
+          Compared hand and gaze pointing modalities using ISO 9241-9 Fitts' law, NASA-TLX, 
+          and hierarchical Bayesian LBA modeling. Evaluated context-aware adaptive UI policies 
+          for reducing gaze failure modes.
+        </p>
+        <div class="card-tags">
+          <span class="skill-badge teal">XR / HCI</span>
+          <span class="skill-badge teal">Gaze Interaction</span>
+          <span class="skill-badge teal">Fitts' Law</span>
+          <span class="skill-badge teal">Bayesian LBA</span>
+          <span class="skill-badge teal">React / TypeScript</span>
+          <span class="skill-badge teal">arXiv</span>
+        </div>
+        <a href="/projects/case_study_web.html" class="card-cta">
+          View Case Study <i class="fas fa-arrow-right"></i>
+        </a>
+      </article>
+
+      <!-- Card 2: Human Factors Work -->
+      <article class="project-card featured-card teal-accent">
+        <div class="card-role-tag teal-tag">
+          <i class="fas fa-brain"></i> Featured for Human Factors Roles
+        </div>
+        <h3 class="card-title">Surgeon Cognitive Dashboard</h3>
+        <p class="card-outcome">→ Live Shiny app · XGBoost + Platt calibration · Zero wearables</p>
+        <p class="card-desc">
+          Designed and deployed a real-time cognitive state monitoring dashboard for robotic 
+          surgery training. Fuses pupillometry, HRV, and grip/tremor signals via XGBoost.  
+          Three pedagogically-grounded threshold policies. No headgear, &lt;60s setup.
+        </p>
+        <div class="card-tags">
+          <span class="skill-badge">Human Factors</span>
+          <span class="skill-badge">Pupillometry</span>
+          <span class="skill-badge">XGBoost / ML</span>
+          <span class="skill-badge">R Shiny</span>
+          <span class="skill-badge">Signal Detection Theory</span>
+        </div>
+        <a href="/projects/surgeon-performance-predict2.html" class="card-cta">
+          View Case Study <i class="fas fa-arrow-right"></i>
+        </a>
+      </article>
+
+    </div>
+    <div style="text-align:center; margin-top:2rem;">
+      <a href="/portfolio/portfolio.html" class="btn btn-outline-secondary">
+        See All Case Studies <i class="fas fa-arrow-right" style="margin-left:0.3em;"></i>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================
+     CONTACT / CTA SECTION
+     ========================================== -->
+<section class="contact-section">
+  <div class="contact-inner">
+    <h2 class="contact-heading">Open to Opportunities</h2>
+    <p class="contact-sub">
+      Seeking full-time roles (Summer / Fall 2026) in Human Factors, UX Research, or 
+      Research Scientist positions — especially in AR/VR/XR and human performance contexts.
+    </p>
+    <div class="contact-buttons">
+      <a href="mailto:mdast003@ucr.edu" class="btn btn-primary btn-lg">
+        <i class="fas fa-envelope" style="margin-right:0.5em;"></i>Email Me
+      </a>
+      <a href="https://linkedin.com/in/mdastgheib" class="btn btn-outline-secondary btn-lg" target="_blank" rel="noopener">
+        <i class="fab fa-linkedin" style="margin-right:0.5em;"></i>LinkedIn
+      </a>
+      <a href="https://scholar.google.com/citations?user=SNVpHcUAAAAJ" class="btn btn-outline-secondary btn-lg" target="_blank" rel="noopener">
+        <i class="ai ai-google-scholar" style="margin-right:0.5em;"></i>Google Scholar
+      </a>
+    </div>
+  </div>
+</section>
+```

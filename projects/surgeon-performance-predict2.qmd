@@ -2,10 +2,11 @@
 title: "Surgeon Cognitive Dashboard — Case Study"
 subtitle: "Zero-headgear neuro-ergonomics for robotic surgery"
 author: "Mohammad Dastgheib"
-date: "2024-10-01"
+date: "2025-10-01"
 image: ../images/surgical-dashboard.jpg
 description: "A proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon's cognitive state, inspired by my work at Surgical Science & Technology."
-categories: ["Case Study"]
+outcome: "Live Shiny app deployed · XGBoost + Platt calibration · Zero wearables"
+categories: ["Human Factors", "Pupillometry", "XGBoost", "R Shiny", "ML"]
 tags: ["Human Factors", "Cognitive Neuroscience", "Biomedical Engineering", "Psychophysiology", "Pupillometry", "Machine Learning"]
 research_domains: ["Human Factors", "Cognitive Neuroscience", "Biomedical Engineering"]
 methodologies: ["Psychophysiology", "Pupillometry", "Machine Learning"]
@@ -25,6 +26,15 @@ resources:
   - projects/supporting_files/**
 
 ---
+
+```{=html}
+<div class="project-snapshot-card">
+  <div class="ps-item"><span class="ps-label">Role</span><span class="ps-value">Sole Designer & Developer — Concept, Modeling, Deployment</span></div>
+  <div class="ps-item"><span class="ps-label">Methods</span><span class="ps-value">Pupillometry, HRV, XGBoost, Platt Scaling, SDT, Bayesian Inverted-U policies</span></div>
+  <div class="ps-item"><span class="ps-label">Stack</span><span class="ps-value">R, R Shiny, XGBoost, ShinyApps.io</span></div>
+  <div class="ps-item"><span class="ps-label">Output</span><span class="ps-value">Live Shiny dashboard · Training Lab app · Case study</span></div>
+</div>
+```
 
 ```{=html}
 <style>

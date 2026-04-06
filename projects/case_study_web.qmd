@@ -1,8 +1,10 @@
 ---
 title: "XR Adaptive Modality: Case Study"
 author: "Mohammad Dastgheib"
-date: "2025-10-01"
+date: "2026-02-01"
 description: "I built a remote XR interaction testbed and evaluated whether a context-aware adaptive system can reduce gaze failure modes (e.g., Midas Touch slips: accidental activations) and workload under time pressure."
+outcome: "Remote XR testbed · Bayesian LBA · arXiv preprint"
+categories: ["XR/HCI", "Gaze Interaction", "Bayesian LBA", "Remote Study", "arXiv"]
 image: ../images/architecture.png
 format:
   html:
@@ -21,6 +23,15 @@ editor:
   markdown: 
     wrap: 72
 ---
+
+```{=html}
+<div class="project-snapshot-card">
+  <div class="ps-item"><span class="ps-label">Role</span><span class="ps-value">Sole Researcher — Study Design, Development, Analysis</span></div>
+  <div class="ps-item"><span class="ps-label">Methods</span><span class="ps-value">ISO 9241-9, Fitts' Law, NASA-TLX, Bayesian LBA (PyMC), Williams Counterbalancing</span></div>
+  <div class="ps-item"><span class="ps-label">Stack</span><span class="ps-value">React, TypeScript, Python, PyMC, Quarto</span></div>
+  <div class="ps-item"><span class="ps-label">Output</span><span class="ps-value">arXiv preprint · Remote testbed (live) · Case study</span></div>
+</div>
+```
 
 ```{=html}
 <style>

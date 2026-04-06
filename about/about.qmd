@@ -28,13 +28,36 @@ I am a cognitive neuroscientist and human factors researcher focused on a core q
 
 The central tool is a handgrip dual-task paradigm—concurrent isometric grip with auditory and visual discrimination tasks—combined with pupillometry and hierarchical Bayesian drift-diffusion modeling. The goal is not a single headline metric, but an interpretable decomposition of dual-task costs that can inform the design of adaptive systems, interfaces, and human factors evaluations.
 
+```{=html}
+<div class="about-snapshot">
+  <div class="snapshot-item">
+    <i class="fas fa-graduation-cap"></i>
+    <span>PhD 2026 (Expected), UC Riverside</span>
+  </div>
+  <div class="snapshot-item">
+    <i class="fas fa-map-marker-alt"></i>
+    <span>Los Angeles / Riverside, CA — Open to Relocation</span>
+  </div>
+  <div class="snapshot-item">
+    <i class="fas fa-briefcase"></i>
+    <span>Human Factors · Quant UXR · Research Scientist (XR)</span>
+  </div>
+  <div class="snapshot-item">
+    <i class="fas fa-language"></i>
+    <span>English (Professional) · Persian (Native) · French (Basic)</span>
+  </div>
+</div>
+```
+
 ---
 
 ## Education
 
 ::: {.edu-entry}
 ::: {.edu-logo}
-![](/images/ucr.png){fig-alt="University of California, Riverside"}
+<a href="https://www.ucr.edu" target="_blank" rel="noopener noreferrer">
+  <img src="/images/ucr.png" alt="University of California, Riverside logo" />
+</a>
 :::
 ::: {.edu-body}
 ### PhD in Psychology and Cognitive Neuroscience
@@ -46,7 +69,9 @@ The central tool is a handgrip dual-task paradigm—concurrent isometric grip wi
 
 ::: {.edu-entry}
 ::: {.edu-logo}
-![](/images/queensu.png){fig-alt="Queen's University"}
+<a href="https://www.queensu.ca" target="_blank" rel="noopener noreferrer">
+  <img src="/images/queensu.png" alt="Queen's University logo" />
+</a>
 :::
 ::: {.edu-body}
 ### M.Sc. in Psychology
@@ -58,7 +83,9 @@ The central tool is a handgrip dual-task paradigm—concurrent isometric grip wi
 
 ::: {.edu-entry}
 ::: {.edu-logo}
-![](/images/yorku.png){fig-alt="York University"}
+<a href="https://www.yorku.ca" target="_blank" rel="noopener noreferrer">
+  <img src="/images/yorku.png" alt="York University logo" />
+</a>
 :::
 ::: {.edu-body}
 ### Hon. B.Sc. in Biological Sciences & Psychology
@@ -68,16 +95,57 @@ The central tool is a handgrip dual-task paradigm—concurrent isometric grip wi
 :::
 :::
 
-## Industry Experience
+## Research & Industry Experience
 
 ::: {.edu-entry}
 ::: {.edu-logo}
-![](/images/sst.jpeg){fig-alt="Surgical Safety Technologies"}
+<a href="https://www.surgicalsafety.com" target="_blank" rel="noopener noreferrer">
+  <img src="/images/sst.jpeg" alt="Surgical Safety Technologies logo" />
+</a>
 :::
 ::: {.edu-body}
 ### Research Assistant I
 [Surgical Safety Technologies]{.edu-org}
 
 [Toronto, ON — 2021]{.edu-years}
+
+- Assisted on instance segmentation pipelines for surgical tool detection and tracking
+- Computed inter-rater reliability (κ and ICC) for ML annotation quality across analyst teams
+- Reviewed ML-for-surgical-safety literature to support internal research operations
+- **Key insight:** alert hygiene and interface design determine real-world adoption of ML systems
+:::
+:::
+
+::: {.edu-entry}
+::: {.edu-logo}
+<p class="edu-logo-icon" aria-hidden="true"><i class="fas fa-vr-cardboard"></i></p>
+:::
+::: {.edu-body}
+### XR Interaction Research — Independent Study
+[Self-directed Research]{.edu-org}
+
+[2025–2026]{.edu-years}
+
+- Built a fully remote web-based interaction testbed using React and TypeScript
+- Conducted a within-subject hand vs. gaze pointing study with ISO 9241-9 / Fitts' law design
+- Published findings as arXiv preprint (arXiv:2603.15991)
+- Applied hierarchical Bayesian LBA in PyMC for verification-phase response time modeling
+:::
+:::
+
+::: {.edu-entry}
+::: {.edu-logo}
+<p class="edu-logo-icon" aria-hidden="true"><i class="fas fa-chart-line"></i></p>
+:::
+::: {.edu-body}
+### Surgeon Cognitive Dashboard — R&D Project
+[Self-directed Research]{.edu-org}
+
+[2025]{.edu-years}
+
+- Designed and deployed a real-time R Shiny dashboard for surgical trainee cognitive monitoring
+- Integrated XGBoost multiclass classifier with Platt scaling for cognitive state prediction
+- Built three pedagogically-grounded threshold policies (Adaptive Gain, SDT, Fatigue-Adaptive)
+- Live demo at: <a href="https://0z6q8c-mohammad0dastgheib.shinyapps.io/surgical-training-lab/" target="_blank" rel="noopener noreferrer">shinyapps.io</a>
 :::
 :::
