@@ -21,6 +21,7 @@ format:
   html:
     output-file: index.html
     css:
+      - ../assets/css/main.css
       - ../assets/css/research-skills.css
 ---
 
@@ -52,6 +53,8 @@ The central tool is a handgrip dual-task paradigm—concurrent isometric grip wi
 ---
 
 ## Education
+
+[Neurotree profile](https://neurotree.org/neurotree/tree.php?pid=860425){style="font-size:0.88rem;"} <span style="font-size:0.82rem;opacity:0.75;">(academic genealogy)</span>
 
 ::: {.edu-entry}
 ::: {.edu-logo}

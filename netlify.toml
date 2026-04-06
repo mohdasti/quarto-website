@@ -1,0 +1,4 @@
+# Site output is `docs/` (see _quarto.yml `output-dir`). Build locally with
+# `quarto render` before push, or configure Netlify to run `quarto render`.
+[build]
+  publish = "docs"

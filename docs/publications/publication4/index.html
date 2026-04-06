@@ -38,6 +38,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
+<link href="../..//images/profile.jpg" rel="icon" type="image/jpeg">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -88,14 +89,24 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 </script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&amp;family=Inter:wght@400;450;500;600&amp;display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-<link rel="stylesheet" href="assets/listing-default.css">
+<link rel="stylesheet" href="../../assets/listing-default.css">
 
 
 <link rel="stylesheet" href="../../assets/css/main.css">
-<meta name="twitter:title" content="Current Diagnostic Approaches to Patients with Hypernatremia at University Health Network Hospitals – Mohammad Dastgheib">
-<meta name="twitter:description" content="Published abstract on current diagnostic approaches to patients with hypernatremia at University Health Network Hospitals.">
+<meta property="og:title" content="Mohammad Dastgheib — Human Factors &amp; UX Researcher">
+<meta property="og:description" content="PhD Candidate, UC Riverside. Psychophysics, pupillometry, Bayesian DDM, XR/HCI. Seeking Human Factors, Quant UXR, Research Scientist roles.">
+<meta property="og:image" content="https://mdastgheib.com/images/profile.jpg">
+<meta property="og:site_name" content="Mohammad Dastgheib">
+<meta property="og:locale" content="en_US">
+<meta name="twitter:title" content="Mohammad Dastgheib — Human Factors &amp; UX Researcher">
+<meta name="twitter:description" content="PhD Candidate at UC Riverside. Bayesian DDM, pupillometry, XR/HCI. Available Summer/Fall 2026.">
+<meta name="twitter:image" content="https://mdastgheib.com/images/profile.jpg">
+<meta name="twitter:creator" content="@MoDastgheib">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -301,6 +312,10 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
   <li class="nav-item">
     <a class="nav-link" href="../../cv.html"> 
 <span class="menu-text">CV</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="mailto:m.dastgheib@gmail.com"> 
+<span class="menu-text"><span class="nav-hire-btn">Hire Me</span></span></a>
   </li>  
 </ul>
           </div> <!-- /navcollapse -->
@@ -828,16 +843,31 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>© 2026 Mohammad Dastgheib • Built with Quarto</p>
+<p>© 2026 Mohammad Dastgheib &nbsp;·&nbsp; PhD Candidate, UC Riverside</p>
 </div>   
     <div class="nav-footer-center">
-<p><a href="mailto:m.dastgheib@gmail.com" title="Email"><i class="fas fa-envelope"></i></a> <a href="https://linkedin.com/in/mdastgheib" title="LinkedIn"><i class="fab fa-linkedin"></i></a> <a href="https://scholar.google.com/citations?user=SNVpHcUAAAAJ" title="Google Scholar"><i class="ai ai-google-scholar"></i></a> <a href="https://github.com/mohdasti" title="GitHub"><i class="fab fa-github"></i></a></p>
+<p><a href="mailto:m.dastgheib@gmail.com" title="Email" aria-label="Email"> <i class="fas fa-envelope"></i> </a> <a href="https://linkedin.com/in/mdastgheib" title="LinkedIn" aria-label="LinkedIn" target="_blank" rel="noopener"> <i class="fab fa-linkedin"></i> </a> <a href="https://scholar.google.com/citations?user=SNVpHcUAAAAJ" title="Google Scholar" aria-label="Google Scholar" target="_blank" rel="noopener"> <i class="ai ai-google-scholar"></i> </a> <a href="https://github.com/mohdasti" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener"> <i class="fab fa-github"></i> </a> <a href="https://orcid.org/0000-0001-7684-3731" title="ORCID" aria-label="ORCID" target="_blank" rel="noopener"> <i class="ai ai-orcid"></i> </a></p>
 </div>
     <div class="nav-footer-right">
-      &nbsp;
-    </div>
+<p>Built with <a href="https://quarto.org">Quarto</a></p>
+</div>
   </div>
 </footer>
+<div id="reading-progress-bar" aria-hidden="true"></div>
+<script>
+(function() {
+  var bar = document.getElementById('reading-progress-bar');
+  if (!bar) return;
+  function updateBar() {
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    bar.style.width = Math.min(pct, 100) + '%';
+  }
+  window.addEventListener('scroll', updateBar, { passive: true });
+  updateBar();
+})();
+</script>
 
 
 

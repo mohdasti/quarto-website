@@ -234,6 +234,10 @@ README notes, pinned dependencies where used, and QC logs for pupillometry and b
 
 ---
 
+```{=html}
+<div class="section-card">
+```
+
 ## Additional and adjacent methods
 
 ::: {.panel-adjacent}
@@ -249,6 +253,10 @@ README notes, pinned dependencies where used, and QC logs for pupillometry and b
 
 Other secondary experience: [surgeon dashboard](../projects/surgeon-performance-predict2.qmd) (R Shiny, XGBoost); [EEG thesis](../projects/memory-and-meditation.qmd); imaging collaborations under [Publications](../publications/publications.qmd); SST role on [About](../about/about.qmd).
 :::
+
+```{=html}
+</div>
+```
 
 ---
 

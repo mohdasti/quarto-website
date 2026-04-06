@@ -63,9 +63,6 @@ format:
         <a href="https://orcid.org/0000-0001-7684-3731" title="ORCID" aria-label="ORCID" target="_blank" rel="noopener">
           <i class="ai ai-orcid"></i>
         </a>
-        <a href="https://neurotree.org/neurotree/tree.php?pid=860425" title="Neurotree" aria-label="Neurotree" target="_blank" rel="noopener">
-          <img src="images/neurotree.jpg" width="24" height="24" alt="Neurotree" style="vertical-align:middle;border-radius:3px;">
-        </a>
       </div>
     </div>
 

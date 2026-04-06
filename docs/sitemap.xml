@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://mdastgheib.com/skills/index.html</loc>
-    <lastmod>2026-04-06T04:08:44.328Z</lastmod>
+    <lastmod>2026-04-06T04:19:03.800Z</lastmod>
   </url>
   <url>
     <loc>https://mdastgheib.com/DOCUMENTATION.html</loc>
@@ -10,11 +10,11 @@
   </url>
   <url>
     <loc>https://mdastgheib.com/CONTRIBUTING.html</loc>
-    <lastmod>2026-04-06T03:58:29.945Z</lastmod>
+    <lastmod>2026-04-06T04:17:34.430Z</lastmod>
   </url>
   <url>
     <loc>https://mdastgheib.com/projects/dual-task-case-study.html</loc>
-    <lastmod>2026-04-05T23:48:00.855Z</lastmod>
+    <lastmod>2026-04-06T04:17:34.444Z</lastmod>
   </url>
   <url>
     <loc>https://mdastgheib.com/projects/archive/surgeon-performance-predict.html</loc>
@@ -22,67 +22,63 @@
   </url>
   <url>
     <loc>https://mdastgheib.com/projects/case_study_web.html</loc>
-    <lastmod>2026-04-05T23:48:00.410Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mdastgheib.com/DEPLOYMENT_ISSUE_PROMPT.html</loc>
-    <lastmod>2026-04-05T23:23:57.227Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mdastgheib.com/publications/publication3/index.html</loc>
-    <lastmod>2026-04-05T21:44:04.754Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mdastgheib.com/publications/publication5/index.html</loc>
-    <lastmod>2026-04-05T21:44:04.754Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mdastgheib.com/publications/index.html</loc>
-    <lastmod>2026-04-05T23:23:57.227Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mdastgheib.com/publications/publication8/index.html</loc>
-    <lastmod>2026-04-05T21:44:04.755Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mdastgheib.com/publications/publication1/index.html</loc>
-    <lastmod>2026-04-05T21:44:04.753Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mdastgheib.com/research/index.html</loc>
-    <lastmod>2026-04-05T23:23:57.227Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mdastgheib.com/index.html</loc>
-    <lastmod>2026-04-06T03:58:27.810Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mdastgheib.com/publications/publication6/index.html</loc>
-    <lastmod>2026-04-05T21:44:04.755Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mdastgheib.com/publications/publication7/index.html</loc>
-    <lastmod>2026-04-05T21:44:04.755Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mdastgheib.com/publications/peer-reviewed/dastgheib-2022-neurobio-reviews.html</loc>
-    <lastmod>2026-03-17T08:54:41.569Z</lastmod>
-  </url>
-  <url>
-    <loc>https://mdastgheib.com/publications/preprints/dastgheib-2026-midas-touch-xr.html</loc>
-    <lastmod>2026-03-18T04:58:45.514Z</lastmod>
+    <lastmod>2026-04-06T04:19:02.180Z</lastmod>
   </url>
   <url>
     <loc>https://mdastgheib.com/publications/publication4/index.html</loc>
     <lastmod>2026-04-05T21:44:04.754Z</lastmod>
   </url>
   <url>
+    <loc>https://mdastgheib.com/publications/preprints/dastgheib-2026-midas-touch-xr.html</loc>
+    <lastmod>2026-03-18T04:58:45.514Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mdastgheib.com/publications/peer-reviewed/dastgheib-2022-neurobio-reviews.html</loc>
+    <lastmod>2026-03-17T08:54:41.569Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mdastgheib.com/publications/publication7/index.html</loc>
+    <lastmod>2026-04-05T21:44:04.755Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mdastgheib.com/publications/publication6/index.html</loc>
+    <lastmod>2026-04-05T21:44:04.755Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mdastgheib.com/index.html</loc>
+    <lastmod>2026-04-06T04:19:35.615Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mdastgheib.com/research/index.html</loc>
+    <lastmod>2026-04-05T23:23:57.227Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mdastgheib.com/publications/publication1/index.html</loc>
+    <lastmod>2026-04-05T21:44:04.753Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mdastgheib.com/publications/publication8/index.html</loc>
+    <lastmod>2026-04-05T21:44:04.755Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mdastgheib.com/publications/index.html</loc>
+    <lastmod>2026-04-05T23:23:57.227Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mdastgheib.com/publications/publication5/index.html</loc>
+    <lastmod>2026-04-05T21:44:04.754Z</lastmod>
+  </url>
+  <url>
+    <loc>https://mdastgheib.com/publications/publication3/index.html</loc>
+    <lastmod>2026-04-05T21:44:04.754Z</lastmod>
+  </url>
+  <url>
     <loc>https://mdastgheib.com/projects/surgeon-performance-predict2.html</loc>
-    <lastmod>2026-04-06T03:57:51.558Z</lastmod>
+    <lastmod>2026-04-06T04:17:34.497Z</lastmod>
   </url>
   <url>
     <loc>https://mdastgheib.com/projects/memory-and-meditation.html</loc>
-    <lastmod>2026-04-05T23:48:00.894Z</lastmod>
+    <lastmod>2026-04-06T04:17:34.496Z</lastmod>
   </url>
   <url>
     <loc>https://mdastgheib.com/projects/archive/surgeon-performance-predict-backup.html</loc>
@@ -90,11 +86,11 @@
   </url>
   <url>
     <loc>https://mdastgheib.com/about/index.html</loc>
-    <lastmod>2026-04-05T23:48:00.380Z</lastmod>
+    <lastmod>2026-04-06T04:18:59.305Z</lastmod>
   </url>
   <url>
     <loc>https://mdastgheib.com/portfolio/index.html</loc>
-    <lastmod>2026-04-05T23:48:00.922Z</lastmod>
+    <lastmod>2026-04-06T04:18:58.266Z</lastmod>
   </url>
   <url>
     <loc>https://mdastgheib.com/cv.html</loc>
