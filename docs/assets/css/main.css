@@ -50,42 +50,24 @@ $navbar-hl: $accent-red;
   display: none !important;
 }
 
-.navbar {
-  border-bottom: 1px solid $accent-blue;
-}
-
 .title {
-  color: $primary-dark;
+  color: var(--color-text);
 }
 
 .subtitle {
-  color: $primary-medium;
+  color: var(--color-subtitle);
 }
 
 .about-link i {
-  color: $primary-medium;
+  color: var(--color-subtitle);
   
   &:hover {
-    color: $accent-red;
+    color: var(--color-accent);
   }
 }
 
 .callout-note {
-  border-left-color: $accent-blue;
-}
-
-/*-- scss:rules --*/
-.navbar {
-  background-color: #f8f9fa !important;
-  border-bottom: 1px solid #dee2e6;
-}
-
-.navbar-brand, .nav-link {
-  color: #1d3557 !important;
-  
-  &:hover {
-    color: #e63946 !important;
-  }
+  border-left-color: var(--color-accent-soft);
 }
 
 /* Portfolio Tags Styling */
@@ -96,14 +78,14 @@ $navbar-hl: $accent-red;
 .tag-filter-container {
   margin-bottom: 20px;
   padding: 15px;
-  background-color: rgba(168, 218, 220, 0.1);
+  background-color: color-mix(in srgb, var(--color-accent-soft) 14%, var(--color-bg-subtle));
   border-radius: 8px;
-  border: 1px solid #a8dadc;
+  border: 1px solid color-mix(in srgb, var(--color-accent-soft) 40%, var(--color-border));
 }
 
 .tag-filter-title {
   font-weight: 600;
-  color: #1d3557;
+  color: var(--color-text);
   margin-bottom: 10px;
 }
 
@@ -182,6 +164,8 @@ $navbar-hl: $accent-red;
   --color-accent:        #e63946;
   --color-accent-dark:   #c1121f;
   --color-accent-teal:   #2ec4b6;      /* secondary accent for tags/badges */
+  --color-accent-soft:   #a8dadc;      /* teal border accents (callouts, etc.) */
+  --color-subtitle:      #457b9d;      /* secondary heading / about links (light) */
   --color-bg:            #ffffff;
   --color-bg-subtle:     #f8f9fc;
   --color-bg-card:       #ffffff;
@@ -197,12 +181,14 @@ $navbar-hl: $accent-red;
   --transition-base:     0.22s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-[data-bs-theme="dark"] {
+body.quarto-dark {
   --color-bg:            #0f1117;
   --color-bg-subtle:     #181b23;
   --color-bg-card:       #1e2130;
   --color-text:          #e8eaf0;
   --color-text-muted:    #9ca3af;
+  --color-subtitle:      #9ec9cf;
+  --color-accent-soft:   #6a9ea6;
   --color-border:        #2d3148;
   --color-nav-bg:        rgba(15, 17, 23, 0.92);
   --shadow-card:         0 2px 12px rgba(0,0,0,0.35);
@@ -456,14 +442,14 @@ p { max-width: 72ch; }
   font-weight: 500;
 }
 
-[data-bs-theme="dark"] .nih-funding,
-[data-bs-theme="dark"] .nserc-funding {
+body.quarto-dark .nih-funding,
+body.quarto-dark .nserc-funding {
   background: rgba(255, 255, 255, 0.04);
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-[data-bs-theme="dark"] .nih-funding__lead,
-[data-bs-theme="dark"] .nserc-funding__lead {
+body.quarto-dark .nih-funding__lead,
+body.quarto-dark .nserc-funding__lead {
   color: var(--bs-body-color);
 }
 
@@ -798,6 +784,37 @@ p { max-width: 72ch; }
   color: var(--color-text-muted);
 }
 
+/* Sidebar category filters (grid listings): default Quarto/Bootstrap colors stay “light-theme blue” in dark mode */
+.quarto-listing-category .category {
+  color: var(--color-text-muted);
+  transition: color var(--transition-base);
+}
+.quarto-listing-category .category:hover,
+.quarto-listing-category .category.active {
+  color: var(--color-text);
+}
+.quarto-listing-category .quarto-category-count {
+  color: var(--color-text-muted);
+  opacity: 0.85;
+}
+
+/* Page title + description when research-skills.css is absent (e.g. Portfolio). Pages with research-skills load it after main.css and override .description. */
+#quarto-document-content .quarto-title-block .title {
+  color: var(--color-text) !important;
+}
+#quarto-document-content .quarto-title-block .description {
+  color: var(--color-text-muted);
+}
+
+/* Grid listing cards: entire card is wrapped in <a class="quarto-grid-link"> — link color was forcing navy titles */
+.quarto-listing-container-grid a.quarto-grid-link {
+  color: inherit;
+  text-decoration: none;
+}
+.quarto-listing-container-grid a.quarto-grid-link:hover {
+  color: inherit;
+}
+
 div.quarto-post, .g-col-1 .card, .listing-item {
   border: 1px solid var(--color-border) !important;
   border-radius: var(--radius-card) !important;
@@ -806,7 +823,7 @@ div.quarto-post, .g-col-1 .card, .listing-item {
   overflow: hidden;
   position: relative;
 }
-div.quarto-post::before, .listing-item::before {
+div.quarto-post::before, .listing-item::before, .quarto-listing-container-grid .g-col-1 .card::before {
   content: '';
   position: absolute;
   top: 0; left: 0; right: 0;
@@ -817,16 +834,18 @@ div.quarto-post::before, .listing-item::before {
   transition: transform var(--transition-base);
   z-index: 2;
 }
-div.quarto-post:hover, .listing-item:hover {
+div.quarto-post:hover, .listing-item:hover, .quarto-listing-container-grid .g-col-1:hover {
   box-shadow: var(--shadow-card-hover) !important;
   transform: translateY(-4px);
 }
-div.quarto-post:hover::before, .listing-item:hover::before {
+div.quarto-post:hover::before, .listing-item:hover::before, .quarto-listing-container-grid .g-col-1:hover .card::before {
   transform: scaleX(1);
 }
-/* Card title */
-.listing-item .listing-title, 
-div.quarto-post .listing-title {
+/* Card title (default + grid layouts — grid uses .g-col-1, not .listing-item) */
+.listing-item .listing-title,
+div.quarto-post .listing-title,
+.quarto-listing-container-grid .listing-title,
+.quarto-listing-container-grid h5.listing-title {
   font-family: var(--font-heading);
   font-weight: 700;
   font-size: 1.05rem;
@@ -834,7 +853,8 @@ div.quarto-post .listing-title {
 }
 /* Date styling */
 .listing-item .listing-date,
-div.quarto-post .listing-date {
+div.quarto-post .listing-date,
+.quarto-listing-container-grid .listing-date {
   font-size: 0.78rem;
   color: var(--color-text-muted);
 }

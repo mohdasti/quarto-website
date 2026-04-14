@@ -40,10 +40,14 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-6bdd2aebeb936dcddaa5f935a5de481c.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-ccd81253fefb92e9cd3f9eb5b5d87b54.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-c1fac2584b48ed01fb6e278e36375074.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -105,7 +109,169 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
-<body class="nav-fixed quarto-light">
+<body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -189,6 +355,7 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 <!-- main -->
 <main class="content page-columns page-full" id="quarto-document-content">
 
+
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Surgeon Cognitive Dashboard — Case Study</h1>
@@ -245,7 +412,10 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
   --ink:#0b1526; --muted:#4b5563; --bg:#f7f9fc; --card:#ffffff;
   --accent:#1f9bb6; --ok:#27ae60; --warn:#f39c12; --crit:#e74c3c; --border:#e5e7eb;
 }
-body { color:var(--ink); background:var(--bg); }
+/* Dark mode overrides for inline vars — body.quarto-dark is set by Quarto's toggle */
+body.quarto-dark {
+  --ink:#e8eaf0; --muted:#9ca3af; --bg:#0f1117; --card:#1e2130; --border:#2d3148;
+}
 h1,h2,h3 { letter-spacing:.2px; }
 a { color:var(--accent); }
 .quarto-title-banner { background:var(--card); border-bottom:1px solid var(--border); }
@@ -257,12 +427,13 @@ a { color:var(--accent); }
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
 <style>
-.tldr-card{background:#ffffff;border:1px solid #e5e7eb;border-left:4px solid #1f9bb6;border-radius:12px;padding:12px 14px;margin:8px 0 14px;box-shadow:0 1px 1px rgba(16,24,40,.02)}
+.tldr-card{background:var(--card,#ffffff);border:1px solid var(--border,#e5e7eb);border-left:4px solid #1f9bb6;border-radius:12px;padding:12px 14px;margin:8px 0 14px;box-shadow:0 1px 1px rgba(16,24,40,.02)}
 .tldr-title{font-weight:700;letter-spacing:.2px;margin-bottom:.25rem}
-.tldr-text{margin:.15rem 0 .5rem;color:#111827}
+.tldr-text{margin:.15rem 0 .5rem;color:var(--ink,#111827)}
 .tldr-chips{display:flex;flex-wrap:wrap;gap:6px}
-.tldr-chips a{display:inline-flex;align-items:center;gap:.35rem;font-size:.86rem;padding:.18rem .5rem;border-radius:999px;border:1px solid #d7dee6;background:#f8fafc;text-decoration:none;color:#0b1526}
+.tldr-chips a{display:inline-flex;align-items:center;gap:.35rem;font-size:.86rem;padding:.18rem .5rem;border-radius:999px;border:1px solid var(--border,#d7dee6);background:var(--card,#f8fafc);text-decoration:none;color:var(--ink,#0b1526)}
 .tldr-chips a:hover{background:#eef6fb;border-color:#b7e1f0}
+body.quarto-dark .tldr-chips a:hover{background:rgba(31,155,182,.15);border-color:#1f9bb6}
 </style>
 
 <div class="tldr-card" role="note" aria-label="TL;DR">
@@ -290,9 +461,10 @@ window.addEventListener('DOMContentLoaded', () => {
 <style>
 .tt-wide .tooltip-inner{max-width:340px;text-align:left;line-height:1.25;padding:.45rem .55rem}
 .help-icon{display:inline-flex;align-items:center;justify-content:center;
-  width:1.05em;height:1.05em;border-radius:999px;border:1px solid #e5e7eb;
+  width:1.05em;height:1.05em;border-radius:999px;border:1px solid var(--border,#e5e7eb);
   color:#1f9bb6;font-size:.8em;margin-left:.25rem;cursor:help;vertical-align:baseline}
 .help-icon:hover{background:#e6f6fb;border-color:#b7e1f0}
+body.quarto-dark .help-icon:hover{background:rgba(31,155,182,.15);border-color:#1f9bb6}
 .help-icon i{font-size:1em}
 </style>
 <section id="why-i-built-this" class="level2">
@@ -340,7 +512,7 @@ Note
 </div>
 <style>
 .repo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:.6rem 0}
-.repo-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px 14px 12px;
+.repo-card{background:var(--card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:14px 14px 12px;
   box-shadow:0 1px 1px rgba(16,24,40,.02);transition:transform .16s ease,box-shadow .16s ease}
 .repo-card:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(16,24,40,.06);border-color:#cfe8f3}
 .repo-card:focus-within{outline:2px solid #b7e1f0;outline-offset:2px}
@@ -348,14 +520,15 @@ Note
 .repo-head .stack{display:flex;align-items:center;gap:8px}
 .repo-head i{font-size:1.05rem;color:#1f9bb6}
 .repo-title{font-weight:600}
-.repo-desc{color:#4b5563;margin:.35rem 0 .5rem;font-size:.95rem}
+.repo-desc{color:var(--muted,#4b5563);margin:.35rem 0 .5rem;font-size:.95rem}
 .repo-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .repo-badges{display:flex;gap:6px;flex-wrap:wrap}
-.repo-badges img{height:18px;border-radius:6px;border:1px solid #edf0f3}
+.repo-badges img{height:18px;border-radius:6px;border:1px solid var(--border,#edf0f3)}
 .repo-actions{display:flex;gap:8px}
 .repo-actions a.btn{display:inline-flex;align-items:center;gap:.45rem;font-size:.85rem;padding:.30rem .62rem;border-radius:8px;
-  border:1px solid #d7dee6;background:#f8fafc;color:#0b1526;text-decoration:none}
+  border:1px solid var(--border,#d7dee6);background:var(--card,#f8fafc);color:var(--ink,#0b1526);text-decoration:none}
 .repo-actions a.btn.primary{background:#e6f6fb;border-color:#b7e1f0}
+body.quarto-dark .repo-actions a.btn.primary{background:rgba(31,155,182,.15);border-color:#1f9bb6}
 .repo-actions a.btn i{font-size:1rem}
 </style>
 
@@ -578,15 +751,16 @@ Note
 .demo-card{background:linear-gradient(135deg, #e6f6fb 0%, #f0fafe 100%);
   border:1px solid #b7e1f0;border-radius:12px;padding:20px;
   box-shadow:0 2px 8px rgba(16,24,40,.04);margin:1rem 0;max-width:720px}
+body.quarto-dark .demo-card{background:linear-gradient(135deg,rgba(31,155,182,.12) 0%,rgba(31,155,182,.06) 100%);border-color:rgba(31,155,182,.3)}
 .demo-card:hover{box-shadow:0 4px 16px rgba(16,24,40,.08);border-color:#9dd9ec}
 .demo-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .demo-head img{height:40px;width:auto;border-radius:4px}
-.demo-title{font-weight:600;font-size:1.1rem;color:#0b1526}
-.demo-desc{color:#4b5563;margin-bottom:14px;font-size:.95rem;line-height:1.4}
+.demo-title{font-weight:600;font-size:1.1rem;color:var(--ink,#0b1526)}
+.demo-desc{color:var(--muted,#4b5563);margin-bottom:14px;font-size:.95rem;line-height:1.4}
 .demo-features{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .demo-features .tag{display:inline-flex;align-items:center;gap:.3rem;
-  padding:.25rem .5rem;background:#fff;border:1px solid #d0e9f3;border-radius:6px;
-  font-size:.85rem;color:#0b1526}
+  padding:.25rem .5rem;background:var(--card,#fff);border:1px solid var(--border,#d0e9f3);border-radius:6px;
+  font-size:.85rem;color:var(--ink,#0b1526)}
 .demo-features .tag i{font-size:.95rem;color:#1f9bb6}
 .demo-action{text-align:center}
 .demo-action a{display:inline-flex;align-items:center;gap:.6rem;
@@ -595,7 +769,7 @@ Note
   box-shadow:0 2px 6px rgba(31,155,182,.25);transition:all .2s ease}
 .demo-action a:hover{background:#1a8ca0;box-shadow:0 4px 12px rgba(31,155,182,.35);transform:translateY(-1px)}
 .demo-action a i{font-size:1.1rem}
-.demo-note{margin-top:10px;font-size:.85rem;color:#6b7280;font-style:italic}
+.demo-note{margin-top:10px;font-size:.85rem;color:var(--muted,#6b7280);font-style:italic}
 </style>
 
 <div class="demo-card">
@@ -1300,9 +1474,13 @@ Seeds fixed; all plots are generated by scripts under <code>scripts/90_make_gall
   margin: 20px 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
+body.quarto-dark .what-is-card {
+  background: linear-gradient(135deg, rgba(31,155,182,.08) 0%, rgba(31,155,182,.04) 100%);
+  border-color: rgba(31,155,182,.25);
+}
 .what-is-header {
   font-weight: 700;
-  color: #1e293b;
+  color: var(--ink,#1e293b);
   margin-bottom: 12px;
   font-size: 1.1rem;
 }
@@ -1314,18 +1492,20 @@ Seeds fixed; all plots are generated by scripts under <code>scripts/90_make_gall
 }
 .what-is-label {
   font-weight: 600;
-  color: #1e293b;
+  color: var(--ink,#1e293b);
   min-width: 80px;
   font-size: 0.95rem;
 }
 .what-is-positive {
   color: #059669;
 }
+body.quarto-dark .what-is-positive { color: #34d399; }
 .what-is-negative {
   color: #dc2626;
 }
+body.quarto-dark .what-is-negative { color: #f87171; }
 .what-is-text {
-  color: #475569;
+  color: var(--muted,#475569);
   line-height: 1.5;
   font-size: 0.95rem;
 }
@@ -1342,6 +1522,19 @@ Seeds fixed; all plots are generated by scripts under <code>scripts/90_make_gall
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {

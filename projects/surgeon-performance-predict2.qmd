@@ -12,7 +12,9 @@ research_domains: ["Human Factors", "Cognitive Neuroscience", "Biomedical Engine
 methodologies: ["Psychophysiology", "Pupillometry", "Machine Learning"]
 format:
   html:
-    theme: flatly
+    theme:
+      light: cosmo
+      dark: darkly
     toc: true
     toc-depth: 3
     number-sections: false
@@ -43,7 +45,10 @@ resources:
   --ink:#0b1526; --muted:#4b5563; --bg:#f7f9fc; --card:#ffffff;
   --accent:#1f9bb6; --ok:#27ae60; --warn:#f39c12; --crit:#e74c3c; --border:#e5e7eb;
 }
-body { color:var(--ink); background:var(--bg); }
+/* Dark mode overrides for inline vars — body.quarto-dark is set by Quarto's toggle */
+body.quarto-dark {
+  --ink:#e8eaf0; --muted:#9ca3af; --bg:#0f1117; --card:#1e2130; --border:#2d3148;
+}
 h1,h2,h3 { letter-spacing:.2px; }
 a { color:var(--accent); }
 .quarto-title-banner { background:var(--card); border-bottom:1px solid var(--border); }
@@ -58,12 +63,13 @@ a { color:var(--accent); }
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
 
 <style>
-.tldr-card{background:#ffffff;border:1px solid #e5e7eb;border-left:4px solid #1f9bb6;border-radius:12px;padding:12px 14px;margin:8px 0 14px;box-shadow:0 1px 1px rgba(16,24,40,.02)}
+.tldr-card{background:var(--card,#ffffff);border:1px solid var(--border,#e5e7eb);border-left:4px solid #1f9bb6;border-radius:12px;padding:12px 14px;margin:8px 0 14px;box-shadow:0 1px 1px rgba(16,24,40,.02)}
 .tldr-title{font-weight:700;letter-spacing:.2px;margin-bottom:.25rem}
-.tldr-text{margin:.15rem 0 .5rem;color:#111827}
+.tldr-text{margin:.15rem 0 .5rem;color:var(--ink,#111827)}
 .tldr-chips{display:flex;flex-wrap:wrap;gap:6px}
-.tldr-chips a{display:inline-flex;align-items:center;gap:.35rem;font-size:.86rem;padding:.18rem .5rem;border-radius:999px;border:1px solid #d7dee6;background:#f8fafc;text-decoration:none;color:#0b1526}
+.tldr-chips a{display:inline-flex;align-items:center;gap:.35rem;font-size:.86rem;padding:.18rem .5rem;border-radius:999px;border:1px solid var(--border,#d7dee6);background:var(--card,#f8fafc);text-decoration:none;color:var(--ink,#0b1526)}
 .tldr-chips a:hover{background:#eef6fb;border-color:#b7e1f0}
+body.quarto-dark .tldr-chips a:hover{background:rgba(31,155,182,.15);border-color:#1f9bb6}
 </style>
 
 <div class="tldr-card" role="note" aria-label="TL;DR">
@@ -91,9 +97,10 @@ window.addEventListener('DOMContentLoaded', () => {
 <style>
 .tt-wide .tooltip-inner{max-width:340px;text-align:left;line-height:1.25;padding:.45rem .55rem}
 .help-icon{display:inline-flex;align-items:center;justify-content:center;
-  width:1.05em;height:1.05em;border-radius:999px;border:1px solid #e5e7eb;
+  width:1.05em;height:1.05em;border-radius:999px;border:1px solid var(--border,#e5e7eb);
   color:#1f9bb6;font-size:.8em;margin-left:.25rem;cursor:help;vertical-align:baseline}
 .help-icon:hover{background:#e6f6fb;border-color:#b7e1f0}
+body.quarto-dark .help-icon:hover{background:rgba(31,155,182,.15);border-color:#1f9bb6}
 .help-icon i{font-size:1em}
 </style>
 ```
@@ -142,7 +149,7 @@ Model accuracy is a starting point, not the goal. I optimize for operational out
 ```{=html}
 <style>
 .repo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:12px;margin:.6rem 0}
-.repo-card{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:14px 14px 12px;
+.repo-card{background:var(--card,#fff);border:1px solid var(--border,#e5e7eb);border-radius:12px;padding:14px 14px 12px;
   box-shadow:0 1px 1px rgba(16,24,40,.02);transition:transform .16s ease,box-shadow .16s ease}
 .repo-card:hover{transform:translateY(-1px);box-shadow:0 4px 14px rgba(16,24,40,.06);border-color:#cfe8f3}
 .repo-card:focus-within{outline:2px solid #b7e1f0;outline-offset:2px}
@@ -150,14 +157,15 @@ Model accuracy is a starting point, not the goal. I optimize for operational out
 .repo-head .stack{display:flex;align-items:center;gap:8px}
 .repo-head i{font-size:1.05rem;color:#1f9bb6}
 .repo-title{font-weight:600}
-.repo-desc{color:#4b5563;margin:.35rem 0 .5rem;font-size:.95rem}
+.repo-desc{color:var(--muted,#4b5563);margin:.35rem 0 .5rem;font-size:.95rem}
 .repo-bar{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}
 .repo-badges{display:flex;gap:6px;flex-wrap:wrap}
-.repo-badges img{height:18px;border-radius:6px;border:1px solid #edf0f3}
+.repo-badges img{height:18px;border-radius:6px;border:1px solid var(--border,#edf0f3)}
 .repo-actions{display:flex;gap:8px}
 .repo-actions a.btn{display:inline-flex;align-items:center;gap:.45rem;font-size:.85rem;padding:.30rem .62rem;border-radius:8px;
-  border:1px solid #d7dee6;background:#f8fafc;color:#0b1526;text-decoration:none}
+  border:1px solid var(--border,#d7dee6);background:var(--card,#f8fafc);color:var(--ink,#0b1526);text-decoration:none}
 .repo-actions a.btn.primary{background:#e6f6fb;border-color:#b7e1f0}
+body.quarto-dark .repo-actions a.btn.primary{background:rgba(31,155,182,.15);border-color:#1f9bb6}
 .repo-actions a.btn i{font-size:1rem}
 </style>
 
@@ -691,15 +699,16 @@ sep = ""
 .demo-card{background:linear-gradient(135deg, #e6f6fb 0%, #f0fafe 100%);
   border:1px solid #b7e1f0;border-radius:12px;padding:20px;
   box-shadow:0 2px 8px rgba(16,24,40,.04);margin:1rem 0;max-width:720px}
+body.quarto-dark .demo-card{background:linear-gradient(135deg,rgba(31,155,182,.12) 0%,rgba(31,155,182,.06) 100%);border-color:rgba(31,155,182,.3)}
 .demo-card:hover{box-shadow:0 4px 16px rgba(16,24,40,.08);border-color:#9dd9ec}
 .demo-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
 .demo-head img{height:40px;width:auto;border-radius:4px}
-.demo-title{font-weight:600;font-size:1.1rem;color:#0b1526}
-.demo-desc{color:#4b5563;margin-bottom:14px;font-size:.95rem;line-height:1.4}
+.demo-title{font-weight:600;font-size:1.1rem;color:var(--ink,#0b1526)}
+.demo-desc{color:var(--muted,#4b5563);margin-bottom:14px;font-size:.95rem;line-height:1.4}
 .demo-features{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
 .demo-features .tag{display:inline-flex;align-items:center;gap:.3rem;
-  padding:.25rem .5rem;background:#fff;border:1px solid #d0e9f3;border-radius:6px;
-  font-size:.85rem;color:#0b1526}
+  padding:.25rem .5rem;background:var(--card,#fff);border:1px solid var(--border,#d0e9f3);border-radius:6px;
+  font-size:.85rem;color:var(--ink,#0b1526)}
 .demo-features .tag i{font-size:.95rem;color:#1f9bb6}
 .demo-action{text-align:center}
 .demo-action a{display:inline-flex;align-items:center;gap:.6rem;
@@ -708,7 +717,7 @@ sep = ""
   box-shadow:0 2px 6px rgba(31,155,182,.25);transition:all .2s ease}
 .demo-action a:hover{background:#1a8ca0;box-shadow:0 4px 12px rgba(31,155,182,.35);transform:translateY(-1px)}
 .demo-action a i{font-size:1.1rem}
-.demo-note{margin-top:10px;font-size:.85rem;color:#6b7280;font-style:italic}
+.demo-note{margin-top:10px;font-size:.85rem;color:var(--muted,#6b7280);font-style:italic}
 </style>
 
 <div class="demo-card">
@@ -981,9 +990,13 @@ Runs as a Docker image or on ShinyApps; can embed in training portals with a sin
   margin: 20px 0;
   box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
+body.quarto-dark .what-is-card {
+  background: linear-gradient(135deg, rgba(31,155,182,.08) 0%, rgba(31,155,182,.04) 100%);
+  border-color: rgba(31,155,182,.25);
+}
 .what-is-header {
   font-weight: 700;
-  color: #1e293b;
+  color: var(--ink,#1e293b);
   margin-bottom: 12px;
   font-size: 1.1rem;
 }
@@ -995,18 +1008,20 @@ Runs as a Docker image or on ShinyApps; can embed in training portals with a sin
 }
 .what-is-label {
   font-weight: 600;
-  color: #1e293b;
+  color: var(--ink,#1e293b);
   min-width: 80px;
   font-size: 0.95rem;
 }
 .what-is-positive {
   color: #059669;
 }
+body.quarto-dark .what-is-positive { color: #34d399; }
 .what-is-negative {
   color: #dc2626;
 }
+body.quarto-dark .what-is-negative { color: #f87171; }
 .what-is-text {
-  color: #475569;
+  color: var(--muted,#475569);
   line-height: 1.5;
   font-size: 0.95rem;
 }

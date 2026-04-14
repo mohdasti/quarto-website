@@ -107,7 +107,7 @@
   margin: 0;
 }
 
-[data-bs-theme="dark"] .research-nih-disclaimer {
+body.quarto-dark .research-nih-disclaimer {
   border-top-color: rgba(255, 255, 255, 0.1);
   color: rgba(232, 234, 240, 0.65);
 }
@@ -462,91 +462,92 @@ nav[role="doc-toc"] .active > a {
    Dark mode
    ============================================================ */
 
-[data-bs-theme="dark"] #quarto-document-content p {
+body.quarto-dark #quarto-document-content p {
   color: var(--bs-body-color);
 }
 
-[data-bs-theme="dark"] #quarto-document-content h2 {
+body.quarto-dark #quarto-document-content h2 {
   color: #a8dadc;
 }
 
-[data-bs-theme="dark"] #quarto-document-content .quarto-title-block .description {
+body.quarto-dark #quarto-document-content .quarto-title-block .description {
   color: rgba(232, 234, 240, 0.82);
 }
 
-[data-bs-theme="dark"] .page-lead {
+body.quarto-dark .page-lead {
   color: var(--bs-body-color);
   background: rgba(255, 255, 255, 0.04);
   border-left-color: rgba(168, 218, 220, 0.5);
 }
 
-[data-bs-theme="dark"] .chapter-block {
+body.quarto-dark .chapter-block {
   background: rgba(255, 255, 255, 0.05);
 }
 
-[data-bs-theme="dark"] .chapter-block h3 {
+body.quarto-dark .chapter-block h3 {
   color: var(--bs-body-color);
 }
 
-[data-bs-theme="dark"] .chapter-block h3::before {
+body.quarto-dark .chapter-block h3::before {
   background: #a8dadc;
   color: #1d3557;
 }
 
-[data-bs-theme="dark"] .skills-block {
+body.quarto-dark .skills-block {
   border-left-color: rgba(168, 218, 220, 0.35);
 }
 
-[data-bs-theme="dark"] .skills-block h3 {
+body.quarto-dark .skills-block h3 {
   color: var(--bs-body-color);
 }
 
-[data-bs-theme="dark"] .skills-block p,
-[data-bs-theme="dark"] .skills-block ul {
+body.quarto-dark .skills-block p,
+body.quarto-dark .skills-block ul {
   color: var(--bs-body-color);
 }
 
-[data-bs-theme="dark"] .panel-adjacent {
+body.quarto-dark .panel-adjacent {
   background: rgba(168, 218, 220, 0.07);
   border-left-color: rgba(168, 218, 220, 0.5);
 }
 
-[data-bs-theme="dark"] .panel-adjacent h3 {
+body.quarto-dark .panel-adjacent h2,
+body.quarto-dark .panel-adjacent h3 {
   color: var(--bs-body-color);
 }
 
-[data-bs-theme="dark"] .xr-note {
+body.quarto-dark .xr-note {
   color: var(--bs-body-color);
   border-left-color: rgba(230, 57, 70, 0.5);
 }
 
-[data-bs-theme="dark"] .research-questions li::before {
+body.quarto-dark .research-questions li::before {
   color: #a8dadc;
 }
 
-[data-bs-theme="dark"] .link-row a {
+body.quarto-dark .link-row a {
   background: rgba(168, 218, 220, 0.15);
   color: #a8dadc;
 }
 
-[data-bs-theme="dark"] .link-row a:hover {
+body.quarto-dark .link-row a:hover {
   background: rgba(168, 218, 220, 0.25);
   color: #fff;
 }
 
-[data-bs-theme="dark"] .lang-chip {
+body.quarto-dark .lang-chip {
   background: rgba(255, 255, 255, 0.07);
   color: var(--bs-body-color);
 }
 
-[data-bs-theme="dark"] .status-label       { opacity: 0.85; }
-[data-bs-theme="dark"] .pub-list li        { border-color: rgba(255, 255, 255, 0.08); color: var(--bs-body-color); }
-[data-bs-theme="dark"] .conf-group h4      { color: #a8dadc; }
-[data-bs-theme="dark"] .edu-entry          { border-color: rgba(255, 255, 255, 0.08); }
-[data-bs-theme="dark"] .edu-body h3        { color: var(--bs-body-color); }
-[data-bs-theme="dark"] .edu-body .edu-org  { color: #a8dadc; }
-[data-bs-theme="dark"] .edu-body .edu-years{ color: rgba(255,255,255,0.5); }
+body.quarto-dark .status-label       { opacity: 0.85; }
+body.quarto-dark .pub-list li        { border-color: rgba(255, 255, 255, 0.08); color: var(--bs-body-color); }
+body.quarto-dark .conf-group h4      { color: #a8dadc; }
+body.quarto-dark .edu-entry          { border-color: rgba(255, 255, 255, 0.08); }
+body.quarto-dark .edu-body h3        { color: var(--bs-body-color); }
+body.quarto-dark .edu-body .edu-org  { color: #a8dadc; }
+body.quarto-dark .edu-body .edu-years{ color: rgba(255,255,255,0.5); }
 
-[data-bs-theme="dark"] nav[role="doc-toc"] a       { color: rgba(255,255,255,0.45); }
-[data-bs-theme="dark"] nav[role="doc-toc"] a:hover { color: rgba(255,255,255,0.85); }
-[data-bs-theme="dark"] nav[role="doc-toc"] .active > a { color: #a8dadc; }
+body.quarto-dark nav[role="doc-toc"] a       { color: rgba(255,255,255,0.45); }
+body.quarto-dark nav[role="doc-toc"] a:hover { color: rgba(255,255,255,0.85); }
+body.quarto-dark nav[role="doc-toc"] .active > a { color: #a8dadc; }
