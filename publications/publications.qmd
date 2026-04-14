@@ -62,7 +62,7 @@ format:
 ## Dissertations & Theses
 
 ::: {.pub-list}
-- **Doctoral Dissertation (In Progress):** *The Influence of Arousal and Cognitive Reserve on Dual-Task Interference in Aging.* University of California, Riverside.
+- **Doctoral Dissertation (In Progress):** *A Mechanistic Investigation of Physical-Cognitive Effort Interactions and Their Modulation by Aging.* University of California, Riverside.
 - **Master's Thesis:** *The Effects of Self-Guided Meditation and Napping on Memory Consolidation in Humans.* Queen's University. [View on OSF](https://osf.io/preprints/thesiscommons/8t9uq_v1)
 :::
 

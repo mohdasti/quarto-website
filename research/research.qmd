@@ -12,6 +12,21 @@ format:
 Physical effort and arousal reshape perceptual decisions—especially when capacity is limited, as in aging and among older adults. The dissertation asks how those changes appear in behavior, in pupillometry, and in sequential sampling parameters that separate evidence quality from caution. The backbone is a handgrip dual-task paradigm (isometric force concurrent with cognitive and perceptual tasks), scaled from younger-adult validation to older-adult modeling. Dissertation chapters are not journal articles; titles and status are listed on [Publications](../publications/publications.qmd).
 :::
 
+```{=html}
+<div class="nih-funding">
+  <img
+    class="nih-funding__logo"
+    src="../images/nih-nia-logo-landscape.png"
+    width="280"
+    height="56"
+    alt="National Institute on Aging, National Institutes of Health"
+  />
+  <div class="nih-funding__body">
+    <p class="nih-funding__lead">This project was funded by the National Institutes of Health for research on cognitive aging.</p>
+  </div>
+</div>
+```
+
 ## Current Research Program
 
 The dissertation is one integrated program in three stages.
@@ -75,4 +90,8 @@ This work connects psychology, cognitive neuroscience, human factors, and interf
 [Publications](../publications/publications.qmd)
 [CV](../cv.qmd)
 [Portfolio](../portfolio/portfolio.qmd)
+:::
+
+::: {.research-nih-disclaimer}
+The content of this website is solely the responsibility of the author and does not necessarily represent the official views of the National Institutes of Health.
 :::

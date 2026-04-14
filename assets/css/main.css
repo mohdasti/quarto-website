@@ -417,6 +417,56 @@ p { max-width: 72ch; }
   background: rgba(230, 57, 70, 0.06) !important;
 }
 
+/* Funding acknowledgment bands (NIH/NIA on Research; NSERC on Master’s case study, etc.) */
+.nih-funding,
+.nserc-funding {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 1.1rem 1.5rem;
+  margin: 0 0 2.25rem;
+  padding: 1.2rem 1.35rem;
+  background: rgba(29, 53, 87, 0.035);
+  border: 1px solid rgba(29, 53, 87, 0.09);
+  border-radius: 12px;
+}
+
+.nih-funding__logo,
+.nserc-funding__logo {
+  flex: 0 0 auto;
+  width: min(100%, 280px);
+  height: auto;
+  display: block;
+  object-fit: contain;
+}
+
+.nih-funding__body,
+.nserc-funding__body {
+  flex: 1 1 17rem;
+  min-width: min(100%, 14rem);
+  font-family: 'Public Sans', 'Open Sans', system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+}
+
+.nih-funding__lead,
+.nserc-funding__lead {
+  margin: 0;
+  color: #2d3e50;
+  font-weight: 500;
+}
+
+[data-bs-theme="dark"] .nih-funding,
+[data-bs-theme="dark"] .nserc-funding {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-bs-theme="dark"] .nih-funding__lead,
+[data-bs-theme="dark"] .nserc-funding__lead {
+  color: var(--bs-body-color);
+}
+
 /* Footer */
 .nav-footer {
   background: var(--color-bg-subtle);

@@ -88,6 +88,30 @@
   margin-bottom: 0.75rem;
 }
 
+/* NIH / NSERC funding band styles live in assets/css/main.css */
+
+/* NIH disclaimer — Research page only (not global footer) */
+.research-nih-disclaimer {
+  margin: 2.25rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(29, 53, 87, 0.1);
+  max-width: 48rem;
+  font-family: 'Public Sans', 'Open Sans', system-ui, sans-serif;
+  font-size: 0.78rem;
+  line-height: 1.5;
+  font-weight: 400;
+  color: rgba(45, 62, 80, 0.75);
+}
+
+.research-nih-disclaimer p {
+  margin: 0;
+}
+
+[data-bs-theme="dark"] .research-nih-disclaimer {
+  border-top-color: rgba(255, 255, 255, 0.1);
+  color: rgba(232, 234, 240, 0.65);
+}
+
 /* ------ Opening lead band ----------------------------------- */
 .page-lead {
   font-size: 1.1rem;
