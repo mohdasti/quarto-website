@@ -1,0 +1,88 @@
+/* ============================================================
+   Photography gallery — Beyond the Lab: 35mm Film
+   Palette aligned with site: #1d3557 | #457b9d | #a8dadc
+   ============================================================ */
+
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.35rem;
+  margin: 2.25rem 0 3rem;
+}
+
+.photo-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+}
+
+.photo-card__image-wrap {
+  position: relative;
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(29, 53, 87, 0.06);
+  border: 1px solid rgba(29, 53, 87, 0.08);
+  aspect-ratio: 3 / 2;
+  transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.photo-card__image-wrap:hover {
+  border-color: rgba(69, 123, 157, 0.25);
+  box-shadow: 0 8px 24px rgba(29, 53, 87, 0.1);
+}
+
+.photo-card__image-wrap a {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.photo-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease;
+}
+
+.photo-card__image-wrap:hover img {
+  transform: scale(1.03);
+}
+
+.photo-card__caption {
+  font-family: "Public Sans", "Inter", system-ui, sans-serif;
+  font-size: 0.88rem;
+  font-style: italic;
+  line-height: 1.45;
+  color: rgba(45, 62, 80, 0.72);
+  padding: 0 0.15rem;
+}
+
+@media (max-width: 992px) {
+  .photo-gallery {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.15rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .photo-gallery {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+
+/* Dark mode */
+body.quarto-dark .photo-card__image-wrap {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.quarto-dark .photo-card__image-wrap:hover {
+  border-color: rgba(168, 218, 220, 0.35);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+body.quarto-dark .photo-card__caption {
+  color: rgba(232, 234, 240, 0.65);
+}

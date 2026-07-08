@@ -1,0 +1,121 @@
+---
+title: "Beyond the Lab: 35mm Film"
+description: "Analog film photography — a deliberate study of light, optics, and framing."
+toc: false
+format:
+  html:
+    css:
+      - assets/css/research-skills.css
+      - assets/css/photography.css
+---
+
+::: {.page-lead}
+When I'm away from eye-trackers and computational models, I'm usually chasing light with analog film cameras. Photography, to me, is a deliberate study of human perspective, optics, and framing—just executed offline. Here are a few favorite frames captured on 35mm film.
+:::
+
+```{=html}
+<div class="photo-gallery">
+
+  <figure class="photo-card">
+    <div class="photo-card__image-wrap">
+      <a href="/photography/photo1.jpg" class="lightbox" data-gallery="film" data-glightbox="title: 35mm film">
+        <img src="/photography/photo1.jpg" alt="35mm film photograph 1" loading="lazy">
+      </a>
+    </div>
+    <figcaption class="photo-card__caption">35mm film</figcaption>
+  </figure>
+
+  <figure class="photo-card">
+    <div class="photo-card__image-wrap">
+      <a href="/photography/photo2.jpg" class="lightbox" data-gallery="film" data-glightbox="title: 35mm film">
+        <img src="/photography/photo2.jpg" alt="35mm film photograph 2" loading="lazy">
+      </a>
+    </div>
+    <figcaption class="photo-card__caption">35mm film</figcaption>
+  </figure>
+
+  <figure class="photo-card">
+    <div class="photo-card__image-wrap">
+      <a href="/photography/photo3.jpg" class="lightbox" data-gallery="film" data-glightbox="title: 35mm film">
+        <img src="/photography/photo3.jpg" alt="35mm film photograph 3" loading="lazy">
+      </a>
+    </div>
+    <figcaption class="photo-card__caption">35mm film</figcaption>
+  </figure>
+
+  <figure class="photo-card">
+    <div class="photo-card__image-wrap">
+      <a href="/photography/photo4.jpg" class="lightbox" data-gallery="film" data-glightbox="title: 35mm film">
+        <img src="/photography/photo4.jpg" alt="35mm film photograph 4" loading="lazy">
+      </a>
+    </div>
+    <figcaption class="photo-card__caption">35mm film</figcaption>
+  </figure>
+
+  <figure class="photo-card">
+    <div class="photo-card__image-wrap">
+      <a href="/photography/photo5.jpg" class="lightbox" data-gallery="film" data-glightbox="title: 35mm film">
+        <img src="/photography/photo5.jpg" alt="35mm film photograph 5" loading="lazy">
+      </a>
+    </div>
+    <figcaption class="photo-card__caption">35mm film</figcaption>
+  </figure>
+
+  <figure class="photo-card">
+    <div class="photo-card__image-wrap">
+      <a href="/photography/photo6.jpg" class="lightbox" data-gallery="film" data-glightbox="title: 35mm film">
+        <img src="/photography/photo6.jpg" alt="35mm film photograph 6" loading="lazy">
+      </a>
+    </div>
+    <figcaption class="photo-card__caption">35mm film</figcaption>
+  </figure>
+
+  <figure class="photo-card">
+    <div class="photo-card__image-wrap">
+      <a href="/photography/photo7.jpg" class="lightbox" data-gallery="film" data-glightbox="title: 35mm film">
+        <img src="/photography/photo7.jpg" alt="35mm film photograph 7" loading="lazy">
+      </a>
+    </div>
+    <figcaption class="photo-card__caption">35mm film</figcaption>
+  </figure>
+
+  <figure class="photo-card">
+    <div class="photo-card__image-wrap">
+      <a href="/photography/photo8.jpg" class="lightbox" data-gallery="film" data-glightbox="title: 35mm film">
+        <img src="/photography/photo8.jpg" alt="35mm film photograph 8" loading="lazy">
+      </a>
+    </div>
+    <figcaption class="photo-card__caption">35mm film</figcaption>
+  </figure>
+
+  <figure class="photo-card">
+    <div class="photo-card__image-wrap">
+      <a href="/photography/photo9.jpg" class="lightbox" data-gallery="film" data-glightbox="title: 35mm film">
+        <img src="/photography/photo9.jpg" alt="35mm film photograph 9" loading="lazy">
+      </a>
+    </div>
+    <figcaption class="photo-card__caption">35mm film</figcaption>
+  </figure>
+
+  <figure class="photo-card">
+    <div class="photo-card__image-wrap">
+      <a href="/photography/photo10.jpg" class="lightbox" data-gallery="film" data-glightbox="title: 35mm film">
+        <img src="/photography/photo10.jpg" alt="35mm film photograph 10" loading="lazy">
+      </a>
+    </div>
+    <figcaption class="photo-card__caption">35mm film</figcaption>
+  </figure>
+
+  <figure class="photo-card">
+    <div class="photo-card__image-wrap">
+      <a href="/photography/photo11.jpg" class="lightbox" data-gallery="film" data-glightbox="title: 35mm film">
+        <img src="/photography/photo11.jpg" alt="35mm film photograph 11" loading="lazy">
+      </a>
+    </div>
+    <figcaption class="photo-card__caption">35mm film</figcaption>
+  </figure>
+
+</div>
+```
+
+<p class="small-note" style="font-size:0.88rem; color:rgba(45,62,80,0.6); font-style:italic; margin-top:-1rem;">Click any image to zoom.</p>

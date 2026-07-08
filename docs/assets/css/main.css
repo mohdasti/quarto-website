@@ -762,6 +762,22 @@ body.quarto-dark .nserc-funding__lead {
   text-align: center;
 }
 
+.about-personal-note {
+  font-family: "Public Sans", "Inter", system-ui, sans-serif;
+  font-size: 0.95rem;
+  font-style: italic;
+  line-height: 1.55;
+  color: rgba(45, 62, 80, 0.82);
+  margin: 0.25rem 0 1.5rem;
+  padding: 0.65rem 0 0.65rem 0.9rem;
+  border-left: 2px solid rgba(168, 218, 220, 0.75);
+}
+
+body.quarto-dark .about-personal-note {
+  color: rgba(232, 234, 240, 0.78);
+  border-left-color: rgba(168, 218, 220, 0.45);
+}
+
 /* Icon stand-ins when no institution logo (About — Research entries) */
 .edu-logo .edu-logo-icon {
   margin: 0;

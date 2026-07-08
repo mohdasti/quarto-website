@@ -30,6 +30,10 @@ I study why performance degrades under pressure: whether the cost shows up in th
 The central tool is a handgrip dual-task paradigm—concurrent isometric grip with auditory and visual discrimination tasks—combined with pupillometry and hierarchical Bayesian drift-diffusion modeling. Rather than reporting a single performance score, I model where in the decision process costs appear. That matters if you want to design systems that respond to cognitive state, not just average accuracy.
 
 ```{=html}
+<p class="about-personal-note">Fluent in English &amp; Persian | Modest conversational French</p>
+```
+
+```{=html}
 <div class="about-snapshot">
   <div class="snapshot-item">
     <i class="fas fa-graduation-cap"></i>
@@ -44,8 +48,8 @@ The central tool is a handgrip dual-task paradigm—concurrent isometric grip wi
     <span>Human Factors · Quant UXR · Research Scientist (XR)</span>
   </div>
   <div class="snapshot-item">
-    <i class="fas fa-language"></i>
-    <span>English (Professional) · Persian (Native) · French (Basic)</span>
+    <i class="fas fa-camera"></i>
+    <span>Beyond the lab: <a href="/photography.html">35mm film</a></span>
   </div>
 </div>
 ```

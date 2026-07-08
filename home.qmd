@@ -34,10 +34,11 @@ format:
         Cognitive Neuroscientist &amp; Human Factors Researcher
       </p>
       <p class="hero-bio">
-        I use psychophysics, pupillometry, and Bayesian modeling to study how
-        people make decisions under pressure, and how that work can feed into
-        interfaces and adaptive systems. Targeting Human Factors, Quant UXR, and
-        Research Scientist roles in AR/VR/XR.
+        I study how humans perceive, decide, and act under pressure. By
+        combining psychophysics, pupillometry, and Bayesian modeling, I
+        translate the hidden nuances of human visual attention into intuitive,
+        adaptive interfaces for the future of AR/VR/XR. Targeting Human Factors,
+        Quant UXR, and Research Scientist roles.
       </p>
       <div class="hero-ctas">
         <a href="/portfolio/" class="btn btn-primary btn-lg">

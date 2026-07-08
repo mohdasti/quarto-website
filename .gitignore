@@ -83,3 +83,6 @@ quarto.log
 .local/
 
 /.quarto/
+.positai
+
+**/*.quarto_ipynb

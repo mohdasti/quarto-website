@@ -6,6 +6,7 @@ project:
     - assets/**
     - outputs/**
     - pdfs/**
+    - photography/**
     - supporting_docs/**
     - portfolio/portfolio.html
     - _redirects
@@ -46,6 +47,8 @@ website:
         href: publications/publications.qmd
       - text: CV
         href: cv.qmd
+      - text: 35mm Film
+        href: photography.qmd
       - text: '<span class="nav-hire-btn">Hire Me</span>'
         href: "mailto:m.dastgheib@gmail.com"
         aria-label: "Contact Mohammad"
