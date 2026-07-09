@@ -177,6 +177,61 @@ body.quarto-dark .research-nih-disclaimer {
 
 .chapter-block p:last-child { margin-bottom: 0; }
 
+/* Research page figures */
+.research-figure {
+  margin: 1.1rem 0 0.25rem;
+}
+
+.research-figure a {
+  display: block;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 1px solid rgba(29, 53, 87, 0.1);
+  background: rgba(255, 255, 255, 0.6);
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.research-figure a:hover {
+  border-color: rgba(69, 123, 157, 0.28);
+  box-shadow: 0 8px 22px rgba(29, 53, 87, 0.1);
+}
+
+.research-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.research-figure figcaption {
+  margin-top: 0.55rem;
+  font-size: 0.84rem;
+  line-height: 1.5;
+  font-style: italic;
+  color: rgba(45, 62, 80, 0.72);
+}
+
+.research-figure-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1.1rem;
+}
+
+@media (max-width: 768px) {
+  .research-figure-pair {
+    grid-template-columns: 1fr;
+  }
+}
+
+body.quarto-dark .research-figure a {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+body.quarto-dark .research-figure figcaption {
+  color: rgba(232, 234, 240, 0.65);
+}
+
 /* ------ Skills category blocks ----------------------------- */
 /* Left-border marker only — whitespace carries the grouping */
 .skills-block {

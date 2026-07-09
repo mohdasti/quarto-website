@@ -1,6 +1,6 @@
 ---
 title: "Research"
-description: "Doctoral research on physical effort, arousal, and perceptual decisions in aging: handgrip dual-task paradigm, pupillometry, psychometric function modeling, hierarchical Bayesian Wiener DDM. Adjacent arXiv preprint on hand vs. gaze XR-relevant pointing (not dissertation core)."
+description: "How physical effort and arousal reshape perceptual decisions in aging. One handgrip dual-task paradigm, examined through four lenses: younger-adult validation, psychometric-function modeling with pupillometry, hierarchical Bayesian diffusion modeling, and trial-level grip-force spectral analysis. Adjacent arXiv preprint on hand vs. gaze XR-relevant pointing (not dissertation core)."
 format:
   html:
     output-file: index.html
@@ -9,8 +9,14 @@ format:
 ---
 
 ::: {.page-lead}
-Physical effort and arousal reshape perceptual decisions—especially when capacity is limited, as in aging and among older adults. The dissertation asks how those changes appear in behavior, in pupillometry, and in sequential sampling parameters that separate evidence quality from caution. The backbone is a handgrip dual-task paradigm (isometric force concurrent with cognitive and perceptual tasks), scaled from younger-adult validation to older-adult modeling. Dissertation chapters are not journal articles; titles and status are listed on [Publications](../publications/publications.qmd).
+When an older adult grips hard while judging what they just heard or saw, something gives. This work asks *what*: the sensitivity of perception, the caution behind the response, or the quality of the evidence feeding the decision. Answering it takes more than accuracy and reaction time—it takes tools that can tell those three apart.
 :::
+
+## The setup
+
+The backbone is a handgrip dual-task: participants hold a steady isometric force while making fine auditory or visual discriminations. Effort becomes an experimental dial on arousal; pupillometry tracks that arousal moment to moment; and modeling separates a change in *what you can perceive* from a change in *how you decide*. The paradigm is validated first in younger adults, then examined in older adults—where cognitive capacity is tighter and the physiological price of effort is steeper—through three complementary modeling lenses, plus a fourth that reads the grip signal itself.
+
+Dissertation chapters are not journal articles; titles and status are listed on [Publications](../publications/publications.qmd).
 
 ```{=html}
 <div class="nih-funding">
@@ -27,31 +33,105 @@ Physical effort and arousal reshape perceptual decisions—especially when capac
 </div>
 ```
 
-## Current Research Program
-
-The dissertation is one integrated program in three stages.
+## The arc
 
 ::: {.chapter-stages}
 
 ::: {.chapter-block}
-### Stage 1: Younger-adult proof of concept
+### Validate — younger adults
 
-Under concurrent physical effort and cognitive or perceptual load, pupil-linked arousal often shifted more clearly than summary behavioral outcomes. That pattern supports the arousal measurement strategy and validates the handgrip dual-task paradigm for later stages—without over-reading weak or null behavioral contrasts.
+Does the handgrip actually move arousal? Yes. Across three concurrent tasks, pupil-linked arousal tracked the effort manipulation more clearly than summary behavior did—establishing the measurement strategy the older-adult work depends on.
+
+```{=html}
+<figure class="research-figure">
+  <a href="/images/research/stage1-total-auc.png" class="lightbox" data-gallery="research" data-glightbox="title: Sustained pupil dilation (Total AUC) under low vs. high grip — younger adults">
+    <img src="/images/research/stage1-total-auc.png" alt="Total cognitive pupil AUC by effort level across younger-adult tasks" loading="lazy">
+  </a>
+  <figcaption>Sustained pupil dilation (Total AUC) rose more clearly under high grip than summary behavior did—across three concurrent tasks in younger adults.</figcaption>
+</figure>
+```
+
+::: {.callout-note collapse="true" appearance="simple" icon=false title="The numbers"}
+38 younger adults, three tasks (visual working memory, auditory and visual discrimination). Sustained pupil dilation (Total AUC) rose reliably under 40% MVC grip across all three; summary behavioral contrasts were weaker and treated conservatively.
+:::
 :::
 
 ::: {.chapter-block}
-### Stage 2: Older-adult psychometric chapter
+### Measure — perception under arousal
 
-Auditory and visual same–different discrimination is analyzed with psychometric function modeling and pupillometry, under missingness, artifacts, and QC constraints typical of eye-tracking in aging. Where appropriate, analyses use continuous intensity and graded manipulations rather than coarse binning alone.
+In older adults, does moment-to-moment arousal sharpen or blunt perception? Neither, measurably. Effort raised arousal and shifted *how much* people responded—but it did not tune the sensitivity of perception itself. The key move is that we could show that null was *real*, not just underpowered.
+
+```{=html}
+<figure class="research-figure">
+  <a href="/images/research/stage2-effort-dissociation.png" class="lightbox" data-gallery="research" data-glightbox="title: Tonic–phasic dissociation under effort — older adults">
+    <img src="/images/research/stage2-effort-dissociation.png" alt="Forest plot of tonic versus phasic pupil effects under effort in older adults" loading="lazy">
+  </a>
+  <figcaption>Tonic arousal rose under effort while the stimulus-locked phasic response fell—a dissociation that helps separate sustained load from momentary sensory processing.</figcaption>
+</figure>
+```
+
+::: {.callout-note collapse="true" appearance="simple" icon=false title="The numbers"}
+61 older adults; pooled model 54 participants, 5,322 trials. High effort raised sustained arousal (Total AUC β = +0.86, *p* = .02) and shifted overall responding (β = −0.14, *p* = .003) without flattening the psychometric slope. The arousal × stimulus-intensity coupling was a bounded null (β = +0.035, *p* = .25), statistically equivalent to zero within ±0.10 probit units by two one-sided tests (TOST). A tonic–phasic dissociation—sustained arousal up, stimulus-locked response down—traces largely to baseline referencing rather than a true collapse of the task-evoked response.
+:::
 :::
 
 ::: {.chapter-block}
-### Stage 3: Older-adult mechanistic chapter
+### Model — where the cost lives
 
-A hierarchical Bayesian Wiener drift-diffusion model (DDM) decomposes choices and response times. Physical effort costs align most clearly with drift rate (evidence accumulation). Boundary separation does not show comparably strong compensatory support. Non-decision time is constrained by the task design and is not treated as a free explanation of effort. Links between pupillometry and trial-level diffusion parameters are exploratory and inconclusive in the current specification.
+If effort costs performance, *which part* of the decision does it touch? A hierarchical Bayesian diffusion model gives the sharpest answer of the program: effort degrades the **quality of evidence accumulation**, not the caution or the bias behind the response. The cost is a slower, noisier read of the world—not a change in strategy.
+
+```{=html}
+<figure class="research-figure">
+  <a href="/images/research/stage3-drift-rate.png" class="lightbox" data-gallery="research" data-glightbox="title: Drift-rate posterior densities by effort — hierarchical Bayesian DDM">
+    <img src="/images/research/stage3-drift-rate.png" alt="Posterior densities of drift rate under low versus high physical effort" loading="lazy">
+  </a>
+  <figcaption>Drift rate fell under high effort; boundary separation and starting-point bias stayed inside the region of practical equivalence.</figcaption>
+</figure>
+```
+
+::: {.callout-note collapse="true" appearance="simple" icon=false title="The numbers"}
+67 older adults, 17,857 trials. Drift rate fell under high effort (β = −0.057, 95% CrI [−0.097, −0.017]; *P*(β < 0) = .997), while boundary separation and starting point sat inside the region of practical equivalence—practically unchanged. Accuracy dropped (56.5% vs 59.0%) with no reliable RT change. Non-decision time is constrained by the response-signal design and not treated as a free explanation; pupil–diffusion links were exploratory and inconclusive. Fit with 8 NUTS chains (R-hat ≤ 1.006, no divergences).
+:::
+:::
+
+::: {.chapter-block}
+### Motor — the grip as a signal
+
+Can the grip itself reveal cognitive strain? The same paradigm, read through the dynamometer trace: sub-second grip tremor tracked perceptual errors trial by trial, and it did so *equally* under light and heavy force—a general marker of neuromuscular-cognitive strain rather than an effort-specific artifact.
+
+```{=html}
+<div class="research-figure-pair">
+  <figure class="research-figure">
+    <a href="/images/research/stage4-psd-ribbon.png" class="lightbox" data-gallery="research" data-glightbox="title: Grip power spectral density by force level">
+      <img src="/images/research/stage4-psd-ribbon.png" alt="Welch power spectral density of grip force by effort condition" loading="lazy">
+    </a>
+    <figcaption>Power in the tremor band (8–12 Hz) separates correct from incorrect trials.</figcaption>
+  </figure>
+  <figure class="research-figure">
+    <a href="/images/research/stage4-caterpillar.png" class="lightbox" data-gallery="research" data-glightbox="title: Accuracy drop under high vs. low grip by participant">
+      <img src="/images/research/stage4-caterpillar.png" alt="Subject-level accuracy change under high versus low grip" loading="lazy">
+    </a>
+    <figcaption>Most participants showed lower accuracy under high grip—the motor signal tracks strain, not just nominal difficulty.</figcaption>
+  </figure>
+</div>
+```
+
+::: {.callout-note collapse="true" appearance="simple" icon=false title="The numbers"}
+64 older adults, 6,888 high-grip trials. Tremor-band power (8–12 Hz) predicted errors (OR = 0.64, 95% CI [0.46, 0.89], *p* = .008), sharpening on the hardest trials (χ²(4) = 15.08, *p* = .005) and holding equally across force levels (χ²(1) = 1.36, *p* = .24). Slower tracking-band power (0.5–3 Hz) carried no signal (OR = 1.03, *p* = .45). Read honestly: the spectral features improve fit in-sample (χ²(2) = 7.34, *p* = .03) but add negligible out-of-sample predictive lift (ROC-AUC ≈ 0.850 → 0.855)—motor dynamics *carry* strain information, they don't *predict* errors in any deployable sense.
+:::
 :::
 
 :::
+
+## The punchline
+
+> Under the limited capacity of aging, physical effort degrades the quality of the evidence feeding a perceptual decision—while leaving the decision policy, the caution and the bias, largely intact. Where the program finds nothing, it says so with bounds, not shrugs.
+
+---
+
+## Why it matters
+
+Most accounts stop at *whether* effort hurts performance. This program says *which component* it touches—and, just as usefully, which it spares. That distinction has teeth for systems meant to respond to a user's state, from wearables to XR: if effort erodes evidence quality rather than caution, a state-aware interface should help by cleaning up the signal—clearer cues, better contrast, more time—rather than by nudging a speed–accuracy tradeoff the user isn't actually shifting. The work connects psychology, cognitive neuroscience, and human factors, without claiming clinical translation, production deployment, or pupillometry as a diagnostic biomarker.
 
 Program overview: [dual-task case study](../projects/dual-task-case-study.qmd). Methods and computation: [Skills](../skills/skills.qmd).
 
@@ -62,29 +142,16 @@ Program overview: [dual-task case study](../projects/dual-task-case-study.qmd). 
 ::: {.panel-adjacent}
 Outside the dissertation, an [arXiv preprint](https://arxiv.org/abs/2603.15991) ([case study](../projects/case_study_web.qmd)) reports hand versus gaze pointing in a web-based, XR-relevant interaction task. Modality-specific failure modes match the intended contrast: gaze—slips and Midas Touch–type errors; hand—misses and spatial targeting failures. Throughput and Fitts-style analyses summarize speed–accuracy tradeoffs.
 
-Adaptive policies must be read narrowly: gaze declutter was the only policy that executed and was evaluable in this dataset (timeouts down modestly; slip-dominated gaze errors remained dominant). Hand target-width inflation was not evaluable because rendered targets did not update (UI integration bug). Linear ballistic accumulator (LBA) modeling there applies to verification-phase RTs only—see [Skills](../skills/skills.qmd) for stack and scope; it does not replace the dissertation Wiener DDM. This line supports HCI, human factors, and interaction breadth; the dissertation remains the primary training identity.
+Adaptive policies must be read narrowly: gaze declutter was the only policy that executed and was evaluable (timeouts down modestly; slip-dominated gaze errors remained dominant). Hand target-width inflation was not evaluable because rendered targets did not update (UI integration bug). Linear ballistic accumulator (LBA) modeling there applies to verification-phase RTs only—see [Skills](../skills/skills.qmd) for stack and scope; it does not replace the dissertation diffusion model. This line supports HCI and human-factors breadth; the dissertation remains the primary training identity.
 :::
 
 ---
 
 ## Core questions {.research-questions}
 
-- How does concurrent physical effort change perceptual decision-making across the lifespan, and where do effects appear—in behavior, in pupillometry, or in latent parameters?
-- How does psychometric function modeling complement behavior and pupillometry when eye-tracking data are incomplete or noisy?
-- Can a hierarchical Bayesian Wiener DDM separate drift-linked costs from caution, while treating non-decision time and pupil–parameter links with appropriate limits?
-- How do individual differences (for example cognitive reserve) interact with load beyond group averages?
-
----
-
-## Approach
-
-The progression is behavioral performance → psychometric function modeling → hierarchical Bayesian Wiener DDM, with pupillometry at stages where it informs arousal and physical effort without substituting for behavior. The aim is models you can read and stress-test, not one summary score that hides where the costs live. Implementation details: [Skills](../skills/skills.qmd).
-
----
-
-## Why this work matters
-
-This work connects psychology, cognitive neuroscience, human factors, and interface-relevant inference about state under load—without claiming clinical translation, production deployment, or pupillometry as a diagnostic biomarker.
+- Where does concurrent physical effort change perceptual decision-making in aging—in behavior, in arousal, or in the latent parameters of the decision?
+- When effort costs performance, is the mechanism reduced evidence quality, altered caution, shifted bias, or motor interference?
+- Can the motor signal itself—continuous grip force—carry trial-level information about cognitive strain, beyond nominal task difficulty?
 
 ::: {.link-row}
 [Publications](../publications/publications.qmd)

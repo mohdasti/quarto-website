@@ -4,6 +4,7 @@ project:
   execute-dir: project
   resources:
     - assets/**
+    - images/research/**
     - outputs/**
     - pdfs/**
     - photography/**
