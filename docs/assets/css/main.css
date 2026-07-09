@@ -951,19 +951,6 @@ div.quarto-post .listing-date,
   .ps-item { border-right: none; }
 }
 
-.nav-hire-btn {
-  background: var(--color-accent);
-  color: #fff !important;
-  padding: 0.3em 0.9em;
-  border-radius: 6px;
-  font-weight: 600;
-  font-size: 0.85rem;
-  transition: background var(--transition-base);
-}
-.nav-hire-btn:hover { background: var(--color-accent-dark) !important; }
-/* Override the nav-link color rule for this specific button */
-.navbar .nav-link:has(.nav-hire-btn) { color: #fff !important; }
-
 /* Home: no document `title` in YAML — hide empty Quarto title block so only `.hero-name` shows */
 main#quarto-document-content > header#title-block-header.quarto-title-block:not(:has(.title)) {
   display: none;

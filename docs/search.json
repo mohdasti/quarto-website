@@ -478,9 +478,9 @@
   {
     "objectID": "photography.html",
     "href": "photography.html",
-    "title": "Skills",
+    "title": "Beyond the Lab: Photography",
     "section": "",
-    "text": "When I’m away from eye-trackers and computational models, I’m usually chasing light—for fun, not for a portfolio. I shoot 35mm on a Ricoh KR-5 Super II, often with expired film that surprises me in the wash. I also keep a handful of digital edits when a scene stuck. More of both on my Flickr.\nDetailed methodology notes for technical reviewers below"
+    "text": "When I’m away from eye-trackers and computational models, I’m usually chasing light—for fun, not for a portfolio. I shoot 35mm on a Ricoh KR-5 Super II, often with expired film that surprises me in the wash. I also keep a handful of digital edits when a scene stuck. More of both on my Flickr.\n\n\n  \n    \n      \n      Close\n    \n    \n  \n  \n    \n      \n    \n    \n      \n    \n    \n      \n    \n  \n  \n\n\n\n  35mm Film\n  Click any image to open the in-page viewer. Arrow keys and side buttons browse within each section.\n\n\n\n  \n    \n      \n        \n      \n    \n    \n      Frame 01\n      Nathan Philips in Winter\n      \n        Toronto, ON\n      \n      I think it was winter 2014. I went to downtown and tried ice-skating for the first time with my family.\n    \n  \n\n  \n    \n      \n        \n      \n    \n    \n      Frame 02\n      Last day in my hometwon\n      \n        Darrous, Tehran\n      \n      We were packing to migrate to Canada for good. I took this photo from my balcony.\n    \n  \n\n  \n    \n      \n        \n      \n    \n    \n      Frame 03\n      Amir Kabir Statue\n      \n        Gheytarieh Park, Tehran\n      \n      I was experimenting with expired film. We frequently went to this park when I was a kid.\n    \n  \n\n  \n    \n      \n        \n      \n    \n    \n      Frame 04\n      Canadian Snowbird\n      \n        St Pete Beach, FL\n      \n      My first experience being a Canadian Snowbird! Loved the 2-week break from the harsh winter of Toronto.\n    \n  \n\n  \n    \n      \n        \n      \n    \n    \n      Frame 05\n      Night Pool\n      \n        Riverside, CA\n      \n      Tungsten-balanced stock under mixed lighting—the halation around practical lights is exactly why I reach for Cinestill after dark.\n    \n  \n\n  \n    \n      \n        \n      \n    \n    \n      Frame 06\n      Craftsman Porch\n      \n        Pasadena, CA\n      \n      Soft domestic light through a screened porch—consumer film stock doing more than it has any right to in open shade.\n    \n  \n\n  \n    \n      \n        \n      \n    \n    \n      Frame 07\n      Coastal Fog\n      \n        Malibu, CA\n      \n      Expired Ektar shifted the blues toward teal—a marine layer morning where the color cast felt more honest than correction would have.\n    \n  \n\n  \n    \n      \n        \n      \n    \n    \n      Frame 08\n      Harbor Light\n      \n        Newport Beach, CA\n      \n      Fine-grain daylight stock for a scene that didn't need drama—just accurate skin tones on the pier and a clean horizon line.\n    \n  \n\n  \n    \n      \n        \n      \n    \n    \n      Frame 09\n      Balboa Park\n      \n        San Diego, CA\n      \n      Spanish-revival architecture reduced to tonal planes—midday sun so harsh that composition mattered more than exposure latitude.\n    \n  \n\n  \n    \n      \n        \n      \n    \n    \n      Frame 10\n      Alpine Lake\n      \n        Big Bear Lake, CA\n      \n      Weekend escape from the lab—cooler air, longer shadows, and a cheap roll of Superia that punched above its price in mountain light.\n    \n  \n\n  \n    \n      \n        \n      \n    \n    \n      Frame 11\n      Last Light\n      \n        Los Angeles, CA\n      \n      Twenty-year-old film stock at golden hour—the colors drifted magenta and amber in ways no LUT could replicate convincingly.\n    \n  \n\n\n\n\n\n  Digital Edits\n  A few digital shots I've tinkered with on my phone or laptop—mostly when a scene felt worth keeping and I liked how it looked after a quick edit.\n\n  \n\n    \n      \n        \n          \n        \n      \n      \n        Coastal Blues\n        \n          Laguna Beach, CA\n        \n        Overcast afternoon by the water.\n      \n    \n\n    \n      \n        \n          \n        \n      \n      \n        City Neon\n        \n          Downtown LA\n        \n        Wet pavement and streetlights after rain.\n      \n    \n\n    \n      \n        \n          \n        \n      \n      \n        Desert Heat\n        \n          Palm Springs, CA\n        \n        Desert light on a weekend drive.\n      \n    \n\n    \n      \n        \n          \n        \n      \n      \n        Quiet Interior\n        \n          Riverside, CA\n        \n        Soft light through a window at home.\n      \n    \n\n    \n      \n        \n          \n        \n      \n      \n        Golden Hour Portrait\n        \n          Griffith Park, LA\n        \n        Late sun in the park.\n      \n    \n\n    \n      \n        \n          \n        \n      \n      \n        Night Walk\n        \n          Little Tokyo, LA\n        \n        Neon and quiet streets after dark.\n      \n    \n\n  \n\n\n  \n  mohdasti on Flickr\n  \n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "publications/publication1/index.html",
@@ -810,61 +810,5 @@
     "title": "CV",
     "section": "",
     "text": "Download Full CV (PDF)\n\n\n\n Back to top"
-  },
-  {
-    "objectID": "photography.html#core-research-methods",
-    "href": "photography.html#core-research-methods",
-    "title": "Skills",
-    "section": "Core research methods",
-    "text": "Core research methods\n\n\nPsychophysics\nDesign and analysis of auditory and visual same–different discrimination (and related tasks) under load; linking physical effort to sensitivity, bias, and dynamics. Descriptive psychometric functions fit with Psignifit (beta-binomial, free guess/lapse) as a behavioral backbone for the dissertation.\n\n\nPupillometry\nPreprocessing and quality control (blinks, artifacts, valid samples); window-specific validity; gap-aware handling of fragmented missing samples (Kret & Sjak-Shie–style metrics), plus formal missingness diagnostics to check for selection bias before inference.\n\n\nInterpretation\nPupil measures inform arousal and effort hypotheses; behavior and formal models remain primary for inference (aligned with Research)."
-  },
-  {
-    "objectID": "photography.html#experimental-design-and-data-collection",
-    "href": "photography.html#experimental-design-and-data-collection",
-    "title": "Skills",
-    "section": "Experimental design and data collection",
-    "text": "Experimental design and data collection\n\n\nHandgrip dual-task paradigm\nConcurrent physical effort (graded isometric grip) with cognitive and perceptual tasks, including same–different discrimination and memory components as required.\n\n\nWithin-subject structure and preregistration\nFactorial and repeated-measures layouts; counterbalancing of orders and conditions. Where studies are preregistered, analyses follow registered hypotheses, exclusions, and plans.\n\n\nLab implementation\nMATLAB and PsychToolbox for stimulus delivery and responses; calibration and exclusion rules documented in materials."
-  },
-  {
-    "objectID": "photography.html#modeling-and-statistical-inference",
-    "href": "photography.html#modeling-and-statistical-inference",
-    "title": "Skills",
-    "section": "Modeling and statistical inference",
-    "text": "Modeling and statistical inference\nTwo threads run through the modeling work: separating what you can perceive from how you decide, and evidence-accumulation (sequential-sampling) models—a Wiener DDM for the dissertation and an LBA for the XR verification phase, kept methodologically distinct.\n\n\nPsychometric function modeling\nSeparate effects on perceptual evidence (slope/sensitivity) versus criterion (location) under physical effort and load, in a signal-detection framework.\n\n\nMixed-effects models\nLMMs and GLMMs in R (lme4, emmeans) for repeated measures and individual differences, including probit GLMMs with within-subject (trait/state) decomposition, aligned with the dual-task roadmap.\n\n\nHierarchical Bayesian Wiener DDM (dissertation)\nTrial-level decomposition (drift rate, boundary separation, starting point, non-decision time) in brms / CmdStan (multi-chain NUTS). Workflow includes PSIS-LOO model comparison with Pareto-k checks, posterior predictive checks, convergence diagnostics (R-hat, ESS, divergences), and ROPE-based equivalence for near-zero effects. This is what localized effort’s cost to evidence quality rather than caution—see Research (code). Scope and caveats (non-decision time constrained by design; pupil–parameter links exploratory) are stated there.\n\n\nModel scrutiny\nSensitivity analyses, alternative specifications, model comparison, and equivalence testing (TOST, ROPE) to put bounds on null results rather than leaving them as “not significant.”\n\n\n\nThe XR case study uses hierarchical Bayesian LBA in PyMC for verification-phase RTs after target entry. That framework is separate from the dissertation Wiener DDM and is not interchangeable with it."
-  },
-  {
-    "objectID": "photography.html#signal-processing-and-machine-learning",
-    "href": "photography.html#signal-processing-and-machine-learning",
-    "title": "Skills",
-    "section": "Signal processing and machine learning",
-    "text": "Signal processing and machine learning\n\n\nSpectral analysis of sensor data\nSingle-trial digital signal processing of continuous grip-force traces: zero-phase Butterworth filtering (scipy.signal), Welch power spectral density, and band-power feature extraction (e.g., 8–12 Hz tremor vs. 0.5–3 Hz tracking). Used to test whether motor dynamics carry trial-level cognitive strain in the Motor strand (code).\n\n\nMachine learning and validation\nSubject-aware cross-validation (grouped folds), ROC-AUC, random-forest and gradient-boosted classifiers, and SHAP feature attribution; probability calibration (Platt scaling) where decisions need well-scaled scores. Predictive claims are held to out-of-sample performance and reported plainly—including when incremental lift is small."
-  },
-  {
-    "objectID": "photography.html#programming-and-research-computing",
-    "href": "photography.html#programming-and-research-computing",
-    "title": "Skills",
-    "section": "Programming and research computing",
-    "text": "Programming and research computing\n\n\nR\ntidyverse, ggplot2; mixed models (lme4, emmeans); brms and Stan interfaces; loo / posterior / bayesplot for Bayesian workflow; Quarto for analyses and this site.\n\n\nPython\nPyMC and CmdStan for Bayesian modeling; scipy / numpy for signal processing; pandas for data wrangling and feature pipelines.\n\n\nMATLAB\nPsychToolbox for experiment control and stimulus delivery.\n\n\nHigh-performance and cloud compute\nLong-running MCMC fits on Google Cloud Platform; multi-chain sampling with convergence and reproducibility checks.\n\n\nVersion control\nGit and GitHub for versioned scripts and reproducible layout."
-  },
-  {
-    "objectID": "photography.html#scientific-communication-and-reproducibility",
-    "href": "photography.html#scientific-communication-and-reproducibility",
-    "title": "Skills",
-    "section": "Scientific communication and reproducibility",
-    "text": "Scientific communication and reproducibility\n\n\nReproducible reports\nQuarto and R Markdown (legacy) so tables and figures rebuild from code; archived releases via Zenodo where applicable.\n\n\nWriting and rigor\nLaTeX for manuscripts; exploratory versus confirmatory reporting kept distinct where both apply.\n\n\nTraceability\nREADME notes, pinned dependencies where used, and QC logs for pupillometry, signal-processing, and behavioral pipelines."
-  },
-  {
-    "objectID": "photography.html#additional-and-adjacent-methods",
-    "href": "photography.html#additional-and-adjacent-methods",
-    "title": "Skills",
-    "section": "Additional and adjacent methods",
-    "text": "Additional and adjacent methods\n\nHand versus gaze interaction (portfolio / preprint)\narXiv:2603.15991 · case study. Adjacent to the dissertation; adds HCI- and XR-relevant breadth.\n\nWeb task: React and TypeScript; remote sessions; display calibration and session checks across devices (platform code).\nDesign: ISO 9241-9–style multidirectional tapping; Fitts difficulty and throughput; Williams block counterbalancing; NASA-TLX workload.\nGaze proxy: physiologically informed gaze simulation (latency, jitter, saccadic suppression) for gaze versus hand comparison without lab eye-tracking.\nPolicy-triggered adaptive UI: declutter (gaze) and width inflation (hand). In the analyzed data, only declutter executed and was evaluable (modest timeout reduction; slips still dominated gaze errors). Hand width inflation was not evaluable—targets did not scale in the UI (integration bug); that policy is not validated here.\nLBA fits: Python and PyMC for verification-phase RTs only—see the note under Modeling above.\n\nOther secondary experience: surgeon dashboard (R Shiny, XGBoost); EEG thesis; imaging collaborations under Publications; SST role on About."
-  },
-  {
-    "objectID": "photography.html#languages",
-    "href": "photography.html#languages",
-    "title": "Skills",
-    "section": "Languages",
-    "text": "Languages\n\nPersian — Native English — Professional French — Basic"
   }
 ]

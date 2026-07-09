@@ -36,6 +36,8 @@ website:
   navbar:
     search: true
     right:
+      - text: Home
+        href: home.qmd
       - text: About
         href: about/about.qmd
       - text: Portfolio
@@ -50,9 +52,6 @@ website:
         href: cv.qmd
       - text: 35mm Film
         href: photography.qmd
-      - text: '<span class="nav-hire-btn">Hire Me</span>'
-        href: "mailto:m.dastgheib@gmail.com"
-        aria-label: "Contact Mohammad"
         
   page-footer:
     left: "© 2026 Mohammad Dastgheib &nbsp;·&nbsp; PhD Candidate, UC Riverside"
