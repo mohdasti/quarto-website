@@ -1,131 +1,136 @@
-# Mohammad Dastgheib - Personal Website
+# Mohammad Dastgheib — Personal Website
 
 [![Website](https://img.shields.io/badge/Website-mdastgheib.com-e63946?style=flat-square)](https://mdastgheib.com)
 [![Built with Quarto](https://img.shields.io/badge/Built%20with-Quarto-4B8BBE?style=flat-square)](https://quarto.org/)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg?style=flat-square)](LICENSE)
 
-A professional academic website showcasing research in cognitive neuroscience, human factors, and applied psychology. Built with Quarto for modern scientific publishing and deployed on Netlify.
+Academic portfolio site for a PhD Candidate in Cognitive Neuroscience at UC Riverside. The site presents dissertation research on physical effort and perceptual decision-making in aging, adjacent XR/HCI work, case studies, publications, and skills—built with [Quarto](https://quarto.org/) and deployed on Netlify.
 
-## 🌐 Live Site
+**Live site:** [mdastgheib.com](https://mdastgheib.com)
 
-Visit the website at: **[mdastgheib.com](https://mdastgheib.com)**
+## Features
 
-## 🚀 Features
+- **Narrative research page** — Four-stage dissertation arc with paradigm schematic, per-figure takeaways, and a visually distinct appendix lane for adjacent XR/HCI work
+- **Skills page** — Methods, modeling, signal processing, and computation tied to the research program (not a generic résumé)
+- **Portfolio** — Filterable case studies (dual-task program, XR interaction, surgical monitoring, EEG thesis)
+- **Publications** — Peer-reviewed articles, conference presentations, and in-preparation manuscripts
+- **35mm film gallery** — Personal photography with an in-page viewer
+- **Dark mode** — Theme-aware styling across pages
+- **Search, TOC, and lightbox** — Site search, page navigation, and figure lightboxes where enabled
+- **Academic profiles** — Google Scholar, ORCID, GitHub, and LinkedIn in the footer
 
-- **Interactive Portfolio**: Tag-based filtering for projects and case studies
-- **Research Showcase**: Publications, case studies, and methodology demonstrations
-- **Real-time Systems**: Production-ready ML applications with live dashboards
-- **Responsive Design**: Optimized for desktop, tablet, and mobile devices
-- **Academic Integration**: Google Scholar, ORCID, and Neurotree profiles
-- **Modern UI**: Clean, professional design with custom CSS styling
-- **Search Functionality**: Built-in site search for easy navigation
-- **Social Integration**: Links to LinkedIn, GitHub, X (Twitter), and Bluesky
+## Built with
 
-## 🛠️ Built With
+- [Quarto](https://quarto.org/) — static site generation from `.qmd` sources
+- Custom CSS — `assets/css/` (main, research-skills, photography, publications, index)
+- [Netlify](https://www.netlify.com/) — hosting and continuous deployment (`docs/` publish directory)
+- Font Awesome and Academicons — icons and academic branding
 
-- **[Quarto](https://quarto.org/)** - Modern scientific publishing system
-- **Custom CSS** - Tailored styling and responsive design
-- **JavaScript** - Interactive portfolio filtering
-- **Netlify** - Hosting and continuous deployment
-- **Font Awesome & Academicons** - Professional iconography
-
-## 📁 Project Structure
+## Project structure
 
 ```
 quarto-website/
-├── _quarto.yml          # Quarto configuration
-├── _publish.yml         # Publishing settings
-├── home.qmd             # Homepage (outputs index.html)
-├── about/               # about/about.qmd
-├── portfolio/           # portfolio/portfolio.qmd
-├── publications/        # publications/publications.qmd; peer-reviewed/; preprints/; publication*/
-├── projects/            # Case studies and projects
-├── research/            # research/research.qmd
-├── skills/              # skills/skills.qmd
-├── assets/              # CSS and styling
-├── images/              # Images and media
-└── CV/                  # CV and resume files
+├── _quarto.yml              # Site config, navbar, theme, analytics
+├── _publish.yml             # Netlify publish settings
+├── home.qmd                 # Homepage → docs/index.html
+├── photography.qmd          # 35mm film + digital edits gallery
+├── cv.qmd                   # CV page
+├── about/                   # About page
+├── research/                # Narrative dissertation research page
+├── skills/                  # Methods and technical skills
+├── portfolio/               # Case study listing
+├── publications/            # Publications hub + article subpages
+├── projects/                # Individual case studies and demos
+├── assets/css/              # Stylesheets
+├── images/                  # Site images (incl. images/research/ figures)
+├── photography/             # Film and digital photo assets
+├── docs/                    # Rendered site output (deployed to Netlify)
+└── CV/                      # CV source files
 ```
 
-## 🚀 Getting Started
+## Getting started
 
 ### Prerequisites
 
-- [Quarto](https://quarto.org/docs/get-started/) installed on your system
-- Git for version control
+- [Quarto](https://quarto.org/docs/get-started/) (1.4+ recommended)
+- Git
 
-### Installation
+Optional: Node.js 14+ if you use the npm scripts or Netlify Quarto plugin locally.
 
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/mohdasti/quarto-website.git
-   cd quarto-website
-   ```
+### Local development
 
-2. **Install dependencies** (if using package.json)
-   ```bash
-   npm install
-   ```
+```bash
+git clone https://github.com/mohdasti/quarto-website.git
+cd quarto-website
 
-3. **Preview the site locally**
-   ```bash
-   quarto preview
-   ```
+# Live preview with file watching
+npm run dev
+# or: quarto preview --watch
 
-4. **Build the site**
-   ```bash
-   quarto render
-   ```
+# One-off preview
+npm run serve
 
-### Development
+# Full site build → docs/
+npm run build
+# or: quarto render
 
-- **Live preview**: `quarto preview --watch`
-- **Build for production**: `quarto render`
-- **Clean build**: `quarto render --clean`
+# Clean rebuild
+npm run clean
+```
 
-## 🎨 Customization
+Render a single page while editing:
+
+```bash
+quarto render research/research.qmd
+quarto render photography.qmd
+```
+
+## Customization
+
+### Site-wide settings
+
+Edit `_quarto.yml` for the navbar, footer, theme (light/dark), Google Analytics, and global HTML format options.
 
 ### Styling
-- Main styles: `assets/css/main.css`
-- Component-specific styles in `assets/css/`
-- Color scheme: Primary color `#e63946` (red)
+
+| File | Role |
+|------|------|
+| `assets/css/main.css` | Global layout, navbar, footer, NIH funding band |
+| `assets/css/research-skills.css` | Research, Skills, Publications, About |
+| `assets/css/photography.css` | Film gallery and in-page viewer |
+| `assets/css/index.css` | Homepage hero and metrics |
+| `assets/css/publications.css` | Publications listing |
+
+Palette: navy `#1d3557`, blue `#457b9d`, teal `#a8dadc`, accent `#e63946`.
 
 ### Content
-- Update `_quarto.yml` for site-wide settings
-- Modify individual `.qmd` files for page content
-- Add new projects in `projects/` directory
-- Update publications in `publications/` directory
+
+- Page copy lives in `.qmd` files at the paths listed above
+- Add case studies under `projects/` and list them in `portfolio/portfolio.qmd`
+- Research figures go in `images/research/` (referenced from `research/research.qmd`)
+- Film photos go in `photography/`
 
 ### Deployment
-- Configured for Netlify deployment
-- Settings in `_publish.yml`
-- Automatic builds on push to main branch
 
-## 📝 License
+- Output directory: `docs/` (configured in `_quarto.yml`)
+- Netlify settings in `_publish.yml`
+- Pushes to `main` trigger automatic builds when connected to Netlify
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## License
 
-## 👤 Author
+MIT — see [LICENSE](LICENSE).
+
+## Author
 
 **Mohammad Dastgheib**
+
 - Website: [mdastgheib.com](https://mdastgheib.com)
 - Email: m.dastgheib@gmail.com
 - LinkedIn: [linkedin.com/in/mdastgheib](https://linkedin.com/in/mdastgheib)
 - GitHub: [github.com/mohdasti](https://github.com/mohdasti)
 - Google Scholar: [scholar.google.com/citations?user=SNVpHcUAAAAJ](https://scholar.google.com/citations?user=SNVpHcUAAAAJ)
+- ORCID: [0000-0001-7684-3731](https://orcid.org/0000-0001-7684-3731)
 
-## 🤝 Contributing
+## Contributing
 
-Contributions, issues, and feature requests are welcome! Feel free to check the [contributing guidelines](CONTRIBUTING.md).
-
-## 📊 Site Statistics
-
-- **Pages**: 8+ pages including portfolio, publications, and case studies
-- **Projects**: Multiple research projects and case studies including real-time ML systems
-- **Publications**: Peer-reviewed research and conference presentations
-- **Technologies**: Quarto, HTML, CSS, JavaScript, R/Shiny, Netlify
-- **Case Studies**: Interactive demonstrations of cognitive neuroscience applications
-
----
-
-*Built with ❤️ using Quarto and deployed on Netlify*
+Issues and pull requests are welcome. See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
