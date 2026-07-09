@@ -115,7 +115,7 @@ In older adults, does moment-to-moment arousal sharpen or blunt perception? Neit
   <a href="/images/research/stage2-effort-dissociation.png" class="lightbox" data-gallery="research" data-glightbox="title: Sustained vs. momentary pupil effects under effort — older adults">
     <img src="/images/research/stage2-effort-dissociation.png" alt="Effects of effort on sustained versus momentary pupil responses in older adults" loading="lazy">
   </a>
-  <figcaption><strong>What to look at:</strong> Sustained arousal rises under effort (left) while the stimulus-locked pupil dip deepens (right)—two different time scales, not one simple story.</figcaption>
+  <figcaption><strong>What to look at:</strong> Sustained arousal rises under effort (left) while the stimulus-locked pupil measure drops (right)—two different time scales, not one simple story.</figcaption>
 </figure>
 ```
 
@@ -203,13 +203,23 @@ The content of this website is solely the responsibility of the author and does 
 <p class="research-adjacent-eyebrow"><span class="research-adjacent-badge">Adjacent · arXiv preprint</span> Independent study — not part of the NIH-funded program</p>
 ```
 
-## Adjacent: XR / HCI
+## Adjacent: gaze vs. hand pointing in XR
 
-::: {.panel-adjacent}
-An [arXiv preprint](https://arxiv.org/abs/2603.15991) ([case study](../projects/case_study_web.qmd)) reports hand versus gaze pointing in a web-based, XR-relevant interaction task. Modality-specific failure modes match the intended contrast: gaze—slips and Midas Touch–type errors; hand—misses and spatial targeting failures. Throughput and Fitts-style analyses summarize speed–accuracy tradeoffs.
+A separate, open-source line of work asks the dissertation's question in a new place: when a pointing task gets hard, *where* does the cost show up—and does it differ by input channel? Using a web-based [ISO 9241-9](https://www.iso.org/standard/30030.html) target-acquisition task with a physiologically-grounded gaze *simulation* (not eye-tracking hardware), it compares hand and gaze selection under adaptive vs. static UI and time pressure.
 
-Adaptive policies must be read narrowly: gaze declutter was the only policy that executed and was evaluable (timeouts down modestly; slip-dominated gaze errors remained dominant). Hand target-width inflation was not evaluable because rendered targets did not update (UI integration bug). Linear ballistic accumulator (LBA) modeling there applies to verification-phase RTs only—see [Skills](../skills/skills.qmd) for stack and scope; it does not replace the dissertation diffusion model. This line supports HCI and human-factors breadth; the dissertation remains the primary training identity.
-:::
+The signature result is a clean dissociation: the two modalities fail in opposite ways. Gaze errors are almost all **slips** (99.2%)—accidental activations from looking rather than intending—while hand errors are almost all **misses** (95.7%). That is the Midas Touch problem made measurable: gaze couples *looking to see* with *looking to select*. Modeling the verification phase with a hierarchical Bayesian LBA places gaze's extra cost in the same kind of spot the dissertation localizes effort—one stage of the decision, the commit step of deciding a look is a choice, rather than the movement itself.
+
+```{=html}
+<p class="research-takeaway"><strong>Takeaway:</strong> Gaze fails by acting when you were only looking; hand fails by missing. Adaptive XR should target each modality's own failure mode—not adapt generically.</p>
+<figure class="research-figure">
+  <a href="/projects/images/error_type_composition.png" class="lightbox" data-gallery="research" data-glightbox="title: Error-type composition by modality — the Midas Touch signature">
+    <img src="/projects/images/error_type_composition.png" alt="Gaze errors are almost entirely slips; hand errors are almost entirely misses" loading="lazy">
+  </a>
+  <figcaption><strong>What to look at:</strong> Nearly all gaze errors are <em>slips</em> (selected while just looking); nearly all hand errors are <em>misses</em> (aimed but didn't land). One picture, two failure modes.</figcaption>
+</figure>
+```
+
+The full treatment—the remote testbed, spatial error maps, the LBA parameter model, and an honest teardown of which adaptive policy actually executed—lives in the **[case study →](../projects/case_study_web.qmd)**. In brief: of two adaptive policies, only gaze declutter ran (it trimmed timeouts, not slips), and hand target-inflation was caught un-executed by the telemetry itself—an instrumentation win, not a result. This line supports HCI and human-factors breadth; the dissertation remains the primary training identity.
 
 :::
 
