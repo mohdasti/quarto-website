@@ -338,6 +338,7 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
   <li><a href="#core-research-methods" id="toc-core-research-methods" class="nav-link active" data-scroll-target="#core-research-methods">Core research methods</a></li>
   <li><a href="#experimental-design-and-data-collection" id="toc-experimental-design-and-data-collection" class="nav-link" data-scroll-target="#experimental-design-and-data-collection">Experimental design and data collection</a></li>
   <li><a href="#modeling-and-statistical-inference" id="toc-modeling-and-statistical-inference" class="nav-link" data-scroll-target="#modeling-and-statistical-inference">Modeling and statistical inference</a></li>
+  <li><a href="#signal-processing-and-machine-learning" id="toc-signal-processing-and-machine-learning" class="nav-link" data-scroll-target="#signal-processing-and-machine-learning">Signal processing and machine learning</a></li>
   <li><a href="#programming-and-research-computing" id="toc-programming-and-research-computing" class="nav-link" data-scroll-target="#programming-and-research-computing">Programming and research computing</a></li>
   <li><a href="#scientific-communication-and-reproducibility" id="toc-scientific-communication-and-reproducibility" class="nav-link" data-scroll-target="#scientific-communication-and-reproducibility">Scientific communication and reproducibility</a></li>
   <li><a href="#additional-and-adjacent-methods" id="toc-additional-and-adjacent-methods" class="nav-link" data-scroll-target="#additional-and-adjacent-methods">Additional and adjacent methods</a>
@@ -402,12 +403,14 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
     </h4>
     <div class="skills-group-badges">
       <span class="skill-badge">Hierarchical Bayesian DDM</span>
+      <span class="skill-badge">Bayesian LBA (PyMC)</span>
       <span class="skill-badge">Mixed-Effects Models (LMM / GLMM)</span>
       <span class="skill-badge">Signal Detection Theory</span>
-      <span class="skill-badge">Bayesian LBA (PyMC)</span>
-      <span class="skill-badge">XGBoost / ML</span>
+      <span class="skill-badge">Signal Processing &amp; Spectral Analysis</span>
+      <span class="skill-badge">Bayesian Workflow (PSIS-LOO, PPC, R-hat)</span>
+      <span class="skill-badge">Machine Learning (RF, XGBoost, SHAP)</span>
       <span class="skill-badge">Platt Scaling / Calibration</span>
-      <span class="skill-badge">Sensitivity Analysis</span>
+      <span class="skill-badge">Sensitivity &amp; Equivalence (TOST / ROPE)</span>
     </div>
   </div>
 
@@ -422,6 +425,7 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
       <span class="skill-badge">Stan / CmdStan</span>
       <span class="skill-badge">React / TypeScript</span>
       <span class="skill-badge">R Shiny</span>
+      <span class="skill-badge">Cloud Compute (GCP)</span>
       <span class="skill-badge">Git / GitHub</span>
       <span class="skill-badge">Quarto / R Markdown</span>
       <span class="skill-badge">LaTeX</span>
@@ -450,7 +454,7 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
   Detailed methodology notes for technical reviewers below
 </p>
 <div class="page-lead">
-<p>This page describes how the <a href="../research/index.html">Research</a> program is implemented—methods, workflow, and computation—not a generic résumé. The dissertation toolkit fills the sections below; XR and interaction methods are grouped at the end as adjacent work.</p>
+<p>This page describes how the <a href="../research/index.html">Research</a> program is implemented—methods, workflow, and computation—not a generic résumé. Where a method produced a concrete result, it links to where it was actually used. The dissertation toolkit fills the sections below; XR and interaction methods are grouped at the end as adjacent work.</p>
 </div>
 <div class="link-row">
 <p><a href="../publications/index.html">Publications</a> <a href="../cv.html">CV</a></p>
@@ -462,11 +466,11 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 <div class="skills-block">
 <section id="psychophysics" class="level3">
 <h3 class="anchored" data-anchor-id="psychophysics">Psychophysics</h3>
-<p>Design and analysis of auditory and visual same–different discrimination (and related tasks) under load; linking physical effort to sensitivity, bias, and dynamics.</p>
+<p>Design and analysis of auditory and visual same–different discrimination (and related tasks) under load; linking physical effort to sensitivity, bias, and dynamics. Descriptive psychometric functions fit with Psignifit (beta-binomial, free guess/lapse) as a behavioral backbone for the <a href="../research/index.html">dissertation</a>.</p>
 </section>
 <section id="pupillometry" class="level3">
 <h3 class="anchored" data-anchor-id="pupillometry">Pupillometry</h3>
-<p>Preprocessing and quality control (blinks, artifacts, valid samples); window-specific validity; gap-aware handling of missing samples.</p>
+<p>Preprocessing and quality control (blinks, artifacts, valid samples); window-specific validity; gap-aware handling of fragmented missing samples (Kret &amp; Sjak-Shie–style metrics), plus formal missingness diagnostics to check for selection bias before inference.</p>
 </section>
 <section id="interpretation" class="level3">
 <h3 class="anchored" data-anchor-id="interpretation">Interpretation</h3>
@@ -499,26 +503,43 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 
 <section id="modeling-and-statistical-inference" class="level2">
 <h2 class="anchored" data-anchor-id="modeling-and-statistical-inference">Modeling and statistical inference</h2>
+<p>Two threads run through the modeling work: separating <em>what you can perceive</em> from <em>how you decide</em>, and evidence-accumulation (sequential-sampling) models—a Wiener DDM for the dissertation and an LBA for the XR verification phase, kept methodologically distinct.</p>
 <div class="skills-block">
 <section id="psychometric-function-modeling" class="level3">
 <h3 class="anchored" data-anchor-id="psychometric-function-modeling">Psychometric function modeling</h3>
-<p>Separate effects on perceptual evidence versus criterion under physical effort and load.</p>
+<p>Separate effects on perceptual evidence (slope/sensitivity) versus criterion (location) under physical effort and load, in a signal-detection framework.</p>
 </section>
 <section id="mixed-effects-models" class="level3">
 <h3 class="anchored" data-anchor-id="mixed-effects-models">Mixed-effects models</h3>
-<p>LMMs and GLMMs in R (lme4, emmeans) for repeated measures and individual differences, aligned with the <a href="../projects/dual-task-case-study.html">dual-task roadmap</a>.</p>
+<p>LMMs and GLMMs in R (lme4, emmeans) for repeated measures and individual differences, including probit GLMMs with within-subject (trait/state) decomposition, aligned with the <a href="../projects/dual-task-case-study.html">dual-task roadmap</a>.</p>
 </section>
 <section id="hierarchical-bayesian-wiener-ddm-dissertation" class="level3">
 <h3 class="anchored" data-anchor-id="hierarchical-bayesian-wiener-ddm-dissertation">Hierarchical Bayesian Wiener DDM (dissertation)</h3>
-<p>Trial-level decomposition (drift rate, boundaries, non-decision time); implemented with brms and Stan (CmdStan-class) workflows. Scope and caveats—non-decision time constrained by design; pupil–parameter links exploratory—are stated on <a href="../research/index.html">Research</a>.</p>
+<p>Trial-level decomposition (drift rate, boundary separation, starting point, non-decision time) in brms / CmdStan (multi-chain NUTS). Workflow includes PSIS-LOO model comparison with Pareto-k checks, posterior predictive checks, convergence diagnostics (R-hat, ESS, divergences), and ROPE-based equivalence for near-zero effects. This is what localized effort’s cost to evidence quality rather than caution—see <a href="../research/index.html">Research</a> (<a href="https://github.com/mohdasti/modeling-pupil-DDM">code</a>). Scope and caveats (non-decision time constrained by design; pupil–parameter links exploratory) are stated there.</p>
 </section>
 <section id="model-scrutiny" class="level3">
 <h3 class="anchored" data-anchor-id="model-scrutiny">Model scrutiny</h3>
-<p>Sensitivity analyses, alternative specifications, model comparison, and interval- or equivalence-style reasoning where relevant.</p>
+<p>Sensitivity analyses, alternative specifications, model comparison, and equivalence testing (TOST, ROPE) to put <em>bounds</em> on null results rather than leaving them as “not significant.”</p>
 </section>
 </div>
 <div class="xr-note">
 <p>The <a href="../projects/case_study_web.html">XR case study</a> uses hierarchical Bayesian LBA in PyMC for verification-phase RTs after target entry. That framework is separate from the dissertation Wiener DDM and is not interchangeable with it.</p>
+</div>
+</section></div>
+<hr>
+<div class="section-card">
+
+<section id="signal-processing-and-machine-learning" class="level2">
+<h2 class="anchored" data-anchor-id="signal-processing-and-machine-learning">Signal processing and machine learning</h2>
+<div class="skills-block">
+<section id="spectral-analysis-of-sensor-data" class="level3">
+<h3 class="anchored" data-anchor-id="spectral-analysis-of-sensor-data">Spectral analysis of sensor data</h3>
+<p>Single-trial digital signal processing of continuous grip-force traces: zero-phase Butterworth filtering (<code>scipy.signal</code>), Welch power spectral density, and band-power feature extraction (e.g., 8–12 Hz tremor vs.&nbsp;0.5–3 Hz tracking). Used to test whether motor dynamics carry trial-level cognitive strain in the <a href="../research/index.html">Motor strand</a> (<a href="https://github.com/mohdasti/dynamometer-analysis">code</a>).</p>
+</section>
+<section id="machine-learning-and-validation" class="level3">
+<h3 class="anchored" data-anchor-id="machine-learning-and-validation">Machine learning and validation</h3>
+<p>Subject-aware cross-validation (grouped folds), ROC-AUC, random-forest and gradient-boosted classifiers, and SHAP feature attribution; probability calibration (Platt scaling) where decisions need well-scaled scores. Predictive claims are held to out-of-sample performance and reported plainly—including when incremental lift is small.</p>
+</section>
 </div>
 </section></div>
 <hr>
@@ -529,11 +550,19 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 <div class="skills-block">
 <section id="r" class="level3">
 <h3 class="anchored" data-anchor-id="r">R</h3>
-<p>tidyverse, ggplot2; mixed models; brms and Stan interfaces; Quarto for analyses and this site.</p>
+<p>tidyverse, ggplot2; mixed models (lme4, emmeans); brms and Stan interfaces; loo / posterior / bayesplot for Bayesian workflow; Quarto for analyses and this site.</p>
+</section>
+<section id="python" class="level3">
+<h3 class="anchored" data-anchor-id="python">Python</h3>
+<p>PyMC and CmdStan for Bayesian modeling; <code>scipy</code> / <code>numpy</code> for signal processing; <code>pandas</code> for data wrangling and feature pipelines.</p>
 </section>
 <section id="matlab" class="level3">
 <h3 class="anchored" data-anchor-id="matlab">MATLAB</h3>
-<p>PsychToolbox for experiment control.</p>
+<p>PsychToolbox for experiment control and stimulus delivery.</p>
+</section>
+<section id="high-performance-and-cloud-compute" class="level3">
+<h3 class="anchored" data-anchor-id="high-performance-and-cloud-compute">High-performance and cloud compute</h3>
+<p>Long-running MCMC fits on Google Cloud Platform; multi-chain sampling with convergence and reproducibility checks.</p>
 </section>
 <section id="version-control" class="level3">
 <h3 class="anchored" data-anchor-id="version-control">Version control</h3>
@@ -549,7 +578,7 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 <div class="skills-block">
 <section id="reproducible-reports" class="level3">
 <h3 class="anchored" data-anchor-id="reproducible-reports">Reproducible reports</h3>
-<p>Quarto and R Markdown (legacy) so tables and figures rebuild from code.</p>
+<p>Quarto and R Markdown (legacy) so tables and figures rebuild from code; archived releases via Zenodo where applicable.</p>
 </section>
 <section id="writing-and-rigor" class="level3">
 <h3 class="anchored" data-anchor-id="writing-and-rigor">Writing and rigor</h3>
@@ -557,7 +586,7 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 </section>
 <section id="traceability" class="level3">
 <h3 class="anchored" data-anchor-id="traceability">Traceability</h3>
-<p>README notes, pinned dependencies where used, and QC logs for pupillometry and behavioral pipelines.</p>
+<p>README notes, pinned dependencies where used, and QC logs for pupillometry, signal-processing, and behavioral pipelines.</p>
 </section>
 </div>
 </section></div>
@@ -570,7 +599,7 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 <h3 class="anchored" data-anchor-id="hand-versus-gaze-interaction-portfolio-preprint">Hand versus gaze interaction (portfolio / preprint)</h3>
 <p><a href="https://arxiv.org/abs/2603.15991">arXiv:2603.15991</a> · <a href="../projects/case_study_web.html">case study</a>. Adjacent to the dissertation; adds HCI- and XR-relevant breadth.</p>
 <ul>
-<li>Web task: React and TypeScript; remote sessions; display calibration and session checks across devices.</li>
+<li>Web task: React and TypeScript; remote sessions; display calibration and session checks across devices (<a href="https://github.com/mohdasti/xr-adaptive-modality-2025">platform code</a>).</li>
 <li>Design: ISO 9241-9–style multidirectional tapping; Fitts difficulty and throughput; Williams block counterbalancing; NASA-TLX workload.</li>
 <li>Gaze proxy: physiologically informed gaze simulation (latency, jitter, saccadic suppression) for gaze versus hand comparison without lab eye-tracking.</li>
 <li>Policy-triggered adaptive UI: declutter (gaze) and width inflation (hand). In the analyzed data, only declutter executed and was evaluable (modest timeout reduction; slips still dominated gaze errors). Hand width inflation was not evaluable—targets did not scale in the UI (integration bug); that policy is not validated here.</li>

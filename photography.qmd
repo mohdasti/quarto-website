@@ -50,59 +50,59 @@ When I'm away from eye-trackers and computational models, I'm usually chasing li
     </div>
     <div class="photo-feature__text">
       <span class="photo-feature__frame">Frame 01</span>
-      <h3 class="photo-feature__title">Pier at Dusk</h3>
+      <h3 class="photo-feature__title">Nathan Philips in Winter</h3>
       <div class="photo-feature__meta">
-        <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>Santa Monica, CA</span>
+        <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>Toronto, ON</span>
       </div>
-      <p class="photo-feature__desc">Late-afternoon light pooling along the boardwalk—one of those walks where you stop adjusting settings and just follow the exposure meter toward the warm side.</p>
+      <p class="photo-feature__desc">I think it was winter 2014. I went to downtown and tried ice-skating for the first time with my family.</p>
     </div>
   </article>
 
   <article class="photo-feature photo-feature--reverse photo-gallery-item" data-gallery="film">
     <div class="photo-feature__media">
       <a href="/photography/photo2.jpg" class="photo-feature__trigger" data-photo-index="1">
-        <img src="/photography/photo2.jpg" alt="Urban geometry in downtown Los Angeles" loading="lazy">
+        <img src="/photography/photo2.jpg" alt="Ice-skating in Downtown Toronto" loading="lazy">
       </a>
     </div>
     <div class="photo-feature__text">
       <span class="photo-feature__frame">Frame 02</span>
-      <h3 class="photo-feature__title">Concrete &amp; Shadow</h3>
+      <h3 class="photo-feature__title">Last day in my hometwon</h3>
       <div class="photo-feature__meta">
-        <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>Downtown Los Angeles</span>
+        <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>Darrous, Tehran</span>
       </div>
-      <p class="photo-feature__desc">Expired black-and-white stock pushed the contrast harder than expected—deep shadows under the overpass, blown highlights on the facade. A happy accident from old chemistry.</p>
+      <p class="photo-feature__desc">We were packing to migrate to Canada for good. I took this photo from my balcony.</p>
     </div>
   </article>
 
   <article class="photo-feature photo-gallery-item" data-gallery="film">
     <div class="photo-feature__media">
       <a href="/photography/photo3.jpg" class="photo-feature__trigger" data-photo-index="2">
-        <img src="/photography/photo3.jpg" alt="Joshua Tree desert landscape" loading="lazy">
+        <img src="/photography/photo3.jpg" alt="Gheytarieh Park, Tehran" loading="lazy">
       </a>
     </div>
     <div class="photo-feature__text">
       <span class="photo-feature__frame">Frame 03</span>
-      <h3 class="photo-feature__title">Desert Silence</h3>
+      <h3 class="photo-feature__title">Amir Kabir Statue</h3>
       <div class="photo-feature__meta">
-        <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>Joshua Tree, CA</span>
+        <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>Gheytarieh Park, Tehran</span>
       </div>
-      <p class="photo-feature__desc">Muted greens and dusty rose skies—the kind of scene where a tripod feels mandatory but the best frame was handheld, caught between gusts of wind.</p>
+      <p class="photo-feature__desc">I was experimenting with expired film. We frequently went to this park when I was a kid.</p>
     </div>
   </article>
 
   <article class="photo-feature photo-feature--reverse photo-gallery-item" data-gallery="film">
     <div class="photo-feature__media">
       <a href="/photography/photo4.jpg" class="photo-feature__trigger" data-photo-index="3">
-        <img src="/photography/photo4.jpg" alt="Venice Beach boardwalk in morning light" loading="lazy">
+        <img src="/photography/photo4.jpg" alt="St. Pete's beach" loading="lazy">
       </a>
     </div>
     <div class="photo-feature__text">
       <span class="photo-feature__frame">Frame 04</span>
-      <h3 class="photo-feature__title">Boardwalk Morning</h3>
+      <h3 class="photo-feature__title">Canadian Snowbird</h3>
       <div class="photo-feature__meta">
-        <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>Venice Beach, CA</span>
+        <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>St Pete Beach, FL</span>
       </div>
-      <p class="photo-feature__desc">Early enough that the crowds haven't arrived. Grain structure carries the texture of the pavement and the haze off the water.</p>
+      <p class="photo-feature__desc">My first experience being a Canadian Snowbird! Loved the 2-week break from the harsh winter of Toronto.</p>
     </div>
   </article>
 

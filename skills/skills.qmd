@@ -35,12 +35,14 @@ format:
     </h4>
     <div class="skills-group-badges">
       <span class="skill-badge">Hierarchical Bayesian DDM</span>
+      <span class="skill-badge">Bayesian LBA (PyMC)</span>
       <span class="skill-badge">Mixed-Effects Models (LMM / GLMM)</span>
       <span class="skill-badge">Signal Detection Theory</span>
-      <span class="skill-badge">Bayesian LBA (PyMC)</span>
-      <span class="skill-badge">XGBoost / ML</span>
+      <span class="skill-badge">Signal Processing & Spectral Analysis</span>
+      <span class="skill-badge">Bayesian Workflow (PSIS-LOO, PPC, R-hat)</span>
+      <span class="skill-badge">Machine Learning (RF, XGBoost, SHAP)</span>
       <span class="skill-badge">Platt Scaling / Calibration</span>
-      <span class="skill-badge">Sensitivity Analysis</span>
+      <span class="skill-badge">Sensitivity & Equivalence (TOST / ROPE)</span>
     </div>
   </div>
 
@@ -55,6 +57,7 @@ format:
       <span class="skill-badge">Stan / CmdStan</span>
       <span class="skill-badge">React / TypeScript</span>
       <span class="skill-badge">R Shiny</span>
+      <span class="skill-badge">Cloud Compute (GCP)</span>
       <span class="skill-badge">Git / GitHub</span>
       <span class="skill-badge">Quarto / R Markdown</span>
       <span class="skill-badge">LaTeX</span>
@@ -85,7 +88,7 @@ format:
 ```
 
 ::: {.page-lead}
-This page describes how the [Research](../research/research.qmd) program is implemented—methods, workflow, and computation—not a generic résumé. The dissertation toolkit fills the sections below; XR and interaction methods are grouped at the end as adjacent work.
+This page describes how the [Research](../research/research.qmd) program is implemented—methods, workflow, and computation—not a generic résumé. Where a method produced a concrete result, it links to where it was actually used. The dissertation toolkit fills the sections below; XR and interaction methods are grouped at the end as adjacent work.
 :::
 
 ::: {.link-row}
@@ -105,11 +108,11 @@ This page describes how the [Research](../research/research.qmd) program is impl
 ::: {.skills-block}
 ### Psychophysics
 
-Design and analysis of auditory and visual same–different discrimination (and related tasks) under load; linking physical effort to sensitivity, bias, and dynamics.
+Design and analysis of auditory and visual same–different discrimination (and related tasks) under load; linking physical effort to sensitivity, bias, and dynamics. Descriptive psychometric functions fit with Psignifit (beta-binomial, free guess/lapse) as a behavioral backbone for the [dissertation](../research/research.qmd).
 
 ### Pupillometry
 
-Preprocessing and quality control (blinks, artifacts, valid samples); window-specific validity; gap-aware handling of missing samples.
+Preprocessing and quality control (blinks, artifacts, valid samples); window-specific validity; gap-aware handling of fragmented missing samples (Kret & Sjak-Shie–style metrics), plus formal missingness diagnostics to check for selection bias before inference.
 
 ### Interpretation
 
@@ -154,26 +157,50 @@ MATLAB and PsychToolbox for stimulus delivery and responses; calibration and exc
 
 ## Modeling and statistical inference
 
+Two threads run through the modeling work: separating *what you can perceive* from *how you decide*, and evidence-accumulation (sequential-sampling) models—a Wiener DDM for the dissertation and an LBA for the XR verification phase, kept methodologically distinct.
+
 ::: {.skills-block}
 ### Psychometric function modeling
 
-Separate effects on perceptual evidence versus criterion under physical effort and load.
+Separate effects on perceptual evidence (slope/sensitivity) versus criterion (location) under physical effort and load, in a signal-detection framework.
 
 ### Mixed-effects models
 
-LMMs and GLMMs in R (lme4, emmeans) for repeated measures and individual differences, aligned with the [dual-task roadmap](../projects/dual-task-case-study.qmd).
+LMMs and GLMMs in R (lme4, emmeans) for repeated measures and individual differences, including probit GLMMs with within-subject (trait/state) decomposition, aligned with the [dual-task roadmap](../projects/dual-task-case-study.qmd).
 
 ### Hierarchical Bayesian Wiener DDM (dissertation)
 
-Trial-level decomposition (drift rate, boundaries, non-decision time); implemented with brms and Stan (CmdStan-class) workflows. Scope and caveats—non-decision time constrained by design; pupil–parameter links exploratory—are stated on [Research](../research/research.qmd).
+Trial-level decomposition (drift rate, boundary separation, starting point, non-decision time) in brms / CmdStan (multi-chain NUTS). Workflow includes PSIS-LOO model comparison with Pareto-k checks, posterior predictive checks, convergence diagnostics (R-hat, ESS, divergences), and ROPE-based equivalence for near-zero effects. This is what localized effort's cost to evidence quality rather than caution—see [Research](../research/research.qmd) ([code](https://github.com/mohdasti/modeling-pupil-DDM)). Scope and caveats (non-decision time constrained by design; pupil–parameter links exploratory) are stated there.
 
 ### Model scrutiny
 
-Sensitivity analyses, alternative specifications, model comparison, and interval- or equivalence-style reasoning where relevant.
+Sensitivity analyses, alternative specifications, model comparison, and equivalence testing (TOST, ROPE) to put *bounds* on null results rather than leaving them as "not significant."
 :::
 
 ::: {.xr-note}
 The [XR case study](../projects/case_study_web.qmd) uses hierarchical Bayesian LBA in PyMC for verification-phase RTs after target entry. That framework is separate from the dissertation Wiener DDM and is not interchangeable with it.
+:::
+
+```{=html}
+</div>
+```
+
+---
+
+```{=html}
+<div class="section-card">
+```
+
+## Signal processing and machine learning
+
+::: {.skills-block}
+### Spectral analysis of sensor data
+
+Single-trial digital signal processing of continuous grip-force traces: zero-phase Butterworth filtering (`scipy.signal`), Welch power spectral density, and band-power feature extraction (e.g., 8–12 Hz tremor vs. 0.5–3 Hz tracking). Used to test whether motor dynamics carry trial-level cognitive strain in the [Motor strand](../research/research.qmd) ([code](https://github.com/mohdasti/dynamometer-analysis)).
+
+### Machine learning and validation
+
+Subject-aware cross-validation (grouped folds), ROC-AUC, random-forest and gradient-boosted classifiers, and SHAP feature attribution; probability calibration (Platt scaling) where decisions need well-scaled scores. Predictive claims are held to out-of-sample performance and reported plainly—including when incremental lift is small.
 :::
 
 ```{=html}
@@ -191,11 +218,19 @@ The [XR case study](../projects/case_study_web.qmd) uses hierarchical Bayesian L
 ::: {.skills-block}
 ### R
 
-tidyverse, ggplot2; mixed models; brms and Stan interfaces; Quarto for analyses and this site.
+tidyverse, ggplot2; mixed models (lme4, emmeans); brms and Stan interfaces; loo / posterior / bayesplot for Bayesian workflow; Quarto for analyses and this site.
+
+### Python
+
+PyMC and CmdStan for Bayesian modeling; `scipy` / `numpy` for signal processing; `pandas` for data wrangling and feature pipelines.
 
 ### MATLAB
 
-PsychToolbox for experiment control.
+PsychToolbox for experiment control and stimulus delivery.
+
+### High-performance and cloud compute
+
+Long-running MCMC fits on Google Cloud Platform; multi-chain sampling with convergence and reproducibility checks.
 
 ### Version control
 
@@ -217,7 +252,7 @@ Git and GitHub for versioned scripts and reproducible layout.
 ::: {.skills-block}
 ### Reproducible reports
 
-Quarto and R Markdown (legacy) so tables and figures rebuild from code.
+Quarto and R Markdown (legacy) so tables and figures rebuild from code; archived releases via Zenodo where applicable.
 
 ### Writing and rigor
 
@@ -225,7 +260,7 @@ LaTeX for manuscripts; exploratory versus confirmatory reporting kept distinct w
 
 ### Traceability
 
-README notes, pinned dependencies where used, and QC logs for pupillometry and behavioral pipelines.
+README notes, pinned dependencies where used, and QC logs for pupillometry, signal-processing, and behavioral pipelines.
 :::
 
 ```{=html}
@@ -245,7 +280,7 @@ README notes, pinned dependencies where used, and QC logs for pupillometry and b
 
 [arXiv:2603.15991](https://arxiv.org/abs/2603.15991) · [case study](../projects/case_study_web.qmd). Adjacent to the dissertation; adds HCI- and XR-relevant breadth.
 
-- Web task: React and TypeScript; remote sessions; display calibration and session checks across devices.
+- Web task: React and TypeScript; remote sessions; display calibration and session checks across devices ([platform code](https://github.com/mohdasti/xr-adaptive-modality-2025)).
 - Design: ISO 9241-9–style multidirectional tapping; Fitts difficulty and throughput; Williams block counterbalancing; NASA-TLX workload.
 - Gaze proxy: physiologically informed gaze simulation (latency, jitter, saccadic suppression) for gaze versus hand comparison without lab eye-tracking.
 - Policy-triggered adaptive UI: declutter (gaze) and width inflation (hand). In the analyzed data, only declutter executed and was evaluable (modest timeout reduction; slips still dominated gaze errors). Hand width inflation was not evaluable—targets did not scale in the UI (integration bug); that policy is not validated here.
