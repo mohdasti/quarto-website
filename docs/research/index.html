@@ -330,19 +330,8 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">On this page</h2>
-   
-  <ul>
-  <li><a href="#the-setup" id="toc-the-setup" class="nav-link active" data-scroll-target="#the-setup">The setup</a></li>
-  <li><a href="#the-arc" id="toc-the-arc" class="nav-link" data-scroll-target="#the-arc">The arc</a></li>
-  <li><a href="#the-punchline" id="toc-the-punchline" class="nav-link" data-scroll-target="#the-punchline">The punchline</a></li>
-  <li><a href="#why-it-matters" id="toc-why-it-matters" class="nav-link" data-scroll-target="#why-it-matters">Why it matters</a></li>
-  <li><a href="#adjacent-work-in-xr-hci" id="toc-adjacent-work-in-xr-hci" class="nav-link" data-scroll-target="#adjacent-work-in-xr-hci">Adjacent work in XR / HCI</a></li>
-  <li><a href="#core-questions" id="toc-core-questions" class="nav-link" data-scroll-target="#core-questions">Core questions</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -372,6 +361,7 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 </header>
 
 
+<div class="research-program">
 <div class="page-lead">
 <p>When an older adult grips hard while judging what they just heard or saw, something gives. This work asks <em>what</em>: the sensitivity of perception, the caution behind the response, or the quality of the evidence feeding the decision. Answering it takes more than accuracy and reaction time—it takes tools that can tell those three apart.</p>
 </div>
@@ -555,34 +545,33 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 </section>
 <section id="why-it-matters" class="level2">
 <h2 class="anchored" data-anchor-id="why-it-matters">Why it matters</h2>
-<p>Most accounts stop at <em>whether</em> effort hurts performance. This program says <em>which component</em> it touches—and, just as usefully, which it spares. That distinction has teeth for systems meant to respond to a user’s state, from wearables to XR: if effort erodes evidence quality rather than caution, a state-aware interface should help by cleaning up the signal—clearer cues, better contrast, more time—rather than by nudging a speed–accuracy tradeoff the user isn’t actually shifting. The work connects psychology, cognitive neuroscience, and human factors, without claiming clinical translation, production deployment, or pupillometry as a diagnostic biomarker.</p>
+<p>Most accounts stop at <em>whether</em> effort hurts performance. This program says <em>which component</em> it touches—and, just as usefully, which it spares. That distinction has teeth for systems meant to respond to a user’s cognitive state: if effort erodes evidence quality rather than caution, a state-aware interface should help by cleaning up the signal—clearer cues, better contrast, more time—rather than by nudging a speed–accuracy tradeoff the user isn’t actually shifting. The work connects psychology, cognitive neuroscience, and human factors, without claiming clinical translation, production deployment, or pupillometry as a diagnostic biomarker.</p>
 <p>Program overview: <a href="../projects/dual-task-case-study.html">dual-task case study</a>. Methods and computation: <a href="../skills/index.html">Skills</a>.</p>
-<hr>
-</section>
-<section id="adjacent-work-in-xr-hci" class="level2">
-<h2 class="anchored" data-anchor-id="adjacent-work-in-xr-hci">Adjacent work in XR / HCI</h2>
-<div class="panel-adjacent">
-<p>Outside the dissertation, an <a href="https://arxiv.org/abs/2603.15991">arXiv preprint</a> (<a href="../projects/case_study_web.html">case study</a>) reports hand versus gaze pointing in a web-based, XR-relevant interaction task. Modality-specific failure modes match the intended contrast: gaze—slips and Midas Touch–type errors; hand—misses and spatial targeting failures. Throughput and Fitts-style analyses summarize speed–accuracy tradeoffs.</p>
-<p>Adaptive policies must be read narrowly: gaze declutter was the only policy that executed and was evaluable (timeouts down modestly; slip-dominated gaze errors remained dominant). Hand target-width inflation was not evaluable because rendered targets did not update (UI integration bug). Linear ballistic accumulator (LBA) modeling there applies to verification-phase RTs only—see <a href="../skills/index.html">Skills</a> for stack and scope; it does not replace the dissertation diffusion model. This line supports HCI and human-factors breadth; the dissertation remains the primary training identity.</p>
-</div>
-<hr>
-</section>
-<section id="core-questions" class="level2 research-questions">
-<h2 class="research-questions anchored" data-anchor-id="core-questions">Core questions</h2>
-<ul>
-<li>Where does concurrent physical effort change perceptual decision-making in aging—in behavior, in arousal, or in the latent parameters of the decision?</li>
-<li>When effort costs performance, is the mechanism reduced evidence quality, altered caution, shifted bias, or motor interference?</li>
-<li>Can the motor signal itself—continuous grip force—carry trial-level information about cognitive strain, beyond nominal task difficulty?</li>
-</ul>
-<div class="link-row">
-<p><a href="../publications/index.html">Publications</a> <a href="../cv.html">CV</a> <a href="../portfolio/index.html">Portfolio</a></p>
-</div>
 <div class="research-nih-disclaimer">
 <p>The content of this website is solely the responsibility of the author and does not necessarily represent the official views of the National Institutes of Health.</p>
 </div>
-
-
 </section>
+</div>
+<div class="research-adjacent-zone">
+<div class="research-section-break" role="separator" aria-label="Outside the dissertation program">
+  <span class="research-section-break__line" aria-hidden="true"></span>
+  <span class="research-section-break__label">Outside the dissertation</span>
+  <span class="research-section-break__line" aria-hidden="true"></span>
+</div>
+<p class="research-adjacent-eyebrow"><span class="research-adjacent-badge">Adjacent · arXiv preprint</span> Independent study — not part of the NIH-funded program</p>
+<section id="adjacent-xr-hci" class="level2">
+<h2 class="anchored" data-anchor-id="adjacent-xr-hci">Adjacent: XR / HCI</h2>
+<div class="panel-adjacent">
+<p>An <a href="https://arxiv.org/abs/2603.15991">arXiv preprint</a> (<a href="../projects/case_study_web.html">case study</a>) reports hand versus gaze pointing in a web-based, XR-relevant interaction task. Modality-specific failure modes match the intended contrast: gaze—slips and Midas Touch–type errors; hand—misses and spatial targeting failures. Throughput and Fitts-style analyses summarize speed–accuracy tradeoffs.</p>
+<p>Adaptive policies must be read narrowly: gaze declutter was the only policy that executed and was evaluable (timeouts down modestly; slip-dominated gaze errors remained dominant). Hand target-width inflation was not evaluable because rendered targets did not update (UI integration bug). Linear ballistic accumulator (LBA) modeling there applies to verification-phase RTs only—see <a href="../skills/index.html">Skills</a> for stack and scope; it does not replace the dissertation diffusion model. This line supports HCI and human-factors breadth; the dissertation remains the primary training identity.</p>
+</div>
+</section>
+</div>
+<div class="link-row">
+<p><a href="../publications/index.html">Publications</a> <a href="../cv.html">CV</a> <a href="../portfolio/index.html">Portfolio</a></p>
+</div>
+
+
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

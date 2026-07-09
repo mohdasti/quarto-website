@@ -8,6 +8,8 @@ format:
       - ../assets/css/research-skills.css
 ---
 
+::: {.research-program}
+
 ::: {.page-lead}
 When an older adult grips hard while judging what they just heard or saw, something gives. This work asks *what*: the sensitivity of perception, the caution behind the response, or the quality of the evidence feeding the decision. Answering it takes more than accuracy and reaction time—it takes tools that can tell those three apart.
 :::
@@ -180,34 +182,39 @@ Can the grip itself reveal cognitive strain? The same paradigm, read through the
 
 ## Why it matters
 
-Most accounts stop at *whether* effort hurts performance. This program says *which component* it touches—and, just as usefully, which it spares. That distinction has teeth for systems meant to respond to a user's state, from wearables to XR: if effort erodes evidence quality rather than caution, a state-aware interface should help by cleaning up the signal—clearer cues, better contrast, more time—rather than by nudging a speed–accuracy tradeoff the user isn't actually shifting. The work connects psychology, cognitive neuroscience, and human factors, without claiming clinical translation, production deployment, or pupillometry as a diagnostic biomarker.
+Most accounts stop at *whether* effort hurts performance. This program says *which component* it touches—and, just as usefully, which it spares. That distinction has teeth for systems meant to respond to a user's cognitive state: if effort erodes evidence quality rather than caution, a state-aware interface should help by cleaning up the signal—clearer cues, better contrast, more time—rather than by nudging a speed–accuracy tradeoff the user isn't actually shifting. The work connects psychology, cognitive neuroscience, and human factors, without claiming clinical translation, production deployment, or pupillometry as a diagnostic biomarker.
 
 Program overview: [dual-task case study](../projects/dual-task-case-study.qmd). Methods and computation: [Skills](../skills/skills.qmd).
 
----
+::: {.research-nih-disclaimer}
+The content of this website is solely the responsibility of the author and does not necessarily represent the official views of the National Institutes of Health.
+:::
 
-## Adjacent work in XR / HCI
+:::
+
+::: {.research-adjacent-zone}
+
+```{=html}
+<div class="research-section-break" role="separator" aria-label="Outside the dissertation program">
+  <span class="research-section-break__line" aria-hidden="true"></span>
+  <span class="research-section-break__label">Outside the dissertation</span>
+  <span class="research-section-break__line" aria-hidden="true"></span>
+</div>
+<p class="research-adjacent-eyebrow"><span class="research-adjacent-badge">Adjacent · arXiv preprint</span> Independent study — not part of the NIH-funded program</p>
+```
+
+## Adjacent: XR / HCI
 
 ::: {.panel-adjacent}
-Outside the dissertation, an [arXiv preprint](https://arxiv.org/abs/2603.15991) ([case study](../projects/case_study_web.qmd)) reports hand versus gaze pointing in a web-based, XR-relevant interaction task. Modality-specific failure modes match the intended contrast: gaze—slips and Midas Touch–type errors; hand—misses and spatial targeting failures. Throughput and Fitts-style analyses summarize speed–accuracy tradeoffs.
+An [arXiv preprint](https://arxiv.org/abs/2603.15991) ([case study](../projects/case_study_web.qmd)) reports hand versus gaze pointing in a web-based, XR-relevant interaction task. Modality-specific failure modes match the intended contrast: gaze—slips and Midas Touch–type errors; hand—misses and spatial targeting failures. Throughput and Fitts-style analyses summarize speed–accuracy tradeoffs.
 
 Adaptive policies must be read narrowly: gaze declutter was the only policy that executed and was evaluable (timeouts down modestly; slip-dominated gaze errors remained dominant). Hand target-width inflation was not evaluable because rendered targets did not update (UI integration bug). Linear ballistic accumulator (LBA) modeling there applies to verification-phase RTs only—see [Skills](../skills/skills.qmd) for stack and scope; it does not replace the dissertation diffusion model. This line supports HCI and human-factors breadth; the dissertation remains the primary training identity.
 :::
 
----
-
-## Core questions {.research-questions}
-
-- Where does concurrent physical effort change perceptual decision-making in aging—in behavior, in arousal, or in the latent parameters of the decision?
-- When effort costs performance, is the mechanism reduced evidence quality, altered caution, shifted bias, or motor interference?
-- Can the motor signal itself—continuous grip force—carry trial-level information about cognitive strain, beyond nominal task difficulty?
+:::
 
 ::: {.link-row}
 [Publications](../publications/publications.qmd)
 [CV](../cv.qmd)
 [Portfolio](../portfolio/portfolio.qmd)
-:::
-
-::: {.research-nih-disclaimer}
-The content of this website is solely the responsibility of the author and does not necessarily represent the official views of the National Institutes of Health.
 :::

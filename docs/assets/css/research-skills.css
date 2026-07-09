@@ -92,7 +92,7 @@
 
 /* NIH disclaimer — Research page only (not global footer) */
 .research-nih-disclaimer {
-  margin: 2.25rem 0 0;
+  margin: 2rem 0 0;
   padding-top: 1.25rem;
   border-top: 1px solid rgba(29, 53, 87, 0.1);
   max-width: 48rem;
@@ -103,6 +103,83 @@
   color: rgba(45, 62, 80, 0.75);
 }
 
+/* Dissertation program block — default page surface; closes with NIH disclaimer */
+.research-program {
+  margin-bottom: 0;
+}
+
+/* Section break before adjacent / appendix content */
+.research-section-break {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 0 1.35rem;
+}
+
+.research-section-break__line {
+  flex: 1 1 0;
+  height: 1px;
+  background: rgba(29, 53, 87, 0.14);
+}
+
+.research-section-break__label {
+  flex-shrink: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: rgba(45, 62, 80, 0.55);
+}
+
+/* Adjacent work — full appendix lane, visually distinct from dissertation */
+.research-adjacent-zone {
+  margin: 2.75rem -1.25rem 2rem;
+  padding: 1.75rem 1.25rem 2rem;
+  background: rgba(29, 53, 87, 0.028);
+  border: 1px dashed rgba(29, 53, 87, 0.16);
+  border-top: 3px solid rgba(230, 57, 70, 0.5);
+  border-radius: 12px;
+}
+
+.research-adjacent-zone > section.level2 > h2 {
+  margin-top: 0;
+  padding-top: 0;
+}
+
+.research-adjacent-zone > section.level2 > h2::before {
+  display: none;
+}
+
+.research-adjacent-eyebrow {
+  margin: 0 0 0.85rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: rgba(45, 62, 80, 0.72);
+}
+
+.research-adjacent-badge {
+  display: inline-block;
+  margin-right: 0.55rem;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #1d3557;
+  background: rgba(230, 57, 70, 0.1);
+  border: 1px solid rgba(230, 57, 70, 0.22);
+  border-radius: 999px;
+  vertical-align: middle;
+}
+
+@media (max-width: 576px) {
+  .research-adjacent-zone {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+    padding: 1.35rem 0.9rem 1.5rem;
+  }
+}
+
 .research-nih-disclaimer p {
   margin: 0;
 }
@@ -110,6 +187,36 @@
 body.quarto-dark .research-nih-disclaimer {
   border-top-color: rgba(255, 255, 255, 0.1);
   color: rgba(232, 234, 240, 0.65);
+}
+
+body.quarto-dark .research-section-break__line {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+body.quarto-dark .research-section-break__label {
+  color: rgba(232, 234, 240, 0.45);
+}
+
+body.quarto-dark .research-adjacent-zone {
+  background: rgba(255, 255, 255, 0.04);
+  border-color: rgba(255, 255, 255, 0.12);
+  border-top-color: rgba(230, 57, 70, 0.45);
+}
+
+body.quarto-dark .research-adjacent-eyebrow {
+  color: rgba(232, 234, 240, 0.65);
+}
+
+body.quarto-dark .research-adjacent-badge {
+  color: var(--bs-body-color);
+  background: rgba(230, 57, 70, 0.15);
+  border-color: rgba(230, 57, 70, 0.35);
+}
+
+body.quarto-dark .research-adjacent-zone .panel-adjacent {
+  background: rgba(255, 255, 255, 0.03);
+  border-color: rgba(255, 255, 255, 0.14);
+  border-left-color: rgba(230, 57, 70, 0.45);
 }
 
 /* ------ Opening lead band ----------------------------------- */
@@ -403,6 +510,13 @@ body.quarto-dark .research-timeline__hint {
   border: none;
   background: rgba(168, 218, 220, 0.12);
   border-left: 3px solid #a8dadc;
+}
+
+.research-adjacent-zone .panel-adjacent {
+  margin: 0;
+  background: rgba(255, 255, 255, 0.55);
+  border: 1px dashed rgba(29, 53, 87, 0.18);
+  border-left: 3px solid rgba(230, 57, 70, 0.45);
 }
 
 .panel-adjacent h2,
