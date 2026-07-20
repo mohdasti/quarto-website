@@ -81,6 +81,7 @@ format:
       dark: darkly
     css: 
       - assets/css/main.css
+      - assets/css/redesign.css
     include-in-header: 
       - text: |
           <link rel="preconnect" href="https://fonts.googleapis.com">
