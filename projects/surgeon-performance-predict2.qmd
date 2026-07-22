@@ -12,9 +12,6 @@ research_domains: ["Human Factors", "Cognitive Neuroscience", "Biomedical Engine
 methodologies: ["Psychophysiology", "Pupillometry", "Machine Learning"]
 format:
   html:
-    theme:
-      light: cosmo
-      dark: darkly
     toc: true
     toc-depth: 3
     number-sections: false

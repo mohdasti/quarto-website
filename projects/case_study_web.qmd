@@ -8,9 +8,6 @@ categories: ["XR/HCI", "Gaze Interaction", "Bayesian LBA", "Remote Study", "arXi
 image: ../images/architecture.png
 format:
   html:
-    theme:
-      light: cosmo
-      dark: darkly
     toc: true
     toc-depth: 3
     code-fold: true

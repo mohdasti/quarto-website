@@ -4,8 +4,6 @@ description: "One handgrip dual-task paradigm: how physical effort reshapes perc
 format:
   html:
     output-file: index.html
-    css:
-      - ../assets/css/research-skills.css
 ---
 
 ::: {.research-program}

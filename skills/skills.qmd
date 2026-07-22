@@ -4,8 +4,6 @@ description: "How my research program is built—methods, computation, and rigor
 format:
   html:
     output-file: index.html
-    css:
-      - ../assets/css/research-skills.css
 ---
 
 ```{=html}

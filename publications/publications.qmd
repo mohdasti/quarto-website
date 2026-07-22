@@ -21,8 +21,6 @@ page-layout: full
 format:
   html:
     output-file: index.html
-    css:
-      - ../assets/css/research-skills.css
 ---
 
 ## Peer-Reviewed Articles

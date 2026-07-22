@@ -20,9 +20,6 @@ about:
 format:
   html:
     output-file: index.html
-    css:
-      - ../assets/css/main.css
-      - ../assets/css/research-skills.css
 ---
 
 I study why performance degrades under pressure: whether the cost shows up in the quality of sensory evidence, in the threshold for acting on it, or elsewhere in the chain. My research uses psychophysics and computational modeling to pull apart dual-task costs in aging, where physical effort, arousal, and perception interact in ways that matter for applied human factors.

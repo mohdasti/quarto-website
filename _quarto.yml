@@ -9,7 +9,6 @@ project:
     - pdfs/**
     - photography/**
     - supporting_docs/**
-    - portfolio/portfolio.html
     - _redirects
 
 website:
@@ -36,25 +35,23 @@ website:
   navbar:
     search: true
     right:
-      - text: Home
-        href: home.qmd
-      - text: About
-        href: about/about.qmd
-      - text: Portfolio
+      - text: Work
         href: portfolio/portfolio.qmd
-      - text: Skills
-        href: skills/skills.qmd
       - text: Research
         href: research/research.qmd
+      - text: Toolkit
+        href: skills/skills.qmd
       - text: Publications
         href: publications/publications.qmd
+      - text: About
+        href: about/about.qmd
       - text: CV
         href: cv.qmd
       - text: 35mm Film
         href: photography.qmd
         
   page-footer:
-    left: "© 2026 Mohammad Dastgheib &nbsp;·&nbsp; PhD Candidate, UC Riverside"
+    left: "© 2026 Mohammad Dastgheib &nbsp;·&nbsp; Human Factors & Quantitative UX Research"
     center: |
       <a href="mailto:m.dastgheib@gmail.com" title="Email" aria-label="Email">
         <i class="fas fa-envelope"></i>
@@ -71,22 +68,23 @@ website:
       <a href="https://orcid.org/0000-0001-7684-3731" title="ORCID" aria-label="ORCID" target="_blank" rel="noopener">
         <i class="ai ai-orcid"></i>
       </a>
-    right: "Built with [Quarto](https://quarto.org)"
+    right: "[Download CV](/CV/CV_MDastgheib.pdf) &nbsp;·&nbsp; Available Summer / Fall 2026"
 
 
 format:
   html:
     theme:
-      light: cosmo
-      dark: darkly
-    css: 
-      - assets/css/main.css
-      - assets/css/redesign.css
+      light:
+        - cosmo
+        - assets/css/theme.scss
+      dark:
+        - darkly
+        - assets/css/theme-dark.scss
     include-in-header: 
       - text: |
           <link rel="preconnect" href="https://fonts.googleapis.com">
           <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-          <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800&family=Inter:wght@400;450;500;600&family=Public+Sans:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+          <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
           <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
           <link rel="stylesheet" href="/assets/listing-default.css">

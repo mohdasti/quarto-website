@@ -5,12 +5,11 @@ format:
   html:
     lightbox: false
     css:
-      - assets/css/research-skills.css
       - assets/css/photography.css
 ---
 
 ::: {.page-lead}
-When I'm away from eye-trackers and computational models, I'm usually chasing light—for fun, not for a portfolio. I shoot 35mm on a [Ricoh KR-5 Super II](https://camera-wiki.org/wiki/Ricoh_KR-5_Super_II){target="_blank"}, often with expired film that surprises me in the wash. I also keep a handful of digital edits when a scene stuck. More of both on my [Flickr](https://www.flickr.com/photos/mohdasti/){target="_blank"}.
+When I'm away from eye-trackers and computational models, I'm usually chasing light—for fun, not for a portfolio. I shoot 35mm on a [Ricoh KR-5 Super II](https://camera-wiki.org/wiki/Ricoh_KR-5_Super_II){target="_blank"}, often with years-old film that surprises me in the wash. More photographs are on my [Flickr](https://www.flickr.com/photos/mohdasti/){target="_blank"}.
 :::
 
 ```{=html}
@@ -221,104 +220,7 @@ When I'm away from eye-trackers and computational models, I'm usually chasing li
 </div>
 </section>
 
-<section class="photo-section" id="digital-section">
-  <h2 class="photo-section__title">Digital Edits</h2>
-  <p class="photo-section__lead">A few digital shots I've tinkered with on my phone or laptop—mostly when a scene felt worth keeping and I liked how it looked after a quick edit.</p>
 
-  <div class="digital-grid">
-
-    <article class="digital-card photo-gallery-item" data-gallery="digital">
-      <div class="digital-card__media">
-        <a href="/photography/digital/digital1.jpg" class="photo-feature__trigger" data-photo-index="0">
-          <img src="/photography/digital/digital1.jpg" alt="Digital edit — coastal blues" loading="lazy">
-        </a>
-      </div>
-      <div class="digital-card__text">
-        <h3 class="digital-card__title">Coastal Blues</h3>
-        <div class="digital-card__meta">
-          <span class="digital-card__tag"><i class="fas fa-map-marker-alt"></i>Laguna Beach, CA</span>
-        </div>
-        <p class="digital-card__desc">Overcast afternoon by the water.</p>
-      </div>
-    </article>
-
-    <article class="digital-card photo-gallery-item" data-gallery="digital">
-      <div class="digital-card__media">
-        <a href="/photography/digital/digital2.jpg" class="photo-feature__trigger" data-photo-index="1">
-          <img src="/photography/digital/digital2.jpg" alt="Digital edit — city neon" loading="lazy">
-        </a>
-      </div>
-      <div class="digital-card__text">
-        <h3 class="digital-card__title">City Neon</h3>
-        <div class="digital-card__meta">
-          <span class="digital-card__tag"><i class="fas fa-map-marker-alt"></i>Downtown LA</span>
-        </div>
-        <p class="digital-card__desc">Wet pavement and streetlights after rain.</p>
-      </div>
-    </article>
-
-    <article class="digital-card photo-gallery-item" data-gallery="digital">
-      <div class="digital-card__media">
-        <a href="/photography/digital/digital3.jpg" class="photo-feature__trigger" data-photo-index="2">
-          <img src="/photography/digital/digital3.jpg" alt="Digital edit — desert heat" loading="lazy">
-        </a>
-      </div>
-      <div class="digital-card__text">
-        <h3 class="digital-card__title">Desert Heat</h3>
-        <div class="digital-card__meta">
-          <span class="digital-card__tag"><i class="fas fa-map-marker-alt"></i>Palm Springs, CA</span>
-        </div>
-        <p class="digital-card__desc">Desert light on a weekend drive.</p>
-      </div>
-    </article>
-
-    <article class="digital-card photo-gallery-item" data-gallery="digital">
-      <div class="digital-card__media">
-        <a href="/photography/digital/digital4.jpg" class="photo-feature__trigger" data-photo-index="3">
-          <img src="/photography/digital/digital4.jpg" alt="Digital edit — quiet interior" loading="lazy">
-        </a>
-      </div>
-      <div class="digital-card__text">
-        <h3 class="digital-card__title">Quiet Interior</h3>
-        <div class="digital-card__meta">
-          <span class="digital-card__tag"><i class="fas fa-map-marker-alt"></i>Riverside, CA</span>
-        </div>
-        <p class="digital-card__desc">Soft light through a window at home.</p>
-      </div>
-    </article>
-
-    <article class="digital-card photo-gallery-item" data-gallery="digital">
-      <div class="digital-card__media">
-        <a href="/photography/digital/digital5.jpg" class="photo-feature__trigger" data-photo-index="4">
-          <img src="/photography/digital/digital5.jpg" alt="Digital edit — golden hour portrait" loading="lazy">
-        </a>
-      </div>
-      <div class="digital-card__text">
-        <h3 class="digital-card__title">Golden Hour Portrait</h3>
-        <div class="digital-card__meta">
-          <span class="digital-card__tag"><i class="fas fa-map-marker-alt"></i>Griffith Park, LA</span>
-        </div>
-        <p class="digital-card__desc">Late sun in the park.</p>
-      </div>
-    </article>
-
-    <article class="digital-card photo-gallery-item" data-gallery="digital">
-      <div class="digital-card__media">
-        <a href="/photography/digital/digital6.jpg" class="photo-feature__trigger" data-photo-index="5">
-          <img src="/photography/digital/digital6.jpg" alt="Digital edit — night walk" loading="lazy">
-        </a>
-      </div>
-      <div class="digital-card__text">
-        <h3 class="digital-card__title">Night Walk</h3>
-        <div class="digital-card__meta">
-          <span class="digital-card__tag"><i class="fas fa-map-marker-alt"></i>Little Tokyo, LA</span>
-        </div>
-        <p class="digital-card__desc">Neon and quiet streets after dark.</p>
-      </div>
-    </article>
-
-  </div>
-</section>
 ```
 
 ```{=html}
