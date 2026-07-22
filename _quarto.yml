@@ -20,7 +20,7 @@ website:
   description: "PhD Candidate in Cognitive Neuroscience at UC Riverside. Human Factors researcher using psychophysics, pupillometry, and Bayesian modeling to study performance under pressure. Seeking roles in Human Factors, UX Research, and Research Science."
   favicon: "/images/profile.jpg"
   open-graph:
-    title: "Mohammad Dastgheib — Human Factors & UX Researcher"
+    title: "Mohammad Dastgheib | Human Factors & UX Researcher"
     description: "PhD Candidate, UC Riverside. Psychophysics, pupillometry, Bayesian DDM, XR/HCI. Seeking Human Factors, Quant UXR, Research Scientist roles."
     image: "https://mdastgheib.com/images/profile.jpg"
     locale: en_US
@@ -28,7 +28,7 @@ website:
   back-to-top-navigation: true
   twitter-card:
     card-style: summary_large_image
-    title: "Mohammad Dastgheib — Human Factors & UX Researcher"
+    title: "Mohammad Dastgheib | Human Factors & UX Researcher"
     description: "PhD Candidate at UC Riverside. Bayesian DDM, pupillometry, XR/HCI. Available Summer/Fall 2026."
     image: "https://mdastgheib.com/images/profile.jpg"
     creator: "@MoDastgheib"
@@ -41,10 +41,10 @@ website:
         href: research/research.qmd
       - text: Toolkit
         href: skills/skills.qmd
-      - text: Publications
-        href: publications/publications.qmd
       - text: About
         href: about/about.qmd
+      - text: Publications
+        href: publications/publications.qmd
       - text: CV
         href: cv.qmd
       - text: 35mm Film

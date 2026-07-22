@@ -1,6 +1,6 @@
 ---
 title: "Skills"
-description: "How my research program is built—methods, computation, and rigor—beyond a generic résumé."
+description: "How my research program is built through methods, computation, and rigor, beyond a generic résumé."
 format:
   html:
     output-file: index.html
@@ -86,7 +86,7 @@ format:
 ```
 
 ::: {.page-lead}
-This page describes how the [Research](../research/research.qmd) program is implemented—methods, workflow, and computation—not a generic résumé. Where a method produced a concrete result, it links to where it was actually used. The dissertation toolkit fills the sections below; XR and interaction methods are grouped at the end as adjacent work.
+This page describes how the [Research](../research/research.qmd) program is implemented through methods, workflow, and computation. It is not a generic résumé. Where a method produced a concrete result, it links to where it was actually used. The dissertation toolkit fills the sections below; XR and interaction methods are grouped at the end as adjacent work.
 :::
 
 ::: {.link-row}
@@ -155,7 +155,7 @@ MATLAB and PsychToolbox for stimulus delivery and responses; calibration and exc
 
 ## Modeling and statistical inference
 
-Two threads run through the modeling work: separating *what you can perceive* from *how you decide*, and evidence-accumulation (sequential-sampling) models—a Wiener DDM for the dissertation and an LBA for the XR verification phase, kept methodologically distinct.
+Two threads run through the modeling work: separating *what you can perceive* from *how you decide*, and evidence-accumulation (sequential-sampling) models. A Wiener DDM supports the dissertation, while an LBA supports the XR verification phase; the two remain methodologically distinct.
 
 ::: {.skills-block}
 ### Psychometric function modeling
@@ -168,7 +168,7 @@ LMMs and GLMMs in R (lme4, emmeans) for repeated measures and individual differe
 
 ### Hierarchical Bayesian Wiener DDM (dissertation)
 
-Trial-level decomposition (drift rate, boundary separation, starting point, non-decision time) in brms / CmdStan (multi-chain NUTS). Workflow includes PSIS-LOO model comparison with Pareto-k checks, posterior predictive checks, convergence diagnostics (R-hat, ESS, divergences), and ROPE-based equivalence for near-zero effects. This is what localized effort's cost to evidence quality rather than caution—see [Research](../research/research.qmd) ([code](https://github.com/mohdasti/modeling-pupil-DDM)). Scope and caveats (non-decision time constrained by design; pupil–parameter links exploratory) are stated there.
+Trial-level decomposition (drift rate, boundary separation, starting point, non-decision time) in brms / CmdStan (multi-chain NUTS). Workflow includes PSIS-LOO model comparison with Pareto-k checks, posterior predictive checks, convergence diagnostics (R-hat, ESS, divergences), and ROPE-based equivalence for near-zero effects. This is what localized effort's cost to evidence quality rather than caution; see [Research](../research/research.qmd) ([code](https://github.com/mohdasti/modeling-pupil-DDM)). Scope and caveats (non-decision time constrained by design; pupil–parameter links exploratory) are stated there.
 
 ### Model scrutiny
 
@@ -198,7 +198,7 @@ Single-trial digital signal processing of continuous grip-force traces: zero-pha
 
 ### Machine learning and validation
 
-Subject-aware cross-validation (grouped folds), ROC-AUC, random-forest and gradient-boosted classifiers, and SHAP feature attribution; probability calibration (Platt scaling) where decisions need well-scaled scores. Predictive claims are held to out-of-sample performance and reported plainly—including when incremental lift is small.
+Subject-aware cross-validation (grouped folds), ROC-AUC, random-forest and gradient-boosted classifiers, and SHAP feature attribution; probability calibration (Platt scaling) where decisions need well-scaled scores. Predictive claims are held to out-of-sample performance and reported plainly, including when incremental lift is small.
 :::
 
 ```{=html}
@@ -281,8 +281,8 @@ README notes, pinned dependencies where used, and QC logs for pupillometry, sign
 - Web task: React and TypeScript; remote sessions; display calibration and session checks across devices ([platform code](https://github.com/mohdasti/xr-adaptive-modality-2025)).
 - Design: ISO 9241-9–style multidirectional tapping; Fitts difficulty and throughput; Williams block counterbalancing; NASA-TLX workload.
 - Gaze proxy: physiologically informed gaze simulation (latency, jitter, saccadic suppression) for gaze versus hand comparison without lab eye-tracking.
-- Policy-triggered adaptive UI: declutter (gaze) and width inflation (hand). In the analyzed data, only declutter executed and was evaluable (modest timeout reduction; slips still dominated gaze errors). Hand width inflation was not evaluable—targets did not scale in the UI (integration bug); that policy is not validated here.
-- LBA fits: Python and PyMC for verification-phase RTs only—see the note under Modeling above.
+- Policy-triggered adaptive UI: declutter (gaze) and width inflation (hand). In the analyzed data, only declutter executed and was evaluable (modest timeout reduction; slips still dominated gaze errors). Hand width inflation was not evaluable because targets did not scale in the UI (integration bug); that policy is not validated here.
+- LBA fits: Python and PyMC for verification-phase RTs only. See the note under Modeling above.
 
 Other secondary experience: [surgeon dashboard](../projects/surgeon-performance-predict2.qmd) (R Shiny, XGBoost); [EEG thesis](../projects/memory-and-meditation.qmd); imaging collaborations under [Publications](../publications/publications.qmd); SST role on [About](../about/about.qmd).
 :::
@@ -298,9 +298,9 @@ Other secondary experience: [surgeon dashboard](../projects/surgeon-performance-
 ## Languages
 
 ::: {.lang-chips}
-[Persian — Native]{.lang-chip}
-[English — Professional]{.lang-chip}
-[French — Basic]{.lang-chip}
+[Persian · Native]{.lang-chip}
+[English · Professional]{.lang-chip}
+[French · Basic]{.lang-chip}
 :::
 
 :::

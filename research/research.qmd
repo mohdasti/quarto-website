@@ -1,6 +1,6 @@
 ---
 title: "Research"
-description: "One handgrip dual-task paradigm: how physical effort reshapes perceptual decisions in aging—and where the cost actually lives."
+description: "One handgrip dual-task paradigm: how physical effort reshapes perceptual decisions in aging and where the cost actually lives."
 format:
   html:
     output-file: index.html
@@ -9,12 +9,12 @@ format:
 ::: {.research-program}
 
 ::: {.page-lead}
-When an older adult grips hard while judging what they just heard or saw, something gives. This work asks *what*: the sensitivity of perception, the caution behind the response, or the quality of the evidence feeding the decision. Answering it takes more than accuracy and reaction time—it takes tools that can tell those three apart.
+When an older adult grips hard while judging what they just heard or saw, something gives. This work asks *what*: the sensitivity of perception, the caution behind the response, or the quality of the evidence feeding the decision. Answering it takes more than accuracy and reaction time. It takes tools that can tell those three apart.
 :::
 
 ## The setup
 
-The backbone is a handgrip dual-task: participants hold a steady isometric force while making fine auditory or visual discriminations. Effort becomes an experimental dial on arousal; pupillometry tracks that arousal moment to moment; and modeling separates a change in *what you can perceive* from a change in *how you decide*. The paradigm is validated first in younger adults, then examined in older adults—where cognitive capacity is tighter and the physiological price of effort is steeper—through three complementary modeling lenses, plus a fourth that reads the grip signal itself.
+The backbone is a handgrip dual-task: participants hold a steady isometric force while making fine auditory or visual discriminations. Effort becomes an experimental dial on arousal; pupillometry tracks that arousal moment to moment; and modeling separates a change in *what you can perceive* from a change in *how you decide*. The paradigm is validated first in younger adults, then examined in older adults, where cognitive capacity is tighter and the physiological price of effort is steeper, through three complementary modeling lenses plus a fourth that reads the grip signal itself.
 
 Dissertation chapters are not journal articles; titles and status are listed on [Publications](../publications/publications.qmd).
 
@@ -83,17 +83,17 @@ Dissertation chapters are not journal articles; titles and status are listed on 
 ::: {.chapter-stages}
 
 ::: {.chapter-block}
-### Validate — younger adults
+### Validate: younger adults
 
-Does the handgrip actually move arousal? Yes. Across three concurrent tasks, pupil-linked arousal tracked the effort manipulation more clearly than summary behavior did—establishing the measurement strategy the older-adult work depends on.
+Does the handgrip actually move arousal? Yes. Across three concurrent tasks, pupil-linked arousal tracked the effort manipulation more clearly than summary behavior did. This established the measurement strategy the older-adult work depends on.
 
 ```{=html}
 <p class="research-takeaway"><strong>Takeaway:</strong> Grip raised arousal before it clearly hurt behavior.</p>
 <figure class="research-figure">
-  <a href="/images/research/stage1-total-auc.png" class="lightbox" data-gallery="research" data-glightbox="title: Sustained pupil dilation under low vs. high grip — younger adults">
+  <a href="/images/research/stage1-total-auc.png" class="lightbox" data-gallery="research" data-glightbox="title: Sustained pupil dilation under low vs. high grip: younger adults">
     <img src="/images/research/stage1-total-auc.png" alt="Pupil response by effort level across younger-adult tasks" loading="lazy">
   </a>
-  <figcaption><strong>What to look at:</strong> Compare pupil response under light vs. heavy grip in each task panel—the arousal shift is clearer than the behavioral change.</figcaption>
+  <figcaption><strong>What to look at:</strong> Compare pupil response under light vs. heavy grip in each task panel. The arousal shift is clearer than the behavioral change.</figcaption>
 </figure>
 ```
 
@@ -103,70 +103,70 @@ Does the handgrip actually move arousal? Yes. Across three concurrent tasks, pup
 :::
 
 ::: {.chapter-block}
-### Measure — perception under arousal
+### Measure: perception under arousal
 
-In older adults, does moment-to-moment arousal sharpen or blunt perception? Neither, measurably. Effort raised arousal and shifted *how much* people responded—but it did not tune the sensitivity of perception itself. The key move is that we could show that null was *real*, not just underpowered.
+In older adults, does moment-to-moment arousal sharpen or blunt perception? Neither, measurably. Effort raised arousal and shifted *how much* people responded, but it did not tune the sensitivity of perception itself. The key move is that we could show that null was *real*, not just underpowered.
 
 ```{=html}
-<p class="research-takeaway"><strong>Takeaway:</strong> Effort changed <em>how much</em> people responded—not how sharply they perceived.</p>
+<p class="research-takeaway"><strong>Takeaway:</strong> Effort changed <em>how much</em> people responded, not how sharply they perceived.</p>
 <figure class="research-figure">
-  <a href="/images/research/stage2-effort-dissociation.png" class="lightbox" data-gallery="research" data-glightbox="title: Sustained vs. momentary pupil effects under effort — older adults">
+  <a href="/images/research/stage2-effort-dissociation.png" class="lightbox" data-gallery="research" data-glightbox="title: Sustained vs. momentary pupil effects under effort: older adults">
     <img src="/images/research/stage2-effort-dissociation.png" alt="Effects of effort on sustained versus momentary pupil responses in older adults" loading="lazy">
   </a>
-  <figcaption><strong>What to look at:</strong> Sustained arousal rises under effort (left) while the stimulus-locked pupil measure drops (right)—two different time scales, not one simple story.</figcaption>
+  <figcaption><strong>What to look at:</strong> Sustained arousal rises under effort (left) while the stimulus-locked pupil measure drops (right). These are two different time scales, not one simple story.</figcaption>
 </figure>
 ```
 
 ::: {.callout-note collapse="true" appearance="simple" icon=false title="The numbers"}
-61 older adults; pooled model 54 participants, 5,322 trials. High effort raised sustained arousal (Total AUC β = +0.86, *p* = .02) and shifted overall responding (β = −0.14, *p* = .003) without flattening the psychometric slope. The arousal × stimulus-intensity coupling was a bounded null (β = +0.035, *p* = .25), statistically equivalent to zero within ±0.10 probit units by two one-sided tests (TOST). A tonic–phasic dissociation—sustained arousal up, stimulus-locked response down—traces largely to baseline referencing rather than a true collapse of the task-evoked response.
+61 older adults; pooled model 54 participants, 5,322 trials. High effort raised sustained arousal (Total AUC β = +0.86, *p* = .02) and shifted overall responding (β = −0.14, *p* = .003) without flattening the psychometric slope. The arousal × stimulus-intensity coupling was a bounded null (β = +0.035, *p* = .25), statistically equivalent to zero within ±0.10 probit units by two one-sided tests (TOST). A tonic–phasic dissociation, with sustained arousal up and stimulus-locked response down, traces largely to baseline referencing rather than a true collapse of the task-evoked response.
 :::
 :::
 
 ::: {.chapter-block}
-### Model — where the cost lives
+### Model: where the cost lives
 
-If effort costs performance, *which part* of the decision does it touch? A hierarchical Bayesian diffusion model gives the sharpest answer of the program: effort degrades the **quality of evidence accumulation**, not the caution or the bias behind the response. The cost is a slower, noisier read of the world—not a change in strategy.
+If effort costs performance, *which part* of the decision does it touch? A hierarchical Bayesian diffusion model gives the sharpest answer of the program: effort degrades the **quality of evidence accumulation**, not the caution or the bias behind the response. The cost is a slower, noisier read of the world rather than a change in strategy.
 
 ```{=html}
-<p class="research-takeaway"><strong>Takeaway:</strong> Effort made the sensory read noisier—not more cautious. Think: a shakier signal, not a more careful answer.</p>
+<p class="research-takeaway"><strong>Takeaway:</strong> Effort made the sensory read noisier, not more cautious. Think: a shakier signal, not a more careful answer.</p>
 <figure class="research-figure">
-  <a href="/images/research/stage3-drift-rate.png" class="lightbox" data-gallery="research" data-glightbox="title: Evidence quality under low vs. high effort — diffusion model">
+  <a href="/images/research/stage3-drift-rate.png" class="lightbox" data-gallery="research" data-glightbox="title: Evidence quality under low vs. high effort: diffusion model">
     <img src="/images/research/stage3-drift-rate.png" alt="How evidence quality changes under low versus high physical effort" loading="lazy">
   </a>
-  <figcaption><strong>What to look at:</strong> The distribution shifts left under high grip—less evidence accumulated per moment—while the caution parameters barely move.</figcaption>
+  <figcaption><strong>What to look at:</strong> The distribution shifts left under high grip, indicating less evidence accumulated per moment, while the caution parameters barely move.</figcaption>
 </figure>
 ```
 
 ::: {.callout-note collapse="true" appearance="simple" icon=false title="The numbers"}
-67 older adults, 17,857 trials. Drift rate fell under high effort (β = −0.057, 95% CrI [−0.097, −0.017]; *P*(β < 0) = .997), while boundary separation and starting point sat inside the region of practical equivalence—practically unchanged. Accuracy dropped (56.5% vs 59.0%) with no reliable RT change. Non-decision time is constrained by the response-signal design and not treated as a free explanation; pupil–diffusion links were exploratory and inconclusive. Fit with 8 NUTS chains (R-hat ≤ 1.006, no divergences).
+67 older adults, 17,857 trials. Drift rate fell under high effort (β = −0.057, 95% CrI [−0.097, −0.017]; *P*(β < 0) = .997), while boundary separation and starting point sat inside the region of practical equivalence and were practically unchanged. Accuracy dropped (56.5% vs 59.0%) with no reliable RT change. Non-decision time is constrained by the response-signal design and not treated as a free explanation; pupil–diffusion links were exploratory and inconclusive. Fit with 8 NUTS chains (R-hat ≤ 1.006, no divergences).
 :::
 :::
 
 ::: {.chapter-block}
-### Motor — the grip as a signal
+### Motor: the grip as a signal
 
-Can the grip itself reveal cognitive strain? The same paradigm, read through the dynamometer trace: sub-second grip tremor tracked perceptual errors trial by trial, and it did so *equally* under light and heavy force—a general marker of neuromuscular-cognitive strain rather than an effort-specific artifact.
+Can the grip itself reveal cognitive strain? The same paradigm, read through the dynamometer trace: sub-second grip tremor tracked perceptual errors trial by trial, and it did so *equally* under light and heavy force. This points to a general marker of neuromuscular-cognitive strain rather than an effort-specific artifact.
 
 ```{=html}
-<p class="research-takeaway"><strong>Takeaway:</strong> Fine grip tremor carries a trial-by-trial hint of cognitive strain—not just how hard you're squeezing.</p>
+<p class="research-takeaway"><strong>Takeaway:</strong> Fine grip tremor carries a trial-by-trial hint of cognitive strain, not just how hard you're squeezing.</p>
 <div class="research-figure-pair">
   <figure class="research-figure">
     <a href="/images/research/stage4-psd-ribbon.png" class="lightbox" data-gallery="research" data-glightbox="title: Grip vibration patterns by correct vs. incorrect trials">
       <img src="/images/research/stage4-psd-ribbon.png" alt="Grip vibration patterns for correct versus incorrect trials" loading="lazy">
     </a>
-    <figcaption><strong>What to look at:</strong> The tremor band (shaded) separates correct from incorrect trials—tiny hand vibrations, different on good vs. bad moments.</figcaption>
+    <figcaption><strong>What to look at:</strong> The tremor band (shaded) separates correct from incorrect trials. Tiny hand vibrations differ on good and bad moments.</figcaption>
   </figure>
   <figure class="research-figure">
     <a href="/images/research/stage4-caterpillar.png" class="lightbox" data-gallery="research" data-glightbox="title: Accuracy under high vs. low grip by participant">
       <img src="/images/research/stage4-caterpillar.png" alt="Each participant's accuracy change under high versus low grip" loading="lazy">
     </a>
-    <figcaption><strong>What to look at:</strong> Most dots fall below zero—most people did worse under high grip, person by person.</figcaption>
+    <figcaption><strong>What to look at:</strong> Most dots fall below zero, meaning most people did worse under high grip.</figcaption>
   </figure>
 </div>
 ```
 
 ::: {.callout-note collapse="true" appearance="simple" icon=false title="The numbers"}
-64 older adults, 6,888 high-grip trials. Tremor-band power (8–12 Hz) predicted errors (OR = 0.64, 95% CI [0.46, 0.89], *p* = .008), sharpening on the hardest trials (χ²(4) = 15.08, *p* = .005) and holding equally across force levels (χ²(1) = 1.36, *p* = .24). Slower tracking-band power (0.5–3 Hz) carried no signal (OR = 1.03, *p* = .45). Read honestly: the spectral features improve fit in-sample (χ²(2) = 7.34, *p* = .03) but add negligible out-of-sample predictive lift (ROC-AUC ≈ 0.850 → 0.855)—motor dynamics *carry* strain information, they don't *predict* errors in any deployable sense.
+64 older adults, 6,888 high-grip trials. Tremor-band power (8–12 Hz) predicted errors (OR = 0.64, 95% CI [0.46, 0.89], *p* = .008), sharpening on the hardest trials (χ²(4) = 15.08, *p* = .005) and holding equally across force levels (χ²(1) = 1.36, *p* = .24). Slower tracking-band power (0.5–3 Hz) carried no signal (OR = 1.03, *p* = .45). Read honestly: the spectral features improve fit in-sample (χ²(2) = 7.34, *p* = .03) but add negligible out-of-sample predictive lift (ROC-AUC ≈ 0.850 → 0.855). Motor dynamics *carry* strain information; they do not *predict* errors in any deployable sense.
 :::
 :::
 
@@ -174,13 +174,13 @@ Can the grip itself reveal cognitive strain? The same paradigm, read through the
 
 ## The punchline
 
-> Under the limited capacity of aging, physical effort degrades the quality of the evidence feeding a perceptual decision—while leaving the decision policy, the caution and the bias, largely intact. Where the program finds nothing, it says so with bounds, not shrugs.
+> Under the limited capacity of aging, physical effort degrades the quality of the evidence feeding a perceptual decision while leaving the decision policy, caution, and bias largely intact. Where the program finds nothing, it says so with bounds, not shrugs.
 
 ---
 
 ## Why it matters
 
-Most accounts stop at *whether* effort hurts performance. This program says *which component* it touches—and, just as usefully, which it spares. That distinction has teeth for systems meant to respond to a user's cognitive state: if effort erodes evidence quality rather than caution, a state-aware interface should help by cleaning up the signal—clearer cues, better contrast, more time—rather than by nudging a speed–accuracy tradeoff the user isn't actually shifting. The work connects psychology, cognitive neuroscience, and human factors, without claiming clinical translation, production deployment, or pupillometry as a diagnostic biomarker.
+Most accounts stop at *whether* effort hurts performance. This program says *which component* it touches and, just as usefully, which it spares. That distinction has teeth for systems meant to respond to a user's cognitive state. If effort erodes evidence quality rather than caution, a state-aware interface should help by cleaning up the signal through clearer cues, better contrast, or more time, rather than by nudging a speed–accuracy tradeoff the user isn't actually shifting. The work connects psychology, cognitive neuroscience, and human factors, without claiming clinical translation, production deployment, or pupillometry as a diagnostic biomarker.
 
 Program overview: [dual-task case study](../projects/dual-task-case-study.qmd). Methods and computation: [Skills](../skills/skills.qmd).
 
@@ -198,26 +198,26 @@ The content of this website is solely the responsibility of the author and does 
   <span class="research-section-break__label">Outside the dissertation</span>
   <span class="research-section-break__line" aria-hidden="true"></span>
 </div>
-<p class="research-adjacent-eyebrow"><span class="research-adjacent-badge">Adjacent · arXiv preprint</span> Independent study — not part of the NIH-funded program</p>
+<p class="research-adjacent-eyebrow"><span class="research-adjacent-badge">Adjacent · arXiv preprint</span> Independent study, not part of the NIH-funded program</p>
 ```
 
 ## Adjacent: gaze vs. hand pointing in XR
 
-A separate, open-source line of work asks the dissertation's question in a new place: when a pointing task gets hard, *where* does the cost show up—and does it differ by input channel? Using a web-based [ISO 9241-9](https://www.iso.org/standard/30030.html) target-acquisition task with a physiologically-grounded gaze *simulation* (not eye-tracking hardware), it compares hand and gaze selection under adaptive vs. static UI and time pressure.
+A separate, open-source line of work asks the dissertation's question in a new place: when a pointing task gets hard, *where* does the cost show up, and does it differ by input channel? Using a web-based [ISO 9241-9](https://www.iso.org/standard/30030.html) target-acquisition task with a physiologically-grounded gaze *simulation* (not eye-tracking hardware), it compares hand and gaze selection under adaptive vs. static UI and time pressure.
 
-The signature result is a clean dissociation: the two modalities fail in opposite ways. Gaze errors are almost all **slips** (99.2%)—accidental activations from looking rather than intending—while hand errors are almost all **misses** (95.7%). That is the Midas Touch problem made measurable: gaze couples *looking to see* with *looking to select*. Modeling the verification phase with a hierarchical Bayesian LBA places gaze's extra cost in the same kind of spot the dissertation localizes effort—one stage of the decision, the commit step of deciding a look is a choice, rather than the movement itself.
+The signature result is a clean dissociation: the two modalities fail in opposite ways. Gaze errors are almost all **slips** (99.2%), or accidental activations from looking rather than intending, while hand errors are almost all **misses** (95.7%). That is the Midas Touch problem made measurable: gaze couples *looking to see* with *looking to select*. Modeling the verification phase with a hierarchical Bayesian LBA places gaze's extra cost in the same kind of spot where the dissertation localizes effort: one stage of the decision, the commit step of deciding a look is a choice, rather than the movement itself.
 
 ```{=html}
-<p class="research-takeaway"><strong>Takeaway:</strong> Gaze fails by acting when you were only looking; hand fails by missing. Adaptive XR should target each modality's own failure mode—not adapt generically.</p>
+<p class="research-takeaway"><strong>Takeaway:</strong> Gaze fails by acting when you were only looking; hand fails by missing. Adaptive XR should target each modality's own failure mode rather than adapt generically.</p>
 <figure class="research-figure">
-  <a href="/projects/images/error_type_composition.png" class="lightbox" data-gallery="research" data-glightbox="title: Error-type composition by modality — the Midas Touch signature">
+  <a href="/projects/images/error_type_composition.png" class="lightbox" data-gallery="research" data-glightbox="title: Error-type composition by modality: the Midas Touch signature">
     <img src="/projects/images/error_type_composition.png" alt="Gaze errors are almost entirely slips; hand errors are almost entirely misses" loading="lazy">
   </a>
   <figcaption><strong>What to look at:</strong> Nearly all gaze errors are <em>slips</em> (selected while just looking); nearly all hand errors are <em>misses</em> (aimed but didn't land). One picture, two failure modes.</figcaption>
 </figure>
 ```
 
-The full treatment—the remote testbed, spatial error maps, the LBA parameter model, and an honest teardown of which adaptive policy actually executed—lives in the **[case study →](../projects/case_study_web.qmd)**. In brief: of two adaptive policies, only gaze declutter ran (it trimmed timeouts, not slips), and hand target-inflation was caught un-executed by the telemetry itself—an instrumentation win, not a result. This line supports HCI and human-factors breadth; the dissertation remains the primary training identity.
+The full treatment, including the remote testbed, spatial error maps, LBA parameter model, and an honest teardown of which adaptive policy actually executed, lives in the **[case study →](../projects/case_study_web.qmd)**. In brief, only one of two adaptive policies ran: gaze declutter trimmed timeouts, not slips. The telemetry also caught that hand target-inflation never executed. That is an instrumentation win, not a result. This line supports HCI and human-factors breadth; the dissertation remains the primary training identity.
 
 :::
 

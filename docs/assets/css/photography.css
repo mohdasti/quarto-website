@@ -241,7 +241,7 @@ body:has(.photo-viewer.is-open) .photo-gallery-item:not(.is-active) {
 }
 
 .digital-card__tag {
-  font-size: 0.74rem;
+  font-size: 0.75rem;
   font-weight: 500;
   color: rgba(45, 62, 80, 0.78);
   background: rgba(168, 218, 220, 0.18);
@@ -320,7 +320,7 @@ body:has(.photo-viewer.is-open) .photo-gallery-item:not(.is-active) {
 .photo-feature__frame {
   display: inline-block;
   font-family: "DM Sans", "Inter", system-ui, sans-serif;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -357,7 +357,7 @@ body:has(.photo-viewer.is-open) .photo-gallery-item:not(.is-active) {
 
 .photo-feature__tag i {
   margin-right: 0.3rem;
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: #457b9d;
 }
 

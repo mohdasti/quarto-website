@@ -24,7 +24,7 @@ format:
 
 I study why performance degrades under pressure: whether the cost shows up in the quality of sensory evidence, in the threshold for acting on it, or elsewhere in the chain. My research uses psychophysics and computational modeling to pull apart dual-task costs in aging, where physical effort, arousal, and perception interact in ways that matter for applied human factors.
 
-The central tool is a handgrip dual-task paradigm—concurrent isometric grip with auditory and visual discrimination tasks—combined with pupillometry and hierarchical Bayesian drift-diffusion modeling. Rather than reporting a single performance score, I model where in the decision process costs appear. That matters if you want to design systems that respond to cognitive state, not just average accuracy.
+The central tool is a handgrip dual-task paradigm that combines concurrent isometric grip, auditory and visual discrimination tasks, pupillometry, and hierarchical Bayesian drift-diffusion modeling. Rather than reporting a single performance score, I model where in the decision process costs appear. That matters if you want to design systems that respond to cognitive state, not just average accuracy.
 
 ```{=html}
 <p class="about-personal-note">Fluent in English &amp; Persian | Modest conversational French</p>
@@ -38,7 +38,7 @@ The central tool is a handgrip dual-task paradigm—concurrent isometric grip wi
   </div>
   <div class="snapshot-item">
     <i class="fas fa-map-marker-alt"></i>
-    <span>Los Angeles / Riverside, CA — Open to Relocation</span>
+    <span>Los Angeles / Riverside, CA | Open to Relocation</span>
   </div>
   <div class="snapshot-item">
     <i class="fas fa-briefcase"></i>
@@ -67,7 +67,7 @@ The central tool is a handgrip dual-task paradigm—concurrent isometric grip wi
 ### PhD in Psychology and Cognitive Neuroscience
 [University of California, Riverside]{.edu-org}
 
-[2021 — 2026 (Expected)]{.edu-years}
+[2021–2026 (Expected)]{.edu-years}
 :::
 :::
 
@@ -81,7 +81,7 @@ The central tool is a handgrip dual-task paradigm—concurrent isometric grip wi
 ### M.Sc. in Psychology
 [Queen's University]{.edu-org}
 
-[2017 — 2020]{.edu-years}
+[2017–2020]{.edu-years}
 :::
 :::
 
@@ -95,7 +95,7 @@ The central tool is a handgrip dual-task paradigm—concurrent isometric grip wi
 ### Hon. B.Sc. in Biological Sciences & Psychology
 [York University]{.edu-org}
 
-[2013 — 2017]{.edu-years}
+[2013–2017]{.edu-years}
 :::
 :::
 
@@ -111,12 +111,12 @@ The central tool is a handgrip dual-task paradigm—concurrent isometric grip wi
 ### Research Assistant I
 [Surgical Safety Technologies]{.edu-org}
 
-[Toronto, ON — 2021]{.edu-years}
+[Toronto, ON | 2021]{.edu-years}
 
 - Assisted on instance segmentation pipelines for surgical tool detection and tracking
 - Computed inter-rater reliability (κ and ICC) for ML annotation quality across analyst teams
 - Reviewed ML-for-surgical-safety literature to support internal research operations
-- Learned that alert fatigue and interface friction—not raw model accuracy—are what sink adoption of ML tools in clinical settings
+- Learned that alert fatigue and interface friction, not raw model accuracy, are what sink adoption of ML tools in clinical settings
 :::
 :::
 
@@ -125,7 +125,7 @@ The central tool is a handgrip dual-task paradigm—concurrent isometric grip wi
 <p class="edu-logo-icon" aria-hidden="true"><i class="fas fa-vr-cardboard"></i></p>
 :::
 ::: {.edu-body}
-### XR Interaction Research — Independent Study
+### XR Interaction Research: Independent Study
 [Self-directed Research]{.edu-org}
 
 [2025–2026]{.edu-years}
@@ -142,7 +142,7 @@ The central tool is a handgrip dual-task paradigm—concurrent isometric grip wi
 <p class="edu-logo-icon" aria-hidden="true"><i class="fas fa-chart-line"></i></p>
 :::
 ::: {.edu-body}
-### Surgeon Cognitive Dashboard — R&D Project
+### Surgeon Cognitive Dashboard: R&D Project
 [Self-directed Research]{.edu-org}
 
 [2025]{.edu-years}

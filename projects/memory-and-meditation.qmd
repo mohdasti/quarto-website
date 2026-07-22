@@ -15,7 +15,7 @@ methodologies: ["Mixed Methods", "EEG", "Experimental Design"]
 
 ```{=html}
 <div class="project-snapshot-card">
-  <div class="ps-item"><span class="ps-label">Role</span><span class="ps-value">Master's Thesis — Full Study Design & Analysis</span></div>
+  <div class="ps-item"><span class="ps-label">Role</span><span class="ps-value">Master's Thesis: Full Study Design & Analysis</span></div>
   <div class="ps-item"><span class="ps-label">Methods</span><span class="ps-value">EEG, Mixed Methods, Memory Consolidation Paradigms, ANOVA, Repeated Measures</span></div>
   <div class="ps-item"><span class="ps-label">Stack</span><span class="ps-value">EEGLab, R, SPSS</span></div>
   <div class="ps-item"><span class="ps-label">Output</span><span class="ps-value">Master's thesis · Case study</span></div>
@@ -42,7 +42,7 @@ methodologies: ["Mixed Methods", "EEG", "Experimental Design"]
 
 * **The Problem:** Companies build tools to help users learn and be productive but lack clarity on how different mental states (like napping or meditating) influence the brain’s ability to retain factual versus physical memories. This uncertainty can result in inefficiencies, diminished user performance, and wasted investments in training programs or wellness initiatives.
 * **My Action:** I designed and ran a mixed-methods study with 60+ participants: behavioral tasks (word-pair recall, a physical maze game), EEG, and self-report questionnaires.
-* **The Result:** I discovered that mindfulness meditation significantly improved factual memory retention. The most surprising discovery was that while naps are restorative, deep sleep can temporarily **impair** physical skills due to **sleep inertia**—a critical insight for products or services targeting immediate post-rest performance.
+* **The Result:** I discovered that mindfulness meditation significantly improved factual memory retention. The most surprising discovery was that while naps are restorative, deep sleep can temporarily **impair** physical skills due to **sleep inertia**. This is a critical insight for products or services targeting immediate post-rest performance.
 
 ---
 

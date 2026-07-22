@@ -9,7 +9,7 @@ format:
 ---
 
 ::: {.page-lead}
-When I'm away from eye-trackers and computational models, I'm usually chasing light—for fun, not for a portfolio. I shoot 35mm on a [Ricoh KR-5 Super II](https://camera-wiki.org/wiki/Ricoh_KR-5_Super_II){target="_blank"}, often with years-old film that surprises me in the wash. More photographs are on my [Flickr](https://www.flickr.com/photos/mohdasti/){target="_blank"}.
+When I'm away from eye-trackers and computational models, I'm usually chasing light for fun, not for a portfolio. I shoot 35mm on a [Ricoh KR-5 Super II](https://camera-wiki.org/wiki/Ricoh_KR-5_Super_II){target="_blank"}, often with years-old film that surprises me in the wash. More photographs are on my [Flickr](https://www.flickr.com/photos/mohdasti/){target="_blank"}.
 :::
 
 ```{=html}
@@ -117,7 +117,7 @@ When I'm away from eye-trackers and computational models, I'm usually chasing li
       <div class="photo-feature__meta">
         <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>Riverside, CA</span>
       </div>
-      <p class="photo-feature__desc">Tungsten-balanced stock under mixed lighting—the halation around practical lights is exactly why I reach for Cinestill after dark.</p>
+      <p class="photo-feature__desc">Tungsten-balanced stock under mixed lighting. The halation around practical lights is exactly why I reach for Cinestill after dark.</p>
     </div>
   </article>
 
@@ -133,7 +133,7 @@ When I'm away from eye-trackers and computational models, I'm usually chasing li
       <div class="photo-feature__meta">
         <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>Pasadena, CA</span>
       </div>
-      <p class="photo-feature__desc">Soft domestic light through a screened porch—consumer film stock doing more than it has any right to in open shade.</p>
+      <p class="photo-feature__desc">Soft domestic light through a screened porch, with consumer film stock doing more than it has any right to in open shade.</p>
     </div>
   </article>
 
@@ -149,7 +149,7 @@ When I'm away from eye-trackers and computational models, I'm usually chasing li
       <div class="photo-feature__meta">
         <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>Malibu, CA</span>
       </div>
-      <p class="photo-feature__desc">Expired Ektar shifted the blues toward teal—a marine layer morning where the color cast felt more honest than correction would have.</p>
+      <p class="photo-feature__desc">Expired Ektar shifted the blues toward teal on a marine layer morning where the color cast felt more honest than correction would have.</p>
     </div>
   </article>
 
@@ -165,7 +165,7 @@ When I'm away from eye-trackers and computational models, I'm usually chasing li
       <div class="photo-feature__meta">
         <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>Newport Beach, CA</span>
       </div>
-      <p class="photo-feature__desc">Fine-grain daylight stock for a scene that didn't need drama—just accurate skin tones on the pier and a clean horizon line.</p>
+      <p class="photo-feature__desc">Fine-grain daylight stock for a scene that didn't need drama, just accurate skin tones on the pier and a clean horizon line.</p>
     </div>
   </article>
 
@@ -181,7 +181,7 @@ When I'm away from eye-trackers and computational models, I'm usually chasing li
       <div class="photo-feature__meta">
         <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>San Diego, CA</span>
       </div>
-      <p class="photo-feature__desc">Spanish-revival architecture reduced to tonal planes—midday sun so harsh that composition mattered more than exposure latitude.</p>
+      <p class="photo-feature__desc">Spanish-revival architecture reduced to tonal planes. The midday sun was so harsh that composition mattered more than exposure latitude.</p>
     </div>
   </article>
 
@@ -197,7 +197,7 @@ When I'm away from eye-trackers and computational models, I'm usually chasing li
       <div class="photo-feature__meta">
         <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>Big Bear Lake, CA</span>
       </div>
-      <p class="photo-feature__desc">Weekend escape from the lab—cooler air, longer shadows, and a cheap roll of Superia that punched above its price in mountain light.</p>
+      <p class="photo-feature__desc">A weekend escape from the lab: cooler air, longer shadows, and a cheap roll of Superia that punched above its price in mountain light.</p>
     </div>
   </article>
 
@@ -213,7 +213,7 @@ When I'm away from eye-trackers and computational models, I'm usually chasing li
       <div class="photo-feature__meta">
         <span class="photo-feature__tag"><i class="fas fa-map-marker-alt"></i>Los Angeles, CA</span>
       </div>
-      <p class="photo-feature__desc">Twenty-year-old film stock at golden hour—the colors drifted magenta and amber in ways no LUT could replicate convincingly.</p>
+      <p class="photo-feature__desc">Twenty-year-old film stock at golden hour. The colors drifted magenta and amber in ways no LUT could replicate convincingly.</p>
     </div>
   </article>
 

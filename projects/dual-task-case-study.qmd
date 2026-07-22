@@ -16,7 +16,7 @@ methodologies: ["Psychophysiology", "Pupillometry", "Experimental Design"]
 
 ```{=html}
 <div class="project-snapshot-card">
-  <div class="ps-item"><span class="ps-label">Role</span><span class="ps-value">Dissertation Research — Concept through Analysis</span></div>
+  <div class="ps-item"><span class="ps-label">Role</span><span class="ps-value">Dissertation Research: Concept through Analysis</span></div>
   <div class="ps-item"><span class="ps-label">Methods</span><span class="ps-value">Handgrip Dual-Task, Pupillometry, Psychometric Function Modeling, Hierarchical Bayesian Wiener DDM</span></div>
   <div class="ps-item"><span class="ps-label">Stack</span><span class="ps-value">MATLAB/PsychToolbox, R, brms, Stan/CmdStan</span></div>
   <div class="ps-item"><span class="ps-label">Output</span><span class="ps-value">Dissertation chapter · Research roadmap case study</span></div>
@@ -25,7 +25,7 @@ methodologies: ["Psychophysiology", "Pupillometry", "Experimental Design"]
 
 # 🌟 Overview: The High Cost of Cognitive Overload
 
-> *"Imagine an airline pilot mid-flight, gripping the yoke while processing a cascade of system alerts. Or an older surgeon holding robotic instruments while navigating fragile anatomy. In both cases, sustained physical load collides with high cognitive demands—and performance can slip."*
+> *"Imagine an airline pilot mid-flight, gripping the yoke while processing a cascade of system alerts. Or an older surgeon holding robotic instruments while navigating fragile anatomy. In both cases, sustained physical load collides with high cognitive demands, and performance can slip."*
 
 In high-stakes environments, understanding the precise point where a user becomes overwhelmed is critical for safety and efficiency. This case study outlines the research roadmap I designed to objectively measure and predict cognitive overload, moving beyond guesswork to create data-driven solutions for safer, more adaptive systems.
 

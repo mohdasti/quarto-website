@@ -10,7 +10,7 @@
 <meta name="dcterms.date" content="2025-10-01">
 <meta name="description" content="A proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon’s cognitive state, inspired by my work at Surgical Science &amp; Technology.">
 
-<title>Surgeon Cognitive Dashboard — Case Study – Mohammad Dastgheib</title>
+<title>Surgeon Cognitive Dashboard: Case Study – Mohammad Dastgheib</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -48,9 +48,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-15634bcf2e68342d4ad2dfa704d543f6.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-b8894351c5a637f9c1c5345703bc9ea2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
-<link href="../site_libs/bootstrap/bootstrap-dark-e62f83743b175fbe0141628df10cacaf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
-<link href="../site_libs/bootstrap/bootstrap-b8894351c5a637f9c1c5345703bc9ea2.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-985d1cc605f87e456619fb81a743c616.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-dark-17ef94e61e89a9bfe86a6e9246ea9171.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../site_libs/bootstrap/bootstrap-985d1cc605f87e456619fb81a743c616.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
 <link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
 <link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
@@ -99,12 +99,12 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 <link rel="stylesheet" href="../assets/listing-default.css">
 
 
-<meta property="og:title" content="Mohammad Dastgheib — Human Factors &amp; UX Researcher">
+<meta property="og:title" content="Mohammad Dastgheib | Human Factors &amp; UX Researcher">
 <meta property="og:description" content="PhD Candidate, UC Riverside. Psychophysics, pupillometry, Bayesian DDM, XR/HCI. Seeking Human Factors, Quant UXR, Research Scientist roles.">
 <meta property="og:image" content="https://mdastgheib.com/images/surgical-dashboard.jpg">
 <meta property="og:site_name" content="Mohammad Dastgheib">
 <meta property="og:locale" content="en_US">
-<meta name="twitter:title" content="Mohammad Dastgheib — Human Factors &amp; UX Researcher">
+<meta name="twitter:title" content="Mohammad Dastgheib | Human Factors &amp; UX Researcher">
 <meta name="twitter:description" content="PhD Candidate at UC Riverside. Bayesian DDM, pupillometry, XR/HCI. Available Summer/Fall 2026.">
 <meta name="twitter:image" content="https://mdastgheib.com/images/surgical-dashboard.jpg">
 <meta name="twitter:creator" content="@MoDastgheib">
@@ -303,12 +303,12 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 <span class="menu-text">Toolkit</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../publications/index.html"> 
-<span class="menu-text">Publications</span></a>
-  </li>  
-  <li class="nav-item">
     <a class="nav-link" href="../about/index.html"> 
 <span class="menu-text">About</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../publications/index.html"> 
+<span class="menu-text">Publications</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../cv.html"> 
@@ -337,20 +337,20 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
   <ul>
   <li><a href="#why-i-built-this" id="toc-why-i-built-this" class="nav-link active" data-scroll-target="#why-i-built-this">Why I built this</a></li>
   <li><a href="#executive-summary" id="toc-executive-summary" class="nav-link" data-scroll-target="#executive-summary">Executive Summary</a></li>
-  <li><a href="#objectives-what-this-actually-delivers" id="toc-objectives-what-this-actually-delivers" class="nav-link" data-scroll-target="#objectives-what-this-actually-delivers">Objectives — what this actually delivers</a></li>
-  <li><a href="#who-benefits-and-why" id="toc-who-benefits-and-why" class="nav-link" data-scroll-target="#who-benefits-and-why">Who benefits — and why</a></li>
-  <li><a href="#personalized-coaching-how-it-adapts-to-the-trainee" id="toc-personalized-coaching-how-it-adapts-to-the-trainee" class="nav-link" data-scroll-target="#personalized-coaching-how-it-adapts-to-the-trainee">Personalized coaching — how it adapts to the trainee</a></li>
-  <li><a href="#threshold-policies-how-they-work" id="toc-threshold-policies-how-they-work" class="nav-link" data-scroll-target="#threshold-policies-how-they-work">Threshold Policies — how they work</a></li>
+  <li><a href="#objectives-what-this-actually-delivers" id="toc-objectives-what-this-actually-delivers" class="nav-link" data-scroll-target="#objectives-what-this-actually-delivers">Objectives: what this actually delivers</a></li>
+  <li><a href="#who-benefits-and-why" id="toc-who-benefits-and-why" class="nav-link" data-scroll-target="#who-benefits-and-why">Who benefits and why</a></li>
+  <li><a href="#personalized-coaching-how-it-adapts-to-the-trainee" id="toc-personalized-coaching-how-it-adapts-to-the-trainee" class="nav-link" data-scroll-target="#personalized-coaching-how-it-adapts-to-the-trainee">Personalized coaching: how it adapts to the trainee</a></li>
+  <li><a href="#threshold-policies-how-they-work" id="toc-threshold-policies-how-they-work" class="nav-link" data-scroll-target="#threshold-policies-how-they-work">Threshold Policies: how they work</a></li>
   <li><a href="#why-thresholds-must-adapt" id="toc-why-thresholds-must-adapt" class="nav-link" data-scroll-target="#why-thresholds-must-adapt">Why thresholds must adapt</a></li>
   <li><a href="#production-dashboard" id="toc-production-dashboard" class="nav-link" data-scroll-target="#production-dashboard">Production Dashboard</a></li>
   <li><a href="#methods-what-runs-under-the-hood" id="toc-methods-what-runs-under-the-hood" class="nav-link" data-scroll-target="#methods-what-runs-under-the-hood">Methods (what runs under the hood)</a></li>
   <li><a href="#methods-results-that-matter-ops-kpis" id="toc-methods-results-that-matter-ops-kpis" class="nav-link" data-scroll-target="#methods-results-that-matter-ops-kpis">Methods &amp; results that matter (ops KPIs)</a></li>
   <li><a href="#live-clinical-style-table-with-literature-ranges" id="toc-live-clinical-style-table-with-literature-ranges" class="nav-link" data-scroll-target="#live-clinical-style-table-with-literature-ranges">Live clinical-style table with literature ranges</a></li>
   <li><a href="#limitations" id="toc-limitations" class="nav-link" data-scroll-target="#limitations">Limitations</a></li>
-  <li><a href="#product-vs.-lab-how-they-fit" id="toc-product-vs.-lab-how-they-fit" class="nav-link" data-scroll-target="#product-vs.-lab-how-they-fit">Product vs.&nbsp;Lab — how they fit</a></li>
-  <li><a href="#from-sst-to-the-or-what-transferred" id="toc-from-sst-to-the-or-what-transferred" class="nav-link" data-scroll-target="#from-sst-to-the-or-what-transferred">From SST to the OR — what transferred</a></li>
+  <li><a href="#product-vs.-lab-how-they-fit" id="toc-product-vs.-lab-how-they-fit" class="nav-link" data-scroll-target="#product-vs.-lab-how-they-fit">Product vs.&nbsp;Lab: how they fit</a></li>
+  <li><a href="#from-sst-to-the-or-what-transferred" id="toc-from-sst-to-the-or-what-transferred" class="nav-link" data-scroll-target="#from-sst-to-the-or-what-transferred">From SST to the OR: what transferred</a></li>
   <li><a href="#deployment-privacy" id="toc-deployment-privacy" class="nav-link" data-scroll-target="#deployment-privacy">Deployment &amp; Privacy</a></li>
-  <li><a href="#whats-next-tailored-pedagogy" id="toc-whats-next-tailored-pedagogy" class="nav-link" data-scroll-target="#whats-next-tailored-pedagogy">What’s next — tailored pedagogy</a></li>
+  <li><a href="#whats-next-tailored-pedagogy" id="toc-whats-next-tailored-pedagogy" class="nav-link" data-scroll-target="#whats-next-tailored-pedagogy">What’s next: tailored pedagogy</a></li>
   </ul>
 </nav>
     </div>
@@ -360,8 +360,8 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Surgeon Cognitive Dashboard — Case Study</h1>
-<p class="subtitle lead">A proof-of-concept cognitive state monitor for robotic surgery training — no wearables, real-time biosignal fusion</p>
+<h1 class="title">Surgeon Cognitive Dashboard: Case Study</h1>
+<p class="subtitle lead">A proof-of-concept cognitive state monitor for robotic surgery training with no wearables and real-time biosignal fusion</p>
   <div class="quarto-categories">
     <div class="quarto-category">Human Factors</div>
     <div class="quarto-category">Pupillometry</div>
@@ -403,7 +403,7 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 
 
 <div class="project-snapshot-card">
-  <div class="ps-item"><span class="ps-label">Role</span><span class="ps-value">Sole Designer &amp; Developer — Concept, Modeling, Deployment</span></div>
+  <div class="ps-item"><span class="ps-label">Role</span><span class="ps-value">Sole Designer &amp; Developer: Concept, Modeling, Deployment</span></div>
   <div class="ps-item"><span class="ps-label">Methods</span><span class="ps-value">Pupillometry, HRV, XGBoost, Platt Scaling, SDT, Bayesian Inverted-U policies</span></div>
   <div class="ps-item"><span class="ps-label">Stack</span><span class="ps-value">R, R Shiny, XGBoost, ShinyApps.io</span></div>
   <div class="ps-item"><span class="ps-label">Output</span><span class="ps-value">Live Shiny dashboard · Training Lab app · Case study</span></div>
@@ -414,7 +414,7 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
   --ink:#0b1526; --muted:#4b5563; --bg:#f7f9fc; --card:#ffffff;
   --accent:#1f9bb6; --ok:#27ae60; --warn:#f39c12; --crit:#e74c3c; --border:#e5e7eb;
 }
-/* Dark mode overrides for inline vars — body.quarto-dark is set by Quarto's toggle */
+/* Dark mode overrides for inline vars; body.quarto-dark is set by Quarto's toggle */
 body.quarto-dark {
   --ink:#e8eaf0; --muted:#9ca3af; --bg:#0f1117; --card:#1e2130; --border:#2d3148;
 }
@@ -441,7 +441,7 @@ body.quarto-dark .tldr-chips a:hover{background:rgba(31,155,182,.15);border-colo
 <div class="tldr-card" role="note" aria-label="TL;DR">
   <div class="tldr-title">TL;DR</div>
   <div class="tldr-text">
-    <b>Goal:</b> Reduce high-load minutes per hour, prevent cognitive lapses, and keep surgical trainees in the optimal arousal zone — using pupillometry, grip/tremor, and HRV without any body-worn hardware.<br><br>
+    <b>Goal:</b> Reduce high-load minutes per hour, prevent cognitive lapses, and keep surgical trainees in the optimal arousal zone using pupillometry, grip/tremor, and HRV without any body-worn hardware.<br><br>
     <b>What I built:</b> A Training Lab for exploring and calibrating threshold policies, and a Production Dashboard that runs those policies in real time with interpretable alerts.
   </div>
   <div class="tldr-chips">
@@ -471,34 +471,34 @@ body.quarto-dark .help-icon:hover{background:rgba(31,155,182,.15);border-color:#
 </style>
 <section id="why-i-built-this" class="level2">
 <h2 class="anchored" data-anchor-id="why-i-built-this">Why I built this</h2>
-<p><strong><a href="https://www.surgicalsafety.com/">Surgical Safety Technologies (SST)</a></strong> — Research Assistant / AI Annotator</p>
+<p><strong><a href="https://www.surgicalsafety.com/">Surgical Safety Technologies (SST)</a></strong> · Research Assistant / AI Annotator</p>
 <ul>
 <li>Assisted on instance segmentation pipelines for surgical tool detection and tracking</li>
 <li>Computed inter-rater reliability (κ/ICC) for analyst labels</li>
 <li>Reviewed ML-for-surgical-safety literature to support analyst operations</li>
 </ul>
-<p><strong>Takeaway:</strong> The bottleneck was never model accuracy — it was alarm fatigue and interface friction. Labels drift; adoption is decided by hygiene and UX.</p>
+<p><strong>Takeaway:</strong> The bottleneck was never model accuracy. It was alarm fatigue and interface friction. Labels drift; adoption is decided by hygiene and UX.</p>
 <hr>
-<p><strong><a href="https://mdastgheib.com/research/">UC Riverside</a></strong> — PhD dissertation</p>
+<p><strong><a href="https://mdastgheib.com/research/">UC Riverside</a></strong> · PhD dissertation</p>
 <ul>
 <li>Testing concurrent physical effort (5% vs 40% MVC) × cognitive load with pupillometry</li>
 <li>Domains: working and long-term memory, auditory and visual discrimination</li>
 <li>Theoretical frame: Resource Competition + Neural Gain (adaptive gain theory)</li>
 </ul>
-<p><strong>Takeaway:</strong> Pupil-indexed LC–NE activity links arousal to decision-making quality — a measurable, real-time signal that doesn’t require a headset.</p>
+<p><strong>Takeaway:</strong> Pupil-indexed LC–NE activity links arousal to decision-making quality, providing a measurable, real-time signal that doesn’t require a headset.</p>
 <hr>
 <p><strong>Why this dashboard:</strong> SST showed me what breaks in the OR when monitoring goes wrong. My dissertation gave me the mechanism to do it better. This project combines the two: deployable UX discipline from SST with LC–NE–grounded signal design from the lab.</p>
 <hr>
 </section>
 <section id="executive-summary" class="level2">
 <h2 class="anchored" data-anchor-id="executive-summary">Executive Summary</h2>
-<p>Robotic surgery places sustained cognitive demand on operators for procedures that routinely exceed two hours — with no objective, real-time signal of when that demand is impairing judgment or fine motor control. The OR is tightly constrained—so the design avoids new body-worn hardware and lengthy calibration, instead fusing existing robot telemetry with unobtrusive biosignals to deliver real-time coaching.</p>
+<p>Robotic surgery places sustained cognitive demand on operators for procedures that routinely exceed two hours, with no objective, real-time signal of when that demand is impairing judgment or fine motor control. The OR is tightly constrained, so the design avoids new body-worn hardware and lengthy calibration. Instead, it fuses existing robot telemetry with unobtrusive biosignals to deliver real-time coaching.</p>
 <p>I built two tightly coupled tools:</p>
 <ul>
 <li><strong>Training Lab</strong>: makes load/fatigue <em>felt</em> and lets instructors choose a threshold policy to match their pedagogy.</li>
 <li><strong>Production Dashboard</strong>: runs those policies in real time using <strong>pupil + grip/tremor + HRV</strong>, tuned to prevent alarm fatigue and respect sterile-field constraints.</li>
 </ul>
-<p>Model accuracy is a starting point, not the goal. I optimize for operational outcomes — fewer high-load minutes per hour, faster post-alert recovery, and shorter time-to-proficiency — alongside standard classifier metrics.</p>
+<p>Model accuracy is a starting point, not the goal. I optimize for operational outcomes, including fewer high-load minutes per hour, faster post-alert recovery, and shorter time-to-proficiency, alongside standard classifier metrics.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -585,17 +585,17 @@ body.quarto-dark .repo-actions a.btn.primary{background:rgba(31,155,182,.15);bor
 <hr>
 </section>
 <section id="objectives-what-this-actually-delivers" class="level2">
-<h2 class="anchored" data-anchor-id="objectives-what-this-actually-delivers">Objectives — what this actually delivers</h2>
+<h2 class="anchored" data-anchor-id="objectives-what-this-actually-delivers">Objectives: what this actually delivers</h2>
 <ul>
 <li><p><strong>Non-intrusive signal fusion.</strong> Pupil diameter, HRV, and grip/tremor are combined with existing robot telemetry to estimate cognitive state (Normal / High-Load / Lapse) without body-worn hardware or lengthy calibration.</p></li>
-<li><p><strong>Training-outcome focus.</strong> The primary metrics are operational: high-load minutes per hour, time-to-recovery after microbreaks, and sessions to competency rubric — not just classifier AUC.</p></li>
+<li><p><strong>Training-outcome focus.</strong> The primary metrics are operational: high-load minutes per hour, time-to-recovery after microbreaks, and sessions to competency rubric, not just classifier AUC.</p></li>
 <li><p><strong>Three teachable threshold policies.</strong> Adaptive Gain (arousal sweet-spot), Dual-Criterion SDT (false-alarm control with hysteresis), and Time-on-Task (fatigue-adaptive relaxation). Each maps to a real instructional strategy and is adjustable at runtime.</p></li>
 <li><p><strong>Sterile-field compatible.</strong> Setup under 60 seconds, no new wearables, sensible defaults, and guardrails against alarm spam.</p></li>
 </ul>
 <hr>
 </section>
 <section id="who-benefits-and-why" class="level2">
-<h2 class="anchored" data-anchor-id="who-benefits-and-why">Who benefits — and why</h2>
+<h2 class="anchored" data-anchor-id="who-benefits-and-why">Who benefits and why</h2>
 <ul>
 <li><strong>Residents.</strong> See when trainees drift into low arousal or overload; get <strong>just-enough nudge</strong> (microbreaks, pacing, framing) without flooding them.</li>
 <li><strong>Instructors.</strong> A common language for <strong>when</strong> to step in: high-load confirmed by <strong>TEPR↑ + HRV↓</strong>, lapse suggested by <strong>low TEPR + blink anomalies</strong>.</li>
@@ -604,7 +604,7 @@ body.quarto-dark .repo-actions a.btn.primary{background:rgba(31,155,182,.15);bor
 <hr>
 </section>
 <section id="personalized-coaching-how-it-adapts-to-the-trainee" class="level2">
-<h2 class="anchored" data-anchor-id="personalized-coaching-how-it-adapts-to-the-trainee">Personalized coaching — how it adapts to the trainee</h2>
+<h2 class="anchored" data-anchor-id="personalized-coaching-how-it-adapts-to-the-trainee">Personalized coaching: how it adapts to the trainee</h2>
 <p><strong>Idea.</strong> Each trainee has a different “inverted-U” width and bias. The system infers a <strong>coaching profile</strong> from early sessions:</p>
 <ul>
 <li><strong>Wide band:</strong> tolerates more challenge before overload → allow denser feedback; push complexity sooner.</li>
@@ -622,7 +622,7 @@ body.quarto-dark .repo-actions a.btn.primary{background:rgba(31,155,182,.15);bor
 <hr>
 </section>
 <section id="threshold-policies-how-they-work" class="level2">
-<h2 class="anchored" data-anchor-id="threshold-policies-how-they-work">Threshold Policies — how they work</h2>
+<h2 class="anchored" data-anchor-id="threshold-policies-how-they-work">Threshold Policies: how they work</h2>
 <p><em>One problem, three lenses.</em> Each policy below answers: <strong>what changes</strong>, <strong>when to use it</strong>, and <strong>how it maps to the production dashboard defaults</strong>.</p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
 <ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Adaptive Gain (Inverted-U) <span class="help-icon" data-bs-toggle="tooltip" title="Target the mid-arousal zone; too low/high hurts performance (LC–NE adaptive gain)."><i class="bi bi-info-circle"></i></span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Dual-Criterion (SDT) <span class="help-icon" data-bs-toggle="tooltip" title="One knob moves both decision boundaries (High-Load &amp; Lapse) together; tunes decision bias (criteria), not d′."><i class="bi bi-info-circle"></i></span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Time-on-Task Policy (Fatigue-Adaptive) <span class="help-icon" data-bs-toggle="tooltip" title="Steady until onset; then the decision threshold relaxes with a half-life. A microbreak briefly tightens the threshold and decays back."><i class="bi bi-info-circle"></i></span></a></li></ul>
@@ -682,7 +682,7 @@ Higher → <em>High-Load</em>; lower → <em>Lapse</em>.
 </ul></li>
 <li><strong>Why “Dual-Criterion,” not “Sensitivity.”</strong> In SDT, <strong>sensitivity</strong> is <strong>d′</strong> (distribution separation). This policy <strong>adjusts decision criteria (bias)</strong>, not d′.</li>
 </ul>
-<p><strong>How the two figures relate:</strong> The first figure defines the boundaries (enter/exit on each side). The second applies the <strong>same boundaries—nudged slightly if needed so at least one crossing is visible</strong>—to a noisy signal, showing how hysteresis prevents flip-flops near a boundary.</p>
+<p><strong>How the two figures relate:</strong> The first figure defines the boundaries (enter/exit on each side). The second applies the <strong>same boundaries, nudged slightly if needed so at least one crossing is visible,</strong> to a noisy signal, showing how hysteresis prevents flip-flops near a boundary.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -693,7 +693,7 @@ Higher → <em>High-Load</em>; lower → <em>Lapse</em>.
 </div>
 </div>
 <ul>
-<li><strong>Hysteresis.</strong> Enter/exit thresholds (and/or consecutive-sample confirmation) require <strong>persistent evidence</strong> to change state—reducing nuisance alerts.</li>
+<li><strong>Hysteresis.</strong> Enter/exit thresholds (and/or consecutive-sample confirmation) require <strong>persistent evidence</strong> to change state, reducing nuisance alerts.</li>
 <li><strong>Maps to Dashboard.</strong> The control sets the <strong>HL</strong> and <strong>Lapse</strong> thresholds together. Alerts still require <strong>evidence + physiology</strong> (e.g., HL requires <strong>TEPR↑ or HRV↓</strong>; Lapse prefers <strong>low TEPR + blink anomalies</strong>).</li>
 <li><strong>References.</strong> Macmillan &amp; Creelman (Signal Detection Theory); NASA-TLX background (Hart &amp; Staveland).</li>
 </ul>
@@ -722,10 +722,10 @@ Note
 <p>How to read this policy</p>
 <ul>
 <li>Pre-onset (t &lt; 30 min): the decision threshold stays at 0.70.</li>
-<li>Post-onset: the threshold relaxes exponentially toward the floor 0.50—i.e., the system becomes more tolerant of High-Load detections as vigilance degrades.</li>
+<li>Post-onset: the threshold relaxes exponentially toward the floor 0.50. In other words, the system becomes more tolerant of High-Load detections as vigilance degrades.</li>
 <li>Microbreak (t = 60 min): a small reset tightens the threshold, then decays over ~2 min. (Demo uses a fixed, modest reset.)</li>
 <li>Half-life: at t = onset + half-life = 30 + 21 = 51 min, the threshold sits halfway between 0.70 and 0.50.</li>
-<li>Design intent: this is a controller on the criterion—transparent, auditable, and tunable per surgeon/task; it does not assume the evidence itself drifts.</li>
+<li>Design intent: this is a transparent, auditable controller on the criterion that is tunable per surgeon/task; it does not assume the evidence itself drifts.</li>
 </ul>
 </div>
 </div>
@@ -816,7 +816,7 @@ body.quarto-dark .demo-card{background:linear-gradient(135deg,rgba(31,155,182,.1
   </a>
 </div>
 
-<h3 class="anchored">Component Details — Zoomable Gallery</h3>
+<h3 class="anchored">Component Details: Zoomable Gallery</h3>
 <div class="gallery">
   <a href="../assets/demo/cognitve-load-index.png" class="lightbox" data-gallery="components" data-glightbox="title:Cognitive load index with hysteresis thresholds">
     <img src="../assets/demo/cognitve-load-index.png" alt="Cognitive load">
@@ -837,7 +837,7 @@ body.quarto-dark .demo-card{background:linear-gradient(135deg,rgba(31,155,182,.1
   </a>
 </div>
 
-<h3 class="anchored">ML Diagnostics Details — Zoomable Gallery</h3>
+<h3 class="anchored">ML Diagnostics Details: Zoomable Gallery</h3>
 <div class="gallery">
   <a href="../assets/demo/ml-probability-calibration.png" class="lightbox" data-gallery="ml-details" data-glightbox="title:Calibration curve: predicted vs observed (ECE, Brier)">
     <img src="../assets/demo/ml-probability-calibration.png" alt="Calibration">
@@ -900,7 +900,7 @@ Seeds fixed; all plots are generated by scripts under <code>scripts/90_make_gall
 <li><strong>Stability (↗).</strong> Fewer state flips near thresholds with hysteresis vs naive criteria.</li>
 <li><strong>Time-to-proficiency (↘).</strong> Sessions to hit competency rubric milestones.</li>
 </ul>
-<p><strong>What synthetic validation showed.</strong> Using held-out synthetic sessions (session-level 5-fold CV, subject leakage prevented), I found the XGBoost classifier distinguished Normal from High-Load with PR-AUC &gt; 0.85; Lapse detection was weaker (PR-AUC ~0.65), reflecting its low prevalence (&lt; 5% of time steps) and reliance on blink-burst patterns that are noisier in simulation than in real data. Platt-scaled probabilities had ECE &lt; 0.06 on validation folds. I compared threshold policies on the same synthetic stream and confirmed that Adaptive Gain produced fewer nuisance alerts than a naive fixed threshold under the same biosignal trace — the intended behavior. I treat these results as proof-of-concept only; see <a href="#limitations">Limitations</a> for what they cannot establish.</p>
+<p><strong>What synthetic validation showed.</strong> Using held-out synthetic sessions (session-level 5-fold CV, subject leakage prevented), I found the XGBoost classifier distinguished Normal from High-Load with PR-AUC &gt; 0.85; Lapse detection was weaker (PR-AUC ~0.65), reflecting its low prevalence (&lt; 5% of time steps) and reliance on blink-burst patterns that are noisier in simulation than in real data. Platt-scaled probabilities had ECE &lt; 0.06 on validation folds. I compared threshold policies on the same synthetic stream and confirmed that Adaptive Gain produced fewer nuisance alerts than a naive fixed threshold under the same biosignal trace, which was the intended behavior. I treat these results as proof-of-concept only; see <a href="#limitations">Limitations</a> for what they cannot establish.</p>
 <p><em>Analytics:</em> per-session trend lines + bootstrapped CIs; PR-AUC for Lapse, calibration error (ECE), and threshold-level lift curves for explainability.</p>
 <hr>
 </section>
@@ -915,14 +915,14 @@ Seeds fixed; all plots are generated by scripts under <code>scripts/90_make_gall
 <section id="limitations" class="level2">
 <h2 class="anchored" data-anchor-id="limitations">Limitations</h2>
 <p><strong>Synthetic data only.</strong> All dashboard demonstrations and model evaluations use synthetic sessions generated by the same code paths as the live app. No real OR biosignal data has been collected or analyzed. Performance figures (e.g., cross-validation accuracy, calibration curves) reflect behavior on simulated data and may not generalize to real surgical environments.</p>
-<p><strong>No prospective pilot.</strong> The system has not been tested with real surgical trainees. Threshold defaults, coaching heuristics, and alert timing are grounded in published literature but are unvalidated in the target context. A prospective pilot — even with N=5–10 trainees across two or three sessions — would be needed before drawing any conclusions about training efficacy.</p>
+<p><strong>No prospective pilot.</strong> The system has not been tested with real surgical trainees. Threshold defaults, coaching heuristics, and alert timing are grounded in published literature but are unvalidated in the target context. A prospective pilot, even with N=5–10 trainees across two or three sessions, would be needed before drawing any conclusions about training efficacy.</p>
 <p><strong>Gaze-based pupillometry requires hardware not present here.</strong> The dashboard assumes a table-mounted or console-integrated eye tracker (e.g., EyeLink or Tobii integration) as the pupil signal source. No such hardware was used in building or testing this proof-of-concept. Signal quality, blink rate, and TEPR estimates in real OR conditions will differ from the synthetic proxy used here.</p>
 <p><strong>Cognitive state labels are proxies.</strong> The XGBoost classifier predicts Normal / High-Load / Lapse based on physiological features. These labels are theoretically motivated but not validated against independent ground-truth measures of cognitive state (e.g., concurrent performance data, subjective workload ratings collected during the same sessions).</p>
-<p><strong>Single-rater design, no inter-rater validation.</strong> All system design decisions — threshold policies, feature definitions, alert criteria — were made by a single researcher. Independent expert review of the threshold logic and coaching heuristics has not been conducted.</p>
+<p><strong>Single-rater design, no inter-rater validation.</strong> All system design decisions, including threshold policies, feature definitions, and alert criteria, were made by a single researcher. Independent expert review of the threshold logic and coaching heuristics has not been conducted.</p>
 <hr>
 </section>
 <section id="product-vs.-lab-how-they-fit" class="level2">
-<h2 class="anchored" data-anchor-id="product-vs.-lab-how-they-fit">Product vs.&nbsp;Lab — how they fit</h2>
+<h2 class="anchored" data-anchor-id="product-vs.-lab-how-they-fit">Product vs.&nbsp;Lab: how they fit</h2>
 <p>The <strong>Lab</strong> teaches the concepts and lets instructors tune policy; the <strong>Dashboard</strong> runs that policy live with guardrails and explains <em>why</em> an alert fired.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -1384,7 +1384,7 @@ Seeds fixed; all plots are generated by scripts under <code>scripts/90_make_gall
 </colgroup>
 <thead>
 <tr class="gt_heading header">
-<td colspan="3" class="gt_heading gt_title gt_font_normal"><strong>Product vs.&nbsp;Lab — how they fit</strong></td>
+<td colspan="3" class="gt_heading gt_title gt_font_normal"><strong>Product vs.&nbsp;Lab: how they fit</strong></td>
 </tr>
 <tr class="gt_heading even">
 <td colspan="3" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Operational app (left) vs.&nbsp;pedagogy sandbox (right)</td>
@@ -1445,7 +1445,7 @@ Seeds fixed; all plots are generated by scripts under <code>scripts/90_make_gall
 <hr>
 </section>
 <section id="from-sst-to-the-or-what-transferred" class="level2">
-<h2 class="anchored" data-anchor-id="from-sst-to-the-or-what-transferred">From SST to the OR — what transferred</h2>
+<h2 class="anchored" data-anchor-id="from-sst-to-the-or-what-transferred">From SST to the OR: what transferred</h2>
 <ul>
 <li><p><strong>Alert load determines adoption, not accuracy.</strong> At SST I saw analysts disable alerts not because the model was wrong, but because the alert rate was too high to act on. This dashboard targets ≤0.6 alerts/min and tracks nuisance rate as a first-class metric.</p></li>
 <li><p><strong>Rationale must travel with the alert.</strong> An alert that says “High-Load confirmed: TEPR↑ + RMSSD↓” is actionable. An alert that says “state: 2” is not. Every alert in the dashboard displays the physiological evidence that triggered it.</p></li>
@@ -1455,11 +1455,11 @@ Seeds fixed; all plots are generated by scripts under <code>scripts/90_make_gall
 </section>
 <section id="deployment-privacy" class="level2">
 <h2 class="anchored" data-anchor-id="deployment-privacy">Deployment &amp; Privacy</h2>
-<p>Runs as a Docker image or on ShinyApps; can embed in training portals with a single <code>&lt;iframe&gt;</code>. By default, <strong>surgeon biometrics are ephemeral</strong>: the system retains only de-identified aggregates (for QA/research) with explicit consent. The system is <strong>assistive</strong>, not autonomous—the clinician remains in the loop, with visible rationale for alerts.</p>
+<p>Runs as a Docker image or on ShinyApps; can embed in training portals with a single <code>&lt;iframe&gt;</code>. By default, <strong>surgeon biometrics are ephemeral</strong>: the system retains only de-identified aggregates (for QA/research) with explicit consent. The system is <strong>assistive</strong>, not autonomous. The clinician remains in the loop, with visible rationale for alerts.</p>
 <hr>
 </section>
 <section id="whats-next-tailored-pedagogy" class="level2">
-<h2 class="anchored" data-anchor-id="whats-next-tailored-pedagogy">What’s next — tailored pedagogy</h2>
+<h2 class="anchored" data-anchor-id="whats-next-tailored-pedagogy">What’s next: tailored pedagogy</h2>
 <ul>
 <li><strong>Estimate the trainee’s arousal band.</strong> Use early sessions to fit a simple <strong>sweet-spot width</strong> (from TEPR/HRV vs performance), then personalize alert sensitivity.</li>
 <li><strong>Phase-aware coaching.</strong> Different thresholds for docking, dissection, suturing; tighten only where error costs are high.</li>

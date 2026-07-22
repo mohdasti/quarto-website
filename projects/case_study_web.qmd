@@ -25,7 +25,7 @@ editor:
 
 ```{=html}
 <div class="project-snapshot-card">
-  <div class="ps-item"><span class="ps-label">Role</span><span class="ps-value">Sole Researcher — Study Design, Development, Analysis</span></div>
+  <div class="ps-item"><span class="ps-label">Role</span><span class="ps-value">Sole Researcher: Study Design, Development, Analysis</span></div>
   <div class="ps-item"><span class="ps-label">Methods</span><span class="ps-value">ISO 9241-9, Fitts' Law, NASA-TLX, Bayesian LBA (PyMC), Williams Counterbalancing</span></div>
   <div class="ps-item"><span class="ps-label">Stack</span><span class="ps-value">React, TypeScript, Python, PyMC, Quarto</span></div>
   <div class="ps-item"><span class="ps-label">Output</span><span class="ps-value">arXiv preprint · Remote testbed (live) · Case study</span></div>
@@ -758,7 +758,7 @@ body.quarto-dark .repo-actions a.btn.primary{background:rgba(109,40,217,.15);bor
 <div class="tldr-card" role="note" aria-label="What I built">
   <div class="tldr-title">What I shipped</div>
   <div class="tldr-body">
-    I built a remote XR interaction research platform—from task UI to analysis—so I could quantify speed–accuracy tradeoffs, surface XR-specific failure modes (e.g., Midas Touch slips), and evaluate adaptive UI policies with full replayable telemetry.
+    I built a remote XR interaction research platform from task UI through analysis. It lets me quantify speed–accuracy tradeoffs, surface XR-specific failure modes (e.g., Midas Touch slips), and evaluate adaptive UI policies with full replayable telemetry.
   </div>
   <div class="tldr-chips">
     <a href="https://github.com/mohdasti/xr-adaptive-modality-2025" target="_blank" rel="noopener">GitHub repo</a>
@@ -794,9 +794,9 @@ body.quarto-dark .repo-actions a.btn.primary{background:rgba(109,40,217,.15);bor
 ```
 
 <details>
-<summary><strong>Implementation notes (optional)</strong> — for engineers</summary>
+<summary><strong>Implementation notes (optional)</strong> for engineers</summary>
 
-**Development approach:** Despite not being a software/web developer by training, I delivered this full-stack research platform efficiently using **Cursor AI** for code generation and iteration, enabling rapid prototyping and deployment. The entire system—from React UI to analysis pipeline—was built and deployed to **Vercel** in a matter of weeks, demonstrating that modern AI-assisted development tools can bridge domain expertise gaps.
+**Development approach:** Despite not being a software/web developer by training, I delivered this full-stack research platform efficiently using **Cursor AI** for code generation and iteration, enabling rapid prototyping and deployment. The entire system, from React UI to analysis pipeline, was built and deployed to **Vercel** in a matter of weeks, demonstrating that modern AI-assisted development tools can bridge domain expertise gaps.
 
 **Tech stack:**
 
@@ -840,12 +840,12 @@ The telemetry system logs comprehensive per-trial data including trial metadata,
 
 **File structure highlights:**
 
-- `app/src/routes/` — Multi-page flow components (Intro, Demographics, SystemCheck, Calibration, Task, Debrief)
-- `app/src/components/` — Reusable UI components (FittsTask, TaskPane, HUDPane, TLXForm)
-- `app/src/lib/` — Core logic (policy engine, modality simulation, telemetry, CSV export)
-- `policy/` — JSON policy configuration files (default vs locked variants)
-- `analysis/` — R scripts for data processing, QC, and statistical modeling
-- `Report.qmd` — Main Quarto analysis document (regenerates all outputs)
+- `app/src/routes/`: Multi-page flow components (Intro, Demographics, SystemCheck, Calibration, Task, Debrief)
+- `app/src/components/`: Reusable UI components (FittsTask, TaskPane, HUDPane, TLXForm)
+- `app/src/lib/`: Core logic (policy engine, modality simulation, telemetry, CSV export)
+- `policy/`: JSON policy configuration files (default vs locked variants)
+- `analysis/`: R scripts for data processing, QC, and statistical modeling
+- `Report.qmd`: Main Quarto analysis document (regenerates all outputs)
 
 **Performance & optimization:**
 
@@ -980,7 +980,7 @@ setwd(old_wd)
 - **Slip** = accidental activation (classic "Midas Touch" pattern).
 - **Miss/timeout** = failed selection due to precision or timing constraints.
 
-**Why Fitts' Law + Throughput?** We use a Fitts' Law pointing task (ISO 9241-9 compliant) because it isolates the core interaction loop ("move → acquire → confirm") while systematically controlling difficulty. Rather than looking at speed and errors separately, we report **Throughput (TP)** as the primary performance metric—it combines movement time and effective accuracy into a single efficiency score (higher = better). This helps avoid misleading conclusions like "faster, but much sloppier" or "more accurate, but only because users slowed down."
+**Why Fitts' Law + Throughput?** We use a Fitts' Law pointing task (ISO 9241-9 compliant) because it isolates the core interaction loop ("move → acquire → confirm") while systematically controlling difficulty. Rather than looking at speed and errors separately, we report **Throughput (TP)** as the primary performance metric. It combines movement time and effective accuracy into a single efficiency score (higher = better). This helps avoid misleading conclusions like "faster, but much sloppier" or "more accurate, but only because users slowed down."
 :::
 
 ```{r task-layout-fig, echo=FALSE, out.width="100%"}
@@ -1174,7 +1174,7 @@ similar.
 **Three Takeaways:**
 
 1.  **Hand input outperformed gaze:** Higher **Throughput (TP; speed–accuracy efficiency)** (5.15 vs 4.70 bits/s), lower error rate (1.7% vs 18.6%), lower **NASA-TLX (workload)** (40.4 vs 47.0)
-2.  **Gaze errors are predominantly slips (accidental activations / Midas Touch) (99.2%),** not timeouts—validating the Midas Touch problem in XR gaze interaction
+2.  **Gaze errors are predominantly slips (accidental activations / Midas Touch) (99.2%),** not timeouts, validating the Midas Touch problem in XR gaze interaction
 3.  **Adaptive UI (declutter: removes non-essential visual elements) showed modest benefits** in gaze: slightly lower error rate (18.2% vs 19.1%)
 
 ```{r results-table}
@@ -1259,7 +1259,7 @@ if (nrow(results) > 0) {
 
 ## Failure Modes (XR-specific) {#failure-modes-xr-specific}
 
-**What this section shows:** XR-specific failure patterns—ways that gaze and hand interactions fail differently, with gaze showing the classic "Midas Touch" problem (accidental activations).
+**What this section shows:** XR-specific failure patterns, specifically how gaze and hand interactions fail differently, with gaze showing the classic "Midas Touch" problem (accidental activations).
 
 ### Error Type Breakdown
 
@@ -1974,7 +1974,7 @@ if (has_highcharter && !is.null(df_spatial_int) && nrow(df_spatial_int) > 0) {
 :::
 
 **What to look for:** Warmer colors indicate higher error rates. Compare Hand vs Gaze to see if
-certain screen regions show consistently higher errors—this could
+certain screen regions show consistently higher errors. This could
 indicate UI layout issues or visual attention patterns.
 :::
 
@@ -2055,8 +2055,8 @@ significant throughput benefit.
 **Hand adaptive UI (width inflation) did not activate:** PolicyEngine
 emitted 243 `inflate_width` actions (17 participants), but
 `width_scale_factor` `r tip_i("width_scale_factor: multiplier applied to target width. 1.0 = no change, >1.0 = wider targets. Remained 1.0 throughout, indicating width inflation never activated.")`
-remained 1.0 throughout. Root cause: UI integration issue—policy actions
-were emitted but not applied to rendered targets. See
+remained 1.0 throughout. A UI integration issue prevented the emitted
+policy actions from being applied to rendered targets. See
 [Appendix](#appendix) for full diagnostic analysis.
 :::
 
@@ -2066,7 +2066,7 @@ were emitted but not applied to rendered targets. See
 
 The dominant gaze failure mode is slips (99.2%), not simple misses.
 Decluttering UI helps, but the bigger opportunity is **intent
-disambiguation**—confirmation mechanisms, stabilization, snapping, dwell
+disambiguation** through confirmation mechanisms, stabilization, snapping, dwell
 tuning, and clear state feedback. Prioritize reducing the verification
 burden rather than just reducing visual chrome.
 
@@ -2080,7 +2080,7 @@ but not exercised, so its benefit is unconfirmed.
 
 The concept is sound, but adaptation effects were small because triggers
 and mechanisms need tuning. Not all "adaptive" changes
-are meaningful—decluttering UI can be helpful, but targeting the
+are meaningful. Decluttering UI can be helpful, but targeting the
 dominant failure mode (slips) is more impactful. Policy thresholds must
 be calibrated through iterative testing, not assumed.
 
@@ -2259,8 +2259,8 @@ if (file.exists("outputs/width_inflation_diagnostics_summary.csv")) {
 **Data-backed conclusion:** Width inflation never activated: 0 trials
 with `width_scale_factor != 1.0`. PolicyEngine emitted 243
 `inflate_width` actions (17 participants), but UI integration did not
-apply them. Root cause: UI integration issue—policy actions were
-emitted but not applied to rendered targets.
+apply them. The policy actions were emitted but never connected to the
+rendered targets.
 
 **Adaptation activation summary:**
 
@@ -2595,13 +2595,13 @@ if (exists("lba_table") && nrow(lba_table) > 0) {
 
 **Key findings:**
 
-1. **Modality effect on non-decision time:** Gaze has higher t0 than Hand (gaze: -1.41 to -0.97, hand: -3.01 to -2.85), indicating longer verification phase duration for gaze interaction—consistent with the need for intent disambiguation.
+1. **Modality effect on non-decision time:** Gaze has higher t0 than Hand (gaze: -1.41 to -0.97, hand: -3.01 to -2.85), indicating longer verification phase duration for gaze interaction. This is consistent with the need for intent disambiguation.
 
 2. **UI mode effect:** Adaptive UI shows different t0 patterns, particularly in gaze (static: -1.41, adaptive: -0.97), suggesting adaptive declutter may affect verification timing.
 
 3. **Difficulty effect:** Negative ID slope (-0.935) confirms harder trials reduce drift rate, as expected from Fitts' Law.
 
-4. **Pressure effect:** Positive pressure slope (0.058) indicates speed-accuracy tradeoff—higher pressure increases decision threshold.
+4. **Pressure effect:** Positive pressure slope (0.058) indicates a speed-accuracy tradeoff: higher pressure increases the decision threshold.
 
 **Convergence diagnostics:**
 
@@ -2686,7 +2686,7 @@ if (has_gt) {
      border-left:4px solid var(--color-accent); border-radius:0 8px 8px 0;
      margin:1rem 0; font-size:0.88rem;">
   <strong>Trace plots:</strong> Convergence was verified (R-hat &lt; 1.01,
-  ESS &gt; 2,000 for all parameters — see table above). Trace plot image
+  ESS &gt; 2,000 for all parameters; see table above). Trace plot image
   will be added in the final manuscript version.
 </div>
 ```
