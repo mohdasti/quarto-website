@@ -1,2 +1,4 @@
 # Copied to docs/ via _quarto.yml resources (Netlify publish root).
 /portfolio/portfolio.html  /portfolio/  301
+/about/                    /            301
+/about/index.html          /            301

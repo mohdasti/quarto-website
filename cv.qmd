@@ -9,4 +9,4 @@ format:
 
 <iframe src="/CV/CV_MDastgheib.pdf" width="100%" height="800" frameborder="0" scrolling="yes"></iframe>
 
-[Download Full CV (PDF)](/CV/CV_MDastgheib.pdf){.btn .btn-primary}
+[Download Résumé (PDF)](/CV/Resume_MDastgheib.pdf){.btn .btn-outline-secondary} [Download Full CV (PDF)](/CV/CV_MDastgheib.pdf){.btn .btn-primary}

@@ -41,8 +41,6 @@ website:
         href: research/research.qmd
       - text: Toolkit
         href: skills/skills.qmd
-      - text: About
-        href: about/about.qmd
       - text: Publications
         href: publications/publications.qmd
       - text: CV
@@ -68,7 +66,6 @@ website:
       <a href="https://orcid.org/0000-0001-7684-3731" title="ORCID" aria-label="ORCID" target="_blank" rel="noopener">
         <i class="ai ai-orcid"></i>
       </a>
-    right: "[Download CV](/CV/CV_MDastgheib.pdf) &nbsp;·&nbsp; Authorized to work in the U.S. without sponsorship"
 
 
 format:

@@ -16,6 +16,23 @@ When an older adult grips hard while judging what they just heard or saw, someth
 
 The backbone is a handgrip dual-task: participants hold a steady isometric force while making fine auditory or visual discriminations. Effort becomes an experimental dial on arousal; pupillometry tracks that arousal moment to moment; and modeling separates a change in *what you can perceive* from a change in *how you decide*. The paradigm is validated first in younger adults, then examined in older adults, where cognitive capacity is tighter and the physiological price of effort is steeper, through three complementary modeling lenses plus a fourth that reads the grip signal itself.
 
+```{=html}
+<div class="research-collaboration" role="region" aria-labelledby="collaboration-heading">
+  <div class="research-collaboration__intro">
+    <p class="research-collaboration__eyebrow">Collaboration footprint</p>
+    <h3 id="collaboration-heading">Five labs plus shared neuroimaging infrastructure</h3>
+    <p>This PhD research is conducted through an interdisciplinary network spanning psychology, bioengineering, cognitive neuroscience, and neuroimaging, with shared expertise and infrastructure supporting the broader research program.</p>
+  </div>
+  <ul class="research-collaboration__network">
+    <li><strong>UC Riverside</strong><span>Two Psychology labs</span></li>
+    <li><strong>UC Riverside</strong><span>One Bioengineering lab</span></li>
+    <li><strong>UCL, formerly UC Irvine</strong><span>One collaborating lab</span></li>
+    <li><strong>Northeastern University</strong><span>One collaborating lab</span></li>
+    <li><strong>UC Riverside</strong><span>Center for Advanced Neuroimaging</span></li>
+  </ul>
+</div>
+```
+
 Dissertation chapters are not journal articles; titles and status are listed on [Publications](../publications/publications.qmd).
 
 ```{=html}

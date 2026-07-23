@@ -12,6 +12,9 @@ about:
       text: Github
       href: https://github.com/mohdasti
     - icon: file-earmark-pdf
+      text: Résumé
+      href: /CV/Resume_MDastgheib.pdf
+    - icon: file-earmark-pdf
       text: CV
       href: /CV/CV_MDastgheib.pdf
     - icon: ai-google-scholar
