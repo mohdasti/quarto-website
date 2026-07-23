@@ -29,7 +29,7 @@ website:
   twitter-card:
     card-style: summary_large_image
     title: "Mohammad Dastgheib | Human Factors & UX Researcher"
-    description: "PhD Candidate at UC Riverside. Bayesian DDM, pupillometry, XR/HCI. Available Summer/Fall 2026."
+    description: "PhD Candidate at UC Riverside. Bayesian DDM, pupillometry, XR/HCI. Authorized to work in the U.S. without sponsorship."
     image: "https://mdastgheib.com/images/profile.jpg"
     creator: "@MoDastgheib"
   navbar:
@@ -68,7 +68,7 @@ website:
       <a href="https://orcid.org/0000-0001-7684-3731" title="ORCID" aria-label="ORCID" target="_blank" rel="noopener">
         <i class="ai ai-orcid"></i>
       </a>
-    right: "[Download CV](/CV/CV_MDastgheib.pdf) &nbsp;·&nbsp; Available Summer / Fall 2026"
+    right: "[Download CV](/CV/CV_MDastgheib.pdf) &nbsp;·&nbsp; Authorized to work in the U.S. without sponsorship"
 
 
 format:

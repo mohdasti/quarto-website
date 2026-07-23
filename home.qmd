@@ -10,7 +10,7 @@ format:
 ```{=html}
 <section class="hero-section">
   <div class="hero-inner">
-    <div class="availability-pill hero-availability">Available Summer / Fall 2026</div>
+    <div class="availability-pill hero-availability">Open to opportunities · Authorized to work in the U.S. without sponsorship</div>
     <div class="hero-content">
       <p class="hero-title">Research Scientist · Quantitative UXR · Human Factors</p>
       <h1 class="hero-name">Designing better <span class="accent-word">human-machine interaction</span></h1>
@@ -30,7 +30,6 @@ format:
     </div>
     <aside class="hero-aside">
       <div class="hero-photo-ring"><img src="/images/profile.jpg" alt="Mohammad Dastgheib" class="hero-photo" width="600" height="750"></div>
-      <p class="hero-aside-note">PhD candidate, Cognitive Neuroscience<br>Los Angeles / Riverside · Open to relocation</p>
     </aside>
   </div>
 </section>
