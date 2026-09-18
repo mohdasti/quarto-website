@@ -5,6 +5,8 @@ project:
   resources:
     - assets/**
     - images/research/**
+    - images/thebridge.png
+    - images/thebridge-mark.png
     - outputs/**
     - pdfs/**
     - photography/**

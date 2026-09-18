@@ -106,6 +106,24 @@ The central tool is a handgrip dual-task paradigm that combines concurrent isome
 
 ::: {.edu-entry}
 ::: {.edu-logo}
+<a href="https://www.thebridge.ai" target="_blank" rel="noopener noreferrer">
+  <img src="/images/thebridge-mark.png" alt="thebridge logo" />
+</a>
+:::
+::: {.edu-body}
+### Research Scientist, Research & Experiment Lead
+[thebridge Inc.]{.edu-org}
+
+[San Francisco, CA | Sep 2026 – Present]{.edu-years}
+
+- Contributing to roundtable, a research environment studying how humans and AI agents collaborate, deliberate, and decide together
+- Designing experiments for human × human and human × agent studies, with an emphasis on measurement validity
+- Developing evaluation methods so claims about joint decision-making can be tested rigorously
+:::
+:::
+
+::: {.edu-entry}
+::: {.edu-logo}
 <a href="https://www.surgicalsafety.com" target="_blank" rel="noopener noreferrer">
   <img src="/images/sst.jpeg" alt="Surgical Safety Technologies logo" />
 </a>

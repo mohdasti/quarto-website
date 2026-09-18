@@ -104,9 +104,23 @@ format:
 <section class="experience-section" aria-labelledby="experience-heading">
   <div class="experience-inner">
     <div class="section-head">
-      <div><p class="section-eyebrow">Industry experience</p><h2 class="section-heading" id="experience-heading">Research inside a clinical AI environment</h2></div>
-      <p class="section-intro">Direct experience supporting the data quality and research operations behind surgical-safety technology.</p>
+      <div><p class="section-eyebrow">Industry experience</p><h2 class="section-heading" id="experience-heading">Research on how people and systems decide together</h2></div>
+      <p class="section-intro">Current work on human–agent collaboration, with prior experience supporting research operations behind surgical-safety technology.</p>
     </div>
+    <article class="experience-card">
+      <a class="experience-logo" href="https://www.thebridge.ai" target="_blank" rel="noopener noreferrer" aria-label="thebridge">
+        <img class="logo-wide" src="/images/thebridge.png" alt="thebridge logo">
+      </a>
+      <div class="experience-body">
+        <p class="experience-role">Research Scientist, Research &amp; Experiment Lead</p>
+        <p class="experience-meta">thebridge Inc. · San Francisco, CA · Sep 2026 – Present</p>
+        <ul class="experience-list">
+          <li>Contribute to roundtable, a research environment studying how humans and AI agents collaborate, deliberate, and make decisions together.</li>
+          <li>Design experiments for human × human and human × agent studies, with an emphasis on measurement validity.</li>
+          <li>Develop evaluation methods so claims about joint decision-making can be tested rigorously.</li>
+        </ul>
+      </div>
+    </article>
     <article class="experience-card">
       <a class="experience-logo" href="https://www.surgicalsafety.com" target="_blank" rel="noopener noreferrer" aria-label="Surgical Safety Technologies">
         <img src="/images/sst.jpeg" alt="Surgical Safety Technologies logo">
