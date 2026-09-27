@@ -6,9 +6,11 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Five case studies covering model evaluation, XR interaction, real-time cognitive monitoring, psychophysical modeling, and memory. Each one walks from question to method to result.">
+<meta name="author" content="Mohammad Dastgheib">
+<meta name="dcterms.date" content="2026-09-27">
+<meta name="description" content="A 480-generation model-evaluation experiment where an apparent prompt-sensitivity finding collapsed under a grader audit — and what the audit taught me about measurement in AI evaluation.">
 
-<title>Portfolio – Mohammad Dastgheib</title>
+<title>Case Study: Auditing the Grader — When ‘Prompt Sensitivity’ Turned Out to Be a Regex Bug – Mohammad Dastgheib</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -35,8 +37,6 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
 <link href="..//images/profile.jpg" rel="icon" type="image/jpeg">
-<script src="../site_libs/quarto-listing/list.min.js"></script>
-<script src="../site_libs/quarto-listing/quarto-listing.js"></script>
 <script src="../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -51,6 +51,9 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/bootstrap/bootstrap-c1eb45277b2a5c3efe6fd691daee151b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="../site_libs/bootstrap/bootstrap-dark-01fa2bdbdb322ce32a4835f168b6fb2c.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="../site_libs/bootstrap/bootstrap-c1eb45277b2a5c3efe6fd691daee151b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,35 +81,6 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
-
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-case-studies .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
-
-    const options = {
-      valueNames: ['listing-title','listing-description','listing-date','listing-categories','listing-image',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-case-studies'] = new List('listing-case-studies', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-5EPCPLZLYN"></script>
 
 <script type="text/javascript">
@@ -123,46 +97,21 @@ gtag('config', 'G-5EPCPLZLYN', { 'anonymize_ip': true});
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link rel="stylesheet" href="../assets/listing-default.css">
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 <meta property="og:title" content="Mohammad Dastgheib | Human Factors &amp; UX Researcher">
 <meta property="og:description" content="PhD Candidate, UC Riverside. Psychophysics, pupillometry, Bayesian DDM, XR/HCI. Seeking Human Factors, Quant UXR, Research Scientist roles.">
-<meta property="og:image" content="https://mdastgheib.com/images/profile.jpg">
+<meta property="og:image" content="https://mdastgheib.com/images/eval-grader-audit.png">
 <meta property="og:site_name" content="Mohammad Dastgheib">
 <meta property="og:locale" content="en_US">
+<meta property="og:image:height" content="1280">
+<meta property="og:image:width" content="1920">
 <meta name="twitter:title" content="Mohammad Dastgheib | Human Factors &amp; UX Researcher">
 <meta name="twitter:description" content="PhD Candidate at UC Riverside. Bayesian DDM, pupillometry, XR/HCI. Authorized to work in the U.S. without sponsorship.">
-<meta name="twitter:image" content="https://mdastgheib.com/images/profile.jpg">
+<meta name="twitter:image" content="https://mdastgheib.com/images/eval-grader-audit.png">
 <meta name="twitter:creator" content="@MoDastgheib">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image-height" content="1280">
+<meta name="twitter:image-width" content="1920">
 </head>
 
 <body class="nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
@@ -377,31 +326,68 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(5)</span></div><div class="category" data-category="YXJYaXY=">arXiv <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QmF5ZXNpYW4lMjBERE0=">Bayesian DDM <span class="quarto-category-count">(1)</span></div><div class="category" data-category="QmF5ZXNpYW4lMjBMQkE=">Bayesian LBA <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29nbml0aXZlJTIwTmV1cm9zY2llbmNl">Cognitive Neuroscience <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RUVH">EEG <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RXhwZXJpbWVudGFsJTIwRGVzaWdu">Experimental Design <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R2F6ZSUyMEludGVyYWN0aW9u">Gaze Interaction <span class="quarto-category-count">(1)</span></div><div class="category" data-category="SHVtYW4lMjBGYWN0b3Jz">Human Factors <span class="quarto-category-count">(2)</span></div><div class="category" data-category="TWVhc3VyZW1lbnQlMjBTY2llbmNl">Measurement Science <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWl4ZWQlMjBNZXRob2Rz">Mixed Methods <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TUw=">ML <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TW9kZWwlMjBFdmFsdWF0aW9u">Model Evaluation <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHN5Y2hvcGh5c2ljcw==">Psychophysics <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UHVwaWxsb21ldHJ5">Pupillometry <span class="quarto-category-count">(2)</span></div><div class="category" data-category="UiUyMFNoaW55">R Shiny <span class="quarto-category-count">(1)</span></div><div class="category" data-category="UmVtb3RlJTIwU3R1ZHk=">Remote Study <span class="quarto-category-count">(1)</span></div><div class="category" data-category="WEdCb29zdA==">XGBoost <span class="quarto-category-count">(1)</span></div><div class="category" data-category="WFIlMkZIQ0k=">XR/HCI <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#overview-the-finding-that-wasnt" id="toc-overview-the-finding-that-wasnt" class="nav-link active" data-scroll-target="#overview-the-finding-that-wasnt">🌟 Overview: The Finding That Wasn’t</a></li>
+  <li><a href="#the-question" id="toc-the-question" class="nav-link" data-scroll-target="#the-question">❓ The Question</a></li>
+  <li><a href="#method" id="toc-method" class="nav-link" data-scroll-target="#method">🔬 Method</a></li>
+  <li><a href="#the-audit" id="toc-the-audit" class="nav-link" data-scroll-target="#the-audit">🔍 The Audit</a></li>
+  <li><a href="#what-survived" id="toc-what-survived" class="nav-link" data-scroll-target="#what-survived">📊 What Survived</a></li>
+  <li><a href="#key-insights" id="toc-key-insights" class="nav-link" data-scroll-target="#key-insights">💡 Key Insights</a>
+  <ul>
+  <li><a href="#key-insight-1-audit-the-grader-before-you-believe-the-comparison." id="toc-key-insight-1-audit-the-grader-before-you-believe-the-comparison." class="nav-link" data-scroll-target="#key-insight-1-audit-the-grader-before-you-believe-the-comparison."><strong>💡 Key Insight #1: Audit the grader before you believe the comparison.</strong></a></li>
+  <li><a href="#key-insight-2-apparent-prompt-sensitivity-can-be-grading-sensitivity." id="toc-key-insight-2-apparent-prompt-sensitivity-can-be-grading-sensitivity." class="nav-link" data-scroll-target="#key-insight-2-apparent-prompt-sensitivity-can-be-grading-sensitivity."><strong>💡 Key Insight #2: Apparent prompt sensitivity can be grading sensitivity.</strong></a></li>
+  <li><a href="#key-insight-3-the-significant-vs-not-significant-comparison-is-a-trap." id="toc-key-insight-3-the-significant-vs-not-significant-comparison-is-a-trap." class="nav-link" data-scroll-target="#key-insight-3-the-significant-vs-not-significant-comparison-is-a-trap."><strong>💡 Key Insight #3: The significant-vs-not-significant comparison is a trap.</strong></a></li>
+  <li><a href="#key-insight-4-say-what-the-estimand-is." id="toc-key-insight-4-say-what-the-estimand-is." class="nav-link" data-scroll-target="#key-insight-4-say-what-the-estimand-is."><strong>💡 Key Insight #4: Say what the estimand is.</strong></a></li>
+  </ul></li>
+  <li><a href="#why-this-is-a-measurement-problem" id="toc-why-this-is-a-measurement-problem" class="nav-link" data-scroll-target="#why-this-is-a-measurement-problem">🧪 Why This Is a Measurement Problem</a></li>
+  <li><a href="#challenges-learnings" id="toc-challenges-learnings" class="nav-link" data-scroll-target="#challenges-learnings">🚧 Challenges &amp; Learnings</a></li>
+  <li><a href="#code-data" id="toc-code-data" class="nav-link" data-scroll-target="#code-data">📚 Code &amp; Data</a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content column-page-left" id="quarto-document-content">
+<main class="content" id="quarto-document-content">
 
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Portfolio</h1>
-</div>
+<h1 class="title">Case Study: Auditing the Grader — When ‘Prompt Sensitivity’ Turned Out to Be a Regex Bug</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Model Evaluation</div>
+    <div class="quarto-category">Measurement Science</div>
+    <div class="quarto-category">Experimental Design</div>
+  </div>
+  </div>
 
 <div>
   <div class="description">
-    <p>Five case studies covering model evaluation, XR interaction, real-time cognitive monitoring, psychophysical modeling, and memory. Each one walks from question to method to result.</p>
+    A 480-generation model-evaluation experiment where an apparent prompt-sensitivity finding collapsed under a grader audit — and what the audit taught me about measurement in AI evaluation.
   </div>
 </div>
 
 
-<div class="quarto-title-meta column-page-left">
+<div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Mohammad Dastgheib </p>
+          </div>
+  </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 27, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -411,174 +397,197 @@ window.Quarto = {
 </header>
 
 
-<div id="listing-case-studies" class="quarto-listing quarto-listing-container-grid">
-<div class="list grid quarto-listing-cols-2">
-<div class="g-col-1" data-index="0" data-categories="TW9kZWwlMjBFdmFsdWF0aW9uJTJDTWVhc3VyZW1lbnQlMjBTY2llbmNlJTJDRXhwZXJpbWVudGFsJTIwRGVzaWdu" data-listing-date-sort="1790492400000" data-listing-file-modified-sort="1790549468342" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="10" data-listing-word-count-sort="1875">
-<a href="../projects/grader-audit-case-study.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../images/eval-grader-audit.png" class="thumbnail-image card-img" style="height: 200px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Case Study: Auditing the Grader — When ‘Prompt Sensitivity’ Turned Out to Be a Regex Bug
-</h5>
-<div class="listing-categories">
+<style>
+.project-snapshot-card {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1px;
+  margin: 0 0 2.5rem;
+  padding: 0;
+  overflow: hidden;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  border-left: 3px solid var(--terracotta);
+}
+.project-snapshot-card .ps-item {
+  padding: 1rem 1.15rem;
+  background: var(--paper-raised);
+}
+.project-snapshot-card .ps-label,
+.project-snapshot-card .ps-value { display: block; }
+.project-snapshot-card .ps-label { margin-bottom: 0.35rem; }
+.project-snapshot-card .ps-value {
+  color: var(--ink);
+  font-family: var(--font-sans, Inter, system-ui, sans-serif);
+  font-size: 0.92rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.45;
+  text-transform: none;
+}
+@media (max-width: 640px) {
+  .project-snapshot-card { grid-template-columns: 1fr; }
+}
+#quarto-document-content h2 {
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  line-height: 1.2;
+  margin-top: 2.75rem;
+}
+#quarto-document-content h3 {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.3;
+  margin-top: 1.6rem;
+}
+</style>
+<div class="project-snapshot-card">
+  <div class="ps-item"><span class="ps-label">Role</span><span class="ps-value">Independent portfolio study — design through adjudication</span></div>
+  <div class="ps-item"><span class="ps-label">Methods</span><span class="ps-value">Fully-crossed experiment, regex grader audit, task-clustered bootstrap, difference-of-differences</span></div>
+  <div class="ps-item"><span class="ps-label">Stack</span><span class="ps-value">Python, llama-cpp-python, quantized GGUF checkpoints, NumPy</span></div>
+  <div class="ps-item"><span class="ps-label">Output</span><span class="ps-value">Essay · Adjudication transcripts · Grader audit</span></div>
+</div>
+<section id="overview-the-finding-that-wasnt" class="level2">
+<h2 class="anchored" data-anchor-id="overview-the-finding-that-wasnt">🌟 Overview: The Finding That Wasn’t</h2>
+<blockquote class="blockquote">
+<p><em>“My benchmark found prompt sensitivity. Then I audited the grader — and the story fell apart.”</em></p>
+</blockquote>
+<p>I ran a small model-evaluation experiment: 480 generations across two small open-weight models (Qwen 2.5 1.5B Instruct vs.&nbsp;Llama 3.2 1B Instruct), 40 grade-school math problems I wrote myself, three instruction wordings, two stochastic runs each. Machine-graded. The first results were exciting — Qwen beat Llama by 11.3 points, and the gap <em>moved with the prompt wording</em> (15.0 / 8.8 / 10.0 points), with statistical significance flipping between wordings. A clean little demonstration of prompt sensitivity.</p>
+<p>Then I checked the grader. The “sensitivity” lived in my regex, not in the models’ arithmetic. This case study is the full post-mortem: the audit procedure, the failure mechanism, the corrected numbers, and the measurement lessons I took from it.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="../images/eval-grader-audit.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Five bars, the tallest one circled by a magnifying glass, with calipers underneath — an audit of the measurement, not only the result."><img src="../images/eval-grader-audit.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%" alt="Five bars, the tallest one circled by a magnifying glass, with calipers underneath — an audit of the measurement, not only the result."></a></p>
+</figure>
+</div>
+<figcaption>Five bars, the tallest one circled by a magnifying glass, with calipers underneath — an audit of the measurement, not only the result.</figcaption>
+</figure>
+</div>
+</section>
+<section id="the-question" class="level2">
+<h2 class="anchored" data-anchor-id="the-question">❓ The Question</h2>
+<p>When two models are compared under different prompt wordings and the gap between them moves, is that <strong>prompt sensitivity in the models</strong> — or <strong>grading sensitivity in the pipeline</strong>? My grading pipeline depended on output format, my prompts changed output format, and I was attributing the resulting score movement to reasoning differences. That is a confound, not a finding — until proven otherwise.</p>
+</section>
+<section id="method" class="level2">
+<h2 class="anchored" data-anchor-id="method">🔬 Method</h2>
+<p><strong>Design.</strong> Fully crossed: 2 models × 3 instruction wordings × 40 hand-written arithmetic tasks × 2 stochastic trials = 480 generations. V1 and V2 are instruction paraphrases; V3 adds a “careful math tutor” persona (a different treatment, disclosed as such). Temperature 0.7, max 256 tokens, local quantized GGUF checkpoints on CPU. (Up front: 1.5B vs 1B is a 50% size advantage for Qwen — nothing here is a controlled architecture comparison.)</p>
+<p><strong>The grader under audit.</strong> A two-stage parser: first try to match the requested “Answer:” format; on failure, fall back to extracting the <strong>last integer</strong> in the output. Correctness = extracted integer equals the gold answer.</p>
+<p><strong>Statistics.</strong> 10,000-replicate task-clustered bootstrap (task IDs resampled with replacement, multiplicities preserved; one shared resample per replicate for per-variant gaps and difference-of-differences). Random 20-task subset diagnostic. Trial-to-trial correctness disagreement.</p>
+</section>
+<section id="the-audit" class="level2">
+<h2 class="anchored" data-anchor-id="the-audit">🔍 The Audit</h2>
+<p>The audit ran in two stages. First, an AI assistant performed a preliminary triage: it screened all 36 parser-failures where the gold number appeared in the output text, proposing 20 candidate flips (and classifying the other 16 as genuine model errors), while finding zero false positives across a random sample of 50 parser passes. I then personally adjudicated all 20 flip candidates in full — confirming 19, overturning 1.</p>
+<p>Two things about the adjudication belong on the record. First, the criterion wasn’t uniform: on the 20 hand-adjudicated candidates I applied a stricter rule — the gold integer stated <em>with no false arithmetic in support</em> — while the 403 parser-passed records were scored on final-answer extraction alone. Only ~4% of correct labels were ever examined for reasoning quality. The labels mix two standards, and the analysis says which records got which. The single overturn: the model answered 6 full boxes correctly but computed the remainder as 150 − 24 = 126 (correct: 6 × 24 = 144, so 6 short — a quarter box). A conservative call, kept wrong.</p>
+<p>Second, I got one call wrong and fixed it before publishing. I initially overturned a record where the model answered 154 but explained it as “adding the number to itself 10 times” — then reversed myself, because the parenthetical “(since 11 = 10 + 1)” makes it the distributive law: 14 + (14 × 10). Clumsily worded, mathematically valid. The transcripts are public; the call is checkable.</p>
+<p><strong>The mechanism</strong> was almost comically mundane. Eighteen of the nineteen flips are the same failure — a <strong>premise-echoing recap</strong>: the model derives the right answer, then closes with a sentence restating it alongside a number from the problem premise, and the last-integer fallback grabs the premise. “The factory makes <strong>875</strong> toys in <strong>7 days</strong>” → scored as 7. “<strong>24</strong> cups from <strong>3</strong> full jugs” → scored as 3. “<strong>560</strong> pages in <strong>2 weeks</strong>” → scored as 2. Llama narrates after answering more than Qwen does, so the parser punished Llama’s verbosity as if it were Llama’s innumeracy — hardest under the prompts that elicited the most narration. Fifteen of the 19 flips were Llama’s; 10 were under the persona variant.</p>
+</section>
+<section id="what-survived" class="level2">
+<h2 class="anchored" data-anchor-id="what-survived">📊 What Survived</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th>Parser-graded gap (Qwen − Llama)</th>
+<th>Audited gap</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Wording 1</td>
+<td>15.0 pp, 95% CI [3.8, 26.3]</td>
+<td>6.25 pp, 95% CI [−3.7, 16.2]</td>
+</tr>
+<tr class="even">
+<td>Wording 2</td>
+<td>8.8 pp, 95% CI [0.0, 18.8]</td>
+<td>6.25 pp, 95% CI [−1.3, 16.2]</td>
+</tr>
+<tr class="odd">
+<td>Persona (V3)</td>
+<td>10.0 pp, 95% CI [0.0, 20.0]</td>
+<td>7.5 pp, 95% CI [−1.3, 17.5]</td>
+</tr>
+<tr class="even">
+<td>Overall</td>
+<td>11.3 pp</td>
+<td>6.67 pp, 95% CI [0.4, 14.2]</td>
+</tr>
+</tbody>
+</table>
+<p>Under a pure final-answer criterion the single overturn reverts to correct: the V3 gap rejoins the others at 6.25pp and the overall gap is 15/240 = 6.25pp. The headline doesn’t move — which is why disclosing the criterion asymmetry matters: the substantive conclusion is robust to whether you enforce clean intermediate reasoning or score raw final answers.</p>
+<p>The difference-of-differences — the direct test of whether the gap varies by prompt — is centered near zero (0.1, −1.0, −1.2), but the intervals span ±10 to ±15 points: far too small a study to rule out real prompt interactions. What remains is a 6.67-point Qwen lead whose interval barely excludes zero, 10.0% trial-to-trial disagreement, and an honest summary: <em>maybe a modest Qwen lead, and we can’t say much more than that.</em></p>
+</section>
+<section id="key-insights" class="level2">
+<h2 class="anchored" data-anchor-id="key-insights">💡 Key Insights</h2>
+<section id="key-insight-1-audit-the-grader-before-you-believe-the-comparison." class="level3">
+<h3 class="anchored" data-anchor-id="key-insight-1-audit-the-grader-before-you-believe-the-comparison."><strong>💡 Key Insight #1: Audit the grader before you believe the comparison.</strong></h3>
+<ul>
+<li><strong>What I Found:</strong> The parser agreed with audited labels on 96.0% of records — and still manufactured a headline effect, because every confirmed error was a false negative falling overwhelmingly on one model.</li>
+<li><strong>The “So What?”:</strong> Agreement rates are the wrong metric — <em>asymmetric</em> error is. A grader that fails one side’s outputs more than the other’s adds bias, not noise, and no downstream bootstrapping removes it.</li>
+<li><strong>Why It Matters:</strong> Any automated grader, from regex to LLM-judge, has an error profile. When that profile correlates with the thing being compared, it manufactures effects. Characterize the instrument before trusting its outputs.</li>
+</ul>
+</section>
+<section id="key-insight-2-apparent-prompt-sensitivity-can-be-grading-sensitivity." class="level3">
+<h3 class="anchored" data-anchor-id="key-insight-2-apparent-prompt-sensitivity-can-be-grading-sensitivity."><strong>💡 Key Insight #2: Apparent prompt sensitivity can be grading sensitivity.</strong></h3>
+<ul>
+<li><strong>What I Found:</strong> The 6.2-point swing in the model gap across wordings — plus flipping significance labels — vanished once the grader was fixed. This mirrors Hua et al.&nbsp;(2025): rigid answer-matching mistakes formatting variation for capability variation.</li>
+<li><strong>The “So What?”:</strong> Before theorizing about model behavior under prompt perturbations, check whether the <em>measurement apparatus</em> is what’s moving.</li>
+<li><strong>Why It Matters:</strong> Standard harness implementations of grade-school-math benchmarks used essentially this kind of regex extraction for years. The failure mode isn’t confined to toy studies.</li>
+</ul>
+</section>
+<section id="key-insight-3-the-significant-vs-not-significant-comparison-is-a-trap." class="level3">
+<h3 class="anchored" data-anchor-id="key-insight-3-the-significant-vs-not-significant-comparison-is-a-trap."><strong>💡 Key Insight #3: The significant-vs-not-significant comparison is a trap.</strong></h3>
+<ul>
+<li><strong>What I Found:</strong> My first framing treated wording one as “decisive” and the others as “can’t rule out zero” — as if crossing p &lt; 0.05 between conditions meant the conditions differed. The interaction intervals all covered zero.</li>
+<li><strong>The “So What?”:</strong> Gelman and Stern’s warning holds: the difference between “significant” and “not significant” is not itself statistically significant.</li>
+<li><strong>Why It Matters:</strong> If an evaluation story depends on which side of an arbitrary threshold each condition lands on, there is no evaluation story.</li>
+</ul>
+</section>
+<section id="key-insight-4-say-what-the-estimand-is." class="level3">
+<h3 class="anchored" data-anchor-id="key-insight-4-say-what-the-estimand-is."><strong>💡 Key Insight #4: Say what the estimand is.</strong></h3>
+<ul>
+<li><strong>What I Found:</strong> Writing the estimand down — <em>the difference in expected final-answer accuracy between these two specific quantized checkpoints on these 40 tasks, averaged over three wordings and decoding noise</em> — exposed every overgeneralization the first draft wanted to make.</li>
+<li><strong>The “So What?”:</strong> The task-clustered bootstrap treats 40 hand-written items as exchangeable, licensing inference about a task population they were never sampled from. The intervals are a lower bound on uncertainty, not a generalization license.</li>
+<li><strong>Why It Matters:</strong> The estimand sentence should be written before anything runs. I wrote it after, and it still caught things.</li>
+</ul>
+</section>
+</section>
+<section id="why-this-is-a-measurement-problem" class="level2">
+<h2 class="anchored" data-anchor-id="why-this-is-a-measurement-problem">🧪 Why This Is a Measurement Problem</h2>
+<p>Catching the bug took two instincts at once: software-testing instincts (your parser is code; test it like code) and measurement instincts (your grader is an instrument; characterize its errors, check whether they’re symmetric, define the estimand). That intersection — treating an evaluation pipeline as an empirical instrument that requires calibration and failure-mode profiling before its outputs can be trusted — is what turns model evaluation from ad-hoc scripting into a real measurement science.</p>
+</section>
+<section id="challenges-learnings" class="level2">
+<h2 class="anchored" data-anchor-id="challenges-learnings">🚧 Challenges &amp; Learnings</h2>
+<ul>
+<li><strong>Challenge 1: Unblinded, single-rater adjudication.</strong> I adjudicated knowing the model, variant, and narrative stakes.
+<ul>
+<li><strong>What I Learned:</strong> Publish the transcripts. Every one of the 20 candidate flips — confirmations, the overturn, and the reversed call — is public so anyone can re-adjudicate and check me for confirmation bias. Transparency is the only defense I had, so I used all of it.</li>
+</ul></li>
+<li><strong>Challenge 2: Triage instead of a census.</strong> 86 of 480 records were read in full; the rest are retained/imputed labels. Among 158 fallback-extracted passes, 20 were sampled with zero false positives — a bound, not a proof.
+<ul>
+<li><strong>What I Learned:</strong> State the sampling bound plainly (≈20 possible false positives one-sided) and let it constrain the claim: the 16-success lead could theoretically be erased under a sufficiently adversarial arrangement. The price of triage is a weaker headline.</li>
+</ul></li>
+<li><strong>Challenge 3: Reproducibility gaps.</strong> Top-p/top-k weren’t logged; Python’s <code>hash(task_id)</code> seeding isn’t pinned across processes; one output was truncated at the 256-token cap.
+<ul>
+<li><strong>What I Learned:</strong> Log everything the sampler touches. A study about measurement rigor shouldn’t have measurement gaps in its own methods section.</li>
+</ul></li>
+</ul>
+</section>
+<section id="code-data" class="level2">
+<h2 class="anchored" data-anchor-id="code-data">📚 Code &amp; Data</h2>
+<ul>
+<li><strong>Materials:</strong> Code, the 40 tasks, raw outputs, adjudications, and all 20 flip transcripts.</li>
+<li><strong>Prior art:</strong> Sclar et al.&nbsp;(2024) on format sensitivity · Hua et al.&nbsp;(2025), “Flaw or Artifact?” · Romanou et al.&nbsp;(2026), BrittleBench · Jacobs &amp; Wallach (2021) · Wallach et al.&nbsp;(2025) · Gelman &amp; Stern on the significance-comparison fallacy</li>
+</ul>
+<hr>
+<p><em>Methods note: Qwen 2.5 1.5B Instruct and Llama 3.2 1B Instruct (quantized GGUF, llama-cpp-python, CPU), 40 author-written arithmetic tasks, 3 instruction wordings (V3 adds a persona), 2 trials at temperature 0.7. 10,000-replicate task-clustered bootstrap. Nothing here generalizes to frontier scale — the value is concreteness, including the fragility of the author’s own first conclusion.</em></p>
 
-<div class="listing-category" onclick="window.quartoListingCategory('TW9kZWwlMjBFdmFsdWF0aW9u'); return false;">Model Evaluation</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('TWVhc3VyZW1lbnQlMjBTY2llbmNl'); return false;">Measurement Science</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RXhwZXJpbWVudGFsJTIwRGVzaWdu'); return false;">Experimental Design</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A 480-generation model-evaluation experiment where an apparent prompt-sensitivity finding collapsed under a grader audit — and what the audit taught me about measurement in…</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-September 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="WFIlMkZIQ0klMkNHYXplJTIwSW50ZXJhY3Rpb24lMkNCYXllc2lhbiUyMExCQSUyQ1JlbW90ZSUyMFN0dWR5JTJDYXJYaXY=" data-listing-date-sort="1769932800000" data-listing-file-modified-sort="1784699208486" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="92" data-listing-word-count-sort="18354">
-<a href="../projects/case_study_web.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../images/architecture.png" class="thumbnail-image card-img" style="height: 200px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-XR Adaptive Modality: Case Study
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('WFIlMkZIQ0k='); return false;">XR/HCI</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('R2F6ZSUyMEludGVyYWN0aW9u'); return false;">Gaze Interaction</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QmF5ZXNpYW4lMjBMQkE='); return false;">Bayesian LBA</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UmVtb3RlJTIwU3R1ZHk='); return false;">Remote Study</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('YXJYaXY='); return false;">arXiv</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>I built a remote XR interaction testbed and evaluated whether a context-aware adaptive system can reduce gaze failure modes (e.g., Midas Touch slips: accidental activations)…</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-February 2026
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="SHVtYW4lMjBGYWN0b3JzJTJDUHVwaWxsb21ldHJ5JTJDWEdCb29zdCUyQ1IlMjBTaGlueSUyQ01M" data-listing-date-sort="1759302000000" data-listing-file-modified-sort="1784699217691" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="39" data-listing-word-count-sort="7738">
-<a href="../projects/surgeon-performance-predict2.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../images/surgical-dashboard.jpg" class="thumbnail-image card-img" style="height: 200px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Surgeon Cognitive Dashboard: Case Study
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SHVtYW4lMjBGYWN0b3Jz'); return false;">Human Factors</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHVwaWxsb21ldHJ5'); return false;">Pupillometry</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('WEdCb29zdA=='); return false;">XGBoost</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UiUyMFNoaW55'); return false;">R Shiny</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TUw='); return false;">ML</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A proof-of-concept for a real-time analytics platform that uses pupillometry and motor-based metrics to predict a surgeon’s cognitive state, inspired by my work at Surgical…</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-October 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="SHVtYW4lMjBGYWN0b3JzJTJDUHN5Y2hvcGh5c2ljcyUyQ0JheWVzaWFuJTIwRERNJTJDUHVwaWxsb21ldHJ5" data-listing-date-sort="1748761200000" data-listing-file-modified-sort="1784699140814" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1071">
-<a href="../projects/dual-task-case-study.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../images/Aerospace_HUD.png" class="thumbnail-image card-img" style="height: 200px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Case Study: A Psychophysiological Approach to Modeling Dual-Task Interference
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('SHVtYW4lMjBGYWN0b3Jz'); return false;">Human Factors</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHN5Y2hvcGh5c2ljcw=='); return false;">Psychophysics</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('QmF5ZXNpYW4lMjBERE0='); return false;">Bayesian DDM</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('UHVwaWxsb21ldHJ5'); return false;">Pupillometry</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A research roadmap case study on modeling dual-task interference using pupillometry to enhance performance in high-stakes environments.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-June 2025
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="4" data-categories="Q29nbml0aXZlJTIwTmV1cm9zY2llbmNlJTJDRUVHJTJDTWl4ZWQlMjBNZXRob2Rz" data-listing-date-sort="1559372400000" data-listing-file-modified-sort="1784699145759" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="6" data-listing-word-count-sort="1129">
-<a href="../projects/memory-and-meditation.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="../images/procedural-memory-plot.png" class="thumbnail-image card-img" style="height: 200px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Case Study: Optimizing Learning with Cognitive States
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('Q29nbml0aXZlJTIwTmV1cm9zY2llbmNl'); return false;">Cognitive Neuroscience</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('RUVH'); return false;">EEG</div>
-
-<div class="listing-category" onclick="window.quartoListingCategory('TWl4ZWQlMjBNZXRob2Rz'); return false;">Mixed Methods</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A mixed-methods study from recruitment through analysis, comparing napping and meditation for declarative and procedural memory consolidation.</p>
-</div>
-<div class="card-attribution card-text-small end">
-<div class="listing-date">
-June 2019
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div>
-
-
-
+</section>
 
 <a onclick="window.scrollTo(0, 0); return false;" role="button" id="quarto-back-to-top"><i class="bi bi-arrow-up"></i> Back to top</a></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1023,6 +1032,38 @@ June 2019
   updateBar();
 })();
 </script>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

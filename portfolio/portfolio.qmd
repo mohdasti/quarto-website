@@ -1,7 +1,7 @@
 ---
 title: "Portfolio"
 description: |
-  Four case studies covering XR interaction, real-time cognitive monitoring, psychophysical modeling, and memory. Each one walks from question to method to result.
+  Five case studies covering model evaluation, XR interaction, real-time cognitive monitoring, psychophysical modeling, and memory. Each one walks from question to method to result.
 listing:
   - id: case-studies
     contents: "../projects/*.qmd"
