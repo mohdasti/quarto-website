@@ -26,7 +26,7 @@ $border-radius-lg: 0 !default;
   --font-caption: 0.8rem;
   --site-pad: clamp(1rem, 4vw, 4rem);
   --site-max: 1440px;
-  --hero-availability-gap: clamp(2rem, 5vw, 4rem);
+  --hero-availability-gap: clamp(1rem, 2.5vw, 2rem);
 
   --color-bg: var(--paper);
   --color-bg-subtle: var(--paper-raised);
@@ -199,7 +199,7 @@ main.content,
 }
 
 .hero-section {
-  padding: clamp(4rem, 9vw, 8rem) var(--site-pad) clamp(3rem, 7vw, 6rem);
+  padding: clamp(2.5rem, 5vw, 4.5rem) var(--site-pad) clamp(2.5rem, 5vw, 4.5rem);
   border-bottom: 1px solid var(--rule);
 }
 .hero-section.page-columns.page-full {
@@ -269,10 +269,10 @@ body .hero-inner.page-columns.page-full > aside.hero-aside {
 }
 @keyframes status-pulse { 50% { opacity: 0.35; } }
 .hero-name {
-  max-width: 12ch;
+  max-width: 15ch;
   margin: 0;
   color: var(--ink);
-  font-size: clamp(3.15rem, 8.8vw, 8rem);
+  font-size: clamp(2.8rem, 6vw, 5.5rem);
   line-height: 0.88;
   letter-spacing: -0.065em;
   background: none;
@@ -301,7 +301,7 @@ body .hero-inner.page-columns.page-full > aside.hero-aside {
   flex-wrap: wrap;
   gap: 0.75rem;
 }
-.hero-social { margin-top: 2rem; gap: 1.5rem; }
+.hero-social { margin-top: 1.5rem; gap: 1.5rem; }
 .hero-social a {
   color: var(--ink-soft);
   text-decoration: none;
@@ -314,7 +314,7 @@ body .hero-inner.page-columns.page-full > aside.hero-aside {
   flex: 0 0 auto;
   width: 100%;
   aspect-ratio: 4 / 5;
-  max-height: min(70vh, 38rem);
+  max-height: min(62vh, 34rem);
   overflow: hidden;
   border: 1px solid var(--rule);
   background: var(--paper-raised);
