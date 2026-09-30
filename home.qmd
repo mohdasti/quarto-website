@@ -12,7 +12,7 @@ format:
   <div class="hero-inner">
     <div class="availability-pill hero-availability">Open to opportunities · Authorized to work in the U.S. without sponsorship</div>
     <div class="hero-content">
-      <p class="hero-title">Research Scientist · Quantitative UXR · Human Factors</p>
+      <p class="hero-title">Research Scientist at <a href="https://www.thebridge.ai" target="_blank" rel="noopener noreferrer">thebridge</a> · Human–AI decision-making</p>
       <h1 class="hero-name">Designing better <span class="accent-word">human-machine interaction</span></h1>
       <p class="hero-bio">I translate behavioral and physiological evidence into product decisions by combining psychophysics, pupillometry, Bayesian modeling, and working prototypes to understand where performance breaks and what an interface should do next.</p>
       <div class="hero-ctas">
@@ -40,64 +40,6 @@ format:
     <div class="stat-callout"><span class="stat-index">02 / Evidence</span><span class="stat-number">2</span><span class="stat-label">Published works + active manuscripts</span></div>
     <div class="stat-callout"><span class="stat-index">03 / Training</span><span class="stat-number">PhD</span><span class="stat-label">Cognitive neuroscience, UC Riverside</span></div>
     <a class="stat-callout stat-callout-link" href="/photography.html"><span class="stat-index">04 / Off-hours</span><span class="stat-number">35mm</span><span class="stat-label">Analog photography</span></a>
-  </div>
-</section>
-
-<section class="portfolio-section">
-  <div class="portfolio-section__inner">
-    <div class="section-head">
-      <div><p class="section-eyebrow">Selected work</p><h2 class="section-heading">Research that changes what a system does</h2></div>
-      <p class="section-intro">Each case study shows the question, method, tradeoff, and product implication, not just the final artifact.</p>
-    </div>
-    <div class="work-grid">
-      <a class="work-card" href="/projects/case_study_web.html">
-        <div class="work-card__image"><img src="/images/architecture.png" alt="Architecture of a remote XR interaction study" loading="lazy"></div>
-        <p class="card-kicker">01 · XR interaction / remote testbed</p>
-        <h3>Why gaze produced more selection errors</h3>
-        <p class="work-card__outcome">99.2% of gaze errors were slips; hand input reached 5.15 bits/s.</p>
-        <p class="work-card__desc">Built a remote testbed, compared hand and simulated gaze with Fitts' law and NASA-TLX, then modeled failure dynamics with a Bayesian LBA. The gaze condition was simulated, not evaluated in a headset.</p>
-        <div class="method-tags"><span class="method-tag">Experiment design</span><span class="method-tag">Bayesian LBA</span><span class="method-tag">React / TypeScript</span></div>
-      </a>
-      <a class="work-card" href="/projects/surgeon-performance-predict2.html">
-        <div class="work-card__image"><img src="/images/surgical-dashboard.jpg" alt="Surgeon cognitive dashboard" loading="lazy"></div>
-        <p class="card-kicker">02 · Human factors / proof of concept</p>
-        <h3>Designing alerts around cognitive risk</h3>
-        <p class="work-card__outcome">Targeted ≤0.6 alerts/min with calibrated state probabilities.</p>
-        <p class="work-card__desc">Prototyped a training dashboard that turns pupil, HRV, and grip features into instructional thresholds. All validation used synthetic sessions; clinical effectiveness remains untested.</p>
-        <div class="method-tags"><span class="method-tag">Human factors</span><span class="method-tag">Calibration</span><span class="method-tag">XGBoost</span><span class="method-tag">R Shiny</span></div>
-      </a>
-      <a class="work-card" href="/projects/dual-task-case-study.html">
-        <div class="work-card__image"><img src="/images/simulator_performance_chart.png" alt="Concept chart of dual-task performance" loading="lazy"></div>
-        <p class="card-kicker">03 · Research roadmap / in progress</p>
-        <h3>Locating the failure point in dual-task performance</h3>
-        <p class="work-card__outcome">Separating evidence quality, response caution, and motor strain.</p>
-        <p class="work-card__desc">A staged dissertation program connecting psychophysics, pupillometry, drift-diffusion modeling, and grip-force signals. Industry applications shown in the case study are concepts, not deployed systems.</p>
-        <div class="method-tags"><span class="method-tag">Psychophysics</span><span class="method-tag">Pupillometry</span><span class="method-tag">Drift diffusion</span></div>
-      </a>
-      <a class="work-card" href="/projects/memory-and-meditation.html">
-        <div class="work-card__image"><img src="/images/declarative-memory-plot.png" alt="Declarative memory study results" loading="lazy"></div>
-        <p class="card-kicker">04 · Foundational research / NSERC</p>
-        <h3>Testing whether brief meditation changes memory</h3>
-        <p class="work-card__outcome">60+ participants across behavioral and EEG measures.</p>
-        <p class="work-card__desc">Led a master's thesis from study design through analysis. The findings come from a controlled research sample and should not be read as a general product-effectiveness claim.</p>
-        <div class="method-tags"><span class="method-tag">Mixed methods</span><span class="method-tag">EEG</span><span class="method-tag">Memory</span></div>
-      </a>
-    </div>
-    <p class="section-action"><a href="/portfolio/" class="btn btn-outline-secondary">All case studies <i class="fas fa-arrow-right" aria-hidden="true"></i></a></p>
-  </div>
-</section>
-
-<section class="toolkit-section">
-  <div class="toolkit-inner">
-    <div class="section-head">
-      <div><p class="section-eyebrow">Technical toolkit</p><h2 class="section-heading">Methods selected for the decision</h2></div>
-      <p class="section-intro">I work across measurement, inference, and implementation so the research question survives contact with the product.</p>
-    </div>
-    <div class="toolkit-grid">
-      <article class="toolkit-column"><span class="toolkit-label">01 / Quantitative</span><h3>Model behavior</h3><ul class="toolkit-list"><li>Psychophysics &amp; signal detection</li><li>Bayesian DDM / LBA</li><li>Mixed-effects models</li><li>ML, calibration &amp; SHAP</li></ul></article>
-      <article class="toolkit-column"><span class="toolkit-label">02 / Physiological</span><h3>Measure latent state</h3><ul class="toolkit-list"><li>Pupillometry &amp; eye tracking</li><li>Grip-force &amp; tremor analysis</li><li>EEG &amp; psychophysiology</li><li>Artifact control &amp; QC</li></ul></article>
-      <article class="toolkit-column"><span class="toolkit-label">03 / Implementation</span><h3>Make it testable</h3><ul class="toolkit-list"><li>React / TypeScript systems</li><li>R Shiny dashboards</li><li>Python, R, PyMC &amp; Stan</li><li>Reproducible workflows</li></ul></article>
-    </div>
   </div>
 </section>
 
@@ -164,6 +106,65 @@ format:
         </a>
         <div><p class="education-degree">Hon. BSc, Biological Sciences &amp; Psychology</p><p class="education-school">York University · 2017</p></div>
       </article>
+    </div>
+  </div>
+</section>
+
+<section class="portfolio-section">
+  <div class="portfolio-section__inner">
+    <div class="section-head">
+      <div><p class="section-eyebrow">Selected work</p><h2 class="section-heading">Research that changes what a system does</h2></div>
+      <p class="section-intro">Each case study shows the question, method, tradeoff, and product implication, not just the final artifact.</p>
+    </div>
+    <div class="work-grid">
+      <a class="work-card" href="/projects/case_study_web.html">
+        <div class="work-card__image"><img src="/images/architecture.png" alt="Architecture of a remote XR interaction study" loading="lazy"></div>
+        <p class="card-kicker">01 · XR interaction / remote testbed</p>
+        <h3>Why gaze produced more selection errors</h3>
+        <p class="work-card__outcome">99.2% of gaze errors were slips; hand input reached 5.15 bits/s.</p>
+        <p class="work-card__desc">Built a remote testbed, compared hand and simulated gaze with Fitts' law and NASA-TLX, then modeled failure dynamics with a Bayesian LBA. The gaze condition was simulated, not evaluated in a headset.</p>
+        <div class="method-tags"><span class="method-tag">Experiment design</span><span class="method-tag">Bayesian LBA</span><span class="method-tag">React / TypeScript</span></div>
+      </a>
+      <a class="work-card" href="/projects/surgeon-performance-predict2.html">
+        <div class="work-card__image"><img src="/images/surgical-dashboard.jpg" alt="Surgeon cognitive dashboard" loading="lazy"></div>
+        <p class="card-kicker">02 · Human factors / proof of concept</p>
+        <h3>Designing alerts around cognitive risk</h3>
+        <p class="work-card__outcome">Targeted ≤0.6 alerts/min with calibrated state probabilities.</p>
+        <p class="work-card__desc">Prototyped a training dashboard that turns pupil, HRV, and grip features into instructional thresholds. All validation used synthetic sessions; clinical effectiveness remains untested.</p>
+        <div class="method-tags"><span class="method-tag">Human factors</span><span class="method-tag">Calibration</span><span class="method-tag">XGBoost</span><span class="method-tag">R Shiny</span></div>
+      </a>
+      <a class="work-card" href="/projects/dual-task-case-study.html">
+        <div class="work-card__image"><img src="/images/simulator_performance_chart.png" alt="Concept chart of dual-task performance" loading="lazy"></div>
+        <p class="card-kicker">03 · Research roadmap / in progress</p>
+        <h3>Locating the failure point in dual-task performance</h3>
+        <p class="work-card__outcome">Separating evidence quality, response caution, and motor strain.</p>
+        <p class="work-card__desc">A staged dissertation program connecting psychophysics, pupillometry, drift-diffusion modeling, and grip-force signals. Industry applications shown in the case study are concepts, not deployed systems.</p>
+        <div class="method-tags"><span class="method-tag">Psychophysics</span><span class="method-tag">Pupillometry</span><span class="method-tag">Drift diffusion</span></div>
+      </a>
+      <a class="work-card" href="/projects/memory-and-meditation.html">
+        <div class="work-card__image"><img src="/images/declarative-memory-plot.png" alt="Declarative memory study results" loading="lazy"></div>
+        <p class="card-kicker">04 · Foundational research / NSERC</p>
+        <h3>Testing whether brief meditation changes memory</h3>
+        <p class="work-card__outcome">60+ participants across behavioral and EEG measures.</p>
+        <p class="work-card__desc">Led a master's thesis from study design through analysis. The findings come from a controlled research sample and should not be read as a general product-effectiveness claim.</p>
+        <div class="method-tags"><span class="method-tag">Mixed methods</span><span class="method-tag">EEG</span><span class="method-tag">Memory</span></div>
+      </a>
+    </div>
+    <p class="section-action"><a href="/portfolio/" class="btn btn-outline-secondary">All case studies <i class="fas fa-arrow-right" aria-hidden="true"></i></a></p>
+  </div>
+</section>
+
+<section class="toolkit-section">
+  <div class="toolkit-inner">
+    <div class="section-head">
+      <div><p class="section-eyebrow">Technical toolkit</p><h2 class="section-heading">Methods selected for the decision</h2></div>
+      <p class="section-intro">I work across evaluation, measurement, inference, and implementation so the research question survives contact with the product.</p>
+    </div>
+    <div class="toolkit-grid">
+      <article class="toolkit-column"><span class="toolkit-label">01 / Evaluation</span><h3>Test the claim</h3><ul class="toolkit-list"><li>Evaluation &amp; experiment design</li><li>Human × AI agent studies</li><li>Rater agreement (κ, ICC)</li><li>Automated grader &amp; LLM-judge validation</li></ul></article>
+      <article class="toolkit-column"><span class="toolkit-label">02 / Quantitative</span><h3>Model behavior</h3><ul class="toolkit-list"><li>Psychophysics &amp; signal detection</li><li>Bayesian DDM / LBA</li><li>Mixed-effects models</li><li>ML, calibration &amp; SHAP</li></ul></article>
+      <article class="toolkit-column"><span class="toolkit-label">03 / Physiological</span><h3>Measure latent state</h3><ul class="toolkit-list"><li>Pupillometry &amp; eye tracking</li><li>Grip-force &amp; tremor analysis</li><li>EEG &amp; psychophysiology</li><li>Artifact control &amp; QC</li></ul></article>
+      <article class="toolkit-column"><span class="toolkit-label">04 / Implementation</span><h3>Make it testable</h3><ul class="toolkit-list"><li>React / TypeScript systems</li><li>R Shiny dashboards</li><li>Python, R, PyMC &amp; Stan</li><li>Reproducible workflows</li></ul></article>
     </div>
   </div>
 </section>
