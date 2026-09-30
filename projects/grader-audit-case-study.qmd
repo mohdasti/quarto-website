@@ -47,16 +47,6 @@ methodologies: ["Experimental Design", "Grader Auditing", "Clustered Bootstrappi
 @media (max-width: 640px) {
   .project-snapshot-card { grid-template-columns: 1fr; }
 }
-#quarto-document-content h2 {
-  font-size: clamp(1.35rem, 2vw, 1.7rem);
-  line-height: 1.2;
-  margin-top: 2.75rem;
-}
-#quarto-document-content h3 {
-  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
-  line-height: 1.3;
-  margin-top: 1.6rem;
-}
 </style>
 <div class="project-snapshot-card">
   <div class="ps-item"><span class="ps-label">Role</span><span class="ps-value">Independent portfolio study — design through adjudication</span></div>

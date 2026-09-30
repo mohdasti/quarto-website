@@ -23,7 +23,7 @@ methodologies: ["Psychophysiology", "Pupillometry", "Experimental Design"]
 </div>
 ```
 
-# 🌟 Overview: The High Cost of Cognitive Overload
+## 🌟 Overview: The High Cost of Cognitive Overload
 
 > *"Imagine an airline pilot mid-flight, gripping the yoke while processing a cascade of system alerts. Or an older surgeon holding robotic instruments while navigating fragile anatomy. In both cases, sustained physical load collides with high cognitive demands, and performance can slip."*
 
@@ -33,11 +33,11 @@ The framework combines controlled physical stressors (isometric handgrip), a bat
 
 ---
 
-# 🚀 Applications: My Unique Value in Solving High-Stakes Problems
+## 🚀 Applications: My Unique Value in Solving High-Stakes Problems
 
 The true power of this research is its versatility. Below are concrete examples of how this methodology can solve critical R&D problems for industry leaders.
 
-## ✈️ Aerospace & Defense
+### ✈️ Aerospace & Defense
 **Problem:** Pilots and drone operators must simultaneously manage fine motor control and process complex data streams, where cognitive overload can be catastrophic.
 
 - **Lockheed Martin:** Integrate **continuous pupillometry** into F-35 simulators to compute a live *Cognitive Load Index*, pinpointing maneuvers that trigger overload and allowing for targeted training to build resilience.
@@ -50,7 +50,7 @@ The true power of this research is its versatility. Below are concrete examples 
 
 ---
 
-## 🏥 High-Stakes Medicine
+### 🏥 High-Stakes Medicine
 **Problem:** Surgeons using robotics platforms like the da Vinci system endure prolonged physical strain that can impair the complex decision-making required for patient safety.
 
 - **Intuitive Surgical:** Embed a **Dual-Task Performance Dashboard** into the surgical console, showing a real-time, pupil-based arousal graph alongside surgical metrics to give surgeons objective feedback on their cognitive state.
@@ -64,7 +64,7 @@ The true power of this research is its versatility. Below are concrete examples 
 
 ---
 
-## 🏭 Industry 4.0 & Human-Robot Collaboration
+### 🏭 Industry 4.0 & Human-Robot Collaboration
 **Problem:** As factory workers collaborate more closely with robots, their safety depends on maintaining situational awareness while performing manual tasks.
 
 - **Siemens / Rockwell Automation:** Develop "smart tools" that sense a worker's grip force and use in-helmet eye-tracking to detect cognitive overload. When overload is detected, a nearby collaborative robot could automatically slow down, creating a safer, adaptive manufacturing environment.
@@ -73,13 +73,13 @@ The true power of this research is its versatility. Below are concrete examples 
 
 ---
 
-# 🧠 My Research Approach
+## 🧠 My Research Approach
 
 My research was architected to be a robust and flexible platform for measuring human performance under pressure.
 
 ::: {.panel-tabset}
 
-## Core Concepts
+### Core Concepts
 
 - **Dual-Task Interference:** A paradigm where participants perform a sustained **isometric handgrip** (at 5% vs 40% of max strength) while simultaneously completing a cognitive task.
 - **Multi-Domain Assessment:** The methodology uses four distinct cognitive tasks to test the impact of physical load across different domains:
@@ -88,7 +88,7 @@ My research was architected to be a robust and flexible platform for measuring h
     3.  **Auditory Perception** (Auditory Discrimination Task)
     4.  **Visual Perception** (Visual Discrimination Task)
 
-## Key Technologies
+### Key Technologies
 
 - **Pupillometry:** I use pupil diameter as a real-time, objective biomarker of cognitive arousal and mental effort, linked to the brain's locus coeruleus-norepinephrine system.
 - **Cognitive Reserve (LEQ):** This allows for a personalized analysis, moving beyond a one-size-fits-all model to understand *why* some individuals are more resilient to overload than others.
@@ -100,11 +100,11 @@ My research was architected to be a robust and flexible platform for measuring h
 :::
 
 
-## Methodology at a Glance
+### Methodology at a Glance
 
 ![A flowchart illustrating the experimental protocol, from participant recruitment and baseline calibration to the dual-task sessions and final analysis.](../images/protocol_flowchart.png){fig-align="center" width="95%"}
 
-## Data & Analysis
+### Data & Analysis
 
 - **Participants:** 50 healthy older adults (60–90 yrs), representing a critical and growing user population.
 - **Design:** Within-subject 2×2 (low vs. high physical load) × (low vs. high cognitive load).
@@ -112,7 +112,7 @@ My research was architected to be a robust and flexible platform for measuring h
 - **Analysis:** Linear mixed-effects models (LMMs) were chosen to accurately model individual differences across repeated measurements, providing more statistical power and reliability than traditional ANOVA.
 
 
-## Timeline
+### Timeline
 
 | Milestone               | Date            | Deliverable                                     |
 |-------------------------|-----------------|-------------------------------------------------|
@@ -128,7 +128,7 @@ My research was architected to be a robust and flexible platform for measuring h
 
 ---
 
-# 📚 Publications & Artifacts
+## 📚 Publications & Artifacts
 
 - **Grant Proposal PDF:** [Read the full, expert-approved research proposal.](../supporting_docs/Qualification_Exam.pdf)
 - **Qualifying Exam Presentation:** [University of California–Riverside, July 2025](../supporting_docs/Oral Qualifying Examination.pdf)

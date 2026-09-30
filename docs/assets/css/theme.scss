@@ -687,6 +687,24 @@ a.stat-callout:hover { color: inherit; }
   border-top: 1px solid var(--rule);
 }
 #quarto-document-content h3 { color: var(--ink); }
+
+.case-study .quarto-title-block .title {
+  max-width: 22ch;
+  font-size: clamp(2.1rem, 3.6vw, 3.25rem);
+  line-height: 1.05;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+.case-study #quarto-document-content h2 {
+  font-size: clamp(1.35rem, 2vw, 1.7rem);
+  line-height: 1.2;
+  margin-top: 2.75rem;
+}
+.case-study #quarto-document-content h3 {
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
+  line-height: 1.3;
+  margin-top: 1.6rem;
+}
 .page-lead,
 .panel-adjacent,
 .xr-note,
